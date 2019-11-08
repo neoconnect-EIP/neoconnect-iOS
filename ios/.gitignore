@@ -1,0 +1,7 @@
+*.xcworkspace
+*.xcodeproj
+
+/Pods
+/.idea
+
+.DS_Store
