@@ -1,0 +1,25 @@
+PODS:
+  - Alamofire (5.0.0-rc.2)
+  - DLRadioButton (1.4.12)
+  - SwiftyJSON (5.0.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.0.0-rc.2)
+  - DLRadioButton (~> 1.4)
+  - SwiftyJSON
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - DLRadioButton
+    - SwiftyJSON
+  trunk:
+    - Alamofire
+
+SPEC CHECKSUMS:
+  Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
+  DLRadioButton: d7c4e225ed0e8013cef7be61455230c7557ad7c1
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+
+PODFILE CHECKSUM: cceee7a757b59a49912acf7ebd50b0a611c74487
+
+COCOAPODS: 1.8.4
