@@ -1,14 +1,14 @@
 //
-//  ForgotPasswordViewController.swift
+//  B_UpdatePasswordViewController.swift
 //  NeoConnect
 //
-//  Created by EIP on 01/11/2019.
-//  Copyright © 2019 EIP. All rights reserved.
+//  Created by EIP on 12/01/2020.
+//  Copyright © 2020 EIP. All rights reserved.
 //
 
 import UIKit
 
-class B_ForgotPasswordViewController: UIViewController {
+class UpdatePasswordViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,12 +16,7 @@ class B_ForgotPasswordViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBOutlet weak var emailTextField: UITextField!
-    
-    
-    @IBAction func sendButtonTapped(_ sender: Any) {
-        
-    }
+
     /*
     // MARK: - Navigation
 

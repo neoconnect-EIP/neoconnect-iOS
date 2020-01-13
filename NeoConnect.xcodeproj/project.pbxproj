@@ -32,8 +32,8 @@
 		3359B52C22E78D8D00CB86E2 /* B_Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3359B52B22E78D8D00CB86E2 /* B_Chat.storyboard */; };
 		3359B52E22E78D9700CB86E2 /* B_Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3359B52D22E78D9700CB86E2 /* B_Profile.storyboard */; };
 		3388BE5A232016A000B9D1F8 /* AddOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3388BE592320169F00B9D1F8 /* AddOfferViewController.swift */; };
-		3397E802236C58CD002E96FD /* B_ForgotPassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3397E801236C58CD002E96FD /* B_ForgotPassword.storyboard */; };
-		3397E804236C58E0002E96FD /* B_ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3397E803236C58E0002E96FD /* B_ForgotPasswordViewController.swift */; };
+		3397E802236C58CD002E96FD /* ForgotPassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3397E801236C58CD002E96FD /* ForgotPassword.storyboard */; };
+		3397E804236C58E0002E96FD /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3397E803236C58E0002E96FD /* ForgotPasswordViewController.swift */; };
 		33B3983D22A556C900719E1D /* B_RegisterPage_Step_Two_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B3983C22A556C900719E1D /* B_RegisterPage_Step_Two_ViewController.swift */; };
 		33BA89582379320D00A71246 /* I_RegisterPage_Step_Three_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA89572379320D00A71246 /* I_RegisterPage_Step_Three_ViewController.swift */; };
 		33BC651C229ECA4000C52262 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BC651B229ECA4000C52262 /* AppDelegate.swift */; };
@@ -47,6 +47,7 @@
 		33E49E0F22E715F9006D1D5D /* I_Register_and_Connection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33E49E0E22E715F9006D1D5D /* I_Register_and_Connection.storyboard */; };
 		33E49E1122E7163E006D1D5D /* B_Register_and_Connection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33E49E1022E7163E006D1D5D /* B_Register_and_Connection.storyboard */; };
 		33F21725231EABE400A7BFBF /* BrRegisterPageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F21724231EABE400A7BFBF /* BrRegisterPageTest.swift */; };
+		33F2943D23CB6B9A005B4C02 /* UpdatePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F2943C23CB6B9A005B4C02 /* UpdatePasswordViewController.swift */; };
 		577C5D4582B8EF78C5E71EF3 /* Pods_NeoConnectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04865EF4FBE11F18B64E3BA6 /* Pods_NeoConnectTests.framework */; };
 		C8B157492405C95DA5E605F4 /* Pods_NeoConnectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E81119D60CC6158B3733A83 /* Pods_NeoConnectUITests.framework */; };
 		D41A3C4ED8F699FEC1F2DA84 /* Pods_NeoConnect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1349A3659B847660AA764960 /* Pods_NeoConnect.framework */; };
@@ -97,8 +98,8 @@
 		3359B52B22E78D8D00CB86E2 /* B_Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = B_Chat.storyboard; sourceTree = "<group>"; };
 		3359B52D22E78D9700CB86E2 /* B_Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = B_Profile.storyboard; sourceTree = "<group>"; };
 		3388BE592320169F00B9D1F8 /* AddOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOfferViewController.swift; sourceTree = "<group>"; };
-		3397E801236C58CD002E96FD /* B_ForgotPassword.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = B_ForgotPassword.storyboard; sourceTree = "<group>"; };
-		3397E803236C58E0002E96FD /* B_ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B_ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		3397E801236C58CD002E96FD /* ForgotPassword.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ForgotPassword.storyboard; sourceTree = "<group>"; };
+		3397E803236C58E0002E96FD /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		33B3983C22A556C900719E1D /* B_RegisterPage_Step_Two_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B_RegisterPage_Step_Two_ViewController.swift; sourceTree = "<group>"; };
 		33BA89572379320D00A71246 /* I_RegisterPage_Step_Three_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_RegisterPage_Step_Three_ViewController.swift; sourceTree = "<group>"; };
 		33BC6518229ECA4000C52262 /* NeoConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeoConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +119,7 @@
 		33E49E0E22E715F9006D1D5D /* I_Register_and_Connection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = I_Register_and_Connection.storyboard; sourceTree = "<group>"; };
 		33E49E1022E7163E006D1D5D /* B_Register_and_Connection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = B_Register_and_Connection.storyboard; sourceTree = "<group>"; };
 		33F21724231EABE400A7BFBF /* BrRegisterPageTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrRegisterPageTest.swift; sourceTree = "<group>"; };
+		33F2943C23CB6B9A005B4C02 /* UpdatePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordViewController.swift; sourceTree = "<group>"; };
 		3E2B1F4A0E0B68215F62E41F /* Pods-NeoConnect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeoConnect.release.xcconfig"; path = "Target Support Files/Pods-NeoConnect/Pods-NeoConnect.release.xcconfig"; sourceTree = "<group>"; };
 		3E81119D60CC6158B3733A83 /* Pods_NeoConnectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NeoConnectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		44582499B4B2CD66B7C75B52 /* Pods-NeoConnectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeoConnectUITests.release.xcconfig"; path = "Target Support Files/Pods-NeoConnectUITests/Pods-NeoConnectUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -158,8 +160,9 @@
 		330672BD236C188D00C8C339 /* Password Forgotten */ = {
 			isa = PBXGroup;
 			children = (
-				3397E803236C58E0002E96FD /* B_ForgotPasswordViewController.swift */,
-				3397E801236C58CD002E96FD /* B_ForgotPassword.storyboard */,
+				3397E803236C58E0002E96FD /* ForgotPasswordViewController.swift */,
+				33F2943C23CB6B9A005B4C02 /* UpdatePasswordViewController.swift */,
+				3397E801236C58CD002E96FD /* ForgotPassword.storyboard */,
 			);
 			path = "Password Forgotten";
 			sourceTree = "<group>";
@@ -264,7 +267,6 @@
 		33B3984022A56E2700719E1D /* Brands */ = {
 			isa = PBXGroup;
 			children = (
-				330672BD236C188D00C8C339 /* Password Forgotten */,
 				33E49E0222DA5608006D1D5D /* Register & Connection */,
 				33E49E1222E71AE6006D1D5D /* Connected */,
 			);
@@ -299,6 +301,7 @@
 				3388BE55232014D800B9D1F8 /* Headers */,
 				33BC651B229ECA4000C52262 /* AppDelegate.swift */,
 				33BC6522229ECA4100C52262 /* Assets.xcassets */,
+				330672BD236C188D00C8C339 /* Password Forgotten */,
 				33B3984022A56E2700719E1D /* Brands */,
 				3338277522A6D4F600504540 /* Influencers */,
 				33BC6527229ECA4100C52262 /* Info.plist */,
@@ -537,7 +540,7 @@
 				33E49E1122E7163E006D1D5D /* B_Register_and_Connection.storyboard in Resources */,
 				3359B52A22E78D8200CB86E2 /* AddOffer.storyboard in Resources */,
 				3359B51F22E7813A00CB86E2 /* B_Navigation.storyboard in Resources */,
-				3397E802236C58CD002E96FD /* B_ForgotPassword.storyboard in Resources */,
+				3397E802236C58CD002E96FD /* ForgotPassword.storyboard in Resources */,
 				3359B52822E78D0900CB86E2 /* B_Search.storyboard in Resources */,
 				3359B52C22E78D8D00CB86E2 /* B_Chat.storyboard in Resources */,
 				333862332326C581005C188E /* I_Navigation.storyboard in Resources */,
@@ -656,6 +659,7 @@
 				3338623E2326C942005C188E /* I_ProfileViewController.swift in Sources */,
 				334672A523278B3100D5E0DD /* B_SearchViewController.swift in Sources */,
 				334672A323278A7200D5E0DD /* B_HomeViewController.swift in Sources */,
+				33F2943D23CB6B9A005B4C02 /* UpdatePasswordViewController.swift in Sources */,
 				3328B61C236DEC510070B7B4 /* B_RegisterPage_Step_Three_ViewController.swift in Sources */,
 				33131D8D2368A377006C0A4B /* I_SearchViewController.swift in Sources */,
 				3342BD5523240E5900552F2B /* B_ConnectionPageViewController.swift in Sources */,
@@ -668,7 +672,7 @@
 				333862312326B10A005C188E /* B_ProfileViewController.swift in Sources */,
 				331A739E22D252E700FDA4AF /* I_RegisterPage_Step_Two_ViewController.swift in Sources */,
 				33BC651C229ECA4000C52262 /* AppDelegate.swift in Sources */,
-				3397E804236C58E0002E96FD /* B_ForgotPasswordViewController.swift in Sources */,
+				3397E804236C58E0002E96FD /* ForgotPasswordViewController.swift in Sources */,
 				33B3983D22A556C900719E1D /* B_RegisterPage_Step_Two_ViewController.swift in Sources */,
 				3338277722A6D51700504540 /* I_RegisterPage_Step_One_ViewController.swift in Sources */,
 				334672A723278B5400D5E0DD /* B_ChatViewController.swift in Sources */,

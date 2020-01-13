@@ -19,12 +19,12 @@ class MainPage: UIViewController {
     @IBAction func BrandSide_ButtonTapped(_ sender: Any) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "B_Register_and_Connection", bundle: nil)
         let BrandSide = storyBoard.instantiateViewController(withIdentifier: "B_NavController")
-        self.present(BrandSide, animated: true, completion: nil)
+        self.show(BrandSide, sender: nil)
     }
+    
     @IBAction func InfSide_ButtonTapped(_ sender: Any) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "I_Register_and_Connection", bundle: nil)
-        let InfSide = storyBoard.instantiateViewController(withIdentifier: "I_NavController")
-        self.present(InfSide, animated: true, completion: nil)
+        let InfSide = storyBoard.instantiateViewController(withIdentifier: "I_Register")
+        self.show(InfSide, sender: nil)
     }
 }
-

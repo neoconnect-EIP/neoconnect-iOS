@@ -3,4 +3,54 @@
    uuid = "CA91BC5E-8607-4113-8947-9F41BCCC573C"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "21F219FB-81E2-4530-ABDB-3C009FC8A126"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NeoConnect/Brands/Connected/ProfilePage/B_ProfileViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "validateButtonTapped(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "21F219FB-81E2-4530-ABDB-3C009FC8A126 - 59372044de1064a2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NeoConnect.B_ProfileViewController.validateButtonTapped(Any) -&gt; ()"
+                  moduleName = "NeoConnect"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/stage/Desktop/Mes%20documents/EIP/neoconnect-iOS/NeoConnect/Brands/Connected/ProfilePage/B_ProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "11558">
+               </Location>
+               <Location
+                  uuid = "21F219FB-81E2-4530-ABDB-3C009FC8A126 - f6df892af951570d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any, Alamofire.AFError&gt;) -&gt; () in NeoConnect.B_ProfileViewController.validateButtonTapped(Any) -&gt; ()"
+                  moduleName = "NeoConnect"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/stage/Desktop/Mes%20documents/EIP/neoconnect-iOS/NeoConnect/Brands/Connected/ProfilePage/B_ProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "180">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

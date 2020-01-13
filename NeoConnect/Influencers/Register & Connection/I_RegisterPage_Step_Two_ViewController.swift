@@ -11,9 +11,7 @@ import DLRadioButton
 
 class I_RegisterPage_Step_Two_ViewController: UIViewController {
 
-    @IBOutlet weak var userLastNameTextField: UITextField!
-    @IBOutlet weak var userFirstNameTextField: UITextField!
-    @IBOutlet weak var userAdressTextField: UITextField!
+    @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var userZipCodeTextField: UITextField!
     @IBOutlet weak var userCityTextField: UITextField!
     @IBOutlet weak var userPhoneNumberTextField: UITextField!
@@ -35,6 +33,7 @@ class I_RegisterPage_Step_Two_ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    // Fonction bouton sexe influenceur
     @IBAction func radioBtnTapped(_ sender: DLRadioButton) {
         if (sender.tag == 1) {
             sex = "Male"
@@ -45,18 +44,16 @@ class I_RegisterPage_Step_Two_ViewController: UIViewController {
     }
     
     @IBAction func registerButton(_ sender: Any) {
-        let userLastName = userLastNameTextField.text!
-        let userFirstName = userFirstNameTextField.text!
-        let userAdress = userAdressTextField.text!
+        let userName = userNameTextField.text!
         let userZipCode = userZipCodeTextField.text!
         let userCity = userCityTextField.text!
         let userPhoneNumber = userPhoneNumberTextField.text!
         let userSex = sex
         
-        // Check for empty fields
-        if (userLastName.isEmpty || userFirstName.isEmpty || userAdress.isEmpty || userZipCode.isEmpty || userCity.isEmpty || userPhoneNumber.isEmpty || userSex.isEmpty) {
+        // Check for empty fields // Vérification des champs vides
+        if (userName.isEmpty || userZipCode.isEmpty || userCity.isEmpty || userPhoneNumber.isEmpty || userSex.isEmpty) {
             
-            // Display alert message
+            // Display alert message // Affichage d'un message d'alerte
             DispatchQueue.main.async {
                 let alertView = UIAlertController(title: "Error", message: "All fields are required", preferredStyle: .alert)
                 alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
@@ -78,10 +75,8 @@ class I_RegisterPage_Step_Two_ViewController: UIViewController {
             Dest.pseudo = pseudo
             Dest.email = email
             Dest.password = password
-            Dest.lastName = userLastNameTextField.text!
-            Dest.firstName = userFirstNameTextField.text!
             Dest.sex = sex
-            Dest.adress = userAdressTextField.text!
+            Dest.name = userNameTextField.text!
             Dest.zipCode = userZipCodeTextField.text!
             Dest.city = userCityTextField.text!
             Dest.phoneNumber = userPhoneNumberTextField.text!
