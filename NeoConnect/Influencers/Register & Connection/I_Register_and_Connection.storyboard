@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connexion Influenceurs" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Uw-zH-Hdd">
-                                <rect key="frame" x="85" y="117" width="244" height="102"/>
+                                <rect key="frame" x="85" y="117" width="244" height="110"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="102" id="5Ol-6m-DnB"/>
                                 </constraints>
@@ -52,12 +52,18 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Identifiant" textAlignment="center" minimumFontSize="18" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2MD-XL-6p2">
-                                <rect key="frame" x="95" y="301" width="224" height="34"/>
+                                <rect key="frame" x="95" y="309" width="224" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="LN9-DL-433"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="username"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mot de passe" textAlignment="center" minimumFontSize="18" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Ln7-q0-Er8">
-                                <rect key="frame" x="95" y="410" width="224" height="34"/>
+                                <rect key="frame" x="95" y="414" width="224" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="oak-je-thW"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="password"/>
                             </textField>
@@ -406,7 +412,7 @@
                     <connections>
                         <outlet property="radioSexButton" destination="ngZ-Jh-lLG" id="XV2-l3-3Lp"/>
                         <outlet property="userCityTextField" destination="yKe-f1-9zM" id="Kcp-O0-bYI"/>
-                        <outlet property="userLastNameTextField" destination="Wtp-xb-MmY" id="7Lp-Gh-Cn6"/>
+                        <outlet property="userNameTextField" destination="Wtp-xb-MmY" id="JHm-5O-vvZ"/>
                         <outlet property="userPhoneNumberTextField" destination="CSR-MO-zVv" id="8iB-DH-KGX"/>
                         <outlet property="userZipCodeTextField" destination="im2-hh-AUx" id="c0q-K4-29K"/>
                         <segue destination="h2y-g7-Jle" kind="show" identifier="I_Step_Three" id="0dm-VB-Dxb"/>
@@ -569,6 +575,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="zwr-s4-K6w"/>
+        <segue reference="7jU-3m-AEg"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -100,6 +100,7 @@ class B_ProfileViewController: UIViewController {
                             // SUCCESS
 
                             let response = JSON as! NSDictionary
+                        
                             let info = Info.init(pseudo: response.object(forKey: "pseudo")! as! String, full_name: response.object(forKey: "full_name")! as! String, email: response.object(forKey: "email")! as! String, phone: response.object(forKey: "phone")! as! String, postal: response.object(forKey: "postal")! as! String, city: response.object(forKey: "city")! as! String, theme: response.object(forKey: "theme")! as! String, society: response.object(forKey: "society")! as! String, function: response.object(forKey: "function")! as! String)
                             self.pseudoTextField.text = info.pseudo
                             self.emailTextField.text = info.email

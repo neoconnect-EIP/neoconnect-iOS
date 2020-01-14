@@ -24,7 +24,7 @@ class MainPage: UIViewController {
     
     @IBAction func InfSide_ButtonTapped(_ sender: Any) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "I_Register_and_Connection", bundle: nil)
-        let InfSide = storyBoard.instantiateViewController(withIdentifier: "I_Register")
+        let InfSide = storyBoard.instantiateViewController(withIdentifier: "I_NavController")
         self.show(InfSide, sender: nil)
     }
 }

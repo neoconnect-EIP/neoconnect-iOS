@@ -261,6 +261,7 @@
                     <navigationItem key="navigationItem" id="Yqg-de-zyf"/>
                     <connections>
                         <outlet property="userCityTextField" destination="gM5-XK-T05" id="V4Z-Cc-BbQ"/>
+                        <outlet property="userNameTextField" destination="jVW-zh-1xm" id="DuT-gN-chg"/>
                         <outlet property="userPhoneNumberTextField" destination="PfA-Xk-rbK" id="RrE-EQ-ScN"/>
                         <outlet property="userZipCodeTextField" destination="OJC-Yb-Hln" id="GBr-1C-wj8"/>
                         <segue destination="qPD-vi-hYm" kind="show" identifier="B_Step_Three" id="D78-8z-V8d"/>
@@ -527,6 +528,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="kNz-dW-VSc"/>
+        <segue reference="iHJ-bT-LG0"/>
     </inferredMetricsTieBreakers>
 </document>
