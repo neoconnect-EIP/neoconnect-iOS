@@ -18,38 +18,38 @@
             endingLineNumber = "81"
             landmarkName = "validateButtonTapped(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "21F219FB-81E2-4530-ABDB-3C009FC8A126 - 59372044de1064a2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "NeoConnect.B_ProfileViewController.validateButtonTapped(Any) -&gt; ()"
-                  moduleName = "NeoConnect"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/stage/Desktop/Mes%20documents/EIP/neoconnect-iOS/NeoConnect/Brands/Connected/ProfilePage/B_ProfileViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "81"
-                  endingLineNumber = "81"
-                  offsetFromSymbolStart = "11558">
-               </Location>
-               <Location
-                  uuid = "21F219FB-81E2-4530-ABDB-3C009FC8A126 - f6df892af951570d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any, Alamofire.AFError&gt;) -&gt; () in NeoConnect.B_ProfileViewController.validateButtonTapped(Any) -&gt; ()"
-                  moduleName = "NeoConnect"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/stage/Desktop/Mes%20documents/EIP/neoconnect-iOS/NeoConnect/Brands/Connected/ProfilePage/B_ProfileViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "82"
-                  endingLineNumber = "82"
-                  offsetFromSymbolStart = "180">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "43F661BF-693B-448A-B15F-701556D12E45"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NeoConnect/Brands/Connected/ProfilePage/B_ProfileViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6D506E99-F674-4C91-8655-480B8C2D9B84"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NeoConnect/Brands/Connected/ProfilePage/B_ProfileViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

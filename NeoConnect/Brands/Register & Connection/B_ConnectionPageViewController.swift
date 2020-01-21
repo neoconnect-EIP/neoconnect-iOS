@@ -22,17 +22,20 @@ class B_ConnectionPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let View = storyBoard.instantiateViewController(withIdentifier: "MainPage")
-        View.dismiss(animated: true, completion: nil)
     }
-    
-    //         Bouton de connexion entrée
-    
+        
     @IBAction func forgetPasswordButtonTapped(_ sender: Any) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "ForgotPassword", bundle: nil)
         let View = storyBoard.instantiateViewController(withIdentifier: "ForgotPassword")
         self.show(View, sender: nil)
+    }
+    
+    @IBAction func switchToInfButton(_ sender: Any) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "I_Register_and_Connection", bundle: nil)
+        let infButton = storyBoard.instantiateViewController(withIdentifier: "I_NavController")
+        infButton.modalPresentationStyle = .fullScreen
+
+        self.present(infButton, animated: true, completion: nil)
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
@@ -45,6 +48,8 @@ class B_ConnectionPageViewController: UIViewController {
         if (userPseudo == "Shop" && userPassword == "1234") {
             let storyBoard: UIStoryboard = UIStoryboard(name: "B_Navigation", bundle: nil)
             let Home = storyBoard.instantiateViewController(withIdentifier: "B_TabBarController")
+            Home.modalPresentationStyle = .fullScreen
+
             self.present(Home, animated: true, completion: nil)
         }
         AF.request("http://168.63.65.106/login",

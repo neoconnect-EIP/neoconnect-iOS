@@ -32,6 +32,8 @@
 		3359B52C22E78D8D00CB86E2 /* B_Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3359B52B22E78D8D00CB86E2 /* B_Chat.storyboard */; };
 		3359B52E22E78D9700CB86E2 /* B_Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3359B52D22E78D9700CB86E2 /* B_Profile.storyboard */; };
 		3388BE5A232016A000B9D1F8 /* AddOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3388BE592320169F00B9D1F8 /* AddOfferViewController.swift */; };
+		338DB1FE23CF5CB400A87F8B /* Description.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 338DB1FD23CF5CB400A87F8B /* Description.storyboard */; };
+		338DB20023CF5DA100A87F8B /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338DB1FF23CF5DA100A87F8B /* DescriptionViewController.swift */; };
 		3397E802236C58CD002E96FD /* ForgotPassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3397E801236C58CD002E96FD /* ForgotPassword.storyboard */; };
 		3397E804236C58E0002E96FD /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3397E803236C58E0002E96FD /* ForgotPasswordViewController.swift */; };
 		33B3983D22A556C900719E1D /* B_RegisterPage_Step_Two_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B3983C22A556C900719E1D /* B_RegisterPage_Step_Two_ViewController.swift */; };
@@ -98,6 +100,8 @@
 		3359B52B22E78D8D00CB86E2 /* B_Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = B_Chat.storyboard; sourceTree = "<group>"; };
 		3359B52D22E78D9700CB86E2 /* B_Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = B_Profile.storyboard; sourceTree = "<group>"; };
 		3388BE592320169F00B9D1F8 /* AddOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOfferViewController.swift; sourceTree = "<group>"; };
+		338DB1FD23CF5CB400A87F8B /* Description.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Description.storyboard; sourceTree = "<group>"; };
+		338DB1FF23CF5DA100A87F8B /* DescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
 		3397E801236C58CD002E96FD /* ForgotPassword.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ForgotPassword.storyboard; sourceTree = "<group>"; };
 		3397E803236C58E0002E96FD /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		33B3983C22A556C900719E1D /* B_RegisterPage_Step_Two_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B_RegisterPage_Step_Two_ViewController.swift; sourceTree = "<group>"; };
@@ -264,6 +268,15 @@
 			path = Headers;
 			sourceTree = "<group>";
 		};
+		338DB1FC23CF5C9200A87F8B /* Description & FAQ */ = {
+			isa = PBXGroup;
+			children = (
+				338DB1FF23CF5DA100A87F8B /* DescriptionViewController.swift */,
+				338DB1FD23CF5CB400A87F8B /* Description.storyboard */,
+			);
+			path = "Description & FAQ";
+			sourceTree = "<group>";
+		};
 		33B3984022A56E2700719E1D /* Brands */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,6 +314,7 @@
 				3388BE55232014D800B9D1F8 /* Headers */,
 				33BC651B229ECA4000C52262 /* AppDelegate.swift */,
 				33BC6522229ECA4100C52262 /* Assets.xcassets */,
+				338DB1FC23CF5C9200A87F8B /* Description & FAQ */,
 				330672BD236C188D00C8C339 /* Password Forgotten */,
 				33B3984022A56E2700719E1D /* Brands */,
 				3338277522A6D4F600504540 /* Influencers */,
@@ -531,6 +545,7 @@
 				3359B52622E78CE400CB86E2 /* B_Home.storyboard in Resources */,
 				3359B52E22E78D9700CB86E2 /* B_Profile.storyboard in Resources */,
 				333862382326C6EF005C188E /* I_Search.storyboard in Resources */,
+				338DB1FE23CF5CB400A87F8B /* Description.storyboard in Resources */,
 				3338623A2326C717005C188E /* I_Chat.storyboard in Resources */,
 				3338623C2326C724005C188E /* I_Profile.storyboard in Resources */,
 				333862352326C69C005C188E /* I_Home.storyboard in Resources */,
@@ -674,6 +689,7 @@
 				33BC651C229ECA4000C52262 /* AppDelegate.swift in Sources */,
 				3397E804236C58E0002E96FD /* ForgotPasswordViewController.swift in Sources */,
 				33B3983D22A556C900719E1D /* B_RegisterPage_Step_Two_ViewController.swift in Sources */,
+				338DB20023CF5DA100A87F8B /* DescriptionViewController.swift in Sources */,
 				3338277722A6D51700504540 /* I_RegisterPage_Step_One_ViewController.swift in Sources */,
 				334672A723278B5400D5E0DD /* B_ChatViewController.swift in Sources */,
 			);

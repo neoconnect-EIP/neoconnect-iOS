@@ -90,7 +90,7 @@
                                     <color key="titleColor" red="0.80493037560000003" green="0.05826676276" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="RZj-vk-YPH" kind="show" id="zwr-s4-K6w"/>
+                                    <action selector="switchToBrandButton:" destination="qZS-tH-WN0" eventType="touchUpInside" id="PVn-U1-He7"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -131,16 +131,6 @@
             </objects>
             <point key="canvasLocation" x="1085.5072463768117" y="701.78571428571422"/>
         </scene>
-        <!--B_Register_and_Connection-->
-        <scene sceneID="C0o-dJ-OnZ">
-            <objects>
-                <viewControllerPlaceholder storyboardName="B_Register_and_Connection" id="RZj-vk-YPH" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="46r-Kc-YjX"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nxf-Yu-aGv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="93" y="1115"/>
-        </scene>
         <!--Register Page Step One View Controller-->
         <scene sceneID="8wk-TY-n70">
             <objects>
@@ -158,17 +148,6 @@
                                 </state>
                                 <connections>
                                     <action selector="nextButtonTapped:" destination="nnd-s6-CIq" eventType="touchUpInside" id="RdG-jg-PQ4"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EOa-PC-SJJ">
-                                <rect key="frame" x="20" y="824" width="195" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="14"/>
-                                <state key="normal" title="Je suis une marque">
-                                    <color key="titleColor" red="0.80493037560000003" green="0.05826676276" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="RZj-vk-YPH" kind="show" id="3JI-La-kEs"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Étape 1/2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gaa-Rr-ixf">
@@ -248,6 +227,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="utE-jf-rVd"/>
                     </view>
+                    <navigationItem key="navigationItem" id="PMz-kI-XRC"/>
                     <connections>
                         <outlet property="repeatPasswordTextField" destination="Jag-a4-y5r" id="iym-of-uJs"/>
                         <outlet property="userEmailTextField" destination="HNq-ul-Zqo" id="owK-Tm-0Lk"/>
@@ -284,17 +264,6 @@
                                 </state>
                                 <connections>
                                     <action selector="registerButton:" destination="829-pi-W34" eventType="touchUpInside" id="CoF-yp-s1q"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ri6-tK-gIx">
-                                <rect key="frame" x="20" y="824" width="195" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="14"/>
-                                <state key="normal" title="Je suis une marque">
-                                    <color key="titleColor" red="0.80493037560000003" green="0.05826676276" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="RZj-vk-YPH" kind="show" id="7jU-3m-AEg"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Étape 2/3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fub-0z-DxV">
@@ -479,17 +448,6 @@
                                     <action selector="register_ButtonTapped:" destination="h2y-g7-Jle" eventType="touchUpInside" id="wbo-xV-ht6"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PbS-Vp-nPT">
-                                <rect key="frame" x="20" y="824" width="195" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="14"/>
-                                <state key="normal" title="Je suis une marque">
-                                    <color key="titleColor" red="0.80493037560000003" green="0.05826676276" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="RZj-vk-YPH" kind="show" id="B8n-Dl-pC7"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Facebook" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Hvx-Xu-6dS">
                                 <rect key="frame" x="21" y="307" width="374" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -574,7 +532,4 @@
             <point key="canvasLocation" x="3460.8695652173915" y="701.78571428571422"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="7jU-3m-AEg"/>
-    </inferredMetricsTieBreakers>
 </document>

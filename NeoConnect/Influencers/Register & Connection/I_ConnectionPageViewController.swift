@@ -31,6 +31,14 @@ class I_ConnectionPageViewController: UIViewController {
         self.show(View, sender: nil)
     }
     
+    @IBAction func switchToBrandButton(_ sender: Any) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "B_Register_and_Connection", bundle: nil)
+        let brandButton = storyBoard.instantiateViewController(withIdentifier: "B_NavController")
+        brandButton.modalPresentationStyle = .fullScreen
+
+        self.present(brandButton, animated: true, completion: nil)
+    }
+    
     @IBAction func loginButtonTapped(_ sender: Any) {
         
         let userPseudo = userPseudoTextField.text!;
@@ -42,6 +50,8 @@ class I_ConnectionPageViewController: UIViewController {
         if (userPseudo == "Inf" && userPassword == "1234") {
             let storyBoard: UIStoryboard = UIStoryboard(name: "I_Navigation", bundle: nil)
             let Home = storyBoard.instantiateViewController(withIdentifier: "I_TabBarController")
+            Home.modalPresentationStyle = .fullScreen
+
             self.present(Home, animated: true, completion: nil)
         }
         AF.request("http://168.63.65.106/login",

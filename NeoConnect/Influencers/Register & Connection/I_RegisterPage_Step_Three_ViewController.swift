@@ -15,15 +15,15 @@ class I_RegisterPage_Step_Three_ViewController: UIViewController {
         let pseudo: String
         let email: String
         let password: String
-        let name: String
-        let zipCode: String
-        let phoneNumber: String
+        let full_name: String
+        let postal: String
+        let phone: String
         let city: String
         let facebook: String
         let twitter: String
         let instagram: String
         let snapchat: String
-        let subject: String
+        let theme: String
     }
     
     @IBOutlet weak var facebookTextField: UITextField!
@@ -71,16 +71,7 @@ class I_RegisterPage_Step_Three_ViewController: UIViewController {
             }
         }
         else {
-            let register = Register(pseudo: pseudo, email: email, password: password, name: name, zipCode: zipCode, phoneNumber: phoneNumber, city: city, facebook: userFacebook, twitter: userTwitter, instagram: userInstagram, snapchat: userSnapchat, subject: userSubject)
-            
-            print("Successfull")
-            DispatchQueue.main.async {
-                let alertView = UIAlertController(title: "Great !", message: "Registration is successful. You can log in now !", preferredStyle: .alert)
-                alertView.addAction(UIAlertAction(title: "Continue", style: .cancel) { action in self.dismiss(animated: true, completion: nil)})
-                self.present(alertView, animated: true, completion: nil)
-                let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "I_Register") as! I_ConnectionPageViewController
-                self.present(loginVC, animated: true, completion: nil)
-            }
+            let register = Register(pseudo: pseudo, email: email, password: password, full_name: name, postal: zipCode, phone: phoneNumber, city: city, facebook: userFacebook, twitter: userTwitter, instagram: userInstagram, snapchat: userSnapchat, theme: userSubject)
             
             // Inscription influenceur vers l'API
             AF.request("http://168.63.65.106/inf/register",
@@ -96,8 +87,10 @@ class I_RegisterPage_Step_Three_ViewController: UIViewController {
                                 let alertView = UIAlertController(title: "Great !", message: "Registration is successful. You can log in now !", preferredStyle: .alert)
                                 alertView.addAction(UIAlertAction(title: "Continue", style: .cancel) { action in self.dismiss(animated: true, completion: nil)})
                                 self.present(alertView, animated: true, completion: nil)
-                                let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "I_Register") as! I_ConnectionPageViewController
-                                self.present(loginVC, animated: true, completion: nil)
+                                let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "I_NavController")
+                                loginVC?.modalPresentationStyle = .fullScreen
+                                
+                                self.present(loginVC!, animated: true, completion: nil)
                             }
 
                         case .failure(_):

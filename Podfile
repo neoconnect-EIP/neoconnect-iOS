@@ -5,6 +5,7 @@ target 'NeoConnect' do
 pod 'DLRadioButton', '~> 1.4'
 pod 'Alamofire', '~> 5.0.0-rc.2'
 pod 'SwiftyJSON'
+pod 'InstantSearch', '~> 4.0'
   # Pods for NeoConnect
 
   target 'NeoConnectTests' do
