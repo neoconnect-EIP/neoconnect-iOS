@@ -62,13 +62,15 @@ class I_ConnectionPageViewController: UIViewController {
                     case .success(let JSON):
                         
                         // Connexion réussie
-                        
+                        self.showSpinner(onView: self.view)
                         let response = JSON as! NSDictionary
                         let token = response.object(forKey: "token")!
                         UserDefaults.standard.set(token, forKey: "Token") //Bool
                         print(token)
                         let storyBoard: UIStoryboard = UIStoryboard(name: "I_Navigation", bundle: nil)
                         let Home = storyBoard.instantiateViewController(withIdentifier: "I_TabBarController")
+                        Home.modalPresentationStyle = .fullScreen
+                        
                         self.present(Home, animated: true, completion: nil)
 
                     case .failure(_):

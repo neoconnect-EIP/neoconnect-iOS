@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FzD-cd-JMa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FzD-cd-JMa">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Chat View Controller-->
+        <!--Messagerie-->
         <scene sceneID="eNm-HX-GCZ">
             <objects>
                 <viewController id="n8P-nU-vkF" customClass="I_ChatViewController" customModule="NeoConnect" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,7 +18,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="CPm-nm-W1I"/>
                     </view>
-                    <navigationItem key="navigationItem" id="cLO-Ww-Cuy"/>
+                    <navigationItem key="navigationItem" title="Messagerie" id="cLO-Ww-Cuy">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="R8t-YI-umx">
+                            <connections>
+                                <action selector="testButtonTapped:" destination="n8P-nU-vkF" id="0zT-jv-8pK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gB1-CJ-glu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Description View Controller-->
+        <!--Description-->
         <scene sceneID="DQq-Db-LHY">
             <objects>
                 <viewController storyboardIdentifier="Description" id="ml8-XE-xzX" customClass="DescriptionViewController" customModule="NeoConnect" customModuleProvider="target" sceneMemberID="viewController">
@@ -47,13 +47,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="3Qd-fm-wDg"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Ezy-74-Fwl"/>
+                    <navigationItem key="navigationItem" title="Description" id="Ezy-74-Fwl"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sfh-Nr-ybd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2259" y="-389"/>
         </scene>
-        <!--View Controller-->
+        <!--FAQ-->
         <scene sceneID="SgM-Sq-Yh0">
             <objects>
                 <viewController id="6iG-AU-NVm" sceneMemberID="viewController">
@@ -63,7 +63,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="1vl-eN-1lB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="zoS-wR-urI"/>
+                    <navigationItem key="navigationItem" title="FAQ" leftItemsSupplementBackButton="YES" id="zoS-wR-urI">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="W4z-GT-ZgF"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F2a-GW-I5k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

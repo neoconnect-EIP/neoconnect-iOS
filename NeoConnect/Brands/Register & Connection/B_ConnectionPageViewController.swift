@@ -67,6 +67,8 @@ class B_ConnectionPageViewController: UIViewController {
                         print(token)
                         let storyBoard: UIStoryboard = UIStoryboard(name: "B_Navigation", bundle: nil)
                         let Home = storyBoard.instantiateViewController(withIdentifier: "B_TabBarController")
+                        Home.modalPresentationStyle = .fullScreen
+                        
                         self.present(Home, animated: true, completion: nil)
 
                     case .failure(_):
