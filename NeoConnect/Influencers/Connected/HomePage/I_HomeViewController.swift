@@ -16,5 +16,3 @@ class I_HomeViewController: UIViewController {
         self.removeSpinner()
     }
 }
-
-

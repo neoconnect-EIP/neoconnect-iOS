@@ -12,6 +12,8 @@
 		331A739C22D2077800FDA4AF /* B_RegisterPage_Step_One_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331A739B22D2077800FDA4AF /* B_RegisterPage_Step_One_ViewController.swift */; };
 		331A739E22D252E700FDA4AF /* I_RegisterPage_Step_Two_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331A739D22D252E700FDA4AF /* I_RegisterPage_Step_Two_ViewController.swift */; };
 		3328B61C236DEC510070B7B4 /* B_RegisterPage_Step_Three_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3328B61B236DEC510070B7B4 /* B_RegisterPage_Step_Three_ViewController.swift */; };
+		3330A94223DF086100A0CF63 /* userFoundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3330A94123DF086100A0CF63 /* userFoundView.xib */; };
+		3330A94423DF08EE00A0CF63 /* userFound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3330A94323DF08EE00A0CF63 /* userFound.swift */; };
 		3338277722A6D51700504540 /* I_RegisterPage_Step_One_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3338277622A6D51700504540 /* I_RegisterPage_Step_One_ViewController.swift */; };
 		3338277922A6D53F00504540 /* I_ConnectionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3338277822A6D53F00504540 /* I_ConnectionPageViewController.swift */; };
 		333862312326B10A005C188E /* B_ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333862302326B10A005C188E /* B_ProfileViewController.swift */; };
@@ -80,6 +82,8 @@
 		331A739B22D2077800FDA4AF /* B_RegisterPage_Step_One_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B_RegisterPage_Step_One_ViewController.swift; sourceTree = "<group>"; };
 		331A739D22D252E700FDA4AF /* I_RegisterPage_Step_Two_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_RegisterPage_Step_Two_ViewController.swift; sourceTree = "<group>"; };
 		3328B61B236DEC510070B7B4 /* B_RegisterPage_Step_Three_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B_RegisterPage_Step_Three_ViewController.swift; sourceTree = "<group>"; };
+		3330A94123DF086100A0CF63 /* userFoundView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = userFoundView.xib; sourceTree = "<group>"; };
+		3330A94323DF08EE00A0CF63 /* userFound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userFound.swift; sourceTree = "<group>"; };
 		3338277622A6D51700504540 /* I_RegisterPage_Step_One_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_RegisterPage_Step_One_ViewController.swift; sourceTree = "<group>"; };
 		3338277822A6D53F00504540 /* I_ConnectionPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_ConnectionPageViewController.swift; sourceTree = "<group>"; };
 		333862302326B10A005C188E /* B_ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B_ProfileViewController.swift; sourceTree = "<group>"; };
@@ -203,6 +207,8 @@
 			children = (
 				33131D8C2368A377006C0A4B /* I_SearchViewController.swift */,
 				333862372326C6EF005C188E /* I_Search.storyboard */,
+				3330A94323DF08EE00A0CF63 /* userFound.swift */,
+				3330A94123DF086100A0CF63 /* userFoundView.xib */,
 			);
 			path = SearchPage;
 			sourceTree = "<group>";
@@ -551,6 +557,7 @@
 				333862352326C69C005C188E /* I_Home.storyboard in Resources */,
 				33E49E0F22E715F9006D1D5D /* I_Register_and_Connection.storyboard in Resources */,
 				33BC6526229ECA4100C52262 /* LaunchScreen.storyboard in Resources */,
+				3330A94223DF086100A0CF63 /* userFoundView.xib in Resources */,
 				33BC6523229ECA4100C52262 /* Assets.xcassets in Resources */,
 				33E49E1122E7163E006D1D5D /* B_Register_and_Connection.storyboard in Resources */,
 				3359B52A22E78D8200CB86E2 /* AddOffer.storyboard in Resources */,
@@ -684,6 +691,7 @@
 				33C107542367EEEE008D0EC0 /* I_HomeViewController.swift in Sources */,
 				33BC651E229ECA4000C52262 /* MainPage.swift in Sources */,
 				3338277922A6D53F00504540 /* I_ConnectionPageViewController.swift in Sources */,
+				3330A94423DF08EE00A0CF63 /* userFound.swift in Sources */,
 				333862312326B10A005C188E /* B_ProfileViewController.swift in Sources */,
 				331A739E22D252E700FDA4AF /* I_RegisterPage_Step_Two_ViewController.swift in Sources */,
 				33BC651C229ECA4000C52262 /* AppDelegate.swift in Sources */,
