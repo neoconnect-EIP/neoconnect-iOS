@@ -21,11 +21,9 @@ class B_RegisterPage_Step_Two_ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         print("Pseudo : " + pseudo)
         print("Email : " + email)
         print("Password : " + password)
-        // Do any additional setup after loading the view.
     }
 
     @IBAction func nextButton(_ sender: Any) {

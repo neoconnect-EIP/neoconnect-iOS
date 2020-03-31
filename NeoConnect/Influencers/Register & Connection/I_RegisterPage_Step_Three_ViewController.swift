@@ -43,16 +43,6 @@ class I_RegisterPage_Step_Three_ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        print("Pseudo : " + pseudo)
-        print("Email : " + email)
-        print("Password : " + password)
-        print("Name : " + name)
-        print("Sex : " + sex)
-        print("Zipcode : " + zipCode)
-        print("Phonenumber : " + phoneNumber)
-        print("City : " + city)
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func register_ButtonTapped(_ sender: Any) {

@@ -20,17 +20,12 @@ class I_RegisterPage_Step_Two_ViewController: UIViewController {
     var email = String()
     var password = String()
     var sex = String()
-    
-    @IBOutlet var radioSexButton : DLRadioButton!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Pseudo : " + pseudo)
         print("Email : " + email)
         print("Password : " + password)
-        self.radioSexButton.isMultipleSelectionEnabled = false;
-        // set selection states programmatically
-        // Do any additional setup after loading the view.
     }
 
     // Fonction bouton sexe influenceur
@@ -43,7 +38,7 @@ class I_RegisterPage_Step_Two_ViewController: UIViewController {
         }
     }
     
-    @IBAction func registerButton(_ sender: Any) {
+    @IBAction func nextButton(_ sender: Any) {
         let userName = userNameTextField.text!
         let userZipCode = userZipCodeTextField.text!
         let userCity = userCityTextField.text!

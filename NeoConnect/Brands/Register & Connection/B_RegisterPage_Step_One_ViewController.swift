@@ -17,8 +17,6 @@ class B_RegisterPage_Step_One_ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func nextButtonTapped(_ sender: Any) {
@@ -49,6 +47,7 @@ class B_RegisterPage_Step_One_ViewController: UIViewController {
             }
             return
         }
+        // Change view and send prepared data
         else {
             performSegue(withIdentifier: "B_Step_Two", sender: self)
         }

@@ -254,6 +254,7 @@
                 </textField>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JTY-bI-whk">
                     <rect key="frame" x="128" y="118" width="158" height="85"/>
+                    <color key="backgroundColor" red="0.80493037560000003" green="0.05826676276" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="85" id="QBt-xI-PRQ"/>
                     </constraints>

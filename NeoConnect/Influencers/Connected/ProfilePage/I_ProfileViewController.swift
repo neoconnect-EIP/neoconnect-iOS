@@ -9,22 +9,10 @@
 import UIKit
 import Alamofire
 
-class I_ProfileViewController: UIViewController {
+class I_ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    struct Info: Encodable {
-        let pseudo: String
-        let full_name: String
-        let email: String
-        let phone: String
-        let postal: String
-        let city: String
-        let theme: String
-        let facebook: String
-        let snapchat: String
-        let twitter: String
-        let instagram: String
-    }
-
+    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var changeImageButton: UIButton!
     @IBOutlet weak var editItem: UIBarButtonItem!
     @IBOutlet weak var pseudoTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -37,9 +25,64 @@ class I_ProfileViewController: UIViewController {
     @IBOutlet weak var snapchatTextField: UITextField!
     @IBOutlet weak var instagramTextField: UITextField!
     @IBOutlet weak var themeTextField: UITextField!
+    
+    var imagePicker:UIImagePickerController!
+    var imageConvert = ImageConverter()
         
-        @IBAction func editButtonTapped(_ sender: Any) {
+    override func viewDidLoad() {
+        imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+        changeImageButton.isHidden = true
+        
+        let decoded = UserDefaults.standard.data(forKey: "User")
+        let user = NSKeyedUnarchiver.unarchiveObject(with: decoded!) as! User
+        
+        self.image.image = user.imageData
+        self.pseudoTextField.text = user.pseudo
+        self.emailTextField.text = user.email
+        self.fullnameTextField.text = user.full_name
+        self.postalTextField.text = user.postal
+        self.cityTextField.text = user.city
+        self.phoneTextField.text = user.phone
+        self.facebookTextField.text = user.facebook
+        self.twitterTextField.text = user.twitter
+        self.instagramTextField.text = user.instagram
+        self.snapchatTextField.text = user.snapchat
+        self.themeTextField.text = user.theme
+
+        image.layer.borderWidth = 1
+        image.layer.masksToBounds = false
+        image.layer.borderColor = UIColor.black.cgColor
+        image.layer.cornerRadius = image.frame.height/2
+        image.clipsToBounds = true
+        super.viewDidLoad()
+    }
+    
+    @IBAction func changeImageButtonTapped(_ sender: Any) {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+            
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            image.contentMode = .scaleAspectFit
+            image.image = pickedImage
+        }
+     
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func editButtonTapped(_ sender: Any) {
             if (self.editItem.title == "Modifier") {
+                changeImageButton.isHidden = false
                 editItem.title = "Enregistrer"
                 pseudoTextField.isUserInteractionEnabled = true;
                 emailTextField.isUserInteractionEnabled = true;
@@ -54,10 +97,21 @@ class I_ProfileViewController: UIViewController {
                 themeTextField.isUserInteractionEnabled = true;
             }
             else {
+                let imageData = imageConvert.imageToBase64(image.image!)!
+                let imageName = pseudoTextField.text! + "_PP"
+                let userPicture = [
+                    [
+                        "imageData" : imageData,
+                        "imageName" : imageName
+                    ]
+                ]
+                                
+                changeImageButton.isHidden = true
                 let headers: HTTPHeaders = [
                     "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
                     "Content-Type": "application/x-www-form-urlencoded"
                 ]
+                
                 let new_Info: Parameters = [
                     "pseudo": pseudoTextField.text!,
                     "full_name": fullnameTextField.text!,
@@ -65,6 +119,7 @@ class I_ProfileViewController: UIViewController {
                     "phone": phoneTextField.text!,
                     "postal": postalTextField.text!,
                     "city": cityTextField.text!,
+                    "userPicture": userPicture,
                     "theme": themeTextField.text!,
                     "facebook": facebookTextField.text!,
                     "snapchat": snapchatTextField.text!,
@@ -98,41 +153,5 @@ class I_ProfileViewController: UIViewController {
                     }
                 }
             }
-        }
-
-    
-        override func viewDidLoad() {
-            let headers: HTTPHeaders = [
-                "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
-                "Content-Type": "application/x-www-form-urlencoded"
-            ]
-            AF.request("http://168.63.65.106/inf/me",
-                       headers: headers).responseJSON { response in
-                        switch response.result {
-                            case .success(let JSON):
-                                self.showSpinner(onView: self.view)
-                                let response = JSON as! NSDictionary
-                                
-                                let info = Info.init(pseudo: response.object(forKey: "pseudo")! as! String, full_name: response.object(forKey: "full_name")! as! String, email: response.object(forKey: "email")! as! String, phone: response.object(forKey: "phone")! as! String, postal: response.object(forKey: "postal")! as! String, city: response.object(forKey: "city")! as! String, theme: response.object(forKey: "theme")! as! String, facebook: response.object(forKey: "facebook")! as! String, snapchat: response.object(forKey: "snapchat")! as! String, twitter: response.object(forKey: "twitter")! as! String, instagram: response.object(forKey: "instagram")! as! String)
-                                
-                                self.pseudoTextField.text = info.pseudo
-                                self.emailTextField.text = info.email
-                                self.fullnameTextField.text = info.full_name
-                                self.postalTextField.text = info.postal
-                                self.cityTextField.text = info.city
-                                self.phoneTextField.text = info.phone
-                                self.facebookTextField.text = info.facebook
-                                self.twitterTextField.text = info.facebook
-                                self.instagramTextField.text = info.facebook
-                                self.snapchatTextField.text = info.snapchat
-                                self.themeTextField.text = info.theme
-                                self.removeSpinner()
-                            
-                            case .failure(let error):
-                                    print("Request failed with error: \(error)")
-                        }
-            }
-            
-            super.viewDidLoad()
         }
     }

@@ -9,20 +9,10 @@
 import UIKit
 import Alamofire
 
-class B_ProfileViewController: UIViewController {
-
-    struct Info: Encodable {
-        let pseudo: String
-        let full_name: String
-        let email: String
-        let phone: String
-        let postal: String
-        let city: String
-        let theme: String
-        let society: String
-        let function: String
-    }
+class B_ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var changeImageButton: UIButton!
     @IBOutlet weak var editItem: UIBarButtonItem!
     @IBOutlet weak var pseudoTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -34,8 +24,56 @@ class B_ProfileViewController: UIViewController {
     @IBOutlet weak var functionTextField: UITextField!
     @IBOutlet weak var themeTextField: UITextField!
     
+    var imagePicker:UIImagePickerController!
+    var imageConverter = ImageConverter()
+        
+    override func viewDidLoad() {
+        imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+        changeImageButton.isHidden = true
+        
+        let decoded = UserDefaults.standard.data(forKey: "Shop")
+        let shop = NSKeyedUnarchiver.unarchiveObject(with: decoded!) as! Shop
+        
+        self.image.image = shop.imageData
+        self.pseudoTextField.text = shop.pseudo
+        self.emailTextField.text = shop.email
+        self.fullnameTextField.text = shop.full_name
+        self.postalTextField.text = shop.postal
+        self.cityTextField.text = shop.city
+        self.phoneTextField.text = shop.phone
+        self.societyTextField.text = shop.society
+        self.functionTextField.text = shop.function
+        self.themeTextField.text = shop.theme
+
+        super.viewDidLoad()
+    }
+        
+    @IBAction func changeImageButtonTapped(_ sender: Any) {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+            
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            image.contentMode = .scaleAspectFit
+            image.image = pickedImage
+        }
+     
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func editButtonTapped(_ sender: Any) {
         if (self.editItem.title == "Modifier") {
+            changeImageButton.isHidden = false
             editItem.title = "Enregistrer"
             pseudoTextField.isUserInteractionEnabled = true;
             emailTextField.isUserInteractionEnabled = true;
@@ -48,6 +86,10 @@ class B_ProfileViewController: UIViewController {
             themeTextField.isUserInteractionEnabled = true;
         }
         else {
+            let imageData = imageConverter.imageToBase64(image.image!)!
+            let imageName = pseudoTextField.text! + "_PP"
+            
+            changeImageButton.isHidden = true
             let headers: HTTPHeaders = [
                 "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
                 "Content-Type": "application/x-www-form-urlencoded"
@@ -59,7 +101,12 @@ class B_ProfileViewController: UIViewController {
                 "phone": phoneTextField.text!,
                 "postal": postalTextField.text!,
                 "city": cityTextField.text!,
-                "theme": themeTextField.text!,
+                "userPicture": [
+                    [
+                        "imageName": imageName,
+                        "imageData": imageData
+                    ]
+                ],                "theme": themeTextField.text!,
                 "society": societyTextField.text!,
                 "function": functionTextField.text!
             ]
@@ -87,37 +134,5 @@ class B_ProfileViewController: UIViewController {
                 }
             }
         }
-    }
-
-    override func viewDidLoad() {
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
-            "Content-Type": "application/x-www-form-urlencoded"
-        ]
-        AF.request("http://168.63.65.106/shop/me",
-                   headers: headers).responseJSON { response in
-                    switch response.result {
-                        case .success(let JSON):
-                            self.showSpinner(onView: self.view)
-                            let response = JSON as! NSDictionary
-                            
-                            let info = Info.init(pseudo: response.object(forKey: "pseudo")! as! String, full_name: response.object(forKey: "full_name")! as! String, email: response.object(forKey: "email")! as! String, phone: response.object(forKey: "phone")! as! String, postal: response.object(forKey: "postal")! as! String, city: response.object(forKey: "city")! as! String, theme: response.object(forKey: "theme")! as! String, society: response.object(forKey: "society")! as! String, function: response.object(forKey: "function")! as! String)
-                            
-                            self.pseudoTextField.text = info.pseudo
-                            self.emailTextField.text = info.email
-                            self.fullnameTextField.text = info.full_name
-                            self.postalTextField.text = info.postal
-                            self.cityTextField.text = info.city
-                            self.phoneTextField.text = info.phone
-                            self.societyTextField.text = info.society
-                            self.functionTextField.text = info.function
-                            self.themeTextField.text = info.theme
-                            self.removeSpinner()
-                        
-                        case .failure(let error):
-                                print("Request failed with error: \(error)")
-                    }
-        }
-        super.viewDidLoad()
     }
 }

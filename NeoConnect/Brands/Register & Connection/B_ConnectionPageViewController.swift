@@ -63,10 +63,13 @@ class B_ConnectionPageViewController: UIViewController {
 
                         let response = JSON as! NSDictionary
                         let token = response.object(forKey: "token")!
+                        let id = response.object(forKey: "userId")!
                         UserDefaults.standard.set(token, forKey: "Token") //Bool
+                        UserDefaults.standard.set(id, forKey: "id") //Bool
                         print(token)
-                        let storyBoard: UIStoryboard = UIStoryboard(name: "B_Navigation", bundle: nil)
-                        let Home = storyBoard.instantiateViewController(withIdentifier: "B_TabBarController")
+                        print(id)
+                        let storyBoard: UIStoryboard = UIStoryboard(name: "B_TabBarController", bundle: nil)
+                        let Home = storyBoard.instantiateViewController(withIdentifier: "B_CustomTabBarController")
                         Home.modalPresentationStyle = .fullScreen
                         
                         self.present(Home, animated: true, completion: nil)

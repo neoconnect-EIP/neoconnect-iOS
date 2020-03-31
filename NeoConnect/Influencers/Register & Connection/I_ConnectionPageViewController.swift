@@ -48,8 +48,8 @@ class I_ConnectionPageViewController: UIViewController {
         //       Conditions de connexion
         
         if (userPseudo == "Inf" && userPassword == "1234") {
-            let storyBoard: UIStoryboard = UIStoryboard(name: "I_Navigation", bundle: nil)
-            let Home = storyBoard.instantiateViewController(withIdentifier: "I_TabBarController")
+            let storyBoard: UIStoryboard = UIStoryboard(name: "I_TabBarController", bundle: nil)
+            let Home = storyBoard.instantiateViewController(withIdentifier: "I_CustomTabBarController")
             Home.modalPresentationStyle = .fullScreen
 
             self.present(Home, animated: true, completion: nil)
@@ -65,10 +65,13 @@ class I_ConnectionPageViewController: UIViewController {
                         self.showSpinner(onView: self.view)
                         let response = JSON as! NSDictionary
                         let token = response.object(forKey: "token")!
-                        UserDefaults.standard.set(token, forKey: "Token") //Bool
+                        let id = response.object(forKey: "userId")!
+                        UserDefaults.standard.set(token, forKey: "Token") // Bool
+                        UserDefaults.standard.set(id, forKey: "id") // Id
                         print(token)
-                        let storyBoard: UIStoryboard = UIStoryboard(name: "I_Navigation", bundle: nil)
-                        let Home = storyBoard.instantiateViewController(withIdentifier: "I_TabBarController")
+                        print(id)
+                        let storyBoard: UIStoryboard = UIStoryboard(name: "I_TabBarController", bundle: nil)
+                        let Home = storyBoard.instantiateViewController(withIdentifier: "I_CustomTabBarController")
                         Home.modalPresentationStyle = .fullScreen
                         
                         self.present(Home, animated: true, completion: nil)
