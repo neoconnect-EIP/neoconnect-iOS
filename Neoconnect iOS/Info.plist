@@ -7,8 +7,11 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+<<<<<<< Updated upstream:Neoconnect iOS/Info.plist
 	<key>LSApplicationCategoryType</key>
 	<string></string>
+=======
+>>>>>>> Stashed changes:NeoConnect/Info.plist
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>

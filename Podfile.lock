@@ -7,6 +7,12 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+<<<<<<< Updated upstream
+=======
+    - DLRadioButton
+    - PureLayout
+    - SwiftyJSON
+>>>>>>> Stashed changes
 
 SPEC CHECKSUMS:
   Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
