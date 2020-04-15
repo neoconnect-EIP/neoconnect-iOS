@@ -296,7 +296,7 @@
                                     <color key="titleColor" red="0.80493037560000003" green="0.05826676276" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="registerButton:" destination="829-pi-W34" eventType="touchUpInside" id="CoF-yp-s1q"/>
+                                    <action selector="nextButton:" destination="829-pi-W34" eventType="touchUpInside" id="Iq5-z5-1wJ"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Informations personnelles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iY6-PB-LLu">

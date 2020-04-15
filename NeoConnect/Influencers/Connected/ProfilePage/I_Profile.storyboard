@@ -363,7 +363,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRS-T8-g0i">
-                                                    <rect key="frame" x="319" y="11" width="75" height="78"/>
+                                                    <rect key="frame" x="339" y="11" width="75" height="78"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="tintColor" red="0.80493037560000003" green="0.05826676276" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

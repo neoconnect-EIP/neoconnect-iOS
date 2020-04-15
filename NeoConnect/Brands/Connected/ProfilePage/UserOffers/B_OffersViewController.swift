@@ -32,7 +32,6 @@ class B_OffersViewController: UIViewController {
                     switch response.result {
                     case .success(let JSON):
                         
-                            self.showSpinner(onView: self.view)
                             print(JSON)
                             if JSON as? String != "No offer" {
                                 let results = JSON as! Array<NSDictionary>
@@ -46,8 +45,6 @@ class B_OffersViewController: UIViewController {
                             self.tableView.reloadData()
                             print(response)
                             
-
-                            self.removeSpinner()
                         case .failure(let error):
                                 print("Request failed with error: \(error)")
                     }

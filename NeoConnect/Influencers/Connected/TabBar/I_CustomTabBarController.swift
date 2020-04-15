@@ -20,9 +20,7 @@ class I_CustomTabBarController: UITabBarController {
                    headers: headers).responseJSON { response in
                     switch response.result {
                     case .success(let JSON):
-                        
-                            self.showSpinner(onView: self.view)
-                            
+                                                    
                             let response = JSON as! NSDictionary
                             print(response)
                             let imageConvert = ImageConverter()
