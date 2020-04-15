@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -70,12 +70,15 @@
 		33F2943D23CB6B9A005B4C02 /* UpdatePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F2943C23CB6B9A005B4C02 /* UpdatePasswordViewController.swift */; };
 		33F31137240D8913006CDEB4 /* ImageConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F31136240D8913006CDEB4 /* ImageConverter.swift */; };
 		577C5D4582B8EF78C5E71EF3 /* Pods_NeoConnectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04865EF4FBE11F18B64E3BA6 /* Pods_NeoConnectTests.framework */; };
-		99BCDD98243F85E100B2DC36 /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FF53EE2438E936002BCA26 /* ContactView.swift */; };
-		99BCDD99243F899D00B2DC36 /* OffersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FF53F02438E936002BCA26 /* OffersView.swift */; };
-		99BCDD9A243F89B900B2DC36 /* MyOffersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FF53EC2438E936002BCA26 /* MyOffersView.swift */; };
-		99BCDD9B243F89BC00B2DC36 /* NotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FF53EF2438E936002BCA26 /* NotationView.swift */; };
-		99CB8FC02447522E00A8EC34 /* ContactUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FF53E92438E936002BCA26 /* ContactUserView.swift */; };
-		99FF53F42438EFEF002BCA26 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FF53EA2438E936002BCA26 /* ProfileView.swift */; };
+		99CB8FCB24476B6100A8EC34 /* ContactUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CB8FC224476B6100A8EC34 /* ContactUserView.swift */; };
+		99CB8FCC24476B6100A8EC34 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CB8FC324476B6100A8EC34 /* ProfileView.swift */; };
+		99CB8FCD24476B6100A8EC34 /* MyOffersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CB8FC424476B6100A8EC34 /* MyOffersView.swift */; };
+		99CB8FCE24476B6100A8EC34 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CB8FC524476B6100A8EC34 /* HomeView.swift */; };
+		99CB8FCF24476B6100A8EC34 /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CB8FC624476B6100A8EC34 /* ContactView.swift */; };
+		99CB8FD024476B6100A8EC34 /* NotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CB8FC724476B6100A8EC34 /* NotationView.swift */; };
+		99CB8FD124476B6100A8EC34 /* OffersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CB8FC824476B6100A8EC34 /* OffersView.swift */; };
+		99CB8FD224476B6100A8EC34 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CB8FC924476B6100A8EC34 /* ContentView.swift */; };
+		99CB8FD324476B6100A8EC34 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CB8FCA24476B6100A8EC34 /* SceneDelegate.swift */; };
 		C8B157492405C95DA5E605F4 /* Pods_NeoConnectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E81119D60CC6158B3733A83 /* Pods_NeoConnectUITests.framework */; };
 		D41A3C4ED8F699FEC1F2DA84 /* Pods_NeoConnect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1349A3659B847660AA764960 /* Pods_NeoConnect.framework */; };
 /* End PBXBuildFile section */
@@ -171,15 +174,15 @@
 		3E2B1F4A0E0B68215F62E41F /* Pods-NeoConnect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeoConnect.release.xcconfig"; path = "Target Support Files/Pods-NeoConnect/Pods-NeoConnect.release.xcconfig"; sourceTree = "<group>"; };
 		3E81119D60CC6158B3733A83 /* Pods_NeoConnectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NeoConnectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		44582499B4B2CD66B7C75B52 /* Pods-NeoConnectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeoConnectUITests.release.xcconfig"; path = "Target Support Files/Pods-NeoConnectUITests/Pods-NeoConnectUITests.release.xcconfig"; sourceTree = "<group>"; };
-		99FF53E92438E936002BCA26 /* ContactUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContactUserView.swift; path = ../../../Ilan/ContactUserView.swift; sourceTree = "<group>"; };
-		99FF53EA2438E936002BCA26 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileView.swift; path = ../../../../Ilan/ProfileView.swift; sourceTree = "<group>"; };
-		99FF53EC2438E936002BCA26 /* MyOffersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyOffersView.swift; path = ../../../Ilan/MyOffersView.swift; sourceTree = "<group>"; };
-		99FF53ED2438E936002BCA26 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		99FF53EE2438E936002BCA26 /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContactView.swift; path = ../../../Ilan/ContactView.swift; sourceTree = "<group>"; };
-		99FF53EF2438E936002BCA26 /* NotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotationView.swift; path = ../../../Ilan/NotationView.swift; sourceTree = "<group>"; };
-		99FF53F02438E936002BCA26 /* OffersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OffersView.swift; path = ../../../Ilan/OffersView.swift; sourceTree = "<group>"; };
-		99FF53F12438E936002BCA26 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		99FF53F22438E936002BCA26 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		99CB8FC224476B6100A8EC34 /* ContactUserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactUserView.swift; sourceTree = "<group>"; };
+		99CB8FC324476B6100A8EC34 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		99CB8FC424476B6100A8EC34 /* MyOffersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOffersView.swift; sourceTree = "<group>"; };
+		99CB8FC524476B6100A8EC34 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		99CB8FC624476B6100A8EC34 /* ContactView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
+		99CB8FC724476B6100A8EC34 /* NotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotationView.swift; sourceTree = "<group>"; };
+		99CB8FC824476B6100A8EC34 /* OffersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersView.swift; sourceTree = "<group>"; };
+		99CB8FC924476B6100A8EC34 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		99CB8FCA24476B6100A8EC34 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		AF93193DDEE42824E6D4D785 /* Pods-NeoConnectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeoConnectTests.release.xcconfig"; path = "Target Support Files/Pods-NeoConnectTests/Pods-NeoConnectTests.release.xcconfig"; sourceTree = "<group>"; };
 		B58D215D5A37ECD1742B6EB1 /* Pods-NeoConnectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeoConnectUITests.debug.xcconfig"; path = "Target Support Files/Pods-NeoConnectUITests/Pods-NeoConnectUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DA34CAF3F59F6420FFE3ABBD /* Pods-NeoConnect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeoConnect.debug.xcconfig"; path = "Target Support Files/Pods-NeoConnect/Pods-NeoConnect.debug.xcconfig"; sourceTree = "<group>"; };
@@ -236,7 +239,6 @@
 		3338622C2326AC81005C188E /* ProfilePage */ = {
 			isa = PBXGroup;
 			children = (
-				99FF53EE2438E936002BCA26 /* ContactView.swift */,
 				3338623D2326C942005C188E /* I_ProfileViewController.swift */,
 				33F1362423E21E7E00A740DE /* I_ParametersTableViewController.swift */,
 				3338623B2326C724005C188E /* I_Profile.storyboard */,
@@ -257,8 +259,6 @@
 		3338622E2326AC8F005C188E /* SearchPage */ = {
 			isa = PBXGroup;
 			children = (
-				99FF53EF2438E936002BCA26 /* NotationView.swift */,
-				99FF53EC2438E936002BCA26 /* MyOffersView.swift */,
 				33131D8C2368A377006C0A4B /* I_SearchViewController.swift */,
 				333862372326C6EF005C188E /* I_Search.storyboard */,
 				3330A94323DF08EE00A0CF63 /* userFound.swift */,
@@ -270,7 +270,6 @@
 		3338622F2326AC99005C188E /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
-				99FF53F02438E936002BCA26 /* OffersView.swift */,
 				33C107532367EEEE008D0EC0 /* I_HomeViewController.swift */,
 				333862342326C69C005C188E /* I_Home.storyboard */,
 			);
@@ -309,7 +308,6 @@
 		3359B52322E78CB900CB86E2 /* ChatPage */ = {
 			isa = PBXGroup;
 			children = (
-				99FF53E92438E936002BCA26 /* ContactUserView.swift */,
 				334672A623278B5400D5E0DD /* B_ChatViewController.swift */,
 				3359B52B22E78D8D00CB86E2 /* B_Chat.storyboard */,
 			);
@@ -331,7 +329,6 @@
 		3387EE682406E1A40050852D /* UserInformations */ = {
 			isa = PBXGroup;
 			children = (
-				99FF53EA2438E936002BCA26 /* ProfileView.swift */,
 				333862302326B10A005C188E /* B_ProfileViewController.swift */,
 				339782172434EA8400B35C68 /* B_UserInformations.storyboard */,
 			);
@@ -433,10 +430,10 @@
 		33BC651A229ECA4000C52262 /* NeoConnect */ = {
 			isa = PBXGroup;
 			children = (
+				99CB8FC124476B6100A8EC34 /* Ilan */,
 				3388BE55232014D800B9D1F8 /* Headers */,
 				33BC651B229ECA4000C52262 /* AppDelegate.swift */,
 				33BC6522229ECA4100C52262 /* Assets.xcassets */,
-				99FF53F32438E936002BCA26 /* Ilan */,
 				33F31135240D88F2006CDEB4 /* Tools */,
 				338DB1FC23CF5C9200A87F8B /* Description & FAQ */,
 				330672BD236C188D00C8C339 /* Password Forgotten */,
@@ -566,16 +563,21 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		99FF53F32438E936002BCA26 /* Ilan */ = {
+		99CB8FC124476B6100A8EC34 /* Ilan */ = {
 			isa = PBXGroup;
 			children = (
-				99FF53ED2438E936002BCA26 /* HomeView.swift */,
-				99FF53F12438E936002BCA26 /* ContentView.swift */,
-				99FF53F22438E936002BCA26 /* SceneDelegate.swift */,
+				99CB8FC224476B6100A8EC34 /* ContactUserView.swift */,
+				99CB8FC324476B6100A8EC34 /* ProfileView.swift */,
+				99CB8FC424476B6100A8EC34 /* MyOffersView.swift */,
+				99CB8FC524476B6100A8EC34 /* HomeView.swift */,
+				99CB8FC624476B6100A8EC34 /* ContactView.swift */,
+				99CB8FC724476B6100A8EC34 /* NotationView.swift */,
+				99CB8FC824476B6100A8EC34 /* OffersView.swift */,
+				99CB8FC924476B6100A8EC34 /* ContentView.swift */,
+				99CB8FCA24476B6100A8EC34 /* SceneDelegate.swift */,
 			);
-			name = Ilan;
-			path = "/Users/ilan.co/Documents/GitHub/neoconnect-iOS/NeoConnect/Ilan";
-			sourceTree = "<absolute>";
+			path = Ilan;
+			sourceTree = "<group>";
 		};
 		D2FA1DD11453D477C8457477 /* Frameworks */ = {
 			isa = PBXGroup;
@@ -672,7 +674,7 @@
 				};
 			};
 			buildConfigurationList = 33BC6513229ECA4000C52262 /* Build configuration list for PBXProject "NeoConnect" */;
-			compatibilityVersion = "Xcode 11.0";
+			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -835,22 +837,24 @@
 				3338623E2326C942005C188E /* I_ProfileViewController.swift in Sources */,
 				33F1362323E2127800A740DE /* I_CustomTabBarController.swift in Sources */,
 				336E62BC243608F600AF0949 /* B_MarksViewController.swift in Sources */,
-				99FF53F42438EFEF002BCA26 /* ProfileView.swift in Sources */,
 				334672A523278B3100D5E0DD /* B_SearchViewController.swift in Sources */,
 				334EC7AC24006FC1009BF39D /* I_SendEmailViewController.swift in Sources */,
 				33A5589823E361E6001692DE /* User.swift in Sources */,
 				334672A323278A7200D5E0DD /* B_HomeViewController.swift in Sources */,
 				33F2943D23CB6B9A005B4C02 /* UpdatePasswordViewController.swift in Sources */,
 				3328B61C236DEC510070B7B4 /* B_RegisterPage_Step_Three_ViewController.swift in Sources */,
+				99CB8FCF24476B6100A8EC34 /* ContactView.swift in Sources */,
+				99CB8FD124476B6100A8EC34 /* OffersView.swift in Sources */,
 				33131D8D2368A377006C0A4B /* I_SearchViewController.swift in Sources */,
-				99CB8FC02447522E00A8EC34 /* ContactUserView.swift in Sources */,
+				99CB8FCE24476B6100A8EC34 /* HomeView.swift in Sources */,
 				3342BD5523240E5900552F2B /* B_ConnectionPageViewController.swift in Sources */,
 				3387EE6F2406EA2E0050852D /* B_OffersViewController.swift in Sources */,
 				33F31137240D8913006CDEB4 /* ImageConverter.swift in Sources */,
+				99CB8FD024476B6100A8EC34 /* NotationView.swift in Sources */,
+				99CB8FD324476B6100A8EC34 /* SceneDelegate.swift in Sources */,
+				99CB8FCC24476B6100A8EC34 /* ProfileView.swift in Sources */,
 				33A5589B23E36C5A001692DE /* Shop.swift in Sources */,
 				33BA89582379320D00A71246 /* I_RegisterPage_Step_Three_ViewController.swift in Sources */,
-				99BCDD9A243F89B900B2DC36 /* MyOffersView.swift in Sources */,
-				99BCDD9B243F89BC00B2DC36 /* NotationView.swift in Sources */,
 				33F1362523E21E7E00A740DE /* I_ParametersTableViewController.swift in Sources */,
 				3387EE6D2406E92D0050852D /* B_OffersTableViewCell.swift in Sources */,
 				33131D8F2368A3A0006C0A4B /* I_ChatViewController.swift in Sources */,
@@ -861,15 +865,16 @@
 				3338277922A6D53F00504540 /* I_ConnectionPageViewController.swift in Sources */,
 				3330A94423DF08EE00A0CF63 /* userFound.swift in Sources */,
 				333862312326B10A005C188E /* B_ProfileViewController.swift in Sources */,
-				99BCDD98243F85E100B2DC36 /* ContactView.swift in Sources */,
 				3325179E23E62A9A000C7E7D /* B_ParametersTableViewController.swift in Sources */,
+				99CB8FD224476B6100A8EC34 /* ContentView.swift in Sources */,
 				331A739E22D252E700FDA4AF /* I_RegisterPage_Step_Two_ViewController.swift in Sources */,
 				33BC651C229ECA4000C52262 /* AppDelegate.swift in Sources */,
-				99BCDD99243F899D00B2DC36 /* OffersView.swift in Sources */,
 				3397E804236C58E0002E96FD /* ForgotPasswordViewController.swift in Sources */,
 				33B3983D22A556C900719E1D /* B_RegisterPage_Step_Two_ViewController.swift in Sources */,
 				338DB20023CF5DA100A87F8B /* DescriptionViewController.swift in Sources */,
 				3338277722A6D51700504540 /* I_RegisterPage_Step_One_ViewController.swift in Sources */,
+				99CB8FCD24476B6100A8EC34 /* MyOffersView.swift in Sources */,
+				99CB8FCB24476B6100A8EC34 /* ContactUserView.swift in Sources */,
 				334672A723278B5400D5E0DD /* B_ChatViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -978,7 +983,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1034,7 +1039,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

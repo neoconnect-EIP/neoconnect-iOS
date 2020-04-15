@@ -1,22 +1,28 @@
 PODS:
-  - Alamofire (5.0.0-rc.2)
+  - Alamofire (5.0.0-rc.3)
+  - DLRadioButton (1.4.12)
+  - PureLayout (3.1.5)
+  - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
-  - Alamofire (~> 5.0.0-rc.2)
+  - Alamofire (~> 5.0.0-rc.3)
+  - DLRadioButton (~> 1.4)
+  - PureLayout
+  - SwiftyJSON
 
 SPEC REPOS:
   trunk:
     - Alamofire
-<<<<<<< Updated upstream
-=======
     - DLRadioButton
     - PureLayout
     - SwiftyJSON
->>>>>>> Stashed changes
 
 SPEC CHECKSUMS:
-  Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
+  Alamofire: ca8c0de6906873be89d6deec5c8de279e00bf872
+  DLRadioButton: d7c4e225ed0e8013cef7be61455230c7557ad7c1
+  PureLayout: 9b4ad47b2f0388c84ff534af23d96e720c1b875a
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 065c1b5ac930379231254e624129718b76ae8a33
+PODFILE CHECKSUM: b87043e8f4fc88a621deb4bf633862627bdcd7d3
 
 COCOAPODS: 1.8.4
