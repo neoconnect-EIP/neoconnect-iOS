@@ -10,9 +10,7 @@ import UIKit
 
 class B_RegisterPage_Step_Two_ViewController: UIViewController {
     
-    @IBOutlet weak var userLastNameTextField: UITextField!
-    @IBOutlet weak var userFirstNameTextField: UITextField!
-    @IBOutlet weak var userAdressTextField: UITextField!
+    @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var userZipCodeTextField: UITextField!
     @IBOutlet weak var userCityTextField: UITextField!
     @IBOutlet weak var userPhoneNumberTextField: UITextField!
@@ -23,23 +21,19 @@ class B_RegisterPage_Step_Two_ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         print("Pseudo : " + pseudo)
         print("Email : " + email)
         print("Password : " + password)
-        // Do any additional setup after loading the view.
     }
 
     @IBAction func nextButton(_ sender: Any) {
-        let userLastName = userLastNameTextField.text!
-        let userFirstName = userFirstNameTextField.text!
-        let userAdress = userAdressTextField.text!
+        let userName = userNameTextField.text!
         let userZipCode = userZipCodeTextField.text!
         let userCity = userCityTextField.text!
         let userPhoneNumber = userPhoneNumberTextField.text!
 
         // Check for empty fields
-        if (userLastName.isEmpty || userFirstName.isEmpty || userAdress.isEmpty || userZipCode.isEmpty || userCity.isEmpty || userPhoneNumber.isEmpty) {
+        if (userName.isEmpty || userZipCode.isEmpty || userCity.isEmpty || userPhoneNumber.isEmpty) {
             
             // Display alert message
             DispatchQueue.main.async {
@@ -65,9 +59,7 @@ class B_RegisterPage_Step_Two_ViewController: UIViewController {
             Dest.pseudo = pseudo
             Dest.email = email
             Dest.password = password
-            Dest.lastName = userLastNameTextField.text!
-            Dest.firstName = userFirstNameTextField.text!
-            Dest.adress = userAdressTextField.text!
+            Dest.name = userNameTextField.text!
             Dest.zipCode = userZipCodeTextField.text!
             Dest.city = userCityTextField.text!
             Dest.phoneNumber = userPhoneNumberTextField.text!

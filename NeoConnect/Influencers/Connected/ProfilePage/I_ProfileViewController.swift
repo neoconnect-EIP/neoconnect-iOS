@@ -7,84 +7,182 @@
 //
 
 import UIKit
+import Alamofire
 
-class I_ProfileViewController: UIViewController {
+class I_ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    @IBOutlet weak var idTextField: UITextField!
+    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var changeImageButton: UIButton!
+    @IBOutlet weak var editItem: UIBarButtonItem!
+    @IBOutlet weak var pseudoTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var givenNameTextField: UITextField!
-    @IBOutlet weak var adressTextField: UITextField!
-    @IBOutlet weak var postcodeTextField: UITextField!
+    @IBOutlet weak var fullnameTextField: UITextField!
+    @IBOutlet weak var postalTextField: UITextField!
     @IBOutlet weak var cityTextField: UITextField!
-    @IBOutlet weak var phoneNumberTextField: UITextField!
-    @IBOutlet weak var btnValidate: UIButton!
+    @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var facebookTextField: UITextField!
+    @IBOutlet weak var twitterTextField: UITextField!
+    @IBOutlet weak var snapchatTextField: UITextField!
+    @IBOutlet weak var instagramTextField: UITextField!
+    @IBOutlet weak var themeTextField: UITextField!
     
-    @IBOutlet weak var idLabelField: UILabel!
-    @IBOutlet weak var emailLabelField: UILabel!
-    @IBOutlet weak var nameLabelField: UILabel!
-    @IBOutlet weak var givenNameLabelField: UILabel!
-    @IBOutlet weak var postcodeLabelField: UILabel!
-    @IBOutlet weak var phoneNumberLabelField: UILabel!
-    @IBOutlet weak var cityLabelField: UILabel!
-    @IBOutlet weak var adressLabelField: UILabel!
-    
+    var imagePicker:UIImagePickerController!
+    var imageConvert = ImageConverter()
+        
     override func viewDidLoad() {
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
+            "Content-Type": "application/x-www-form-urlencoded"
+        ]
+        AF.request("http://168.63.65.106/inf/me",
+                   headers: headers).responseJSON { response in
+                    switch response.result {
+                    case .success(let JSON):
+                        
+                            self.showSpinner(onView: self.view)
+                            
+                            let response = JSON as! NSDictionary
+                            print(response)
+                            let id : Int = UserDefaults.standard.integer(forKey: "id")
+                            let imageArray = response.object(forKey: "userPicture")! as! [[String:Any]]
+                            var imageData = #imageLiteral(resourceName: "noImage")
+                            if (imageArray.count > 0) {
+                                imageData = self.imageConvert.base64ToImage(imageArray[0]["imageData"] as! String)!
+                            }
+                            let user = User(id: id, pseudo: response.object(forKey: "pseudo")! as! String, full_name: response.object(forKey: "full_name")! as! String, email: response.object(forKey: "email")! as! String, phone: response.object(forKey: "phone")! as! String, postal: response.object(forKey: "postal")! as! String, city: response.object(forKey: "city")! as! String, imageData: imageData, theme: response.object(forKey: "theme")! as! String, facebook: response.object(forKey: "facebook")! as! String, snapchat: response.object(forKey: "snapchat")! as! String, twitter: response.object(forKey: "twitter")! as! String, instagram: response.object(forKey: "instagram")! as! String)
+                            let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: user)
+                            
+                            UserDefaults.standard.set(encodedData, forKey: "User")
+                            UserDefaults.standard.synchronize()
+
+                            self.removeSpinner()
+                        case .failure(let error):
+                                print("Request failed with error: \(error)")
+                    }
+        }
+        
+        imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+        changeImageButton.isHidden = true
+        
+        let decoded = UserDefaults.standard.data(forKey: "User")
+        let user = NSKeyedUnarchiver.unarchiveObject(with: decoded!) as! User
+        
+        self.image.image = user.imageData
+        self.pseudoTextField.text = user.pseudo
+        self.emailTextField.text = user.email
+        self.fullnameTextField.text = user.full_name
+        self.postalTextField.text = user.postal
+        self.cityTextField.text = user.city
+        self.phoneTextField.text = user.phone
+        self.facebookTextField.text = user.facebook
+        self.twitterTextField.text = user.twitter
+        self.instagramTextField.text = user.instagram
+        self.snapchatTextField.text = user.snapchat
+        self.themeTextField.text = user.theme
+
+        image.layer.borderWidth = 1
+        image.layer.masksToBounds = false
+        image.layer.borderColor = UIColor.black.cgColor
+        image.layer.cornerRadius = image.frame.height/2
+        image.clipsToBounds = true
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
     }
     
-    @IBAction func btnModifyAction(_ sender: UIButton) {
-        sender.isHidden = true
-        btnValidate.isHidden = false
-        idTextField.isHidden = false
-        emailTextField.isHidden = false
-        nameTextField.isHidden = false
-        givenNameTextField.isHidden = false
-        adressTextField.isHidden = false
-        postcodeTextField.isHidden = false
-        cityTextField.isHidden = false
-        phoneNumberTextField.isHidden = false
-        
-        idLabelField.isHidden = true
-        emailLabelField.isHidden = true
-        nameLabelField.isHidden = true
-        givenNameLabelField.isHidden = true
-        adressLabelField.isHidden = true
-        postcodeLabelField.isHidden = true
-        cityLabelField.isHidden = true
-        phoneNumberLabelField.isHidden = true
+    @IBAction func changeImageButtonTapped(_ sender: Any) {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+            
+        present(imagePicker, animated: true, completion: nil)
     }
     
-    @IBAction func btnValidateTapped(_ sender: Any) {
-        idLabelField.text = idTextField.text
-        emailLabelField.text = emailTextField.text
-        nameLabelField.text = nameTextField.text
-        givenNameLabelField.text = givenNameTextField.text
-        adressLabelField.text = adressTextField.text
-        postcodeLabelField.text = postcodeTextField.text
-        cityLabelField.text = cityTextField.text
-        phoneNumberLabelField.text = phoneNumberTextField.text
-        
-        btnValidate.isHidden = true
-        idTextField.isHidden = true
-        emailTextField.isHidden = true
-        nameTextField.isHidden = true
-        givenNameTextField.isHidden = true
-        adressTextField.isHidden = true
-        postcodeTextField.isHidden = true
-        cityTextField.isHidden = true
-        phoneNumberTextField.isHidden = true
-        
-        idLabelField.isHidden = false
-        emailLabelField.isHidden = false
-        nameLabelField.isHidden = false
-        givenNameLabelField.isHidden = false
-        adressLabelField.isHidden = false
-        postcodeLabelField.isHidden = false
-        cityLabelField.isHidden = false
-        phoneNumberLabelField.isHidden = false
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            image.contentMode = .scaleAspectFit
+            image.image = pickedImage
+        }
+     
+        dismiss(animated: true, completion: nil)
     }
     
-}
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func editButtonTapped(_ sender: Any) {
+            if (self.editItem.title == "Modifier") {
+                changeImageButton.isHidden = false
+                editItem.title = "Enregistrer"
+                pseudoTextField.isUserInteractionEnabled = true;
+                emailTextField.isUserInteractionEnabled = true;
+                fullnameTextField.isUserInteractionEnabled = true;
+                postalTextField.isUserInteractionEnabled = true;
+                cityTextField.isUserInteractionEnabled = true;
+                phoneTextField.isUserInteractionEnabled = true;
+                facebookTextField.isUserInteractionEnabled = true;
+                twitterTextField.isUserInteractionEnabled = true;
+                snapchatTextField.isUserInteractionEnabled = true;
+                instagramTextField.isUserInteractionEnabled = true;
+                themeTextField.isUserInteractionEnabled = true;
+            }
+            else {
+                let imageData = imageConvert.imageToBase64(image.image!)!
+                let imageName = pseudoTextField.text! + "_PP"
+                let userPicture = [
+                    [
+                        "imageData" : imageData,
+                        "imageName" : imageName
+                    ]
+                ]
+                                
+                changeImageButton.isHidden = true
+                let headers: HTTPHeaders = [
+                    "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
+                    "Content-Type": "application/x-www-form-urlencoded"
+                ]
+                
+                let new_Info: Parameters = [
+                    "pseudo": pseudoTextField.text!,
+                    "full_name": fullnameTextField.text!,
+                    "email": emailTextField.text!,
+                    "phone": phoneTextField.text!,
+                    "postal": postalTextField.text!,
+                    "city": cityTextField.text!,
+                    "userPicture": userPicture,
+                    "theme": themeTextField.text!,
+                    "facebook": facebookTextField.text!,
+                    "snapchat": snapchatTextField.text!,
+                    "twitter": twitterTextField.text!,
+                    "instagram": instagramTextField.text!
+                ]
+                pseudoTextField.isUserInteractionEnabled = false;
+                emailTextField.isUserInteractionEnabled = false;
+                fullnameTextField.isUserInteractionEnabled = false;
+                postalTextField.isUserInteractionEnabled = false;
+                cityTextField.isUserInteractionEnabled = false;
+                phoneTextField.isUserInteractionEnabled = false;
+                facebookTextField.isUserInteractionEnabled = false;
+                twitterTextField.isUserInteractionEnabled = false;
+                snapchatTextField.isUserInteractionEnabled = false;
+                instagramTextField.isUserInteractionEnabled = false;
+                themeTextField.isUserInteractionEnabled = false;
+                
+                AF.request("http://168.63.65.106/inf/me", method: .put, parameters: new_Info, encoding: URLEncoding.default, headers: headers, interceptor: nil).responseJSON { response in
+                    switch response.result {
+                    case .success(_):
+                        self.editItem.title = "Modifier"
+                        print("\(String(describing: response.result))")
+                        DispatchQueue.main.async {
+                            let alertView = UIAlertController(title: "Done!", message: "Your informations have been updated successfully!", preferredStyle: .alert)
+                            alertView.addAction(UIAlertAction(title: "Ok", style: .cancel))
+                            self.present(alertView, animated: true, completion: nil)
+                        }
+                    case .failure(let error):
+                        print("Request failed with error: \(error)")
+                    }
+                }
+            }
+        }
+    }

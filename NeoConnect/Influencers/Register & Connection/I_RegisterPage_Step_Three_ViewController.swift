@@ -15,17 +15,15 @@ class I_RegisterPage_Step_Three_ViewController: UIViewController {
         let pseudo: String
         let email: String
         let password: String
-        let lastName: String
-        let firstName: String
-        let adress: String
-        let zipCode: String
-        let phoneNumber: String
+        let full_name: String
+        let postal: String
+        let phone: String
         let city: String
         let facebook: String
         let twitter: String
         let instagram: String
         let snapchat: String
-        let subject: String
+        let theme: String
     }
     
     @IBOutlet weak var facebookTextField: UITextField!
@@ -37,28 +35,14 @@ class I_RegisterPage_Step_Three_ViewController: UIViewController {
     var pseudo = String()
     var email = String()
     var password = String()
-    var lastName = String()
-    var firstName = String()
+    var name = String()
     var sex = String()
-    var adress = String()
     var zipCode = String()
     var phoneNumber = String()
     var city = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        print("Pseudo : " + pseudo)
-        print("Email : " + email)
-        print("Password : " + password)
-        print("Lastname : " + lastName)
-        print("Firstname : " + firstName)
-        print("Sex : " + sex)
-        print("Adress : " + adress)
-        print("Zipcode : " + zipCode)
-        print("Phonenumber : " + phoneNumber)
-        print("City : " + city)
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func register_ButtonTapped(_ sender: Any) {
@@ -68,6 +52,7 @@ class I_RegisterPage_Step_Three_ViewController: UIViewController {
         let userSnapchat = snapchatTextField.text!
         let userSubject = subjectTextField.text!
         
+        // Erreur : un champ est vide
         if (userFacebook.isEmpty || userTwitter.isEmpty || userInstagram.isEmpty || userSnapchat.isEmpty || userSubject.isEmpty) {
             DispatchQueue.main.async {
                 let alertView = UIAlertController(title: "Error", message: "All fields are required", preferredStyle: .alert)
@@ -76,41 +61,35 @@ class I_RegisterPage_Step_Three_ViewController: UIViewController {
             }
         }
         else {
-            _ = Register(pseudo: pseudo, email: email, password: password, lastName: lastName, firstName: firstName, adress: adress, zipCode: zipCode, phoneNumber: phoneNumber, city: city, facebook: userFacebook, twitter: userTwitter, instagram: userInstagram, snapchat: userSnapchat, subject: userSubject)
+            let register = Register(pseudo: pseudo, email: email, password: password, full_name: name, postal: zipCode, phone: phoneNumber, city: city, facebook: userFacebook, twitter: userTwitter, instagram: userInstagram, snapchat: userSnapchat, theme: userSubject)
             
-            print("Successfull")
-            DispatchQueue.main.async {
-                let alertView = UIAlertController(title: "Great !", message: "Registration is successful. You can log in now !", preferredStyle: .alert)
-                alertView.addAction(UIAlertAction(title: "Continue", style: .cancel) { action in self.dismiss(animated: true, completion: nil)})
-                self.present(alertView, animated: true, completion: nil)
-                let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "I_Register") as! I_ConnectionPageViewController
-                self.present(loginVC, animated: true, completion: nil)
+            // Inscription influenceur vers l'API
+            AF.request("http://168.63.65.106/inf/register",
+                       method: .post,
+                       parameters: register,
+                       encoder: JSONParameterEncoder.default).validate(statusCode: 200..<300).response { response in
+                        switch response.result {
+                        case .success(_):
+                            // Inscription réussie
+
+                            print("Successfull")
+                            DispatchQueue.main.async {
+                                let alertView = UIAlertController(title: "Great !", message: "Registration is successful. You can log in now !", preferredStyle: .alert)
+                                alertView.addAction(UIAlertAction(title: "Continue", style: .cancel) { action in self.dismiss(animated: true, completion: nil)})
+                                self.present(alertView, animated: true, completion: nil)
+                                let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "I_NavController")
+                                loginVC?.modalPresentationStyle = .fullScreen
+                                
+                                self.present(loginVC!, animated: true, completion: nil)
+                            }
+
+                        case .failure(_):
+                            // /!\ Inscription ratée
+
+                            print("Error")
+
+                        }
             }
-            
-//            AF.request("http://168.63.65.106/inf/register",
-//                       method: .post,
-//                       parameters: register,
-//                       encoder: JSONParameterEncoder.default).validate(statusCode: 200..<300).response { response in
-//                        switch response.result {
-//                        case .success(_):
-//                            // Inscription réussie
-//
-//                            print("Successfull")
-//                            DispatchQueue.main.async {
-//                                let alertView = UIAlertController(title: "Great !", message: "Registration is successful. You can log in now !", preferredStyle: .alert)
-//                                alertView.addAction(UIAlertAction(title: "Continue", style: .cancel) { action in self.dismiss(animated: true, completion: nil)})
-//                                self.present(alertView, animated: true, completion: nil)
-//                                let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "I_Register") as! I_ConnectionPageViewController
-//                                self.present(loginVC, animated: true, completion: nil)
-//                            }
-//
-//                        case .failure(_):
-//                            // Inscription ratée
-//
-//                            print("Error")
-//
-//                        }
-//            }
         }
     }
 }

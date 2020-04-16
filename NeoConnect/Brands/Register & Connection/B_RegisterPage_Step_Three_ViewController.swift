@@ -15,15 +15,13 @@ class B_RegisterPage_Step_Three_ViewController: UIViewController {
         let pseudo: String
         let email: String
         let password: String
-        let lastName: String
-        let firstName: String
-        let adress: String
-        let zipCode: String
-        let phoneNumber: String
+        let full_name: String
+        let postal: String
+        let phone: String
         let city: String
-        let company: String
-        let profession: String
-        let subject: String
+        let society: String
+        let function: String
+        let theme: String
     }
     
     @IBOutlet weak var userCompanyTextField: UITextField!
@@ -33,9 +31,7 @@ class B_RegisterPage_Step_Three_ViewController: UIViewController {
     var pseudo = String()
     var email = String()
     var password = String()
-    var lastName = String()
-    var firstName = String()
-    var adress = String()
+    var name = String()
     var zipCode = String()
     var phoneNumber = String()
     var city = String()
@@ -46,9 +42,7 @@ class B_RegisterPage_Step_Three_ViewController: UIViewController {
         print("Pseudo : " + pseudo)
         print("Email : " + email)
         print("Password : " + password)
-        print("Lastname : " + lastName)
-        print("Firstname : " + firstName)
-        print("Adress : " + adress)
+        print("Name : " + name)
         print("Zipcode : " + zipCode)
         print("Phonenumber : " + phoneNumber)
         print("City : " + city)
@@ -68,7 +62,7 @@ class B_RegisterPage_Step_Three_ViewController: UIViewController {
             }
         }
         else {
-                let register = Register(pseudo: pseudo, email: email, password: password, lastName: lastName, firstName: firstName, adress: adress, zipCode: zipCode, phoneNumber: phoneNumber, city: city, company: userCompany, profession: userProfession, subject: userSubject)
+                let register = Register(pseudo: pseudo, email: email, password: password, full_name: name, postal: zipCode, phone: phoneNumber, city: city, society: userCompany, function: userProfession, theme: userSubject)
             
             AF.request("http://168.63.65.106/shop/register",
                        method: .post,
@@ -83,8 +77,10 @@ class B_RegisterPage_Step_Three_ViewController: UIViewController {
                                 let alertView = UIAlertController(title: "Great !", message: "Registration is successful. You can log in now !", preferredStyle: .alert)
                                 alertView.addAction(UIAlertAction(title: "Continue", style: .cancel) { action in self.dismiss(animated: true, completion: nil)})
                                 self.present(alertView, animated: true, completion: nil)
-                                let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "B_Register") as! B_ConnectionPageViewController
-                                self.present(loginVC, animated: true, completion: nil)
+                                let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "B_NavController")
+                                loginVC?.modalPresentationStyle = .fullScreen
+                                
+                                self.present(loginVC!, animated: true, completion: nil)
                             }
 
                         case .failure(_):

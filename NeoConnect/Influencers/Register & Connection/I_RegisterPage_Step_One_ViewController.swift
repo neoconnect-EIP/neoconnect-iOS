@@ -17,8 +17,6 @@ class I_RegisterPage_Step_One_ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func nextButtonTapped(_ sender: Any) {
@@ -30,7 +28,7 @@ class I_RegisterPage_Step_One_ViewController: UIViewController {
         // Check for empty fields
         if (userID.isEmpty || userEmail.isEmpty || userPassword.isEmpty || repeatPassword.isEmpty) {
             
-            // Display alert message
+            // /!\ Display alert message
             DispatchQueue.main.async {
                 let alertView = UIAlertController(title: "Error", message: "All fields are required", preferredStyle: .alert)
                 alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
@@ -41,7 +39,7 @@ class I_RegisterPage_Step_One_ViewController: UIViewController {
         }
         
         if (userPassword != repeatPassword) {
-            // Display alert message passwords don't match together
+            // /!\ Display alert message passwords don't match together
             DispatchQueue.main.async {
                 let alertView = UIAlertController(title: "Error", message: "Passwords do not match", preferredStyle: .alert)
                 alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
