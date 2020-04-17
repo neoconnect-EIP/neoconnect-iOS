@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rU9-iN-hOc">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -63,8 +62,6 @@
                                             <outlet property="detailedPageButton" destination="kSO-8T-7ES" id="AwY-HM-DWd"/>
                                             <outlet property="offerImageView" destination="2Qj-pH-7Ol" id="ZUH-CU-urq"/>
                                             <outlet property="offerTitleLabel" destination="oZD-r0-Mdv" id="dGZ-mX-8ZO"/>
-                                            <outletCollection property="gestureRecognizers" destination="iBD-nv-JGH" appends="YES" id="ReC-lC-bgn"/>
-                                            <outletCollection property="gestureRecognizers" destination="iBD-nv-JGH" appends="YES" id="52p-Ae-R2M"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -101,7 +98,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cdp-so-CjF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="iBD-nv-JGH"/>
             </objects>
             <point key="canvasLocation" x="2675.36231884058" y="502.90178571428567"/>
         </scene>
@@ -309,6 +305,7 @@
                         <outlet property="offerMaleButton" destination="p89-so-vwT" id="EQj-B1-BhW"/>
                         <outlet property="offerSubjectField" destination="3k1-RW-wcM" id="d46-Nw-XWk"/>
                         <outlet property="offerTitleField" destination="GRI-1z-1VP" id="6Cg-AE-zi8"/>
+                        <outlet property="view" destination="Mqf-su-eAh" id="eyE-jX-UFl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KfD-1F-HfX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

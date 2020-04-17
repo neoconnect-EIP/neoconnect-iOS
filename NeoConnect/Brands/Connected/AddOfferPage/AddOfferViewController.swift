@@ -17,19 +17,6 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var descTextView: UITextView!
     @IBOutlet weak var themeTextField: UITextField!
     
-    struct OfferImg: Encodable {
-        let imageName: String
-        let imageData: String
-    }
-    
-    struct Offer: Encodable {
-        let productImg: [OfferImg]
-        let productName: String
-        let productSex: String
-        let productDesc: String
-        let productSubject: String
-    }
-    
     var imagePicker:UIImagePickerController!
     var imageConverter = ImageConverter()
     var sex = String()
@@ -39,7 +26,6 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
         imagePicker.allowsEditing = true
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
-        
         
         super.viewDidLoad()
     }

@@ -86,33 +86,33 @@ extension UIImage {
 extension B_OffersViewController : B_OffersTableViewCellDelegate {
     func deleteButtonTapped(offer: Offer) {
         
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
-            "Content-Type": "application/x-www-form-urlencoded"
-        ]
-        
-        let URL = "http://168.63.65.106/offer/" + String(offer.id)
-        
-        AF.request(URL, method: .delete, encoding: URLEncoding.default, headers: headers, interceptor: nil).responseJSON { response in
-            switch response.result {
-                    case .success(_):
-                        // Offre modifiée
-                        self.viewDidLoad()
-
-                        print("\(String(describing: response.result))")
-                        DispatchQueue.main.async {
-                            let alertView = UIAlertController(title: "Great !", message: "Your offer has been deleted successfully!", preferredStyle: .alert)
-                            alertView.addAction(UIAlertAction(title: "Ok", style: .default) { _ in })
-                            self.present(alertView, animated: true, completion: nil)
-                        }
-
-                    case .failure(let error):
-                        // Erreur de la modification de l'offre
-
-                        print("Request failed with error: \(error)")
-
-                    }
-        }
+//        let headers: HTTPHeaders = [
+//            "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
+//            "Content-Type": "application/x-www-form-urlencoded"
+//        ]
+//
+//        let URL = "http://168.63.65.106/offer/" + String(offer.id)
+//
+//        AF.request(URL, method: .delete, encoding: URLEncoding.default, headers: headers, interceptor: nil).responseJSON { response in
+//            switch response.result {
+//                    case .success(_):
+//                        // Offre modifiée
+//                        self.viewDidLoad()
+//
+//                        print("\(String(describing: response.result))")
+//                        DispatchQueue.main.async {
+//                            let alertView = UIAlertController(title: "Great !", message: "Your offer has been deleted successfully!", preferredStyle: .alert)
+//                            alertView.addAction(UIAlertAction(title: "Ok", style: .default) { _ in })
+//                            self.present(alertView, animated: true, completion: nil)
+//                        }
+//
+//                    case .failure(let error):
+//                        // Erreur de la modification de l'offre
+//
+//                        print("Request failed with error: \(error)")
+//
+//                    }
+//        }
     }
     
     func nextPageButtonTapped(id: Int, title: String, image: UIImage, sex: String, desc: String, subject: String) {

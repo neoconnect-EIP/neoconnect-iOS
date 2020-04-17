@@ -20,7 +20,7 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var offerSubjectField: UITextField!
     @IBOutlet weak var editItem: UIBarButtonItem!
     @IBOutlet weak var changeImageButton: UIButton!
-    
+
     var offerId: Int?
     var offerTitle : String?
     var offerImage : UIImage?
@@ -85,6 +85,7 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
         let desc = offerDescriptionField.text!
         let subject = offerSubjectField.text!
         let image = offerImageView.image!
+        let sex = offerSex!
         
         if (self.editItem.title == "Modifier") {
             editItem.title = "Enregistrer"
@@ -97,7 +98,7 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
         else {
             if (name.isEmpty || desc.isEmpty || subject.isEmpty || offerSex!.isEmpty) {
-                if (image == nil){
+                if (image == nil) {
                     DispatchQueue.main.async {
                         let alertView = UIAlertController(title: "Error", message: "All fields are required", preferredStyle: .alert)
                         alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
@@ -121,7 +122,7 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
                         ]
                     ],
                     "productName": name,
-                    "productSex": offerSex,
+                    "productSex": sex,
                     "productDesc": desc,
                     "productSubject": subject,
                 ]
@@ -132,7 +133,7 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
                             case .success(_):
                                 // Offre modifiée
 
-                                self.editItem.title = "Enregistrer"
+                                self.editItem.title = "Modifier"
                                 self.offerTitleField.isUserInteractionEnabled = true
                                 self.offerFemaleButton.isUserInteractionEnabled = true
                                 self.offerMaleButton.isUserInteractionEnabled = true
