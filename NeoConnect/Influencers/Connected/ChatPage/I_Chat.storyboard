@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FzD-cd-JMa">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Messagerie-->
+        <scene sceneID="eNm-HX-GCZ">
+            <objects>
+                <viewController id="n8P-nU-vkF" customClass="I_ChatViewController" customModule="NeoConnect" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pA9-6t-or7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="CPm-nm-W1I"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Messagerie" id="cLO-Ww-Cuy">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="R8t-YI-umx">
+                            <connections>
+                                <action selector="ContactUser:" destination="n8P-nU-vkF" id="Wn5-o0-IHn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gB1-CJ-glu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1071.0144927536232" y="127.90178571428571"/>
+        </scene>
+        <!--Messagerie-->
+        <scene sceneID="dtQ-SJ-Pof">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FzD-cd-JMa" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Messagerie" image="Chat" id="syy-9F-wFw"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8Ug-Vl-tQw">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="n8P-nU-vkF" kind="relationship" relationship="rootViewController" id="FlY-AV-M2N"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4tp-Jm-5to" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="160.86956521739131" y="127.90178571428571"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Chat" width="30" height="30"/>
+    </resources>
+</document>
