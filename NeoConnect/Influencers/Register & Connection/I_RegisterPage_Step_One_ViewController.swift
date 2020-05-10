@@ -19,6 +19,35 @@ class I_RegisterPage_Step_One_ViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    @IBAction func emailTextField(_ sender: UITextField) {
+        if isValidEmail(sender.text!) {
+            let noColor : UIColor = UIColor.white
+            
+            print(sender.text!)
+            sender.layer.borderColor = noColor.cgColor
+
+        } else {
+            let errorColor : UIColor = UIColor.red
+
+            sender.layer.borderColor = errorColor.cgColor
+            sender.layer.borderWidth = 1.0
+
+            print("Wrong EMAIL")
+        }
+    }
+
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }
+    
     @IBAction func nextButtonTapped(_ sender: Any) {
         let userID = userIDTextField.text!
         let userEmail = userEmailTextField.text!
@@ -30,7 +59,7 @@ class I_RegisterPage_Step_One_ViewController: UIViewController {
             
             // /!\ Display alert message
             DispatchQueue.main.async {
-                let alertView = UIAlertController(title: "Error", message: "All fields are required", preferredStyle: .alert)
+                let alertView = UIAlertController(title: "Erreur", message: "Veuillez remplir tout les champs", preferredStyle: .alert)
                 alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
                 self.present(alertView, animated: true, completion: nil)
             }
@@ -41,7 +70,7 @@ class I_RegisterPage_Step_One_ViewController: UIViewController {
         if (userPassword != repeatPassword) {
             // /!\ Display alert message passwords don't match together
             DispatchQueue.main.async {
-                let alertView = UIAlertController(title: "Error", message: "Passwords do not match", preferredStyle: .alert)
+                let alertView = UIAlertController(title: "Erreur", message: "Les mots de passe ne correspondent pas", preferredStyle: .alert)
                 alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
                 self.present(alertView, animated: true, completion: nil)
             }

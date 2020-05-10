@@ -12,23 +12,11 @@ import DLRadioButton
 
 class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    @IBOutlet weak var changeImageButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descTextView: UITextView!
     @IBOutlet weak var themeTextField: UITextField!
-    
-    struct OfferImg: Encodable {
-        let imageName: String
-        let imageData: String
-    }
-    
-    struct Offer: Encodable {
-        let productImg: [OfferImg]
-        let productName: String
-        let productSex: String
-        let productDesc: String
-        let productSubject: String
-    }
     
     var imagePicker:UIImagePickerController!
     var imageConverter = ImageConverter()
@@ -39,8 +27,7 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
         imagePicker.allowsEditing = true
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
-        
-        
+
         super.viewDidLoad()
     }
     
@@ -64,8 +51,8 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
             if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
                 imageView.contentMode = .scaleAspectFit
                 imageView.image = pickedImage
+                changeImageButton.setImage(nil, for: .normal)
             }
-         
             dismiss(animated: true, completion: nil)
         }
         
@@ -77,20 +64,18 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
         let name = nameTextField.text!
         let desc = descTextView.text!
         let theme = themeTextField.text!
-        let image = imageView.image!
+        let image = imageView.image
         
-        if (name.isEmpty || desc.isEmpty || theme.isEmpty || sex.isEmpty) {
-            if (image == nil){
+        if (name.isEmpty || desc.isEmpty || theme.isEmpty || sex.isEmpty || image == nil) {
                 DispatchQueue.main.async {
                     let alertView = UIAlertController(title: "Error", message: "All fields are required", preferredStyle: .alert)
                     alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
                     self.present(alertView, animated: true, completion: nil)
                 }
-            }
         }
         else {
-            let imageData = imageConverter.imageToBase64(image)!
-            let imageName = name + "_Img"
+            let imageData = imageConverter.imageToBase64(image!)!
+            let imageName = "Image"
 
             let headers: HTTPHeaders = [
                 "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
@@ -118,9 +103,15 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
 
                             print("\(String(describing: response.result))")
                             DispatchQueue.main.async {
-                                let alertView = UIAlertController(title: "Great !", message: "Your offer has been added successfully!", preferredStyle: .alert)
+                                let alertView = UIAlertController(title: "Ajouté !", message: "Votre offre à été ajouté avec succès.", preferredStyle: .alert)
                                 alertView.addAction(UIAlertAction(title: "Ok", style: .default) { _ in })
                                 self.present(alertView, animated: true, completion: nil)
+                                self.imageView.image = nil
+                                self.nameTextField.text?.removeAll()
+                                self.descTextView.text?.removeAll()
+                                self.themeTextField.text?.removeAll()
+                                let image = UIImage(named: "noImage.png")
+                                self.changeImageButton.setImage(image, for: .normal)
                             }
 
                         case .failure(let error):

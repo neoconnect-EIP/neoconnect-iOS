@@ -23,7 +23,10 @@ class I_ConnectionPageViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    //         Bouton de connexion entrée
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
     
     @IBAction func forgetPasswordButtonTapped(_ sender: Any) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "ForgotPassword", bundle: nil)
@@ -33,10 +36,9 @@ class I_ConnectionPageViewController: UIViewController {
     
     @IBAction func switchToBrandButton(_ sender: Any) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "B_Register_and_Connection", bundle: nil)
-        let brandButton = storyBoard.instantiateViewController(withIdentifier: "B_NavController")
-        brandButton.modalPresentationStyle = .fullScreen
-
-        self.present(brandButton, animated: true, completion: nil)
+        let brandButton = storyBoard.instantiateViewController(withIdentifier: "B_Register")
+        brandButton.navigationItem.setHidesBackButton(true, animated: true)
+        self.show(brandButton, sender: true)
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
@@ -47,22 +49,13 @@ class I_ConnectionPageViewController: UIViewController {
         
         //       Conditions de connexion
         
-        if (userPseudo == "Inf" && userPassword == "1234") {
-            let storyBoard: UIStoryboard = UIStoryboard(name: "I_TabBarController", bundle: nil)
-            let Home = storyBoard.instantiateViewController(withIdentifier: "I_CustomTabBarController")
-            Home.modalPresentationStyle = .fullScreen
-
-            self.present(Home, animated: true, completion: nil)
-        }
         AF.request("http://168.63.65.106/login",
                    method: .post,
                    parameters: login,
                    encoder: JSONParameterEncoder.default).validate(statusCode: 200..<300).responseJSON { response in
                     switch response.result {
                     case .success(let JSON):
-                        
                         // Connexion réussie
-                        self.showSpinner(onView: self.view)
                         let response = JSON as! NSDictionary
                         let token = response.object(forKey: "token")!
                         let id = response.object(forKey: "userId")!
@@ -72,9 +65,8 @@ class I_ConnectionPageViewController: UIViewController {
                         print(id)
                         let storyBoard: UIStoryboard = UIStoryboard(name: "I_TabBarController", bundle: nil)
                         let Home = storyBoard.instantiateViewController(withIdentifier: "I_CustomTabBarController")
-                        Home.modalPresentationStyle = .fullScreen
-                        
-                        self.present(Home, animated: true, completion: nil)
+                        Home.navigationItem.setHidesBackButton(true, animated: true)
+                        self.show(Home, sender: nil)
 
                     case .failure(_):
                         
@@ -82,7 +74,7 @@ class I_ConnectionPageViewController: UIViewController {
 
                         DispatchQueue.main.async {
                         // Message d'alerte
-                            let alertView = UIAlertController(title: "Error", message: "Email/Password is/are incorrect, please retry.", preferredStyle: .alert)
+                            let alertView = UIAlertController(title: "Error", message: "Email/Mot de passe incorrects, veuillez réessayer", preferredStyle: .alert)
                             alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
                             self.present(alertView, animated: true, completion: nil)
                         }

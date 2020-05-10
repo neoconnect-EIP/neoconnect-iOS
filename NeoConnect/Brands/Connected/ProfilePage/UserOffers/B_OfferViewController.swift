@@ -21,16 +21,27 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var editItem: UIBarButtonItem!
     @IBOutlet weak var changeImageButton: UIButton!
     
-    var offerId: Int?
-    var offerTitle : String?
-    var offerImage : UIImage?
-    var offerSex : String?
-    var offerDescription : String?
-    var offerSubject : String?
+    var offer: Offer!
+    var offerSex: String!
     
     var imagePicker:UIImagePickerController!
     var imageConverter = ImageConverter()
 
+    override func viewWillAppear(_ animated: Bool) {
+        self.title = offer.title
+        offerTitleField.text = offer.title
+        offerDescriptionField.text = offer.description
+        offerSubjectField.text = offer.subject
+        offerImageView.image = offer.image
+        
+        if (offer.sex == "Male") {
+            offerMaleButton.isSelected = true
+            offerSex = "Male"
+        } else {
+            offerFemaleButton.isSelected = true
+            offerSex = "Female"
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,17 +49,6 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
         imagePicker.allowsEditing = true
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
-        
-        self.title = offerTitle
-        offerTitleField.text = offerTitle
-        offerDescriptionField.text = offerDescription
-        offerSubjectField.text = offerSubject
-        offerImageView.image = offerImage
-        if (offerSex == "Male") {
-            offerMaleButton.isSelected = true
-        } else {
-            offerFemaleButton.isSelected = true
-        }
     }
     
     @IBAction func changeImageButtonTapped(_ sender: Any) {
@@ -96,8 +96,8 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
             changeImageButton.isUserInteractionEnabled = true
         }
         else {
-            if (name.isEmpty || desc.isEmpty || subject.isEmpty || offerSex!.isEmpty) {
-                if (image == nil){
+            if (name.isEmpty || desc.isEmpty || subject.isEmpty) {
+                if (image == nil) {
                     DispatchQueue.main.async {
                         let alertView = UIAlertController(title: "Error", message: "All fields are required", preferredStyle: .alert)
                         alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
@@ -107,7 +107,7 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
             }
             else {
                 let imageData = imageConverter.imageToBase64(image)!
-                let imageName = name + "_Img"
+                let imageName = "Img_offer_" + String(offer.id)
 
                 let headers: HTTPHeaders = [
                     "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
@@ -121,11 +121,11 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
                         ]
                     ],
                     "productName": name,
-                    "productSex": offerSex,
+                    "productSex": offerSex!,
                     "productDesc": desc,
                     "productSubject": subject,
                 ]
-                let URL = "http://168.63.65.106/offer/" + String(offerId!)
+                let URL = "http://168.63.65.106/offer/\(self.offer.id)"
                 
                 AF.request(URL, method: .put, parameters: offer, encoding: URLEncoding.default, headers: headers, interceptor: nil).responseJSON { response in
                     switch response.result {
@@ -133,16 +133,16 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
                                 // Offre modifiée
 
                                 self.editItem.title = "Enregistrer"
-                                self.offerTitleField.isUserInteractionEnabled = true
-                                self.offerFemaleButton.isUserInteractionEnabled = true
-                                self.offerMaleButton.isUserInteractionEnabled = true
-                                self.offerDescriptionField.isUserInteractionEnabled = true
-                                self.offerSubjectField.isUserInteractionEnabled = true
-                                self.changeImageButton.isUserInteractionEnabled = true
+                                self.offerTitleField.isUserInteractionEnabled = false
+                                self.offerFemaleButton.isUserInteractionEnabled = false
+                                self.offerMaleButton.isUserInteractionEnabled = false
+                                self.offerDescriptionField.isUserInteractionEnabled = false
+                                self.offerSubjectField.isUserInteractionEnabled = false
+                                self.changeImageButton.isUserInteractionEnabled = false
                                 
                                 print("\(String(describing: response.result))")
                                 DispatchQueue.main.async {
-                                    let alertView = UIAlertController(title: "Great !", message: "Your offer has been modified successfully!", preferredStyle: .alert)
+                                    let alertView = UIAlertController(title: "Parfait !", message: "Votre offre a été modifié avec succès!", preferredStyle: .alert)
                                     alertView.addAction(UIAlertAction(title: "Ok", style: .default) { _ in })
                                     self.present(alertView, animated: true, completion: nil)
                                 }

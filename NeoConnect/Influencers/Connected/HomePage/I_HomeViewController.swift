@@ -13,6 +13,5 @@ class I_HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.removeSpinner()
     }
 }

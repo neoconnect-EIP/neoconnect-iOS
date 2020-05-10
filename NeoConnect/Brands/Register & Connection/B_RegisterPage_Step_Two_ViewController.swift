@@ -11,8 +11,8 @@ import UIKit
 class B_RegisterPage_Step_Two_ViewController: UIViewController {
     
     @IBOutlet weak var userNameTextField: UITextField!
-    @IBOutlet weak var userZipCodeTextField: UITextField!
     @IBOutlet weak var userCityTextField: UITextField!
+    @IBOutlet weak var userZipCodeTextField: UITextField!
     @IBOutlet weak var userPhoneNumberTextField: UITextField!
 
     var pseudo = String()
@@ -21,12 +21,9 @@ class B_RegisterPage_Step_Two_ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Pseudo : " + pseudo)
-        print("Email : " + email)
-        print("Password : " + password)
     }
 
-    @IBAction func nextButton(_ sender: Any) {
+    @IBAction func nextButtonTapped(_ sender: Any) {
         let userName = userNameTextField.text!
         let userZipCode = userZipCodeTextField.text!
         let userCity = userCityTextField.text!

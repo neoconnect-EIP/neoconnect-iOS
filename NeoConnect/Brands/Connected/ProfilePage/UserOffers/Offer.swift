@@ -26,5 +26,4 @@ class Offer {
         self.description = description
         self.subject = subject
     }
-    
 }

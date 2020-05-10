@@ -16,20 +16,30 @@ class B_OffersViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var offers: [Offer] = []
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getDataFromAPI()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let decoded = UserDefaults.standard.data(forKey: "Shop")
-        let shop = NSKeyedUnarchiver.unarchiveObject(with: decoded!) as! Shop
-        var results : Array<NSDictionary> = []
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+        
+    func getDataFromAPI() {
+                
+        let id = UserDefaults.standard.string(forKey: "id")!
 
         let headers: HTTPHeaders = [
             "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
             "Content-Type": "application/x-www-form-urlencoded"
         ]
-        AF.request("http://168.63.65.106/offer/shop/\(shop.id)",
+        AF.request("http://168.63.65.106/offer/shop/\(id)",
                    headers: headers).responseJSON { response in
                     switch response.result {
+                        
                     case .success(let JSON):
                         
                             print(JSON)
@@ -43,17 +53,13 @@ class B_OffersViewController: UIViewController {
                                 self.noOfferLabelText.isHidden = false
                             }
                             self.tableView.reloadData()
-                            print(response)
                             
                         case .failure(let error):
                                 print("Request failed with error: \(error)")
                     }
         }
-        
-        tableView.delegate = self
-        tableView.dataSource = self
     }
-        
+    
     func createArray(results: Array<NSDictionary>) -> [Offer] {
         var tempOffer: [Offer] = []
         
@@ -71,69 +77,76 @@ class B_OffersViewController: UIViewController {
         }
         return tempOffer
     }
-}
-
-extension UIImage {
-
-    convenience init?(withContentsOfUrl url: URL) throws {
-        let imageData = try Data(contentsOf: url)
     
-        self.init(data: imageData)
-    }
-
-}
-
-extension B_OffersViewController : B_OffersTableViewCellDelegate {
-    func deleteButtonTapped(offer: Offer) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let row = tableView.indexPathForSelectedRow?.row
+        let offer = self.offers[row!]
+        let VC = segue.destination as! B_OfferViewController
         
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
-            "Content-Type": "application/x-www-form-urlencoded"
-        ]
-        
-        let URL = "http://168.63.65.106/offer/" + String(offer.id)
-        
-        AF.request(URL, method: .delete, encoding: URLEncoding.default, headers: headers, interceptor: nil).responseJSON { response in
-            switch response.result {
-                    case .success(_):
-                        // Offre modifiée
-                        self.viewDidLoad()
-
-                        print("\(String(describing: response.result))")
-                        DispatchQueue.main.async {
-                            let alertView = UIAlertController(title: "Great !", message: "Your offer has been deleted successfully!", preferredStyle: .alert)
-                            alertView.addAction(UIAlertAction(title: "Ok", style: .default) { _ in })
-                            self.present(alertView, animated: true, completion: nil)
-                        }
-
-                    case .failure(let error):
-                        // Erreur de la modification de l'offre
-
-                        print("Request failed with error: \(error)")
-
-                    }
-        }
-    }
-    
-    func nextPageButtonTapped(id: Int, title: String, image: UIImage, sex: String, desc: String, subject: String) {
-        // directly use the youtuber saved in the cell
-        // show alert
-        let VC = self.storyboard?.instantiateViewController(withIdentifier: "OfferViewController") as? B_OfferViewController
-        
-        VC?.offerImage = image
-        VC?.offerTitle = title
-        VC?.offerSex = sex
-        VC?.offerId = id
-        VC?.offerDescription = desc
-        VC?.offerSubject = subject
-        
-        self.show(VC!, sender: nil)
+        print(offer.title)
+        VC.offer = offer
     }
 }
+//
+//extension UIImage {
+//
+//    convenience init?(withContentsOfUrl url: URL) throws {
+//        let imageData = try Data(contentsOf: url)
+//
+//        self.init(data: imageData)
+//    }
+//}
 
 extension B_OffersViewController : UITableViewDataSource, UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let offer = offers[indexPath.row]
+            
+            let title = "Delete \(offer.title)?"
+            let message = "Are you sure you want to delete this book?"
+            let ac = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            ac.addAction(cancelAction)
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: { (action) -> Void in
+                
+                let headers: HTTPHeaders = [
+                    "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
+                    "Content-Type": "application/x-www-form-urlencoded"
+                ]
+
+                let URL = "http://168.63.65.106/offer/" + String(offer.id)
+
+                AF.request(URL, method: .delete, encoding: URLEncoding.default, headers: headers, interceptor: nil).responseJSON { response in
+                    switch response.result {
+                            case .success(_):
+                                // Offre modifiée
+
+                                print("\(String(describing: response.result))")
+                                DispatchQueue.main.async {
+                                    let alertView = UIAlertController(title: "Great !", message: "Your offer has been deleted successfully!", preferredStyle: .alert)
+                                    alertView.addAction(UIAlertAction(title: "Ok", style: .default) { _ in })
+                                    self.present(alertView, animated: true, completion: nil)
+                                }
+
+                            case .failure(let error):
+                                // Erreur de la modification de l'offre
+                                print("Request failed with error: \(error)")
+                            }
+                }
+                self.offers.remove(at: indexPath.row)
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                })
+            ac.addAction(deleteAction)
+            present(ac, animated: true, completion: nil)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if offers.count == 0 {
+            self.noOfferView.isHidden = false
+            self.noOfferLabelText.isHidden = false
+        }
         return offers.count
     }
     
@@ -142,8 +155,11 @@ extension B_OffersViewController : UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OffersTableViewCell") as! B_OffersTableViewCell
     
         cell.setOffers(offer: offer)
-        cell.delegate = self
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

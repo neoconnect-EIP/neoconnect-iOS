@@ -19,6 +19,34 @@ class B_RegisterPage_Step_One_ViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    @IBAction func emailTextField(_ sender: UITextField) {
+        if isValidEmail(sender.text!) {
+            let noColor : UIColor = UIColor.white
+            
+            print(sender.text!)
+            sender.layer.borderColor = noColor.cgColor
+        } else {
+            let errorColor : UIColor = UIColor.red
+
+            sender.layer.borderColor = errorColor.cgColor
+            sender.layer.borderWidth = 1.0
+
+            print("Wrong EMAIL")
+        }
+    }
+    
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }
+    
     @IBAction func nextButtonTapped(_ sender: Any) {
         let userID = userIDTextField.text!
         let userEmail = userEmailTextField.text!

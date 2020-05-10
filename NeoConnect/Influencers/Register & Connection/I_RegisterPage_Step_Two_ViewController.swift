@@ -28,6 +28,11 @@ class I_RegisterPage_Step_Two_ViewController: UIViewController {
         print("Password : " + password)
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     // Fonction bouton sexe influenceur
     @IBAction func radioBtnTapped(_ sender: DLRadioButton) {
         if (sender.tag == 1) {
@@ -47,10 +52,15 @@ class I_RegisterPage_Step_Two_ViewController: UIViewController {
         
         // Check for empty fields // Vérification des champs vides
         if (userName.isEmpty || userZipCode.isEmpty || userCity.isEmpty || userPhoneNumber.isEmpty || userSex.isEmpty) {
-            
+            print(sex)
+            print(userName)
+            print(userZipCode)
+            print(userPhoneNumber)
+            print(userCity)
+
             // Display alert message // Affichage d'un message d'alerte
             DispatchQueue.main.async {
-                let alertView = UIAlertController(title: "Error", message: "All fields are required", preferredStyle: .alert)
+                let alertView = UIAlertController(title: "Erreur", message: "Veuillez remplir tout les champs", preferredStyle: .alert)
                 alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
                 self.present(alertView, animated: true, completion: nil)
             }
