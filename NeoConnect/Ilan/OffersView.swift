@@ -18,7 +18,7 @@ struct offerImage: Codable {
     let imageData: String?
 }
 
-struct Offer2: Codable,Identifiable {
+struct Offer2: Codable,Identifiable{
 var id : Int
 var idUser: Int
 var productImg: [offerImage]?
@@ -75,19 +75,25 @@ struct DetailOffer: View {
     var selectedOffer : Offer2
     var date : String
 var body: some View {
-    VStack {
+    VStack(alignment: .center, spacing: 20.0) {
        KFImage(URL(string:selectedOffer.productImg![0].imageData!)).resizable().frame(width: 100, height: 100)
-            .clipShape(Circle()).clipped().padding(10)
-        
-        Text(String(selectedOffer.productName!)).padding(10).font(.title)
-//    Text(String(selectedOffer.productSubject!)).padding(5)
-    Text(String(selectedOffer.productSex!)).padding(5)
-    Text(String(selectedOffer.productDesc!)).padding(5)
-    Text("Crée le " + date).padding(10)
-        .font(Font.system(size: 14))
+            .clipShape(Circle()).clipped().padding(10).shadow(radius: 3)
+        Text(String(selectedOffer.productName!)).multilineTextAlignment(.center).font(.headline)
+        HStack {
+        Text(String(selectedOffer.productSubject ?? "Pas de thème renseigné")).font(.subheadline).fontWeight(.light).multilineTextAlignment(.leading)
+        .padding(.trailing,30)
+    Text(String(selectedOffer.productSex!)).font(.subheadline).fontWeight(.light).multilineTextAlignment(.leading)
+        .padding(.trailing,30)
+        }
+    Divider()
+        .padding(.trailing,50)
+                   .padding(.leading,50)
+        Text(String(selectedOffer.productDesc!)).font(.body).fontWeight(.light).multilineTextAlignment(.center)
+    Text("Crée le " + date).foregroundColor(Color.gray)
+        .font(Font.system(size: 14)).italic()
         Button(action: {postulate(offer: self.selectedOffer)}) {
         Text("Postuler")
-        }.padding(30)
+        }.padding(20)
     }
 }
 }
@@ -121,11 +127,12 @@ struct OffersView: View {
 
 }
 
-/*struct OffersView_Previews: PreviewProvider {
+struct OffersView_Previews: PreviewProvider {
+
     static var previews: some View {
         OffersView()
     }
-}*/
+}
 
 struct SearchBar: View {
     @Binding var text: String
@@ -179,8 +186,8 @@ struct SearchBar: View {
     }
 }
 
-struct SearchBar_Previews: PreviewProvider {
+/*struct SearchBar_Previews: PreviewProvider {
     static var previews: some View {
         SearchBar(text: .constant(""))
     }
-}
+}*/

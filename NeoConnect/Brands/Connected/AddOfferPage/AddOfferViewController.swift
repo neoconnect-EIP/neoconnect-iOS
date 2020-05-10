@@ -16,7 +16,8 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descTextView: UITextView!
     @IBOutlet weak var themeTextField: UITextField!
-    
+    @IBOutlet weak var brandTextField: UITextField!
+
     struct OfferImg: Encodable {
         let imageName: String
         let imageData: String
@@ -78,7 +79,9 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
         let desc = descTextView.text!
         let theme = themeTextField.text!
         let image = imageView.image!
-        
+        let brand = brandTextField.text!
+
+                      
         if (name.isEmpty || desc.isEmpty || theme.isEmpty || sex.isEmpty) {
             if (image == nil){
                 DispatchQueue.main.async {
@@ -104,6 +107,7 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
                     ]
                 ],
                 "productName": name,
+                "brand": brand,
                 "productSex": sex,
                 "productDesc": desc,
                 "productSubject": theme,

@@ -35,8 +35,8 @@ func myimage(for number: Int) -> Image {
     }
     
     var body: some View {
-        VStack {
-            TextField("Commentaires", text: $message).frame(width: 200, height: 200).textFieldStyle(RoundedBorderTextFieldStyle())
+        VStack() {
+            TextField("Commentaires", text: $message).frame(width: 300, height: 300).textFieldStyle(RoundedBorderTextFieldStyle())
             .frame(width: 100, height: 200)
                    .multilineTextAlignment(.center)
         HStack {
@@ -73,8 +73,8 @@ func rateAndComment(rating: Int, selectedOffer: Offer2, message: String)
 }
 
 
-/*struct NotationView_Previews: PreviewProvider {
+struct NotationView_Previews: PreviewProvider {
     static var previews: some View {
-        NotationView(rating: .constant(4))
+        NotationView(selectedOffer: Offer2(), rating: .constant(4))
     }
-}*/
+}

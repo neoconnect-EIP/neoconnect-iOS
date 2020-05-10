@@ -98,20 +98,27 @@ struct DetailMyOffer2: View {
     var date : String
 
 var body: some View {
-    VStack {
-      //  String(self.selectedOffer.productImg![1])
-      KFImage(URL(string:selectedOffer.productImg![0].imageData!)).resizable().frame(width: 100, height: 100)
-        .clipShape(Circle()).clipped().padding(10)
-    Text(String(selectedOffer.productName!)).padding(5).font(.title)
-//        Text(String(selectedOffer.productSubject!)).padding(5)
-    Text(String(selectedOffer.productSex!)).padding(5)
-    Text(String(selectedOffer.productDesc!)).padding(5)
-    Text("Crée le " + date).padding(10).font(Font.system(size: 14))
-        Text("Vous avez postulé à cette offre.").multilineTextAlignment(.center).padding(30)
+    VStack(alignment: .center, spacing: 20.0) {
+         KFImage(URL(string:selectedOffer.productImg![0].imageData!)).resizable().frame(width: 100, height: 100)
+              .clipShape(Circle()).clipped().padding(10).shadow(radius: 3)
+          Text(String(selectedOffer.productName!)).multilineTextAlignment(.center).font(.headline)
+        HStack{
+          Text(String(selectedOffer.productSubject ?? "Pas de thème renseigné")).font(.subheadline).fontWeight(.light).multilineTextAlignment(.leading)
+          .padding(.trailing,30)
+      Text(String(selectedOffer.productSex!)).font(.subheadline).fontWeight(.light).multilineTextAlignment(.leading)
+        .padding(.trailing,30)
+        }
+      Divider()
+                     .padding(.trailing,50)
+                     .padding(.leading,50)
+        Text(String(selectedOffer.productDesc!)).font(.body).fontWeight(.light).multilineTextAlignment(.center)
+      Text("Crée le " + date).foregroundColor(Color.gray)
+          .font(Font.system(size: 14)).italic()
+        Text("Vous avez postulé à cette offre.").multilineTextAlignment(.center)
         NavigationLink(destination: NotationView(selectedOffer: selectedOffer, rating: $rating)) {
            Text("Noter")
            }
-    }.padding(30)
+    }.padding(20)
 }
 }
 
