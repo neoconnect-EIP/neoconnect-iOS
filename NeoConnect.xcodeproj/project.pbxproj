@@ -17,17 +17,19 @@
 		3330A94423DF08EE00A0CF63 /* userFound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3330A94323DF08EE00A0CF63 /* userFound.swift */; };
 		3338277722A6D51700504540 /* I_RegisterPage_Step_One_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3338277622A6D51700504540 /* I_RegisterPage_Step_One_ViewController.swift */; };
 		3338277922A6D53F00504540 /* I_ConnectionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3338277822A6D53F00504540 /* I_ConnectionPageViewController.swift */; };
-		333862312326B10A005C188E /* B_ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333862302326B10A005C188E /* B_ProfileViewController.swift */; };
+		333862312326B10A005C188E /* B_UserInformationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333862302326B10A005C188E /* B_UserInformationsViewController.swift */; };
 		333862332326C581005C188E /* I_TabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 333862322326C581005C188E /* I_TabBarController.storyboard */; };
 		333862352326C69C005C188E /* I_Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 333862342326C69C005C188E /* I_Home.storyboard */; };
 		333862382326C6EF005C188E /* I_Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 333862372326C6EF005C188E /* I_Search.storyboard */; };
 		3338623A2326C717005C188E /* I_Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 333862392326C717005C188E /* I_Chat.storyboard */; };
 		3338623C2326C724005C188E /* I_Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3338623B2326C724005C188E /* I_Profile.storyboard */; };
-		3338623E2326C942005C188E /* I_ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3338623D2326C942005C188E /* I_ProfileViewController.swift */; };
+		3338623E2326C942005C188E /* I_UserInformationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3338623D2326C942005C188E /* I_UserInformationsViewController.swift */; };
 		3342BD5523240E5900552F2B /* B_ConnectionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3342BD5423240E5900552F2B /* B_ConnectionPageViewController.swift */; };
 		334672A323278A7200D5E0DD /* B_HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334672A223278A7200D5E0DD /* B_HomeViewController.swift */; };
 		334672A523278B3100D5E0DD /* B_SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334672A423278B3100D5E0DD /* B_SearchViewController.swift */; };
 		334672A723278B5400D5E0DD /* B_ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334672A623278B5400D5E0DD /* B_ChatViewController.swift */; };
+		3353DCAE2469FB500070AAAC /* B_ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3353DCAD2469FB500070AAAC /* B_ProfileViewController.swift */; };
+		3353DCB02469FF660070AAAC /* I_ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3353DCAF2469FF660070AAAC /* I_ProfileViewController.swift */; };
 		3359B51F22E7813A00CB86E2 /* B_TabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3359B51E22E7813A00CB86E2 /* B_TabBarController.storyboard */; };
 		3359B52622E78CE400CB86E2 /* B_Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3359B52522E78CE400CB86E2 /* B_Home.storyboard */; };
 		3359B52822E78D0900CB86E2 /* B_Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3359B52722E78D0900CB86E2 /* B_Search.storyboard */; };
@@ -121,17 +123,19 @@
 		3330A94323DF08EE00A0CF63 /* userFound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userFound.swift; sourceTree = "<group>"; };
 		3338277622A6D51700504540 /* I_RegisterPage_Step_One_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_RegisterPage_Step_One_ViewController.swift; sourceTree = "<group>"; };
 		3338277822A6D53F00504540 /* I_ConnectionPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_ConnectionPageViewController.swift; sourceTree = "<group>"; };
-		333862302326B10A005C188E /* B_ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B_ProfileViewController.swift; sourceTree = "<group>"; };
+		333862302326B10A005C188E /* B_UserInformationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B_UserInformationsViewController.swift; sourceTree = "<group>"; };
 		333862322326C581005C188E /* I_TabBarController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = I_TabBarController.storyboard; sourceTree = "<group>"; };
 		333862342326C69C005C188E /* I_Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = I_Home.storyboard; sourceTree = "<group>"; };
 		333862372326C6EF005C188E /* I_Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = I_Search.storyboard; sourceTree = "<group>"; };
 		333862392326C717005C188E /* I_Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = I_Chat.storyboard; sourceTree = "<group>"; };
 		3338623B2326C724005C188E /* I_Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = I_Profile.storyboard; sourceTree = "<group>"; };
-		3338623D2326C942005C188E /* I_ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_ProfileViewController.swift; sourceTree = "<group>"; };
+		3338623D2326C942005C188E /* I_UserInformationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_UserInformationsViewController.swift; sourceTree = "<group>"; };
 		3342BD5423240E5900552F2B /* B_ConnectionPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B_ConnectionPageViewController.swift; sourceTree = "<group>"; };
 		334672A223278A7200D5E0DD /* B_HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B_HomeViewController.swift; sourceTree = "<group>"; };
 		334672A423278B3100D5E0DD /* B_SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B_SearchViewController.swift; sourceTree = "<group>"; };
 		334672A623278B5400D5E0DD /* B_ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B_ChatViewController.swift; sourceTree = "<group>"; };
+		3353DCAD2469FB500070AAAC /* B_ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B_ProfileViewController.swift; sourceTree = "<group>"; };
+		3353DCAF2469FF660070AAAC /* I_ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_ProfileViewController.swift; sourceTree = "<group>"; };
 		3359B51E22E7813A00CB86E2 /* B_TabBarController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = B_TabBarController.storyboard; sourceTree = "<group>"; };
 		3359B52522E78CE400CB86E2 /* B_Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = B_Home.storyboard; sourceTree = "<group>"; };
 		3359B52722E78D0900CB86E2 /* B_Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = B_Search.storyboard; sourceTree = "<group>"; };
@@ -257,6 +261,7 @@
 			children = (
 				3369C165244CC0230005307F /* UserInformations */,
 				33F1362423E21E7E00A740DE /* I_ParametersTableViewController.swift */,
+				3353DCAF2469FF660070AAAC /* I_ProfileViewController.swift */,
 				3338623B2326C724005C188E /* I_Profile.storyboard */,
 			);
 			path = ProfilePage;
@@ -337,6 +342,7 @@
 				3387EE692406E1C20050852D /* UserOffers */,
 				3387EE682406E1A40050852D /* UserInformations */,
 				3325179D23E62A9A000C7E7D /* B_ParametersTableViewController.swift */,
+				3353DCAD2469FB500070AAAC /* B_ProfileViewController.swift */,
 				3359B52D22E78D9700CB86E2 /* B_Profile.storyboard */,
 			);
 			path = ProfilePage;
@@ -345,7 +351,7 @@
 		3369C165244CC0230005307F /* UserInformations */ = {
 			isa = PBXGroup;
 			children = (
-				3338623D2326C942005C188E /* I_ProfileViewController.swift */,
+				3338623D2326C942005C188E /* I_UserInformationsViewController.swift */,
 				3369C166244CC0950005307F /* I_UserInformations.storyboard */,
 			);
 			path = UserInformations;
@@ -354,7 +360,7 @@
 		3387EE682406E1A40050852D /* UserInformations */ = {
 			isa = PBXGroup;
 			children = (
-				333862302326B10A005C188E /* B_ProfileViewController.swift */,
+				333862302326B10A005C188E /* B_UserInformationsViewController.swift */,
 				339782172434EA8400B35C68 /* B_UserInformations.storyboard */,
 			);
 			path = UserInformations;
@@ -875,7 +881,7 @@
 				33CB63D823E0C60C0075B98C /* shopFound.swift in Sources */,
 				99B7DDE82468A75400A6E418 /* ContentView.swift in Sources */,
 				331A739C22D2077800FDA4AF /* B_RegisterPage_Step_One_ViewController.swift in Sources */,
-				3338623E2326C942005C188E /* I_ProfileViewController.swift in Sources */,
+				3338623E2326C942005C188E /* I_UserInformationsViewController.swift in Sources */,
 				336E62BC243608F600AF0949 /* B_MarksViewController.swift in Sources */,
 				99B7DDE42468A75400A6E418 /* HomeView.swift in Sources */,
 				99B7DDEE2468CB6300A6E418 /* I_HomeTableViewController.swift in Sources */,
@@ -886,6 +892,7 @@
 				33F2943D23CB6B9A005B4C02 /* UpdatePasswordViewController.swift in Sources */,
 				3328B61C236DEC510070B7B4 /* B_RegisterPage_Step_Three_ViewController.swift in Sources */,
 				3392B6A724639F630040388A /* DescriptionShopSlide.swift in Sources */,
+				3353DCAE2469FB500070AAAC /* B_ProfileViewController.swift in Sources */,
 				99B7DDE52468A75400A6E418 /* ContactView.swift in Sources */,
 				33131D8D2368A377006C0A4B /* I_SearchViewController.swift in Sources */,
 				3342BD5523240E5900552F2B /* B_ConnectionPageViewController.swift in Sources */,
@@ -898,6 +905,7 @@
 				33F1362523E21E7E00A740DE /* I_ParametersTableViewController.swift in Sources */,
 				33AF88852460F32600C6438C /* I_RegisterPage_Step_Four_ViewController.swift in Sources */,
 				3387EE6D2406E92D0050852D /* B_OffersTableViewCell.swift in Sources */,
+				3353DCB02469FF660070AAAC /* I_ProfileViewController.swift in Sources */,
 				3392B69D24632C8F0040388A /* B_RegisterPage_Step_Four_ViewController.swift in Sources */,
 				33131D8F2368A3A0006C0A4B /* I_ChatViewController.swift in Sources */,
 				3388BE5A232016A000B9D1F8 /* AddOfferViewController.swift in Sources */,
@@ -906,7 +914,7 @@
 				33BC651E229ECA4000C52262 /* MainPage.swift in Sources */,
 				3338277922A6D53F00504540 /* I_ConnectionPageViewController.swift in Sources */,
 				3330A94423DF08EE00A0CF63 /* userFound.swift in Sources */,
-				333862312326B10A005C188E /* B_ProfileViewController.swift in Sources */,
+				333862312326B10A005C188E /* B_UserInformationsViewController.swift in Sources */,
 				99B7DDE92468A75400A6E418 /* SceneDelegate.swift in Sources */,
 				3325179E23E62A9A000C7E7D /* B_ParametersTableViewController.swift in Sources */,
 				99B7DDE12468A75400A6E418 /* Test.swift in Sources */,

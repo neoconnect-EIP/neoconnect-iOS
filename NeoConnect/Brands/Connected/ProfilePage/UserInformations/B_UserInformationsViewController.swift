@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class B_ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class B_UserInformationsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var changeImageButton: UIButton!
@@ -32,6 +32,11 @@ class B_ProfileViewController: UIViewController, UIImagePickerControllerDelegate
     var imagePicker:UIImagePickerController!
     var imageConverter = ImageConverter()
         
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     override func viewDidLoad() {
         image.layer.borderWidth = 1
         image.layer.masksToBounds = false
