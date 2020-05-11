@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="e85-DB-4TD">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Description Inf View Controller-->
+        <scene sceneID="DQq-Db-LHY">
+            <objects>
+                <viewController storyboardIdentifier="DescriptionInf" id="ml8-XE-xzX" customClass="DescriptionInfViewController" customModule="NeoConnect" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="avT-Dk-g49">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IVv-OK-eeq">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="qgu-j0-7Eu"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="i94-IO-u7x"/>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="dnN-X9-6Jv">
+                                <rect key="frame" x="92" y="610" width="191" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="RfB-ig-aQP"/>
+                                    <constraint firstAttribute="width" constant="191" id="fNM-bu-BSH"/>
+                                </constraints>
+                                <color key="pageIndicatorTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="currentPageIndicatorTintColor" red="0.25997218490000001" green="0.61279952530000004" blue="0.75298136469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <action selector="scrollView:" destination="ml8-XE-xzX" eventType="valueChanged" id="BUn-8P-1US"/>
+                                </connections>
+                            </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pB0-jn-Hwz">
+                                <rect key="frame" x="258" y="69" width="92" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="92" id="fDD-LD-Kam"/>
+                                    <constraint firstAttribute="height" constant="30" id="nou-gi-KAj"/>
+                                </constraints>
+                                <state key="normal" title="Se connecter">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginButtonTapped:" destination="ml8-XE-xzX" eventType="touchUpInside" id="Ngw-aI-wqQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="IVv-OK-eeq" firstAttribute="height" secondItem="3Qd-fm-wDg" secondAttribute="height" id="DuZ-9q-Tdf"/>
+                            <constraint firstItem="IVv-OK-eeq" firstAttribute="centerX" secondItem="3Qd-fm-wDg" secondAttribute="centerX" id="Rrb-OB-zcG"/>
+                            <constraint firstItem="3Qd-fm-wDg" firstAttribute="trailing" secondItem="pB0-jn-Hwz" secondAttribute="trailing" constant="25" id="T3f-AA-xbm"/>
+                            <constraint firstItem="IVv-OK-eeq" firstAttribute="centerY" secondItem="3Qd-fm-wDg" secondAttribute="centerY" id="T5z-99-2oE"/>
+                            <constraint firstItem="IVv-OK-eeq" firstAttribute="width" secondItem="avT-Dk-g49" secondAttribute="width" id="Tt7-CB-6Kc"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="dnN-X9-6Jv" secondAttribute="bottom" constant="20" id="iqe-qx-MVV"/>
+                            <constraint firstItem="dnN-X9-6Jv" firstAttribute="centerX" secondItem="avT-Dk-g49" secondAttribute="centerX" id="izu-yY-lgx"/>
+                            <constraint firstItem="pB0-jn-Hwz" firstAttribute="top" secondItem="3Qd-fm-wDg" secondAttribute="top" constant="25" id="mDW-fM-LuI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3Qd-fm-wDg"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ezy-74-Fwl"/>
+                    <connections>
+                        <outlet property="pageControl" destination="dnN-X9-6Jv" id="O1c-CW-WmZ"/>
+                        <outlet property="scrollView" destination="IVv-OK-eeq" id="66h-g2-ABg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sfh-Nr-ybd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2258.4000000000001" y="-389.05547226386807"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="uFI-5G-6Ao">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="e85-DB-4TD" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Gny-cs-HfO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ml8-XE-xzX" kind="relationship" relationship="rootViewController" id="Nlc-Z4-ynz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YHF-dT-LnY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1372.4637681159422" y="-389.0625"/>
+        </scene>
+    </scenes>
+</document>
