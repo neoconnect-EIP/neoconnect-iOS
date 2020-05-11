@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QfV-Eq-dfN">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QfV-Eq-dfN">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,23 +12,31 @@
             <objects>
                 <viewController id="ae4-US-Nhe" customClass="B_SearchViewController" customModule="NeoConnect" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kPI-pk-gfd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Veuillez entrer votre recherche" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjn-Pj-9gp">
-                                <rect key="frame" x="90" y="401" width="235" height="95"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veuillez entrer votre recherche" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjn-Pj-9gp">
+                                <rect key="frame" x="70" y="283.5" width="235" height="95"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PlZ-oa-Ipg" userLabel="Shop Found View" customClass="shopFound" customModule="NeoConnect" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PlZ-oa-Ipg" userLabel="Shop Found View" customClass="shopFound" customModule="NeoConnect" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="375" height="574"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="PlZ-oa-Ipg" firstAttribute="centerX" secondItem="qy3-h9-WpE" secondAttribute="centerX" id="8v9-d9-BZ9"/>
+                            <constraint firstItem="tjn-Pj-9gp" firstAttribute="centerX" secondItem="qy3-h9-WpE" secondAttribute="centerX" id="LZZ-bc-6Su"/>
+                            <constraint firstItem="tjn-Pj-9gp" firstAttribute="width" secondItem="kPI-pk-gfd" secondAttribute="width" multiplier="0.626667" id="l80-5w-MKu"/>
+                            <constraint firstItem="tjn-Pj-9gp" firstAttribute="height" secondItem="kPI-pk-gfd" secondAttribute="height" multiplier="0.142429" id="mIm-El-UZk"/>
+                            <constraint firstItem="PlZ-oa-Ipg" firstAttribute="top" secondItem="qy3-h9-WpE" secondAttribute="top" id="mO9-iz-lRr"/>
+                            <constraint firstItem="PlZ-oa-Ipg" firstAttribute="width" secondItem="kPI-pk-gfd" secondAttribute="width" id="nlx-sB-GLc"/>
+                            <constraint firstItem="PlZ-oa-Ipg" firstAttribute="height" secondItem="qy3-h9-WpE" secondAttribute="height" id="pde-gj-1Nh"/>
+                            <constraint firstItem="tjn-Pj-9gp" firstAttribute="centerY" secondItem="qy3-h9-WpE" secondAttribute="centerY" id="tmb-r8-ucX"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="qy3-h9-WpE"/>
                     </view>
                     <navigationItem key="navigationItem" title="Recherches" id="KdS-o5-4Lk"/>
@@ -40,7 +47,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QDi-ui-fy4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1050.7246376811595" y="98.4375"/>
+            <point key="canvasLocation" x="881" y="97"/>
         </scene>
         <!--Rechercher-->
         <scene sceneID="5oq-Kv-8fu">
@@ -50,7 +57,7 @@
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Rqa-Ll-or6">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

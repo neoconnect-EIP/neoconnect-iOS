@@ -28,13 +28,13 @@
 		334672A323278A7200D5E0DD /* B_HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334672A223278A7200D5E0DD /* B_HomeViewController.swift */; };
 		334672A523278B3100D5E0DD /* B_SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334672A423278B3100D5E0DD /* B_SearchViewController.swift */; };
 		334672A723278B5400D5E0DD /* B_ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334672A623278B5400D5E0DD /* B_ChatViewController.swift */; };
-		334EC7AC24006FC1009BF39D /* I_SendEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334EC7AB24006FC1009BF39D /* I_SendEmailViewController.swift */; };
 		3359B51F22E7813A00CB86E2 /* B_TabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3359B51E22E7813A00CB86E2 /* B_TabBarController.storyboard */; };
 		3359B52622E78CE400CB86E2 /* B_Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3359B52522E78CE400CB86E2 /* B_Home.storyboard */; };
 		3359B52822E78D0900CB86E2 /* B_Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3359B52722E78D0900CB86E2 /* B_Search.storyboard */; };
 		3359B52A22E78D8200CB86E2 /* AddOffer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3359B52922E78D8200CB86E2 /* AddOffer.storyboard */; };
 		3359B52C22E78D8D00CB86E2 /* B_Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3359B52B22E78D8D00CB86E2 /* B_Chat.storyboard */; };
 		3359B52E22E78D9700CB86E2 /* B_Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3359B52D22E78D9700CB86E2 /* B_Profile.storyboard */; };
+		335F5F092469E92400EE3FE9 /* I_HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335F5F082469E92400EE3FE9 /* I_HomeViewController.swift */; };
 		3369C167244CC0950005307F /* I_UserInformations.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3369C166244CC0950005307F /* I_UserInformations.storyboard */; };
 		336E62B8243603BF00AF0949 /* B_UserOffers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 336E62B7243603BF00AF0949 /* B_UserOffers.storyboard */; };
 		336E62BA2436060100AF0949 /* B_UserMarksAndComments.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 336E62B92436060100AF0949 /* B_UserMarksAndComments.storyboard */; };
@@ -132,13 +132,13 @@
 		334672A223278A7200D5E0DD /* B_HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B_HomeViewController.swift; sourceTree = "<group>"; };
 		334672A423278B3100D5E0DD /* B_SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B_SearchViewController.swift; sourceTree = "<group>"; };
 		334672A623278B5400D5E0DD /* B_ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B_ChatViewController.swift; sourceTree = "<group>"; };
-		334EC7AB24006FC1009BF39D /* I_SendEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_SendEmailViewController.swift; sourceTree = "<group>"; };
 		3359B51E22E7813A00CB86E2 /* B_TabBarController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = B_TabBarController.storyboard; sourceTree = "<group>"; };
 		3359B52522E78CE400CB86E2 /* B_Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = B_Home.storyboard; sourceTree = "<group>"; };
 		3359B52722E78D0900CB86E2 /* B_Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = B_Search.storyboard; sourceTree = "<group>"; };
 		3359B52922E78D8200CB86E2 /* AddOffer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddOffer.storyboard; sourceTree = "<group>"; };
 		3359B52B22E78D8D00CB86E2 /* B_Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = B_Chat.storyboard; sourceTree = "<group>"; };
 		3359B52D22E78D9700CB86E2 /* B_Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = B_Profile.storyboard; sourceTree = "<group>"; };
+		335F5F082469E92400EE3FE9 /* I_HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_HomeViewController.swift; sourceTree = "<group>"; };
 		3369C166244CC0950005307F /* I_UserInformations.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = I_UserInformations.storyboard; sourceTree = "<group>"; };
 		336E62B7243603BF00AF0949 /* B_UserOffers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = B_UserOffers.storyboard; sourceTree = "<group>"; };
 		336E62B92436060100AF0949 /* B_UserMarksAndComments.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = B_UserMarksAndComments.storyboard; sourceTree = "<group>"; };
@@ -266,7 +266,6 @@
 			isa = PBXGroup;
 			children = (
 				33131D8E2368A3A0006C0A4B /* I_ChatViewController.swift */,
-				334EC7AB24006FC1009BF39D /* I_SendEmailViewController.swift */,
 				333862392326C717005C188E /* I_Chat.storyboard */,
 			);
 			path = ChatPage;
@@ -287,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				333862342326C69C005C188E /* I_Home.storyboard */,
+				335F5F082469E92400EE3FE9 /* I_HomeViewController.swift */,
 				99B7DDED2468CB6300A6E418 /* I_HomeTableViewController.swift */,
 			);
 			path = HomePage;
@@ -880,8 +880,8 @@
 				99B7DDE42468A75400A6E418 /* HomeView.swift in Sources */,
 				99B7DDEE2468CB6300A6E418 /* I_HomeTableViewController.swift in Sources */,
 				334672A523278B3100D5E0DD /* B_SearchViewController.swift in Sources */,
-				334EC7AC24006FC1009BF39D /* I_SendEmailViewController.swift in Sources */,
 				3392B69F24632CF90040388A /* B_RegisterPage_Step_Five_ViewController.swift in Sources */,
+				335F5F092469E92400EE3FE9 /* I_HomeViewController.swift in Sources */,
 				334672A323278A7200D5E0DD /* B_HomeViewController.swift in Sources */,
 				33F2943D23CB6B9A005B4C02 /* UpdatePasswordViewController.swift in Sources */,
 				3328B61C236DEC510070B7B4 /* B_RegisterPage_Step_Three_ViewController.swift in Sources */,

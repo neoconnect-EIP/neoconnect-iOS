@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="A8l-sc-2A2">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="A8l-sc-2A2">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,9 +12,23 @@
             <objects>
                 <viewController storyboardIdentifier="B_HomeView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="90K-xy-a4b" customClass="B_HomeViewController" customModule="NeoConnect" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xko-1v-ZtV">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rendez-vous à la prochaine mis à jour ! :)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YDq-B2-U66">
+                                <rect key="frame" x="62.5" y="306" width="250" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YDq-B2-U66" firstAttribute="width" secondItem="Xko-1v-ZtV" secondAttribute="width" multiplier="0.666667" id="1Da-Lx-PZP"/>
+                            <constraint firstItem="YDq-B2-U66" firstAttribute="height" secondItem="Xko-1v-ZtV" secondAttribute="height" multiplier="0.0749625" id="6jB-27-aZM"/>
+                            <constraint firstItem="YDq-B2-U66" firstAttribute="centerY" secondItem="ObX-lP-raA" secondAttribute="centerY" id="GkJ-5c-fIw"/>
+                            <constraint firstItem="YDq-B2-U66" firstAttribute="centerX" secondItem="ObX-lP-raA" secondAttribute="centerX" id="Rh4-a8-HUO"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ObX-lP-raA"/>
                     </view>
                     <navigationItem key="navigationItem" title="Accueil" id="a1J-kn-Ltj">
@@ -24,7 +37,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UUm-ai-eSC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1055.072463768116" y="62.946428571428569"/>
+            <point key="canvasLocation" x="1053.5999999999999" y="62.518740629685162"/>
         </scene>
         <!--Accueil-->
         <scene sceneID="ucy-kT-BgD">
@@ -34,7 +47,7 @@
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nAd-v7-YHL">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

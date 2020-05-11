@@ -17,6 +17,7 @@ class B_SearchViewController: UIViewController {
         override func viewDidLoad() {
             super.viewDidLoad()
             shopFoundView.isHidden = true
+            messageTextField.text = "Rendez-vous à la prochaine mis à jour ! :)"
             configureSearchBar()
         }
         
@@ -56,20 +57,22 @@ class B_SearchViewController: UIViewController {
         }
         
         func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-            if (searchBar.text == "Bibi") {
-                shopFoundView.isHidden = false
-                shopFoundView.pseudoTextField.text = "Nike"
-                shopFoundView.emailTextField.text = "Nike Email"
-                shopFoundView.fullnameTextField.text = "Nike full name"
-                shopFoundView.postalTextField.text = "12345"
-                shopFoundView.cityTextField.text = "New York"
-                shopFoundView.phoneTextField.text = "0612345678"
-                shopFoundView.societyTextField.text = "Nike"
-                shopFoundView.functionTextField.text = "function"
-                shopFoundView.themeTextField.text = "theme"
-                messageTextField.text = "Veuillez entrer votre recherche"
-            } else {
-                messageTextField.text = "Aucune marque trouvées, veuillez réessayer."
-            }
+                messageTextField.text = "Rendez-vous à la prochaine mis à jour ! :)"
+
+//            if (searchBar.text == "Bibi") {
+//                shopFoundView.isHidden = false
+//                shopFoundView.pseudoTextField.text = "Nike"
+//                shopFoundView.emailTextField.text = "Nike Email"
+//                shopFoundView.fullnameTextField.text = "Nike full name"
+//                shopFoundView.postalTextField.text = "12345"
+//                shopFoundView.cityTextField.text = "New York"
+//                shopFoundView.phoneTextField.text = "0612345678"
+//                shopFoundView.societyTextField.text = "Nike"
+//                shopFoundView.functionTextField.text = "function"
+//                shopFoundView.themeTextField.text = "theme"
+//                messageTextField.text = "Veuillez entrer votre recherche"
+//            } else {
+//                messageTextField.text = "Aucune marque trouvées, veuillez réessayer."
+//            }
         }
     }

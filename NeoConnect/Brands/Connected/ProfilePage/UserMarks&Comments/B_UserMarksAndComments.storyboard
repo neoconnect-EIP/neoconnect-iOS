@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,17 +10,39 @@
         <!--Marks View Controller-->
         <scene sceneID="cQm-qr-3dC">
             <objects>
-                <viewController id="MMp-g8-P6H" customClass="B_MarksViewController" customModule="NeoConnect" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="B_UserMarksAndComments" id="MMp-g8-P6H" customClass="B_MarksViewController" customModule="NeoConnect" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EV8-9u-rBb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sk3-xT-lrN">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ShopBackground" translatesAutoresizingMaskIntoConstraints="NO" id="sk3-xT-lrN">
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlankFormShop" translatesAutoresizingMaskIntoConstraints="NO" id="gaC-gz-sd8">
+                                <rect key="frame" x="37.5" y="129" width="300" height="450"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rendez-vous à la prochaine mis à jour ! :)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vys-1v-1ea">
+                                <rect key="frame" x="87.5" y="329" width="200" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="sk3-xT-lrN" firstAttribute="top" secondItem="UMB-w2-xua" secondAttribute="top" id="0HG-Qe-arM"/>
+                            <constraint firstItem="gaC-gz-sd8" firstAttribute="width" secondItem="EV8-9u-rBb" secondAttribute="width" multiplier="0.8" id="4Ks-Sb-2Bq"/>
+                            <constraint firstItem="sk3-xT-lrN" firstAttribute="leading" secondItem="UMB-w2-xua" secondAttribute="leading" id="6Eq-DM-hUs"/>
+                            <constraint firstItem="vys-1v-1ea" firstAttribute="centerY" secondItem="gaC-gz-sd8" secondAttribute="centerY" id="7kN-O9-VJp"/>
+                            <constraint firstItem="vys-1v-1ea" firstAttribute="width" secondItem="gaC-gz-sd8" secondAttribute="width" multiplier="0.666667" id="Egf-8k-Eov"/>
+                            <constraint firstItem="sk3-xT-lrN" firstAttribute="width" secondItem="EV8-9u-rBb" secondAttribute="width" id="RQo-e2-OTY"/>
+                            <constraint firstItem="gaC-gz-sd8" firstAttribute="top" secondItem="UMB-w2-xua" secondAttribute="top" constant="85" id="W9r-mO-rmH"/>
+                            <constraint firstItem="vys-1v-1ea" firstAttribute="centerX" secondItem="gaC-gz-sd8" secondAttribute="centerX" id="Yct-ec-RaX"/>
+                            <constraint firstItem="gaC-gz-sd8" firstAttribute="centerX" secondItem="UMB-w2-xua" secondAttribute="centerX" id="biG-7c-aLW"/>
+                            <constraint firstItem="vys-1v-1ea" firstAttribute="height" secondItem="gaC-gz-sd8" secondAttribute="height" multiplier="0.111111" id="eaw-0r-mgF"/>
+                            <constraint firstItem="gaC-gz-sd8" firstAttribute="height" secondItem="EV8-9u-rBb" secondAttribute="height" multiplier="0.674663" id="vJd-b0-Wu4"/>
+                            <constraint firstItem="sk3-xT-lrN" firstAttribute="height" secondItem="EV8-9u-rBb" secondAttribute="height" multiplier="0.934033" id="xOg-00-jeG"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="UMB-w2-xua"/>
                     </view>
                     <navigationItem key="navigationItem" id="gKw-DE-JtG"/>
@@ -49,4 +70,8 @@
             <point key="canvasLocation" x="311.59420289855075" y="132.58928571428572"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="BlankFormShop" width="263" height="245"/>
+        <image name="ShopBackground" width="414" height="896"/>
+    </resources>
 </document>

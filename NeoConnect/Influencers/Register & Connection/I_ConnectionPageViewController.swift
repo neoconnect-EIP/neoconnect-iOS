@@ -61,6 +61,7 @@ class I_ConnectionPageViewController: UIViewController {
                         let id = response.object(forKey: "userId")!
                         UserDefaults.standard.set(token, forKey: "Token") // Bool
                         UserDefaults.standard.set(id, forKey: "id") // Id
+                        UserDefaults.standard.set(userPseudo, forKey: "pseudo")
                         print(token)
                         print(id)
                         let storyBoard: UIStoryboard = UIStoryboard(name: "I_TabBarController", bundle: nil)
