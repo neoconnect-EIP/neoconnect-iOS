@@ -12,17 +12,7 @@ class userFound: UIView {
 
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var userImageView: UIImageView!
-    @IBOutlet weak var pseudoTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var fullnameTextField: UITextField!
-    @IBOutlet weak var postalTextField: UITextField!
-    @IBOutlet weak var cityTextField: UITextField!
-    @IBOutlet weak var phoneTextField: UITextField!
-    @IBOutlet weak var facebookTextField: UITextField!
-    @IBOutlet weak var twitterTextField: UITextField!
-    @IBOutlet weak var snapchatTextField: UITextField!
-    @IBOutlet weak var instagramTextField: UITextField!
-    @IBOutlet weak var themeTextField: UITextField!
+    @IBOutlet weak var pseudoLabelField: UILabel!
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!

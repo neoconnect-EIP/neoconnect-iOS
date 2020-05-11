@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DXZ-5I-p1C">
-                                <rect key="frame" x="37.5" y="91" width="300" height="513.5"/>
+                                <rect key="frame" x="37.5" y="94" width="300" height="513.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OffersTableViewCell" rowHeight="100" id="80U-hA-nmi" customClass="B_OffersTableViewCell" customModule="NeoConnect" customModuleProvider="target">
@@ -61,7 +61,7 @@
                                 </prototypes>
                             </tableView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eRj-dw-gM6">
-                                <rect key="frame" x="37.5" y="91" width="300" height="513.5"/>
+                                <rect key="frame" x="37.5" y="94" width="300" height="513.5"/>
                                 <subviews>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vous n'avez aucune offre" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ouh-ms-O7q">
                                         <rect key="frame" x="54" y="247.5" width="192.5" height="19"/>
@@ -84,7 +84,7 @@
                             <constraint firstItem="98k-kb-aiY" firstAttribute="height" secondItem="yrq-RR-nn8" secondAttribute="height" multiplier="0.934033" id="8Pi-zX-vSD"/>
                             <constraint firstItem="98k-kb-aiY" firstAttribute="top" secondItem="hal-IT-MUb" secondAttribute="top" id="9jB-gO-GFb"/>
                             <constraint firstItem="eRj-dw-gM6" firstAttribute="centerX" secondItem="DXZ-5I-p1C" secondAttribute="centerX" id="GHu-le-tDs"/>
-                            <constraint firstItem="DXZ-5I-p1C" firstAttribute="top" secondItem="hal-IT-MUb" secondAttribute="top" constant="47" id="HhK-6J-Qbg"/>
+                            <constraint firstItem="DXZ-5I-p1C" firstAttribute="top" secondItem="hal-IT-MUb" secondAttribute="top" constant="50" id="HhK-6J-Qbg"/>
                             <constraint firstItem="98k-kb-aiY" firstAttribute="leading" secondItem="hal-IT-MUb" secondAttribute="leading" id="VZb-1n-V6q"/>
                             <constraint firstItem="DXZ-5I-p1C" firstAttribute="height" secondItem="hal-IT-MUb" secondAttribute="height" multiplier="0.824588" id="XHI-Cz-C2y"/>
                             <constraint firstItem="DXZ-5I-p1C" firstAttribute="width" secondItem="yrq-RR-nn8" secondAttribute="width" multiplier="0.8" id="ZN2-jA-IfV"/>

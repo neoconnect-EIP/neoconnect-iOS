@@ -87,15 +87,6 @@ class B_OffersViewController: UIViewController {
         VC.offer = offer
     }
 }
-//
-//extension UIImage {
-//
-//    convenience init?(withContentsOfUrl url: URL) throws {
-//        let imageData = try Data(contentsOf: url)
-//
-//        self.init(data: imageData)
-//    }
-//}
 
 extension B_OffersViewController : UITableViewDataSource, UITableViewDelegate {
     

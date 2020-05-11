@@ -9,7 +9,7 @@
 import UIKit
 
 class I_ParametersTableViewController: UITableViewController {
-
+    
     @IBAction func logoutButtonTapped(_ sender: Any) {
         DispatchQueue.main.async {
             let alertView = UIAlertController(title: "Are you sure ?", message: "You are going to disconnect, are you sure ?", preferredStyle: .alert)

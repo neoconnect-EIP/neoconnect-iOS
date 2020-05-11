@@ -66,7 +66,6 @@
 		33BC6523229ECA4100C52262 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33BC6522229ECA4100C52262 /* Assets.xcassets */; };
 		33BC6531229ECA4100C52262 /* NeoConnectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BC6530229ECA4100C52262 /* NeoConnectTests.swift */; };
 		33BC653C229ECA4100C52262 /* NeoConnectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BC653B229ECA4100C52262 /* NeoConnectUITests.swift */; };
-		33C107542367EEEE008D0EC0 /* I_HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C107532367EEEE008D0EC0 /* I_HomeViewController.swift */; };
 		33CB63D623E0BFF10075B98C /* shopFoundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33CB63D523E0BFF10075B98C /* shopFoundView.xib */; };
 		33CB63D823E0C60C0075B98C /* shopFound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CB63D723E0C60C0075B98C /* shopFound.swift */; };
 		33E49E0F22E715F9006D1D5D /* I_Register_and_Connection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33E49E0E22E715F9006D1D5D /* I_Register_and_Connection.storyboard */; };
@@ -165,7 +164,6 @@
 		33BC6537229ECA4100C52262 /* NeoConnectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NeoConnectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		33BC653B229ECA4100C52262 /* NeoConnectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeoConnectUITests.swift; sourceTree = "<group>"; };
 		33BC653D229ECA4100C52262 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		33C107532367EEEE008D0EC0 /* I_HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_HomeViewController.swift; sourceTree = "<group>"; };
 		33CB63D523E0BFF10075B98C /* shopFoundView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = shopFoundView.xib; sourceTree = "<group>"; };
 		33CB63D723E0C60C0075B98C /* shopFound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shopFound.swift; sourceTree = "<group>"; };
 		33E49E0E22E715F9006D1D5D /* I_Register_and_Connection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = I_Register_and_Connection.storyboard; sourceTree = "<group>"; };
@@ -264,7 +262,6 @@
 		3338622F2326AC99005C188E /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
-				33C107532367EEEE008D0EC0 /* I_HomeViewController.swift */,
 				333862342326C69C005C188E /* I_Home.storyboard */,
 			);
 			path = HomePage;
@@ -850,7 +847,6 @@
 				3392B69D24632C8F0040388A /* B_RegisterPage_Step_Four_ViewController.swift in Sources */,
 				33131D8F2368A3A0006C0A4B /* I_ChatViewController.swift in Sources */,
 				3388BE5A232016A000B9D1F8 /* AddOfferViewController.swift in Sources */,
-				33C107542367EEEE008D0EC0 /* I_HomeViewController.swift in Sources */,
 				3387EE6B2406E3C40050852D /* Offer.swift in Sources */,
 				33BC651E229ECA4000C52262 /* MainPage.swift in Sources */,
 				3338277922A6D53F00504540 /* I_ConnectionPageViewController.swift in Sources */,
