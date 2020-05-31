@@ -17,6 +17,9 @@ struct ContactView: View {
     @State private var message : String = ""
     @State private var emailString  : String = ""
     @State private var isEmailValid : Bool   = true
+    private var validated: Bool {
+               !email.isEmpty && !subject.isEmpty && !message.isEmpty
+           }
     
     var body: some View {
           NavigationView {
@@ -39,6 +42,7 @@ struct ContactView: View {
                     TextField("Sujet", text: $subject)
                     TextField("Message", text: $message).frame(width: 80, height: 100)
                 }
+                if (validated && self.isEmailValid) {
                 Button(action: {
                     let map = ["email": self.email, "subject": self.subject, "message": self.message]
                     AF.request("http://168.63.65.106/contact",
@@ -50,6 +54,11 @@ struct ContactView: View {
                 }) {
                         Text("Envoyer")
                 }
+                    }
+                                   else {
+                                       Text("Veuillez remplir tous les champs")
+                                                                       .foregroundColor(Color.red)
+                                   }
             }
         .navigationBarTitle(Text("Contact"))
         }
