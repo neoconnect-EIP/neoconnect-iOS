@@ -17,7 +17,9 @@ struct ContactUserView: View {
     @State private var message : String = ""
     @State private var emailString  : String = ""
     @State private var isEmailValid : Bool   = true
-    
+    private var validated: Bool {
+             !email.isEmpty && !subject.isEmpty && !message.isEmpty
+         }
     var body: some View {
           NavigationView {
             Form {
@@ -39,6 +41,7 @@ struct ContactUserView: View {
                     TextField("Sujet", text: $subject)
                     TextField("Message", text: $message).frame(width: 80, height: 100)
                 }
+                if (validated && self.isEmailValid) {
                 Button(action: {
                     let map = ["to": self.email,
                                "email": self.email,
@@ -51,6 +54,11 @@ struct ContactUserView: View {
                     }
                 }) {
                         Text("Envoyer")
+                }
+                }
+                else {
+                    Text("Veuillez remplir tous les champs")
+                                                    .foregroundColor(Color.red)
                 }
             }
         .navigationBarTitle(Text("Contact"))

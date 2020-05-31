@@ -28,14 +28,14 @@ var updatedAt: String?
     }
 }
 
-var userID = UserDefaults.standard.string(forKey: "id")!
+var ID = UserDefaults.standard.string(forKey: "id")!
 
 func getMyOffers(completion: @escaping ([myOffer]) -> Void)
 {
     let _headers: HTTPHeaders = [
         "Authorization": "Bearer " + accessToken            ]
     var myOffers: [myOffer] = [myOffer()]
-    AF.request("http://168.63.65.106/offer/apply/user/" + String(userID), method: .get, encoding: URLEncoding.default, headers: _headers).responseString { response in
+    AF.request("http://168.63.65.106/offer/apply/user/" + String(ID), method: .get, encoding: URLEncoding.default, headers: _headers).responseString { response in
         let jsonString = String(data: response.data!, encoding: String.Encoding.utf8)!
         let jsonData = Data(jsonString.utf8)
         let decoder = JSONDecoder()
@@ -128,7 +128,6 @@ struct MyOffersView: View {
       var body: some View {
           NavigationView {
               List(offers) { offer in
-            
                 NavigationLink(destination:DetailMyOffer2(selectedOffer: offer,date: String(offer.createdAt!).components(separatedBy: "T")[0])) {
                   HStack {
                       KFImage(URL(string:offer.productImg![0].imageData!)).resizable().frame(width: 50, height: 50).clipShape(Circle()).clipped()
@@ -137,7 +136,7 @@ struct MyOffersView: View {
                   }
               }
               .navigationBarTitle(Text("Mes offres"))
-          }
+            }
           .onAppear {
                      getMyOffers2() {
                          response in
