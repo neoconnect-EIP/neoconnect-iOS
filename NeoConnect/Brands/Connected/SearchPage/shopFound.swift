@@ -11,16 +11,8 @@ import UIKit
 class shopFound: UIView {
 
     @IBOutlet var contentView: UIView!
-    @IBOutlet weak var userImageView: UIImageView!
-    @IBOutlet weak var pseudoTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var fullnameTextField: UITextField!
-    @IBOutlet weak var postalTextField: UITextField!
-    @IBOutlet weak var cityTextField: UITextField!
-    @IBOutlet weak var phoneTextField: UITextField!
-    @IBOutlet weak var societyTextField: UITextField!
-    @IBOutlet weak var functionTextField: UITextField!
-    @IBOutlet weak var themeTextField: UITextField!
+    @IBOutlet weak var shopImageView: UIImageView!
+    @IBOutlet weak var shopPseudoLabelField: UILabel!
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
@@ -37,6 +29,11 @@ class shopFound: UIView {
         let nib = UINib(nibName: "shopFoundView", bundle: nil)
         nib.instantiate(withOwner: self, options: nil)
         contentView.frame = bounds
+        shopImageView.layer.borderWidth = 1
+        shopImageView.layer.masksToBounds = false
+        shopImageView.layer.borderColor = UIColor.white.cgColor
+        shopImageView.layer.cornerRadius = shopImageView.frame.height/2
+        shopImageView.clipsToBounds = true
         addSubview(contentView)
 
         // custom initialization logic

@@ -8,6 +8,8 @@ pod 'SwiftyJSON'
 pod 'PureLayout'
 pod 'LayoutHelper'
 pod 'Kingfisher'
+pod 'IQKeyboardManagerSwift'
+
 # Pods for NeoConnect
 
   target 'NeoConnectTests' do

@@ -76,6 +76,7 @@ class I_RegisterPage_Step_Four_ViewController: UIViewController, UIImagePickerCo
                 alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
                 self.present(alertView, animated: true, completion: nil)
             }
+            return
         }
         else {
             let Register: Parameters = [

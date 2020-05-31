@@ -23,6 +23,14 @@ class B_RegisterPage_Step_Three_ViewController: UIViewController {
     var city = String()
     
     override func viewDidLoad() {
+        if #available(iOS 12.0, *) {
+            userCompanyTextField.textContentType = .oneTimeCode
+            userProfessionTextField.textContentType = .oneTimeCode
+            userWebsiteTextField.textContentType = .oneTimeCode
+        }
+        userCompanyTextField.setLeftPaddingPoints(7)
+        userProfessionTextField.setLeftPaddingPoints(7)
+        userWebsiteTextField.setLeftPaddingPoints(7)
         super.viewDidLoad()
     }
     
@@ -34,10 +42,11 @@ class B_RegisterPage_Step_Three_ViewController: UIViewController {
         if (userCompany.isEmpty || userProfession.isEmpty || userWebsite.isEmpty) {
             // /!\ Display alert message : All Fields aren't fullfilled
             DispatchQueue.main.async {
-                let alertView = UIAlertController(title: "Error", message: "All fields are required", preferredStyle: .alert)
+                let alertView = UIAlertController(title: "Erreur", message: "Veuillez remplir tout les champs", preferredStyle: .alert)
                 alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
                 self.present(alertView, animated: true, completion: nil)
             }
+            return
         }
         else {
             performSegue(withIdentifier: "B_Step_Four", sender: self)

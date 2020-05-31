@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EPD-bG-0bU">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,7 +26,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s3l-UK-jfd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2401" y="593"/>
+            <point key="canvasLocation" x="-2305" y="591"/>
         </scene>
         <!--Connection Page View Controller-->
         <scene sceneID="ybi-p9-Pdw">
@@ -162,7 +161,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0pf-1A-cz5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1670" y="592"/>
+            <point key="canvasLocation" x="-1601" y="591"/>
         </scene>
         <!--Register Page Step One View Controller-->
         <scene sceneID="gVK-a4-zSe">
@@ -198,6 +197,9 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="187" height="28.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="username"/>
+                                                <connections>
+                                                    <action selector="pseudoTextField:" destination="lxa-wx-JSK" eventType="editingDidEnd" id="Cuy-E5-7Mh"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="justified" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3nn-Xi-Sqa">
                                                 <rect key="frame" x="0.0" y="58.5" width="187" height="29"/>
@@ -211,11 +213,17 @@
                                                 <rect key="frame" x="0.0" y="117.5" width="187" height="28.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="password"/>
+                                                <connections>
+                                                    <action selector="passwordTextField:" destination="lxa-wx-JSK" eventType="editingDidEnd" id="op8-SF-g4x"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Répétez le mot de passe" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="wxn-RK-t8c">
                                                 <rect key="frame" x="0.0" y="176" width="187" height="28.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="password"/>
+                                                <connections>
+                                                    <action selector="passwordTextField:" destination="lxa-wx-JSK" eventType="editingDidEnd" id="dvc-md-6OL"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -275,14 +283,14 @@
                     <connections>
                         <outlet property="repeatPasswordTextField" destination="wxn-RK-t8c" id="rkd-zr-x66"/>
                         <outlet property="userEmailTextField" destination="3nn-Xi-Sqa" id="0Xj-Pq-tdL"/>
-                        <outlet property="userIDTextField" destination="J1K-wG-7bO" id="Gs5-0v-w6q"/>
                         <outlet property="userPasswordTextField" destination="1Am-ER-7ni" id="JoW-Iq-1BC"/>
+                        <outlet property="userPseudoTextField" destination="J1K-wG-7bO" id="CCd-iw-kf0"/>
                         <segue destination="Ax1-Ny-WBl" kind="show" identifier="B_Step_Two" id="qFd-sr-u71"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ko-oC-mFu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-926" y="592"/>
+            <point key="canvasLocation" x="-890" y="591"/>
         </scene>
         <!--Register Page Step Two View Controller-->
         <scene sceneID="DhW-C6-Jih">
@@ -334,12 +342,18 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Code postal" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QAQ-Mz-MB2">
                                                 <rect key="frame" x="0.0" y="122" width="216" height="40.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad"/>
+                                                <connections>
+                                                    <action selector="zipCodeTextField:" destination="Ax1-Ny-WBl" eventType="editingDidEnd" id="fqX-wl-j35"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Téléphone" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vnq-el-OGF">
                                                 <rect key="frame" x="0.0" y="182.5" width="216" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad"/>
+                                                <connections>
+                                                    <action selector="phoneNumberTextField:" destination="Ax1-Ny-WBl" eventType="editingDidEnd" id="fz2-Sk-0WU"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -536,26 +550,41 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="40.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                <connections>
+                                                    <action selector="facebookTextField:" destination="PN3-x2-bp1" eventType="editingDidEnd" id="VF9-LZ-Ai7"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Twitter" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZfJ-yc-Ygh">
                                                 <rect key="frame" x="0.0" y="57.5" width="200" height="40.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                <connections>
+                                                    <action selector="twitterTextField:" destination="PN3-x2-bp1" eventType="editingDidEnd" id="5pN-VG-pnu"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Instagram" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YfZ-M1-zuf">
                                                 <rect key="frame" x="0.0" y="115" width="200" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                <connections>
+                                                    <action selector="instagramTextField:" destination="PN3-x2-bp1" eventType="editingDidEnd" id="Dfq-St-CYV"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Snapchat" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d6x-7D-WDz">
                                                 <rect key="frame" x="0.0" y="172" width="200" height="40.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                <connections>
+                                                    <action selector="snapchatTextField:" destination="PN3-x2-bp1" eventType="editingDidEnd" id="o6B-DO-Ifs"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Sujet" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hjx-jJ-eh1">
                                                 <rect key="frame" x="0.0" y="229.5" width="200" height="40.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                <connections>
+                                                    <action selector="subjectTextField:" destination="PN3-x2-bp1" eventType="editingDidEnd" id="fC3-jS-DA7"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>

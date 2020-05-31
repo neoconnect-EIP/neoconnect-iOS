@@ -28,6 +28,7 @@ class B_UserInformationsViewController: UIViewController, UIImagePickerControlle
     @IBOutlet weak var snapchatTextField: UITextField!
     @IBOutlet weak var instagramTextField: UITextField!
     @IBOutlet weak var themeTextField: UITextField!
+    var restriction = RestrictionTextField()
     
     var imagePicker:UIImagePickerController!
     var imageConverter = ImageConverter()
@@ -38,6 +39,20 @@ class B_UserInformationsViewController: UIViewController, UIImagePickerControlle
     }
     
     override func viewDidLoad() {
+        pseudoTextField.setLeftPaddingPoints(7)
+        emailTextField.setLeftPaddingPoints(7)
+        fullnameTextField.setLeftPaddingPoints(7)
+        postalTextField.setLeftPaddingPoints(7)
+        cityTextField.setLeftPaddingPoints(7)
+        phoneTextField.setLeftPaddingPoints(7)
+        societyTextField.setLeftPaddingPoints(7)
+        functionTextField.setLeftPaddingPoints(7)
+        websiteTextField.setLeftPaddingPoints(7)
+        facebookTextField.setLeftPaddingPoints(7)
+        twitterTextField.setLeftPaddingPoints(7)
+        snapchatTextField.setLeftPaddingPoints(7)
+        instagramTextField.setLeftPaddingPoints(7)
+        themeTextField.setLeftPaddingPoints(7)
         image.layer.borderWidth = 1
         image.layer.masksToBounds = false
         image.layer.borderColor = UIColor.white.cgColor
@@ -51,7 +66,7 @@ class B_UserInformationsViewController: UIViewController, UIImagePickerControlle
         
         AF.request("http://168.63.65.106/shop/me", headers: headers).responseJSON { response in
             switch response.result {
-            
+        
             case .success(let JSON):
                 
                 let response = JSON as! NSDictionary
@@ -83,16 +98,176 @@ class B_UserInformationsViewController: UIViewController, UIImagePickerControlle
             }
         }
         
-        print("AFTER REQUEST")
         imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = true
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
-        changeImageButton.isHidden = true
 
         super.viewDidLoad()
     }
-        
+    
+    @IBAction func pseudoTextField(_ sender: UITextField) {
+        if restriction.isValidPseudo(sender.text!) {
+            let noColor : UIColor = UIColor.white
+            
+            print(sender.text!)
+            sender.layer.borderColor = noColor.cgColor
+
+        } else {
+            let errorColor : UIColor = UIColor.red
+
+            sender.layer.borderColor = errorColor.cgColor
+            sender.layer.cornerRadius = 5
+            sender.layer.borderWidth = 1.0
+
+            print("Wrong Pseudo")
+        }
+    }
+    
+    @IBAction func emailTextField(_ sender: UITextField) {
+        if restriction.isValidEmail(sender.text!) {
+            let noColor : UIColor = UIColor.white
+            
+            print(sender.text!)
+            sender.layer.borderColor = noColor.cgColor
+
+        } else {
+            let errorColor : UIColor = UIColor.red
+
+            sender.layer.borderColor = errorColor.cgColor
+            sender.layer.cornerRadius = 5
+            sender.layer.borderWidth = 1.0
+
+            print("Wrong Email")
+        }
+    }
+    
+    @IBAction func zipCodeTextField(_ sender: UITextField) {
+        if restriction.isValidZipCode(sender.text!) {
+            let noColor : UIColor = UIColor.white
+            
+            print(sender.text!)
+            sender.layer.borderColor = noColor.cgColor
+
+        } else {
+            let errorColor : UIColor = UIColor.red
+
+            sender.layer.borderColor = errorColor.cgColor
+            sender.layer.cornerRadius = 5
+            sender.layer.borderWidth = 1.0
+
+            print("Wrong ZipCode")
+        }
+    }
+    
+    @IBAction func phoneNumberTextField(_ sender: UITextField) {
+        if restriction.isValidPhoneNumber(sender.text!) {
+            let noColor : UIColor = UIColor.white
+            
+            print(sender.text!)
+            sender.layer.borderColor = noColor.cgColor
+
+        } else {
+            let errorColor : UIColor = UIColor.red
+
+            sender.layer.borderColor = errorColor.cgColor
+            sender.layer.cornerRadius = 5
+            sender.layer.borderWidth = 1.0
+
+            print("Wrong Phone number")
+        }
+    }
+    
+    @IBAction func facebookTextField(_ sender: UITextField) {
+        if restriction.isMinThreeChar(sender.text!) {
+            let noColor : UIColor = UIColor.white
+            
+            print(sender.text!)
+            sender.layer.borderColor = noColor.cgColor
+
+        } else {
+            let errorColor : UIColor = UIColor.red
+
+            sender.layer.borderColor = errorColor.cgColor
+            sender.layer.cornerRadius = 5
+            sender.layer.borderWidth = 1.0
+
+            print("Wrong facebook account")
+        }
+    }
+    
+    @IBAction func twitterTextField(_ sender: UITextField) {
+        if restriction.isMinThreeChar(sender.text!) {
+            let noColor : UIColor = UIColor.white
+            
+            print(sender.text!)
+            sender.layer.borderColor = noColor.cgColor
+
+        } else {
+            let errorColor : UIColor = UIColor.red
+
+            sender.layer.borderColor = errorColor.cgColor
+            sender.layer.cornerRadius = 5
+            sender.layer.borderWidth = 1.0
+
+            print("Wrong twitter account")
+        }
+    }
+    
+    @IBAction func instagramTextField(_ sender: UITextField) {
+        if restriction.isMinThreeChar(sender.text!) {
+            let noColor : UIColor = UIColor.white
+            
+            print(sender.text!)
+            sender.layer.borderColor = noColor.cgColor
+
+        } else {
+            let errorColor : UIColor = UIColor.red
+
+            sender.layer.borderColor = errorColor.cgColor
+            sender.layer.cornerRadius = 5
+            sender.layer.borderWidth = 1.0
+
+            print("Wrong instagram account")
+        }
+    }
+    
+    @IBAction func snapchatTextField(_ sender: UITextField) {
+        if restriction.isMinThreeChar(sender.text!) {
+            let noColor : UIColor = UIColor.white
+            
+            print(sender.text!)
+            sender.layer.borderColor = noColor.cgColor
+
+        } else {
+            let errorColor : UIColor = UIColor.red
+
+            sender.layer.borderColor = errorColor.cgColor
+            sender.layer.cornerRadius = 5
+            sender.layer.borderWidth = 1.0
+
+            print("Wrong snapchat account")
+        }
+    }
+    
+    @IBAction func themeTextField(_ sender: UITextField) {
+        if restriction.isMinThreeChar(sender.text!) {
+            let noColor : UIColor = UIColor.white
+            
+            print(sender.text!)
+            sender.layer.borderColor = noColor.cgColor
+
+        } else {
+            let errorColor : UIColor = UIColor.red
+
+            sender.layer.borderColor = errorColor.cgColor
+            sender.layer.cornerRadius = 5
+            sender.layer.borderWidth = 1.0
+
+            print("Wrong theme")
+        }
+    }
+    
     @IBAction func changeImageButtonTapped(_ sender: Any) {
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
@@ -133,59 +308,87 @@ class B_UserInformationsViewController: UIViewController, UIImagePickerControlle
             themeTextField.isUserInteractionEnabled = true
         }
         else {
-            let imageData = imageConverter.imageToBase64(image.image!)!
-            
-            changeImageButton.isHidden = true
-            let headers: HTTPHeaders = [
-                "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
-                "Content-Type": "application/x-www-form-urlencoded"
-            ]
-            let new_Info: Parameters = [
-                "pseudo": pseudoTextField.text!,
-                "full_name": fullnameTextField.text!,
-                "email": emailTextField.text!,
-                "phone": phoneTextField.text!,
-                "postal": postalTextField.text!,
-                "city": cityTextField.text!,
-                "userPicture": imageData,
-                "theme": themeTextField.text!,
-                "society": societyTextField.text!,
-                "function": functionTextField.text!,
-                "website": websiteTextField.text!,
-                "facebook": facebookTextField.text!,
-                "snapchat": snapchatTextField.text!,
-                "twitter": twitterTextField.text!,
-                "instagram": instagramTextField.text!
-            ]
-            changeImageButton.isUserInteractionEnabled = false
-            pseudoTextField.isUserInteractionEnabled = false
-            emailTextField.isUserInteractionEnabled = false
-            fullnameTextField.isUserInteractionEnabled = false
-            postalTextField.isUserInteractionEnabled = false
-            cityTextField.isUserInteractionEnabled = false
-            phoneTextField.isUserInteractionEnabled = false
-            societyTextField.isUserInteractionEnabled = false
-            functionTextField.isUserInteractionEnabled = false
-            websiteTextField.isUserInteractionEnabled = false
-            facebookTextField.isUserInteractionEnabled = false
-            twitterTextField.isUserInteractionEnabled = false
-            snapchatTextField.isUserInteractionEnabled = false
-            instagramTextField.isUserInteractionEnabled = false
-            themeTextField.isUserInteractionEnabled = false;
-            
-            let URL = "http://168.63.65.106/shop/me"
-
-            AF.request(URL, method: .put, parameters: new_Info, encoding: URLEncoding.default, headers: headers, interceptor: nil).responseJSON { response in
-                switch response.result {
-                case .success(_):
-                    self.editItem.title = "Modifier"
-                    print("\(String(describing: response.result))")
+            if (pseudoTextField.text!.isEmpty || emailTextField.text!.isEmpty || fullnameTextField.text!.isEmpty || postalTextField.text!.isEmpty || cityTextField.text!.isEmpty || phoneTextField.text!.isEmpty || societyTextField.text!.isEmpty || functionTextField.text!.isEmpty || websiteTextField.text!.isEmpty || facebookTextField.text!.isEmpty || twitterTextField.text!.isEmpty || snapchatTextField.text!.isEmpty || instagramTextField.text!.isEmpty || themeTextField.text!.isEmpty) {
+                // /!\ One or several fields is/are empty
                     DispatchQueue.main.async {
-                        let alertView = UIAlertController(title: "Parfait!", message: "Vos informations ont été modifié avec succès!", preferredStyle: .alert)
-                        alertView.addAction(UIAlertAction(title: "Ok", style: .cancel))
+                        let alertView = UIAlertController(title: "Erreur", message: "Un ou plusieurs de vos champs est/sont vide(s)", preferredStyle: .alert)
+                        alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
                         self.present(alertView, animated: true, completion: nil)
-                    }                case .failure(let error):
-                    print("Request failed with error: \(error)")
+                    }
+                return
+            }
+            if restriction.isProfileCorrect(emailTextField.text!, pseudoTextField.text!, postalTextField.text!, phoneTextField.text!) == false {
+                    DispatchQueue.main.async {
+                        let alertView = UIAlertController(title: "Erreur", message: "Un ou plusieurs de vos champs est ou sont inconforme(s)", preferredStyle: .alert)
+                        alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
+                        self.present(alertView, animated: true, completion: nil)
+                    }
+                return
+            }
+            if (restriction.isMinThreeChar(facebookTextField.text!) == false || restriction.isMinThreeChar(twitterTextField.text!) == false || restriction.isMinThreeChar(instagramTextField.text!) == false || restriction.isMinThreeChar(snapchatTextField.text!) == false || restriction.isMinThreeChar(themeTextField.text!) == false) {
+                DispatchQueue.main.async {
+                    let alertView = UIAlertController(title: "Erreur", message: "Un ou plusieurs de vos champs possède(nt) moins de trois caractères donc semble inconforme", preferredStyle: .alert)
+                    alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
+                    self.present(alertView, animated: true, completion: nil)
+                }
+                return
+            }
+            else {
+                let imageData = imageConverter.imageToBase64(image.image!)!
+                
+                changeImageButton.isHidden = true
+                let headers: HTTPHeaders = [
+                    "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
+                    "Content-Type": "application/x-www-form-urlencoded"
+                ]
+                let new_Info: Parameters = [
+                    "pseudo": pseudoTextField.text!,
+                    "full_name": fullnameTextField.text!,
+                    "email": emailTextField.text!,
+                    "phone": phoneTextField.text!,
+                    "postal": postalTextField.text!,
+                    "city": cityTextField.text!,
+                    "userPicture": imageData,
+                    "theme": themeTextField.text!,
+                    "society": societyTextField.text!,
+                    "function": functionTextField.text!,
+                    "website": websiteTextField.text!,
+                    "facebook": facebookTextField.text!,
+                    "snapchat": snapchatTextField.text!,
+                    "twitter": twitterTextField.text!,
+                    "instagram": instagramTextField.text!
+                ]
+                changeImageButton.isUserInteractionEnabled = false
+                pseudoTextField.isUserInteractionEnabled = false
+                emailTextField.isUserInteractionEnabled = false
+                fullnameTextField.isUserInteractionEnabled = false
+                postalTextField.isUserInteractionEnabled = false
+                cityTextField.isUserInteractionEnabled = false
+                phoneTextField.isUserInteractionEnabled = false
+                societyTextField.isUserInteractionEnabled = false
+                functionTextField.isUserInteractionEnabled = false
+                websiteTextField.isUserInteractionEnabled = false
+                facebookTextField.isUserInteractionEnabled = false
+                twitterTextField.isUserInteractionEnabled = false
+                snapchatTextField.isUserInteractionEnabled = false
+                instagramTextField.isUserInteractionEnabled = false
+                themeTextField.isUserInteractionEnabled = false;
+                
+                let URL = "http://168.63.65.106/shop/me"
+
+                AF.request(URL, method: .put, parameters: new_Info, encoding: URLEncoding.default, headers: headers, interceptor: nil).responseJSON { response in
+                    switch response.result {
+                    case .success(_):
+                        self.editItem.title = "Modifier"
+                        print("\(String(describing: response.result))")
+                        DispatchQueue.main.async {
+                            let alertView = UIAlertController(title: "Parfait!", message: "Vos informations ont été modifié avec succès!", preferredStyle: .alert)
+                            alertView.addAction(UIAlertAction(title: "Ok", style: .cancel))
+                            self.present(alertView, animated: true, completion: nil)
+                        }
+                    case .failure(let error):
+                        print("Request failed with error: \(error)")
+                    }
                 }
             }
         }

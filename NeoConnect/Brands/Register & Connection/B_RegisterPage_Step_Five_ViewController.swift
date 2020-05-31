@@ -73,10 +73,11 @@ class B_RegisterPage_Step_Five_ViewController: UIViewController, UIImagePickerCo
         // Erreur : un champ est vide
         if (userPicture == nil) {
             DispatchQueue.main.async {
-                let alertView = UIAlertController(title: "Error", message: "Please, add a profile picture", preferredStyle: .alert)
+                let alertView = UIAlertController(title: "Error", message: "Veuillez ajouter une image de profil", preferredStyle: .alert)
                 alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
                 self.present(alertView, animated: true, completion: nil)
             }
+            return
         }
         else {
             let Register: Parameters = [
@@ -108,8 +109,8 @@ class B_RegisterPage_Step_Five_ViewController: UIViewController, UIImagePickerCo
 
                             print("Successfull")
                             DispatchQueue.main.async {
-                                let alertView = UIAlertController(title: "Great !", message: "Registration is successful. You can log in now !", preferredStyle: .alert)
-                                alertView.addAction(UIAlertAction(title: "Continue", style: .cancel) { action in self.dismiss(animated: true, completion: nil)
+                                let alertView = UIAlertController(title: "Parfait !", message: "Inscription réussie. Vous pouvez maintenant vous connecter", preferredStyle: .alert)
+                                alertView.addAction(UIAlertAction(title: "Continuer", style: .cancel) { action in self.dismiss(animated: true, completion: nil)
                                     let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "B_Register")
                                     
                                     self.show(loginVC!, sender: nil)

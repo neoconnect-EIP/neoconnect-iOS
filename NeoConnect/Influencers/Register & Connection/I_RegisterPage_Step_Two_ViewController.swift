@@ -15,6 +15,7 @@ class I_RegisterPage_Step_Two_ViewController: UIViewController {
     @IBOutlet weak var userZipCodeTextField: UITextField!
     @IBOutlet weak var userCityTextField: UITextField!
     @IBOutlet weak var userPhoneNumberTextField: UITextField!
+    var restriction = RestrictionTextField()
     
     var pseudo = String()
     var email = String()
@@ -22,10 +23,15 @@ class I_RegisterPage_Step_Two_ViewController: UIViewController {
     var sex = String()
         
     override func viewDidLoad() {
+        if #available(iOS 12.0, *) {
+            userNameTextField.textContentType = .oneTimeCode
+            userCityTextField.textContentType = .oneTimeCode
+        }
         super.viewDidLoad()
-        print("Pseudo : " + pseudo)
-        print("Email : " + email)
-        print("Password : " + password)
+        userNameTextField.setLeftPaddingPoints(7)
+        userZipCodeTextField.setLeftPaddingPoints(7)
+        userCityTextField.setLeftPaddingPoints(7)
+        userPhoneNumberTextField.setLeftPaddingPoints(7)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -43,6 +49,38 @@ class I_RegisterPage_Step_Two_ViewController: UIViewController {
         }
     }
     
+    @IBAction func phoneNumberTextField(_ sender: UITextField) {
+        if restriction.isValidPhoneNumber(sender.text!) {
+            let noColor : UIColor = UIColor.white
+            
+            sender.layer.borderColor = noColor.cgColor
+        } else {
+            let errorColor : UIColor = UIColor.red
+
+            sender.layer.borderColor = errorColor.cgColor
+            sender.layer.cornerRadius = 5
+            sender.layer.borderWidth = 1.0
+
+            print("Wrong PhoneNumber")
+        }
+    }
+    
+    @IBAction func zipCodeTextField(_ sender: UITextField) {
+        if restriction.isValidZipCode(sender.text!) {
+            let noColor : UIColor = UIColor.white
+            
+            sender.layer.borderColor = noColor.cgColor
+        } else {
+            let errorColor : UIColor = UIColor.red
+
+            sender.layer.borderColor = errorColor.cgColor
+            sender.layer.cornerRadius = 5
+            sender.layer.borderWidth = 1.0
+
+            print("Wrong ZipCode")
+        }
+    }
+    
     @IBAction func nextButton(_ sender: Any) {
         let userName = userNameTextField.text!
         let userZipCode = userZipCodeTextField.text!
@@ -50,20 +88,32 @@ class I_RegisterPage_Step_Two_ViewController: UIViewController {
         let userPhoneNumber = userPhoneNumberTextField.text!
         let userSex = sex
         
-        // Check for empty fields // Vérification des champs vides
+        // Check for empty fields
         if (userName.isEmpty || userZipCode.isEmpty || userCity.isEmpty || userPhoneNumber.isEmpty || userSex.isEmpty) {
-            print(sex)
-            print(userName)
-            print(userZipCode)
-            print(userPhoneNumber)
-            print(userCity)
-
-            // Display alert message // Affichage d'un message d'alerte
             DispatchQueue.main.async {
                 let alertView = UIAlertController(title: "Erreur", message: "Veuillez remplir tout les champs", preferredStyle: .alert)
                 alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
                 self.present(alertView, animated: true, completion: nil)
             }
+            return
+        }
+        // Check for zipcode field
+        if (restriction.isValidZipCode(userZipCode) == false) {
+            DispatchQueue.main.async {
+                let alertView = UIAlertController(title: "Erreur", message: "Le code postal semble être inconforme", preferredStyle: .alert)
+                alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
+                self.present(alertView, animated: true, completion: nil)
+            }
+            return
+        }
+        // Check for phone number field
+        if (restriction.isValidPhoneNumber(userPhoneNumber) == false) {
+            DispatchQueue.main.async {
+                let alertView = UIAlertController(title: "Erreur", message: "Le numéro de téléphone semble être inconforme", preferredStyle: .alert)
+                alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
+                self.present(alertView, animated: true, completion: nil)
+            }
+            return
         }
         // Change view and send prepared data
         else {

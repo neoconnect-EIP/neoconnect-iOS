@@ -10,12 +10,23 @@ import UIKit
 
 class B_RegisterPage_Step_One_ViewController: UIViewController {
 
-    @IBOutlet weak var userIDTextField: UITextField!
+    @IBOutlet weak var userPseudoTextField: UITextField!
     @IBOutlet weak var userEmailTextField: UITextField!
     @IBOutlet weak var userPasswordTextField: UITextField!
     @IBOutlet weak var repeatPasswordTextField: UITextField!
+    var restriction = RestrictionTextField()
     
     override func viewDidLoad() {
+        if #available(iOS 12.0, *) {
+            userPseudoTextField.textContentType = .oneTimeCode
+            userEmailTextField.textContentType = .oneTimeCode
+            userPasswordTextField.textContentType = .oneTimeCode
+            repeatPasswordTextField.textContentType = .oneTimeCode
+        }
+        userPseudoTextField.setLeftPaddingPoints(7)
+        userEmailTextField.setLeftPaddingPoints(7)
+        userPasswordTextField.setLeftPaddingPoints(7)
+        repeatPasswordTextField.setLeftPaddingPoints(7)
         super.viewDidLoad()
     }
     
@@ -24,52 +35,100 @@ class B_RegisterPage_Step_One_ViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    @IBAction func emailTextField(_ sender: UITextField) {
-        if isValidEmail(sender.text!) {
+    @IBAction func pseudoTextField(_ sender: UITextField) {
+        if restriction.isValidPseudo(sender.text!) {
             let noColor : UIColor = UIColor.white
             
-            print(sender.text!)
             sender.layer.borderColor = noColor.cgColor
         } else {
             let errorColor : UIColor = UIColor.red
 
             sender.layer.borderColor = errorColor.cgColor
+            sender.layer.cornerRadius = 5
             sender.layer.borderWidth = 1.0
-
-            print("Wrong EMAIL")
+            
+            print("Wrong Pseudo")
         }
     }
     
-    func isValidEmail(_ email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+    @IBAction func emailTextField(_ sender: UITextField) {
+        if restriction.isValidEmail(sender.text!) {
+            let noColor : UIColor = UIColor.white
+            
+            sender.layer.borderColor = noColor.cgColor
+        } else {
+            let errorColor : UIColor = UIColor.red
 
-        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailPred.evaluate(with: email)
+            sender.layer.borderColor = errorColor.cgColor
+            sender.layer.cornerRadius = 5
+            sender.layer.borderWidth = 1.0
+
+            print("Wrong Email")
+        }
+    }
+    
+    @IBAction func passwordTextField(_ sender: UITextField) {
+        if restriction.isValidPassword(sender.text!) {
+            let noColor : UIColor = UIColor.white
+            
+            sender.layer.borderColor = noColor.cgColor
+        } else {
+            let errorColor : UIColor = UIColor.red
+
+            sender.layer.borderColor = errorColor.cgColor
+            sender.layer.cornerRadius = 5
+            sender.layer.borderWidth = 1.0
+
+            print("Wrong Password")
+        }
     }
     
     @IBAction func nextButtonTapped(_ sender: Any) {
-        let userID = userIDTextField.text!
+        let userPseudo = userPseudoTextField.text!
         let userEmail = userEmailTextField.text!
         let userPassword = userPasswordTextField.text!
         let repeatPassword = repeatPasswordTextField.text!
         
         // /!\ Check for empty fields
-        if (userID.isEmpty || userEmail.isEmpty || userPassword.isEmpty || repeatPassword.isEmpty) {
-            
-            // /!\ Display alert message
+        if (userPseudo.isEmpty || userEmail.isEmpty || userPassword.isEmpty || repeatPassword.isEmpty) {
             DispatchQueue.main.async {
-                let alertView = UIAlertController(title: "Error", message: "All fields are required", preferredStyle: .alert)
+                let alertView = UIAlertController(title: "Erreur", message: "Veuillez remplir tout les champs", preferredStyle: .alert)
                 alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
                 self.present(alertView, animated: true, completion: nil)
             }
-            
             return
         }
-        
-        if (userPassword != repeatPassword) {
-            // /!\ Display alert message : Passwords do not match together
+        // /!\ Check for email Field
+        if (restriction.isValidEmail(userEmail) == false) {
             DispatchQueue.main.async {
-                let alertView = UIAlertController(title: "Error", message: "Passwords do not match", preferredStyle: .alert)
+                let alertView = UIAlertController(title: "Erreur", message: "Votre adresse email est invalide", preferredStyle: .alert)
+                alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
+                self.present(alertView, animated: true, completion: nil)
+            }
+            return
+        }
+        // /!\ Check for password Field
+        if (restriction.isValidPassword(userPassword) == false) {
+            DispatchQueue.main.async {
+                let alertView = UIAlertController(title: "Erreur", message: "Le mot de passe nécessite au moins 8 caractères dont : 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère", preferredStyle: .alert)
+                alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
+                self.present(alertView, animated: true, completion: nil)
+            }
+            return
+        }
+        // /!\ Check for pseudo Field
+        if (restriction.isValidPseudo(userPseudo) == false) {
+            DispatchQueue.main.async {
+                let alertView = UIAlertController(title: "Erreur", message: "Le pseudo doit contenir au minimum 3 caractères dont 1 majuscule", preferredStyle: .alert)
+                alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
+                self.present(alertView, animated: true, completion: nil)
+            }
+            return
+        }
+        // /!\ Check if password match together
+        if (userPassword != repeatPassword) {
+            DispatchQueue.main.async {
+                let alertView = UIAlertController(title: "Erreur", message: "Les mots de passe ne correspondent pas", preferredStyle: .alert)
                 alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
                 self.present(alertView, animated: true, completion: nil)
             }
@@ -86,7 +145,7 @@ class B_RegisterPage_Step_One_ViewController: UIViewController {
         if segue.identifier == "B_Step_Two" {
             let Dest : B_RegisterPage_Step_Two_ViewController = segue.destination as! B_RegisterPage_Step_Two_ViewController
 
-                Dest.pseudo = userIDTextField.text!
+                Dest.pseudo = userPseudoTextField.text!
                 Dest.email = userEmailTextField.text!
                 Dest.password = userPasswordTextField.text!
         }

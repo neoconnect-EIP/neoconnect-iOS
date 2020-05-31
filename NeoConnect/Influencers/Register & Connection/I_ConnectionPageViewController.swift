@@ -20,6 +20,12 @@ class I_ConnectionPageViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        self.navigationController?.viewControllers = [self]
+        if #available(iOS 12.0, *) {
+            userPasswordTextField.textContentType = .oneTimeCode
+        }
+        userPseudoTextField.setLeftPaddingPoints(7)
+        userPasswordTextField.setLeftPaddingPoints(7)
         super.viewDidLoad()
     }
     
@@ -75,7 +81,7 @@ class I_ConnectionPageViewController: UIViewController {
 
                         DispatchQueue.main.async {
                         // Message d'alerte
-                            let alertView = UIAlertController(title: "Error", message: "Email/Mot de passe incorrects, veuillez réessayer", preferredStyle: .alert)
+                            let alertView = UIAlertController(title: "Erreur", message: "Email/Mot de passe incorrects, veuillez réessayer", preferredStyle: .alert)
                             alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
                             self.present(alertView, animated: true, completion: nil)
                         }

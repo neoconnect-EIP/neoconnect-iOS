@@ -62,6 +62,7 @@
 		33AF88852460F32600C6438C /* I_RegisterPage_Step_Four_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AF88842460F32600C6438C /* I_RegisterPage_Step_Four_ViewController.swift */; };
 		33B3983D22A556C900719E1D /* B_RegisterPage_Step_Two_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B3983C22A556C900719E1D /* B_RegisterPage_Step_Two_ViewController.swift */; };
 		33BA89582379320D00A71246 /* I_RegisterPage_Step_Three_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA89572379320D00A71246 /* I_RegisterPage_Step_Three_ViewController.swift */; };
+		33BC44AA247A29F600F2806C /* RestrictionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BC44A9247A29F600F2806C /* RestrictionTextField.swift */; };
 		33BC651C229ECA4000C52262 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BC651B229ECA4000C52262 /* AppDelegate.swift */; };
 		33BC651E229ECA4000C52262 /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BC651D229ECA4000C52262 /* MainPage.swift */; };
 		33BC6521229ECA4000C52262 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33BC651F229ECA4000C52262 /* Main.storyboard */; };
@@ -168,6 +169,7 @@
 		33AF88842460F32600C6438C /* I_RegisterPage_Step_Four_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_RegisterPage_Step_Four_ViewController.swift; sourceTree = "<group>"; };
 		33B3983C22A556C900719E1D /* B_RegisterPage_Step_Two_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B_RegisterPage_Step_Two_ViewController.swift; sourceTree = "<group>"; };
 		33BA89572379320D00A71246 /* I_RegisterPage_Step_Three_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_RegisterPage_Step_Three_ViewController.swift; sourceTree = "<group>"; };
+		33BC44A9247A29F600F2806C /* RestrictionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictionTextField.swift; sourceTree = "<group>"; };
 		33BC6518229ECA4000C52262 /* NeoConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeoConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33BC651B229ECA4000C52262 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		33BC651D229ECA4000C52262 /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
@@ -582,6 +584,7 @@
 			isa = PBXGroup;
 			children = (
 				33F31136240D8913006CDEB4 /* ImageConverter.swift */,
+				33BC44A9247A29F600F2806C /* RestrictionTextField.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -909,6 +912,7 @@
 				3392B69D24632C8F0040388A /* B_RegisterPage_Step_Four_ViewController.swift in Sources */,
 				33131D8F2368A3A0006C0A4B /* I_ChatViewController.swift in Sources */,
 				3388BE5A232016A000B9D1F8 /* AddOfferViewController.swift in Sources */,
+				33BC44AA247A29F600F2806C /* RestrictionTextField.swift in Sources */,
 				3387EE6B2406E3C40050852D /* Offer.swift in Sources */,
 				99B7DDE32468A75400A6E418 /* MyOffersView.swift in Sources */,
 				33BC651E229ECA4000C52262 /* MainPage.swift in Sources */,
@@ -1099,18 +1103,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = NeoConnect/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = EIP.NeoConnect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1120,17 +1127,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = NeoConnect/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = EIP.NeoConnect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8KA-6c-A1z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8KA-6c-A1z">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -177,6 +176,9 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="187" height="28.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="username"/>
+                                                <connections>
+                                                    <action selector="pseudoTextField:" destination="nnd-s6-CIq" eventType="editingDidEnd" id="a8W-GQ-YAb"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="justified" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8uZ-Yx-FNC">
                                                 <rect key="frame" x="0.0" y="58.5" width="187" height="29"/>
@@ -190,11 +192,17 @@
                                                 <rect key="frame" x="0.0" y="117.5" width="187" height="28.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="password"/>
+                                                <connections>
+                                                    <action selector="passwordTextField:" destination="nnd-s6-CIq" eventType="editingDidEnd" id="nKn-gW-Svc"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Répétez le mot de passe" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="JQ4-25-e2M">
                                                 <rect key="frame" x="0.0" y="176" width="187" height="28.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="password"/>
+                                                <connections>
+                                                    <action selector="passwordTextField:" destination="nnd-s6-CIq" eventType="editingDidEnd" id="Zhs-OR-4O0"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -254,8 +262,8 @@
                     <connections>
                         <outlet property="repeatPasswordTextField" destination="JQ4-25-e2M" id="A2m-cb-R9m"/>
                         <outlet property="userEmailTextField" destination="8uZ-Yx-FNC" id="2ki-Vz-AtJ"/>
-                        <outlet property="userIDTextField" destination="znk-FB-amO" id="N8D-bV-c1U"/>
                         <outlet property="userPasswordTextField" destination="QGp-Tm-FfA" id="5CP-Di-E8a"/>
+                        <outlet property="userPseudoTextField" destination="znk-FB-amO" id="hDB-m5-keE"/>
                         <segue destination="829-pi-W34" kind="show" identifier="I_Step_Two" id="IyO-kO-aww"/>
                     </connections>
                 </viewController>
@@ -346,12 +354,18 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Code postal" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p28-fX-XwU">
                                                 <rect key="frame" x="0.0" y="146" width="216" height="29"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad"/>
+                                                <connections>
+                                                    <action selector="zipCodeTextField:" destination="829-pi-W34" eventType="editingDidEnd" id="XyL-Hz-VKJ"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Téléphone" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aaa-Vv-DDs">
                                                 <rect key="frame" x="0.0" y="195" width="216" height="28.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad"/>
+                                                <connections>
+                                                    <action selector="phoneNumberTextField:" destination="829-pi-W34" eventType="editingDidEnd" id="7gB-5L-krL"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -462,31 +476,50 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                <connections>
+                                                    <action selector="facebookTextField:" destination="h2y-g7-Jle" eventType="editingDidEnd" id="JFS-1i-wbr"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Twitter" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yhH-6K-Xn1">
                                                 <rect key="frame" x="0.0" y="48" width="200" height="30.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                <connections>
+                                                    <action selector="twitterTextField:" destination="h2y-g7-Jle" eventType="editingDidEnd" id="JGw-qi-Wa8"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Instagram" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sgb-Mt-a9d">
                                                 <rect key="frame" x="0.0" y="95.5" width="200" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                <connections>
+                                                    <action selector="instagramTextField:" destination="h2y-g7-Jle" eventType="editingDidEnd" id="b0m-If-73w"/>
+                                                    <action selector="twitterTextField:" destination="h2y-g7-Jle" eventType="editingDidEnd" id="iq8-aa-KqI"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Snapchat" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NMp-jO-ldh">
                                                 <rect key="frame" x="0.0" y="143.5" width="200" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                <connections>
+                                                    <action selector="snapchatTextField:" destination="h2y-g7-Jle" eventType="editingDidEnd" id="eDn-ZY-0Xf"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Youtube" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QXO-0r-8Y0">
                                                 <rect key="frame" x="0.0" y="191.5" width="200" height="30.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                <connections>
+                                                    <action selector="youtubeTextField:" destination="h2y-g7-Jle" eventType="editingDidEnd" id="wLW-0m-j6Z"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Sujet" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P4H-mr-i9k">
                                                 <rect key="frame" x="0.0" y="239" width="200" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                <connections>
+                                                    <action selector="subjectTextField:" destination="h2y-g7-Jle" eventType="editingDidEnd" id="dDp-Iy-vdP"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -536,12 +569,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="yJQ-yJ-ZKa"/>
                     <connections>
-                        <outlet property="facebookTextField" destination="MQy-MX-tZi" id="98u-Pq-FyA"/>
-                        <outlet property="instagramTextField" destination="sgb-Mt-a9d" id="fT2-CN-Ft9"/>
-                        <outlet property="snapchatTextField" destination="NMp-jO-ldh" id="obd-hl-mlU"/>
-                        <outlet property="subjectTextField" destination="P4H-mr-i9k" id="NbH-Qk-Abd"/>
-                        <outlet property="twitterTextField" destination="yhH-6K-Xn1" id="kRk-C8-zOz"/>
-                        <outlet property="youtubeTextField" destination="QXO-0r-8Y0" id="gi0-5U-Dfg"/>
+                        <outlet property="userFacebookTextField" destination="MQy-MX-tZi" id="L6l-uY-ZU9"/>
+                        <outlet property="userInstagramTextField" destination="sgb-Mt-a9d" id="UqP-kc-X56"/>
+                        <outlet property="userSnapchatTextField" destination="NMp-jO-ldh" id="FVU-Aj-EWo"/>
+                        <outlet property="userSubjectTextField" destination="P4H-mr-i9k" id="yNT-9P-usy"/>
+                        <outlet property="userTwitterTextField" destination="yhH-6K-Xn1" id="sM0-hL-qtr"/>
+                        <outlet property="userYoutubeTextField" destination="QXO-0r-8Y0" id="54A-ZJ-T5s"/>
                         <segue destination="1sJ-w8-HIp" kind="show" identifier="I_Step_Four" id="jcW-t0-NDf"/>
                     </connections>
                 </viewController>
@@ -645,6 +678,6 @@
     <resources>
         <image name="BlankFormInf" width="248" height="278"/>
         <image name="ButtonInf" width="270" height="53"/>
-        <image name="InfBackground" width="800" height="533"/>
+        <image name="InfBackground" width="375" height="667"/>
     </resources>
 </document>

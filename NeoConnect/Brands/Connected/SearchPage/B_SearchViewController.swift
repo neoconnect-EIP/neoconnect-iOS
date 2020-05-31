@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class B_SearchViewController: UIViewController {
 
@@ -17,7 +18,6 @@ class B_SearchViewController: UIViewController {
         override func viewDidLoad() {
             super.viewDidLoad()
             shopFoundView.isHidden = true
-            messageTextField.text = "Rendez-vous à la prochaine mis à jour ! :)"
             configureSearchBar()
         }
         
@@ -57,22 +57,43 @@ class B_SearchViewController: UIViewController {
         }
         
         func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-                messageTextField.text = "Rendez-vous à la prochaine mis à jour ! :)"
+            let userPseudo = searchBar.text!
+            self.searchBar.endEditing(true)
+            let headers: HTTPHeaders = [
+                "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
+                "Content-Type": "application/x-www-form-urlencoded"
+            ]
+            let user: Parameters = [
+                "pseudo": userPseudo
+            ]
+            print(userPseudo)
+            AF.request("http://168.63.65.106/user/search",
+            method: .post,
+            parameters: user,
+            encoding: URLEncoding.default, headers: headers, interceptor: nil).validate(statusCode: 200..<300).responseJSON { response in
 
-//            if (searchBar.text == "Bibi") {
-//                shopFoundView.isHidden = false
-//                shopFoundView.pseudoTextField.text = "Nike"
-//                shopFoundView.emailTextField.text = "Nike Email"
-//                shopFoundView.fullnameTextField.text = "Nike full name"
-//                shopFoundView.postalTextField.text = "12345"
-//                shopFoundView.cityTextField.text = "New York"
-//                shopFoundView.phoneTextField.text = "0612345678"
-//                shopFoundView.societyTextField.text = "Nike"
-//                shopFoundView.functionTextField.text = "function"
-//                shopFoundView.themeTextField.text = "theme"
-//                messageTextField.text = "Veuillez entrer votre recherche"
-//            } else {
-//                messageTextField.text = "Aucune marque trouvées, veuillez réessayer."
-//            }
+                        switch response.result {
+                        case .success(let JSON):
+                            let response = JSON as! NSDictionary
+                            print(response)
+                            let imageArray = response.object(forKey: "userPicture")! as! [[String:Any]]
+                            var imageData = #imageLiteral(resourceName: "noImage")
+                            if imageArray.count > 0 {
+                                let imageUrl = URL(string: imageArray[0]["imageData"] as! String)!
+                                imageData = try! UIImage(data: Data(contentsOf: imageUrl))!
+                            }
+                            self.shopFoundView.isHidden = false
+                            self.shopFoundView.shopImageView.image = imageData
+                            self.shopFoundView.shopPseudoLabelField.text = response.object(forKey: "pseudo")! as? String
+
+                            print("Successfull")
+                            
+
+                        case .failure(let error):
+                            self.shopFoundView.isHidden = true
+                            self.messageTextField.text = "Aucun utilisateur trouvé, veuillez réessayer."
+                            print("Request failed with error: \(error)")
+                        }
+            }
         }
     }
