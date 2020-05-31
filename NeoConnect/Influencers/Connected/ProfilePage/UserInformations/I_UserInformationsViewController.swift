@@ -79,7 +79,12 @@ class I_UserInformationsViewController: UIViewController, UIImagePickerControlle
                             self.fullnameTextField.text = response.object(forKey: "full_name")! as? String
                             self.cityTextField.text = response.object(forKey: "city")! as? String
                             self.postalTextField.text = response.object(forKey: "postal")! as? String
-                            self.sexTextField.text = response.object(forKey: "sex")! as? String
+                            self.sexTextField.text = response.object(forKey: "sexe")! as? String
+                            if (self.sexTextField.text == "Male") {
+                                self.sexTextField.text = "Homme"
+                            } else {
+                                self.sexTextField.text = "Femme"
+                            }
                             self.phoneTextField.text = response.object(forKey: "phone")! as? String
                             self.facebookTextField.text = response.object(forKey: "facebook")! as? String
                             self.twitterTextField.text = response.object(forKey: "twitter")! as? String
