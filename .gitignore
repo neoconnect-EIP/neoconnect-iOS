@@ -2,3 +2,11 @@
 NeoConnectLast.xcworkspace/xcuserdata/ilan.co.xcuserdatad/UserInterfaceState.xcuserstate
 .DS_Store
 NeoConnect.xcodeproj/project.pbxproj
+*.pbxproj
+Pods
+NeoConnect.xcodeproj/project.pbxproj
+NeoConnect.xcworkspace/contents.xcworkspacedata
+NeoConnect.xcodeproj/xcuserdata/ilan.co.xcuserdatad/xcschemes/xcschememanagement.plist
+.DS_Store
+NeoConnect.xcodeproj/xcuserdata/ilan.co.xcuserdatad/xcschemes/xcschememanagement.plist
+NeoConnect.xcworkspace/xcuserdata/ilan.co.xcuserdatad/UserInterfaceState.xcuserstate

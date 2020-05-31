@@ -28,10 +28,16 @@ var updatedAt: String?
     }
 }
 
+<<<<<<< Updated upstream
 var ID = UserDefaults.standard.string(forKey: "id")!
+=======
+//var userID = UserDefaults.standard.string(forKey: "id")!
+>>>>>>> Stashed changes
 
 func getMyOffers(completion: @escaping ([myOffer]) -> Void)
 {
+    let userID = UserDefaults.standard.string(forKey: "id")!
+
     let _headers: HTTPHeaders = [
         "Authorization": "Bearer " + accessToken            ]
     var myOffers: [myOffer] = [myOffer()]
