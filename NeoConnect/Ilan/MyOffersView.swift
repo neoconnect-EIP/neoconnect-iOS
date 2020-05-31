@@ -28,10 +28,10 @@ var updatedAt: String?
     }
 }
 
-var userID = UserDefaults.standard.string(forKey: "id")!
 
 func getMyOffers(completion: @escaping ([myOffer]) -> Void)
 {
+    let userID = UserDefaults.standard.string(forKey: "id")!
     let _headers: HTTPHeaders = [
         "Authorization": "Bearer " + accessToken            ]
     var myOffers: [myOffer] = [myOffer()]
