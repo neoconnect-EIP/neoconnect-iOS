@@ -100,7 +100,7 @@ struct DetailMyOffer2: View {
 var body: some View {
     VStack(alignment: .center, spacing: 20.0) {
          KFImage(URL(string:selectedOffer.productImg![0].imageData!)).resizable().frame(width: 100, height: 100)
-              .clipShape(Circle()).clipped().padding(10).shadow(radius: 3)
+              .clipShape(Circle()).clipped().shadow(radius: 3)
           Text(String(selectedOffer.productName!)).multilineTextAlignment(.center).font(.headline)
         HStack{
           Text(String(selectedOffer.productSubject ?? "Pas de thème renseigné")).font(.subheadline).fontWeight(.light).multilineTextAlignment(.leading)
@@ -112,13 +112,13 @@ var body: some View {
                      .padding(.trailing,50)
                      .padding(.leading,50)
         Text(String(selectedOffer.productDesc!)).font(.body).fontWeight(.light).multilineTextAlignment(.center)
-      Text("Crée le " + date).foregroundColor(Color.gray)
-          .font(Font.system(size: 14)).italic()
-        Text("Vous avez postulé à cette offre.").multilineTextAlignment(.center)
         NavigationLink(destination: NotationView(selectedOffer: selectedOffer, rating: $rating)) {
            Text("Noter")
            }
-    }.padding(20)
+        /*  Text("Vous avez postulé à cette offre.").fontWeight(.light).multilineTextAlignment(.center).foregroundColor(Color.gray).font(Font.system(size: 14))*/
+        Text("Crée le " + date).foregroundColor(Color.gray)
+        .font(Font.system(size: 14)).italic()
+    }
 }
 }
 
