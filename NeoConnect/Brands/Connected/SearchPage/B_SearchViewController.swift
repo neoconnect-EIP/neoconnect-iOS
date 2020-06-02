@@ -92,6 +92,7 @@ extension B_SearchViewController : UISearchBarDelegate {
                         let shopFound:shopFound = Bundle.main.loadNibNamed("shopFoundView", owner: self, options: nil)?.first as! shopFound
                         shopFound.tag = 100
                         shopFound.shopPseudoLabelField.text = response.object(forKey: "pseudo")! as? String
+                        shopFound.setImage()
                         self.userId = response.object(forKey: "id")! as? Int
                         self.userEmail = response.object(forKey: "email")! as? String
                         shopFound.shopImageView.image = imageData
