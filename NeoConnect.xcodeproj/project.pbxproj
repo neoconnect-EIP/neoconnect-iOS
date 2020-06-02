@@ -74,6 +74,8 @@
 		33BC653C229ECA4100C52262 /* NeoConnectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BC653B229ECA4100C52262 /* NeoConnectUITests.swift */; };
 		33CB63D623E0BFF10075B98C /* shopFoundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33CB63D523E0BFF10075B98C /* shopFoundView.xib */; };
 		33CB63D823E0C60C0075B98C /* shopFound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CB63D723E0C60C0075B98C /* shopFound.swift */; };
+		33D653242486F97600929D64 /* I_UserMarksAndComments.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33D653232486F97600929D64 /* I_UserMarksAndComments.storyboard */; };
+		33D653262486F99200929D64 /* I_MarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D653252486F99200929D64 /* I_MarksViewController.swift */; };
 		33E49E0F22E715F9006D1D5D /* I_Register_and_Connection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33E49E0E22E715F9006D1D5D /* I_Register_and_Connection.storyboard */; };
 		33E49E1122E7163E006D1D5D /* B_Register_and_Connection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33E49E1022E7163E006D1D5D /* B_Register_and_Connection.storyboard */; };
 		33F1362523E21E7E00A740DE /* I_ParametersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F1362423E21E7E00A740DE /* I_ParametersTableViewController.swift */; };
@@ -188,6 +190,8 @@
 		33BC653D229ECA4100C52262 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33CB63D523E0BFF10075B98C /* shopFoundView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = shopFoundView.xib; sourceTree = "<group>"; };
 		33CB63D723E0C60C0075B98C /* shopFound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shopFound.swift; sourceTree = "<group>"; };
+		33D653232486F97600929D64 /* I_UserMarksAndComments.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = I_UserMarksAndComments.storyboard; sourceTree = "<group>"; };
+		33D653252486F99200929D64 /* I_MarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_MarksViewController.swift; sourceTree = "<group>"; };
 		33E49E0E22E715F9006D1D5D /* I_Register_and_Connection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = I_Register_and_Connection.storyboard; sourceTree = "<group>"; };
 		33E49E1022E7163E006D1D5D /* B_Register_and_Connection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = B_Register_and_Connection.storyboard; sourceTree = "<group>"; };
 		33F1362423E21E7E00A740DE /* I_ParametersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_ParametersTableViewController.swift; sourceTree = "<group>"; };
@@ -263,6 +267,7 @@
 		3338622C2326AC81005C188E /* ProfilePage */ = {
 			isa = PBXGroup;
 			children = (
+				33D653222486F92700929D64 /* UserMarks&Comments */,
 				3369C165244CC0230005307F /* UserInformations */,
 				33F1362423E21E7E00A740DE /* I_ParametersTableViewController.swift */,
 				3353DCAF2469FF660070AAAC /* I_ProfileViewController.swift */,
@@ -504,6 +509,15 @@
 				33BC653D229ECA4100C52262 /* Info.plist */,
 			);
 			path = NeoConnectUITests;
+			sourceTree = "<group>";
+		};
+		33D653222486F92700929D64 /* UserMarks&Comments */ = {
+			isa = PBXGroup;
+			children = (
+				33D653232486F97600929D64 /* I_UserMarksAndComments.storyboard */,
+				33D653252486F99200929D64 /* I_MarksViewController.swift */,
+			);
+			path = "UserMarks&Comments";
 			sourceTree = "<group>";
 		};
 		33E49E0222DA5608006D1D5D /* Register & Connection */ = {
@@ -765,6 +779,7 @@
 				3359B52A22E78D8200CB86E2 /* AddOffer.storyboard in Resources */,
 				3392B6A92463A0400040388A /* DescriptionShopSlide.xib in Resources */,
 				3359B51F22E7813A00CB86E2 /* B_TabBarController.storyboard in Resources */,
+				33D653242486F97600929D64 /* I_UserMarksAndComments.storyboard in Resources */,
 				3397E802236C58CD002E96FD /* ForgotPassword.storyboard in Resources */,
 				3359B52822E78D0900CB86E2 /* B_Search.storyboard in Resources */,
 				33CB63D623E0BFF10075B98C /* shopFoundView.xib in Resources */,
@@ -922,6 +937,7 @@
 				3338277922A6D53F00504540 /* I_ConnectionPageViewController.swift in Sources */,
 				3330A94423DF08EE00A0CF63 /* userFound.swift in Sources */,
 				333862312326B10A005C188E /* B_UserInformationsViewController.swift in Sources */,
+				33D653262486F99200929D64 /* I_MarksViewController.swift in Sources */,
 				99B7DDE92468A75400A6E418 /* SceneDelegate.swift in Sources */,
 				3325179E23E62A9A000C7E7D /* B_ParametersTableViewController.swift in Sources */,
 				99B7DDE12468A75400A6E418 /* Test.swift in Sources */,

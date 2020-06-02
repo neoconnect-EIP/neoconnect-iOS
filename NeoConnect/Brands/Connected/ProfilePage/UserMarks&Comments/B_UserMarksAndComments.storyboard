@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fks-Yu-TCZ">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -21,10 +21,16 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlankFormShop" translatesAutoresizingMaskIntoConstraints="NO" id="gaC-gz-sd8">
                                 <rect key="frame" x="37.5" y="129" width="300" height="450"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rendez-vous à la prochaine mis à jour ! :)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vys-1v-1ea">
-                                <rect key="frame" x="87.5" y="329" width="200" height="50"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oPq-ld-i7H">
+                                <rect key="frame" x="92.5" y="149" width="190" height="150"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="64"/>
+                                <color key="textColor" red="0.28066268179999998" green="0.33058375629999998" blue="0.2019773379" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="La moyenne des notes" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bhi-T9-dzX">
+                                <rect key="frame" x="92.5" y="299" width="190" height="35"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="13"/>
+                                <color key="textColor" red="0.73853902279999994" green="0.73853902279999994" blue="0.73853902279999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -33,41 +39,49 @@
                             <constraint firstItem="sk3-xT-lrN" firstAttribute="top" secondItem="UMB-w2-xua" secondAttribute="top" id="0HG-Qe-arM"/>
                             <constraint firstItem="gaC-gz-sd8" firstAttribute="width" secondItem="EV8-9u-rBb" secondAttribute="width" multiplier="0.8" id="4Ks-Sb-2Bq"/>
                             <constraint firstItem="sk3-xT-lrN" firstAttribute="leading" secondItem="UMB-w2-xua" secondAttribute="leading" id="6Eq-DM-hUs"/>
-                            <constraint firstItem="vys-1v-1ea" firstAttribute="centerY" secondItem="gaC-gz-sd8" secondAttribute="centerY" id="7kN-O9-VJp"/>
-                            <constraint firstItem="vys-1v-1ea" firstAttribute="width" secondItem="gaC-gz-sd8" secondAttribute="width" multiplier="0.666667" id="Egf-8k-Eov"/>
+                            <constraint firstItem="oPq-ld-i7H" firstAttribute="centerX" secondItem="gaC-gz-sd8" secondAttribute="centerX" id="7Tz-Qw-VNX"/>
+                            <constraint firstItem="oPq-ld-i7H" firstAttribute="height" secondItem="gaC-gz-sd8" secondAttribute="height" multiplier="0.333333" id="ATo-AG-ZNe"/>
+                            <constraint firstItem="Bhi-T9-dzX" firstAttribute="width" secondItem="gaC-gz-sd8" secondAttribute="width" multiplier="0.633333" id="BXx-Va-DoH"/>
+                            <constraint firstItem="Bhi-T9-dzX" firstAttribute="top" secondItem="oPq-ld-i7H" secondAttribute="bottom" id="H8R-WM-77G"/>
                             <constraint firstItem="sk3-xT-lrN" firstAttribute="width" secondItem="EV8-9u-rBb" secondAttribute="width" id="RQo-e2-OTY"/>
                             <constraint firstItem="gaC-gz-sd8" firstAttribute="top" secondItem="UMB-w2-xua" secondAttribute="top" constant="85" id="W9r-mO-rmH"/>
-                            <constraint firstItem="vys-1v-1ea" firstAttribute="centerX" secondItem="gaC-gz-sd8" secondAttribute="centerX" id="Yct-ec-RaX"/>
+                            <constraint firstItem="gaC-gz-sd8" firstAttribute="top" secondItem="oPq-ld-i7H" secondAttribute="top" constant="-20" id="ZCT-WQ-5dx"/>
                             <constraint firstItem="gaC-gz-sd8" firstAttribute="centerX" secondItem="UMB-w2-xua" secondAttribute="centerX" id="biG-7c-aLW"/>
-                            <constraint firstItem="vys-1v-1ea" firstAttribute="height" secondItem="gaC-gz-sd8" secondAttribute="height" multiplier="0.111111" id="eaw-0r-mgF"/>
+                            <constraint firstItem="oPq-ld-i7H" firstAttribute="width" secondItem="gaC-gz-sd8" secondAttribute="width" multiplier="0.633333" id="laZ-DQ-Bp8"/>
+                            <constraint firstItem="Bhi-T9-dzX" firstAttribute="centerX" secondItem="gaC-gz-sd8" secondAttribute="centerX" id="rfk-MM-0aB"/>
+                            <constraint firstItem="Bhi-T9-dzX" firstAttribute="height" secondItem="gaC-gz-sd8" secondAttribute="height" multiplier="0.0777778" id="tVH-bZ-TTK"/>
                             <constraint firstItem="gaC-gz-sd8" firstAttribute="height" secondItem="EV8-9u-rBb" secondAttribute="height" multiplier="0.674663" id="vJd-b0-Wu4"/>
                             <constraint firstItem="sk3-xT-lrN" firstAttribute="height" secondItem="EV8-9u-rBb" secondAttribute="height" multiplier="0.934033" id="xOg-00-jeG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UMB-w2-xua"/>
                     </view>
                     <navigationItem key="navigationItem" id="gKw-DE-JtG"/>
+                    <connections>
+                        <outlet property="averageDescLabelField" destination="Bhi-T9-dzX" id="zvh-eG-aHu"/>
+                        <outlet property="averageNoteLabelField" destination="oPq-ld-i7H" id="grJ-X8-aNk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g9g-Qn-RJz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1221.5999999999999" y="131.78410794602701"/>
+            <point key="canvasLocation" x="1960.8" y="131.78410794602701"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="18I-ql-DwV">
+        <scene sceneID="Cng-Gs-iiE">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rfR-z1-Dsb" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fks-Yu-TCZ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EBO-Oh-xgf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4G8-av-8a7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="MMp-g8-P6H" kind="relationship" relationship="rootViewController" id="fRd-j7-VTP"/>
+                        <segue destination="MMp-g8-P6H" kind="relationship" relationship="rootViewController" id="R07-gs-emz"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="d7d-Aj-AKj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B4a-Go-g4D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="311.59420289855075" y="132.58928571428572"/>
+            <point key="canvasLocation" x="1255" y="132"/>
         </scene>
     </scenes>
     <resources>

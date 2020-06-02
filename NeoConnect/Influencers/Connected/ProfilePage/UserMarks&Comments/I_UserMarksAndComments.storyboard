@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xB0-s3-gTl">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Marks View Controller-->
+        <scene sceneID="6Hq-b6-9OL">
+            <objects>
+                <viewController storyboardIdentifier="I_UserMarksAndComments" id="kmb-45-f1d" customClass="I_MarksViewController" customModule="NeoConnect" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RHG-Sz-ZaM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="InfBackground" translatesAutoresizingMaskIntoConstraints="NO" id="nfo-Iq-aRk">
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlankFormInf" translatesAutoresizingMaskIntoConstraints="NO" id="Iu2-vC-cSN">
+                                <rect key="frame" x="37.5" y="129" width="300" height="450"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0sr-VN-lN5">
+                                <rect key="frame" x="92.5" y="149" width="190" height="150"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="64"/>
+                                <color key="textColor" red="0.25997218490000001" green="0.61279952530000004" blue="0.75298136469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="La moyenne des notes" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Lj-Tn-dJO">
+                                <rect key="frame" x="92.5" y="299" width="190" height="35"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="13"/>
+                                <color key="textColor" red="0.73853902279999994" green="0.73853902279999994" blue="0.73853902279999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="0sr-VN-lN5" firstAttribute="width" secondItem="Iu2-vC-cSN" secondAttribute="width" multiplier="0.633333" id="3wi-Sa-mDo"/>
+                            <constraint firstItem="nfo-Iq-aRk" firstAttribute="height" secondItem="RHG-Sz-ZaM" secondAttribute="height" multiplier="0.934033" id="5hc-mq-5mn"/>
+                            <constraint firstItem="nfo-Iq-aRk" firstAttribute="top" secondItem="v08-vy-Cxi" secondAttribute="top" id="8AY-4f-hB3"/>
+                            <constraint firstItem="nfo-Iq-aRk" firstAttribute="width" secondItem="RHG-Sz-ZaM" secondAttribute="width" id="C9N-6f-cbF"/>
+                            <constraint firstItem="0sr-VN-lN5" firstAttribute="centerX" secondItem="Iu2-vC-cSN" secondAttribute="centerX" id="JIj-wN-V3I"/>
+                            <constraint firstItem="Iu2-vC-cSN" firstAttribute="top" secondItem="0sr-VN-lN5" secondAttribute="top" constant="-20" id="JeT-FB-nHf"/>
+                            <constraint firstItem="nfo-Iq-aRk" firstAttribute="leading" secondItem="v08-vy-Cxi" secondAttribute="leading" id="S13-gR-6qx"/>
+                            <constraint firstItem="Iu2-vC-cSN" firstAttribute="width" secondItem="RHG-Sz-ZaM" secondAttribute="width" multiplier="0.8" id="StX-xs-jeO"/>
+                            <constraint firstItem="0sr-VN-lN5" firstAttribute="height" secondItem="Iu2-vC-cSN" secondAttribute="height" multiplier="0.333333" id="XSN-1f-ZOy"/>
+                            <constraint firstItem="8Lj-Tn-dJO" firstAttribute="centerX" secondItem="Iu2-vC-cSN" secondAttribute="centerX" id="ezw-Ub-1lC"/>
+                            <constraint firstItem="8Lj-Tn-dJO" firstAttribute="top" secondItem="0sr-VN-lN5" secondAttribute="bottom" id="jrg-9z-19Y"/>
+                            <constraint firstItem="Iu2-vC-cSN" firstAttribute="top" secondItem="v08-vy-Cxi" secondAttribute="top" constant="85" id="oy5-Nz-Bob"/>
+                            <constraint firstItem="Iu2-vC-cSN" firstAttribute="centerX" secondItem="v08-vy-Cxi" secondAttribute="centerX" id="pkb-52-WG1"/>
+                            <constraint firstItem="8Lj-Tn-dJO" firstAttribute="width" secondItem="Iu2-vC-cSN" secondAttribute="width" multiplier="0.633333" id="rfs-2i-y3Z"/>
+                            <constraint firstItem="Iu2-vC-cSN" firstAttribute="height" secondItem="RHG-Sz-ZaM" secondAttribute="height" multiplier="0.674663" id="sd4-iO-Th5"/>
+                            <constraint firstItem="8Lj-Tn-dJO" firstAttribute="height" secondItem="Iu2-vC-cSN" secondAttribute="height" multiplier="0.0777778" id="sie-kg-5pa"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="v08-vy-Cxi"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="uBN-fk-Sfu"/>
+                    <connections>
+                        <outlet property="averageDescLabelField" destination="8Lj-Tn-dJO" id="OLl-2T-az4"/>
+                        <outlet property="averageNoteLabelField" destination="0sr-VN-lN5" id="vR6-nB-WE8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cRp-ay-cza" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1964" y="131.78410794602701"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="khX-5n-kUO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xB0-s3-gTl" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EU1-do-vCu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="kmb-45-f1d" kind="relationship" relationship="rootViewController" id="nsp-LH-NPd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="44c-cE-9Zt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1222" y="132"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="BlankFormInf" width="248" height="278"/>
+        <image name="InfBackground" width="375" height="667"/>
+    </resources>
+</document>
