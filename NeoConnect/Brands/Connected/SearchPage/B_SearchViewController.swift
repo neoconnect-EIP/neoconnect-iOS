@@ -110,14 +110,14 @@ extension B_SearchViewController : UISearchBarDelegate {
     }
     
     @objc func noteButtonTapped (sender:UIButton) {
-        let rateView = NotationUserView(userId: self.userId, rating: self.$rating)
+        let rateView = NotationUserView(userId: userId, rating: rating)
         
         let host = UIHostingController(rootView: rateView)
         navigationController?.pushViewController(host, animated: true)
     }
     
     @objc func contactButtonTapped (sender:UIButton) {
-        let contactView = ContactUserView()
+        let contactView = ContactUserView(emailUser: userEmail)
         
         let host = UIHostingController(rootView: contactView)
         navigationController?.pushViewController(host, animated: true)

@@ -15,7 +15,7 @@ class B_ChatViewController: UIViewController {
         super.viewDidLoad()
     }
     @IBAction func ContactUser(_ sender: Any) {
-           let contactUserView = ContactUserView()
+           let contactUserView = ContactUserView(emailUser: "")
                           let host = UIHostingController(rootView: contactUserView)
                         navigationController?.pushViewController(host, animated: true)
     }

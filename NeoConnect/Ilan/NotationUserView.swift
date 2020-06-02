@@ -14,7 +14,7 @@ import Alamofire
 struct NotationUserView: View {
 
 var userId : Int
-@Binding var rating: Int
+@State var rating: Int
 
 @State private var message = ""
     
@@ -75,7 +75,7 @@ func rateAndCommentUser(rating: Int, userId: Int, message: String)
 
 struct NotationUserView_Previews: PreviewProvider {
     static var previews: some View {
-        NotationView(selectedOffer: Offer2(), rating: .constant(4))
+        NotationUserView(userId: 10, rating: 4)
     }
 }
 

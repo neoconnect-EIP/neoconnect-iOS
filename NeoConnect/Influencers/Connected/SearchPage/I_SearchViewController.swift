@@ -8,16 +8,17 @@
 
 import UIKit
 import Alamofire
+import SwiftUI
 
 class I_SearchViewController: UIViewController {
         
-    @IBOutlet weak var userFoundView: userFound!
     @IBOutlet weak var messageTextField: UILabel!
     let searchBar = UISearchBar()
-
+    @State private var rating = 0
+       var userId: Int!
+       var userEmail: String!
     override func viewDidLoad() {
         super.viewDidLoad()
-        userFoundView.isHidden = true
         configureSearchBar()
     }
     
@@ -52,9 +53,13 @@ class I_SearchViewController: UIViewController {
 extension I_SearchViewController : UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        search(shouldShow: false)
-        userFoundView.isHidden = true
-    }
+        if let viewWithTag = self.view.viewWithTag(100) {
+                print("Tag 100")
+                viewWithTag.removeFromSuperview()
+            } else {
+                print("tag not found")
+            }
+            search(shouldShow: false)    }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let userPseudo = searchBar.text!
@@ -82,18 +87,37 @@ extension I_SearchViewController : UISearchBarDelegate {
                             let imageUrl = URL(string: imageArray[0]["imageData"] as! String)!
                             imageData = try! UIImage(data: Data(contentsOf: imageUrl))!
                         }
-                        self.userFoundView.isHidden = false
-                        self.userFoundView.userImageView.image = imageData
-                        self.userFoundView.userPseudoLabelField.text = response.object(forKey: "pseudo")! as? String
+                      let userFound:userFound = Bundle.main.loadNibNamed("userFoundView", owner: self, options: nil)?.first as! userFound
+                                             userFound.tag = 100
+                                             userFound.userPseudoLabelField.text = response.object(forKey: "pseudo")! as? String
+                                             userFound.setImage()
+                                             self.userId = response.object(forKey: "id")! as? Int
+                                             self.userEmail = response.object(forKey: "email")! as? String
+                                             userFound.userImageView.image = imageData
+                                             userFound.noteButton.addTarget(self, action: #selector(I_SearchViewController.noteButtonTapped(sender:)), for: .touchUpInside)
+                                             userFound.contactButton.addTarget(self, action: #selector(I_SearchViewController.contactButtonTapped(sender:)), for: .touchUpInside)
+                                             self.view.addSubview(userFound)
 
                         print("Successfull")
                         
 
                     case .failure(let error):
-                        self.userFoundView.isHidden = true
                         self.messageTextField.text = "Aucun utilisateur trouvé, veuillez réessayer."
                         print("Request failed with error: \(error)")
                     }
         }
     }
+    @objc func noteButtonTapped (sender:UIButton) {
+          let rateView = NotationUserView(userId: userId, rating: rating)
+          
+          let host = UIHostingController(rootView: rateView)
+          navigationController?.pushViewController(host, animated: true)
+      }
+      
+      @objc func contactButtonTapped (sender:UIButton) {
+          let contactView = ContactUserView(emailUser: userEmail)
+          
+          let host = UIHostingController(rootView: contactView)
+          navigationController?.pushViewController(host, animated: true)
+      }
 }
