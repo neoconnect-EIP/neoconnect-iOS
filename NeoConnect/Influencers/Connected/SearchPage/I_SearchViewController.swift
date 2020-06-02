@@ -15,7 +15,7 @@ class I_SearchViewController: UIViewController {
     @IBOutlet weak var messageTextField: UILabel!
     let searchBar = UISearchBar()
     @State private var rating = 0
-       var userId: Int!
+        var userId: Int!
        var userEmail: String!
     override func viewDidLoad() {
         super.viewDidLoad()

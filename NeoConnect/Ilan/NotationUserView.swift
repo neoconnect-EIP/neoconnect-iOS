@@ -62,8 +62,9 @@ func myimage(for number: Int) -> Image {
 
 func rateAndCommentUser(rating: Int, userId: Int, message: String)
 {
+    let userToken = UserDefaults.standard.string(forKey: "Token")!
     let _headers: HTTPHeaders = [
-        "Authorization": "Bearer " + accessToken            ]
+        "Authorization": "Bearer " + userToken            ]
     AF.request("http://168.63.65.106/user/comment/" + String(userId), method: .post, parameters: ["comment" : message], encoding: URLEncoding.default, headers: _headers) .responseString { response in
         debugPrint(response)
     }
