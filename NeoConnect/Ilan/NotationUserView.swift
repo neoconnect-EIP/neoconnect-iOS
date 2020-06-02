@@ -14,7 +14,7 @@ import Alamofire
 struct NotationUserView: View {
 
 var userId : Int
-@Binding var rating: Int
+@State var rating: Int
 
 @State private var message = ""
     
@@ -62,8 +62,9 @@ func myimage(for number: Int) -> Image {
 
 func rateAndCommentUser(rating: Int, userId: Int, message: String)
 {
+    let userToken = UserDefaults.standard.string(forKey: "Token")!
     let _headers: HTTPHeaders = [
-        "Authorization": "Bearer " + accessToken            ]
+        "Authorization": "Bearer " + userToken            ]
     AF.request("http://168.63.65.106/user/comment/" + String(userId), method: .post, parameters: ["comment" : message], encoding: URLEncoding.default, headers: _headers) .responseString { response in
         debugPrint(response)
     }
@@ -75,7 +76,7 @@ func rateAndCommentUser(rating: Int, userId: Int, message: String)
 
 struct NotationUserView_Previews: PreviewProvider {
     static var previews: some View {
-        NotationView(selectedOffer: Offer2(), rating: .constant(4))
+        NotationUserView(userId: 10, rating: 4)
     }
 }
 

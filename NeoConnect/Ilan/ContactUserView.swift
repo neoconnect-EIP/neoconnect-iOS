@@ -12,39 +12,39 @@ import Alamofire
 
 struct ContactUserView: View {
     
-    @State private var email : String = ""
+    @State var emailUser : String
     @State private var subject : String = ""
     @State private var message : String = ""
     @State private var emailString  : String = ""
     @State private var isEmailValid : Bool   = true
     private var validated: Bool {
-              !email.isEmpty && !subject.isEmpty && !message.isEmpty
+           !emailUser.isEmpty && !subject.isEmpty && !message.isEmpty
           }
     var body: some View {
           NavigationView {
             Form {
                 Section(header:Text("Contacter un utilisateur")) {
-                    TextField("Email", text: $email,onEditingChanged: { (isChanged) in
+                    TextField("Email", text: $emailUser,onEditingChanged: { (isChanged) in
                     if !isChanged {
-                        if self.textFieldValidatorEmail(self.email) {
+                        if self.textFieldValidatorEmail(self.emailUser) {
                             self.isEmailValid = true
                         } else {
                             self.isEmailValid = false
-                            self.email = ""
+                            self.emailUser = ""
                         }
                         }})
                     if !self.isEmailValid {
-                               Text("Adresse invalide")
-                                   .font(.callout)
-                                   .foregroundColor(Color.red)
-                           }
+                                                  Text("Adresse invalide")
+                                                      .font(.callout)
+                                                      .foregroundColor(Color.red)
+                                              }
                     TextField("Sujet", text: $subject)
                     TextField("Message", text: $message).frame(width: 80, height: 100)
                 }
                 if (validated && self.isEmailValid) {
                 Button(action: {
-                    let map = ["to": self.email,
-                               "email": self.email,
+                    let map = ["to": self.emailUser,
+                               "email": self.emailUser,
                                "subject": self.subject, "message": self.message]
                     AF.request("http://168.63.65.106/user/contact",
                                method: .post,
@@ -75,8 +75,8 @@ struct ContactUserView: View {
        }
 }
 
-struct ContactUserView_Previews: PreviewProvider {
+/*struct ContactUserView_Previews: PreviewProvider {
     static var previews: some View {
         ContactUserView()
     }
-}
+}*/

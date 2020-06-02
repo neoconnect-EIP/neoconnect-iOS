@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rd8-vY-fRE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rd8-vY-fRE">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -21,28 +21,19 @@
                                 <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cx2-27-81w" customClass="userFound" customModule="NeoConnect" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="cx2-27-81w" firstAttribute="centerX" secondItem="CjP-Ub-dCv" secondAttribute="centerX" id="5Bf-og-Y8C"/>
-                            <constraint firstItem="cx2-27-81w" firstAttribute="height" secondItem="JTI-Q1-E6y" secondAttribute="height" id="6nK-Z4-Hpm"/>
                             <constraint firstItem="CiG-LM-Jwe" firstAttribute="centerX" secondItem="CjP-Ub-dCv" secondAttribute="centerX" id="RcK-mM-zQV"/>
                             <constraint firstItem="CiG-LM-Jwe" firstAttribute="width" secondItem="JTI-Q1-E6y" secondAttribute="width" multiplier="0.626667" id="T3x-K4-Fbu"/>
                             <constraint firstItem="CiG-LM-Jwe" firstAttribute="centerY" secondItem="CjP-Ub-dCv" secondAttribute="centerY" id="UeN-95-HfU"/>
-                            <constraint firstItem="cx2-27-81w" firstAttribute="width" secondItem="CjP-Ub-dCv" secondAttribute="width" id="Uy0-hH-MKu"/>
                             <constraint firstItem="CiG-LM-Jwe" firstAttribute="height" secondItem="JTI-Q1-E6y" secondAttribute="height" multiplier="0.142429" id="kwG-ni-kLB"/>
-                            <constraint firstItem="CjP-Ub-dCv" firstAttribute="top" secondItem="cx2-27-81w" secondAttribute="top" constant="44" id="yyf-3Y-5qO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CjP-Ub-dCv"/>
                     </view>
                     <navigationItem key="navigationItem" title="Recherches" id="hYF-nX-90j"/>
                     <connections>
                         <outlet property="messageTextField" destination="CiG-LM-Jwe" id="bmW-iX-0Qz"/>
-                        <outlet property="userFoundView" destination="cx2-27-81w" id="PJs-HN-0TU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wlq-9r-aCn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
