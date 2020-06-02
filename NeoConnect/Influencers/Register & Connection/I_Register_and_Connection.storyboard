@@ -64,7 +64,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pseudo" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="3Ak-wL-zDl">
                                         <rect key="frame" x="0.0" y="0.0" width="190" height="43.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="alphabet" textContentType="username"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" keyboardType="alphabet" textContentType="username"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mot de passe" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="UDb-7i-tRr">
                                         <rect key="frame" x="0.0" y="68.5" width="190" height="43.5"/>
@@ -175,7 +175,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pseudo" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="znk-FB-amO">
                                                 <rect key="frame" x="0.0" y="0.0" width="187" height="28.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="username"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" textContentType="username"/>
                                                 <connections>
                                                     <action selector="pseudoTextField:" destination="nnd-s6-CIq" eventType="editingDidEnd" id="a8W-GQ-YAb"/>
                                                 </connections>
@@ -312,7 +312,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nom" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nu6-rS-6IF">
                                                 <rect key="frame" x="0.0" y="0.0" width="216" height="29"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
                                             </textField>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3EJ-h5-SJh">
                                                 <rect key="frame" x="0.0" y="49" width="216" height="28.5"/>
@@ -349,7 +349,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ville" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u0f-3u-man">
                                                 <rect key="frame" x="0.0" y="97.5" width="216" height="28.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Code postal" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p28-fX-XwU">
                                                 <rect key="frame" x="0.0" y="146" width="216" height="29"/>
@@ -516,7 +516,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Sujet" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P4H-mr-i9k">
                                                 <rect key="frame" x="0.0" y="239" width="200" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
                                                 <connections>
                                                     <action selector="subjectTextField:" destination="h2y-g7-Jle" eventType="editingDidEnd" id="dDp-Iy-vdP"/>
                                                 </connections>

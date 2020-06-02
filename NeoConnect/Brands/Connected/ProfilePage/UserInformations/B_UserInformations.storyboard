@@ -75,7 +75,7 @@
                                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ApT-gq-ixu">
                                                         <rect key="frame" x="67.5" y="356" width="200" height="32.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
                                                         <connections>
                                                             <action selector="pseudoTextField:" destination="hBu-sX-lBm" eventType="editingDidEnd" id="F7f-pg-JW5"/>
                                                         </connections>
@@ -112,7 +112,7 @@
                                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="104-Wf-Uoj">
                                                         <rect key="frame" x="67.5" y="568" width="200" height="32"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ville :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7LN-bY-0N4">
                                                         <rect key="frame" x="67.5" y="608" width="35" height="15.5"/>
@@ -123,7 +123,7 @@
                                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ml8-g9-eh9">
                                                         <rect key="frame" x="67.5" y="635.5" width="200" height="32"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Code postal :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J71-aJ-LH1">
                                                         <rect key="frame" x="67.5" y="675.5" width="86" height="16"/>
@@ -228,7 +228,7 @@
                                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wdh-XJ-JO1">
                                                         <rect key="frame" x="67.5" y="1227.5" width="200" height="33"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
                                                         <connections>
                                                             <action selector="themeTextField:" destination="hBu-sX-lBm" eventType="editingDidEnd" id="wWw-vy-Cqt"/>
                                                         </connections>
@@ -251,7 +251,7 @@
                                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z16-kI-buc">
                                                         <rect key="frame" x="67.5" y="1379" width="200" height="32"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fonction :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ih-XQ-cHG">
                                                         <rect key="frame" x="67.5" y="1419" width="64" height="15.5"/>
@@ -262,7 +262,7 @@
                                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PGm-qS-Mcj">
                                                         <rect key="frame" x="67.5" y="1446.5" width="200" height="32"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Site web :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mlK-A4-Di2">
                                                         <rect key="frame" x="67.5" y="1486.5" width="86" height="16"/>

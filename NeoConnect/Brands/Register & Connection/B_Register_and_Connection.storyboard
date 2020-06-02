@@ -85,7 +85,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pseudo" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="GGg-z4-tBc">
                                         <rect key="frame" x="0.0" y="0.0" width="190" height="43.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="alphabet" textContentType="username"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" keyboardType="alphabet" textContentType="username"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mot de passe" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="WqY-MY-4Xq">
                                         <rect key="frame" x="0.0" y="68.5" width="190" height="43.5"/>
@@ -196,7 +196,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pseudo" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="J1K-wG-7bO">
                                                 <rect key="frame" x="0.0" y="0.0" width="187" height="28.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="username"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" textContentType="username"/>
                                                 <connections>
                                                     <action selector="pseudoTextField:" destination="lxa-wx-JSK" eventType="editingDidEnd" id="Cuy-E5-7Mh"/>
                                                 </connections>
@@ -332,12 +332,12 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nom" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8bH-7s-hZE">
                                                 <rect key="frame" x="0.0" y="0.0" width="216" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ville" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q8L-xG-PKF">
                                                 <rect key="frame" x="0.0" y="61" width="216" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Code postal" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QAQ-Mz-MB2">
                                                 <rect key="frame" x="0.0" y="122" width="216" height="40.5"/>
@@ -445,12 +445,12 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Société" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ODw-ez-24E">
                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="90"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Fonction" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gw3-5P-bHg">
                                                 <rect key="frame" x="0.0" y="90" width="200" height="90"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Site web" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nii-0g-3Zn">
                                                 <rect key="frame" x="0.0" y="180" width="200" height="90"/>
@@ -581,7 +581,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Sujet" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hjx-jJ-eh1">
                                                 <rect key="frame" x="0.0" y="229.5" width="200" height="40.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
                                                 <connections>
                                                     <action selector="subjectTextField:" destination="PN3-x2-bp1" eventType="editingDidEnd" id="fC3-jS-DA7"/>
                                                 </connections>
