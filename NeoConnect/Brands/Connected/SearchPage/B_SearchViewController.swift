@@ -110,11 +110,7 @@ extension B_SearchViewController : UISearchBarDelegate {
     }
     
     @objc func noteButtonTapped (sender:UIButton) {
-<<<<<<< HEAD
-        let rateView = NotationUserView(userId: userId, rating: $rating)
-=======
         let rateView = NotationUserView(userId: userId, rating: rating)
->>>>>>> master
         
         let host = UIHostingController(rootView: rateView)
         navigationController?.pushViewController(host, animated: true)

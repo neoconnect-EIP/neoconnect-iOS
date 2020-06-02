@@ -13,6 +13,7 @@ import Alamofire
 
 struct NotationView: View {
 
+@State private var showingAlert = false
 var selectedOffer : Offer2
 @Binding var rating: Int
 
@@ -53,9 +54,14 @@ func myimage(for number: Int) -> Image {
                     }
             }
             }.padding()
-            Button(action:{ rateAndComment(rating: self.rating, selectedOffer: self.selectedOffer, message: self.message)} ) {
+            Button(action:{ rateAndComment(rating: self.rating, selectedOffer: self.selectedOffer, message: self.message)
+                self.showingAlert = true
+            } ) {
         Text("Envoyer")
         }.padding(30)
+            .alert(isPresented: $showingAlert) {
+                Alert(title: Text("Noter l'offre"), message: Text("Votre note a bien été prise en compte."), dismissButton: .default(Text("Ok")))
+            }
         }
     }
 }

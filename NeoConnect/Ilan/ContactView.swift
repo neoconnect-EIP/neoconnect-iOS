@@ -11,7 +11,7 @@ import UIKit
 import Alamofire
 
 struct ContactView: View {
-    
+    @State private var showingAlert = false
     @State private var email : String = ""
     @State private var subject : String  = ""
     @State private var message : String = ""
@@ -51,9 +51,13 @@ struct ContactView: View {
                                encoding: URLEncoding.default).response { response in
                         debugPrint(response)
                     }
+                    self.showingAlert = true
                 }) {
                         Text("Envoyer")
                 }
+                    .alert(isPresented: $showingAlert) {
+                                           Alert(title: Text("Nous contacter"), message: Text("Message envoyé."), dismissButton: .default(Text("Ok")))
+                                       }
                     }
                                    else {
                                        Text("Veuillez remplir tous les champs")

@@ -72,6 +72,7 @@ func postulate(offer : Offer2) {
 }
 
 struct DetailOffer: View {
+    @State private var showingAlert = false
     var selectedOffer : Offer2
     var date : String
 var body: some View {
@@ -89,9 +90,14 @@ var body: some View {
         .padding(.trailing,50)
                    .padding(.leading,50)
         Text(String(selectedOffer.productDesc!)).font(.body).fontWeight(.light).multilineTextAlignment(.center)
-        Button(action: {postulate(offer: self.selectedOffer)}) {
+        Button(action: {postulate(offer: self.selectedOffer)
+            self.showingAlert = true
+        }) {
             Text("Postuler")
         }
+        .alert(isPresented: $showingAlert) {
+                       Alert(title: Text("Postuler à une offre"), message: Text("Vous avez postulé à cette offre."), dismissButton: .default(Text("Ok")))
+                   }
         Text("Crée le " + date).foregroundColor(Color.gray)
         .font(Font.system(size: 14)).italic()
     }
