@@ -10,32 +10,16 @@ import UIKit
 
 class shopFound: UIView {
 
-    @IBOutlet var contentView: UIView!
     @IBOutlet weak var shopImageView: UIImageView!
     @IBOutlet weak var shopPseudoLabelField: UILabel!
+    @IBOutlet weak var noteButton: UIButton!
+    @IBOutlet weak var contactButton: UIButton!
     
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)!
-        initSubviews()
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        initSubviews()
-    }
-    
-    func initSubviews() {
-        // standard initialization logic
-        let nib = UINib(nibName: "shopFoundView", bundle: nil)
-        nib.instantiate(withOwner: self, options: nil)
-        contentView.frame = bounds
+    func setImage() {
         shopImageView.layer.borderWidth = 1
         shopImageView.layer.masksToBounds = false
         shopImageView.layer.borderColor = UIColor.white.cgColor
         shopImageView.layer.cornerRadius = shopImageView.frame.height/2
         shopImageView.clipsToBounds = true
-        addSubview(contentView)
-
-        // custom initialization logic
     }
 }

@@ -102,7 +102,6 @@ class B_UserInformationsViewController: UIViewController, UIImagePickerControlle
         imagePicker.allowsEditing = true
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
-
         super.viewDidLoad()
     }
     
@@ -277,7 +276,7 @@ class B_UserInformationsViewController: UIViewController, UIImagePickerControlle
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            image.contentMode = .scaleAspectFit
+            image.contentMode = .scaleAspectFill
             image.image = pickedImage
         }
      

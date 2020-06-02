@@ -13,7 +13,7 @@ import Alamofire
 
 struct NotationUserView: View {
 
-var userId : String
+var userId : Int
 @Binding var rating: Int
 
 @State private var message = ""
@@ -60,7 +60,7 @@ func myimage(for number: Int) -> Image {
     }
 }
 
-func rateAndCommentUser(rating: Int, userId: String, message: String)
+func rateAndCommentUser(rating: Int, userId: Int, message: String)
 {
     let _headers: HTTPHeaders = [
         "Authorization": "Bearer " + accessToken            ]

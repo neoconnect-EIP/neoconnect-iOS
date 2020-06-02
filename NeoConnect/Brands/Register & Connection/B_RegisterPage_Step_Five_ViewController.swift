@@ -56,7 +56,7 @@ class B_RegisterPage_Step_Five_ViewController: UIViewController, UIImagePickerCo
         
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                imageView.contentMode = .scaleAspectFit
+                imageView.contentMode = .scaleAspectFill
                 imageView.image = pickedImage
                 changeImageButton.setImage(nil, for: .normal)
             }

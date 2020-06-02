@@ -23,6 +23,7 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
     var sex = String()
     
     override func viewDidLoad() {
+        imageView.image = nil
         imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = true
         imagePicker.sourceType = .photoLibrary
@@ -49,7 +50,7 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
         
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                imageView.contentMode = .scaleAspectFit
+                imageView.contentMode = .scaleAspectFill
                 imageView.image = pickedImage
                 changeImageButton.setImage(nil, for: .normal)
             }

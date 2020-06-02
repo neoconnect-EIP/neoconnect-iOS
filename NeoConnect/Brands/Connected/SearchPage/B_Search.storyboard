@@ -21,20 +21,12 @@
                                 <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PlZ-oa-Ipg" userLabel="Shop Found View" customClass="shopFound" customModule="NeoConnect" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="375" height="574"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="PlZ-oa-Ipg" firstAttribute="centerX" secondItem="qy3-h9-WpE" secondAttribute="centerX" id="8v9-d9-BZ9"/>
                             <constraint firstItem="tjn-Pj-9gp" firstAttribute="centerX" secondItem="qy3-h9-WpE" secondAttribute="centerX" id="LZZ-bc-6Su"/>
                             <constraint firstItem="tjn-Pj-9gp" firstAttribute="width" secondItem="kPI-pk-gfd" secondAttribute="width" multiplier="0.626667" id="l80-5w-MKu"/>
                             <constraint firstItem="tjn-Pj-9gp" firstAttribute="height" secondItem="kPI-pk-gfd" secondAttribute="height" multiplier="0.142429" id="mIm-El-UZk"/>
-                            <constraint firstItem="PlZ-oa-Ipg" firstAttribute="top" secondItem="qy3-h9-WpE" secondAttribute="top" id="mO9-iz-lRr"/>
-                            <constraint firstItem="PlZ-oa-Ipg" firstAttribute="width" secondItem="kPI-pk-gfd" secondAttribute="width" id="nlx-sB-GLc"/>
-                            <constraint firstItem="PlZ-oa-Ipg" firstAttribute="height" secondItem="qy3-h9-WpE" secondAttribute="height" id="pde-gj-1Nh"/>
                             <constraint firstItem="tjn-Pj-9gp" firstAttribute="centerY" secondItem="qy3-h9-WpE" secondAttribute="centerY" id="tmb-r8-ucX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qy3-h9-WpE"/>
@@ -42,7 +34,6 @@
                     <navigationItem key="navigationItem" title="Recherches" id="KdS-o5-4Lk"/>
                     <connections>
                         <outlet property="messageTextField" destination="tjn-Pj-9gp" id="Bmi-eF-t5w"/>
-                        <outlet property="shopFoundView" destination="PlZ-oa-Ipg" id="Qat-MB-aXH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QDi-ui-fy4" userLabel="First Responder" sceneMemberID="firstResponder"/>

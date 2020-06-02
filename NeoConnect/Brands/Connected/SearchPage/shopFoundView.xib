@@ -7,15 +7,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="shopFound" customModule="NeoConnect" customModuleProvider="target">
-            <connections>
-                <outlet property="contentView" destination="ldN-V4-L6w" id="7fw-7z-gbm"/>
-                <outlet property="shopImageView" destination="2Ob-0I-2BA" id="cH3-Th-I1h"/>
-                <outlet property="shopPseudoLabelField" destination="4kU-MU-O6T" id="t9g-QC-bdP"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="ldN-V4-L6w">
+        <view contentMode="scaleToFill" id="ldN-V4-L6w" customClass="shopFound" customModule="NeoConnect" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -26,35 +20,57 @@
                     <rect key="frame" x="52.5" y="142" width="270" height="333.5"/>
                 </imageView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Ob-0I-2BA">
-                    <rect key="frame" x="92.5" y="172" width="190" height="141"/>
+                    <rect key="frame" x="97.5" y="162" width="180" height="180"/>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dn9-oV-qFr">
+                    <rect key="frame" x="92.5" y="398" width="70" height="40"/>
+                    <state key="normal" title="Contacter"/>
+                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4kU-MU-O6T">
                     <rect key="frame" x="92.5" y="350" width="190" height="25.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.28066268179999998" green="0.33058375629999998" blue="0.2019773379" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4iR-60-gVH">
+                    <rect key="frame" x="222.5" y="398" width="70" height="40"/>
+                    <state key="normal" title="Noter"/>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="WqG-tF-rQA" firstAttribute="width" secondItem="ldN-V4-L6w" secondAttribute="width" id="2jl-3W-A7f"/>
+                <constraint firstItem="4iR-60-gVH" firstAttribute="trailing" secondItem="nqM-J8-MUI" secondAttribute="trailing" constant="-30" id="3CM-JR-MbE"/>
                 <constraint firstItem="WqG-tF-rQA" firstAttribute="top" secondItem="lH7-Rm-3S1" secondAttribute="top" id="4a7-cq-EeC"/>
                 <constraint firstItem="nqM-J8-MUI" firstAttribute="height" secondItem="ldN-V4-L6w" secondAttribute="height" multiplier="0.5" id="8B2-78-rhF"/>
+                <constraint firstItem="4iR-60-gVH" firstAttribute="height" secondItem="nqM-J8-MUI" secondAttribute="height" multiplier="0.11994" id="Bgq-91-ZeY"/>
+                <constraint firstItem="dn9-oV-qFr" firstAttribute="width" secondItem="nqM-J8-MUI" secondAttribute="width" multiplier="0.259259" id="C35-ft-Y1R"/>
                 <constraint firstItem="nqM-J8-MUI" firstAttribute="centerX" secondItem="lH7-Rm-3S1" secondAttribute="centerX" id="Epp-5q-BQ7"/>
                 <constraint firstItem="4kU-MU-O6T" firstAttribute="width" secondItem="nqM-J8-MUI" secondAttribute="width" multiplier="0.703704" id="FLU-w6-po9"/>
                 <constraint firstItem="nqM-J8-MUI" firstAttribute="top" secondItem="lH7-Rm-3S1" secondAttribute="top" constant="142" id="FMn-Xs-5C1"/>
+                <constraint firstItem="nqM-J8-MUI" firstAttribute="leading" secondItem="dn9-oV-qFr" secondAttribute="leading" constant="-40" id="HUK-aP-Lko"/>
+                <constraint firstItem="nqM-J8-MUI" firstAttribute="top" secondItem="2Ob-0I-2BA" secondAttribute="top" constant="-20" id="JaG-xE-eBH"/>
                 <constraint firstItem="4kU-MU-O6T" firstAttribute="centerX" secondItem="nqM-J8-MUI" secondAttribute="centerX" id="KdE-dW-QMa"/>
-                <constraint firstItem="2Ob-0I-2BA" firstAttribute="width" secondItem="nqM-J8-MUI" secondAttribute="width" multiplier="0.703704" id="Kw3-OH-Re1"/>
+                <constraint firstItem="dn9-oV-qFr" firstAttribute="height" secondItem="nqM-J8-MUI" secondAttribute="height" multiplier="0.11994" id="UA2-9B-2ox"/>
+                <constraint firstItem="4iR-60-gVH" firstAttribute="top" secondItem="4kU-MU-O6T" secondAttribute="bottom" constant="22.5" id="W9m-kz-fy5"/>
                 <constraint firstItem="nqM-J8-MUI" firstAttribute="width" secondItem="ldN-V4-L6w" secondAttribute="width" multiplier="0.72" id="Xro-Ns-ejj"/>
+                <constraint firstItem="dn9-oV-qFr" firstAttribute="top" secondItem="4kU-MU-O6T" secondAttribute="bottom" constant="22.5" id="c5C-aD-7Wj"/>
+                <constraint firstItem="2Ob-0I-2BA" firstAttribute="height" secondItem="nqM-J8-MUI" secondAttribute="height" multiplier="0.53973" id="dL2-x0-D42"/>
+                <constraint firstItem="4kU-MU-O6T" firstAttribute="top" secondItem="2Ob-0I-2BA" secondAttribute="bottom" constant="8" id="jvg-Vh-MeC"/>
                 <constraint firstItem="4kU-MU-O6T" firstAttribute="height" secondItem="nqM-J8-MUI" secondAttribute="height" multiplier="0.0765864" id="ki8-dJ-uWa"/>
-                <constraint firstItem="2Ob-0I-2BA" firstAttribute="height" secondItem="nqM-J8-MUI" secondAttribute="height" multiplier="0.422319" id="kk6-cK-YHh"/>
                 <constraint firstItem="WqG-tF-rQA" firstAttribute="height" secondItem="ldN-V4-L6w" secondAttribute="height" id="lc1-hl-70W"/>
-                <constraint firstItem="2Ob-0I-2BA" firstAttribute="centerX" secondItem="nqM-J8-MUI" secondAttribute="centerX" id="nBV-6u-Aqr"/>
                 <constraint firstItem="WqG-tF-rQA" firstAttribute="leading" secondItem="lH7-Rm-3S1" secondAttribute="leading" id="oxi-5S-PYV"/>
-                <constraint firstItem="4kU-MU-O6T" firstAttribute="top" secondItem="2Ob-0I-2BA" secondAttribute="bottom" constant="37" id="vSC-vx-uFO"/>
-                <constraint firstItem="nqM-J8-MUI" firstAttribute="top" secondItem="2Ob-0I-2BA" secondAttribute="top" constant="-30" id="yIv-9K-tbO"/>
+                <constraint firstItem="2Ob-0I-2BA" firstAttribute="width" secondItem="nqM-J8-MUI" secondAttribute="width" multiplier="0.666667" id="rmP-nm-GAj"/>
+                <constraint firstItem="2Ob-0I-2BA" firstAttribute="centerX" secondItem="nqM-J8-MUI" secondAttribute="centerX" id="xfP-QM-1c2"/>
+                <constraint firstItem="4iR-60-gVH" firstAttribute="width" secondItem="nqM-J8-MUI" secondAttribute="width" multiplier="0.259259" id="zY3-6P-Ms0"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="lH7-Rm-3S1"/>
+            <connections>
+                <outlet property="contactButton" destination="dn9-oV-qFr" id="Mrn-CS-57S"/>
+                <outlet property="noteButton" destination="4iR-60-gVH" id="I1t-vJ-nmq"/>
+                <outlet property="shopImageView" destination="2Ob-0I-2BA" id="d3t-ha-aJK"/>
+                <outlet property="shopPseudoLabelField" destination="4kU-MU-O6T" id="acG-wt-EAI"/>
+            </connections>
             <point key="canvasLocation" x="128.80000000000001" y="147.97601199400302"/>
         </view>
     </objects>
