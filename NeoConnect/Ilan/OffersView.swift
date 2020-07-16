@@ -48,7 +48,7 @@ func getOffers(completion: @escaping ([Offer2]) -> Void)
     let _headers: HTTPHeaders = [
         "Authorization": "Bearer " + accessToken            ]
     var offers: [Offer2] = [Offer2()]
-    AF.request("http://168.63.65.106/offer/list", method: .get, encoding: URLEncoding.default, headers: _headers) .responseString { response in
+    AF.request("http://168.63.65.106:8080/offer/list", method: .get, encoding: URLEncoding.default, headers: _headers) .responseString { response in
         let jsonString = String(data: response.data!, encoding: String.Encoding.utf8)!
         let jsonData = Data(jsonString.utf8)
         let decoder = JSONDecoder()
@@ -66,7 +66,7 @@ func getOffers(completion: @escaping ([Offer2]) -> Void)
 func postulate(offer : Offer2) {
     let _headers: HTTPHeaders = [
           "Authorization": "Bearer " + accessToken            ]
-    AF.request("http://168.63.65.106/offer/apply/" + String(offer.id), method: .put, encoding: URLEncoding.default, headers: _headers) .responseString { response in
+    AF.request("http://168.63.65.106:8080/offer/apply/" + String(offer.id), method: .put, encoding: URLEncoding.default, headers: _headers) .responseString { response in
          print(response)
       }
 }

@@ -56,22 +56,49 @@ extension I_SearchViewController : UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if (searchBar.text == "Bibi") {
-            userFoundView.isHidden = false
-            userFoundView.pseudoTextField.text = "Bibi"
-            userFoundView.emailTextField.text = "Bibi Email"
-            userFoundView.fullnameTextField.text = "Bibi full name"
-            userFoundView.postalTextField.text = "12345"
-            userFoundView.cityTextField.text = "Aubervilliers"
-            userFoundView.phoneTextField.text = "0712345678"
-            userFoundView.facebookTextField.text = "facebook"
-            userFoundView.twitterTextField.text = "twitter"
-            userFoundView.instagramTextField.text = "instagram"
-            userFoundView.snapchatTextField.text = "snapchat"
-            userFoundView.themeTextField.text = "theme"
-            messageTextField.text = "Veuillez entrer votre recherche"
-        } else {
-            messageTextField.text = "Aucun utilisateur trouvé, veuillez réessayer."
+        let userPseudo = searchBar.text!
+        self.searchBar.endEditing(true)
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
+            "Content-Type": "application/x-www-form-urlencoded"
+        ]
+        let user: Parameters = [
+            "pseudo": userPseudo
+        ]
+        print(userPseudo)
+        AF.request("http://168.63.65.106:8080/user/search",
+        method: .post,
+        parameters: user,
+        encoding: URLEncoding.default, headers: headers, interceptor: nil).validate(statusCode: 200..<300).responseJSON { response in
+
+                    switch response.result {
+                    case .success(let JSON):
+                        let response = JSON as! NSDictionary
+                        print(response)
+                        let imageArray = response.object(forKey: "userPicture")! as! [[String:Any]]
+                        var imageData = #imageLiteral(resourceName: "noImage")
+                        if imageArray.count > 0 {
+                            let imageUrl = URL(string: imageArray[0]["imageData"] as! String)!
+                            imageData = try! UIImage(data: Data(contentsOf: imageUrl))!
+                        }
+                      let userFound:userFound = Bundle.main.loadNibNamed("userFoundView", owner: self, options: nil)?.first as! userFound
+                                             userFound.tag = 100
+                                             userFound.userPseudoLabelField.text = response.object(forKey: "pseudo")! as? String
+                                             userFound.setImage()
+                                             self.userId = response.object(forKey: "id")! as? Int
+                                             self.userEmail = response.object(forKey: "email")! as? String
+                                             userFound.userImageView.image = imageData
+                                             userFound.noteButton.addTarget(self, action: #selector(I_SearchViewController.noteButtonTapped(sender:)), for: .touchUpInside)
+                                             userFound.contactButton.addTarget(self, action: #selector(I_SearchViewController.contactButtonTapped(sender:)), for: .touchUpInside)
+                                             self.view.addSubview(userFound)
+
+                        print("Successfull")
+                        
+
+                    case .failure(let error):
+                        self.messageTextField.text = "Aucun utilisateur trouvé, veuillez réessayer."
+                        print("Request failed with error: \(error)")
+                    }
         }
     }
 }

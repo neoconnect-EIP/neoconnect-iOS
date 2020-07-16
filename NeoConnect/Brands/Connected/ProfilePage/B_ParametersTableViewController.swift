@@ -43,7 +43,7 @@ class B_ParametersTableViewController: UITableViewController {
                       alertView.addAction(UIAlertAction(title: "Annuler", style: .cancel) { action in
                       })
                       alertView.addAction(UIAlertAction(title: "Confirmer", style: .default) { action in
-                        AF.request("http://168.63.65.106/delete",
+                        AF.request("http://168.63.65.106:8080/delete",
                                          method: .delete,
                                          encoding: URLEncoding.default,headers:_headers).response { response in
                                   debugPrint(response)

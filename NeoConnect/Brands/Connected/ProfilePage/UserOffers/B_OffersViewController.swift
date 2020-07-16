@@ -36,7 +36,7 @@ class B_OffersViewController: UIViewController {
             "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
             "Content-Type": "application/x-www-form-urlencoded"
         ]
-        AF.request("http://168.63.65.106/offer/shop/\(id)",
+        AF.request("http://168.63.65.106:8080/offer/shop/\(id)",
                    headers: headers).responseJSON { response in
                     switch response.result {
                         
@@ -115,7 +115,7 @@ extension B_OffersViewController : UITableViewDataSource, UITableViewDelegate {
                     "Content-Type": "application/x-www-form-urlencoded"
                 ]
 
-                let URL = "http://168.63.65.106/offer/" + String(offer.id)
+                let URL = "http://168.63.65.106:8080/offer/" + String(offer.id)
 
                 AF.request(URL, method: .delete, encoding: URLEncoding.default, headers: headers, interceptor: nil).responseJSON { response in
                     switch response.result {

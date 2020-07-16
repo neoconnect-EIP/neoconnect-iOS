@@ -28,11 +28,7 @@ var updatedAt: String?
     }
 }
 
-<<<<<<< Updated upstream
-var ID = UserDefaults.standard.string(forKey: "id")!
-=======
 //var userID = UserDefaults.standard.string(forKey: "id")!
->>>>>>> Stashed changes
 
 func getMyOffers(completion: @escaping ([myOffer]) -> Void)
 {
@@ -41,7 +37,7 @@ func getMyOffers(completion: @escaping ([myOffer]) -> Void)
     let _headers: HTTPHeaders = [
         "Authorization": "Bearer " + accessToken            ]
     var myOffers: [myOffer] = [myOffer()]
-    AF.request("http://168.63.65.106/offer/apply/user/" + String(ID), method: .get, encoding: URLEncoding.default, headers: _headers).responseString { response in
+    AF.request("http://168.63.65.106:8080/offer/apply/user/" + String(userID), method: .get, encoding: URLEncoding.default, headers: _headers).responseString { response in
         let jsonString = String(data: response.data!, encoding: String.Encoding.utf8)!
         let jsonData = Data(jsonString.utf8)
         let decoder = JSONDecoder()
@@ -61,7 +57,7 @@ func getMyOffers3(offerID: Int, completion: @escaping (Offer2) -> Void)
     var offer : [Offer2] = [Offer2()]
     let _headers: HTTPHeaders = [
                        "Authorization": "Bearer " + accessToken            ]
-             AF.request("http://168.63.65.106/offer/" + String(offerID), method: .get, encoding: URLEncoding.default, headers: _headers) .responseString { response in
+             AF.request("http://168.63.65.106:8080/offer/" + String(offerID), method: .get, encoding: URLEncoding.default, headers: _headers) .responseString { response in
         
                        var jsonString = String(data: response.data!, encoding: String.Encoding.utf8)!
                     jsonString.insert("[", at: jsonString.startIndex)

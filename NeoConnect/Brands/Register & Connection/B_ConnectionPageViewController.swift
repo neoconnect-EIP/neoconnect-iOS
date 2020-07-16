@@ -48,7 +48,7 @@ class B_ConnectionPageViewController: UIViewController {
         let login = Login(pseudo: userPseudo, password: userPassword)
 
             // Login vers l'API
-        AF.request("http://168.63.65.106/login",
+        AF.request("http://168.63.65.106:8080/login",
                    method: .post,
                    parameters: login,
                    encoder: JSONParameterEncoder.default).validate(statusCode: 200..<300).responseJSON { response in

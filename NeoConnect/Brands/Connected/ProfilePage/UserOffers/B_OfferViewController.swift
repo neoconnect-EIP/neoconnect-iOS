@@ -125,7 +125,7 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
                     "productDesc": desc,
                     "productSubject": subject,
                 ]
-                let URL = "http://168.63.65.106/offer/\(self.offer.id)"
+                let URL = "http://168.63.65.106:8080/offer/\(self.offer.id)"
                 
                 AF.request(URL, method: .put, parameters: offer, encoding: URLEncoding.default, headers: headers, interceptor: nil).responseJSON { response in
                     switch response.result {

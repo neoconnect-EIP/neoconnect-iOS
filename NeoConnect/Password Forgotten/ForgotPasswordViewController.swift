@@ -49,22 +49,29 @@ class ForgotPasswordViewController: UIViewController {
             
             return
         }
-        AF.request("http://168.63.65.106/forgotPassword",
-                   method: .post,
-                   parameters: forgotPassword,
-                   encoder: JSONParameterEncoder.default).validate(statusCode: 200..<300).responseJSON { response in
-                    switch response.result {
-                    case .success(_):
-                        
-                        // Connexion réussie
-                        
-                        DispatchQueue.main.async {
-                            let alertView = UIAlertController(title: "Great!", message: "A mail has been sent to your email", preferredStyle: .alert)
-                            alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { action in
-                                let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "UpdatePassword") as! UpdatePasswordViewController
-                                self.show(nextVC, sender: nil)
-                            })
-                            self.present(alertView, animated: true, completion: nil)
+        else {
+            AF.request("http://168.63.65.106:8080/forgotPassword",
+                       method: .post,
+                       parameters: forgotPassword,
+                       encoder: JSONParameterEncoder.default).validate(statusCode: 200..<300).responseJSON { response in
+                        switch response.result {
+                        case .success(_):
+                            // Connexion réussie
+                            DispatchQueue.main.async {
+                                let alertView = UIAlertController(title: "Parfait !", message: "Un mail vous a été envoyé. Veuillez vérifier votre boite mail", preferredStyle: .alert)
+                                alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { action in
+                                    self.performSegue(withIdentifier: "UpdatePassword", sender: self)
+                                })
+                                self.present(alertView, animated: true, completion: nil)
+                            }
+                        case .failure(_):
+                            // /!\ Connexion ratée
+                            DispatchQueue.main.async {
+                            // Message d'alerte
+                                let alertView = UIAlertController(title: "Un problème est survenu", message: "L'email renseigné semble être incorrect", preferredStyle: .alert)
+                                alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
+                                self.present(alertView, animated: true, completion: nil)
+                            }
                         }
 
  

@@ -1,9 +1,9 @@
 //
-//  NotationView.swift
-//  Neoconnect iOS
+//  NotationUserView.swift
+//  NeoConnect
 //
-//  Created by Ilan Cohen on 04/12/2019.
-//  Copyright © 2019 Ilan Cohen. All rights reserved.
+//  Created by Ilan Cohen on 01/06/2020.
+//  Copyright © 2020 EIP. All rights reserved.
 //
 
 import SwiftUI
@@ -11,10 +11,11 @@ import UIKit
 import CoreLocation
 import Alamofire
 
-struct NotationView: View {
+struct NotationUserView: View {
 
-var selectedOffer : Offer2
-@Binding var rating: Int
+@State private var showingAlert = false
+var userId : Int
+@State var rating: Int
 
 @State private var message = ""
     
@@ -53,28 +54,34 @@ func myimage(for number: Int) -> Image {
                     }
             }
             }.padding()
-            Button(action:{ rateAndComment(rating: self.rating, selectedOffer: self.selectedOffer, message: self.message)} ) {
+            Button(action:{ rateAndCommentUser(rating: self.rating, userId: self.userId, message: self.message)
+                self.showingAlert = true} ) {
         Text("Envoyer")
         }.padding(30)
+            .alert(isPresented: $showingAlert) {
+                           Alert(title: Text("Noter l'utilisateur"), message: Text("Votre note a bien été prise en compte."), dismissButton: .default(Text("Ok")))
+                       }
         }
     }
 }
 
-func rateAndComment(rating: Int, selectedOffer: Offer2, message: String)
+func rateAndCommentUser(rating: Int, userId: Int, message: String)
 {
+    let userToken = UserDefaults.standard.string(forKey: "Token")!
     let _headers: HTTPHeaders = [
-        "Authorization": "Bearer " + accessToken            ]
-    AF.request("http://168.63.65.106:8080/offer/comment/" + String(selectedOffer.id), method: .post, parameters: ["comment" : message], encoding: URLEncoding.default, headers: _headers) .responseString { response in
+        "Authorization": "Bearer " + userToken            ]
+    AF.request("http://168.63.65.106:8080/user/comment/" + String(userId), method: .post, parameters: ["comment" : message], encoding: URLEncoding.default, headers: _headers) .responseString { response in
         debugPrint(response)
     }
-    AF.request("http://168.63.65.106:8080/offer/mark/" + String(selectedOffer.id), method: .post, parameters: ["mark" : rating], encoding: URLEncoding.default, headers: _headers) .responseString { response in
+    AF.request("http://168.63.65.106:8080/user/mark/" + String(userId), method: .post, parameters: ["mark" : rating], encoding: URLEncoding.default, headers: _headers) .responseString { response in
         debugPrint(response)
     }
 }
 
 
-struct NotationView_Previews: PreviewProvider {
+struct NotationUserView_Previews: PreviewProvider {
     static var previews: some View {
-        NotationView(selectedOffer: Offer2(), rating: .constant(4))
+        NotationUserView(userId: 10, rating: 4)
     }
 }
+

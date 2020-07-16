@@ -24,11 +24,52 @@ class B_SearchViewController: UIViewController {
             search(shouldShow: true)
             searchBar.becomeFirstResponder()
         }
-        
-        func configureSearchBar() {
-            searchBar.sizeToFit()
-            searchBar.delegate = self
-            showSearchBarButton(shouldShow: true)
+        search(shouldShow: false)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let userPseudo = searchBar.text!
+        self.searchBar.endEditing(true)
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
+            "Content-Type": "application/x-www-form-urlencoded"
+        ]
+        let user: Parameters = [
+            "pseudo": userPseudo
+        ]
+        print(userPseudo)
+        AF.request("http://168.63.65.106:8080/user/search",
+        method: .post,
+        parameters: user,
+        encoding: URLEncoding.default, headers: headers, interceptor: nil).validate(statusCode: 200..<300).responseJSON { response in
+
+                    switch response.result {
+                    case .success(let JSON):
+                        let response = JSON as! NSDictionary
+                        print(response)
+                        let imageArray = response.object(forKey: "userPicture")! as! [[String:Any]]
+                        var imageData = #imageLiteral(resourceName: "noImage")
+                        if imageArray.count > 0 {
+                            let imageUrl = URL(string: imageArray[0]["imageData"] as! String)!
+                            imageData = try! UIImage(data: Data(contentsOf: imageUrl))!
+                        }
+                        let shopFound:shopFound = Bundle.main.loadNibNamed("shopFoundView", owner: self, options: nil)?.first as! shopFound
+                        shopFound.tag = 100
+                        shopFound.shopPseudoLabelField.text = response.object(forKey: "pseudo")! as? String
+                        shopFound.setImage()
+                        self.userId = response.object(forKey: "id")! as? Int
+                        self.userEmail = response.object(forKey: "email")! as? String
+                        shopFound.shopImageView.image = imageData
+                        shopFound.noteButton.addTarget(self, action: #selector(B_SearchViewController.noteButtonTapped(sender:)), for: .touchUpInside)
+                        shopFound.contactButton.addTarget(self, action: #selector(B_SearchViewController.contactButtonTapped(sender:)), for: .touchUpInside)
+                        self.view.addSubview(shopFound)
+                        print("Successfull")
+                        
+
+                    case .failure(let error):
+                        self.messageTextField.text = "Aucun utilisateur trouvé, veuillez réessayer."
+                        print("Request failed with error: \(error)")
+                    }
         }
         
         func showSearchBarButton(shouldShow: Bool) {

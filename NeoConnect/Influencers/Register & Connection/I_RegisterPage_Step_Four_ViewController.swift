@@ -95,7 +95,7 @@ class I_RegisterPage_Step_Four_ViewController: UIViewController, UIImagePickerCo
                 "instagram": instagram,
                 "youtube": youtube
             ]
-            let URL = "http://168.63.65.106/inf/register"
+            let URL = "http://168.63.65.106:8080/inf/register"
             
             // Inscription influenceur vers l'API
             AF.request(URL, method: .post, parameters: Register, encoding: URLEncoding.default, interceptor: nil).responseJSON { response in

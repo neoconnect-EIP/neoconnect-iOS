@@ -97,7 +97,7 @@ class B_RegisterPage_Step_Five_ViewController: UIViewController, UIImagePickerCo
                 "twitter": twitter,
                 "instagram": instagram,
             ]
-            let URL = "http://168.63.65.106/shop/register"
+            let URL = "http://168.63.65.106:8080/shop/register"
             
             // Inscription influenceur vers l'API
             AF.request(URL, method: .post, parameters: Register, encoding: URLEncoding.default, interceptor: nil).responseJSON { response in

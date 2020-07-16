@@ -44,7 +44,7 @@ struct ContactView: View {
                 if (validated && self.isEmailValid) {
                 Button(action: {
                     let map = ["email": self.email, "subject": self.subject, "message": self.message]
-                    AF.request("http://168.63.65.106/contact",
+                    AF.request("http://168.63.65.106:8080/contact",
                                method: .post,
                                parameters: map,
                                encoding: URLEncoding.default).response { response in

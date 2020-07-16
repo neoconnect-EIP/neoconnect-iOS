@@ -94,7 +94,7 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
                 "productSubject": theme,
 
             ]
-            let URL = "http://168.63.65.106/offer/insert"
+            let URL = "http://168.63.65.106:8080/offer/insert"
     
             AF.request(URL, method: .post, parameters: offer, encoding: URLEncoding.default, headers: headers, interceptor: nil).responseJSON { response in
                 switch response.result {

@@ -46,7 +46,7 @@ struct ContactUserView: View {
                     let map = ["to": self.email,
                                "email": self.email,
                                "subject": self.subject, "message": self.message]
-                    AF.request("http://168.63.65.106/user/contact",
+                    AF.request("http://168.63.65.106:8080/user/contact",
                                method: .post,
                                parameters: map,
                                encoding: URLEncoding.default).response { response in
