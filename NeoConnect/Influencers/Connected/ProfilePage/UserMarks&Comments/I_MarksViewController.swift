@@ -7,12 +7,12 @@
 //
 
 import UIKit
-import Alamofire
+import Cosmos
 
 class I_MarksViewController: UIViewController {
     
-    @IBOutlet weak var averageNoteLabelField: UILabel!
-    @IBOutlet weak var averageDescLabelField: UILabel!
+    @IBOutlet weak var ratingStartView: CosmosView!
+    @IBOutlet weak var numberOfMarksLabelField: UILabel!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -22,30 +22,15 @@ class I_MarksViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let headers: HTTPHeaders = [
-                   "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
-                   "Content-Type": "application/x-www-form-urlencoded"
-               ]
-
-        AF.request("http://168.63.65.106/inf/me", headers: headers).responseJSON { response in
-            switch response.result {
-
-            case .success(let JSON):
-
-                let response = JSON as! NSDictionary
-                print(response)
-
-                if (response.object(forKey: "average")! as? Double == nil) {
-                    self.averageNoteLabelField.text = "0"
-                    self.averageDescLabelField.text = "Vous n'avez pas encore été noté"
-                } else {
-                    self.averageNoteLabelField.text = String(format:"%.1f", response.object(forKey: "average")! as! Double)
-                    self.averageNoteLabelField.text! += "/5"
-                }
-
-            case .failure(let error):
-                print("Request failed with error: \(error)")
+        APIInfManager.sharedInstance.getInfo(onSuccess: { response in
+            if (response["average"] as? Double == nil) {
+                self.ratingStartView.rating = 0
+                self.numberOfMarksLabelField.text = "sur 0 évaluation"
+            } else {
+                self.ratingStartView.rating = response["average"]! as! Double
             }
-        }
+        }, onFailure: { error in
+            print("Request failed with error: \(error)")
+        })
     }
 }

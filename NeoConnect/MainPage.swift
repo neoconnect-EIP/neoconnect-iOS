@@ -11,11 +11,12 @@ import Foundation
 
 class MainPage: UIViewController {
 
-    @IBOutlet weak var InfView: UIImageView!
+    @IBOutlet weak var infButton: UIButton!
+    @IBOutlet weak var shopButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+ 
         self.navigationController?.isNavigationBarHidden = true
         self.tabBarController?.tabBar.isHidden = true
     }

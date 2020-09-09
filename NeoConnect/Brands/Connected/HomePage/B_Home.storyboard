@@ -6,44 +6,69 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Raleway-SemiBold.ttf">
+            <string>Raleway-SemiBold</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--Accueil-->
-        <scene sceneID="Vyf-Wm-aMP">
+        <!--Home View Controller-->
+        <scene sceneID="nhK-ZI-wZe">
             <objects>
-                <viewController storyboardIdentifier="B_HomeView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="90K-xy-a4b" customClass="B_HomeViewController" customModule="NeoConnect" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Xko-1v-ZtV">
+                <viewController storyboardIdentifier="B_Home" id="YeX-Uk-xTi" customClass="B_HomeViewController" customModule="NeoConnect" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JEa-8o-oVU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rendez-vous à la prochaine mis à jour ! :)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YDq-B2-U66">
-                                <rect key="frame" x="62.5" y="306" width="250" height="50"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ShopBackground" translatesAutoresizingMaskIntoConstraints="NO" id="fyM-c9-oYp">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CMx-HZ-WHy">
+                                <rect key="frame" x="23" y="67" width="280" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="DM4-NG-Yfc"/>
+                                    <constraint firstAttribute="width" constant="280" id="qNB-Ra-2BJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Raleway-SemiBold" family="Raleway" pointSize="31"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NTm-pX-QWJ">
+                                <rect key="frame" x="23" y="114" width="80" height="3"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="3" id="uyz-dW-kZb"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="YDq-B2-U66" firstAttribute="width" secondItem="Xko-1v-ZtV" secondAttribute="width" multiplier="0.666667" id="1Da-Lx-PZP"/>
-                            <constraint firstItem="YDq-B2-U66" firstAttribute="height" secondItem="Xko-1v-ZtV" secondAttribute="height" multiplier="0.0749625" id="6jB-27-aZM"/>
-                            <constraint firstItem="YDq-B2-U66" firstAttribute="centerY" secondItem="ObX-lP-raA" secondAttribute="centerY" id="GkJ-5c-fIw"/>
-                            <constraint firstItem="YDq-B2-U66" firstAttribute="centerX" secondItem="ObX-lP-raA" secondAttribute="centerX" id="Rh4-a8-HUO"/>
+                            <constraint firstItem="fyM-c9-oYp" firstAttribute="top" secondItem="JEa-8o-oVU" secondAttribute="top" id="1xM-fQ-6Up"/>
+                            <constraint firstItem="NTm-pX-QWJ" firstAttribute="bottom" secondItem="CMx-HZ-WHy" secondAttribute="bottom" constant="10" id="62V-1l-4G5"/>
+                            <constraint firstItem="fyM-c9-oYp" firstAttribute="bottom" secondItem="JEa-8o-oVU" secondAttribute="bottom" id="8zT-ta-JEc"/>
+                            <constraint firstItem="NTm-pX-QWJ" firstAttribute="leading" secondItem="CMx-HZ-WHy" secondAttribute="leading" id="C6H-6X-W0h"/>
+                            <constraint firstItem="NTm-pX-QWJ" firstAttribute="width" secondItem="CMx-HZ-WHy" secondAttribute="width" multiplier="0.285714" id="JGi-RL-3tO"/>
+                            <constraint firstItem="fyM-c9-oYp" firstAttribute="leading" secondItem="I4t-oJ-GRY" secondAttribute="leading" id="L8c-np-Vdd"/>
+                            <constraint firstItem="CMx-HZ-WHy" firstAttribute="top" secondItem="JEa-8o-oVU" secondAttribute="top" constant="67" id="e2C-Tm-w0w"/>
+                            <constraint firstItem="CMx-HZ-WHy" firstAttribute="leading" secondItem="I4t-oJ-GRY" secondAttribute="leading" constant="23" id="gOm-8B-45I"/>
+                            <constraint firstItem="I4t-oJ-GRY" firstAttribute="trailing" secondItem="fyM-c9-oYp" secondAttribute="trailing" id="iYp-u8-kld"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="ObX-lP-raA"/>
+                        <viewLayoutGuide key="safeArea" id="I4t-oJ-GRY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Accueil" id="a1J-kn-Ltj">
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="XiU-dO-Ehc"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="eAI-qg-KLU"/>
+                    <connections>
+                        <outlet property="pseudoLabelText" destination="CMx-HZ-WHy" id="9n4-tg-EmI"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UUm-ai-eSC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zHS-fy-985" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1053.5999999999999" y="62.518740629685162"/>
+            <point key="canvasLocation" x="998" y="63"/>
         </scene>
-        <!--Accueil-->
+        <!--Navigation Controller-->
         <scene sceneID="ucy-kT-BgD">
             <objects>
                 <navigationController storyboardIdentifier="HomeNav" automaticallyAdjustsScrollViewInsets="NO" id="A8l-sc-2A2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Accueil" image="Home" id="If8-Vu-lPL"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nAd-v7-YHL">
@@ -52,7 +77,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="90K-xy-a4b" kind="relationship" relationship="rootViewController" id="zOh-Zd-Nn4"/>
+                        <segue destination="YeX-Uk-xTi" kind="relationship" relationship="rootViewController" id="uYa-is-jbs"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gjq-qS-Ovk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -61,6 +86,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Home" width="30" height="30"/>
+        <image name="ShopBackground" width="375" height="667"/>
     </resources>
 </document>

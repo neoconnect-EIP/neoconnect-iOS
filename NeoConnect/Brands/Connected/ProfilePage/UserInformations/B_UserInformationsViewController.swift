@@ -9,27 +9,28 @@
 import UIKit
 import Alamofire
 
-class B_UserInformationsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class B_UserInformationsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    @IBOutlet weak var image: UIImageView!
-    @IBOutlet weak var changeImageButton: UIButton!
     @IBOutlet weak var editItem: UIBarButtonItem!
-    @IBOutlet weak var pseudoTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var fullnameTextField: UITextField!
-    @IBOutlet weak var postalTextField: UITextField!
-    @IBOutlet weak var cityTextField: UITextField!
-    @IBOutlet weak var phoneTextField: UITextField!
-    @IBOutlet weak var societyTextField: UITextField!
-    @IBOutlet weak var functionTextField: UITextField!
-    @IBOutlet weak var websiteTextField: UITextField!
-    @IBOutlet weak var facebookTextField: UITextField!
-    @IBOutlet weak var twitterTextField: UITextField!
-    @IBOutlet weak var snapchatTextField: UITextField!
-    @IBOutlet weak var instagramTextField: UITextField!
-    @IBOutlet weak var themeTextField: UITextField!
+    @IBOutlet weak var userPhotoView: PhotoFieldButton!
+    @IBOutlet weak var pseudoTextField: DefaultTextFields!
+    @IBOutlet weak var emailTextField: DefaultTextFields!
+    @IBOutlet weak var fullnameTextField: DefaultTextFields!
+    @IBOutlet weak var postalTextField: DefaultTextFields!
+    @IBOutlet weak var cityTextField: DefaultTextFields!
+    @IBOutlet weak var phoneTextField: DefaultTextFields!
+    @IBOutlet weak var societyTextField: DefaultTextFields!
+    @IBOutlet weak var functionTextField: DefaultTextFields!
+    @IBOutlet weak var websiteTextField: DefaultTextFields!
+    @IBOutlet weak var facebookTextField: DefaultTextFields!
+    @IBOutlet weak var instagramTextField: DefaultTextFields!
+    @IBOutlet weak var twitterTextField: DefaultTextFields!
+    @IBOutlet weak var snapchatTextField: DefaultTextFields!
+    @IBOutlet weak var pickerViewButton: UIButton!
     var restriction = RestrictionTextField()
-    
+    var pickerData = ["Mode", "Cosmétique", "Jeux Vidéo", "Food", "High Tech", "Sport/Fitness"]
+    var themePickerView = UIPickerView()
+    var typeValue = "Mode"
     var imagePicker:UIImagePickerController!
     var imageConverter = ImageConverter()
         
@@ -39,64 +40,33 @@ class B_UserInformationsViewController: UIViewController, UIImagePickerControlle
     }
     
     override func viewDidLoad() {
-        pseudoTextField.setLeftPaddingPoints(7)
-        emailTextField.setLeftPaddingPoints(7)
-        fullnameTextField.setLeftPaddingPoints(7)
-        postalTextField.setLeftPaddingPoints(7)
-        cityTextField.setLeftPaddingPoints(7)
-        phoneTextField.setLeftPaddingPoints(7)
-        societyTextField.setLeftPaddingPoints(7)
-        functionTextField.setLeftPaddingPoints(7)
-        websiteTextField.setLeftPaddingPoints(7)
-        facebookTextField.setLeftPaddingPoints(7)
-        twitterTextField.setLeftPaddingPoints(7)
-        snapchatTextField.setLeftPaddingPoints(7)
-        instagramTextField.setLeftPaddingPoints(7)
-        themeTextField.setLeftPaddingPoints(7)
-        image.layer.borderWidth = 1
-        image.layer.masksToBounds = false
-        image.layer.borderColor = UIColor.white.cgColor
-        image.layer.cornerRadius = image.frame.height/2
-        image.clipsToBounds = true
-        
-        let headers: HTTPHeaders = [
-                   "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
-                   "Content-Type": "application/x-www-form-urlencoded"
-               ]
-        
-        AF.request("http://168.63.65.106/shop/me", headers: headers).responseJSON { response in
-            switch response.result {
-        
-            case .success(let JSON):
-                
-                let response = JSON as! NSDictionary
-                print(response)
-                let imageArray = response.object(forKey: "userPicture")! as! [[String:Any]]
-                var imageData = #imageLiteral(resourceName: "noImage")
-                if imageArray.count > 0 {
-                    let imageUrl = URL(string: imageArray[0]["imageData"] as! String)!
-                    imageData = try! UIImage(data: Data(contentsOf: imageUrl))!
-                }
-                self.image.image = imageData
-                self.pseudoTextField.text = response.object(forKey: "pseudo")! as? String
-                self.emailTextField.text = response.object(forKey: "email")! as? String
-                self.fullnameTextField.text = response.object(forKey: "full_name")! as? String
-                self.postalTextField.text = response.object(forKey: "postal")! as? String
-                self.cityTextField.text = response.object(forKey: "city")! as? String
-                self.phoneTextField.text = response.object(forKey: "phone")! as? String
-                self.societyTextField.text = response.object(forKey: "society")! as? String
-                self.functionTextField.text = response.object(forKey: "function")! as? String
-                self.websiteTextField.text = response.object(forKey: "website")! as? String
-                self.facebookTextField.text = response.object(forKey: "facebook")! as? String
-                self.twitterTextField.text = response.object(forKey: "twitter")! as? String
-                self.snapchatTextField.text = response.object(forKey: "snapchat")! as? String
-                self.instagramTextField.text = response.object(forKey: "instagram")! as? String
-                self.themeTextField.text = response.object(forKey: "theme")! as? String
-                
-            case .failure(let error):
+        APIBrandManager.sharedInstance.getInfo(onSuccess: { response in
+            DispatchQueue.main.async {
+                let imageArray = response["userPicture"] as? [[String:Any]]
+                let imageUrl = URL(string: imageArray![0]["imageData"] as! String)!
+                let imageData = try! UIImage(data: Data(contentsOf: imageUrl))!
+                self.userPhotoView.setImage(imageData, for: .normal)
+                self.pseudoTextField.text = response["pseudo"] as? String
+                self.emailTextField.text = response["email"] as? String
+                self.fullnameTextField.text = response["full_name"] as? String
+                self.postalTextField.text = response["postal"] as? String
+                self.cityTextField.text = response["city"] as? String
+                self.phoneTextField.text = response["phone"] as? String
+                self.societyTextField.text = response["society"] as? String
+                self.functionTextField.text = response["function"] as? String
+                self.websiteTextField.text = response["website"] as? String
+                self.facebookTextField.text = response["facebook"] as? String
+                self.twitterTextField.text = response["twitter"] as? String
+                self.snapchatTextField.text = response["snapchat"] as? String
+                self.instagramTextField.text = response["instagram"] as? String
+                self.typeValue = response["theme"] as? String ?? "Mode"
+            }
+        }, onFailure: { error in
+            DispatchQueue.main.async {
+                // Message d'alerte
                 print("Request failed with error: \(error)")
             }
-        }
+        })
         
         imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = true
@@ -105,166 +75,24 @@ class B_UserInformationsViewController: UIViewController, UIImagePickerControlle
         super.viewDidLoad()
     }
     
-    @IBAction func pseudoTextField(_ sender: UITextField) {
-        if restriction.isValidPseudo(sender.text!) {
-            let noColor : UIColor = UIColor.white
-            
-            print(sender.text!)
-            sender.layer.borderColor = noColor.cgColor
-
-        } else {
-            let errorColor : UIColor = UIColor.red
-
-            sender.layer.borderColor = errorColor.cgColor
-            sender.layer.cornerRadius = 5
-            sender.layer.borderWidth = 1.0
-
-            print("Wrong Pseudo")
-        }
+    @IBAction func userPseudoDidEnd(_ sender: DefaultTextFields) {
+        sender.handleError(sender: sender, field: "pseudo")
     }
     
-    @IBAction func emailTextField(_ sender: UITextField) {
-        if restriction.isValidEmail(sender.text!) {
-            let noColor : UIColor = UIColor.white
-            
-            print(sender.text!)
-            sender.layer.borderColor = noColor.cgColor
-
-        } else {
-            let errorColor : UIColor = UIColor.red
-
-            sender.layer.borderColor = errorColor.cgColor
-            sender.layer.cornerRadius = 5
-            sender.layer.borderWidth = 1.0
-
-            print("Wrong Email")
-        }
+    @IBAction func userEmailDidEnd(_ sender: DefaultTextFields) {
+        sender.handleError(sender: sender, field: "email")
     }
     
-    @IBAction func zipCodeTextField(_ sender: UITextField) {
-        if restriction.isValidZipCode(sender.text!) {
-            let noColor : UIColor = UIColor.white
-            
-            print(sender.text!)
-            sender.layer.borderColor = noColor.cgColor
-
-        } else {
-            let errorColor : UIColor = UIColor.red
-
-            sender.layer.borderColor = errorColor.cgColor
-            sender.layer.cornerRadius = 5
-            sender.layer.borderWidth = 1.0
-
-            print("Wrong ZipCode")
-        }
+    @IBAction func userZipCodeDidEnd(_ sender: DefaultTextFields) {
+        sender.handleError(sender: sender, field: "zipCode")
     }
     
-    @IBAction func phoneNumberTextField(_ sender: UITextField) {
-        if restriction.isValidPhoneNumber(sender.text!) {
-            let noColor : UIColor = UIColor.white
-            
-            print(sender.text!)
-            sender.layer.borderColor = noColor.cgColor
-
-        } else {
-            let errorColor : UIColor = UIColor.red
-
-            sender.layer.borderColor = errorColor.cgColor
-            sender.layer.cornerRadius = 5
-            sender.layer.borderWidth = 1.0
-
-            print("Wrong Phone number")
-        }
+    @IBAction func userPhoneNumberDidEnd(_ sender: DefaultTextFields) {
+        sender.handleError(sender: sender, field: "phoneNumbber")
     }
     
-    @IBAction func facebookTextField(_ sender: UITextField) {
-        if restriction.isMinThreeChar(sender.text!) {
-            let noColor : UIColor = UIColor.white
-            
-            print(sender.text!)
-            sender.layer.borderColor = noColor.cgColor
-
-        } else {
-            let errorColor : UIColor = UIColor.red
-
-            sender.layer.borderColor = errorColor.cgColor
-            sender.layer.cornerRadius = 5
-            sender.layer.borderWidth = 1.0
-
-            print("Wrong facebook account")
-        }
-    }
-    
-    @IBAction func twitterTextField(_ sender: UITextField) {
-        if restriction.isMinThreeChar(sender.text!) {
-            let noColor : UIColor = UIColor.white
-            
-            print(sender.text!)
-            sender.layer.borderColor = noColor.cgColor
-
-        } else {
-            let errorColor : UIColor = UIColor.red
-
-            sender.layer.borderColor = errorColor.cgColor
-            sender.layer.cornerRadius = 5
-            sender.layer.borderWidth = 1.0
-
-            print("Wrong twitter account")
-        }
-    }
-    
-    @IBAction func instagramTextField(_ sender: UITextField) {
-        if restriction.isMinThreeChar(sender.text!) {
-            let noColor : UIColor = UIColor.white
-            
-            print(sender.text!)
-            sender.layer.borderColor = noColor.cgColor
-
-        } else {
-            let errorColor : UIColor = UIColor.red
-
-            sender.layer.borderColor = errorColor.cgColor
-            sender.layer.cornerRadius = 5
-            sender.layer.borderWidth = 1.0
-
-            print("Wrong instagram account")
-        }
-    }
-    
-    @IBAction func snapchatTextField(_ sender: UITextField) {
-        if restriction.isMinThreeChar(sender.text!) {
-            let noColor : UIColor = UIColor.white
-            
-            print(sender.text!)
-            sender.layer.borderColor = noColor.cgColor
-
-        } else {
-            let errorColor : UIColor = UIColor.red
-
-            sender.layer.borderColor = errorColor.cgColor
-            sender.layer.cornerRadius = 5
-            sender.layer.borderWidth = 1.0
-
-            print("Wrong snapchat account")
-        }
-    }
-    
-    @IBAction func themeTextField(_ sender: UITextField) {
-        if restriction.isMinThreeChar(sender.text!) {
-            let noColor : UIColor = UIColor.white
-            
-            print(sender.text!)
-            sender.layer.borderColor = noColor.cgColor
-
-        } else {
-            let errorColor : UIColor = UIColor.red
-
-            sender.layer.borderColor = errorColor.cgColor
-            sender.layer.cornerRadius = 5
-            sender.layer.borderWidth = 1.0
-
-            print("Wrong theme")
-        }
+    @IBAction func defaultCompanyDidEnd(_ sender: DefaultTextFields) {
+        sender.handleError(sender: sender, field: "default")
     }
     
     @IBAction func changeImageButtonTapped(_ sender: Any) {
@@ -276,10 +104,8 @@ class B_UserInformationsViewController: UIViewController, UIImagePickerControlle
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            image.contentMode = .scaleAspectFill
-            image.image = pickedImage
+            userPhotoView.setImage(pickedImage, for: .normal)
         }
-     
         dismiss(animated: true, completion: nil)
     }
     
@@ -287,10 +113,76 @@ class B_UserInformationsViewController: UIViewController, UIImagePickerControlle
         dismiss(animated: true, completion: nil)
     }
     
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        themePickerView.subviews.forEach({
+            $0.isHidden = $0.frame.height < 1.0
+        })
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        switch row {
+            case 1:
+                typeValue = "Cosmétique"
+            case 2:
+                typeValue = "Jeux Vidéo"
+            case 3:
+                typeValue = "Food"
+            case 4:
+                typeValue = "High Tech"
+            case 5:
+                typeValue = "Sport/Fitness"
+            default:
+                typeValue = "Mode"
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var pickerLabel: UILabel? = (view as? UILabel)
+        if pickerLabel == nil {
+            pickerLabel = UILabel()
+            pickerLabel?.font = UIFont(name: "Raleway-Medium", size: 17)
+            pickerLabel?.textAlignment = .center
+        }
+        
+        pickerLabel?.text = pickerData[row]
+        pickerLabel?.textColor = UIColor(red: 135/255, green: 185/255, blue: 124/255, alpha: 1.0)
+        
+        return pickerLabel!
+    }
+    
+    @IBAction func pickerViewButtonTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "Choisissez votre thème", message: "\n\n\n\n\n\n", preferredStyle: .alert)
+        
+        
+        let pickerFrame = UIPickerView(frame: CGRect(x: 5, y: 20, width: 250, height: 140))
+        alert.view.tintColor = UIColor(red: 135/255, green: 185/255, blue: 124/255, alpha: 1.0)
+        alert.view.addSubview(pickerFrame)
+        pickerFrame.dataSource = self
+        pickerFrame.delegate = self
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Valider", style: .default, handler: { (UIAlertAction) in
+            
+            self.pickerViewButton.setTitle(self.typeValue, for: .normal)
+            print("You selected " + self.typeValue )
+            
+        }))
+        self.present(alert,animated: true, completion: nil )
+    }
+    
     @IBAction func editButtonTapped(_ sender: Any) {
         if (self.editItem.title == "Modifier") {
             editItem.title = "Enregistrer"
-            changeImageButton.isUserInteractionEnabled = true
+            userPhotoView.isUserInteractionEnabled = true
             pseudoTextField.isUserInteractionEnabled = true
             emailTextField.isUserInteractionEnabled = true
             fullnameTextField.isUserInteractionEnabled = true
@@ -304,13 +196,13 @@ class B_UserInformationsViewController: UIViewController, UIImagePickerControlle
             twitterTextField.isUserInteractionEnabled = true
             snapchatTextField.isUserInteractionEnabled = true
             instagramTextField.isUserInteractionEnabled = true
-            themeTextField.isUserInteractionEnabled = true
+            themePickerView.isUserInteractionEnabled = true
         }
         else {
-            if (pseudoTextField.text!.isEmpty || emailTextField.text!.isEmpty || fullnameTextField.text!.isEmpty || postalTextField.text!.isEmpty || cityTextField.text!.isEmpty || phoneTextField.text!.isEmpty || societyTextField.text!.isEmpty || functionTextField.text!.isEmpty || websiteTextField.text!.isEmpty || facebookTextField.text!.isEmpty || twitterTextField.text!.isEmpty || snapchatTextField.text!.isEmpty || instagramTextField.text!.isEmpty || themeTextField.text!.isEmpty) {
+            if (pseudoTextField.text!.isEmpty || emailTextField.text!.isEmpty) {
                 // /!\ One or several fields is/are empty
                     DispatchQueue.main.async {
-                        let alertView = UIAlertController(title: "Erreur", message: "Un ou plusieurs de vos champs est/sont vide(s)", preferredStyle: .alert)
+                        let alertView = UIAlertController(title: "Erreur", message: "Veuillez au minium, indiquer votre adresse email ainsi que votre pseudo", preferredStyle: .alert)
                         alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
                         self.present(alertView, animated: true, completion: nil)
                     }
@@ -324,7 +216,7 @@ class B_UserInformationsViewController: UIViewController, UIImagePickerControlle
                     }
                 return
             }
-            if (restriction.isMinThreeChar(facebookTextField.text!) == false || restriction.isMinThreeChar(twitterTextField.text!) == false || restriction.isMinThreeChar(instagramTextField.text!) == false || restriction.isMinThreeChar(snapchatTextField.text!) == false || restriction.isMinThreeChar(themeTextField.text!) == false) {
+            if (restriction.isMinThreeChar(facebookTextField.text!) == false || restriction.isMinThreeChar(twitterTextField.text!) == false || restriction.isMinThreeChar(instagramTextField.text!) == false || restriction.isMinThreeChar(snapchatTextField.text!) == false) {
                 DispatchQueue.main.async {
                     let alertView = UIAlertController(title: "Erreur", message: "Un ou plusieurs de vos champs possède(nt) moins de trois caractères donc semble inconforme", preferredStyle: .alert)
                     alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
@@ -333,62 +225,41 @@ class B_UserInformationsViewController: UIViewController, UIImagePickerControlle
                 return
             }
             else {
-                let imageData = imageConverter.imageToBase64(image.image!)!
+                let userPicture = imageConverter.imageToBase64(userPhotoView.image(for: .normal)!)
                 
-                changeImageButton.isHidden = true
-                let headers: HTTPHeaders = [
-                    "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
-                    "Content-Type": "application/x-www-form-urlencoded"
-                ]
-                let new_Info: Parameters = [
-                    "pseudo": pseudoTextField.text!,
-                    "full_name": fullnameTextField.text!,
-                    "email": emailTextField.text!,
-                    "phone": phoneTextField.text!,
-                    "postal": postalTextField.text!,
-                    "city": cityTextField.text!,
-                    "userPicture": imageData,
-                    "theme": themeTextField.text!,
-                    "society": societyTextField.text!,
-                    "function": functionTextField.text!,
-                    "website": websiteTextField.text!,
-                    "facebook": facebookTextField.text!,
-                    "snapchat": snapchatTextField.text!,
-                    "twitter": twitterTextField.text!,
-                    "instagram": instagramTextField.text!
-                ]
-                changeImageButton.isUserInteractionEnabled = false
-                pseudoTextField.isUserInteractionEnabled = false
-                emailTextField.isUserInteractionEnabled = false
-                fullnameTextField.isUserInteractionEnabled = false
-                postalTextField.isUserInteractionEnabled = false
-                cityTextField.isUserInteractionEnabled = false
-                phoneTextField.isUserInteractionEnabled = false
-                societyTextField.isUserInteractionEnabled = false
-                functionTextField.isUserInteractionEnabled = false
-                websiteTextField.isUserInteractionEnabled = false
-                facebookTextField.isUserInteractionEnabled = false
-                twitterTextField.isUserInteractionEnabled = false
-                snapchatTextField.isUserInteractionEnabled = false
-                instagramTextField.isUserInteractionEnabled = false
-                themeTextField.isUserInteractionEnabled = false;
-                
-                let URL = "http://168.63.65.106/shop/me"
-
-                AF.request(URL, method: .put, parameters: new_Info, encoding: URLEncoding.default, headers: headers, interceptor: nil).responseJSON { response in
-                    switch response.result {
-                    case .success(_):
+                APIBrandManager.sharedInstance.editInfo(pseudo: pseudoTextField.text!, fullname: fullnameTextField.text!, email: emailTextField.text!, phoneNumber: phoneTextField.text!, zipCode: postalTextField.text!, city: cityTextField.text!, userPicture: userPicture!, subject: typeValue, website: websiteTextField.text!, society: societyTextField.text!, profession: functionTextField.text!, facebook: facebookTextField.text!, snapchat: snapchatTextField.text!, twitter: twitterTextField.text!, instagram: instagramTextField.text!, onSuccess: {
+                    DispatchQueue.main.async {
                         self.editItem.title = "Modifier"
-                        print("\(String(describing: response.result))")
-                        DispatchQueue.main.async {
-                            let alertView = UIAlertController(title: "Parfait!", message: "Vos informations ont été modifié avec succès!", preferredStyle: .alert)
-                            alertView.addAction(UIAlertAction(title: "Ok", style: .cancel))
-                            self.present(alertView, animated: true, completion: nil)
-                        }
-                    case .failure(let error):
-                        print("Request failed with error: \(error)")
+                        let alertView = UIAlertController(title: "Parfait !", message: "Vos informations ont été modifié avec succès!", preferredStyle: .alert)
+                        alertView.addAction(UIAlertAction(title: "Continuer", style: .cancel))
+                        self.present(alertView, animated: true, completion: nil)
                     }
-                }
+                    
+                    self.userPhotoView.isUserInteractionEnabled = false
+                    self.pseudoTextField.isUserInteractionEnabled = false
+                    self.emailTextField.isUserInteractionEnabled = false
+                    self.fullnameTextField.isUserInteractionEnabled = false
+                    self.postalTextField.isUserInteractionEnabled = false
+                    self.cityTextField.isUserInteractionEnabled = false
+                    self.phoneTextField.isUserInteractionEnabled = false
+                    self.societyTextField.isUserInteractionEnabled = false
+                    self.functionTextField.isUserInteractionEnabled = false
+                    self.websiteTextField.isUserInteractionEnabled = false
+                    self.facebookTextField.isUserInteractionEnabled = false
+                    self.twitterTextField.isUserInteractionEnabled = false
+                    self.snapchatTextField.isUserInteractionEnabled = false
+                    self.instagramTextField.isUserInteractionEnabled = false
+                    self.themePickerView.isUserInteractionEnabled = false
+                }, onFailure: { error in
+                    DispatchQueue.main.async {
+                        let alertView = UIAlertController(title: "Erreur", message: "Un problème est survenu, veuillez réessayer", preferredStyle: .alert)
+                        alertView.addAction(UIAlertAction(title: "Continuer", style: .cancel))
+                        self.present(alertView, animated: true, completion: nil)
+                    }
+                    print("Request failed with error: \(error)")
+
+                })
+
             }
         }
     }

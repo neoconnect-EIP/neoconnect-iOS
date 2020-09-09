@@ -1,89 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T8c-tj-Z6K">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Raleway-Medium.ttf">
+            <string>Raleway-Medium</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Main Page-->
         <scene sceneID="pbN-6O-a7B">
             <objects>
                 <viewController wantsFullScreenLayout="YES" id="jjD-Zw-pjy" customClass="MainPage" customModule="NeoConnect" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SEj-qQ-SrA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ShopBackground" translatesAutoresizingMaskIntoConstraints="NO" id="7ML-Sa-Go9">
-                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="667"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="aQD-x8-dNV">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="InfBackground" translatesAutoresizingMaskIntoConstraints="NO" id="WbK-ey-kwV">
-                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="667"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="201" verticalHuggingPriority="201" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="wmA-Kw-SO2">
+                                <rect key="frame" x="128" y="92" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="wmA-Kw-SO2" secondAttribute="height" multiplier="1:1" id="3kq-We-A9o"/>
+                                </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="T6c-cZ-fqX">
-                                <rect key="frame" x="87.5" y="54" width="200" height="240"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bienvenue sur Neoconnect" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Ur-OW-igP">
+                                <rect key="frame" x="20" y="199.5" width="280" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="fKL-R2-IQs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Separator" translatesAutoresizingMaskIntoConstraints="NO" id="Apw-Oj-zB5">
+                                <rect key="frame" x="0.0" y="364" width="320" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="xIJ-rZ-cbf"/>
+                                </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5n-dJ-5fs">
-                                <rect key="frame" x="187" y="0.0" width="188" height="667"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LittleBoy" translatesAutoresizingMaskIntoConstraints="NO" id="eDg-kd-MeN">
+                                <rect key="frame" x="140" y="360" width="40" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="RCf-d0-zfS"/>
+                                    <constraint firstAttribute="height" constant="43" id="eWy-yM-dKw"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7F5-kU-KSq" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
+                                <rect key="frame" x="-6" y="455.5" width="152" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="oUt-9q-wuP"/>
+                                    <constraint firstAttribute="width" constant="152" id="vAg-WU-B8U"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="20"/>
+                                <state key="normal" title="Influenceurs">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
-                                    <action selector="InfSide_ButtonTapped:" destination="jjD-Zw-pjy" eventType="touchUpInside" id="YX4-cc-GhN"/>
+                                    <action selector="InfSide_ButtonTapped:" destination="jjD-Zw-pjy" eventType="touchUpInside" id="AP1-fk-fEh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ni-Wt-Bkc">
-                                <rect key="frame" x="0.0" y="0.0" width="188" height="667"/>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mVj-nm-xRt" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
+                                <rect key="frame" x="174" y="454.5" width="152" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="152" id="Ke3-04-mcK"/>
+                                    <constraint firstAttribute="height" constant="60" id="Tkf-8j-RtL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="20"/>
+                                <state key="normal" title="Boutiques">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
-                                    <action selector="BrandSide_ButtonTapped:" destination="jjD-Zw-pjy" eventType="touchUpInside" id="e1g-ee-Tge"/>
+                                    <action selector="BrandSide_ButtonTapped:" destination="jjD-Zw-pjy" eventType="touchUpInside" id="VXd-V8-gLm"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Marques" translatesAutoresizingMaskIntoConstraints="NO" id="wZ9-6H-Dho">
-                                <rect key="frame" x="51.5" y="575" width="84.5" height="41"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Influenceurs" translatesAutoresizingMaskIntoConstraints="NO" id="STe-Hq-QlT">
-                                <rect key="frame" x="221" y="575" width="120.5" height="41"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="vI0-Kh-5Qp" firstAttribute="trailing" secondItem="STe-Hq-QlT" secondAttribute="trailing" constant="33.5" id="0BP-h0-CUe"/>
-                            <constraint firstItem="7ML-Sa-Go9" firstAttribute="width" secondItem="SEj-qQ-SrA" secondAttribute="width" multiplier="0.5" id="3Pc-gm-bTy"/>
-                            <constraint firstItem="4Ni-Wt-Bkc" firstAttribute="height" secondItem="SEj-qQ-SrA" secondAttribute="height" id="5uC-i8-Tvn"/>
-                            <constraint firstItem="WbK-ey-kwV" firstAttribute="trailing" secondItem="vI0-Kh-5Qp" secondAttribute="trailing" id="7WG-69-FWC"/>
-                            <constraint firstItem="7ML-Sa-Go9" firstAttribute="leading" secondItem="vI0-Kh-5Qp" secondAttribute="leading" id="9Kh-ut-RZn"/>
-                            <constraint firstItem="wZ9-6H-Dho" firstAttribute="centerX" secondItem="7ML-Sa-Go9" secondAttribute="centerX" id="Db0-iT-Sob"/>
-                            <constraint firstItem="T6c-cZ-fqX" firstAttribute="centerX" secondItem="vI0-Kh-5Qp" secondAttribute="centerX" id="E9K-jf-dcQ"/>
-                            <constraint firstItem="7ML-Sa-Go9" firstAttribute="height" secondItem="SEj-qQ-SrA" secondAttribute="height" id="ED0-74-XtX"/>
-                            <constraint firstItem="f5n-dJ-5fs" firstAttribute="width" secondItem="SEj-qQ-SrA" secondAttribute="width" multiplier="0.501333" id="EUu-Gc-sg7"/>
-                            <constraint firstItem="WbK-ey-kwV" firstAttribute="width" secondItem="SEj-qQ-SrA" secondAttribute="width" multiplier="0.5" id="FhB-Y2-lWr"/>
-                            <constraint firstItem="4Ni-Wt-Bkc" firstAttribute="width" secondItem="SEj-qQ-SrA" secondAttribute="width" multiplier="0.501333" id="HIT-8i-3GK"/>
-                            <constraint firstItem="f5n-dJ-5fs" firstAttribute="top" secondItem="SEj-qQ-SrA" secondAttribute="top" id="KlW-20-GgU"/>
-                            <constraint firstItem="4Ni-Wt-Bkc" firstAttribute="top" secondItem="SEj-qQ-SrA" secondAttribute="top" id="NR0-5s-CGf"/>
-                            <constraint firstItem="STe-Hq-QlT" firstAttribute="height" secondItem="SEj-qQ-SrA" secondAttribute="height" multiplier="0.0614693" id="O04-AI-T4f"/>
-                            <constraint firstItem="4Ni-Wt-Bkc" firstAttribute="leading" secondItem="vI0-Kh-5Qp" secondAttribute="leading" id="WM2-IS-bD1"/>
-                            <constraint firstItem="7ML-Sa-Go9" firstAttribute="top" secondItem="SEj-qQ-SrA" secondAttribute="top" id="YSU-B0-8v2"/>
-                            <constraint firstItem="STe-Hq-QlT" firstAttribute="centerX" secondItem="WbK-ey-kwV" secondAttribute="centerX" id="eB3-fQ-7rc"/>
-                            <constraint firstItem="wZ9-6H-Dho" firstAttribute="height" secondItem="SEj-qQ-SrA" secondAttribute="height" multiplier="0.0614693" id="glG-y2-DBu"/>
-                            <constraint firstItem="WbK-ey-kwV" firstAttribute="height" secondItem="SEj-qQ-SrA" secondAttribute="height" id="gof-Py-Rnw"/>
-                            <constraint firstItem="vI0-Kh-5Qp" firstAttribute="bottom" secondItem="STe-Hq-QlT" secondAttribute="bottom" constant="51" id="isC-Qb-NnY"/>
-                            <constraint firstItem="f5n-dJ-5fs" firstAttribute="trailing" secondItem="vI0-Kh-5Qp" secondAttribute="trailing" id="kbQ-nC-sPL"/>
-                            <constraint firstItem="T6c-cZ-fqX" firstAttribute="width" secondItem="SEj-qQ-SrA" secondAttribute="width" multiplier="0.533333" id="ppN-53-Lvm"/>
-                            <constraint firstItem="T6c-cZ-fqX" firstAttribute="top" secondItem="vI0-Kh-5Qp" secondAttribute="top" constant="54" id="rNg-Ze-3WD"/>
-                            <constraint firstItem="vI0-Kh-5Qp" firstAttribute="bottom" secondItem="wZ9-6H-Dho" secondAttribute="bottom" constant="51" id="sPb-NS-O3t"/>
-                            <constraint firstItem="wZ9-6H-Dho" firstAttribute="leading" secondItem="vI0-Kh-5Qp" secondAttribute="leading" constant="51.5" id="xtO-7a-e9j"/>
-                            <constraint firstItem="WbK-ey-kwV" firstAttribute="top" secondItem="SEj-qQ-SrA" secondAttribute="top" id="ygG-Kd-R15"/>
-                            <constraint firstItem="T6c-cZ-fqX" firstAttribute="height" secondItem="SEj-qQ-SrA" secondAttribute="height" multiplier="0.35982" id="yp3-ed-EX9"/>
-                            <constraint firstItem="f5n-dJ-5fs" firstAttribute="height" secondItem="SEj-qQ-SrA" secondAttribute="height" id="yzx-lb-yij"/>
+                            <constraint firstItem="vI0-Kh-5Qp" firstAttribute="trailing" secondItem="7Ur-OW-igP" secondAttribute="trailing" constant="20" id="5jy-Lh-Du5"/>
+                            <constraint firstItem="vI0-Kh-5Qp" firstAttribute="trailing" secondItem="Apw-Oj-zB5" secondAttribute="trailing" id="9Am-nY-xul"/>
+                            <constraint firstItem="7Ur-OW-igP" firstAttribute="leading" secondItem="vI0-Kh-5Qp" secondAttribute="leading" constant="20" id="IDJ-ed-Oq6"/>
+                            <constraint firstItem="Apw-Oj-zB5" firstAttribute="width" secondItem="SEj-qQ-SrA" secondAttribute="width" id="Ihx-aA-2y7"/>
+                            <constraint firstItem="7F5-kU-KSq" firstAttribute="centerX" secondItem="vI0-Kh-5Qp" secondAttribute="centerX" constant="-90" id="KfA-b6-jxd"/>
+                            <constraint firstItem="7Ur-OW-igP" firstAttribute="top" secondItem="wmA-Kw-SO2" secondAttribute="bottom" constant="43.5" id="Sg7-OG-NFA"/>
+                            <constraint firstItem="aQD-x8-dNV" firstAttribute="leading" secondItem="vI0-Kh-5Qp" secondAttribute="leading" id="WG8-he-W7P"/>
+                            <constraint firstItem="eDg-kd-MeN" firstAttribute="centerX" secondItem="vI0-Kh-5Qp" secondAttribute="centerX" id="cr8-ob-J5q"/>
+                            <constraint firstItem="wmA-Kw-SO2" firstAttribute="centerY" secondItem="SEj-qQ-SrA" secondAttribute="centerY" constant="-160" id="d9g-ef-fJp"/>
+                            <constraint firstItem="aQD-x8-dNV" firstAttribute="bottom" secondItem="SEj-qQ-SrA" secondAttribute="bottom" id="dXK-5d-9d8"/>
+                            <constraint firstItem="mVj-nm-xRt" firstAttribute="top" secondItem="Apw-Oj-zB5" secondAttribute="bottom" constant="50.5" id="e7u-RZ-kyS"/>
+                            <constraint firstItem="Apw-Oj-zB5" firstAttribute="centerY" secondItem="vI0-Kh-5Qp" secondAttribute="centerY" constant="100" id="eZR-dY-BuT"/>
+                            <constraint firstItem="aQD-x8-dNV" firstAttribute="trailing" secondItem="vI0-Kh-5Qp" secondAttribute="trailing" id="ewj-V5-neV"/>
+                            <constraint firstItem="7F5-kU-KSq" firstAttribute="top" secondItem="Apw-Oj-zB5" secondAttribute="bottom" constant="51.5" id="gyA-Om-iUa"/>
+                            <constraint firstItem="wmA-Kw-SO2" firstAttribute="width" secondItem="SEj-qQ-SrA" secondAttribute="width" multiplier="0.2" id="h8q-0b-GFj"/>
+                            <constraint firstItem="eDg-kd-MeN" firstAttribute="bottom" secondItem="Apw-Oj-zB5" secondAttribute="bottom" constant="-1" id="leM-x4-MCf"/>
+                            <constraint firstItem="mVj-nm-xRt" firstAttribute="centerX" secondItem="vI0-Kh-5Qp" secondAttribute="centerX" constant="90" id="qLo-M2-mSQ"/>
+                            <constraint firstItem="wmA-Kw-SO2" firstAttribute="centerX" secondItem="SEj-qQ-SrA" secondAttribute="centerX" id="sYe-dD-SI6"/>
+                            <constraint firstItem="aQD-x8-dNV" firstAttribute="top" secondItem="SEj-qQ-SrA" secondAttribute="top" id="vZN-If-UFQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vI0-Kh-5Qp"/>
                     </view>
                     <navigationItem key="navigationItem" id="lnu-ln-mPi"/>
                     <connections>
-                        <outlet property="InfView" destination="WbK-ey-kwV" id="zIi-8a-xH2"/>
+                        <outlet property="infButton" destination="7F5-kU-KSq" id="R3Z-1Q-bOc"/>
+                        <outlet property="shopButton" destination="mVj-nm-xRt" id="a1t-YR-lWU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mEJ-7s-Kwr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1902" y="-416"/>
+            <point key="canvasLocation" x="1898.4000000000001" y="-417.8410794602699"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="812-J7-uo4">
@@ -104,10 +133,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="InfBackground" width="375" height="667"/>
-        <image name="Influenceurs" width="120" height="29"/>
-        <image name="Logo" width="200" height="300"/>
-        <image name="Marques" width="85" height="27"/>
-        <image name="ShopBackground" width="414" height="896"/>
+        <image name="LaunchScreen" width="375" height="667"/>
+        <image name="LittleBoy" width="40" height="53"/>
+        <image name="Logo" width="104" height="106"/>
+        <image name="Separator" width="375" height="1"/>
     </resources>
 </document>

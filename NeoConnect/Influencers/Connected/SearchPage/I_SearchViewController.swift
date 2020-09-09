@@ -8,116 +8,97 @@
 
 import UIKit
 import Alamofire
+import AlamofireImage
 import SwiftUI
+import Cosmos
 
 class I_SearchViewController: UIViewController {
         
     @IBOutlet weak var messageTextField: UILabel!
-    let searchBar = UISearchBar()
+    
     @State private var rating = 0
-        var userId: Int!
-       var userEmail: String!
+    var selectedScope = "Marques"
+    var userId: Int!
+    var userEmail: String!
+    private let searchController = UISearchController(searchResultsController: nil)
+    
+    var shopImageView: UIImage!
+    var shopPseudoLabelField: String!
+    var shopSubjectLabelField: String!
+    var shopRatingStars: CosmosView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSearchBar()
     }
     
-    @objc func handleShowSearchBar() {
-        search(shouldShow: true)
-        searchBar.becomeFirstResponder()
-    }
-    
     func configureSearchBar() {
-        searchBar.sizeToFit()
-        searchBar.delegate = self
-        showSearchBarButton(shouldShow: true)
+        searchController.searchBar.placeholder = "Rechercher une marque"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        searchController.searchBar.scopeButtonTitles = ["Marques", "Offres"]
+        searchController.searchBar.delegate = self
     }
     
-    func showSearchBarButton(shouldShow: Bool) {
-        if shouldShow {
-            searchBar.placeholder = "Veuillez entrer votre recherche ..."
-            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(handleShowSearchBar))
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        searchBar.scopeButtonTitles = ["Marques", "Offres"]
+        if selectedScope == 1 {
+            self.selectedScope = "Offres"
+            searchBar.placeholder = "Rechercher une offre"
+            self.messageTextField.text = "Rendez-vous à la prochaine mis à jour :)"
         } else {
-            navigationItem.rightBarButtonItem = nil
-            searchBar.text = nil
+            self.selectedScope = "Marques"
+            searchBar.placeholder = "Rechercher une marque"
+            self.messageTextField.text = "Veuillez entrer votre recherche"
         }
     }
     
-    func search(shouldShow: Bool) {
-        showSearchBarButton(shouldShow: !shouldShow)
-        searchBar.showsCancelButton = shouldShow
-        navigationItem.titleView = shouldShow ? searchBar : nil
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "I_searchBrandResult" {
+            let searchResult: I_ShopFoundViewController = segue.destination as! I_ShopFoundViewController
+            
+            searchResult.userId = self.userId
+            searchResult.userEmail = self.userEmail
+            searchResult.imageView = self.shopImageView
+            searchResult.pseudo = self.shopPseudoLabelField
+            searchResult.subject = self.shopSubjectLabelField
+            searchResult.stars = self.shopRatingStars
+        }
     }
 }
 
 extension I_SearchViewController : UISearchBarDelegate {
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        if let viewWithTag = self.view.viewWithTag(100) {
-                print("Tag 100")
-                viewWithTag.removeFromSuperview()
-            } else {
-                print("tag not found")
-            }
-            search(shouldShow: false)    }
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        let userPseudo = searchBar.text!
-        self.searchBar.endEditing(true)
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
-            "Content-Type": "application/x-www-form-urlencoded"
-        ]
-        let user: Parameters = [
-            "pseudo": userPseudo
-        ]
-        print(userPseudo)
-        AF.request("http://168.63.65.106/user/search",
-        method: .post,
-        parameters: user,
-        encoding: URLEncoding.default, headers: headers, interceptor: nil).validate(statusCode: 200..<300).responseJSON { response in
-
-                    switch response.result {
-                    case .success(let JSON):
-                        let response = JSON as! NSDictionary
-                        print(response)
-                        let imageArray = response.object(forKey: "userPicture")! as! [[String:Any]]
-                        var imageData = #imageLiteral(resourceName: "noImage")
-                        if imageArray.count > 0 {
-                            let imageUrl = URL(string: imageArray[0]["imageData"] as! String)!
-                            imageData = try! UIImage(data: Data(contentsOf: imageUrl))!
+        if self.selectedScope == "Marques" {
+            let userPseudo = searchBar.text!
+            self.searchController.searchBar.endEditing(true)
+            APIInfManager.sharedInstance.search_brand(userPseudo: userPseudo, onSuccess: { response in
+                let imageArray = response["userPicture"] as? [[String:Any]]
+                let imageUrl = URL(string: imageArray![0]["imageData"] as! String)!
+                var imageData = try! UIImage(data: Data(contentsOf: imageUrl))!
+                DispatchQueue.main.async {
+                    AF.request(imageUrl).responseImage { response in
+                        if case .success(let image) = response.result {
+                            print("Image downloaded: \(image)")
+                            imageData = image
+                        } else if case .failure(let error) = response.result {
+                            print("Image Request Error : \(error)")
                         }
-                      let userFound:userFound = Bundle.main.loadNibNamed("userFoundView", owner: self, options: nil)?.first as! userFound
-                                             userFound.tag = 100
-                                             userFound.userPseudoLabelField.text = response.object(forKey: "pseudo")! as? String
-                                             userFound.setImage()
-                                             self.userId = response.object(forKey: "id")! as? Int
-                                             self.userEmail = response.object(forKey: "email")! as? String
-                                             userFound.userImageView.image = imageData
-                                             userFound.noteButton.addTarget(self, action: #selector(I_SearchViewController.noteButtonTapped(sender:)), for: .touchUpInside)
-                                             userFound.contactButton.addTarget(self, action: #selector(I_SearchViewController.contactButtonTapped(sender:)), for: .touchUpInside)
-                                             self.view.addSubview(userFound)
-
-                        print("Successfull")
-                        
-
-                    case .failure(let error):
-                        self.messageTextField.text = "Aucun utilisateur trouvé, veuillez réessayer."
-                        print("Request failed with error: \(error)")
                     }
+                }
+                self.userId = response["id"] as? Int
+                self.userEmail = response["email"] as? String
+                self.shopPseudoLabelField = response["pseudo"] as? String
+                self.shopImageView = imageData
+                self.shopSubjectLabelField = response["theme"] as? String
+                // userFound.shopRatingStars.rating = (response["note"] as? Double)!
+                self.performSegue(withIdentifier: "I_searchBrandResult", sender: self)
+            }, onFailure: {
+                self.messageTextField.text = "Aucun utilisateur trouvé, veuillez réessayer."
+            })
+        } else if selectedScope == "Offres" {
+            self.messageTextField.text = "Rendez-vous à la prochaine mis à jour :)"
         }
     }
-    @objc func noteButtonTapped (sender:UIButton) {
-          let rateView = NotationUserView(userId: userId, rating: rating)
-          
-          let host = UIHostingController(rootView: rateView)
-          navigationController?.pushViewController(host, animated: true)
-      }
-      
-      @objc func contactButtonTapped (sender:UIButton) {
-          let contactView = ContactUserView(emailUser: userEmail)
-          
-          let host = UIHostingController(rootView: contactView)
-          navigationController?.pushViewController(host, animated: true)
-      }
 }

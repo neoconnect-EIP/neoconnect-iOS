@@ -8,123 +8,81 @@
 
 import UIKit
 import Alamofire
+import AlamofireImage
 import SwiftUI
+import Cosmos
 
 class B_SearchViewController: UIViewController {
 
     @IBOutlet weak var messageTextField: UILabel!
+    
     @State private var rating = 0
     var userId: Int!
     var userEmail: String!
-    let searchBar = UISearchBar()
+    private let searchController = UISearchController(searchResultsController: nil)
+    
+    var infImageView: UIImage!
+    var infPseudoLabelField: String!
+    var infSubjectLabelField: String!
+    var infRatingStars: CosmosView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSearchBar()
     }
     
-    @objc func handleShowSearchBar() {
-        search(shouldShow: true)
-        searchBar.becomeFirstResponder()
-    }
-    
     func configureSearchBar() {
-        searchBar.sizeToFit()
-        searchBar.delegate = self
-        showSearchBarButton(shouldShow: true)
+        searchController.searchBar.placeholder = "Rechercher un influenceur"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        searchController.searchBar.delegate = self
+        searchController.searchBar.sizeToFit()
     }
     
-    func showSearchBarButton(shouldShow: Bool) {
-        if shouldShow {
-            searchBar.placeholder = "Veuillez entrer votre recherche ..."
-            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(handleShowSearchBar))
-        } else {
-            navigationItem.rightBarButtonItem = nil
-            searchBar.text = nil
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "B_searchResult" {
+            let searchResult: B_InfFoundViewController = segue.destination as! B_InfFoundViewController
+            
+            searchResult.userId = self.userId
+            searchResult.userEmail = self.userEmail
+            searchResult.imageView = self.infImageView
+            searchResult.pseudo = self.infPseudoLabelField
+            searchResult.subject = self.infSubjectLabelField
+            searchResult.stars = self.infRatingStars
         }
-    }
-    
-    func search(shouldShow: Bool) {
-        showSearchBarButton(shouldShow: !shouldShow)
-        searchBar.showsCancelButton = shouldShow
-        navigationItem.titleView = shouldShow ? searchBar : nil
     }
 }
 
 extension B_SearchViewController : UISearchBarDelegate {
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        if let viewWithTag = self.view.viewWithTag(100) {
-            print("Tag 100")
-            viewWithTag.removeFromSuperview()
-        } else {
-            print("tag not found")
-        }
-        search(shouldShow: false)
-    }
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let userPseudo = searchBar.text!
-        self.searchBar.endEditing(true)
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
-            "Content-Type": "application/x-www-form-urlencoded"
-        ]
-        let user: Parameters = [
-            "pseudo": userPseudo
-        ]
-        print(userPseudo)
-        AF.request("http://168.63.65.106/user/search",
-        method: .post,
-        parameters: user,
-        encoding: URLEncoding.default, headers: headers, interceptor: nil).validate(statusCode: 200..<300).responseJSON { response in
-
-                    switch response.result {
-                    case .success(let JSON):
-                        let response = JSON as! NSDictionary
-                        print(response)
-                        let imageArray = response.object(forKey: "userPicture")! as! [[String:Any]]
-                        var imageData = #imageLiteral(resourceName: "noImage")
-                        if imageArray.count > 0 {
-                            let imageUrl = URL(string: imageArray[0]["imageData"] as! String)!
-                            imageData = try! UIImage(data: Data(contentsOf: imageUrl))!
-                        }
-                        let shopFound:shopFound = Bundle.main.loadNibNamed("shopFoundView", owner: self, options: nil)?.first as! shopFound
-                        shopFound.tag = 100
-                        shopFound.shopPseudoLabelField.text = response.object(forKey: "pseudo")! as? String
-                        shopFound.setImage()
-                        self.userId = response.object(forKey: "id")! as? Int
-                        self.userEmail = response.object(forKey: "email")! as? String
-                        shopFound.shopImageView.image = imageData
-                        shopFound.noteButton.addTarget(self, action: #selector(B_SearchViewController.noteButtonTapped(sender:)), for: .touchUpInside)
-                        shopFound.contactButton.addTarget(self, action: #selector(B_SearchViewController.contactButtonTapped(sender:)), for: .touchUpInside)
-                        self.view.addSubview(shopFound)
-                        print("Successfull")
-                        
-
-                    case .failure(let error):
-                        self.messageTextField.text = "Aucun utilisateur trouvé, veuillez réessayer."
-                        print("Request failed with error: \(error)")
+        self.searchController.searchBar.endEditing(true)
+        APIBrandManager.sharedInstance.search_inf(userPseudo: userPseudo, onSuccess: { response in
+            let imageArray = response["userPicture"] as? [[String:Any]]
+            let imageUrl = URL(string: imageArray![0]["imageData"] as! String)!
+            var imageData = try! UIImage(data: Data(contentsOf: imageUrl))!
+            DispatchQueue.main.async {
+                AF.request(imageUrl).responseImage { response in
+                    if case .success(let image) = response.result {
+                        print("Image downloaded: \(image)")
+                        imageData = image
+                    } else if case .failure(let error) = response.result {
+                        print("Image Request Error : \(error)")
                     }
-        }
+                }
+            }
+            self.userId = response["id"] as? Int
+            self.userEmail = response["email"] as? String
+            self.infPseudoLabelField = response["pseudo"] as? String
+            self.infImageView = imageData
+            self.infSubjectLabelField = response["theme"] as? String
+//            self.infRatingStars.rating = (response["note"] as? Double)!
+            self.performSegue(withIdentifier: "B_searchResult", sender: self)
+        }, onFailure: {
+            self.messageTextField.text = "Aucun utilisateur trouvé, veuillez réessayer."
+        })
     }
-    
-    @objc func noteButtonTapped (sender:UIButton) {
-<<<<<<< HEAD
-        let rateView = NotationUserView(userId: userId, rating: $rating)
-=======
-        let rateView = NotationUserView(userId: userId, rating: rating)
->>>>>>> master
-        
-        let host = UIHostingController(rootView: rateView)
-        navigationController?.pushViewController(host, animated: true)
-    }
-    
-    @objc func contactButtonTapped (sender:UIButton) {
-        let contactView = ContactUserView(emailUser: userEmail)
-        
-        let host = UIHostingController(rootView: contactView)
-        navigationController?.pushViewController(host, animated: true)
-    }
-
 }
+    
+

@@ -7,20 +7,18 @@
 //
 
 import UIKit
+import Cosmos
 
 class userFound: UIView {
 
-    @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var userImageView: PhotoFieldImage!
     @IBOutlet weak var userPseudoLabelField: UILabel!
-    @IBOutlet weak var contactButton: UIButton!
+    @IBOutlet weak var subjectLabelField: UILabel!
     @IBOutlet weak var noteButton: UIButton!
-    func setImage() {
+    @IBOutlet weak var contactButton: UIButton!
+    @IBOutlet weak var ratingStars: CosmosView!
         
-       
-        userImageView.layer.borderWidth = 1
-        userImageView.layer.masksToBounds = false
-        userImageView.layer.borderColor = UIColor.white.cgColor
-        userImageView.layer.cornerRadius = userImageView.frame.height/2
-        userImageView.clipsToBounds = true
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        removeFromSuperview()
     }
 }

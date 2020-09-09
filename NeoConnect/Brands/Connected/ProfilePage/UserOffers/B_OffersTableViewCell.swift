@@ -12,24 +12,19 @@ class B_OffersTableViewCell: UITableViewCell {
 
     @IBOutlet weak var offerImageView: UIImageView!
     @IBOutlet weak var offerTitleLabel: UILabel!
-    
-    var offerItem : Offer!
-    
+    @IBOutlet weak var offerThemeLabel: UILabel!
+
     func setOffers(offer: Offer) {
-        offerItem = offer
         offerTitleLabel.text = offer.title
         offerImageView.image = offer.image
+        offerThemeLabel.text = offer.subject
     }
     
     override func awakeFromNib() {
       super.awakeFromNib()
-      // Initialization code
-      // Add action to perform when the button is tapped
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
       super.setSelected(selected, animated: animated)
-
-      // Configure the view for the selected state
     }
 }
