@@ -17,12 +17,12 @@ class I_HomeTableViewController: UITableViewController {
 
     // MARK: - Table view data source
     
-    @IBAction func offersButton(_ sender: UIButton) {
-        let offersView = OffersView()
-                                     let host = UIHostingController(rootView: offersView)
-     host.navigationController?.setNavigationBarHidden(true, animated: true)
-                             show(host, sender: true)         /*navigationController?.pushViewController(host, animated: true)*/
-    }
+//    @IBAction func offersButton(_ sender: UIButton) {
+//        let offersView = OffersView()
+//                                     let host = UIHostingController(rootView: offersView)
+//     host.navigationController?.setNavigationBarHidden(true, animated: true)
+//                             show(host, sender: true)         /*navigationController?.pushViewController(host, animated: true)*/
+//    }
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

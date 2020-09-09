@@ -18,7 +18,7 @@ struct infImage: Codable {
     var imageData: String?
 }
 
-struct Inf: Codable,Identifiable{
+struct Inf2: Codable,Identifiable{
 var id : Int
 var pseudo: String?
 var userPicture: [infImage]?
@@ -38,15 +38,15 @@ var average: Double?
 }
 
 struct ActualityShopSide: Codable {
-    var listInfNotes : [Inf]
-    var listInfPopulaire : [Inf]
-    var listInfTendance : [Inf]
+    var listInfNotes : [Inf2]
+    var listInfPopulaire : [Inf2]
+    var listInfTendance : [Inf2]
 
     init()
     {
-        listInfNotes = [Inf]()
-        listInfPopulaire = [Inf]()
-        listInfTendance = [Inf]()
+        listInfNotes = [Inf2]()
+        listInfPopulaire = [Inf2]()
+        listInfTendance = [Inf2]()
         }
 
     }
@@ -271,7 +271,7 @@ Image(systemName: "star.fill").foregroundColor(.yellow)
 struct DetailInfView: View {
     @State private var showingAlert = false
     @State private var rating = 0
-    var selectedInf : Inf
+    var selectedInf : Inf2
     var emailUser : String
     var userId : Int
 
@@ -339,7 +339,7 @@ struct DetailInfView: View {
 }
 struct DetailInfView_Previews: PreviewProvider {
     static var previews: some View {
-        let inf : Inf = Inf()
+        let inf : Inf2 = Inf2()
         return DetailInfView(selectedInf: inf, emailUser: "test", userId: 2)
     }
 }

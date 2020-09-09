@@ -13,7 +13,7 @@ import Alamofire
 import Combine
 import KingfisherSwiftUI
 
-func isNil3(inf : Inf) -> Text
+func isNil3(inf : Inf2) -> Text
 {
     if let average = inf.average {
         return Text(String(average.rounded()))
