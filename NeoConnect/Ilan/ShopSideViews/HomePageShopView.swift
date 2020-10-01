@@ -17,92 +17,94 @@ func isNil3(inf : Inf2) -> Text
 {
     if let average = inf.average {
         return Text(String(average.rounded()))
-                                                                       .foregroundColor(Color.black)
-                                                                        .font(.custom("Raleway", size: 12))
-                                  }
+            .foregroundColor(Color.black)
+            .font(.custom("Raleway", size: 12))
+    }
     return Text("0").foregroundColor(Color.black)
-                                                                               .font(.custom("Raleway", size: 12))
+        .font(.custom("Raleway", size: 12))
 }
 struct ActuShopSideView : View {
-      @State var actualites : ActualityShopSide
-        let pseudo = UserDefaults.standard.string(forKey: "pseudo")!
-          var body: some View {
-            ZStack{
-                 ScrollView(.vertical,showsIndicators: false) {
+    
+    @State var actualites : ActualityShopSide
+    let pseudo = UserDefaults.standard.string(forKey: "pseudo")!
+    
+    var body: some View {
+        ZStack{
+            ScrollView(.vertical,showsIndicators: false) {
                 VStack(alignment: .leading) {
-                   
+                    
                     InfTendanceView(actualites: actualites)
                     InfPopulaireView(actualites: actualites)
                     InfNotesView(actualites: actualites)
                     Spacer()
-                    }
-                }           .padding([.top, .leading])
+                }
+            }           .padding([.top, .leading])
                 .padding(.top,30)
-    }
-
-            .frame(maxWidth:.infinity,maxHeight: .infinity)
-                                  .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "16133C").opacity(0.95), Color(hex: "048136").opacity(0.1)]), startPoint: .top, endPoint: .bottom))
-            .edgesIgnoringSafeArea(.top)
-           .onAppear {
-                            getActualityShopSide() {response in
-                                self.actualites = response
-                    }
-    }
         }
+            
+        .frame(maxWidth:.infinity,maxHeight: .infinity)
+        .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "16133C").opacity(0.95), Color(hex: "048136").opacity(0.1)]), startPoint: .top, endPoint: .bottom))
+        .edgesIgnoringSafeArea(.top)
+        .onAppear {
+            getActualityShopSide() {response in
+                self.actualites = response
+            }
+        }
+    }
 }
 struct HomePageShopSideView: View {
-
+    
     @State var actualites : ActualityShopSide
     let pseudo = UserDefaults.standard.string(forKey: "pseudo")!
-      var body: some View {
+    var body: some View {
         ZStack{
             VStack(alignment: .leading) {
-                    Image("logo-1")
-                       
+                Image("logo-1")
+                    
                     .padding(.top)
-                        .padding(.leading, 100.0)
-
-                    HStack{
-                                              Text("Bonjour,").foregroundColor(Color.white).font(.custom("Raleway", size: 26))
-Text(pseudo).foregroundColor(Color.white).font(.custom("Raleway", size: 26))
-                    }
-                    .padding(.top)
+                    .padding(.leading, 100.0)
                 
-                                   Divider()
-                                       .frame(width: 82.0, height: 3.0)
-                                                              .background(/*@START_MENU_TOKEN@*/Color.white/*@END_MENU_TOKEN@*/)
-                    NavigationLink(destination: ActuShopSideView(actualites: actualites)) {
+                HStack{
+                    Text("Bonjour,").foregroundColor(Color.white).font(.custom("Raleway", size: 26))
+                    Text(pseudo).foregroundColor(Color.white).font(.custom("Raleway", size: 26))
+                }
+                .padding(.top)
+                
+                Divider()
+                    .frame(width: 82.0, height: 3.0)
+                    .background(/*@START_MENU_TOKEN@*/Color.white/*@END_MENU_TOKEN@*/)
+                NavigationLink(destination: ActuShopSideView(actualites: actualites)) {
                     HStack{
                         Text("Fil d'actualité").foregroundColor(Color.white).font(.custom("Raleway", size: 20)).padding(.top)
                         Image("arrow")
                             .padding([.top, .leading])
                             .foregroundColor(/*@START_MENU_TOKEN@*/.white/*@END_MENU_TOKEN@*/)
-                            
+                        
                     }
-                    }
-                    .padding(.top)
-                    Divider()
-                        .frame(width: 100.0, height: 1.0)
-                                                                                .background(/*@START_MENU_TOKEN@*/Color.white/*@END_MENU_TOKEN@*/)
-                    Text("NeoConnect Beta").foregroundColor(Color.white).font(.custom("Raleway", size: 12
-                        )).padding(.top, 200.0)
-                       
-Spacer()
+                }
+                .padding(.top)
+                Divider()
+                    .frame(width: 100.0, height: 1.0)
+                    .background(/*@START_MENU_TOKEN@*/Color.white/*@END_MENU_TOKEN@*/)
+                Text("NeoConnect Beta").foregroundColor(Color.white).font(.custom("Raleway", size: 12
+                    )).padding(.top, 200.0)
+                
+                Spacer()
             }
             .padding(.trailing, 100.0)
                 
             .padding(.top,50)
-}
-
+        }
+            
         .frame(maxWidth:.infinity,maxHeight: .infinity)
-                       .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "16133C").opacity(0.95), Color(hex: "048136").opacity(0.1)]), startPoint: .top, endPoint: .bottom))
+        .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "16133C").opacity(0.95), Color(hex: "048136").opacity(0.1)]), startPoint: .top, endPoint: .bottom))
         .edgesIgnoringSafeArea(.top)
             
-       .onAppear {
-                        getActualityShopSide() {response in
-                            self.actualites = response
-                }
-}
+        .onAppear {
+            getActualityShopSide() {response in
+                self.actualites = response
+            }
+        }
     }
 }
 

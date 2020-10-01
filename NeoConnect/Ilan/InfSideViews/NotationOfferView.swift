@@ -12,22 +12,20 @@ import CoreLocation
 import Alamofire
 
 struct NotationView: View {
+    
     @Environment(\.presentationMode) var presentationMode
-@State private var showingAlert = false
-var selectedOffer : Offer2
-@Binding var rating: Int
-
-@State private var message = ""
+    @State private var showingAlert = false
+    @State private var message = ""
+    @Binding var rating: Int
     
- var label = ""
+    var selectedOffer : Offer2
+    var label = ""
+    var offImage: Image?
+    var onImage = Image(systemName: "star.fill")
+    var offColor = Color.gray
+    var onColor = Color.yellow
     
- var offImage: Image?
- var onImage = Image(systemName: "star.fill")
-
- var offColor = Color.gray
- var onColor = Color.yellow
-    
-func myimage(for number: Int) -> Image {
+    func myimage(for number: Int) -> Image {
         if number > rating {
             return offImage ?? onImage
         } else {
@@ -37,55 +35,55 @@ func myimage(for number: Int) -> Image {
     
     var body: some View {
         ZStack {
-
-        VStack() {
-              Text("Noter").foregroundColor(Color.white).font(.custom("Raleway", size: 20))
-            HStack {
+            
+            VStack() {
+                Text("Noter").foregroundColor(Color.white).font(.custom("Raleway", size: 20))
+                HStack {
                     if label.isEmpty == false {
                         Text(label)
                     }
-
+                    
                     ForEach(1..<5 + 1) { number in
                         self.myimage(for: number)
                             .foregroundColor(number > self.rating ?
                                 self.offColor : self.onColor)
                             .onTapGesture {
                                 self.rating = number
-                            }
+                        }
                     }
-            }.padding(.top, 50.0)
-            TextField("Commentaire*", text: $message).foregroundColor(Color.white).frame(height: 200.0).multilineTextAlignment(.center).font(.custom("Raleway", size: 12))
-//            CustomTextField(placeholder: Text("Commentaire*").foregroundColor(.black),text: $message
-//                                                                        ).foregroundColor(Color.white).font(.custom("Raleway", size: 12)).frame(height: 200.0).multilineTextAlignment(.center)
-                           
-                           Divider()
-                               .frame(width: 300.0, height: 1.0)
-                           .background(Color(hex:"445173"))
-    
-            Button(action:{ rateAndComment(rating: self.rating, selectedOffer: self.selectedOffer, message: self.message)
-                self.showingAlert = true
-            } ) {
-         Image("icons8-envoi-de-courriel-24")
-                                       .frame(width: 50.0, height: 50.0)
-                                         .foregroundColor(/*@START_MENU_TOKEN@*/.white/*@END_MENU_TOKEN@*/)
-        }.padding(30)
-            .alert(isPresented: $showingAlert) {
-                Alert(title: Text("Noter l'offre"), message: Text("Votre note a bien été prise en compte."), dismissButton: .default(Text("Ok")))
+                }.padding(.top, 50.0)
+                TextField("Commentaire*", text: $message).foregroundColor(Color.white).frame(height: 200.0).multilineTextAlignment(.center).font(.custom("Raleway", size: 12))
+                //            CustomTextField(placeholder: Text("Commentaire*").foregroundColor(.black),text: $message
+                //                                                                        ).foregroundColor(Color.white).font(.custom("Raleway", size: 12)).frame(height: 200.0).multilineTextAlignment(.center)
+                
+                Divider()
+                    .frame(width: 300.0, height: 1.0)
+                    .background(Color(hex:"445173"))
+                
+                Button(action:{ rateAndComment(rating: self.rating, selectedOffer: self.selectedOffer, message: self.message)
+                    self.showingAlert = true
+                } ) {
+                    Image("icons8-envoi-de-courriel-24")
+                        .frame(width: 50.0, height: 50.0)
+                        .foregroundColor(/*@START_MENU_TOKEN@*/.white/*@END_MENU_TOKEN@*/)
+                }.padding(30)
+                    .alert(isPresented: $showingAlert) {
+                        Alert(title: Text("Noter l'offre"), message: Text("Votre note a bien été prise en compte."), dismissButton: .default(Text("Ok")))
+                }
             }
-        }
-        .padding(.top,50)
-            } .frame(maxWidth:.infinity,maxHeight: .infinity)
-                              .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "15113D").opacity(0.85), Color(hex: "3CA6CC").opacity(0.5)]), startPoint: .top, endPoint: .bottom))
+            .padding(.top,50)
+        } .frame(maxWidth:.infinity,maxHeight: .infinity)
+            .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "15113D").opacity(0.85), Color(hex: "3CA6CC").opacity(0.5)]), startPoint: .top, endPoint: .bottom))
             .edgesIgnoringSafeArea(.top)
-        .navigationBarBackButtonHidden(true)
-         .navigationBarItems(leading:
-                   Button(action: {
-                       self.presentationMode.wrappedValue.dismiss()
-                   }) {
-                       HStack {
-                           Text("Retour")
-                       }
-               })
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading:
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }) {
+                    HStack {
+                        Text("Retour")
+                    }
+            })
     }
 }
 
@@ -104,6 +102,6 @@ func rateAndComment(rating: Int, selectedOffer: Offer2, message: String)
 
 struct NotationView_Previews: PreviewProvider {
     static var previews: some View {
-        NotationView(selectedOffer: Offer2(), rating: .constant(4))
+        NotationView(rating: .constant(4), selectedOffer: Offer2())
     }
 }

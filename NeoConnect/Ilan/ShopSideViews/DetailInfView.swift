@@ -19,13 +19,13 @@ struct infImage: Codable {
 }
 
 struct Inf2: Codable,Identifiable{
-var id : Int
-var pseudo: String?
-var userPicture: [infImage]?
-var full_name: String?
-var email: String?
-var theme: String?
-var average: Double?
+    var id : Int
+    var pseudo: String?
+    var userPicture: [infImage]?
+    var full_name: String?
+    var email: String?
+    var theme: String?
+    var average: Double?
     init() {
         id = 0
         pseudo = ""
@@ -41,15 +41,15 @@ struct ActualityShopSide: Codable {
     var listInfNotes : [Inf2]
     var listInfPopulaire : [Inf2]
     var listInfTendance : [Inf2]
-
+    
     init()
     {
         listInfNotes = [Inf2]()
         listInfPopulaire = [Inf2]()
         listInfTendance = [Inf2]()
-        }
-
     }
+    
+}
 
 func getActualityShopSide(completion: @escaping (ActualityShopSide) -> Void)
 {
@@ -73,199 +73,199 @@ func getActualityShopSide(completion: @escaping (ActualityShopSide) -> Void)
 
 struct InfTendanceView : View {
     @State var actualites : ActualityShopSide
-     var body: some View {
+    var body: some View {
         Group{
             HStack{
-                                 Image("heart")
-                             Text("Influenceurs du moment").foregroundColor(Color.white).font(.custom("Raleway", size: 17)).padding(.vertical)
-                             }
-                ScrollView(.horizontal,showsIndicators: false) {
-                         HStack{
-                             ForEach(actualites.listInfTendance) { infTendance in
-                                NavigationLink(destination: DetailInfView(selectedInf: infTendance, emailUser: infTendance.email!, userId: infTendance.id))
-                     {
-                             ZStack{
-                                 RoundedRectangle(cornerRadius: 10)
-                                                               .frame(width: 180.0, height: 137.0)
-                                                               .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-                                 VStack(alignment: .leading){
-
-
-        if (infTendance.userPicture!.isEmpty) {
-         Image("noImage").resizable().frame(width: 161.0, height: 77.0)
-
-                                                           }
-                                                           else {
-         KFImage(URL(string:infTendance.userPicture![0].imageData!)).renderingMode(.original).resizable().frame(width: 161.0, height: 77.0)                                }
-                                     Text(String(infTendance.pseudo!)).foregroundColor(Color.black)
-                                     .font(.custom("Raleway", size: 12))
-                                     .padding(.bottom, 5.0)
-                                     HStack{
-Text(String(infTendance.theme ?? "Pas de thème renseigné")).foregroundColor(Color.black)
-                                                                                     .font(.custom("Raleway", size: 12))
-                                                                                     .padding(.trailing, 50.0)
+                Image("heart")
+                Text("Influenceurs du moment").foregroundColor(Color.white).font(.custom("Raleway", size: 17)).padding(.vertical)
+            }
+            ScrollView(.horizontal,showsIndicators: false) {
+                HStack{
+                    ForEach(actualites.listInfTendance) { infTendance in
+                        NavigationLink(destination: DetailInfView(selectedInf: infTendance, emailUser: infTendance.email!, userId: infTendance.id))
+                        {
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 10)
+                                    .frame(width: 180.0, height: 137.0)
+                                    .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                                VStack(alignment: .leading){
+                                    
+                                    
+                                    if (infTendance.userPicture!.isEmpty) {
+                                        Image("noImage").resizable().frame(width: 161.0, height: 77.0)
+                                        
+                                    }
+                                    else {
+                                        KFImage(URL(string:infTendance.userPicture![0].imageData!)).renderingMode(.original).resizable().frame(width: 161.0, height: 77.0)                                }
+                                    Text(String(infTendance.pseudo!)).foregroundColor(Color.black)
+                                        .font(.custom("Raleway", size: 12))
+                                        .padding(.bottom, 5.0)
+                                    HStack{
+                                        Text(String(infTendance.theme ?? "Pas de thème renseigné")).foregroundColor(Color.black)
+                                            .font(.custom("Raleway", size: 12))
+                                            .padding(.trailing, 50.0)
                                         HStack{
-                                        isNil3(inf: infTendance)
+                                            isNil3(inf: infTendance)
                                             Image(systemName: "star.fill").foregroundColor(.yellow)
                                         }
-
-
-                                     }
-
-
-
-                             } .frame(width: 180.0, height: 137.0)
-
-
-                     }.frame(width: 180.0, height: 137.0).foregroundColor(.white)
-                     }
-
-                     }
-
-
-                         }
-                     }
-
-    }
-        
+                                        
+                                        
+                                    }
+                                    
+                                    
+                                    
+                                } .frame(width: 180.0, height: 137.0)
+                                
+                                
+                            }.frame(width: 180.0, height: 137.0).foregroundColor(.white)
+                        }
+                        
+                    }
+                    
+                    
+                }
+            }
+            
+        }
+            
         .onAppear {
-
-                    getActualityShopSide() {response in
-                                          self.actualites = response
-                                                }
-                            }
+            
+            getActualityShopSide() {response in
+                self.actualites = response
+            }
+        }
         
     }
-
+    
 }
 
 struct InfPopulaireView : View {
     @State var actualites : ActualityShopSide = ActualityShopSide()
-
-     var body: some View {
+    
+    var body: some View {
         Group{
             HStack{
-                                 Image("fire")
-                             Text("Influenceurs populaires").foregroundColor(Color.white).font(.custom("Raleway", size: 17)).padding(.vertical)
-                             }
-                ScrollView(.horizontal,showsIndicators: false) {
-                         HStack{
-                             ForEach(actualites.listInfPopulaire) { infPopulaire in
-                                NavigationLink(destination: DetailInfView(selectedInf: infPopulaire, emailUser: infPopulaire.email!, userId: infPopulaire.id))
-                     {
-                             ZStack{
-                                 RoundedRectangle(cornerRadius: 10)
-                                                               .frame(width: 180.0, height: 137.0)
-                                                               .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-                                 VStack(alignment: .leading){
-
-
-        if (infPopulaire.userPicture!.isEmpty) {
-         Image("noImage").resizable().frame(width: 161.0, height: 77.0)
-
-                                                           }
-                                                           else {
-         KFImage(URL(string:infPopulaire.userPicture![0].imageData!)).renderingMode(.original).resizable().frame(width: 161.0, height: 77.0)                                }
-                                     Text(String(infPopulaire.pseudo!)).foregroundColor(Color.black)
-                                     .font(.custom("Raleway", size: 12))
-                                     .padding(.bottom, 5.0)
-                                     HStack{
-Text(String(infPopulaire.theme ?? "Pas de thème renseigné")).foregroundColor(Color.black)
-                                                                                     .font(.custom("Raleway", size: 12))
-                                                                                     .padding(.trailing, 50.0)
+                Image("fire")
+                Text("Influenceurs populaires").foregroundColor(Color.white).font(.custom("Raleway", size: 17)).padding(.vertical)
+            }
+            ScrollView(.horizontal,showsIndicators: false) {
+                HStack{
+                    ForEach(actualites.listInfPopulaire) { infPopulaire in
+                        NavigationLink(destination: DetailInfView(selectedInf: infPopulaire, emailUser: infPopulaire.email!, userId: infPopulaire.id))
+                        {
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 10)
+                                    .frame(width: 180.0, height: 137.0)
+                                    .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                                VStack(alignment: .leading){
+                                    
+                                    
+                                    if (infPopulaire.userPicture!.isEmpty) {
+                                        Image("noImage").resizable().frame(width: 161.0, height: 77.0)
+                                        
+                                    }
+                                    else {
+                                        KFImage(URL(string:infPopulaire.userPicture![0].imageData!)).renderingMode(.original).resizable().frame(width: 161.0, height: 77.0)                                }
+                                    Text(String(infPopulaire.pseudo!)).foregroundColor(Color.black)
+                                        .font(.custom("Raleway", size: 12))
+                                        .padding(.bottom, 5.0)
+                                    HStack{
+                                        Text(String(infPopulaire.theme ?? "Pas de thème renseigné")).foregroundColor(Color.black)
+                                            .font(.custom("Raleway", size: 12))
+                                            .padding(.trailing, 50.0)
                                         HStack{
-                                        isNil3(inf: infPopulaire)
+                                            isNil3(inf: infPopulaire)
                                             Image(systemName: "star.fill").foregroundColor(.yellow)
                                         }
-
-                                     }
-
-
-
-                             } .frame(width: 180.0, height: 137.0)
-
-
-                     }.frame(width: 180.0, height: 137.0).foregroundColor(.white)
-                     }
-
-                     }
-
-
-                         }
-                     }
-
-    }
+                                        
+                                    }
+                                    
+                                    
+                                    
+                                } .frame(width: 180.0, height: 137.0)
+                                
+                                
+                            }.frame(width: 180.0, height: 137.0).foregroundColor(.white)
+                        }
+                        
+                    }
+                    
+                    
+                }
+            }
+            
+        }
         .onAppear {
-                                    getActualityShopSide() {response in
-                                          self.actualites = response
-                                                }
-                            }
+            getActualityShopSide() {response in
+                self.actualites = response
+            }
+        }
     }
-
+    
 }
 
 struct InfNotesView : View {
     @State var actualites : ActualityShopSide = ActualityShopSide()
-
-     var body: some View {
+    
+    var body: some View {
         Group{
             HStack{
-                                 Image("etoile")
-                             Text("Influenceurs les mieux notés").foregroundColor(Color.white).font(.custom("Raleway", size: 17)).padding(.vertical)
-                             }
-                ScrollView(.horizontal,showsIndicators: false) {
-                         HStack{
-                             ForEach(actualites.listInfNotes) { infNote in
-                                NavigationLink(destination: DetailInfView(selectedInf: infNote, emailUser: infNote.email!, userId: infNote.id))
-                     {
-                             ZStack{
-                                 RoundedRectangle(cornerRadius: 10)
-                                                               .frame(width: 180.0, height: 137.0)
-                                                               .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-                                 VStack(alignment: .leading){
-
-
-        if (infNote.userPicture!.isEmpty) {
-         Image("noImage").resizable().frame(width: 161.0, height: 77.0)
-
-                                                           }
-                                                           else {
-         KFImage(URL(string:infNote.userPicture![0].imageData!)).renderingMode(.original).resizable().frame(width: 161.0, height: 77.0)                                }
-                                     Text(String(infNote.pseudo!)).foregroundColor(Color.black)
-                                     .font(.custom("Raleway", size: 12))
-                                     .padding(.bottom, 5.0)
-                                     HStack{
-Text(String(infNote.theme ?? "Pas de thème renseigné")).foregroundColor(Color.black)
-                                                                                     .font(.custom("Raleway", size: 12))
-                                                                                     .padding(.trailing, 50.0)
+                Image("etoile")
+                Text("Influenceurs les mieux notés").foregroundColor(Color.white).font(.custom("Raleway", size: 17)).padding(.vertical)
+            }
+            ScrollView(.horizontal,showsIndicators: false) {
+                HStack{
+                    ForEach(actualites.listInfNotes) { infNote in
+                        NavigationLink(destination: DetailInfView(selectedInf: infNote, emailUser: infNote.email!, userId: infNote.id))
+                        {
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 10)
+                                    .frame(width: 180.0, height: 137.0)
+                                    .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                                VStack(alignment: .leading){
+                                    
+                                    
+                                    if (infNote.userPicture!.isEmpty) {
+                                        Image("noImage").resizable().frame(width: 161.0, height: 77.0)
+                                        
+                                    }
+                                    else {
+                                        KFImage(URL(string:infNote.userPicture![0].imageData!)).renderingMode(.original).resizable().frame(width: 161.0, height: 77.0)                                }
+                                    Text(String(infNote.pseudo!)).foregroundColor(Color.black)
+                                        .font(.custom("Raleway", size: 12))
+                                        .padding(.bottom, 5.0)
+                                    HStack{
+                                        Text(String(infNote.theme ?? "Pas de thème renseigné")).foregroundColor(Color.black)
+                                            .font(.custom("Raleway", size: 12))
+                                            .padding(.trailing, 50.0)
                                         HStack{
-                                        isNil3(inf: infNote)
-Image(systemName: "star.fill").foregroundColor(.yellow)
+                                            isNil3(inf: infNote)
+                                            Image(systemName: "star.fill").foregroundColor(.yellow)
                                         }
-                                     }
-
-
-
-                             } .frame(width: 180.0, height: 137.0)
-
-
-                     }.frame(width: 180.0, height: 137.0).foregroundColor(.white)
-                     }
-
-                     }
-
-
-                         }
-                     }
-
-    }
+                                    }
+                                    
+                                    
+                                    
+                                } .frame(width: 180.0, height: 137.0)
+                                
+                                
+                            }.frame(width: 180.0, height: 137.0).foregroundColor(.white)
+                        }
+                        
+                    }
+                    
+                    
+                }
+            }
+            
+        }
         .onAppear {
-                                    getActualityShopSide() {response in
-                                          self.actualites = response
-                                                }
-                            }
+            getActualityShopSide() {response in
+                self.actualites = response
+            }
+        }
     }
-
+    
 }
 
 struct DetailInfView: View {
@@ -275,79 +275,79 @@ struct DetailInfView: View {
     var selectedInf : Inf2
     var emailUser : String
     var userId : Int
-
+    
     var body: some View {
         ZStack{
-        VStack(alignment: .center, spacing: 20.0) {
-
-              if (selectedInf.userPicture!.isEmpty) {
-                               Image("noImage").resizable().frame(width: 100, height: 100)
-                               .clipShape(Circle()).clipped().shadow(radius: 3)
-
-                                               }
-                                               else {
-                KFImage(URL(string:selectedInf.userPicture![0].imageData!)).resizable().frame(width: 100, height: 100)
-                          .clipShape(Circle()).clipped().shadow(radius: 3)
-                                        }
-              Text(String(selectedInf.pseudo!)).foregroundColor(Color.white).font(.custom("Raleway", size: 24))
-
-             Divider()
-                .frame(width: 75.0, height: 1.0)
-                .background(/*@START_MENU_TOKEN@*/Color.white/*@END_MENU_TOKEN@*/)
-
+            VStack(alignment: .center, spacing: 20.0) {
+                
+                if (selectedInf.userPicture!.isEmpty) {
+                    Image("noImage").resizable().frame(width: 100, height: 100)
+                        .clipShape(Circle()).clipped().shadow(radius: 3)
+                    
+                }
+                else {
+                    KFImage(URL(string:selectedInf.userPicture![0].imageData!)).resizable().frame(width: 100, height: 100)
+                        .clipShape(Circle()).clipped().shadow(radius: 3)
+                }
+                Text(String(selectedInf.pseudo!)).foregroundColor(Color.white).font(.custom("Raleway", size: 24))
+                
+                Divider()
+                    .frame(width: 75.0, height: 1.0)
+                    .background(/*@START_MENU_TOKEN@*/Color.white/*@END_MENU_TOKEN@*/)
+                
                 HStack {
                     Text("Thème")
                         .fontWeight(.light)
                         .italic()
                         .padding(.trailing, 100.0)
                     Text("Note")
-                                          .fontWeight(.light)
-                                          .italic()
+                        .fontWeight(.light)
+                        .italic()
                 }
                 HStack{
                     Text(String(selectedInf.theme ?? "Pas de thème renseigné")).fontWeight(.medium).foregroundColor(Color.white).font(.custom("Raleway", size: 18)).padding(.trailing, 100.0)
-            Text(String(selectedInf.average ?? 0)).foregroundColor(Color.white).font(.custom("Raleway", size: 18)).padding(.vertical)
+                    Text(String(selectedInf.average ?? 0)).foregroundColor(Color.white).font(.custom("Raleway", size: 18)).padding(.vertical)
                     Image("etoile")
-
-
-
-
-            }
-            HStack{
-            NavigationLink(destination: NotationUserShopSideView(userId: userId, rating: rating)) {
-                ZStack
-                    {
-                        Image("login")
-                            .foregroundColor(Color(hex: "445173"))
-                        Text("Noter").foregroundColor(Color.white).font(.custom("Raleway", size: 12))
+                    
+                    
+                    
+                    
                 }
-               }
-            NavigationLink(destination: ContactUserShopSideView(emailUser: emailUser)) {
-                             ZStack
-                                            {
-                                        Image("login").foregroundColor(Color(hex: "445173"))
-
-                                       Text("Contacter").foregroundColor(Color.white).font(.custom("Raleway", size: 12))
-                                        }                      }
-
+                HStack{
+                    NavigationLink(destination: NotationUserShopSideView(userId: userId, rating: rating)) {
+                        ZStack
+                            {
+                                Image("login")
+                                    .foregroundColor(Color(hex: "445173"))
+                                Text("Noter").foregroundColor(Color.white).font(.custom("Raleway", size: 12))
+                        }
+                    }
+                    NavigationLink(destination: ContactUserShopSideView(emailUser: emailUser)) {
+                        ZStack
+                            {
+                                Image("login").foregroundColor(Color(hex: "445173"))
+                                
+                                Text("Contacter").foregroundColor(Color.white).font(.custom("Raleway", size: 12))
+                        }                      }
+                    
+                }
+                
             }
-
-        }
-        .padding(.top,50)
-
-} .frame(maxWidth:.infinity,maxHeight: .infinity)
-                      .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "16133C").opacity(0.95), Color(hex: "048136").opacity(0.1)]), startPoint: .top, endPoint: .bottom))
+            .padding(.top,50)
+            
+        } .frame(maxWidth:.infinity,maxHeight: .infinity)
+            .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "16133C").opacity(0.95), Color(hex: "048136").opacity(0.1)]), startPoint: .top, endPoint: .bottom))
             .edgesIgnoringSafeArea(.top)
-        .navigationBarBackButtonHidden(true)
-         .navigationBarItems(leading:
-                   Button(action: {
-                       self.presentationMode.wrappedValue.dismiss()
-                   }) {
-                       HStack {
-                           Text("Retour")
-                       }
-               })
-}
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading:
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }) {
+                    HStack {
+                        Text("Retour")
+                    }
+            })
+    }
 }
 struct DetailInfView_Previews: PreviewProvider {
     static var previews: some View {
