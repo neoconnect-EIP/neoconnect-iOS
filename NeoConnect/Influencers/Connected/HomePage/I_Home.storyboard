@@ -29,7 +29,9 @@
         <scene sceneID="23j-3v-YKV">
             <objects>
                 <hostingController storyboardIdentifier="I_Home" id="Ad4-GW-Fzb" customClass="HomeViewHostingController" customModule="NeoConnect" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="3yD-LG-Mh5"/>
+                    <navigationItem key="navigationItem" id="3yD-LG-Mh5">
+                        <barButtonItem key="backBarButtonItem" title="Retour" id="UZ5-jW-3GO"/>
+                    </navigationItem>
                 </hostingController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xXY-Ze-FHp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

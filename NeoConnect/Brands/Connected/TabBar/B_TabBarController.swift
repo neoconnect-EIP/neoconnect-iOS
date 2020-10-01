@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import SwiftUI
 
 class B_TabBarController: UITabBarController, UITabBarControllerDelegate {
 
-    var homeViewController: UIViewController!
+    var homeViewController: UINavigationController!
     var searchViewController: UINavigationController!
     var addOfferViewController: AddOfferViewController!
     var chatViewController: UINavigationController!
@@ -25,7 +26,7 @@ class B_TabBarController: UITabBarController, UITabBarControllerDelegate {
         let chatStoryboard = UIStoryboard(name: "B_Chat", bundle: nil)
         let profileStoryboard = UIStoryboard(name: "B_Profile", bundle: nil)
 
-        homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "B_Home")
+        homeViewController = (homeStoryboard.instantiateViewController(withIdentifier: "B_HomeNav") as! UINavigationController)
         searchViewController = searchStoryboard.instantiateViewController(withIdentifier: "B_SearchNav") as? UINavigationController
         addOfferViewController = AddOfferViewController()
         chatViewController = chatStoryboard.instantiateViewController(withIdentifier: "B_ChatNav") as? UINavigationController
