@@ -12,15 +12,13 @@ import Alamofire
 
 class I_ParametersTableViewController: UITableViewController {
     
-    @IBOutlet weak var userPhotoView: PhotoFieldImage!
-    
     @IBAction func contactUS(_ sender: Any) {
         let contactView = ReportUsView()
         let host = UIHostingController(rootView: contactView)
         navigationController?.pushViewController(host, animated: true)
     }
     @IBAction func myOffers(_ sender: Any) {
-        let myoffersView = MyOffersView()
+        let myoffersView = MyOffersInfSideView()
         let host = UIHostingController(rootView: myoffersView)
         navigationController?.pushViewController(host, animated: true)
     }
@@ -42,15 +40,6 @@ class I_ParametersTableViewController: UITableViewController {
         }
     }
     override func viewDidLoad() {
-        APIInfManager.sharedInstance.getInfo(onSuccess: { response in
-            let imageArray = response["userPicture"] as? [[String:Any]]
-            let imageUrl = URL(string: imageArray![0]["imageData"] as! String)!
-            let imageData = try! UIImage(data: Data(contentsOf: imageUrl))!
-            self.userPhotoView.image = imageData
-        }, onFailure: { error in
-            print("Request failed with error: \(error)")
-            
-        })
         super.viewDidLoad()
     }
     

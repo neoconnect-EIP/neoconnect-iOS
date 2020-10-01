@@ -25,7 +25,6 @@ class B_SearchViewController: UIViewController {
     var infPseudoLabelField: String!
     var infSubjectLabelField: String!
     var infRatingStars: CosmosView!
-    var infFollowed: Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()

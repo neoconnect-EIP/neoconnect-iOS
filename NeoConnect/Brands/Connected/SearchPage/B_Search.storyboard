@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QfV-Eq-dfN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QfV-Eq-dfN">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -26,6 +26,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ShopBackground" translatesAutoresizingMaskIntoConstraints="NO" id="n3P-mo-g5b">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veuillez entrer votre recherche" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjn-Pj-9gp">
                                 <rect key="frame" x="15" y="321" width="345" height="20"/>
                                 <constraints>
@@ -35,10 +39,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ShopBackground" translatesAutoresizingMaskIntoConstraints="NO" id="n3P-mo-g5b">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -183,7 +183,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Avatar" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bxi-Pi-Rog" customClass="PhotoFieldImage" customModule="NeoConnect" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder_avatar" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bxi-Pi-Rog" customClass="PhotoFieldImage" customModule="NeoConnect" customModuleProvider="target">
                                 <rect key="frame" x="122.5" y="69" width="130" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="49d-ce-PGc"/>
@@ -192,17 +192,15 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsC-4f-hJN" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
-                                <rect key="frame" x="270" y="49" width="85" height="30"/>
+                                <rect key="frame" x="270" y="64" width="85" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="85" id="nHA-nM-VtB"/>
                                     <constraint firstAttribute="height" constant="30" id="pDy-f3-yoc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="11"/>
-                                <state key="normal" title="S'abonner">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
+                                <state key="normal" title="S'abonner"/>
                                 <connections>
-                                    <action selector="followButtonTapped:" destination="O1A-gU-YxV" eventType="touchUpInside" id="gte-Xf-jvO"/>
+                                    <action selector="followButtonTapped:" destination="O1A-gU-YxV" eventType="touchUpInside" id="egj-20-aPg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -234,7 +232,7 @@
                             <constraint firstItem="5lv-WT-7av" firstAttribute="centerX" secondItem="hJS-fJ-4dk" secondAttribute="centerX" id="tu0-5C-Zhw"/>
                             <constraint firstItem="MIZ-vv-w93" firstAttribute="trailing" secondItem="Uhk-78-v0m" secondAttribute="trailing" id="tyc-KW-MkO"/>
                             <constraint firstItem="5lv-WT-7av" firstAttribute="top" secondItem="hJS-fJ-4dk" secondAttribute="bottom" constant="20" id="wHw-vl-a7E"/>
-                            <constraint firstItem="bsC-4f-hJN" firstAttribute="top" secondItem="MIZ-vv-w93" secondAttribute="top" constant="5" id="wLt-un-nhz"/>
+                            <constraint firstItem="bsC-4f-hJN" firstAttribute="top" secondItem="MIZ-vv-w93" secondAttribute="top" constant="20" id="wLt-un-nhz"/>
                             <constraint firstItem="BwH-6S-zl0" firstAttribute="centerY" secondItem="5lv-WT-7av" secondAttribute="centerY" id="xZb-CC-Jeu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MIZ-vv-w93"/>
@@ -248,28 +246,17 @@
                         <outlet property="noteButton" destination="1he-EL-BVb" id="gtO-xg-24m"/>
                         <outlet property="ratingStars" destination="BwH-6S-zl0" id="gav-gx-BYS"/>
                         <outlet property="subjectLabelField" destination="5lv-WT-7av" id="8qo-4r-CNC"/>
-                        <segue destination="lrd-oD-1Pr" kind="show" identifier="MessageView" id="El4-l5-azD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jtr-so-eZ1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1658" y="98"/>
         </scene>
-        <!--MessageView-->
-        <scene sceneID="sY1-S5-0a2">
-            <objects>
-                <viewControllerPlaceholder storyboardName="B_Chat" referencedIdentifier="MessageView" id="lrd-oD-1Pr" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="M7f-n6-7LI"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KVJ-pR-Brh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2186" y="96"/>
-        </scene>
     </scenes>
     <resources>
-        <image name="Avatar" width="225" height="225"/>
         <image name="Etoile" width="26" height="26"/>
         <image name="Etoile grise" width="26" height="26"/>
+        <image name="Placeholder_avatar" width="225" height="225"/>
         <image name="ShopBackground" width="375" height="667"/>
     </resources>
 </document>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="u1e-cU-fQc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="u1e-cU-fQc">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -120,12 +120,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6u3-Bx-UPH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="740" y="82"/>
+            <point key="canvasLocation" x="770" y="83"/>
         </scene>
         <!--Detailed Chat View Controller-->
         <scene sceneID="MZQ-9H-D15">
             <objects>
-                <viewController storyboardIdentifier="MessageView" id="TdL-EP-iyF" customClass="B_DetailedChatViewController" customModule="NeoConnect" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="TdL-EP-iyF" customClass="B_DetailedChatViewController" customModule="NeoConnect" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pi5-Wo-HYm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -136,7 +136,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qtp-Eu-OxC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1420" y="81"/>
+            <point key="canvasLocation" x="1477.5999999999999" y="81.409295352323838"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="P6Z-os-Sdk">

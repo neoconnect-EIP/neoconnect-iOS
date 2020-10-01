@@ -116,7 +116,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Avatar" translatesAutoresizingMaskIntoConstraints="NO" id="Mkb-uE-gkj" customClass="PhotoFieldImage" customModule="NeoConnect" customModuleProvider="target">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Placeholder_avatar" translatesAutoresizingMaskIntoConstraints="NO" id="Mkb-uE-gkj" customClass="PhotoFieldImage" customModule="NeoConnect" customModuleProvider="target">
                                                     <rect key="frame" x="145" y="27" width="85" height="85"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="Mkb-uE-gkj" secondAttribute="height" multiplier="1:1" id="fdW-Yn-cB2"/>
@@ -296,9 +296,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Bl7-xm-cBh"/>
-                    <connections>
-                        <outlet property="userPhotoView" destination="Mkb-uE-gkj" id="G43-AP-zav"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Lz-nn-cLn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -387,8 +384,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Avatar" width="225" height="225"/>
         <image name="Deconnexion - Icon" width="36" height="36"/>
+        <image name="Placeholder_avatar" width="225" height="225"/>
         <image name="ShopBackground" width="375" height="667"/>
     </resources>
 </document>

@@ -12,7 +12,7 @@ import DLRadioButton
 
 class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
-    @IBOutlet weak var firstOfferImage: PhotoFieldButton!
+    @IBOutlet weak var offerImage: PhotoFieldButton!
     @IBOutlet weak var offerTitleField: UITextField!
     @IBOutlet weak var offerFemaleButton: DLRadioButton!
     @IBOutlet weak var offerMaleButton: DLRadioButton!
@@ -34,7 +34,7 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
         offerTitleField.text = offer.title
         offerDescriptionField.text = offer.description
         pickerViewButton.setTitle(offer.subject, for: .normal)
-        firstOfferImage.setImage(offer.image.withRenderingMode(.alwaysOriginal), for: .normal)
+        offerImage.setImage(offer.image.withRenderingMode(.alwaysOriginal), for: .normal)
 
         if (offer.sex == "Male") {
             offerMaleButton.isSelected = true
@@ -62,7 +62,7 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            firstOfferImage.setImage(pickedImage, for: .normal)
+            offerImage.setImage(pickedImage, for: .normal)
         }
         dismiss(animated: true, completion: nil)
     }
@@ -151,7 +151,7 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
         let name = offerTitleField.text!
         let desc = offerDescriptionField.text!
         let subject = typeValue
-        let image = firstOfferImage.image(for: .normal)
+        let image = offerImage.image(for: .normal)
         
         if (self.editItem.title == "Modifier") {
             editItem.title = "Enregistrer"
@@ -160,7 +160,7 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
             offerMaleButton.isUserInteractionEnabled = true
             offerDescriptionField.isUserInteractionEnabled = true
             pickerViewButton.isUserInteractionEnabled = true
-            firstOfferImage.isUserInteractionEnabled = true
+            offerImage.isUserInteractionEnabled = true
         }
         else {
             if (name.isEmpty || desc.isEmpty || subject.isEmpty) {
@@ -181,7 +181,7 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
                     self.offerMaleButton.isUserInteractionEnabled = false
                     self.offerDescriptionField.isUserInteractionEnabled = false
                     self.pickerViewButton.isUserInteractionEnabled = false
-                    self.firstOfferImage.isUserInteractionEnabled = false
+                    self.offerImage.isUserInteractionEnabled = false
                     DispatchQueue.main.async {
                         let alertView = UIAlertController(title: "Parfait !", message: "Votre offre a été modifié avec succès!", preferredStyle: .alert)
                         alertView.addAction(UIAlertAction(title: "Ok", style: .default) { _ in })

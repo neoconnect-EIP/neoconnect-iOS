@@ -250,7 +250,7 @@
                                                     <constraint firstAttribute="width" constant="137" id="8co-jA-D62"/>
                                                     <constraint firstAttribute="width" secondItem="2l1-1i-BPn" secondAttribute="height" multiplier="1:1" id="c86-Qg-pL4"/>
                                                 </constraints>
-                                                <state key="normal" image="Avatar"/>
+                                                <state key="normal" image="Photo Icon"/>
                                                 <connections>
                                                     <action selector="loadImageButtonTapped:" destination="KdJ-UM-wNG" eventType="touchUpInside" id="dn7-aa-2ii"/>
                                                 </connections>
@@ -795,11 +795,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Avatar" width="225" height="225"/>
         <image name="DefaultSeparation - Ball" width="19" height="19"/>
         <image name="DefaultSeparation - Line" width="375" height="1"/>
         <image name="InfBackground" width="375" height="667"/>
         <image name="Light - Inf" width="180" height="180"/>
         <image name="Logo" width="104" height="106"/>
+        <image name="Photo Icon" width="42.5" height="33.5"/>
     </resources>
 </document>

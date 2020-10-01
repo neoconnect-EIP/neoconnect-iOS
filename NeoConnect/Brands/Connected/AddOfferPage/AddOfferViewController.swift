@@ -198,14 +198,10 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
         let name = nameTextField.text!
         let desc = descTextView.text!
         let theme = typeValue
-        let firstImg = firstImage.image(for: .normal)
-        let secondImg = secondImage.image(for: .normal)
-        let thirdImg = thirdImage.image(for: .normal)
-        let forthImg = forthImage.image(for: .normal)
-        let fifthImg = fifthImage.image(for: .normal)
+        let image = firstImage.image(for: .normal)
         let color = colorTextField.text!
         
-        if (name.isEmpty || desc.isEmpty || theme.isEmpty || sex.isEmpty || firstImg == nil) {
+        if (name.isEmpty || desc.isEmpty || theme.isEmpty || sex.isEmpty || image == nil) {
                 DispatchQueue.main.async {
                     let alertView = UIAlertController(title: "Error", message: "Tous les champs doivent être complétés", preferredStyle: .alert)
                     alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
@@ -213,10 +209,10 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
                 }
         }
         else {
-            let firstImageData = imageConverter.imageToBase64(firstImg!)!
+            let imageData = imageConverter.imageToBase64(image!)!
             let brand = UserDefaults.standard.string(forKey: "pseudo")!
             
-            APIBrandManager.sharedInstance.addOffer(name: name, sex: sex, description: desc, theme: theme, imageName: "Image", imageData: firstImageData, color: color, brand: brand, onSuccess: {
+            APIBrandManager.sharedInstance.addOffer(name: name, sex: sex, description: desc, theme: theme, imageName: "Image", imageData: imageData, color: color, brand: brand, onSuccess: {
                 DispatchQueue.main.async {
                     let alertView = UIAlertController(title: "Ajouté !", message: "Votre offre à été ajouté avec succès.", preferredStyle: .alert)
                     alertView.addAction(UIAlertAction(title: "Ok", style: .default) { _ in })

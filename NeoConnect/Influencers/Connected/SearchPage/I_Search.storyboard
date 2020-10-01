@@ -13,12 +13,9 @@
         <array key="Raleway-Medium.ttf">
             <string>Raleway-Medium</string>
         </array>
-        <array key="Raleway-Regular.ttf">
-            <string>Raleway-Regular</string>
-        </array>
     </customFonts>
     <scenes>
-        <!--Recherche-->
+        <!--Search View Controller-->
         <scene sceneID="8zX-U4-rYK">
             <objects>
                 <viewController storyboardIdentifier="I_Search" id="RoQ-go-eb6" customClass="I_SearchViewController" customModule="NeoConnect" customModuleProvider="target" sceneMemberID="viewController">
@@ -49,7 +46,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CjP-Ub-dCv"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Recherche" id="hYF-nX-90j">
+                    <navigationItem key="navigationItem" id="hYF-nX-90j">
                         <barButtonItem key="backBarButtonItem" title="Retour" id="DgF-OI-TXX"/>
                     </navigationItem>
                     <connections>
@@ -183,7 +180,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Avatar" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="spY-x0-8be" customClass="PhotoFieldImage" customModule="NeoConnect" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder_avatar" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="spY-x0-8be" customClass="PhotoFieldImage" customModule="NeoConnect" customModuleProvider="target">
                                 <rect key="frame" x="122.5" y="69" width="130" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="1MM-1h-TvM"/>
@@ -191,20 +188,6 @@
                                     <constraint firstAttribute="width" secondItem="spY-x0-8be" secondAttribute="height" multiplier="1:1" id="ovF-nB-jI9"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mde-dr-yl6" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
-                                <rect key="frame" x="270" y="49" width="85" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="85" id="mRE-TW-3AA"/>
-                                    <constraint firstAttribute="height" constant="30" id="xvx-Hu-MxW"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="11"/>
-                                <state key="normal" title="S'abonner">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="followButtonTapped:" destination="JU5-08-Qyu" eventType="touchUpInside" id="grH-Gh-AmC"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -218,7 +201,6 @@
                             <constraint firstItem="spY-x0-8be" firstAttribute="top" secondItem="6Zd-LE-fi0" secondAttribute="top" constant="25" id="IVT-Yq-hKy"/>
                             <constraint firstItem="6Zd-LE-fi0" firstAttribute="trailing" secondItem="l0F-58-y52" secondAttribute="trailing" constant="10" id="KRO-3n-JcY"/>
                             <constraint firstItem="ufU-L4-ldb" firstAttribute="top" secondItem="11X-fM-Gvw" secondAttribute="bottom" constant="60" id="LiW-Wj-0z1"/>
-                            <constraint firstItem="6Zd-LE-fi0" firstAttribute="trailing" secondItem="Mde-dr-yl6" secondAttribute="trailing" constant="20" id="M1T-uM-o9f"/>
                             <constraint firstItem="11X-fM-Gvw" firstAttribute="top" secondItem="LaV-E3-0sH" secondAttribute="bottom" constant="20" id="MtT-3g-zqC"/>
                             <constraint firstItem="6Zd-LE-fi0" firstAttribute="trailing" secondItem="2zH-pj-58B" secondAttribute="trailing" id="SzI-7s-Il8"/>
                             <constraint firstItem="LaV-E3-0sH" firstAttribute="centerX" secondItem="6Zd-LE-fi0" secondAttribute="centerX" constant="-75" id="Tht-kN-UhZ"/>
@@ -228,7 +210,6 @@
                             <constraint firstItem="spY-x0-8be" firstAttribute="width" secondItem="spY-x0-8be" secondAttribute="height" multiplier="1:1" id="gsa-0N-bZb"/>
                             <constraint firstItem="njR-1P-Llo" firstAttribute="top" secondItem="l0F-58-y52" secondAttribute="bottom" constant="20" id="h7A-E7-0qo"/>
                             <constraint firstItem="2zH-pj-58B" firstAttribute="leading" secondItem="6Zd-LE-fi0" secondAttribute="leading" id="hoT-mu-EX5"/>
-                            <constraint firstItem="Mde-dr-yl6" firstAttribute="top" secondItem="6Zd-LE-fi0" secondAttribute="top" constant="5" id="iIk-wZ-fGC"/>
                             <constraint firstItem="K06-Fb-kk4" firstAttribute="centerX" secondItem="6Zd-LE-fi0" secondAttribute="centerX" constant="75" id="jT4-Qo-VoU"/>
                             <constraint firstItem="l0F-58-y52" firstAttribute="leading" secondItem="6Zd-LE-fi0" secondAttribute="leading" constant="10" id="mpf-qd-IIT"/>
                             <constraint firstItem="l0F-58-y52" firstAttribute="centerX" secondItem="6Zd-LE-fi0" secondAttribute="centerX" id="oqU-sb-uwB"/>
@@ -242,7 +223,6 @@
                     <navigationItem key="navigationItem" id="3Ah-M4-6OV"/>
                     <connections>
                         <outlet property="contactButton" destination="ufU-L4-ldb" id="1Od-oe-YLx"/>
-                        <outlet property="followButton" destination="Mde-dr-yl6" id="1Re-mV-zQ2"/>
                         <outlet property="infImageView" destination="spY-x0-8be" id="vfn-2B-UAd"/>
                         <outlet property="infPseudoLabelField" destination="l0F-58-y52" id="xw0-F6-tqS"/>
                         <outlet property="noteButton" destination="Hby-Lc-no3" id="nv5-nH-uEI"/>
@@ -256,9 +236,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Avatar" width="225" height="225"/>
         <image name="Etoile" width="26" height="26"/>
         <image name="Etoile grise" width="26" height="26"/>
         <image name="InfBackground" width="375" height="667"/>
+        <image name="Placeholder_avatar" width="225" height="225"/>
     </resources>
 </document>

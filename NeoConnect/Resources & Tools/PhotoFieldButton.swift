@@ -31,7 +31,6 @@ final class PhotoFieldButton: UIButton {
             backgroundColor                 = UIColor(red: 135/255, green: 185/255, blue: 124/255, alpha: 1.0)
         } else if self.tag == 2 {
             layer.cornerRadius                  = frame.height/2
-            imageView?.layer.cornerRadius       = frame.height / 2
             backgroundColor                 = UIColor(red: 60/255, green: 157/255, blue: 192/255, alpha: 1.0)
         } else if self.tag == 3 {
             layer.cornerRadius = 10

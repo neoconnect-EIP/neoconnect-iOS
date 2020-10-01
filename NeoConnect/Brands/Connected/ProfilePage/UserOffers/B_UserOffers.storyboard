@@ -337,10 +337,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="editItem" destination="6PY-di-3Ox" id="Koa-9x-2Ug"/>
-                        <outlet property="firstOfferImage" destination="y0N-BB-l0p" id="qyw-O7-sdr"/>
                         <outlet property="offerColor" destination="Dmq-7q-gEe" id="zin-Rr-26W"/>
                         <outlet property="offerDescriptionField" destination="ifZ-ul-P7Z" id="bIf-RQ-CjX"/>
                         <outlet property="offerFemaleButton" destination="z2r-HH-nKH" id="Ub0-uO-6kl"/>
+                        <outlet property="offerImage" destination="y0N-BB-l0p" id="8wQ-hn-rNW"/>
                         <outlet property="offerMaleButton" destination="YyR-V6-6CB" id="4R2-QJ-tlJ"/>
                         <outlet property="offerTitleField" destination="3Xc-dD-G0z" id="5E0-yZ-30i"/>
                         <outlet property="pickerViewButton" destination="Gcu-ZI-xkT" id="MpU-vK-FCR"/>

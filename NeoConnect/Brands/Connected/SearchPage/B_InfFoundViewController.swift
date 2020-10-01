@@ -26,40 +26,21 @@ class B_InfFoundViewController: UIViewController {
     var imageView: UIImage!
     var pseudo: String!
     var subject: String!
-    var follow: Bool!
-    var inf: Inf!
     var stars: CosmosView!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.noteButton.addTarget(self, action: #selector(B_InfFoundViewController.noteButtonTapped(sender:)), for: .touchUpInside)
-//        self.contactButton.addTarget(self, action: #selector(B_InfFoundViewController.contactButtonTapped(sender:)), for: .touchUpInside)
-    }
-    
-    @IBAction func followButtonTapped(_ sender: DefaultButton) {
-        if sender.titleLabel?.text == "S'abonner" {
-            sender.setTitle("Abonné", for: .normal)
-        } else {
-            sender.setTitle("S'abonner", for: .normal)
-        }
+        self.contactButton.addTarget(self, action: #selector(B_InfFoundViewController.contactButtonTapped(sender:)), for: .touchUpInside)
     }
     
     override func viewDidLoad() {
         self.infImageView.image = imageView
         self.infPseudoLabelField.text = pseudo
         self.subjectLabelField.text = subject
-        inf = Inf(id: 0, user_id: userId, pseudo: pseudo, image: imageView)
 //        self.ratingStars = stars
         super.viewDidLoad()
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "MessageView") {
-            let VC = segue.destination as! B_DetailedChatViewController
-            
-            VC.inf = inf
-        }
     }
     
     @objc func noteButtonTapped (sender:UIButton) {
@@ -69,10 +50,14 @@ class B_InfFoundViewController: UIViewController {
         navigationController?.pushViewController(host, animated: true)
     }
     
-//    @objc func contactButtonTapped (sender:UIButton) {
-//        let contactView = ContactUserView(emailUser: userEmail)
-//        
-//        let host = UIHostingController(rootView: contactView)
-//        navigationController?.pushViewController(host, animated: true)
-//    }
+    @objc func contactButtonTapped (sender:UIButton) {
+        let contactView = ContactUserView(emailUser: userEmail)
+        
+        let host = UIHostingController(rootView: contactView)
+        navigationController?.pushViewController(host, animated: true)
+    }
+    
+    @IBAction func followButtonTapped(_ sender: Any) {
+        
+    }
 }

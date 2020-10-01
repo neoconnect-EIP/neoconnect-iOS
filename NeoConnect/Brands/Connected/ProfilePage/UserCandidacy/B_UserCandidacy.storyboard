@@ -77,10 +77,10 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lks-QF-phC">
-                                                    <rect key="frame" x="163" y="50" width="170" height="50"/>
+                                                    <rect key="frame" x="222" y="50" width="125" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="Gwz-IZ-k6b"/>
-                                                        <constraint firstAttribute="width" constant="170" id="vne-E8-iUK"/>
+                                                        <constraint firstAttribute="width" constant="125" id="vne-E8-iUK"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -91,7 +91,7 @@
                                                 <constraint firstItem="Lks-QF-phC" firstAttribute="centerY" secondItem="14J-7L-1fe" secondAttribute="centerY" id="6Kj-Qc-a3s"/>
                                                 <constraint firstItem="Vw6-hB-xJE" firstAttribute="centerY" secondItem="14J-7L-1fe" secondAttribute="centerY" id="PJW-82-479"/>
                                                 <constraint firstItem="Vw6-hB-xJE" firstAttribute="leading" secondItem="14J-7L-1fe" secondAttribute="leading" constant="20" id="TtE-IM-5jO"/>
-                                                <constraint firstItem="Lks-QF-phC" firstAttribute="leading" secondItem="Vw6-hB-xJE" secondAttribute="trailing" constant="20" id="hmF-9o-Xy3"/>
+                                                <constraint firstAttribute="trailing" secondItem="Lks-QF-phC" secondAttribute="trailing" constant="2" id="hGj-Ks-JEa"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -198,7 +198,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rtE-mZ-Cah" customClass="CosmosView" customModule="Cosmos">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rtE-mZ-Cah" customClass="CosmosView" customModule="Cosmos">
                                                     <rect key="frame" x="142.5" y="45" width="90" height="14"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <userDefinedRuntimeAttributes>
@@ -209,7 +209,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
-                                                <button opaque="NO" tag="1" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vws-55-6GF" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
+                                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vws-55-6GF" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
                                                     <rect key="frame" x="100" y="84" width="75" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="6y4-r7-Ebf"/>
@@ -223,7 +223,7 @@
                                                         <action selector="buttonTapped:" destination="OA3-3i-Hzj" eventType="touchUpInside" id="PHG-lL-gc2"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" tag="3" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qvj-E5-yTi" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
+                                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qvj-E5-yTi" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
                                                     <rect key="frame" x="200" y="84" width="75" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="75" id="jOC-pn-s4a"/>
@@ -237,7 +237,7 @@
                                                         <action selector="buttonTapped:" destination="OA3-3i-Hzj" eventType="touchUpInside" id="e9X-AW-yLq"/>
                                                     </connections>
                                                 </button>
-                                                <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bG0-ES-8gS" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
+                                                <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bG0-ES-8gS" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
                                                     <rect key="frame" x="150" y="84" width="75" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="e3d-fE-mWC"/>

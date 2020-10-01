@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import Alamofire
 import UIKit
 import Cosmos
 
@@ -19,7 +18,6 @@ class I_ShopFoundViewController: UIViewController {
     @IBOutlet weak var contactButton: UIButton!
     @IBOutlet weak var subjectLabelField: UILabel!
     @IBOutlet weak var ratingStars: CosmosView!
-    @IBOutlet weak var followButton: DefaultButton!
     
     @State private var rating = 0
     var userId: Int!
@@ -28,7 +26,6 @@ class I_ShopFoundViewController: UIViewController {
     var pseudo: String!
     var subject: String!
     var stars: CosmosView!
-    var followed: Bool!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -41,40 +38,7 @@ class I_ShopFoundViewController: UIViewController {
         self.infImageView.image = imageView
         self.infPseudoLabelField.text = pseudo
         self.subjectLabelField.text = subject
-        if self.followed == false {
-            followButton.setTitle("S'abonner", for: .normal)
-        } else {
-            followButton.setTitle("Abonné", for: .normal)
-        }
         super.viewDidLoad()
-    }
-    
-    @IBAction func followButtonTapped(_ sender: DefaultButton) {
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
-            "Content-Type": "application/x-www-form-urlencoded"
-        ]
-        if sender.titleLabel?.text == "S'abonner" {
-            AF.request("http://168.63.65.106:8080/shop/follow/\(String(self.userId))", method: .put, headers: headers, interceptor: nil).responseJSON { response in
-                switch response.result {
-                    case .success(_):
-                        print(response)
-                    case .failure(let error):
-                        print("Request failed with error: \(error)")
-                }
-            }
-            sender.setTitle("Abonné", for: .normal)
-        } else {
-            AF.request("http://168.63.65.106:8080/shop/unfollow/\(String(self.userId))", method: .put, headers: headers, interceptor: nil).responseJSON { response in
-                switch response.result {
-                    case .success(_):
-                        print(response)
-                    case .failure(let error):
-                        print("Request failed with error: \(error)")
-                }
-            }
-            sender.setTitle("S'abonner", for: .normal)
-        }
     }
     
     @objc func noteButtonTapped (sender:UIButton) {

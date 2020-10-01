@@ -11,7 +11,7 @@ import UIKit
 import Alamofire
 
 struct ContactUsShopSideView: View {
-
+    @Environment(\.presentationMode) var presentationMode
     @State private var showingAlert = false
       @State private var email : String = ""
        @State private var subject : String = ""
@@ -42,11 +42,15 @@ struct ContactUsShopSideView: View {
                 Divider()
                                    .frame(width: 200.0, height: 1.0)
                                    .background(Color(hex:"445173"))
-                TextField("Sujet*", text: $subject).foregroundColor(Color.white).font(.custom("Raleway", size: 12))
+//                TextField("Sujet*", text: $subject).foregroundColor(Color.white).font(.custom("Raleway", size: 12))
+                CustomTextField(placeholder: Text("Sujet*").foregroundColor(.black),text: $subject
+                                                                                                                  ).foregroundColor(Color.white).font(.custom("Raleway", size: 12))
                 Divider()
                     .frame(width: 200.0, height: 1.0)
                                    .background(Color(hex:"445173"))
-                TextField("Message*", text: $message).foregroundColor(Color.white).frame(height: 200.0).multilineTextAlignment(.center).font(.custom("Raleway", size: 12))
+//                TextField("Message*", text: $message).foregroundColor(Color.white).frame(height: 200.0).multilineTextAlignment(.center).font(.custom("Raleway", size: 12))
+                CustomTextField(placeholder: Text("Message*").foregroundColor(.black),text: $message
+                                                                                                                  ).foregroundColor(Color.white).font(.custom("Raleway", size: 12)).frame(height: 200.0).multilineTextAlignment(.center)
                 
                 Divider()
                     .frame(width: 300.0, height: 1.0)
@@ -86,11 +90,22 @@ struct ContactUsShopSideView: View {
                           }
                 Spacer()
             }
-            .padding(.top, 20.0)
+            //.padding(.top, 20.0)
+                .padding(.top, 50.0)
             .frame(width: 300.0)
         }
    .frame(maxWidth:.infinity,maxHeight: .infinity)
                                      .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "16133C").opacity(0.95), Color(hex: "048136").opacity(0.1)]), startPoint: .top, endPoint: .bottom))
+        .edgesIgnoringSafeArea(.top)
+        .navigationBarBackButtonHidden(true)
+         .navigationBarItems(leading:
+                   Button(action: {
+                       self.presentationMode.wrappedValue.dismiss()
+                   }) {
+                       HStack {
+                           Text("Retour")
+                       }
+               })
 
     }
      func textFieldValidatorEmail(_ string: String) -> Bool {

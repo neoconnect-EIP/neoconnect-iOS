@@ -253,7 +253,7 @@
                                                     <constraint firstAttribute="width" constant="137" id="BrG-pk-qX4"/>
                                                     <constraint firstAttribute="width" secondItem="uxh-Fb-XTL" secondAttribute="height" multiplier="1:1" id="xNK-Ch-7Pr"/>
                                                 </constraints>
-                                                <state key="normal" image="Avatar"/>
+                                                <state key="normal" image="Photo Icon"/>
                                                 <connections>
                                                     <action selector="loadImageButtonTapped:" destination="lxa-wx-JSK" eventType="touchUpInside" id="vEe-A1-Eds"/>
                                                 </connections>
@@ -815,11 +815,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Avatar" width="225" height="225"/>
         <image name="DefaultSeparation - Ball" width="19" height="19"/>
         <image name="DefaultSeparation - Line" width="375" height="1"/>
         <image name="Light - Shop" width="180" height="180"/>
         <image name="Logo" width="104" height="106"/>
+        <image name="Photo Icon" width="42.5" height="33.5"/>
         <image name="ShopBackground" width="375" height="667"/>
     </resources>
 </document>

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Etoile grise.png",
+      "filename" : "icons8-étoile-50 (2) 1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Etoile grise@2x.png",
+      "filename" : "icons8-étoile-50 (2) 1@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Etoile grise@3x.png",
+      "filename" : "icons8-étoile-50 (2) 1@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

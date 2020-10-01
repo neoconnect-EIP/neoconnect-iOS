@@ -26,7 +26,6 @@ class I_SearchViewController: UIViewController {
     var shopPseudoLabelField: String!
     var shopSubjectLabelField: String!
     var shopRatingStars: CosmosView!
-    var shopFollowed: Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +63,6 @@ class I_SearchViewController: UIViewController {
             searchResult.pseudo = self.shopPseudoLabelField
             searchResult.subject = self.shopSubjectLabelField
             searchResult.stars = self.shopRatingStars
-            searchResult.followed = self.shopFollowed
         }
     }
 }
@@ -94,7 +92,6 @@ extension I_SearchViewController : UISearchBarDelegate {
                 self.shopPseudoLabelField = response["pseudo"] as? String
                 self.shopImageView = imageData
                 self.shopSubjectLabelField = response["theme"] as? String
-                self.shopFollowed = response["follow"] as? Bool
                 // userFound.shopRatingStars.rating = (response["note"] as? Double)!
                 self.performSegue(withIdentifier: "I_searchBrandResult", sender: self)
             }, onFailure: {
