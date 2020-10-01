@@ -209,7 +209,6 @@ struct ShopNotesView : View {
 }
 
 struct DetailShopView: View {
-    @Environment(\.presentationMode) var presentationMode
     @State private var showingAlert = false
     @State private var rating = 0
     var selectedShop : Shop2
@@ -267,25 +266,15 @@ struct DetailShopView: View {
                                             {
                                         Image("login").foregroundColor(Color(hex: "445173"))
 
-                                       Text("Contacter").foregroundColor(Color.white).font(.custom("Raleway", size: 12))
+                                       Text("Conracter").foregroundColor(Color.white).font(.custom("Raleway", size: 12))
                                         }                      }
 
             }
 
         }
-        .padding(.top,50)
+
 }.frame(maxWidth:.infinity,maxHeight: .infinity)
 .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "15113D").opacity(0.85), Color(hex: "3CA6CC").opacity(0.5)]), startPoint: .top, endPoint: .bottom))
-            .edgesIgnoringSafeArea(.top)
-        .navigationBarBackButtonHidden(true)
-         .navigationBarItems(leading:
-                   Button(action: {
-                       self.presentationMode.wrappedValue.dismiss()
-                   }) {
-                       HStack {
-                           Text("Retour")
-                       }
-               })
 }
 }
 struct DetailShopView_Previews: PreviewProvider {

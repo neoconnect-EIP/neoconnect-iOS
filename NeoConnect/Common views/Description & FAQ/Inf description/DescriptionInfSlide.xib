@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Raleway-Medium.ttf">
+            <string>Raleway-Medium</string>
+        </array>
+        <array key="Raleway-Regular.ttf">
+            <string>Raleway-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="GHt-fF-4E4" userLabel="Description Inf Slide" customClass="DescriptionInfSlide" customModule="NeoConnect" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="InfBackground" translatesAutoresizingMaskIntoConstraints="NO" id="aXt-In-Par">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Chat - Inf" translatesAutoresizingMaskIntoConstraints="NO" id="3bb-FL-sCd">
+                    <rect key="frame" x="118" y="123" width="139" height="187"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="wUh-9d-w3Z" secondAttribute="height" multiplier="1:1" id="k3F-He-A86"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlankSquare" translatesAutoresizingMaskIntoConstraints="NO" id="idC-OJ-Epr">
+                    <rect key="frame" x="37.5" y="410" width="300" height="187"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mise en relation avec des boutiques" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Tn-wx-39K">
+                    <rect key="frame" x="67.5" y="410" width="240" height="93.5"/>
+                    <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="18"/>
+                    <color key="textColor" red="0.34401023390000002" green="0.60915404559999997" blue="0.73729079959999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wUh-9d-w3Z">
+                    <rect key="frame" x="142.5" y="503" width="90" height="1"/>
+                    <color key="backgroundColor" red="0.089033149180000007" green="0.077406220139999996" blue="0.2274742723" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="tintColor" red="0.089033149180000007" green="0.077406220139999996" blue="0.2274742723" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="CS2-l8-6Yc"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Créez des relations avec différentes boutiques pour de futurs partenariats" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Qd-gG-shw">
+                    <rect key="frame" x="67" y="503.5" width="241" height="93.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="G9N-Ru-Ial"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
+                    <color key="textColor" red="0.34401023390000002" green="0.60915404559999997" blue="0.73729079959999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="idC-OJ-Epr" firstAttribute="height" secondItem="GHt-fF-4E4" secondAttribute="height" multiplier="0.28036" id="9pj-gf-vCM"/>
+                <constraint firstItem="2Tn-wx-39K" firstAttribute="height" secondItem="idC-OJ-Epr" secondAttribute="height" multiplier="0.5" id="Aw3-ag-Exz"/>
+                <constraint firstItem="3bb-FL-sCd" firstAttribute="width" secondItem="GHt-fF-4E4" secondAttribute="width" multiplier="0.37" id="BxQ-7C-cfP"/>
+                <constraint firstItem="aXt-In-Par" firstAttribute="leading" secondItem="iCc-IG-uDA" secondAttribute="leading" id="C9s-CF-0DA"/>
+                <constraint firstItem="aXt-In-Par" firstAttribute="top" secondItem="iCc-IG-uDA" secondAttribute="top" id="E3H-5T-KZ7"/>
+                <constraint firstItem="2Tn-wx-39K" firstAttribute="width" secondItem="idC-OJ-Epr" secondAttribute="width" multiplier="0.8" id="Fzx-5l-MuQ"/>
+                <constraint firstItem="wUh-9d-w3Z" firstAttribute="width" secondItem="idC-OJ-Epr" secondAttribute="width" multiplier="0.3" id="LYw-S7-CDd"/>
+                <constraint firstItem="3bb-FL-sCd" firstAttribute="height" secondItem="GHt-fF-4E4" secondAttribute="height" multiplier="0.28" id="OQj-HW-jdV"/>
+                <constraint firstItem="8Qd-gG-shw" firstAttribute="width" relation="lessThanOrEqual" secondItem="idC-OJ-Epr" secondAttribute="width" multiplier="0.87" id="PnR-SD-9Qt"/>
+                <constraint firstItem="idC-OJ-Epr" firstAttribute="width" secondItem="GHt-fF-4E4" secondAttribute="width" multiplier="0.8" id="Rhq-8k-z18"/>
+                <constraint firstItem="3bb-FL-sCd" firstAttribute="centerX" secondItem="iCc-IG-uDA" secondAttribute="centerX" id="T4q-4q-Tw4"/>
+                <constraint firstItem="8Qd-gG-shw" firstAttribute="bottom" secondItem="idC-OJ-Epr" secondAttribute="bottom" id="Y88-Rl-hoX"/>
+                <constraint firstItem="idC-OJ-Epr" firstAttribute="centerX" secondItem="iCc-IG-uDA" secondAttribute="centerX" id="aMC-ja-y8O"/>
+                <constraint firstItem="8Qd-gG-shw" firstAttribute="height" secondItem="idC-OJ-Epr" secondAttribute="height" multiplier="0.5" id="bK7-JF-ZoF"/>
+                <constraint firstItem="aXt-In-Par" firstAttribute="trailing" secondItem="iCc-IG-uDA" secondAttribute="trailing" id="c3Z-x0-JAd"/>
+                <constraint firstItem="2Tn-wx-39K" firstAttribute="centerX" secondItem="idC-OJ-Epr" secondAttribute="centerX" id="cCh-fa-IVi"/>
+                <constraint firstItem="idC-OJ-Epr" firstAttribute="top" secondItem="3bb-FL-sCd" secondAttribute="bottom" constant="100" id="lVy-uL-RVw"/>
+                <constraint firstItem="idC-OJ-Epr" firstAttribute="centerY" secondItem="iCc-IG-uDA" secondAttribute="centerY" constant="170" id="pd8-LB-7cc"/>
+                <constraint firstAttribute="bottom" secondItem="aXt-In-Par" secondAttribute="bottom" id="reV-CH-XcP"/>
+                <constraint firstItem="2Tn-wx-39K" firstAttribute="top" secondItem="idC-OJ-Epr" secondAttribute="top" id="sLO-lW-xWH"/>
+                <constraint firstItem="wUh-9d-w3Z" firstAttribute="centerX" secondItem="idC-OJ-Epr" secondAttribute="centerX" id="ut3-41-fjw"/>
+                <constraint firstItem="8Qd-gG-shw" firstAttribute="centerX" secondItem="idC-OJ-Epr" secondAttribute="centerX" id="vao-eW-jUL"/>
+                <constraint firstItem="wUh-9d-w3Z" firstAttribute="centerY" secondItem="idC-OJ-Epr" secondAttribute="centerY" id="zB5-SN-Wzp"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="iCc-IG-uDA"/>
+            <connections>
+                <outlet property="DescriptionLabelField" destination="8Qd-gG-shw" id="yFG-wp-THQ"/>
+                <outlet property="TitleLabelField" destination="2Tn-wx-39K" id="ToG-QE-JTi"/>
+                <outlet property="imageView" destination="3bb-FL-sCd" id="Jie-Mo-IVn"/>
+            </connections>
+            <point key="canvasLocation" x="649" y="152"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="BlankSquare" width="323" height="210"/>
+        <image name="Chat - Inf" width="165" height="120"/>
+        <image name="InfBackground" width="375" height="667"/>
+    </resources>
+</document>

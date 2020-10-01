@@ -171,13 +171,12 @@ Text(pseudo).foregroundColor(Color.white).font(.custom("Raleway", size: 26))
 Spacer()
             }
             .padding(.trailing, 100.0)
-            .padding(.top,50)
+                
 
 }
 
         .frame(maxWidth:.infinity,maxHeight: .infinity)
-            .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "15113D").opacity(0.85), Color(hex: "3CA6CC").opacity(0.5)]), startPoint: .top, endPoint: .bottom))
-        .edgesIgnoringSafeArea(.top)
+        .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "15113D").opacity(0.85), Color(hex: "3CA6CC").opacity(0.5)]), startPoint: .top, endPoint: .bottom))
        .onAppear {
                         getActualityInfSide() {response in
                             self.actualites = response
@@ -203,13 +202,11 @@ struct ActuInfSideView : View {
                     Spacer()
                     }
                 }           .padding([.top, .leading])
-                .padding(.top,50)
 
     }
 
             .frame(maxWidth:.infinity,maxHeight: .infinity)
                 .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "15113D").opacity(0.85), Color(hex: "3CA6CC").opacity(0.5)]), startPoint: .top, endPoint: .bottom))
-                .edgesIgnoringSafeArea(.top)
            .onAppear {
                             getActualityInfSide() {response in
                                 self.actualites = response
@@ -225,12 +222,6 @@ struct ActuInfSideView : View {
 //    }
 //}
 
-//struct HomePageInfSideView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        var actualites : ActualityInfSide = ActualityInfSide()
-//        return HomePageInfSideView(actualites: actualites)
-//    }
-//}
 
 class HomeViewHostingController: UIHostingController<HomePageInfSideView> {
     required init?(coder aDecoder: NSCoder) {
@@ -441,61 +432,101 @@ func postulate(offer : Offer2) {
       }
 }
 
-//struct DetailOfferOld: View {
-//    @State private var showingAlert = false
-//    var selectedOffer : Offer2
-//    var date : String
-//var body: some View {
-//    ZStack() {
-//    VStack(alignment: .center, spacing: 20.0) {
-//          if (selectedOffer.productImg!.isEmpty) {
-//                           Image("noImage").resizable().frame(width: 100, height: 100)
-//                           .clipShape(Circle()).clipped().shadow(radius: 3)
-//
-//                                           }
-//                                           else {
-//      KFImage(URL(string:selectedOffer.productImg![0].imageData!)).resizable().frame(width: 100, height: 100)
-//        .clipShape(Circle()).clipped().shadow(radius: 3)
-//        }
-//        Text(String(selectedOffer.productName!)).multilineTextAlignment(.center).font(.headline)
-//        HStack {
-//        Text(String(selectedOffer.productSubject ?? "Pas de thème renseigné")).font(.subheadline).fontWeight(.light).multilineTextAlignment(.leading)
-//        .padding(.trailing,30)
-//    Text(String(selectedOffer.productSex!)).font(.subheadline).fontWeight(.light).multilineTextAlignment(.leading)
-//        .padding(.trailing,30)
-//        }
-//    Divider()
-//        .padding(.trailing,50)
-//                   .padding(.leading,50)
-//        Text(String(selectedOffer.productDesc!)).font(.body).fontWeight(.light).multilineTextAlignment(.center)
-//        NavigationLink(destination: ReportOfferView(offerName: selectedOffer.productName!, idOffer: String(selectedOffer.id))) {
-//        Text("Signaler")
-//        }
-//        Button(action: {postulate(offer: self.selectedOffer)
-//            self.showingAlert = true
-//        }) {
-//            Text("Postuler")
-//        }
-//        .alert(isPresented: $showingAlert) {
-//                       Alert(title: Text("Postuler à une offre"), message: Text("Vous avez postulé à cette offre."), dismissButton: .default(Text("Ok")))
-//                   }
-////        Button(action: { self.dialog()})
-////         {
-////        Text("Partager")
-////         }
-//        Text("Crée le " + date).foregroundColor(Color.gray)
-//        .font(Font.system(size: 14)).italic()
-//    }
-//        }
-//    .frame(maxWidth:.infinity,maxHeight: .infinity)
-//    .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "15113D").opacity(0.85), Color(hex: "3CA6CC").opacity(0.5)]), startPoint: .top, endPoint: .bottom))
-//    .edgesIgnoringSafeArea(.all)
-//}
-//}
+struct DetailOfferOld: View {
+    @State private var showingAlert = false
+    var selectedOffer : Offer2
+    var date : String
+var body: some View {
+    ZStack() {
+    VStack(alignment: .center, spacing: 20.0) {
+          if (selectedOffer.productImg!.isEmpty) {
+                           Image("noImage").resizable().frame(width: 100, height: 100)
+                           .clipShape(Circle()).clipped().shadow(radius: 3)
 
+                                           }
+                                           else {
+      KFImage(URL(string:selectedOffer.productImg![0].imageData!)).resizable().frame(width: 100, height: 100)
+        .clipShape(Circle()).clipped().shadow(radius: 3)
+        }
+        Text(String(selectedOffer.productName!)).multilineTextAlignment(.center).font(.headline)
+        HStack {
+        Text(String(selectedOffer.productSubject ?? "Pas de thème renseigné")).font(.subheadline).fontWeight(.light).multilineTextAlignment(.leading)
+        .padding(.trailing,30)
+    Text(String(selectedOffer.productSex!)).font(.subheadline).fontWeight(.light).multilineTextAlignment(.leading)
+        .padding(.trailing,30)
+        }
+    Divider()
+        .padding(.trailing,50)
+                   .padding(.leading,50)
+        Text(String(selectedOffer.productDesc!)).font(.body).fontWeight(.light).multilineTextAlignment(.center)
+        NavigationLink(destination: ReportOfferView(offerName: selectedOffer.productName!, idOffer: String(selectedOffer.id))) {
+        Text("Signaler")
+        }
+        Button(action: {postulate(offer: self.selectedOffer)
+            self.showingAlert = true
+        }) {
+            Text("Postuler")
+        }
+        .alert(isPresented: $showingAlert) {
+                       Alert(title: Text("Postuler à une offre"), message: Text("Vous avez postulé à cette offre."), dismissButton: .default(Text("Ok")))
+                   }
+        Button(action: { self.dialog()})
+         {
+        Text("Partager")
+         }
+        Text("Crée le " + date).foregroundColor(Color.gray)
+        .font(Font.system(size: 14)).italic()
+    }
+        }
+    .frame(maxWidth:.infinity,maxHeight: .infinity)
+    .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "15113D").opacity(0.85), Color(hex: "3CA6CC").opacity(0.5)]), startPoint: .top, endPoint: .bottom))
+    .edgesIgnoringSafeArea(.all)
+}
+    func dialog(){
+
+       let alertController = UIAlertController(title: "Partager une offre", message: "Veuillez indiquer l'adresse mail de l'utilisateur", preferredStyle: .alert)
+
+        alertController.addTextField { (textField : UITextField!) -> Void in
+            textField.placeholder = "Email"
+        }
+
+        let saveAction = UIAlertAction(title: "Envoyer", style: .default, handler: { alert -> Void in
+            
+            let _headers: HTTPHeaders = [
+                               "Authorization": "Bearer " + accessToken
+            ]
+            let email = alertController.textFields![0].text
+            let map = ["email": email]
+            AF.request(url+"offer/share/" + String(self.selectedOffer.id),
+                                       method: .post,
+                                       parameters: map as Parameters,
+                                       encoding: URLEncoding.default,headers: _headers).response { response in
+                                debugPrint(response)
+                            }
+         
+
+        })
+
+        let cancelAction = UIAlertAction(title: "Annuler", style: .default, handler: nil )
+
+
+        alertController.addAction(saveAction)
+        alertController.addAction(cancelAction)
+
+        UIApplication.shared.windows.first?.rootViewController?.present(alertController, animated: true, completion: nil)
+
+
+    }
+}
+
+struct HomePageInfSideView_Previews: PreviewProvider {
+    static var previews: some View {
+        var offer : Offer2 = Offer2()
+        return DetailOffer(selectedOffer: offer, date: "7")
+    }
+}
 
 struct DetailOffer: View {
-    @Environment(\.presentationMode) var presentationMode
     @State private var showingAlert = false
     @State private var rating = 0
     var selectedOffer : Offer2
@@ -505,13 +536,7 @@ var body: some View {
     ZStack{
       
     VStack(alignment: .center, spacing: 20.0) {
-        Button(action: { self.dialog()})
-                {
-                  Image(systemName: "square.and.arrow.up")
-                    
-                               .padding(.leading, 300.0)
-                               .foregroundColor(/*@START_MENU_TOKEN@*/.white/*@END_MENU_TOKEN@*/)
-                }
+
 //        Button(action: {print("Partager une offre & Signaler")}) {
 //            Image("Plus")
 //                .padding(.leading, 300.0)
@@ -585,54 +610,8 @@ if selectedOffer.productSex == "Male" || selectedOffer.productSex == "Homme"
    
 //        Text("Crée le " + date).foregroundColor(Color.gray)
 //        .font(Font.system(size: 14)).italic()
-    }.padding(.top,50)
-        
+    }
     } .frame(maxWidth:.infinity,maxHeight: .infinity)
            .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "15113D").opacity(0.85), Color(hex: "3CA6CC").opacity(0.5)]), startPoint: .top, endPoint: .bottom))
-    .edgesIgnoringSafeArea(.top)
-    .navigationBarBackButtonHidden(true)
-    .navigationBarItems(leading:
-              Button(action: {
-                  self.presentationMode.wrappedValue.dismiss()
-              }) {
-                  HStack {
-                      Text("Retour")
-                  }
-          })
 }
-    func dialog(){
-
-       let alertController = UIAlertController(title: "Partager une offre", message: "Veuillez indiquer l'adresse mail de l'utilisateur", preferredStyle: .alert)
-
-        alertController.addTextField { (textField : UITextField!) -> Void in
-            textField.placeholder = "Email"
-        }
-
-        let saveAction = UIAlertAction(title: "Envoyer", style: .default, handler: { alert -> Void in
-            
-            let _headers: HTTPHeaders = [
-                               "Authorization": "Bearer " + accessToken
-            ]
-            let email = alertController.textFields![0].text
-            let map = ["email": email!]
-            AF.request(url+"offer/share/" + String(self.selectedOffer.id),
-                                       method: .post,
-                                       parameters: map as Parameters,
-                                       encoding: URLEncoding.default,headers: _headers).response { response in
-                                debugPrint(response)
-                            }
-         
-
-        })
-
-        let cancelAction = UIAlertAction(title: "Annuler", style: .default, handler: nil )
-
-
-        alertController.addAction(saveAction)
-        alertController.addAction(cancelAction)
-
-        UIApplication.shared.windows.first?.rootViewController?.present(alertController, animated: true, completion: nil)
-
-
-    }
 }

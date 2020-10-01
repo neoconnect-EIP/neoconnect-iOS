@@ -22,7 +22,6 @@ func removeApply(offer : Offer2) {
 }
 
 struct DetailMyOfferInfSideView: View {
-    @Environment(\.presentationMode) var presentationMode
     @State private var showingAlert = false
     @State private var rating = 0
     var selectedOffer : Offer2
@@ -123,19 +122,9 @@ if selectedOffer.productSex == "Male" || selectedOffer.productSex == "Homme"
    
 //        Text("Crée le " + date).foregroundColor(Color.gray)
 //        .font(Font.system(size: 14)).italic()
-    }.padding(.top,50)
+    }
     } .frame(maxWidth:.infinity,maxHeight: .infinity)
            .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "15113D").opacity(0.85), Color(hex: "3CA6CC").opacity(0.5)]), startPoint: .top, endPoint: .bottom))
-        .edgesIgnoringSafeArea(.top)
-    .navigationBarBackButtonHidden(true)
-     .navigationBarItems(leading:
-               Button(action: {
-                   self.presentationMode.wrappedValue.dismiss()
-               }) {
-                   HStack {
-                       Text("Retour")
-                   }
-           })
 }
 }
 
@@ -210,12 +199,11 @@ struct MyOffersInfSideView: View {
                 }
                 Spacer()
                 
-            }.padding(.top,50)
+}
 }
             
         .frame(maxWidth:.infinity,maxHeight: .infinity)
         .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "15113D").opacity(0.85), Color(hex: "3CA6CC").opacity(0.5)]), startPoint: .top, endPoint: .bottom))
-        .edgesIgnoringSafeArea(.top)
         .onAppear {
                             getMyOffers2() {
                                 response in

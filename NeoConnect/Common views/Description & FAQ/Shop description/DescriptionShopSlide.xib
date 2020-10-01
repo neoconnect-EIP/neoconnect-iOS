@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Raleway-Medium.ttf">
+            <string>Raleway-Medium</string>
+        </array>
+        <array key="Raleway-Regular.ttf">
+            <string>Raleway-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DescriptionShopSlide" customModule="NeoConnect" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ShopBackground" translatesAutoresizingMaskIntoConstraints="NO" id="yaY-es-hI7">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Chat - Shop" translatesAutoresizingMaskIntoConstraints="NO" id="uzq-QC-rd6">
+                    <rect key="frame" x="118" y="123" width="139" height="187"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Yiy-su-A3Z" secondAttribute="height" multiplier="1:1" id="liJ-9f-WZh"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlankSquare" translatesAutoresizingMaskIntoConstraints="NO" id="bDm-wH-cic">
+                    <rect key="frame" x="37.5" y="410" width="300" height="187"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mise en relation avec des boutiques" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmL-9F-5BK">
+                    <rect key="frame" x="67.5" y="410" width="240" height="93.5"/>
+                    <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="18"/>
+                    <color key="textColor" red="0.63938140870000004" green="0.75699692959999998" blue="0.45480030780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Yiy-su-A3Z">
+                    <rect key="frame" x="142.5" y="503" width="90" height="1"/>
+                    <color key="backgroundColor" red="0.73853902279999994" green="0.73853902279999994" blue="0.73853902279999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="tintColor" red="0.73853902279999994" green="0.73853902279999994" blue="0.73853902279999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="j1w-GA-6LW"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Créez des relations avec des influenceurs pour de futurs partenariats" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lh3-9D-dGR">
+                    <rect key="frame" x="60" y="503.5" width="255.5" height="93.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="b7r-6t-s8A"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
+                    <color key="textColor" red="0.63938140870000004" green="0.75699692959999998" blue="0.45480030780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="uzq-QC-rd6" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.37" id="0pB-j9-bWF"/>
+                <constraint firstItem="Yiy-su-A3Z" firstAttribute="centerX" secondItem="bDm-wH-cic" secondAttribute="centerX" id="3tZ-EI-GbL"/>
+                <constraint firstItem="yaY-es-hI7" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="7ka-k1-Qz2"/>
+                <constraint firstItem="lh3-9D-dGR" firstAttribute="height" secondItem="bDm-wH-cic" secondAttribute="height" multiplier="0.5" id="Cbl-Rf-S4R"/>
+                <constraint firstItem="uzq-QC-rd6" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="JsT-PF-rQI"/>
+                <constraint firstItem="Yiy-su-A3Z" firstAttribute="centerY" secondItem="bDm-wH-cic" secondAttribute="centerY" id="KYQ-sa-oA6"/>
+                <constraint firstItem="lh3-9D-dGR" firstAttribute="centerX" secondItem="bDm-wH-cic" secondAttribute="centerX" id="Kb0-Po-a8z"/>
+                <constraint firstItem="yaY-es-hI7" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="LYp-Xp-0rk"/>
+                <constraint firstItem="yaY-es-hI7" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="R1t-m5-hnv"/>
+                <constraint firstItem="bDm-wH-cic" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="RU2-VI-RdR"/>
+                <constraint firstItem="bDm-wH-cic" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.8" id="Ra2-RG-EYO"/>
+                <constraint firstItem="bDm-wH-cic" firstAttribute="top" secondItem="uzq-QC-rd6" secondAttribute="bottom" constant="100" id="Tar-2Y-kY5"/>
+                <constraint firstItem="uzq-QC-rd6" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.28" id="WtP-33-jGy"/>
+                <constraint firstItem="lh3-9D-dGR" firstAttribute="bottom" secondItem="bDm-wH-cic" secondAttribute="bottom" id="bc4-tm-ZdR"/>
+                <constraint firstItem="lh3-9D-dGR" firstAttribute="width" relation="lessThanOrEqual" secondItem="bDm-wH-cic" secondAttribute="width" multiplier="0.87" id="by5-8g-VHy"/>
+                <constraint firstItem="bmL-9F-5BK" firstAttribute="width" secondItem="bDm-wH-cic" secondAttribute="width" multiplier="0.8" id="es9-LJ-Gy3"/>
+                <constraint firstItem="bmL-9F-5BK" firstAttribute="centerX" secondItem="bDm-wH-cic" secondAttribute="centerX" id="g06-MM-rxZ"/>
+                <constraint firstItem="bDm-wH-cic" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" constant="170" id="g4N-Qn-2fS"/>
+                <constraint firstItem="bmL-9F-5BK" firstAttribute="height" secondItem="bDm-wH-cic" secondAttribute="height" multiplier="0.5" id="hH1-Ed-Wkw"/>
+                <constraint firstAttribute="bottom" secondItem="yaY-es-hI7" secondAttribute="bottom" id="kyE-jV-3l3"/>
+                <constraint firstItem="Yiy-su-A3Z" firstAttribute="width" secondItem="bDm-wH-cic" secondAttribute="width" multiplier="0.3" id="q7S-Aw-eht"/>
+                <constraint firstItem="bDm-wH-cic" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.28036" id="yeQ-P0-V0v"/>
+                <constraint firstItem="bmL-9F-5BK" firstAttribute="top" secondItem="bDm-wH-cic" secondAttribute="top" id="zYi-Cr-aYe"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="DescriptionLabelField" destination="lh3-9D-dGR" id="5bx-BQ-DRu"/>
+                <outlet property="TitleLabelField" destination="bmL-9F-5BK" id="JgZ-z4-oZ6"/>
+                <outlet property="imageView" destination="uzq-QC-rd6" id="h4i-RM-mef"/>
+            </connections>
+            <point key="canvasLocation" x="136.80000000000001" y="151.57421289355324"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="BlankSquare" width="323" height="210"/>
+        <image name="Chat - Shop" width="165" height="120"/>
+        <image name="ShopBackground" width="375" height="667"/>
+    </resources>
+</document>
