@@ -30,7 +30,7 @@
             <objects>
                 <hostingController storyboardIdentifier="B_Home" id="L6l-us-smi" customClass="HomeShopViewHostingController" customModule="NeoConnect" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="kMJ-EZ-UZC">
-                        <barButtonItem key="backBarButtonItem" title="Retour" id="6JS-qP-ZXb"/>
+                        <barButtonItem key="backBarButtonItem" enabled="NO" title=" " id="6JS-qP-ZXb"/>
                     </navigationItem>
                 </hostingController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jc8-5s-OHw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

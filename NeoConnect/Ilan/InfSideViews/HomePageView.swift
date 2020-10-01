@@ -178,6 +178,7 @@ Spacer()
         .frame(maxWidth:.infinity,maxHeight: .infinity)
             .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "15113D").opacity(0.85), Color(hex: "3CA6CC").opacity(0.5)]), startPoint: .top, endPoint: .bottom))
         .edgesIgnoringSafeArea(.top)
+            .navigationBarBackButtonHidden(true)
        .onAppear {
                         getActualityInfSide() {response in
                             self.actualites = response
@@ -203,7 +204,7 @@ struct ActuInfSideView : View {
                     Spacer()
                     }
                 }           .padding([.top, .leading])
-                .padding(.top,50)
+                .padding(.top,30)
 
     }
 
