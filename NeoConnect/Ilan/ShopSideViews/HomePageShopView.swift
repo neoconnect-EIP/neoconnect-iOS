@@ -37,11 +37,12 @@ struct ActuShopSideView : View {
                     Spacer()
                     }
                 }           .padding([.top, .leading])
-
+                .padding(.top,50)
     }
 
             .frame(maxWidth:.infinity,maxHeight: .infinity)
                                   .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "16133C").opacity(0.95), Color(hex: "048136").opacity(0.1)]), startPoint: .top, endPoint: .bottom))
+            .edgesIgnoringSafeArea(.top)
            .onAppear {
                             getActualityShopSide() {response in
                                 self.actualites = response
@@ -90,11 +91,13 @@ Spacer()
             }
             .padding(.trailing, 100.0)
                 
-
+            .padding(.top,50)
 }
 
         .frame(maxWidth:.infinity,maxHeight: .infinity)
                        .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "16133C").opacity(0.95), Color(hex: "048136").opacity(0.1)]), startPoint: .top, endPoint: .bottom))
+        .edgesIgnoringSafeArea(.top)
+            
        .onAppear {
                         getActualityShopSide() {response in
                             self.actualites = response

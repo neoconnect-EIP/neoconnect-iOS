@@ -13,12 +13,12 @@ import Alamofire
 class I_ParametersTableViewController: UITableViewController {
     
     @IBAction func contactUS(_ sender: Any) {
-        let contactView = ContactView()
+        let contactView = ReportUsView()
         let host = UIHostingController(rootView: contactView)
         navigationController?.pushViewController(host, animated: true)
     }
     @IBAction func myOffers(_ sender: Any) {
-        let myoffersView = MyOffersView()
+        let myoffersView = MyOffersInfSideView()
         let host = UIHostingController(rootView: myoffersView)
         navigationController?.pushViewController(host, animated: true)
     }

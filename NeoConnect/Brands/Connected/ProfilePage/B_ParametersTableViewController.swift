@@ -13,7 +13,7 @@ import Alamofire
 class B_ParametersTableViewController: UITableViewController {
     
     @IBAction func contactUS(_ sender: Any) {
-        let contactView = ContactView()
+        let contactView = ReportUsShopSideView()
         let host = UIHostingController(rootView: contactView)
         navigationController?.pushViewController(host, animated: true)
     }
