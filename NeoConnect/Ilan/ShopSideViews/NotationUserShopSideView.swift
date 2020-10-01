@@ -12,7 +12,6 @@ import Alamofire
 
 
 struct NotationUserShopSideView: View {
-    @Environment(\.presentationMode) var presentationMode
 @State private var showingAlert = false
 var userId : Int
 @State var rating: Int
@@ -54,8 +53,6 @@ func myimage(for number: Int) -> Image {
                    }
             }.padding(.top, 50.0)
              TextField("Commentaire*", text: $message).foregroundColor(Color.white).frame(height: 200.0).multilineTextAlignment(.center).font(.custom("Raleway", size: 12))
-//            CustomTextField(placeholder: Text("Commentaire*").foregroundColor(.black),text: $message
-//                                                                                  ).foregroundColor(Color.white).font(.custom("Raleway", size: 12)).frame(height: 200.0).multilineTextAlignment(.center)
                                      
                                      Divider()
                                          .frame(width: 300.0, height: 1.0)
@@ -70,19 +67,8 @@ func myimage(for number: Int) -> Image {
                            Alert(title: Text("Noter l'utilisateur"), message: Text("Votre note a bien été prise en compte."), dismissButton: .default(Text("Ok")))
                        }
         }
-        .padding(.top,50)
         }  .frame(maxWidth:.infinity,maxHeight: .infinity)
                                             .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "16133C").opacity(0.95), Color(hex: "048136").opacity(0.1)]), startPoint: .top, endPoint: .bottom))
-            .edgesIgnoringSafeArea(.top)
-        .navigationBarBackButtonHidden(true)
-         .navigationBarItems(leading:
-                   Button(action: {
-                       self.presentationMode.wrappedValue.dismiss()
-                   }) {
-                       HStack {
-                           Text("Retour")
-                       }
-               })
     }
 }
 

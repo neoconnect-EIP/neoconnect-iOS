@@ -12,6 +12,8 @@ import Alamofire
 
 class B_ParametersTableViewController: UITableViewController {
     
+    @IBOutlet weak var userPhotoView: PhotoFieldImage!
+    
     @IBAction func contactUS(_ sender: Any) {
         let contactView = ReportUsShopSideView()
         let host = UIHostingController(rootView: contactView)
@@ -36,6 +38,15 @@ class B_ParametersTableViewController: UITableViewController {
     }
     
     override func viewDidLoad() {
+        APIBrandManager.sharedInstance.getInfo(onSuccess: { response in
+            let imageArray = response["userPicture"] as? [[String:Any]]
+            let imageUrl = URL(string: imageArray![0]["imageData"] as! String)!
+            let imageData = try! UIImage(data: Data(contentsOf: imageUrl))!
+            self.userPhotoView.image = imageData
+        }, onFailure: { error in
+            print("Request failed with error: \(error)")
+            
+        })
         super.viewDidLoad()
         self.tableView.tableFooterView = UIView()
     }

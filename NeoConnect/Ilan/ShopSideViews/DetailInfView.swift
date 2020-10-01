@@ -269,7 +269,6 @@ Image(systemName: "star.fill").foregroundColor(.yellow)
 }
 
 struct DetailInfView: View {
-    @Environment(\.presentationMode) var presentationMode
     @State private var showingAlert = false
     @State private var rating = 0
     var selectedInf : Inf2
@@ -327,26 +326,15 @@ struct DetailInfView: View {
                                             {
                                         Image("login").foregroundColor(Color(hex: "445173"))
 
-                                       Text("Contacter").foregroundColor(Color.white).font(.custom("Raleway", size: 12))
+                                       Text("Conracter").foregroundColor(Color.white).font(.custom("Raleway", size: 12))
                                         }                      }
 
             }
 
         }
-        .padding(.top,50)
 
 } .frame(maxWidth:.infinity,maxHeight: .infinity)
                       .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "16133C").opacity(0.95), Color(hex: "048136").opacity(0.1)]), startPoint: .top, endPoint: .bottom))
-            .edgesIgnoringSafeArea(.top)
-        .navigationBarBackButtonHidden(true)
-         .navigationBarItems(leading:
-                   Button(action: {
-                       self.presentationMode.wrappedValue.dismiss()
-                   }) {
-                       HStack {
-                           Text("Retour")
-                       }
-               })
 }
 }
 struct DetailInfView_Previews: PreviewProvider {

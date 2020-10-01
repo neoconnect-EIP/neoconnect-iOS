@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Jf2-7r-7If">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Jf2-7r-7If">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -47,7 +47,7 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <sections>
-                            <tableViewSection headerTitle="" id="49C-e9-ctu">
+                            <tableViewSection id="49C-e9-ctu">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="170" id="1gS-Md-gjM">
                                         <rect key="frame" x="0.0" y="28" width="375" height="170"/>
@@ -66,28 +66,16 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Add Offer Icon" translatesAutoresizingMaskIntoConstraints="NO" id="4Lo-fj-I32" customClass="PhotoFieldImage" customModule="NeoConnect" customModuleProvider="target">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Avatar" translatesAutoresizingMaskIntoConstraints="NO" id="4Lo-fj-I32" customClass="PhotoFieldImage" customModule="NeoConnect" customModuleProvider="target">
                                                     <rect key="frame" x="145" y="27.5" width="85" height="85"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="85" id="Dr7-H2-ac4"/>
                                                         <constraint firstAttribute="width" secondItem="4Lo-fj-I32" secondAttribute="height" multiplier="1:1" id="gRA-WB-VtI"/>
                                                     </constraints>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVt-f6-C1S">
-                                                    <rect key="frame" x="87.5" y="11" width="200" height="150"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="200" id="q4X-AX-I8T"/>
-                                                        <constraint firstAttribute="height" constant="150" id="ybb-ph-Dlh"/>
-                                                    </constraints>
-                                                    <connections>
-                                                        <segue destination="pWN-gh-NQO" kind="show" id="YgV-Jx-mWg"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="4Lo-fj-I32" firstAttribute="centerX" secondItem="ZPi-i7-ClF" secondAttribute="centerX" id="7GN-yu-btE"/>
-                                                <constraint firstAttribute="bottom" secondItem="iVt-f6-C1S" secondAttribute="bottom" constant="9" id="EOd-40-J8o"/>
-                                                <constraint firstItem="iVt-f6-C1S" firstAttribute="centerX" secondItem="ZPi-i7-ClF" secondAttribute="centerX" id="Joj-b4-sUx"/>
                                                 <constraint firstItem="4Lo-fj-I32" firstAttribute="width" secondItem="4Lo-fj-I32" secondAttribute="height" multiplier="1:1" id="XGi-RB-UGT"/>
                                                 <constraint firstAttribute="bottom" secondItem="OzQ-A3-N22" secondAttribute="bottom" constant="25" id="ZJa-Hl-TGz"/>
                                                 <constraint firstItem="OzQ-A3-N22" firstAttribute="centerX" secondItem="ZPi-i7-ClF" secondAttribute="centerX" id="mLA-sE-WMJ"/>
@@ -97,6 +85,9 @@
                                         <constraints>
                                             <constraint firstItem="4Lo-fj-I32" firstAttribute="centerY" secondItem="1gS-Md-gjM" secondAttribute="centerY" constant="-15" id="x7o-sM-4TR"/>
                                         </constraints>
+                                        <connections>
+                                            <segue destination="pWN-gh-NQO" kind="show" id="5py-BG-FEB"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="70" id="aC9-kc-KxH">
                                         <rect key="frame" x="0.0" y="198" width="375" height="70"/>
@@ -238,6 +229,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="f6B-wZ-loU"/>
+                    <connections>
+                        <outlet property="userPhotoView" destination="4Lo-fj-I32" id="vXe-l2-RRJ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fuc-Od-MLg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -336,7 +330,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Add Offer Icon" width="32" height="32"/>
+        <image name="Avatar" width="225" height="225"/>
         <image name="Deconnexion - Icon" width="36" height="36"/>
         <image name="InfBackground" width="375" height="667"/>
     </resources>
