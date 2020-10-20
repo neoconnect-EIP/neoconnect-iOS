@@ -66,7 +66,6 @@ class B_RegisterPage_Step_One_ViewController: UIViewController, UIImagePickerCon
         let userEmail = userEmailTextField.text!
         let userPassword = userPasswordTextField.text!
         let repeatPassword = repeatPasswordTextField.text!
-//        let userImage = userPhotoView.image(for: .normal)
         
         // /!\ Check for empty fields
         if (userPseudo.isEmpty || userEmail.isEmpty || userPassword.isEmpty || repeatPassword.isEmpty) {
@@ -77,14 +76,6 @@ class B_RegisterPage_Step_One_ViewController: UIViewController, UIImagePickerCon
             }
             return
         }
-        // /!\ Check for photo view
-//        if (userImage == nil) {
-//            print("NO IMAGE")
-//            DispatchQueue.main.async {
-//                self.userPhotoView.setImage(#imageLiteral(resourceName: "Photo Icon"), for: .normal)
-//            }
-//            return
-//        }
         // /!\ Check for email Field
         if (restriction.isValidEmail(userEmail) == false) {
             DispatchQueue.main.async {

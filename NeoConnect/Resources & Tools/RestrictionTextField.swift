@@ -26,7 +26,7 @@ class RestrictionTextField {
     
     func isValidPseudo(_ pseudo: String) -> Bool {
         print(pseudo)
-        let pseudoRegEx = "[A-Z][a-zA-Z]{3,12}"
+        let pseudoRegEx = "[a-zA-Z0-9]{4,12}"
 
         let pseudoPred = NSPredicate(format:"SELF MATCHES %@", pseudoRegEx)
         return pseudoPred.evaluate(with: pseudo)
@@ -58,13 +58,6 @@ class RestrictionTextField {
     
     func isMinThreeChar(_ param: String) -> Bool {
         if 1 ... 2 ~= param.count {
-            return false
-        }
-        return true
-    }
-    
-    func isMinSixChar(_ param: String) -> Bool {
-        if (param.count <= 5) {
             return false
         }
         return true

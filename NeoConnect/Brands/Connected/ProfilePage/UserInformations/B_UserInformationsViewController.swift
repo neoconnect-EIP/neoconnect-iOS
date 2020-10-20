@@ -60,6 +60,7 @@ class B_UserInformationsViewController: UIViewController, UIImagePickerControlle
                 self.snapchatTextField.text = response["snapchat"] as? String
                 self.instagramTextField.text = response["instagram"] as? String
                 self.typeValue = response["theme"] as? String ?? "Mode"
+                self.pickerViewButton.setTitle(self.typeValue, for: .normal)
             }
         }, onFailure: { error in
             DispatchQueue.main.async {

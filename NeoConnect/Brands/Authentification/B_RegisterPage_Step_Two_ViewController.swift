@@ -48,7 +48,7 @@ class B_RegisterPage_Step_Two_ViewController: UIViewController {
         let userPhoneNumber = userPhoneNumberTextField.text!
 
         if (userName.isEmpty == false || userCity.isEmpty == false) {
-            if (restriction.isMinSixChar(userName) == false || restriction.isMinThreeChar(userCity) == false ) {
+            if (restriction.isMinThreeChar(userName) == false || restriction.isMinThreeChar(userCity) == false ) {
                 DispatchQueue.main.async {
                     let alertView = UIAlertController(title: "Erreur", message: "Un ou plusieurs de vos champs semblent être inconforme", preferredStyle: .alert)
                     alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })

@@ -18,7 +18,7 @@ class APIInfManager {
         "Content-Type": "application/x-www-form-urlencoded"
     ]
     static let getRegisterInfEndpoint = "/inf/register"
-    static let postSearchBrandEndpoint = "/inf/search"
+    static let postSearchBrandEndpoint = "/shop/search"
     static let infoCurrentAccountEndpoint = "/inf/me"
     
     static let sharedInstance = APIInfManager()

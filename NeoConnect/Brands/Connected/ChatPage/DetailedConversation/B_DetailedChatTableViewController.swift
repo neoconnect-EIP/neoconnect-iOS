@@ -81,7 +81,9 @@ class B_DetailedChatViewController: MessagesViewController, MessagesDataSource, 
         messagesCollectionView.messagesDisplayDelegate = self
         messageInputBar.delegate = self
         messagesCollectionView.backgroundView = imageView
-        getDataFromAPI()
+        if (inf.id > 0) {
+            getDataFromAPI()
+        }
     }
     
     func getDataFromAPI() {

@@ -37,6 +37,8 @@ class B_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        typeValue = pickerViewButton.titleLabel?.text as! String
     }
     
     @IBAction func facebookTextField(_ sender: RegisterFields) {
@@ -131,32 +133,28 @@ class B_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDel
         let userPicture = imageConverter.imageToBase64(image)
         
         // Erreur : un champ est vide
-        if (!userFacebook.isEmpty || !userTwitter.isEmpty || !userInstagram.isEmpty || !userSnapchat.isEmpty || userSubject == "Choisissez un thème") {
-            if (!restriction.isMinThreeChar(userFacebook) || !restriction.isMinThreeChar(userTwitter) || !restriction.isMinThreeChar(userInstagram) || !restriction.isMinThreeChar(userSnapchat)) {
-                DispatchQueue.main.async {
-                    let alertView = UIAlertController(title: "Erreur", message: "Un ou plusieurs de vos champs semblent être inconforme", preferredStyle: .alert)
-                    alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
-                    self.present(alertView, animated: true, completion: nil)
-                }
-                return
+        if (!restriction.isMinThreeChar(userFacebook) || !restriction.isMinThreeChar(userTwitter) || !restriction.isMinThreeChar(userInstagram) || !restriction.isMinThreeChar(userSnapchat) || userSubject == "Choisissez un thème...") {
+            DispatchQueue.main.async {
+                let alertView = UIAlertController(title: "Erreur", message: "Un ou plusieurs de vos champs semblent être inconforme", preferredStyle: .alert)
+                alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
+                self.present(alertView, animated: true, completion: nil)
             }
-        }
-        else {
-            APIBrandManager.sharedInstance.register_Shop(pseudo: pseudo, password: password, name: name, email: email, website: website, phoneNumber: phoneNumber, zipCode: zipCode, city: city, userPicture: userPicture!, subject: userSubject, company: company, profession: profession, facebook: userFacebook, snapchat: userSnapchat, twitter: userTwitter, instagram: userInstagram, onSuccess: {
-                DispatchQueue.main.async {
-                    let alertView = UIAlertController(title: "Parfait !", message: "Inscription réussie", preferredStyle: .alert)
-                    alertView.addAction(UIAlertAction(title: "Continuer", style: .cancel) { action in
-                        let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "B_Register")
-                        self.show(loginVC!, sender: nil)
-                    })
-                    self.present(alertView, animated: true, completion: nil)
-                }}, onFailure: {
-                    DispatchQueue.main.async {
-                        let alertView = UIAlertController(title: "Erreur", message: "Une erreur est survenue, veuillez réessayer", preferredStyle: .alert)
-                        alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
-                        self.present(alertView, animated: true, completion: nil)
-                    }}
-            )
+            return
+//        } else {
+//            APIBrandManager.sharedInstance.register_Shop(pseudo: pseudo, password: password, name: name, email: email, website: website, phoneNumber: phoneNumber, zipCode: zipCode, city: city, userPicture: userPicture!, subject: userSubject, company: company, profession: profession, facebook: userFacebook, snapchat: userSnapchat, twitter: userTwitter, instagram: userInstagram, onSuccess: {
+//                DispatchQueue.main.async {
+//                    let alertView = UIAlertController(title: "Parfait !", message: "Inscription réussie", preferredStyle: .alert)
+//                    alertView.addAction(UIAlertAction(title: "Continuer", style: .cancel) { action in
+//                        let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "B_Register")
+//                        self.show(loginVC!, sender: nil)
+//                    })
+//                    self.present(alertView, animated: true, completion: nil)
+//                }}, onFailure: {
+//                    DispatchQueue.main.async {
+//                        let alertView = UIAlertController(title: "Erreur", message: "Une erreur est survenue, veuillez réessayer", preferredStyle: .alert)
+//                        alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
+//                        self.present(alertView, animated: true, completion: nil)
+//                    }})
         }
     }
 }

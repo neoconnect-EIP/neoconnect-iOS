@@ -53,6 +53,8 @@ class B_RegisterPage_Step_Three_ViewController: UIViewController {
                     self.present(alertView, animated: true, completion: nil)
                 }
                 return
+            } else {
+                performSegue(withIdentifier: "B_Step_Four", sender: self)
             }
         }
         else {

@@ -22,7 +22,7 @@ class APIBrandManager {
     static let infoCurrentAccountEndpoint = "/shop/me"
     static let postOfferEndpoint = "/offer/insert"
     static let offerEndPoint = "/offer/"
-    static let postSearchInfEndpoint = "/shop/search"
+    static let postSearchInfEndpoint = "/inf/search"
 
     static let sharedInstance = APIBrandManager()
     

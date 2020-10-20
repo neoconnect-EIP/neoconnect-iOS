@@ -49,7 +49,7 @@ class I_UserInformationsViewController: UIViewController, UIImagePickerControlle
             self.pseudoTextField.text = response["pseudo"] as? String
             self.emailTextField.text = response["email"] as? String
             self.fullnameTextField.text = response["full_name"] as? String
-            self.cityTextField.text = response["pseudo"] as? String
+            self.cityTextField.text = response["city"] as? String
             self.postalTextField.text = response["postal"] as? String
             self.phoneTextField.text = response["phone"] as? String
             self.facebookTextField.text = response["facebook"] as? String
@@ -57,10 +57,11 @@ class I_UserInformationsViewController: UIViewController, UIImagePickerControlle
             self.instagramTextField.text = response["instagram"] as? String
             self.snapchatTextField.text = response["snapchat"] as? String
             self.youtubeTextField.text = response["youtube"] as? String
-            self.twitchTextField.text = response["youtube"] as? String
-            self.pinterestTextField.text = response["youtube"] as? String
-            self.tiktokTextField.text = response["youtube"] as? String
+            self.twitchTextField.text = response["twitch"] as? String
+            self.pinterestTextField.text = response["pinterest"] as? String
+            self.tiktokTextField.text = response["tiktok"] as? String
             self.typeValue = response["theme"] as? String ?? "Mode"
+            self.pickerViewButton.setTitle(self.typeValue, for: .normal)
         }, onFailure: { error in
             print("Request failed with error: \(error)")
 

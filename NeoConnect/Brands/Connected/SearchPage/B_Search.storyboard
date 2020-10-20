@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QfV-Eq-dfN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QfV-Eq-dfN">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -26,10 +26,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ShopBackground" translatesAutoresizingMaskIntoConstraints="NO" id="n3P-mo-g5b">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veuillez entrer votre recherche" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjn-Pj-9gp">
                                 <rect key="frame" x="15" y="321" width="345" height="20"/>
                                 <constraints>
@@ -39,6 +35,10 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ShopBackground" translatesAutoresizingMaskIntoConstraints="NO" id="n3P-mo-g5b">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -59,7 +59,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QDi-ui-fy4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="880.79999999999995" y="96.7016491754123"/>
+            <point key="canvasLocation" x="838" y="96"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5oq-Kv-8fu">
@@ -183,7 +183,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder_avatar" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bxi-Pi-Rog" customClass="PhotoFieldImage" customModule="NeoConnect" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar-placeholder" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bxi-Pi-Rog" customClass="PhotoFieldImage" customModule="NeoConnect" customModuleProvider="target">
                                 <rect key="frame" x="122.5" y="69" width="130" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="49d-ce-PGc"/>
@@ -191,18 +191,6 @@
                                     <constraint firstAttribute="height" constant="130" id="r01-CG-ZLB"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsC-4f-hJN" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
-                                <rect key="frame" x="270" y="64" width="85" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="85" id="nHA-nM-VtB"/>
-                                    <constraint firstAttribute="height" constant="30" id="pDy-f3-yoc"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="11"/>
-                                <state key="normal" title="S'abonner"/>
-                                <connections>
-                                    <action selector="followButtonTapped:" destination="O1A-gU-YxV" eventType="touchUpInside" id="egj-20-aPg"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -211,7 +199,6 @@
                             <constraint firstItem="65n-Q8-8Xi" firstAttribute="top" secondItem="Hxx-wk-I67" secondAttribute="bottom" constant="40" id="5QX-46-vTJ"/>
                             <constraint firstItem="hJS-fJ-4dk" firstAttribute="top" secondItem="rNl-7c-KWQ" secondAttribute="bottom" constant="30" id="9u9-p4-ZFk"/>
                             <constraint firstItem="2f1-aC-Hx1" firstAttribute="top" secondItem="bxi-Pi-Rog" secondAttribute="bottom" constant="31" id="Efk-EV-0ap"/>
-                            <constraint firstItem="MIZ-vv-w93" firstAttribute="trailing" secondItem="bsC-4f-hJN" secondAttribute="trailing" constant="20" id="FVp-Gc-d9B"/>
                             <constraint firstItem="Hxx-wk-I67" firstAttribute="centerX" secondItem="5lv-WT-7av" secondAttribute="centerX" id="FqM-EV-cGl"/>
                             <constraint firstItem="1he-EL-BVb" firstAttribute="centerX" secondItem="BwH-6S-zl0" secondAttribute="centerX" id="IeP-j7-oPy"/>
                             <constraint firstItem="bxi-Pi-Rog" firstAttribute="width" secondItem="bxi-Pi-Rog" secondAttribute="height" multiplier="1:1" id="MnX-Jf-klz"/>
@@ -232,7 +219,6 @@
                             <constraint firstItem="5lv-WT-7av" firstAttribute="centerX" secondItem="hJS-fJ-4dk" secondAttribute="centerX" id="tu0-5C-Zhw"/>
                             <constraint firstItem="MIZ-vv-w93" firstAttribute="trailing" secondItem="Uhk-78-v0m" secondAttribute="trailing" id="tyc-KW-MkO"/>
                             <constraint firstItem="5lv-WT-7av" firstAttribute="top" secondItem="hJS-fJ-4dk" secondAttribute="bottom" constant="20" id="wHw-vl-a7E"/>
-                            <constraint firstItem="bsC-4f-hJN" firstAttribute="top" secondItem="MIZ-vv-w93" secondAttribute="top" constant="20" id="wLt-un-nhz"/>
                             <constraint firstItem="BwH-6S-zl0" firstAttribute="centerY" secondItem="5lv-WT-7av" secondAttribute="centerY" id="xZb-CC-Jeu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MIZ-vv-w93"/>
@@ -240,23 +226,33 @@
                     <navigationItem key="navigationItem" id="FjR-d6-uXz"/>
                     <connections>
                         <outlet property="contactButton" destination="Hxx-wk-I67" id="GaR-89-yAz"/>
-                        <outlet property="followButton" destination="bsC-4f-hJN" id="r0x-Lf-cHe"/>
                         <outlet property="infImageView" destination="bxi-Pi-Rog" id="tdQ-kA-IRC"/>
                         <outlet property="infPseudoLabelField" destination="2f1-aC-Hx1" id="mac-uM-30m"/>
                         <outlet property="noteButton" destination="1he-EL-BVb" id="gtO-xg-24m"/>
                         <outlet property="ratingStars" destination="BwH-6S-zl0" id="gav-gx-BYS"/>
                         <outlet property="subjectLabelField" destination="5lv-WT-7av" id="8qo-4r-CNC"/>
+                        <segue destination="lrd-oD-1Pr" kind="show" identifier="MessageViewShop" id="El4-l5-azD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jtr-so-eZ1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1658" y="98"/>
+            <point key="canvasLocation" x="1548" y="98"/>
+        </scene>
+        <!--MessageViewShop-->
+        <scene sceneID="sY1-S5-0a2">
+            <objects>
+                <viewControllerPlaceholder storyboardName="B_Chat" referencedIdentifier="MessageViewShop" id="lrd-oD-1Pr" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="M7f-n6-7LI"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KVJ-pR-Brh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2152" y="95"/>
         </scene>
     </scenes>
     <resources>
         <image name="Etoile" width="26" height="26"/>
         <image name="Etoile grise" width="26" height="26"/>
-        <image name="Placeholder_avatar" width="225" height="225"/>
         <image name="ShopBackground" width="375" height="667"/>
+        <image name="avatar-placeholder" width="500" height="500"/>
     </resources>
 </document>

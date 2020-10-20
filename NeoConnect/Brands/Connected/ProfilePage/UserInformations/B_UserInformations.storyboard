@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FZo-97-4Hz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FZo-97-4Hz">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -59,7 +59,7 @@
                                                             <constraint firstAttribute="width" secondItem="1oO-cm-oDL" secondAttribute="height" multiplier="1:1" id="SFK-JG-Yyv"/>
                                                             <constraint firstAttribute="width" constant="85" id="lTj-0B-UUC"/>
                                                         </constraints>
-                                                        <state key="normal" image="Placeholder_avatar"/>
+                                                        <state key="normal" image="Avatar"/>
                                                         <connections>
                                                             <action selector="changeImageButtonTapped:" destination="hBu-sX-lBm" eventType="touchUpInside" id="DQ8-i8-gZv"/>
                                                         </connections>
@@ -81,7 +81,7 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S6J-TE-Pli" customClass="DefaultTextFields" customModule="NeoConnect" customModuleProvider="target">
+                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pseudo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S6J-TE-Pli" customClass="DefaultTextFields" customModule="NeoConnect" customModuleProvider="target">
                                                         <rect key="frame" x="22.5" y="201.5" width="150" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="150" id="JEH-Y6-ZHr"/>
@@ -94,7 +94,7 @@
                                                             <action selector="userPseudoDidEnd:" destination="hBu-sX-lBm" eventType="editingDidEnd" id="WzX-JY-gc1"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DgE-yk-r7A" customClass="DefaultTextFields" customModule="NeoConnect" customModuleProvider="target">
+                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DgE-yk-r7A" customClass="DefaultTextFields" customModule="NeoConnect" customModuleProvider="target">
                                                         <rect key="frame" x="202.5" y="201.5" width="150" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="150" id="03F-N5-C7P"/>
@@ -124,7 +124,7 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rb8-uj-xcD" customClass="DefaultTextFields" customModule="NeoConnect" customModuleProvider="target">
+                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nom complet" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rb8-uj-xcD" customClass="DefaultTextFields" customModule="NeoConnect" customModuleProvider="target">
                                                         <rect key="frame" x="22.5" y="338" width="150" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="150" id="5q7-qR-Gz4"/>
@@ -137,7 +137,7 @@
                                                             <action selector="defaultCompanyDidEnd:" destination="hBu-sX-lBm" eventType="editingDidEnd" id="Kv2-m9-oeh"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wbd-6Z-j0P" customClass="DefaultTextFields" customModule="NeoConnect" customModuleProvider="target">
+                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ville" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wbd-6Z-j0P" customClass="DefaultTextFields" customModule="NeoConnect" customModuleProvider="target">
                                                         <rect key="frame" x="202.5" y="338" width="150" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="top-0i-adq"/>
@@ -150,7 +150,7 @@
                                                             <action selector="defaultCompanyDidEnd:" destination="hBu-sX-lBm" eventType="editingDidEnd" id="ETV-c3-7rH"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uv0-sp-a1i" customClass="DefaultTextFields" customModule="NeoConnect" customModuleProvider="target">
+                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Code postal" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uv0-sp-a1i" customClass="DefaultTextFields" customModule="NeoConnect" customModuleProvider="target">
                                                         <rect key="frame" x="22.5" y="398" width="150" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="150" id="8lx-qR-yLU"/>
@@ -163,7 +163,7 @@
                                                             <action selector="userZipCodeDidEnd:" destination="hBu-sX-lBm" eventType="editingDidEnd" id="8YP-Ni-pJU"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0K3-kc-4cY" customClass="DefaultTextFields" customModule="NeoConnect" customModuleProvider="target">
+                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Téléphone" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0K3-kc-4cY" customClass="DefaultTextFields" customModule="NeoConnect" customModuleProvider="target">
                                                         <rect key="frame" x="202.5" y="398" width="150" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="vVO-gX-q6K"/>
@@ -193,7 +193,7 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9L0-LT-CcT" customClass="DefaultTextFields" customModule="NeoConnect" customModuleProvider="target">
+                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Société" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9L0-LT-CcT" customClass="DefaultTextFields" customModule="NeoConnect" customModuleProvider="target">
                                                         <rect key="frame" x="22.5" y="534.5" width="150" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="FVJ-EN-GF4"/>
@@ -206,7 +206,7 @@
                                                             <action selector="defaultCompanyDidEnd:" destination="hBu-sX-lBm" eventType="editingDidEnd" id="vyS-Ep-hXo"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3GY-h4-gfb" customClass="DefaultTextFields" customModule="NeoConnect" customModuleProvider="target">
+                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Fonction" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3GY-h4-gfb" customClass="DefaultTextFields" customModule="NeoConnect" customModuleProvider="target">
                                                         <rect key="frame" x="202.5" y="534" width="150" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="AXs-ge-jNz"/>
@@ -219,7 +219,7 @@
                                                             <action selector="defaultCompanyDidEnd:" destination="hBu-sX-lBm" eventType="editingDidEnd" id="WYb-3Y-HjQ"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XR6-O8-Wzf" customClass="DefaultTextFields" customModule="NeoConnect" customModuleProvider="target">
+                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Site web" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XR6-O8-Wzf" customClass="DefaultTextFields" customModule="NeoConnect" customModuleProvider="target">
                                                         <rect key="frame" x="75" y="594.5" width="225" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="225" id="EBd-7n-WrN"/>
@@ -249,7 +249,7 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yt3-ci-zQE" customClass="DefaultTextFields" customModule="NeoConnect" customModuleProvider="target">
+                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Facebook" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yt3-ci-zQE" customClass="DefaultTextFields" customModule="NeoConnect" customModuleProvider="target">
                                                         <rect key="frame" x="22.5" y="731" width="150" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="Rso-eh-wyE"/>
@@ -262,7 +262,7 @@
                                                             <action selector="defaultCompanyDidEnd:" destination="hBu-sX-lBm" eventType="editingDidEnd" id="jqd-Yv-FK1"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bc0-r5-6jQ" customClass="DefaultTextFields" customModule="NeoConnect" customModuleProvider="target">
+                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Instagram" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bc0-r5-6jQ" customClass="DefaultTextFields" customModule="NeoConnect" customModuleProvider="target">
                                                         <rect key="frame" x="202.5" y="731" width="150" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="150" id="n6m-yz-Rz3"/>
@@ -275,7 +275,7 @@
                                                             <action selector="defaultCompanyDidEnd:" destination="hBu-sX-lBm" eventType="editingDidEnd" id="waJ-Si-oWJ"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BCE-Uo-sob" customClass="DefaultTextFields" customModule="NeoConnect" customModuleProvider="target">
+                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Twitter" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BCE-Uo-sob" customClass="DefaultTextFields" customModule="NeoConnect" customModuleProvider="target">
                                                         <rect key="frame" x="22.5" y="791" width="150" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="150" id="C8S-lJ-VBy"/>
@@ -288,7 +288,7 @@
                                                             <action selector="defaultCompanyDidEnd:" destination="hBu-sX-lBm" eventType="editingDidEnd" id="PbI-6T-t4J"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ELa-a3-UAb" customClass="DefaultTextFields" customModule="NeoConnect" customModuleProvider="target">
+                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Snapchat" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ELa-a3-UAb" customClass="DefaultTextFields" customModule="NeoConnect" customModuleProvider="target">
                                                         <rect key="frame" x="202.5" y="791" width="150" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="150" id="2Ia-JD-ViD"/>
@@ -432,7 +432,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Placeholder_avatar" width="225" height="225"/>
+        <image name="Avatar" width="225" height="225"/>
         <image name="ShopBackground" width="375" height="667"/>
     </resources>
 </document>
