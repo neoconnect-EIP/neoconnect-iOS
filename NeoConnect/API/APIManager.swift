@@ -21,7 +21,6 @@ class APIManager {
     }
     
     let baseURL = "http://168.63.65.106:8080"
-    
     static let headers: HTTPHeaders = [
         "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
         "Content-Type": "application/x-www-form-urlencoded"
@@ -31,6 +30,8 @@ class APIManager {
     static let forgotPasswordEndpoint = "/forgotPassword"
     static let updatePasswordEndpoint = "/updatePassword"
     static let messagesEndpoint = "/message"
+    static let getImageEndpoint = "/image/User_"
+
     
     static let sharedInstance = APIManager()
     
@@ -55,6 +56,20 @@ class APIManager {
                         case .failure(_):
                             onFailure()
                     }
+        }
+    }
+    
+    func getUserImage(onSuccess: @escaping(UIImage) -> Void) {
+        guard let id = UserDefaults.standard.string(forKey: "id") else { return }
+        guard let pseudo = UserDefaults.standard.string(forKey: "pseudo") else { return }
+        let url : String = baseURL + APIManager.getImageEndpoint + "\(id)_\(id)_\(pseudo).png"
+
+        AF.request(url).responseImage { response in
+            if case .success(let image) = response.result {
+                onSuccess(image)
+            } else if case .failure(let error) = response.result {
+                print("Image Request Error : \(error)")
+            }
         }
     }
     

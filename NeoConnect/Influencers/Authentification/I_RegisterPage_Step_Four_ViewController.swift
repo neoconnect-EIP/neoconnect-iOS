@@ -1,21 +1,24 @@
 //
-//  B_RegisterPage_Step_Four_ViewController.swift
+//  I_RegisterPage_Step_Four_ViewController.swift
 //  NeoConnect
 //
-//  Created by EIP on 07/05/2020.
+//  Created by EIP on 01/11/2020.
 //  Copyright © 2020 EIP. All rights reserved.
 //
 
 import UIKit
 import StatusAlert
 
-class B_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class I_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    @IBOutlet weak var userWebsiteTextField: RegisterFields!
     @IBOutlet weak var userFacebookTextField: RegisterFields!
     @IBOutlet weak var userTwitterTextField: RegisterFields!
     @IBOutlet weak var userInstagramTextField: RegisterFields!
     @IBOutlet weak var userSnapchatTextField: RegisterFields!
+    @IBOutlet weak var userYoutubeTextField: RegisterFields!
+    @IBOutlet weak var userTwitchTextField: RegisterFields!
+    @IBOutlet weak var userPinterestTextField: RegisterFields!
+    @IBOutlet weak var userTiktokTextField: RegisterFields!
     @IBOutlet weak var pickerViewButton: UIButton!
     
     var pickerData = ["Mode", "Cosmétique", "Jeux Vidéo", "Food", "High Tech", "Sport/Fitness"]
@@ -30,16 +33,16 @@ class B_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDel
     var userEmail = String()
     var userPassword = String()
     var userName = String()
+    var userSex = String()
     var userZipCode = String()
     var userPhoneNumber = String()
     var userCity = String()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        typeValue = pickerViewButton.titleLabel?.text as! String
     }
-
+    
     @IBAction func isValidField(_ sender: RegisterFields) {
         sender.handleError(sender: sender, field: "default")
     }
@@ -62,7 +65,6 @@ class B_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDel
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch row {
             case 1:
-                
                 typeValue = "Cosmétique"
             case 2:
                 typeValue = "Jeux Vidéo"
@@ -86,7 +88,7 @@ class B_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDel
         }
         
         pickerLabel?.text = pickerData[row]
-        pickerLabel?.textColor = UIColor(red: 135/255, green: 185/255, blue: 124/255, alpha: 1.0)
+        pickerLabel?.textColor = UIColor(red: 60/255, green: 157/255, blue: 192/255, alpha: 1.0)
         
         return pickerLabel!
     }
@@ -96,7 +98,7 @@ class B_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDel
         
         
         let pickerFrame = UIPickerView(frame: CGRect(x: 5, y: 20, width: 250, height: 140))
-        alert.view.tintColor = UIColor(red: 135/255, green: 185/255, blue: 124/255, alpha: 1.0)
+        alert.view.tintColor = UIColor(red: 60/255, green: 157/255, blue: 192/255, alpha: 1.0)
         alert.view.addSubview(pickerFrame)
         pickerFrame.dataSource = self
         pickerFrame.delegate = self
@@ -112,39 +114,46 @@ class B_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDel
     }
     
     @IBAction func register_ButtonTapped(_ sender: Any) {
-        let userWebsite = userWebsiteTextField.text!
         let userFacebook = userFacebookTextField.text!
         let userTwitter = userTwitterTextField.text!
         let userInstagram = userInstagramTextField.text!
         let userSnapchat = userSnapchatTextField.text!
+        let userYoutube = userYoutubeTextField.text!
+        let userTwitch = userTwitchTextField.text!
+        let userPinterest = userPinterestTextField.text!
+        let userTiktok = userTiktokTextField.text!
         let userSubject = typeValue
         guard let userImage = imageConverter.imageToBase64(self.userImage) else { return }
-        
+
         // Erreur : un champ fait entre 1 et 3 caractères
-        if (!restriction.isMinThreeChar(userWebsite) ||
-                !restriction.isMinThreeChar(userFacebook) || !restriction.isMinThreeChar(userTwitter) || !restriction.isMinThreeChar(userInstagram) || !restriction.isMinThreeChar(userSnapchat) || userSubject == "Choisissez un thème...") {
+        if (!restriction.isMinThreeChar(userFacebook) || !restriction.isMinThreeChar(userTwitter) || !restriction.isMinThreeChar(userInstagram) || !restriction.isMinThreeChar(userSnapchat) ||
+                !restriction.isMinThreeChar(userYoutube) || !restriction.isMinThreeChar(userTwitch) ||
+                !restriction.isMinThreeChar(userPinterest) || !restriction.isMinThreeChar(userTiktok) || userSubject == "Choisissez un thème") {
             DispatchQueue.main.async {
                 let alertView = UIAlertController(title: "Erreur", message: "Un ou plusieurs de vos champs semblent être inconforme", preferredStyle: .alert)
                 alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
                 self.present(alertView, animated: true, completion: nil)
             }
             return
-        } else {
-            APIBrandManager.sharedInstance.register_Shop(pseudo: userPseudo, password: userPassword, name: userName, email: userEmail, website: userWebsite, phoneNumber: userPhoneNumber, zipCode: userZipCode, city: userCity, userPicture: userImage, description: userDescription, subject: userSubject, facebook: userFacebook, snapchat: userSnapchat, twitter: userTwitter, instagram: userInstagram, onSuccess: {
-                                                            DispatchQueue.main.async {
-                                                                let statusAlert = StatusAlert()
-                                                                statusAlert.image = UIImage(named: "Success icon.png")
-                                                                statusAlert.title = "Inscription réussie !"
-                                                                statusAlert.message = "Vous vous êtes inscrit(e) avec succès !"
-                                                                statusAlert.showInKeyWindow()
-                                                                let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "B_Register")
-                                                                self.show(loginVC!, sender: nil)
-                                                            }}, onFailure: {
-                                                                DispatchQueue.main.async {
-                                                                    let alertView = UIAlertController(title: "Erreur", message: "Une erreur est survenue, veuillez réessayer", preferredStyle: .alert)
-                                                                    alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
-                                                                    self.present(alertView, animated: true, completion: nil)
-                                                                }})
+        }
+        else {
+            APIInfManager.sharedInstance.register_Inf(pseudo: userPseudo, password: userPassword, sex: userSex, name: userName, email: userEmail, phoneNumber: userPhoneNumber, zipCode: userZipCode, city: userCity, userPicture: userImage, description: userDescription, subject: userSubject, facebook: userFacebook, twitter: userTwitter, instagram: userInstagram, snapchat: userSnapchat, youtube: userYoutube, twitch: userTwitch,  pinterest: userPinterest, tiktok: userTiktok, onSuccess: {
+                DispatchQueue.main.async {
+                    let statusAlert = StatusAlert()
+                    statusAlert.image = UIImage(named: "Success icon.png")
+                    statusAlert.title = "Inscription réussie !"
+                    statusAlert.message = "Vous vous êtes inscrit(e) avec succès !"
+                    statusAlert.showInKeyWindow()
+                    let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "I_Register")
+                    self.show(loginVC!, sender: nil)
+                }
+            }, onFailure: {
+                DispatchQueue.main.async {
+                    let alertView = UIAlertController(title: "Erreur", message: "Une erreur est survenue, veuillez réessayer", preferredStyle: .alert)
+                    alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
+                    self.present(alertView, animated: true, completion: nil)
+                }
+            })
         }
     }
 }

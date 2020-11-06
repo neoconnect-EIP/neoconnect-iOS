@@ -17,13 +17,11 @@ class B_ChatViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.tabBarController?.tabBar.isHidden = false
         getDataFromAPI()
     }
     
     override func viewDidLoad() {
-        
         tableView.delegate = self
         tableView.dataSource = self
         super.viewDidLoad()
@@ -48,16 +46,17 @@ class B_ChatViewController: UIViewController {
         var tempInf: [Inf] = []
         
         for dictionary in results {
-            let id = dictionary["id"] as! Int
-            var user_id = dictionary["user_1"] as! String
+            guard let id = dictionary["id"] as? Int else { return tempInf }
+            guard var user_id = dictionary["user_1"] as? String else { return tempInf }
             if Int(user_id) == UserDefaults.standard.integer(forKey: "id") {
                 user_id = dictionary["user_2"] as! String
             }
-            let pseudo = dictionary["pseudo"] as! String
-            let productImg = dictionary["userPicture"] as? NSArray
-            let imageDict = productImg![0] as! NSDictionary
-            let imageUrl = URL(string: imageDict["imageData"] as! String)!
-            let image = try! UIImage(data: Data(contentsOf: imageUrl))!
+            guard let pseudo = dictionary["pseudo"] as? String else { return tempInf }
+            guard let productImg = dictionary["userPicture"] as? NSArray else { return tempInf }
+            guard let imageDict = productImg[0] as? NSDictionary else { return tempInf }
+            guard let imageData = imageDict["imageData"] as? String else { return  tempInf }
+            guard let imageUrl = URL(string: imageData) else { return tempInf }
+            guard let image = try! UIImage(data: Data(contentsOf: imageUrl)) else { return tempInf }
             tempInf.append(Inf(id: id, user_id: Int(user_id)!, pseudo: pseudo, image: image))
         }
         return tempInf
@@ -72,9 +71,9 @@ class B_ChatViewController: UIViewController {
     }
     
     @IBAction func ContactUser(_ sender: Any) {
-           let contactUserView = ContactUserView(emailUser: "")
-                          let host = UIHostingController(rootView: contactUserView)
-                        navigationController?.pushViewController(host, animated: true)
+        let contactUserView = ContactUserView(emailUser: "")
+        let host = UIHostingController(rootView: contactUserView)
+        navigationController?.pushViewController(host, animated: true)
     }
 }
 

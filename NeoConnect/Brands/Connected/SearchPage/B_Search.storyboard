@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QfV-Eq-dfN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QfV-Eq-dfN">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -18,7 +20,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Recherches-->
+        <!--Search View Controller-->
         <scene sceneID="1AZ-ko-lhC">
             <objects>
                 <viewController storyboardIdentifier="B_Search" id="ae4-US-Nhe" customClass="B_SearchViewController" customModule="NeoConnect" customModuleProvider="target" sceneMemberID="viewController">
@@ -35,22 +37,33 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ShopBackground" translatesAutoresizingMaskIntoConstraints="NO" id="n3P-mo-g5b">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ShopBackground" translatesAutoresizingMaskIntoConstraints="NO" id="n3P-mo-g5b">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="qy3-h9-WpE"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="tjn-Pj-9gp" firstAttribute="leading" secondItem="qy3-h9-WpE" secondAttribute="leading" constant="15" id="EmX-BN-yDe"/>
                             <constraint firstItem="qy3-h9-WpE" firstAttribute="trailing" secondItem="tjn-Pj-9gp" secondAttribute="trailing" constant="15" id="HYZ-UM-K5D"/>
+                            <constraint firstItem="n3P-mo-g5b" firstAttribute="leading" secondItem="qy3-h9-WpE" secondAttribute="leading" id="K1x-4j-iSs"/>
                             <constraint firstItem="tjn-Pj-9gp" firstAttribute="centerX" secondItem="qy3-h9-WpE" secondAttribute="centerX" id="LZZ-bc-6Su"/>
+                            <constraint firstItem="n3P-mo-g5b" firstAttribute="bottom" secondItem="kPI-pk-gfd" secondAttribute="bottom" id="P3d-oe-O7g"/>
+                            <constraint firstAttribute="top" secondItem="n3P-mo-g5b" secondAttribute="top" id="Zpi-7H-9gQ"/>
+                            <constraint firstItem="qy3-h9-WpE" firstAttribute="trailing" secondItem="n3P-mo-g5b" secondAttribute="trailing" id="npd-qq-pIK"/>
                             <constraint firstItem="tjn-Pj-9gp" firstAttribute="centerY" secondItem="qy3-h9-WpE" secondAttribute="centerY" id="tmb-r8-ucX"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="qy3-h9-WpE"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Recherches" id="KdS-o5-4Lk">
+                    <navigationItem key="navigationItem" id="KdS-o5-4Lk">
                         <barButtonItem key="backBarButtonItem" title="Retour" id="GBC-gp-zlO"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="VTY-Sv-oOw">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="urG-cY-MKj">
+                                <rect key="frame" x="-23" y="-15" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="20"/>
+                                <state key="normal" title="Recherche"/>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="messageTextField" destination="tjn-Pj-9gp" id="Bmi-eF-t5w"/>
@@ -88,10 +101,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ShopBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Uhk-78-v0m">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ShopBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Uhk-78-v0m">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1he-EL-BVb" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1he-EL-BVb" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
                                 <rect key="frame" x="202.5" y="439" width="120" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="BHO-uq-A4R"/>
@@ -126,7 +139,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="65n-Q8-8Xi" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="65n-Q8-8Xi" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
                                 <rect key="frame" x="137.5" y="519" width="100" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="kVZ-EN-dXP"/>
@@ -134,7 +147,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="9"/>
                                 <state key="normal" title="Signaler">
-                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="systemRedColor"/>
                                 </state>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BwH-6S-zl0" customClass="CosmosView" customModule="Cosmos">
@@ -152,7 +165,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hxx-wk-I67" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hxx-wk-I67" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
                                 <rect key="frame" x="52.5" y="439" width="120" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Oac-cC-Bs8"/>
@@ -192,7 +205,8 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="MIZ-vv-w93"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="2f1-aC-Hx1" firstAttribute="leading" secondItem="MIZ-vv-w93" secondAttribute="leading" constant="10" id="0jg-Vp-wdF"/>
                             <constraint firstItem="bxi-Pi-Rog" firstAttribute="top" secondItem="MIZ-vv-w93" secondAttribute="top" constant="25" id="3kG-PD-w4N"/>
@@ -221,7 +235,6 @@
                             <constraint firstItem="5lv-WT-7av" firstAttribute="top" secondItem="hJS-fJ-4dk" secondAttribute="bottom" constant="20" id="wHw-vl-a7E"/>
                             <constraint firstItem="BwH-6S-zl0" firstAttribute="centerY" secondItem="5lv-WT-7av" secondAttribute="centerY" id="xZb-CC-Jeu"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="MIZ-vv-w93"/>
                     </view>
                     <navigationItem key="navigationItem" id="FjR-d6-uXz"/>
                     <connections>
@@ -249,10 +262,21 @@
             <point key="canvasLocation" x="2152" y="95"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="BwH-6S-zl0">
+            <size key="intrinsicContentSize" width="100" height="16"/>
+        </designable>
+    </designables>
     <resources>
         <image name="Etoile" width="26" height="26"/>
         <image name="Etoile grise" width="26" height="26"/>
         <image name="ShopBackground" width="375" height="667"/>
         <image name="avatar-placeholder" width="500" height="500"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

@@ -1,127 +1,98 @@
 //
-//  InfFinalRegisterPageViewController.swift
+//  I_RegisterPage_Step_Two_ViewController.swift
 //  NeoConnect
 //
-//  Created by EIP on 07/07/2019.
-//  Copyright © 2019 EIP. All rights reserved.
+//  Created by EIP on 01/11/2020.
+//  Copyright © 2020 EIP. All rights reserved.
 //
 
 import UIKit
-import DLRadioButton
 
 class I_RegisterPage_Step_Two_ViewController: UIViewController {
-
-    @IBOutlet weak var userNameTextField: RegisterFields!
-    @IBOutlet weak var userZipCodeTextField: RegisterFields!
-    @IBOutlet weak var userCityTextField: RegisterFields!
-    @IBOutlet weak var userPhoneNumberTextField: RegisterFields!
+    
+    @IBOutlet weak var userPseudoTextField: RegisterFields!
+    @IBOutlet weak var userEmailTextField: RegisterFields!
+    @IBOutlet weak var userPasswordTextField: RegisterFields!
+    @IBOutlet weak var repeatPasswordTextField: RegisterFields!
     var restriction = RestrictionTextField()
     
-    var image = UIImage()
-    var pseudo = String()
-    var email = String()
-    var password = String()
-    var sex = String()
-        
+    var userDescription = String()
+    var userImage = UIImage()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    // Fonction bouton sexe influenceur
-    @IBAction func radioBtnTapped(_ sender: DLRadioButton) {
-        if (sender.tag == 1) {
-            sex = "Male"
+    @IBAction func isValidField(_ sender: RegisterFields) {
+        switch sender.placeholder {
+            case "Pseudo":
+                sender.handleError(sender: sender, field: "Pseudo")
+            case "Email":
+                sender.handleError(sender: sender, field: "Email")
+            case "Mot de passe":
+                sender.handleError(sender: sender, field: "Mot de passe")
+            case "Répétez le mot de passe":
+                sender.handleError(sender: sender, field: "Mot de passe")
+            default:
+                sender.handleError(sender: sender, field: "default")
         }
-        else if (sender.tag == 2) {
-            sex = "Female"
+        sender.handleError(sender: sender, field: "pseudo")
+    }
+    
+    func showError(_ message: String) {
+        DispatchQueue.main.async {
+            let alertView = UIAlertController(title: "Erreur", message: message, preferredStyle: .alert)
+            alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
+            self.present(alertView, animated: true, completion: nil)
         }
     }
     
-    @IBAction func userNameDidEnd(_ sender: RegisterFields) {
-        sender.handleError(sender: sender, field: "name")
-    }
-    
-    @IBAction func userCityDidEnd(_ sender: RegisterFields) {
-        sender.handleError(sender: sender, field: "city")
-    }
-    
-    @IBAction func userZipCodeDidEnd(_ sender: RegisterFields) {
-        sender.handleError(sender: sender, field: "zipCode")
-    }
-    
-    @IBAction func userPhoneNumberDidEnd(_ sender: RegisterFields) {
-        sender.handleError(sender: sender, field: "phoneNumbber")
-    }
-    
-    @IBAction func nextButton(_ sender: Any) {
-        let userName = userNameTextField.text!
-        let userCity = userCityTextField.text!
-        let userZipCode = userZipCodeTextField.text!
-        let userPhoneNumber = userPhoneNumberTextField.text!
-        let userSex = sex
+    @IBAction func nextButtonTapped(_ sender: Any) {
+        let userPseudo = userPseudoTextField.text!
+        let userEmail = userEmailTextField.text!
+        let userPassword = userPasswordTextField.text!
+        let repeatPassword = repeatPasswordTextField.text!
         
-        if (userSex.isEmpty) {
-            DispatchQueue.main.async {
-                let alertView = UIAlertController(title: "Erreur", message: "Veuillez choisir votre sexe", preferredStyle: .alert)
-                alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
-                self.present(alertView, animated: true, completion: nil)
-            }
-            return
+        // /!\ Check for empty fields
+        if (userPseudo.isEmpty || userEmail.isEmpty || userPassword.isEmpty || repeatPassword.isEmpty) {
+            showError("Veuillez remplir tout les champs")
         }
-//        if (userName.isEmpty == false || userCity.isEmpty == false) {
-//            if (restriction.isMinSixChar(userName) == false || restriction.isMinThreeChar(userCity) == false ) {
-//                DispatchQueue.main.async {
-//                    let alertView = UIAlertController(title: "Erreur", message: "Un ou plusieurs de vos champs semblent être inconforme", preferredStyle: .alert)
-//                    alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
-//                    self.present(alertView, animated: true, completion: nil)
-//                }
-//                return
-//            }
-//        }
-//        // Check for zipcode field
-//        if (userZipCode.isEmpty == false && restriction.isValidZipCode(userZipCode) == false) {
-//            DispatchQueue.main.async {
-//                let alertView = UIAlertController(title: "Erreur", message: "Le code postal semble être inconforme", preferredStyle: .alert)
-//                alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
-//                self.present(alertView, animated: true, completion: nil)
-//            }
-//            return
-//        }
-//        // Check for phone number field
-//        if (userPhoneNumber.isEmpty == false && restriction.isValidPhoneNumber(userPhoneNumber) == false) {
-//            DispatchQueue.main.async {
-//                let alertView = UIAlertController(title: "Erreur", message: "Le numéro de téléphone semble être inconforme", preferredStyle: .alert)
-//                alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
-//                self.present(alertView, animated: true, completion: nil)
-//            }
-//            return
-//        }
-            // Change view and send prepared data
-        else {
+        // /!\ Check for email Field
+        else if (restriction.isValidEmail(userEmail) == false) {
+            showError("Votre adresse email est invalide")
+        }
+        // /!\ Check for password Field
+        else if (restriction.isValidPassword(userPassword) == false) {
+            showError("Le mot de passe nécessite au moins 8 caractères dont : 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère")
+        }
+        // /!\ Check for pseudo Field
+        else if (restriction.isValidPseudo(userPseudo) == false) {
+            showError("Le pseudo doit contenir au minimum 3 caractères dont 1 majuscule")
+        }
+        // /!\ Check if password match together
+        else if (userPassword != repeatPassword) {
+            showError("Les mots de passe ne correspondent pas")
+        } else {
             performSegue(withIdentifier: "I_Step_Three", sender: self)
         }
         return
+        // Change view and send prepared data
     }
-
     // Prepare Data before performSegue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "I_Step_Three") {
+        if segue.identifier == "I_Step_Three" {
             let Dest : I_RegisterPage_Step_Three_ViewController = segue.destination as! I_RegisterPage_Step_Three_ViewController
             
-            Dest.image = image
-            Dest.pseudo = pseudo
-            Dest.email = email
-            Dest.password = password
-            Dest.sex = sex
-            Dest.name = userNameTextField.text!
-            Dest.zipCode = userZipCodeTextField.text!
-            Dest.city = userCityTextField.text!
-            Dest.phoneNumber = userPhoneNumberTextField.text!
+            Dest.userImage = userImage
+            Dest.userDescription = userDescription
+            Dest.userPseudo = userPseudoTextField.text ?? ""
+            Dest.userEmail = userEmailTextField.text ?? ""
+            Dest.userPassword = userPasswordTextField.text ?? ""
         }
     }
 }

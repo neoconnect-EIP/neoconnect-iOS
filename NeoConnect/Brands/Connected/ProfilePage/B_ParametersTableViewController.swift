@@ -11,6 +11,13 @@ import SwiftUI
 import Alamofire
 
 class B_ParametersTableViewController: UITableViewController {
+    @IBOutlet weak var userImageView: PhotoFieldImage!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.tableView.tableFooterView = UIView()
+        getImageFromApi()
+    }
     
     @IBAction func contactUS(_ sender: Any) {
         let contactView = ReportUsShopSideView()
@@ -35,9 +42,12 @@ class B_ParametersTableViewController: UITableViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.tableView.tableFooterView = UIView()
+    func getImageFromApi() {
+        DispatchQueue.main.async {
+            APIManager.sharedInstance.getUserImage(onSuccess: { image in
+                self.userImageView.image = image
+            })
+        }
     }
     
     // MARK: - Table view data source

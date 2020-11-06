@@ -12,7 +12,6 @@ import Alamofire
 class APIInfManager {
     
     let baseURL = "http://168.63.65.106:8080"
-    
     static let headers: HTTPHeaders = [
         "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
         "Content-Type": "application/x-www-form-urlencoded"
@@ -23,7 +22,7 @@ class APIInfManager {
     
     static let sharedInstance = APIInfManager()
     
-    func register_Inf(pseudo: String, password: String, sex: String, name: String, email: String, phoneNumber: String, zipCode: String, city: String, userPicture: String, subject: String, facebook: String, twitter: String, instagram: String, snapchat: String, youtube: String, twitch: String, pinterest: String, tiktok: String, onSuccess: @escaping() -> Void, onFailure: @escaping() -> Void) {
+    func register_Inf(pseudo: String, password: String, sex: String, name: String, email: String, phoneNumber: String, zipCode: String, city: String, userPicture: String, description: String, subject: String, facebook: String, twitter: String, instagram: String, snapchat: String, youtube: String, twitch: String, pinterest: String, tiktok: String, onSuccess: @escaping() -> Void, onFailure: @escaping() -> Void) {
         let url : String = baseURL + APIInfManager.getRegisterInfEndpoint
 
         let Register: Parameters = [
@@ -62,7 +61,7 @@ class APIInfManager {
         }
     }
     
-    func editInfo(pseudo: String, fullname: String, email: String, phoneNumber: String, zipCode: String, city: String, userPicture: String, subject: String, facebook: String, snapchat: String, twitter: String, instagram: String, youtube: String, twitch: String, pinterest: String, tiktok: String, onSuccess: @escaping() -> Void, onFailure: @escaping(Error) -> Void) {
+    func editInfo(pseudo: String, fullname: String, email: String, phoneNumber: String, zipCode: String, city: String, userPicture: String, userDescription: String, subject: String, facebook: String, snapchat: String, twitter: String, instagram: String, youtube: String, twitch: String, pinterest: String, tiktok: String, onSuccess: @escaping() -> Void, onFailure: @escaping(Error) -> Void) {
         let url : String = baseURL + APIInfManager.infoCurrentAccountEndpoint
         let new_Info: Parameters = [
             "pseudo": pseudo,
@@ -72,6 +71,7 @@ class APIInfManager {
             "postal": zipCode,
             "city": city,
             "userPicture": userPicture,
+            "userDescription": userDescription,
             "theme": subject,
             "facebook": facebook,
             "snapchat": snapchat,
@@ -98,7 +98,6 @@ class APIInfManager {
         
         AF.request(url, headers: APIInfManager.headers).responseJSON { response in
             switch response.result {
-                
                 case .success(let JSON):
                     guard let response = JSON as? [String:Any] else { return }
                     print(response)
@@ -122,10 +121,9 @@ class APIInfManager {
                     
                     switch response.result {
                         case .success(let JSON):
-                            let response = JSON as! [String:Any]
+                            guard let response = JSON as? [String:Any] else { return }
                             print(response)
                             onSuccess(response)
-                        
                         case .failure(let error):
                             print("Request failed with error: \(error)")
                             onFailure()

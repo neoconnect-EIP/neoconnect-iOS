@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rU9-iN-hOc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rU9-iN-hOc">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -26,7 +28,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ShopBackground" translatesAutoresizingMaskIntoConstraints="NO" id="98k-kb-aiY">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ShopBackground" translatesAutoresizingMaskIntoConstraints="NO" id="98k-kb-aiY">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eRj-dw-gM6">
@@ -35,7 +37,7 @@
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vous n'avez aucune offre" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ouh-ms-O7q">
                                         <rect key="frame" x="60" y="250.5" width="215" height="19"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                        <color key="textColor" systemColor="scrollViewTexturedBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -58,7 +60,7 @@
                                         <rect key="frame" x="0.0" y="28" width="335" height="180"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="80U-hA-nmi" id="cBc-Oh-ldw">
-                                            <rect key="frame" x="0.0" y="0.0" width="309" height="180"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="308" height="180"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Qj-pH-7Ol" customClass="PhotoFieldImage" customModule="NeoConnect" customModuleProvider="target">
@@ -69,7 +71,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZD-r0-Mdv">
-                                                    <rect key="frame" x="182" y="25" width="125" height="50"/>
+                                                    <rect key="frame" x="181" y="25" width="125" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="H0Q-C4-RNs"/>
                                                         <constraint firstAttribute="width" constant="125" id="dRy-M9-Qfy"/>
@@ -79,7 +81,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Theme" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sk-vW-BUr">
-                                                    <rect key="frame" x="182" y="83" width="125" height="25"/>
+                                                    <rect key="frame" x="181" y="83" width="125" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="125" id="RiY-9b-dkB"/>
                                                         <constraint firstAttribute="height" constant="25" id="mkP-p3-kH8"/>
@@ -110,7 +112,8 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="hal-IT-MUb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="eRj-dw-gM6" firstAttribute="centerX" secondItem="DXZ-5I-p1C" secondAttribute="centerX" id="GHu-le-tDs"/>
                             <constraint firstItem="DXZ-5I-p1C" firstAttribute="top" secondItem="hal-IT-MUb" secondAttribute="top" constant="50" id="HhK-6J-Qbg"/>
@@ -126,7 +129,6 @@
                             <constraint firstItem="hal-IT-MUb" firstAttribute="trailing" secondItem="DXZ-5I-p1C" secondAttribute="trailing" constant="20" id="voy-VX-gF7"/>
                             <constraint firstItem="98k-kb-aiY" firstAttribute="top" secondItem="yrq-RR-nn8" secondAttribute="top" id="xy2-i8-u90"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="hal-IT-MUb"/>
                     </view>
                     <navigationItem key="navigationItem" id="8Yi-d9-nTI">
                         <barButtonItem key="backBarButtonItem" title="Retour" id="P4n-TO-Omw"/>
@@ -167,10 +169,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ShopBackground" translatesAutoresizingMaskIntoConstraints="NO" id="ZGZ-uC-4bQ">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ShopBackground" translatesAutoresizingMaskIntoConstraints="NO" id="ZGZ-uC-4bQ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <button opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y0N-BB-l0p" customClass="PhotoFieldButton" customModule="NeoConnect" customModuleProvider="target">
+                            <button opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y0N-BB-l0p" customClass="PhotoFieldButton" customModule="NeoConnect" customModuleProvider="target">
                                 <rect key="frame" x="100" y="139" width="175" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="175" id="2zh-Ym-hQe"/>
@@ -299,7 +301,8 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="A3t-sf-QyW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="z2r-HH-nKH" firstAttribute="leading" secondItem="YyR-V6-6CB" secondAttribute="trailing" constant="10" id="20f-79-qW1"/>
                             <constraint firstItem="YyR-V6-6CB" firstAttribute="top" secondItem="3h8-q9-1SX" secondAttribute="bottom" constant="20" id="2ta-Hp-VWO"/>
@@ -324,7 +327,6 @@
                             <constraint firstItem="y0N-BB-l0p" firstAttribute="top" secondItem="3Xc-dD-G0z" secondAttribute="bottom" constant="30" id="wed-OY-wW1"/>
                             <constraint firstItem="ifZ-ul-P7Z" firstAttribute="top" secondItem="YyR-V6-6CB" secondAttribute="bottom" constant="15" id="z9i-QV-tHJ"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="A3t-sf-QyW"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Nhs-vH-AIc">
@@ -353,5 +355,11 @@
     </scenes>
     <resources>
         <image name="ShopBackground" width="375" height="667"/>
+        <systemColor name="scrollViewTexturedBackgroundColor">
+            <color red="0.43529411764705878" green="0.44313725490196082" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

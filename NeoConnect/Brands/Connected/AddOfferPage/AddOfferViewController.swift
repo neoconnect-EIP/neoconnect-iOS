@@ -28,7 +28,6 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
     var typeValue = "Mode"
     var imagePicker:UIImagePickerController!
     var imageConverter = ImageConverter()
-    var sex = String()
     
     override func viewDidLoad() {
         imagePicker = UIImagePickerController()
@@ -41,15 +40,6 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func radioSexButtonTapped(_ sender: DLRadioButton) {
-        if (sender.tag == 1) {
-            sex = "Male"
-        }
-        else if (sender.tag == 2) {
-            sex = "Female"
-        }
     }
     
     @IBAction func firstImageTapped(_ sender: UIButton) {
@@ -201,7 +191,7 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
         let image = firstImage.image(for: .normal)
         let color = colorTextField.text!
         
-        if (name.isEmpty || desc.isEmpty || theme.isEmpty || sex.isEmpty || image == nil) {
+        if (name.isEmpty || desc.isEmpty || theme.isEmpty || image == nil) {
                 DispatchQueue.main.async {
                     let alertView = UIAlertController(title: "Error", message: "Tous les champs doivent être complétés", preferredStyle: .alert)
                     alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
@@ -212,7 +202,7 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
             let imageData = imageConverter.imageToBase64(image!)!
             let brand = UserDefaults.standard.string(forKey: "pseudo")!
             
-            APIBrandManager.sharedInstance.addOffer(name: name, sex: sex, description: desc, theme: theme, imageName: "Image", imageData: imageData, color: color, brand: brand, onSuccess: {
+            APIBrandManager.sharedInstance.addOffer(name: name, description: desc, theme: theme, imageName: "Image", imageData: imageData, color: color, brand: brand, onSuccess: {
                 DispatchQueue.main.async {
                     let alertView = UIAlertController(title: "Ajouté !", message: "Votre offre à été ajouté avec succès.", preferredStyle: .alert)
                     alertView.addAction(UIAlertAction(title: "Ok", style: .default) { _ in })

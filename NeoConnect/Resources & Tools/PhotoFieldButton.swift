@@ -54,7 +54,6 @@ final class PhotoFieldButton: UIButton {
     }
     
     override func setImage(_ image: UIImage?, for state: UIControl.State) {
-//        imageView?.image = image
         super.setImage(image, for: state)
     }
 }

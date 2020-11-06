@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Jf2-7r-7If">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Jf2-7r-7If">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -66,14 +68,14 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Add Offer Icon" translatesAutoresizingMaskIntoConstraints="NO" id="4Lo-fj-I32" customClass="PhotoFieldImage" customModule="NeoConnect" customModuleProvider="target">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="4Lo-fj-I32" customClass="PhotoFieldImage" customModule="NeoConnect" customModuleProvider="target">
                                                     <rect key="frame" x="145" y="27.5" width="85" height="85"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="85" id="Dr7-H2-ac4"/>
                                                         <constraint firstAttribute="width" secondItem="4Lo-fj-I32" secondAttribute="height" multiplier="1:1" id="gRA-WB-VtI"/>
                                                     </constraints>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVt-f6-C1S">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVt-f6-C1S">
                                                     <rect key="frame" x="87.5" y="11" width="200" height="150"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="200" id="q4X-AX-I8T"/>
@@ -116,7 +118,7 @@
                                                     <nil key="highlightedColor"/>
                                                     <size key="shadowOffset" width="0.0" height="0.0"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MaN-ih-D9k">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MaN-ih-D9k">
                                                     <rect key="frame" x="0.0" y="0.0" width="348" height="70"/>
                                                     <connections>
                                                         <action selector="myOffers:" destination="Igr-4N-p2D" eventType="touchUpInside" id="7JZ-2g-QvI"/>
@@ -182,7 +184,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tCs-hf-wLS">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tCs-hf-wLS">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                                     <connections>
                                                         <action selector="contactUS:" destination="Igr-4N-p2D" eventType="touchUpInside" id="HVl-r1-gSB"/>
@@ -238,10 +240,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="f6B-wZ-loU"/>
+                    <connections>
+                        <outlet property="userImageView" destination="4Lo-fj-I32" id="Ymw-lT-EYD"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fuc-Od-MLg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1361" y="118"/>
+            <point key="canvasLocation" x="1430" y="99"/>
         </scene>
         <!--I_UserInformations-->
         <scene sceneID="o5x-ES-CnG">
@@ -281,7 +286,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="InfBackground" translatesAutoresizingMaskIntoConstraints="NO" id="d9T-j1-L8w">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="InfBackground" translatesAutoresizingMaskIntoConstraints="NO" id="d9T-j1-L8w">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                             </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Jl-rL-anF">
@@ -295,7 +300,8 @@
                                 </connections>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="qxO-41-bhM"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="2Jl-rL-anF" firstAttribute="centerX" secondItem="qxO-41-bhM" secondAttribute="centerX" id="1Td-2g-Ukj"/>
                             <constraint firstItem="d9T-j1-L8w" firstAttribute="width" secondItem="T5i-NY-Miy" secondAttribute="width" id="4Xp-5C-po5"/>
@@ -305,12 +311,11 @@
                             <constraint firstItem="d9T-j1-L8w" firstAttribute="height" secondItem="T5i-NY-Miy" secondAttribute="height" multiplier="0.934033" id="dA0-bJ-AZj"/>
                             <constraint firstItem="d9T-j1-L8w" firstAttribute="leading" secondItem="qxO-41-bhM" secondAttribute="leading" id="hi6-00-MtW"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="qxO-41-bhM"/>
                     </view>
                     <navigationItem key="navigationItem" id="RnP-8d-f3v">
                         <barButtonItem key="backBarButtonItem" title="Retour" id="DAu-vd-gjW"/>
                         <barButtonItem key="leftBarButtonItem" style="plain" id="p1N-VO-Z75">
-                            <button key="customView" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="e7L-mY-Q3H">
+                            <button key="customView" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="e7L-mY-Q3H">
                                 <rect key="frame" x="16" y="4" width="118" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="20"/>
@@ -336,8 +341,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Add Offer Icon" width="32" height="32"/>
         <image name="Deconnexion - Icon" width="36" height="36"/>
         <image name="InfBackground" width="375" height="667"/>
+        <image name="avatar-placeholder" width="500" height="500"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
