@@ -20,7 +20,7 @@ class APIBrandManager {
     static let getRegisterShopEndpoint = "/shop/register"
     static let infoCurrentAccountEndpoint = "/shop/me"
     static let postOfferEndpoint = "/offer/insert"
-    static let offerEndPoint = "/offer/"
+    static let offerEndPoint = "/offer"
     static let postSearchInfEndpoint = "/inf/search"
     
     static let sharedInstance = APIBrandManager()
@@ -87,7 +87,7 @@ class APIBrandManager {
     }
     
     func editOffer(id: Int, name: String, imageData: String, sex: String, description: String, subject: String, onSuccess: @escaping() -> Void, onFailure: @escaping(Error) -> Void) {
-        let url : String = baseURL + APIBrandManager.offerEndPoint + "\(id)"
+        let url : String = baseURL + APIBrandManager.offerEndPoint + "/\(id)"
         let imageName = "Img_offer_\(String(id))"
         let offer: [String: Any] = [
             "productImg": [
@@ -138,7 +138,7 @@ class APIBrandManager {
         AF.request(url,
                    method: .post,
                    parameters: user,
-                   encoding: URLEncoding.default, headers: APIManager.headers, interceptor: nil).validate(statusCode: 200..<300).responseJSON { response in
+                   encoding: URLEncoding.default, headers: APIBrandManager.headers, interceptor: nil).responseJSON { response in
                     switch response.result {
                         case .success(let JSON):
                             guard let response = JSON as? [String:Any] else { return }
@@ -151,27 +151,32 @@ class APIBrandManager {
                    }
     }
     
-    func addOffer(name: String, description: String, theme: String, imageName: String, imageData: String, color: String, brand: String, onSuccess: @escaping() -> Void, onFailure: @escaping() -> Void) {
+    func addOffer(name: String, description: String, theme: String, sex: String, imageName: String, imageArray: Array<String>, onSuccess: @escaping() -> Void, onFailure: @escaping() -> Void) {
         let url : String = baseURL + APIBrandManager.postOfferEndpoint
-        let offer: [String: Any] = [
+        var imageDict: Array<Dictionary<String, String>> = []
+        guard let brand = UserDefaults.standard.string(forKey: "pseudo") else { return }
+        for image in imageArray {
+            imageDict.append([
+                "imageName": "Image",
+                "imageData": image
+            ])
+        }
+        let offer: Parameters = [
             "productImg": [
-                [
-                    "imageName": imageName,
-                    "imageData": imageData
-                ]
+                "imageName": "Image",
+                "imageData": imageDict
             ],
+            "productSex": sex,
             "productName": name,
             "productDesc": description,
             "productSubject": theme,
             "brand": brand,
-            "color": color
         ]
         
         AF.request(url,
                    method: .post,
                    parameters: offer,
-                   encoding: URLEncoding.default, headers: APIManager.headers, interceptor: nil).validate(statusCode: 200..<300).responseJSON { response in
-                    
+                   encoding: JSONEncoding.default, headers: APIBrandManager.headers, interceptor: nil).responseJSON { response in
                     switch response.result {
                         case .success(let JSON):
                             guard let response = JSON as? [String:Any] else { return }

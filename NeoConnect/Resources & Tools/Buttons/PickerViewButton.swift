@@ -26,7 +26,6 @@ final class PickerViewButton: UIButton {
         if self.tag == 1 {
             backgroundColor                 = UIColor(red: 135/255, green: 185/255, blue: 124/255, alpha: 1.0)
             setShadow()
-
         } else if self.tag == 3 {
             let bottomLine = CALayer()
             bottomLine.frame = CGRectMake(0.0, self.frame.size.height - 1, self.frame.size.width - 1, 1.0)
