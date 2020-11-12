@@ -288,7 +288,7 @@
                                                 </constraints>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                                             </textView>
                                         </subviews>
                                     </stackView>
@@ -397,7 +397,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fDb-Ad-OP3">
                                         <rect key="frame" x="0.0" y="0.0" width="245" height="220"/>
                                         <subviews>
-                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pseudo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dHP-OP-teX" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
+                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pseudo*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dHP-OP-teX" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="245" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="HQH-er-71X"/>
@@ -410,7 +410,7 @@
                                                     <action selector="isValidField:" destination="8eS-jp-Wqr" eventType="editingDidEnd" id="LZS-ud-taK"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r80-gh-SvY" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
+                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r80-gh-SvY" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="60" width="245" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="245" id="PIS-6t-GBP"/>
@@ -423,7 +423,7 @@
                                                     <action selector="isValidField:" destination="8eS-jp-Wqr" eventType="editingDidEnd" id="E4e-Xw-EFl"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mot de passe" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KvS-14-bmO" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
+                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mot de passe*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KvS-14-bmO" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="120" width="245" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="LNh-8G-oJc"/>
@@ -436,7 +436,7 @@
                                                     <action selector="isValidField:" destination="8eS-jp-Wqr" eventType="editingDidEnd" id="9sj-Ok-ZHB"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Répétez le mot de passe" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KxH-IS-wlT" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
+                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Répétez le mot de passe*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KxH-IS-wlT" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="180" width="245" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="245" id="BXo-2C-Zn2"/>
@@ -689,14 +689,14 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fDX-SO-cyf">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDX-SO-cyf">
                                 <rect key="frame" x="62.5" y="235.5" width="250" height="275"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fjg-TS-nbE">
-                                        <rect key="frame" x="0.0" y="0.0" width="245" height="340"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="245" height="345"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hrz-0p-5LQ">
-                                                <rect key="frame" x="0.0" y="0.0" width="245" height="340"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="hrz-0p-5LQ">
+                                                <rect key="frame" x="0.0" y="0.0" width="245" height="345"/>
                                                 <subviews>
                                                     <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Site web" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QYB-dG-Oi9" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="245" height="40"/>
@@ -712,7 +712,7 @@
                                                         </connections>
                                                     </textField>
                                                     <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Facebook" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ifY-mj-yZC" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="60" width="245" height="40"/>
+                                                        <rect key="frame" x="0.0" y="61" width="245" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="Cw9-OK-run"/>
                                                             <constraint firstAttribute="width" constant="245" id="W8L-Z3-HuB"/>
@@ -725,7 +725,7 @@
                                                         </connections>
                                                     </textField>
                                                     <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Twitter" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nIB-0r-Db4" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="120" width="245" height="40"/>
+                                                        <rect key="frame" x="0.0" y="122" width="245" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="245" id="dro-MP-egh"/>
                                                             <constraint firstAttribute="height" constant="40" id="oTN-eS-m1g"/>
@@ -738,7 +738,7 @@
                                                         </connections>
                                                     </textField>
                                                     <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Instagram" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="onB-vH-tmH" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="180" width="245" height="40"/>
+                                                        <rect key="frame" x="0.0" y="183" width="245" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="Xxa-lX-qr4"/>
                                                             <constraint firstAttribute="width" constant="245" id="hTs-GD-Azw"/>
@@ -751,7 +751,7 @@
                                                         </connections>
                                                     </textField>
                                                     <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Snapchat" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PIH-Pg-jIP" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="240" width="245" height="40"/>
+                                                        <rect key="frame" x="0.0" y="244" width="245" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="DBB-a8-FY4"/>
                                                             <constraint firstAttribute="width" constant="245" id="RDB-id-ykx"/>
@@ -764,7 +764,7 @@
                                                         </connections>
                                                     </textField>
                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A6s-Lb-Njo" customClass="PickerViewButton" customModule="NeoConnect" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="300" width="245" height="40"/>
+                                                        <rect key="frame" x="0.0" y="305" width="245" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="4jW-XV-WNg"/>
                                                             <constraint firstAttribute="width" constant="245" id="rOT-Yl-Q7o"/>
@@ -784,7 +784,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Fjg-TS-nbE" firstAttribute="width" secondItem="fDX-SO-cyf" secondAttribute="width" multiplier="0.98" id="1wr-Nh-dGi"/>
-                                    <constraint firstAttribute="bottom" secondItem="Fjg-TS-nbE" secondAttribute="bottom" id="CWp-Ev-3gG"/>
+                                    <constraint firstAttribute="bottom" secondItem="Fjg-TS-nbE" secondAttribute="bottom" constant="10" id="CWp-Ev-3gG"/>
                                     <constraint firstAttribute="height" constant="275" id="G4N-Fu-lI5"/>
                                     <constraint firstAttribute="trailing" secondItem="Fjg-TS-nbE" secondAttribute="trailing" id="LVq-hg-auk"/>
                                     <constraint firstItem="Fjg-TS-nbE" firstAttribute="leading" secondItem="fDX-SO-cyf" secondAttribute="leading" id="dPd-O9-d5W"/>

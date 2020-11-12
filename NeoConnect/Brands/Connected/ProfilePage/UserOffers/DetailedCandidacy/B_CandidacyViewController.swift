@@ -21,7 +21,7 @@ class B_CandidacyViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         titleLabelField.text = offer.title
-        imageView.image = offer.image
+        imageView.image = offer.images[0]
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
@@ -30,45 +30,25 @@ class B_CandidacyViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        getDataFromAPI()
-    }
-    
-    func getDataFromAPI() {
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
-            "Content-Type": "application/x-www-form-urlencoded"
-        ]
-        AF.request("http://168.63.65.106:8080/offer/apply/\(self.offer.id)",
-            headers: headers).responseJSON { response in
-                switch response.result {
-                    
-                    case .success(let JSON):
-                        
-                        let results = JSON as! Array<NSDictionary>
-                        self.candidacies = self.createArray(results: results)
-                           
-                        self.tableView.reloadData()
-                    
-                    case .failure(let error):
-                        print("Request failed with error: \(error)")
-                }
-        }
+        candidacies = createArray(results: offer.apply)
+        tableView.reloadData()
     }
     
     func createArray(results: Array<NSDictionary>) -> [Candidacy] {
         var tempCandidacy: [Candidacy] = []
         
         for dictionary in results {
-            let id = (dictionary["id"] as! NSNumber).intValue
-            let pseudo = dictionary["pseudoUser"] as! String
-            let idUser  = (dictionary["idUser"] as! NSNumber).intValue
-            let status = dictionary["status"] as! String
-            let average = dictionary["average"] as! Double
-            let idOffer  = (dictionary["idOffer"] as! NSNumber).intValue
-            let imageArray = dictionary["userPicture"] as? [[String:Any]]
-            let imageUrl = URL(string: imageArray![0]["imageData"] as! String)!
-            let imageData = try! UIImage(data: Data(contentsOf: imageUrl))!
-            tempCandidacy.append(Candidacy(id: id, pseudo: pseudo, image: imageData, idUser: idUser, idOffer: idOffer, average: average, status: status))
+            guard let id = (dictionary["id"] as? NSNumber)?.intValue else { return tempCandidacy }
+            guard let pseudo = dictionary["pseudo"] as? String else { return tempCandidacy }
+            guard let idUser  = (dictionary["idUser"] as? NSNumber)?.intValue else { return tempCandidacy }
+            guard let status = dictionary["status"] as? String else { return tempCandidacy }
+            let average = dictionary["average"] as? Double ?? 0
+            guard let idOffer  = (dictionary["idOffer"] as? NSNumber)?.intValue else { return tempCandidacy }
+            guard let userPicture = dictionary["userPicture"] as? [[String:Any]] else { return tempCandidacy }
+            guard let imageData = URL(string: (userPicture[0]["imageData"] as? String)!) else { return tempCandidacy }
+            guard let imageUser = try! UIImage(data: Data(contentsOf: imageData)) else { return tempCandidacy }
+            
+            tempCandidacy.append(Candidacy(id: id, pseudo: pseudo, image: imageUser, idUser: idUser, idOffer: idOffer, average: average, status: status))
         }
         return tempCandidacy
     }

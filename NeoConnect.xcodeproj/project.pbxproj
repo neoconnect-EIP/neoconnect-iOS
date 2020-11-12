@@ -14,9 +14,6 @@
 		33131D8F2368A3A0006C0A4B /* I_ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33131D8E2368A3A0006C0A4B /* I_ChatViewController.swift */; };
 		331A739C22D2077800FDA4AF /* B_RegisterPage_Step_One_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331A739B22D2077800FDA4AF /* B_RegisterPage_Step_One_ViewController.swift */; };
 		3325179E23E62A9A000C7E7D /* B_ParametersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3325179D23E62A9A000C7E7D /* B_ParametersTableViewController.swift */; };
-		3326EFE5250827C20006E387 /* B_UserCandidacy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3326EFE4250827C20006E387 /* B_UserCandidacy.storyboard */; };
-		3326EFE7250828A70006E387 /* B_CandidaciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3326EFE6250828A70006E387 /* B_CandidaciesViewController.swift */; };
-		3326EFE925082A540006E387 /* B_CandidacyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3326EFE825082A540006E387 /* B_CandidacyTableViewCell.swift */; };
 		3326EFEB25082EE60006E387 /* B_CandidacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3326EFEA25082EE60006E387 /* B_CandidacyViewController.swift */; };
 		3326EFEE250835140006E387 /* B_DetailedCandidacyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3326EFED250835140006E387 /* B_DetailedCandidacyTableViewCell.swift */; };
 		3326EFF0250836350006E387 /* Candidacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3326EFEF250836350006E387 /* Candidacy.swift */; };
@@ -166,9 +163,6 @@
 		33131D8E2368A3A0006C0A4B /* I_ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_ChatViewController.swift; sourceTree = "<group>"; };
 		331A739B22D2077800FDA4AF /* B_RegisterPage_Step_One_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B_RegisterPage_Step_One_ViewController.swift; sourceTree = "<group>"; };
 		3325179D23E62A9A000C7E7D /* B_ParametersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B_ParametersTableViewController.swift; sourceTree = "<group>"; };
-		3326EFE4250827C20006E387 /* B_UserCandidacy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = B_UserCandidacy.storyboard; sourceTree = "<group>"; };
-		3326EFE6250828A70006E387 /* B_CandidaciesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B_CandidaciesViewController.swift; sourceTree = "<group>"; };
-		3326EFE825082A540006E387 /* B_CandidacyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B_CandidacyTableViewCell.swift; sourceTree = "<group>"; };
 		3326EFEA25082EE60006E387 /* B_CandidacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B_CandidacyViewController.swift; sourceTree = "<group>"; };
 		3326EFED250835140006E387 /* B_DetailedCandidacyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B_DetailedCandidacyTableViewCell.swift; sourceTree = "<group>"; };
 		3326EFEF250836350006E387 /* Candidacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Candidacy.swift; sourceTree = "<group>"; };
@@ -361,10 +355,6 @@
 		3326EFE3250826EB0006E387 /* UserCandidacy */ = {
 			isa = PBXGroup;
 			children = (
-				3326EFEC250834E80006E387 /* DetailedCandidacy */,
-				3326EFE6250828A70006E387 /* B_CandidaciesViewController.swift */,
-				3326EFE825082A540006E387 /* B_CandidacyTableViewCell.swift */,
-				3326EFE4250827C20006E387 /* B_UserCandidacy.storyboard */,
 			);
 			path = UserCandidacy;
 			sourceTree = "<group>";
@@ -516,6 +506,7 @@
 		3387EE692406E1C20050852D /* UserOffers */ = {
 			isa = PBXGroup;
 			children = (
+				3326EFEC250834E80006E387 /* DetailedCandidacy */,
 				3387EE6E2406EA2E0050852D /* B_OffersViewController.swift */,
 				3387EE6C2406E92D0050852D /* B_OffersTableViewCell.swift */,
 				3387EE702406F9AF0050852D /* B_OfferViewController.swift */,
@@ -994,7 +985,6 @@
 				3397E802236C58CD002E96FD /* ForgotPassword.storyboard in Resources */,
 				3359B52822E78D0900CB86E2 /* B_Search.storyboard in Resources */,
 				33BAFF312493FA7100E62AA4 /* Raleway-Regular.ttf in Resources */,
-				3326EFE5250827C20006E387 /* B_UserCandidacy.storyboard in Resources */,
 				33BAFF2F2493F8EB00E62AA4 /* Raleway-Medium.ttf in Resources */,
 				3359B52C22E78D8D00CB86E2 /* B_Chat.storyboard in Resources */,
 				336E62BA2436060100AF0949 /* B_UserMarksAndComments.storyboard in Resources */,
@@ -1166,7 +1156,6 @@
 				336BB7C024B00DC1000A9027 /* DefaultButton.swift in Sources */,
 				9956087C25096A3200A0CBFB /* ReportUsShopSideView.swift in Sources */,
 				338E8C6C24FF1F6800F58B27 /* I_ShopFoundViewController.swift in Sources */,
-				3326EFE925082A540006E387 /* B_CandidacyTableViewCell.swift in Sources */,
 				33EC80D024FF047C003FF652 /* B_InfFoundViewController.swift in Sources */,
 				3388BE5A232016A000B9D1F8 /* AddOfferViewController.swift in Sources */,
 				9956086E25096A3200A0CBFB /* MyOffersView.swift in Sources */,
@@ -1193,7 +1182,6 @@
 				9956086D25096A3200A0CBFB /* ReportUsView.swift in Sources */,
 				33A648BF24DC59D6001A3E86 /* PhotoFieldImage.swift in Sources */,
 				33122D6424B2907400405E9D /* LoginFields.swift in Sources */,
-				3326EFE7250828A70006E387 /* B_CandidaciesViewController.swift in Sources */,
 				3397E804236C58E0002E96FD /* ForgotPasswordViewController.swift in Sources */,
 				3373AB8A254F6A50009927BE /* I_RegisterPage_Step_Two_ViewController.swift in Sources */,
 				33B3983D22A556C900719E1D /* B_RegisterPage_Step_Two_ViewController.swift in Sources */,

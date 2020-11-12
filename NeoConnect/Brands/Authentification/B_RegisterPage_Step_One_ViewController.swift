@@ -15,10 +15,6 @@ class B_RegisterPage_Step_One_ViewController: UIViewController, UIImagePickerCon
     
     var imagePicker: UIImagePickerController!
 
-    override func viewDidLayoutSubviews() {
-        userDescriptionTextView.centerVertically()
-    }
-    
     override func viewDidLoad() {
         imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = true
@@ -62,7 +58,7 @@ class B_RegisterPage_Step_One_ViewController: UIViewController, UIImagePickerCon
         guard let userDescription = userDescriptionTextView.text else { return }
         
         if 1 ... 4 ~= userDescription.count {
-            showError("Veuillez entrer une description de plus de trois caractères")
+            showError("La description semble trop courte")
         } else {
             performSegue(withIdentifier: "B_Step_Two", sender: self)
         }

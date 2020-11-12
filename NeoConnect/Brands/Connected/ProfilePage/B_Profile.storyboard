@@ -63,16 +63,6 @@
             </objects>
             <point key="canvasLocation" x="2150" y="170"/>
         </scene>
-        <!--B_UserCandidacy-->
-        <scene sceneID="wIw-aT-ZIf">
-            <objects>
-                <viewControllerPlaceholder storyboardName="B_UserCandidacy" referencedIdentifier="B_UserCandidacy" id="TbM-VE-vJz" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="vcu-W2-tsk"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="e8x-Ga-qa5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2214" y="60"/>
-        </scene>
         <!--B_UserOffers-->
         <scene sceneID="iQL-Sk-Kym">
             <objects>
@@ -94,7 +84,7 @@
                         <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <inset key="separatorInset" minX="150" minY="0.0" maxX="150" maxY="0.0"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="ZcW-Tc-fd1">
-                            <rect key="frame" x="0.0" y="576" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="506" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
@@ -168,37 +158,8 @@
                                             <segue destination="R4V-wj-J1S" kind="show" id="9dg-EG-GO9"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="70" id="ZfU-VJ-4Cp">
-                                        <rect key="frame" x="0.0" y="268" width="375" height="70"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZfU-VJ-4Cp" id="JXk-RG-ejA">
-                                            <rect key="frame" x="0.0" y="0.0" width="348" height="70"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Candidatures" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFF-rv-wee">
-                                                    <rect key="frame" x="30" y="25" width="120" height="20"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="120" id="Tb0-f5-Gkg"/>
-                                                        <constraint firstAttribute="height" constant="20" id="Vg5-Uv-F5B"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <size key="shadowOffset" width="0.0" height="0.0"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="bFF-rv-wee" firstAttribute="leading" secondItem="ZfU-VJ-4Cp" secondAttribute="leading" constant="30" id="Duu-oL-ipC"/>
-                                            <constraint firstItem="bFF-rv-wee" firstAttribute="centerY" secondItem="ZfU-VJ-4Cp" secondAttribute="centerY" id="etb-XZ-qdP"/>
-                                        </constraints>
-                                        <connections>
-                                            <segue destination="TbM-VE-vJz" kind="show" id="bEL-wB-7zb"/>
-                                        </connections>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="70" id="5Ja-gh-IhB">
-                                        <rect key="frame" x="0.0" y="338" width="375" height="70"/>
+                                        <rect key="frame" x="0.0" y="268" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Ja-gh-IhB" id="xDJ-Vp-igd">
                                             <rect key="frame" x="0.0" y="0.0" width="348" height="70"/>
@@ -227,7 +188,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="70" id="h8k-Cr-fNL">
-                                        <rect key="frame" x="0.0" y="408" width="375" height="70"/>
+                                        <rect key="frame" x="0.0" y="338" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="h8k-Cr-fNL" id="Ykd-Bi-xzM">
                                             <rect key="frame" x="0.0" y="0.0" width="348" height="70"/>
@@ -262,7 +223,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="70" id="jIt-5M-n7p">
-                                        <rect key="frame" x="0.0" y="478" width="375" height="70"/>
+                                        <rect key="frame" x="0.0" y="408" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jIt-5M-n7p" id="fZX-j9-XzW">
                                             <rect key="frame" x="0.0" y="0.0" width="348" height="70"/>

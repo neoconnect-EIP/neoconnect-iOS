@@ -11,7 +11,7 @@ import UIKit
 class I_RegisterPage_Step_One_ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
 
     @IBOutlet weak var userPhotoView: PhotoFieldButton!
-    @IBOutlet weak var userDescriptionTextView: DefaultTextViews!
+    @IBOutlet weak var userDescriptionTextView: RegisterTextView!
     
     var imagePicker: UIImagePickerController!
     
@@ -58,7 +58,7 @@ class I_RegisterPage_Step_One_ViewController: UIViewController, UIImagePickerCon
         guard let userDescription = userDescriptionTextView.text else { return }
         
         if 1 ... 4 ~= userDescription.count {
-            showError("Veuillez entrer une description de plus de trois caractères")
+            showError("La description semble trop courte")
         } else {
             performSegue(withIdentifier: "I_Step_Two", sender: self)
         }

@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Alamofire
-import DLRadioButton
 import StatusAlert
 
 class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
@@ -132,7 +130,6 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        
         if pickerView.tag == 1 {
             return sexData.count
         }
@@ -193,17 +190,23 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
          return subjectPickerLabel!
     }
     
-    @IBAction func sexViewButtonTapped(_ sender: Any) {
+    private func initPickerFrame(tag: Int) -> UIAlertController {
         let alert = UIAlertController(title: "Choisissez votre sexe", message: "\n\n\n\n\n\n", preferredStyle: .alert)
         let pickerFrame = UIPickerView(frame: CGRect(x: 5, y: 20, width: 250, height: 140))
-        pickerFrame.tag = 1
+        pickerFrame.tag = tag
         alert.view.tintColor = UIColor(red: 135/255, green: 185/255, blue: 124/255, alpha: 1.0)
         alert.view.addSubview(pickerFrame)
         pickerFrame.dataSource = self
         pickerFrame.delegate = self
         
+        return alert
+    }
+    
+    @IBAction func sexViewButtonTapped(_ sender: Any) {
+        let alert = initPickerFrame(tag: 1)
+        
         self.sexSelected = "Unisexe"
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Fermer", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Valider", style: .default, handler: { (UIAlertAction) in
             self.sexPickerViewButton.setTitle(self.sexSelected, for: .normal)
             print("You selected " + self.sexSelected)
@@ -211,18 +214,12 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
         }))
         self.present(alert,animated: true, completion: nil )
     }
-    
+
     @IBAction func subjectViewButtonTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "Choisissez votre thème", message: "\n\n\n\n\n\n", preferredStyle: .alert)
-        let pickerFrame = UIPickerView(frame: CGRect(x: 5, y: 20, width: 250, height: 140))
-        pickerFrame.tag = 0
-        alert.view.tintColor = UIColor(red: 135/255, green: 185/255, blue: 124/255, alpha: 1.0)
-        alert.view.addSubview(pickerFrame)
-        pickerFrame.dataSource = self
-        pickerFrame.delegate = self
+        let alert = initPickerFrame(tag: 0)
         
         self.subjectSelected = "Mode"
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Femer", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Valider", style: .default, handler: { (UIAlertAction) in
             
             if (self.subjectSelected == "Cosmétique" || self.subjectSelected == "Mode") {
@@ -267,22 +264,21 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
         let subject = subjectSelected
         let sex = sexSelected
         
-        if (name.isEmpty || desc.isEmpty || subject == "Sujet" || imageArrayToSend.count == 0)
-        {
+        if (1 ... 4 ~= desc.count) {
+            showError("La description semble trop courte")
+        } else if (name.isEmpty || subject == "Sujet" || imageArrayToSend.count == 0) {
             showError("Tous les champs doivent être complétés")
         } else if (subject == "Mode" || subject == "Cosmétique") {
             if (sex == "Sexe") {
                 showError("Veuillez préciser le sexe de l'annonce")
             }
-        }
-        else {
-            var imageData: Array<String> = []
+        } else {
+            var imageArray: Array<String> = []
             
             for image in imageArrayToSend {
-                imageData.append(imageConverter.imageToBase64(image) ?? "")
+                imageArray.append(imageConverter.imageToBase64(image) ?? "")
             }
-            print(imageArrayToSend)
-            APIBrandManager.sharedInstance.addOffer(name: name, description: desc, theme: subject, sex: sex, imageName: "Image", imageArray: imageData, onSuccess: {
+            APIBrandManager.sharedInstance.addOffer(name: name, description: desc, subject: subject, sex: sex, imageArray: imageArray, onSuccess: {
                 let statusAlert = StatusAlert()
                 statusAlert.alertShowingDuration = 1
                 statusAlert.image = UIImage(named: "Success icon.png")

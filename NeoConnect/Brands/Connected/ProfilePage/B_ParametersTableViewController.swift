@@ -37,7 +37,6 @@ class B_ParametersTableViewController: UITableViewController {
                 loginVC.modalPresentationStyle = .fullScreen
                 
                 self.present(loginVC, animated: true, completion: nil)            })
-            
             self.present(alertView, animated: true, completion: nil)
         }
     }
@@ -63,6 +62,6 @@ class B_ParametersTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 6
+        return 5
     }
 }

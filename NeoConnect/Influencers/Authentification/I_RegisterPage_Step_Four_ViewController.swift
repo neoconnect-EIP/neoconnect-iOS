@@ -102,8 +102,9 @@ class I_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDel
         alert.view.addSubview(pickerFrame)
         pickerFrame.dataSource = self
         pickerFrame.delegate = self
+        typeValue = "Mode"
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Fermer", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Valider", style: .default, handler: { (UIAlertAction) in
             
             self.pickerViewButton.setTitle(self.typeValue, for: .normal)
@@ -111,6 +112,14 @@ class I_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDel
             
         }))
         self.present(alert,animated: true, completion: nil )
+    }
+    
+    func showError(_ message: String) {
+        DispatchQueue.main.async {
+            let alertView = UIAlertController(title: "Erreur", message: message, preferredStyle: .alert)
+            alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
+            self.present(alertView, animated: true, completion: nil)
+        }
     }
     
     @IBAction func register_ButtonTapped(_ sender: Any) {
@@ -128,13 +137,8 @@ class I_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDel
         // Erreur : un champ fait entre 1 et 3 caractères
         if (!restriction.isMinThreeChar(userFacebook) || !restriction.isMinThreeChar(userTwitter) || !restriction.isMinThreeChar(userInstagram) || !restriction.isMinThreeChar(userSnapchat) ||
                 !restriction.isMinThreeChar(userYoutube) || !restriction.isMinThreeChar(userTwitch) ||
-                !restriction.isMinThreeChar(userPinterest) || !restriction.isMinThreeChar(userTiktok) || userSubject == "Choisissez un thème") {
-            DispatchQueue.main.async {
-                let alertView = UIAlertController(title: "Erreur", message: "Un ou plusieurs de vos champs semblent être inconforme", preferredStyle: .alert)
-                alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
-                self.present(alertView, animated: true, completion: nil)
-            }
-            return
+                !restriction.isMinThreeChar(userPinterest) || !restriction.isMinThreeChar(userTiktok) || userSubject == "Choisissez un thème...") {
+            showError("Un ou plusieurs de vos champs semblent être inconforme")
         }
         else {
             APIInfManager.sharedInstance.register_Inf(pseudo: userPseudo, password: userPassword, sex: userSex, name: userName, email: userEmail, phoneNumber: userPhoneNumber, zipCode: userZipCode, city: userCity, userPicture: userImage, description: userDescription, subject: userSubject, facebook: userFacebook, twitter: userTwitter, instagram: userInstagram, snapchat: userSnapchat, youtube: userYoutube, twitch: userTwitch,  pinterest: userPinterest, tiktok: userTiktok, onSuccess: {
@@ -148,11 +152,7 @@ class I_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDel
                     self.show(loginVC!, sender: nil)
                 }
             }, onFailure: {
-                DispatchQueue.main.async {
-                    let alertView = UIAlertController(title: "Erreur", message: "Une erreur est survenue, veuillez réessayer", preferredStyle: .alert)
-                    alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
-                    self.present(alertView, animated: true, completion: nil)
-                }
+                self.showError("Une erreur est survenue, veuillez réessayer")
             })
         }
     }

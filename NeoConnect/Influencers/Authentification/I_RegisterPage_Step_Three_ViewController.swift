@@ -35,10 +35,8 @@ class I_RegisterPage_Step_Three_ViewController: UIViewController {
     
     // Fonction bouton sexe influenceur
     @IBAction func radioBtnTapped(_ sender: DLRadioButton) {
-        if (sender.tag == 1) {
-            userSex = "Male"
-        }
-        else if (sender.tag == 2) {
+        userSex = "Male"
+        if (sender.tag == 2) {
             userSex = "Female"
         }
     }

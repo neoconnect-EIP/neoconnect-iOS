@@ -20,8 +20,8 @@ class B_ProfileViewController: UIViewController {
                 let loginVC = storyBoard.instantiateViewController(withIdentifier: "B_NavController")
                 loginVC.modalPresentationStyle = .fullScreen
                 
-                self.present(loginVC, animated: true, completion: nil)            })
-            
+                self.present(loginVC, animated: true, completion: nil)
+            })
             self.present(alertView, animated: true, completion: nil)
         }
     }

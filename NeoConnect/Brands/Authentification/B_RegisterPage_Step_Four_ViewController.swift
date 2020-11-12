@@ -36,8 +36,6 @@ class B_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        typeValue = pickerViewButton.titleLabel?.text as! String
     }
 
     @IBAction func isValidField(_ sender: RegisterFields) {
@@ -94,14 +92,14 @@ class B_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDel
     @IBAction func pickerViewButtonTapped(_ sender: Any) {
         let alert = UIAlertController(title: "Choisissez votre thème", message: "\n\n\n\n\n\n", preferredStyle: .alert)
         
-        
         let pickerFrame = UIPickerView(frame: CGRect(x: 5, y: 20, width: 250, height: 140))
         alert.view.tintColor = UIColor(red: 135/255, green: 185/255, blue: 124/255, alpha: 1.0)
         alert.view.addSubview(pickerFrame)
         pickerFrame.dataSource = self
         pickerFrame.delegate = self
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        typeValue = "Mode"
+
+        alert.addAction(UIAlertAction(title: "Fermer", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Valider", style: .default, handler: { (UIAlertAction) in
             
             self.pickerViewButton.setTitle(self.typeValue, for: .normal)
@@ -109,6 +107,14 @@ class B_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDel
             
         }))
         self.present(alert,animated: true, completion: nil )
+    }
+    
+    func showError(_ message: String) {
+        DispatchQueue.main.async {
+            let alertView = UIAlertController(title: "Erreur", message: message, preferredStyle: .alert)
+            alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
+            self.present(alertView, animated: true, completion: nil)
+        }
     }
     
     @IBAction func register_ButtonTapped(_ sender: Any) {
@@ -123,12 +129,7 @@ class B_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDel
         // Erreur : un champ fait entre 1 et 3 caractères
         if (!restriction.isMinThreeChar(userWebsite) ||
                 !restriction.isMinThreeChar(userFacebook) || !restriction.isMinThreeChar(userTwitter) || !restriction.isMinThreeChar(userInstagram) || !restriction.isMinThreeChar(userSnapchat) || userSubject == "Choisissez un thème...") {
-            DispatchQueue.main.async {
-                let alertView = UIAlertController(title: "Erreur", message: "Un ou plusieurs de vos champs semblent être inconforme", preferredStyle: .alert)
-                alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
-                self.present(alertView, animated: true, completion: nil)
-            }
-            return
+            showError("Un ou plusieurs de vos champs semblent être inconforme")
         } else {
             APIBrandManager.sharedInstance.register_Shop(pseudo: userPseudo, password: userPassword, name: userName, email: userEmail, website: userWebsite, phoneNumber: userPhoneNumber, zipCode: userZipCode, city: userCity, userPicture: userImage, description: userDescription, subject: userSubject, facebook: userFacebook, snapchat: userSnapchat, twitter: userTwitter, instagram: userInstagram, onSuccess: {
                                                             DispatchQueue.main.async {
@@ -140,11 +141,8 @@ class B_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDel
                                                                 let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "B_Register")
                                                                 self.show(loginVC!, sender: nil)
                                                             }}, onFailure: {
-                                                                DispatchQueue.main.async {
-                                                                    let alertView = UIAlertController(title: "Erreur", message: "Une erreur est survenue, veuillez réessayer", preferredStyle: .alert)
-                                                                    alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
-                                                                    self.present(alertView, animated: true, completion: nil)
-                                                                }})
+                                                                self.showError("Une erreur est survenue, veuillez réessayer")
+                                                            })
         }
     }
 }

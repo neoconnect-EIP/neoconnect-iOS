@@ -31,7 +31,7 @@ class APIManager {
     static let updatePasswordEndpoint = "/updatePassword"
     static let messagesEndpoint = "/message"
     static let getImageEndpoint = "/image/User_"
-
+    static let getOffersByShopId = "/offer/shop"
     
     static let sharedInstance = APIManager()
     
@@ -168,4 +168,20 @@ class APIManager {
             }
         }
     }
+    
+    func getOffersByShopId(id: String,onSuccess: @escaping(Any) -> Void) {
+        let url : String = baseURL + APIManager.getOffersByShopId + "/\(id)"
+        
+        AF.request(url,
+                   headers: APIManager.headers).responseJSON { response in
+                    switch response.result {
+                        case .success(let JSON):
+                            onSuccess(JSON)
+                        case .failure(let error):
+                            print("Request failed with error: \(error)")
+                    }
+                   }
+
+    }
+
 }

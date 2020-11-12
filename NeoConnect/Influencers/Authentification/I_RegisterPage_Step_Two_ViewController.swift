@@ -30,18 +30,17 @@ class I_RegisterPage_Step_Two_ViewController: UIViewController {
     
     @IBAction func isValidField(_ sender: RegisterFields) {
         switch sender.placeholder {
-            case "Pseudo":
+            case "Pseudo*":
                 sender.handleError(sender: sender, field: "Pseudo")
-            case "Email":
+            case "Email*":
                 sender.handleError(sender: sender, field: "Email")
-            case "Mot de passe":
+            case "Mot de passe*":
                 sender.handleError(sender: sender, field: "Mot de passe")
-            case "Répétez le mot de passe":
+            case "Répétez le mot de passe*":
                 sender.handleError(sender: sender, field: "Mot de passe")
             default:
                 sender.handleError(sender: sender, field: "default")
         }
-        sender.handleError(sender: sender, field: "pseudo")
     }
     
     func showError(_ message: String) {

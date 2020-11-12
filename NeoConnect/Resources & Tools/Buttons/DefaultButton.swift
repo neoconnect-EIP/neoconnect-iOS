@@ -28,9 +28,9 @@ final class DefaultButton: UIButton {
         } else if self.tag == 2 {
             backgroundColor      = UIColor.white
         } else if self.tag == 3 {
-            backgroundColor      = UIColor.red
+            backgroundColor      = UIColor(red: 0.451, green: 0.267, blue: 0.267, alpha: 1)
         } else if self.tag == 4 {
-            backgroundColor      = UIColor.green
+            backgroundColor      = UIColor(red: 0.325, green: 0.451, blue: 0.267, alpha: 1)
         }
         layer.cornerRadius   = 10
     }

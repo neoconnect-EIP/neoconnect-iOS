@@ -116,7 +116,6 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="66C-js-yQE"/>
-                                    <constraint firstAttribute="height" constant="165" id="nJe-SF-c2c"/>
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="RalewayItalic-ExtraBold" family="Raleway" pointSize="12"/>
@@ -178,8 +177,8 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veuiilez décrire votre offre ci-dessous :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbV-hK-r4c">
-                                <rect key="frame" x="67.5" y="298" width="248.5" height="16.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veuillez décrire votre offre ci-dessous :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbV-hK-r4c">
+                                <rect key="frame" x="67.5" y="298" width="249" height="16.5"/>
                                 <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -219,6 +218,7 @@
                             <constraint firstItem="Ux0-Hh-uN4" firstAttribute="top" secondItem="IW3-HP-sDn" secondAttribute="top" constant="80" id="Z1e-Nq-0SY"/>
                             <constraint firstItem="SeQ-K4-Nel" firstAttribute="centerX" secondItem="IW3-HP-sDn" secondAttribute="centerX" id="ZVk-eO-LBj"/>
                             <constraint firstAttribute="bottom" secondItem="5Sh-UX-vKR" secondAttribute="bottom" id="b8o-kg-YnR"/>
+                            <constraint firstItem="257-Al-ZeW" firstAttribute="height" secondItem="4Fm-H7-pbp" secondAttribute="height" multiplier="0.247376" id="ecW-S0-k9T"/>
                             <constraint firstItem="fDQ-tr-buv" firstAttribute="leading" secondItem="IW3-HP-sDn" secondAttribute="leading" id="g0v-yt-BY7"/>
                             <constraint firstAttribute="trailing" secondItem="5Sh-UX-vKR" secondAttribute="trailing" id="gtL-RL-2l0"/>
                             <constraint firstItem="cbV-hK-r4c" firstAttribute="top" secondItem="W2d-cf-fgg" secondAttribute="bottom" constant="10" id="olP-Ow-Dyu"/>

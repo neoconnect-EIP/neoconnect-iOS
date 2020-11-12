@@ -12,8 +12,8 @@ import Alamofire
 
 class B_DetailedCandidacyTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var offerImageView: UIImageView!
-    @IBOutlet weak var offerTitleLabel: UILabel!
+    @IBOutlet weak var infImageView: UIImageView!
+    @IBOutlet weak var infPseudoLabel: UILabel!
     @IBOutlet weak var ratingStars: CosmosView!
     @IBOutlet weak var acceptButton: DefaultButton!
     @IBOutlet weak var declineButton: DefaultButton!
@@ -23,10 +23,10 @@ class B_DetailedCandidacyTableViewCell: UITableViewCell {
     var idOffer: String!
     
     func setCandidacy(candidacy: Candidacy) {
-        offerTitleLabel.text = candidacy.pseudo
-        offerImageView.image = candidacy.image
-        self.idOffer = String(candidacy.idOffer)
-        self.idUser = String(candidacy.idUser)
+        infPseudoLabel.text = candidacy.pseudo
+        infImageView.image = candidacy.image
+        idOffer = String(candidacy.idOffer)
+        idUser = String(candidacy.idUser)
         ratingStars.rating = candidacy.average
         if candidacy.status != "pending" {
             acceptButton.isHidden = true
@@ -51,11 +51,9 @@ class B_DetailedCandidacyTableViewCell: UITableViewCell {
     }
     
     @IBAction func buttonTapped(_ sender: DefaultButton) {
-        let idUser = self.idUser!
-        let idOffer = self.idOffer!
+        guard let idUser = self.idUser else { return }
+        guard let idOffer = self.idOffer else { return }
 
-        print("idUser : \(idUser)")
-        print("idOffer : \(idOffer)")
         let headers: HTTPHeaders = [
             "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
             "Content-Type": "application/json"

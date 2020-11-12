@@ -158,7 +158,7 @@ class B_UserInformationsViewController: UIViewController, UIImagePickerControlle
         pickerFrame.dataSource = self
         pickerFrame.delegate = self
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Fermer", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Valider", style: .default, handler: { (UIAlertAction) in
             
             self.pickerViewButton.setTitle(self.typeValue, for: .normal)

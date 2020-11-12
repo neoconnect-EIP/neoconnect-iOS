@@ -3,12 +3,17 @@
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Raleway-Italic-VariableFont_wght.ttf">
+            <string>RalewayItalic-Bold</string>
+            <string>RalewayItalic-ExtraBold</string>
+        </array>
         <array key="Raleway-Medium.ttf">
             <string>Raleway-Medium</string>
         </array>
@@ -36,8 +41,8 @@
                                 <subviews>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vous n'avez aucune offre" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ouh-ms-O7q">
                                         <rect key="frame" x="60" y="250.5" width="215" height="19"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" systemColor="scrollViewTexturedBackgroundColor"/>
+                                        <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -49,7 +54,7 @@
                                     <constraint firstItem="ouh-ms-O7q" firstAttribute="height" secondItem="eRj-dw-gM6" secondAttribute="height" multiplier="0.0372727" id="qOo-Eo-z6N"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="180" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DXZ-5I-p1C">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="180" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DXZ-5I-p1C">
                                 <rect key="frame" x="20" y="94" width="335" height="520"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -63,7 +68,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="308" height="180"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Qj-pH-7Ol" customClass="PhotoFieldImage" customModule="NeoConnect" customModuleProvider="target">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Qj-pH-7Ol" customClass="PhotoFieldImage" customModule="NeoConnect" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="25" width="175" height="130"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="130" id="HZp-ZR-dRl"/>
@@ -71,7 +76,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZD-r0-Mdv">
-                                                    <rect key="frame" x="181" y="25" width="125" height="50"/>
+                                                    <rect key="frame" x="181" y="35" width="125" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="H0Q-C4-RNs"/>
                                                         <constraint firstAttribute="width" constant="125" id="dRy-M9-Qfy"/>
@@ -80,31 +85,31 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Theme" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sk-vW-BUr">
-                                                    <rect key="frame" x="181" y="83" width="125" height="25"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apply" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3D-TN-x0z">
+                                                    <rect key="frame" x="181" y="105" width="125" height="35"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="125" id="RiY-9b-dkB"/>
-                                                        <constraint firstAttribute="height" constant="25" id="mkP-p3-kH8"/>
+                                                        <constraint firstAttribute="width" constant="125" id="8f9-s4-CqV"/>
+                                                        <constraint firstAttribute="height" constant="35" id="igd-n6-n4f"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="11"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="2sk-vW-BUr" firstAttribute="top" secondItem="oZD-r0-Mdv" secondAttribute="bottom" constant="8" id="MSY-AN-bkD"/>
                                                 <constraint firstItem="2Qj-pH-7Ol" firstAttribute="centerY" secondItem="cBc-Oh-ldw" secondAttribute="centerY" id="OVT-7r-Afs"/>
-                                                <constraint firstItem="oZD-r0-Mdv" firstAttribute="top" secondItem="cBc-Oh-ldw" secondAttribute="top" constant="25" id="bCA-z1-fW6"/>
+                                                <constraint firstItem="oZD-r0-Mdv" firstAttribute="top" secondItem="cBc-Oh-ldw" secondAttribute="top" constant="35" id="bCA-z1-fW6"/>
                                                 <constraint firstAttribute="trailing" secondItem="oZD-r0-Mdv" secondAttribute="trailing" constant="2" id="bDt-Gy-q4M"/>
-                                                <constraint firstItem="2sk-vW-BUr" firstAttribute="leading" secondItem="oZD-r0-Mdv" secondAttribute="leading" id="c6E-4B-5Qh"/>
+                                                <constraint firstItem="g3D-TN-x0z" firstAttribute="top" secondItem="oZD-r0-Mdv" secondAttribute="bottom" constant="20" id="cBa-GS-wem"/>
+                                                <constraint firstItem="g3D-TN-x0z" firstAttribute="leading" secondItem="oZD-r0-Mdv" secondAttribute="leading" id="eEZ-gL-LRf"/>
                                                 <constraint firstItem="2Qj-pH-7Ol" firstAttribute="leading" secondItem="cBc-Oh-ldw" secondAttribute="leading" id="p2q-Bo-6G6"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <gestureRecognizers/>
                                         <connections>
+                                            <outlet property="offerApplyLabel" destination="g3D-TN-x0z" id="M3U-on-W3b"/>
                                             <outlet property="offerImageView" destination="2Qj-pH-7Ol" id="ZUH-CU-urq"/>
-                                            <outlet property="offerThemeLabel" destination="2sk-vW-BUr" id="6lG-2n-qQx"/>
                                             <outlet property="offerTitleLabel" destination="oZD-r0-Mdv" id="dGZ-mX-8ZO"/>
                                             <segue destination="ByT-rw-ueA" kind="show" id="PTD-fd-eES"/>
                                         </connections>
@@ -131,7 +136,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="8Yi-d9-nTI">
-                        <barButtonItem key="backBarButtonItem" title="Retour" id="P4n-TO-Omw"/>
+                        <nil key="title"/>
+                        <barButtonItem key="backBarButtonItem" title="Retour" id="jgC-6e-qd5"/>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="AjS-ar-1S5">
+                            <rect key="frame" x="139.5" y="4" width="96" height="36"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="20"/>
+                            <state key="normal" title="Mes offres"/>
+                        </button>
                     </navigationItem>
                     <connections>
                         <outlet property="noOfferLabelText" destination="ouh-ms-O7q" id="zm3-cf-Jcq"/>
@@ -159,7 +171,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZOh-pM-BVt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1765.217391304348" y="502.90178571428567"/>
+            <point key="canvasLocation" x="1839" y="501"/>
         </scene>
         <!--Offer View Controller-->
         <scene sceneID="TeW-VF-gec">
@@ -172,19 +184,85 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ShopBackground" translatesAutoresizingMaskIntoConstraints="NO" id="ZGZ-uC-4bQ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <button opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y0N-BB-l0p" customClass="PhotoFieldButton" customModule="NeoConnect" customModuleProvider="target">
-                                <rect key="frame" x="100" y="139" width="175" height="130"/>
+                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q5v-Sr-ahN">
+                                <rect key="frame" x="30" y="74" width="315" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="175" id="2zh-Ym-hQe"/>
-                                    <constraint firstAttribute="height" constant="130" id="hNr-5S-hJp"/>
+                                    <constraint firstAttribute="height" constant="40" id="L6M-q1-cZK"/>
                                 </constraints>
-                                <state key="normal">
-                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="loadImageButtonTapped:" destination="ByT-rw-ueA" eventType="touchUpInside" id="FaL-mu-bGc"/>
-                                </connections>
-                            </button>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="RalewayItalic-ExtraBold" family="Raleway" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7cr-Gf-V93">
+                                <rect key="frame" x="10" y="127" width="355" height="150"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="NYA-qW-cAe">
+                                        <rect key="frame" x="0.0" y="0.0" width="780" height="140"/>
+                                        <subviews>
+                                            <button opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uUz-Dd-lpU" customClass="PhotoFieldButton" customModule="NeoConnect" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="140" id="qPA-b9-aj6"/>
+                                                </constraints>
+                                                <state key="normal" image="placeholder-image"/>
+                                                <connections>
+                                                    <action selector="firstImageTapped:" destination="ByT-rw-ueA" eventType="touchUpInside" id="1Dr-tG-ueR"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6io-pK-uQe" customClass="PhotoFieldButton" customModule="NeoConnect" customModuleProvider="target">
+                                                <rect key="frame" x="160" y="0.0" width="140" height="140"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="140" id="juf-3J-PlQ"/>
+                                                </constraints>
+                                                <state key="normal" image="placeholder-image"/>
+                                                <connections>
+                                                    <action selector="secondImageTapped:" destination="ByT-rw-ueA" eventType="touchUpInside" id="AWI-Mz-Ces"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CFj-cO-Ufs" customClass="PhotoFieldButton" customModule="NeoConnect" customModuleProvider="target">
+                                                <rect key="frame" x="320" y="0.0" width="140" height="140"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="140" id="LFV-Ik-0YI"/>
+                                                </constraints>
+                                                <state key="normal" image="placeholder-image"/>
+                                                <connections>
+                                                    <action selector="thirdImageTapped:" destination="ByT-rw-ueA" eventType="touchUpInside" id="JJd-hk-aDv"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUM-Iv-gP6" customClass="PhotoFieldButton" customModule="NeoConnect" customModuleProvider="target">
+                                                <rect key="frame" x="480" y="0.0" width="140" height="140"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="140" id="Bal-09-GQc"/>
+                                                </constraints>
+                                                <state key="normal" image="placeholder-image"/>
+                                                <connections>
+                                                    <action selector="forthImageTapped:" destination="ByT-rw-ueA" eventType="touchUpInside" id="Wym-95-Xcc"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adm-f9-ARc" customClass="PhotoFieldButton" customModule="NeoConnect" customModuleProvider="target">
+                                                <rect key="frame" x="640" y="0.0" width="140" height="140"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="140" id="Vph-ar-Hte"/>
+                                                </constraints>
+                                                <state key="normal" image="placeholder-image"/>
+                                                <connections>
+                                                    <action selector="fifthImageTapped:" destination="ByT-rw-ueA" eventType="touchUpInside" id="EVx-kF-WEL"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="NYA-qW-cAe" firstAttribute="leading" secondItem="7cr-Gf-V93" secondAttribute="leading" id="3KL-wV-JfM"/>
+                                    <constraint firstItem="NYA-qW-cAe" firstAttribute="top" secondItem="7cr-Gf-V93" secondAttribute="top" id="IFX-zs-WkT"/>
+                                    <constraint firstAttribute="bottom" secondItem="NYA-qW-cAe" secondAttribute="bottom" constant="-10" id="Szc-sU-tXb"/>
+                                    <constraint firstAttribute="height" constant="150" id="UvR-60-2RV"/>
+                                    <constraint firstAttribute="trailing" secondItem="NYA-qW-cAe" secondAttribute="trailing" id="dmW-Yn-bdz"/>
+                                    <constraint firstItem="NYA-qW-cAe" firstAttribute="height" secondItem="7cr-Gf-V93" secondAttribute="height" constant="-10" id="xg9-q0-RFq"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="g0p-1M-cX6"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="YbR-bc-ET6"/>
+                            </scrollView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3h8-q9-1SX">
                                 <rect key="frame" x="150" y="294" width="75" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -193,171 +271,320 @@
                                     <constraint firstAttribute="width" constant="75" id="rvh-nw-lcW"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVk-TT-bfR">
-                                <rect key="frame" x="65" y="315" width="75" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Hg2-4U-2av"/>
-                                    <constraint firstAttribute="width" constant="75" id="WbN-73-gJf"/>
-                                </constraints>
-                                <attributedString key="attributedText">
-                                    <fragment content="Sexe :">
-                                        <attributes>
-                                            <color key="NSColor" red="0.96755941692011105" green="1" blue="0.98030269534135372" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <font key="NSFont" metaFont="system" size="17"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="10" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YyR-V6-6CB" customClass="DLRadioButton">
-                                <rect key="frame" x="150" y="315" width="75" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="KES-TU-uRS"/>
-                                    <constraint firstAttribute="width" constant="75" id="qUU-aa-0ME"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="14"/>
-                                <state key="normal" title="Homme">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
-                                        <color key="value" red="0.089033149180000007" green="0.077406220139999996" blue="0.2274742723" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="radioSexButtonTapped:" destination="ByT-rw-ueA" eventType="touchUpInside" id="wIU-7B-A65"/>
-                                    <outletCollection property="otherButtons" destination="z2r-HH-nKH" id="MkV-Wv-MxA"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z2r-HH-nKH" customClass="DLRadioButton">
-                                <rect key="frame" x="235" y="315" width="75" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Juj-Zt-iLB"/>
-                                    <constraint firstAttribute="width" constant="75" id="QRb-1o-6Fu"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="14"/>
-                                <state key="normal" title="Femme">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
-                                        <color key="value" red="0.089033149180000007" green="0.077406220139999996" blue="0.2274742723" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="radioSexButtonTapped:" destination="ByT-rw-ueA" eventType="touchUpInside" id="nTI-hq-Ibs"/>
-                                </connections>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" text="Description de l'offre*" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ifZ-ul-P7Z" customClass="DefaultTextViews" customModule="NeoConnect" customModuleProvider="target">
-                                <rect key="frame" x="67.5" y="360" width="240" height="130"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="YQX-qj-VtJ"/>
-                                    <constraint firstAttribute="width" constant="240" id="kUB-s8-XW8"/>
-                                </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="12"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <button opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gcu-ZI-xkT" customClass="PickerViewButton" customModule="NeoConnect" customModuleProvider="target">
-                                <rect key="frame" x="67.5" y="515" width="110" height="40"/>
+                                <rect key="frame" x="67.5" y="541.5" width="110" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="110" id="H5j-1w-tfm"/>
                                     <constraint firstAttribute="height" constant="40" id="z1w-mk-NPx"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="12"/>
+                                <fontDescription key="fontDescription" name="RalewayItalic-ExtraBold" family="Raleway" pointSize="12"/>
                                 <state key="normal" title="Sujet*"/>
                                 <connections>
-                                    <action selector="pickerViewButtonTapped:" destination="ByT-rw-ueA" eventType="touchUpInside" id="c7a-1q-RsD"/>
+                                    <action selector="subjectViewButtonTapped:" destination="ByT-rw-ueA" eventType="touchUpInside" id="T0M-uV-X59"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Couleur*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dmq-7q-gEe" customClass="DefaultTextFields" customModule="NeoConnect" customModuleProvider="target">
-                                <rect key="frame" x="197.5" y="515" width="110" height="40"/>
+                            <button opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="80b-KX-3uJ" customClass="PickerViewButton" customModule="NeoConnect" customModuleProvider="target">
+                                <rect key="frame" x="197.5" y="541.5" width="110" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="iD6-a9-8o3"/>
-                                    <constraint firstAttribute="width" constant="110" id="zQt-SU-4Ve"/>
+                                    <constraint firstAttribute="height" constant="40" id="J1v-C1-d7z"/>
+                                    <constraint firstAttribute="width" constant="110" id="sGv-2s-Uin"/>
                                 </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="12"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Xc-dD-G0z">
-                                <rect key="frame" x="72.5" y="69" width="230" height="40"/>
+                                <fontDescription key="fontDescription" name="RalewayItalic-ExtraBold" family="Raleway" pointSize="12"/>
+                                <state key="normal" title="Sexe"/>
+                                <connections>
+                                    <action selector="sexViewButtonTapped:" destination="ByT-rw-ueA" eventType="touchUpInside" id="L9M-5o-61y"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ifZ-ul-P7Z" customClass="DefaultTextViews" customModule="NeoConnect" customModuleProvider="target">
+                                <rect key="frame" x="67.5" y="351.5" width="240" height="165"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="230" id="b8I-x1-ClW"/>
-                                    <constraint firstAttribute="height" constant="40" id="oZ3-ts-D4M"/>
+                                    <constraint firstAttribute="width" constant="240" id="kUB-s8-XW8"/>
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="Raleway-SemiBold" family="Raleway" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <fontDescription key="fontDescription" name="RalewayItalic-ExtraBold" family="Raleway" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veuiilez décrire votre offre ci-dessous :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qyd-El-oQ2">
+                                <rect key="frame" x="67.5" y="315" width="241.5" height="16.5"/>
+                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Edit button" translatesAutoresizingMaskIntoConstraints="NO" id="pSb-ea-VPR">
+                                <rect key="frame" x="345" y="74" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="oA9-r3-03M"/>
+                                    <constraint firstAttribute="width" constant="20" id="tGr-pr-dgy"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="A3t-sf-QyW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="z2r-HH-nKH" firstAttribute="leading" secondItem="YyR-V6-6CB" secondAttribute="trailing" constant="10" id="20f-79-qW1"/>
-                            <constraint firstItem="YyR-V6-6CB" firstAttribute="top" secondItem="3h8-q9-1SX" secondAttribute="bottom" constant="20" id="2ta-Hp-VWO"/>
-                            <constraint firstItem="YyR-V6-6CB" firstAttribute="leading" secondItem="FVk-TT-bfR" secondAttribute="trailing" constant="10" id="5FU-J3-F82"/>
-                            <constraint firstItem="y0N-BB-l0p" firstAttribute="centerX" secondItem="A3t-sf-QyW" secondAttribute="centerX" id="9zA-xj-qoL"/>
-                            <constraint firstItem="YyR-V6-6CB" firstAttribute="centerX" secondItem="A3t-sf-QyW" secondAttribute="centerX" id="Amv-ef-U1l"/>
+                            <constraint firstItem="pSb-ea-VPR" firstAttribute="leading" secondItem="q5v-Sr-ahN" secondAttribute="trailing" id="5k9-wk-aa0"/>
+                            <constraint firstItem="7cr-Gf-V93" firstAttribute="centerX" secondItem="A3t-sf-QyW" secondAttribute="centerX" id="7hg-n6-H6G"/>
+                            <constraint firstItem="ifZ-ul-P7Z" firstAttribute="top" secondItem="qyd-El-oQ2" secondAttribute="bottom" constant="20" id="8Gg-YU-jfR"/>
+                            <constraint firstItem="q5v-Sr-ahN" firstAttribute="leading" secondItem="A3t-sf-QyW" secondAttribute="leading" constant="30" id="8Ve-Il-TCU"/>
+                            <constraint firstItem="qyd-El-oQ2" firstAttribute="leading" secondItem="ifZ-ul-P7Z" secondAttribute="leading" id="AXQ-kB-Xow"/>
                             <constraint firstItem="3h8-q9-1SX" firstAttribute="centerX" secondItem="A3t-sf-QyW" secondAttribute="centerX" id="Bvv-E5-Kqw"/>
                             <constraint firstItem="ifZ-ul-P7Z" firstAttribute="centerX" secondItem="A3t-sf-QyW" secondAttribute="centerX" id="C2Q-5X-Ssc"/>
                             <constraint firstItem="Gcu-ZI-xkT" firstAttribute="top" secondItem="ifZ-ul-P7Z" secondAttribute="bottom" constant="25" id="CA0-cp-9Cz"/>
-                            <constraint firstItem="3Xc-dD-G0z" firstAttribute="top" secondItem="A3t-sf-QyW" secondAttribute="top" constant="25" id="KEr-Wt-hpC"/>
+                            <constraint firstItem="A3t-sf-QyW" firstAttribute="trailing" secondItem="7cr-Gf-V93" secondAttribute="trailing" constant="10" id="Dol-GC-56o"/>
+                            <constraint firstItem="7cr-Gf-V93" firstAttribute="top" secondItem="q5v-Sr-ahN" secondAttribute="bottom" constant="13" id="ENu-dF-dAt"/>
+                            <constraint firstItem="3h8-q9-1SX" firstAttribute="top" secondItem="7cr-Gf-V93" secondAttribute="bottom" constant="17" id="O5z-l2-pEo"/>
                             <constraint firstItem="Gcu-ZI-xkT" firstAttribute="leading" secondItem="ifZ-ul-P7Z" secondAttribute="leading" id="OLF-vW-Tte"/>
-                            <constraint firstItem="FVk-TT-bfR" firstAttribute="centerY" secondItem="YyR-V6-6CB" secondAttribute="centerY" id="XRT-fr-xzf"/>
-                            <constraint firstItem="Dmq-7q-gEe" firstAttribute="centerY" secondItem="Gcu-ZI-xkT" secondAttribute="centerY" id="bvL-iE-G38"/>
+                            <constraint firstItem="qyd-El-oQ2" firstAttribute="top" secondItem="3h8-q9-1SX" secondAttribute="bottom" constant="20" id="OQN-Lz-30z"/>
+                            <constraint firstItem="80b-KX-3uJ" firstAttribute="centerY" secondItem="Gcu-ZI-xkT" secondAttribute="centerY" id="UH4-qx-Yb7"/>
                             <constraint firstAttribute="top" secondItem="ZGZ-uC-4bQ" secondAttribute="top" id="cK9-HN-I58"/>
                             <constraint firstAttribute="bottom" secondItem="ZGZ-uC-4bQ" secondAttribute="bottom" id="dyA-uK-xKB"/>
+                            <constraint firstItem="80b-KX-3uJ" firstAttribute="trailing" secondItem="ifZ-ul-P7Z" secondAttribute="trailing" id="em6-DS-C3I"/>
+                            <constraint firstItem="7cr-Gf-V93" firstAttribute="leading" secondItem="A3t-sf-QyW" secondAttribute="leading" constant="10" id="ffp-uS-mRK"/>
                             <constraint firstItem="ZGZ-uC-4bQ" firstAttribute="leading" secondItem="A3t-sf-QyW" secondAttribute="leading" id="fwN-lr-TyH"/>
-                            <constraint firstItem="3Xc-dD-G0z" firstAttribute="centerX" secondItem="A3t-sf-QyW" secondAttribute="centerX" id="kLj-V4-oXQ"/>
                             <constraint firstItem="A3t-sf-QyW" firstAttribute="trailing" secondItem="ZGZ-uC-4bQ" secondAttribute="trailing" id="lfF-u8-3Xc"/>
-                            <constraint firstItem="z2r-HH-nKH" firstAttribute="centerY" secondItem="YyR-V6-6CB" secondAttribute="centerY" id="nEt-bS-E9c"/>
-                            <constraint firstItem="3h8-q9-1SX" firstAttribute="top" secondItem="y0N-BB-l0p" secondAttribute="bottom" constant="25" id="rph-lG-kTZ"/>
-                            <constraint firstItem="Dmq-7q-gEe" firstAttribute="leading" secondItem="Gcu-ZI-xkT" secondAttribute="trailing" constant="20" id="tu3-xA-sOr"/>
-                            <constraint firstItem="y0N-BB-l0p" firstAttribute="top" secondItem="3Xc-dD-G0z" secondAttribute="bottom" constant="30" id="wed-OY-wW1"/>
-                            <constraint firstItem="ifZ-ul-P7Z" firstAttribute="top" secondItem="YyR-V6-6CB" secondAttribute="bottom" constant="15" id="z9i-QV-tHJ"/>
+                            <constraint firstItem="A3t-sf-QyW" firstAttribute="trailing" secondItem="q5v-Sr-ahN" secondAttribute="trailing" constant="30" id="nds-te-937"/>
+                            <constraint firstItem="ifZ-ul-P7Z" firstAttribute="height" secondItem="Mqf-su-eAh" secondAttribute="height" multiplier="0.247376" id="p75-s7-fbB"/>
+                            <constraint firstItem="pSb-ea-VPR" firstAttribute="top" secondItem="q5v-Sr-ahN" secondAttribute="top" id="rU5-Vd-UiX"/>
+                            <constraint firstItem="q5v-Sr-ahN" firstAttribute="top" secondItem="A3t-sf-QyW" secondAttribute="top" constant="30" id="v6m-Zm-v6s"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Nhs-vH-AIc">
-                        <barButtonItem key="rightBarButtonItem" title="Modifier" id="6PY-di-3Ox" userLabel="Edit Item">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="editButtonTapped:" destination="ByT-rw-ueA" id="8Ux-9u-Q4m"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="backBarButtonItem" title="Retour" id="gIP-Q5-9dF"/>
+                        <rightBarButtonItems>
+                            <barButtonItem id="6PY-di-3Ox" userLabel="Edit Item">
+                                <imageReference key="image" image="pencil" catalog="system" symbolScale="large"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="editButtonTapped:" destination="ByT-rw-ueA" id="8Ux-9u-Q4m"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Candidatures" id="bEf-Ik-NMX">
+                                <imageReference key="image" image="list.bullet" catalog="system" symbolScale="large"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <segue destination="Z2z-HJ-8Wg" kind="show" identifier="showApplies" id="RH5-Ex-Szd"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="editItem" destination="6PY-di-3Ox" id="Koa-9x-2Ug"/>
-                        <outlet property="offerColor" destination="Dmq-7q-gEe" id="zin-Rr-26W"/>
-                        <outlet property="offerDescriptionField" destination="ifZ-ul-P7Z" id="bIf-RQ-CjX"/>
-                        <outlet property="offerFemaleButton" destination="z2r-HH-nKH" id="Ub0-uO-6kl"/>
-                        <outlet property="offerImage" destination="y0N-BB-l0p" id="8wQ-hn-rNW"/>
-                        <outlet property="offerMaleButton" destination="YyR-V6-6CB" id="4R2-QJ-tlJ"/>
-                        <outlet property="offerTitleField" destination="3Xc-dD-G0z" id="5E0-yZ-30i"/>
-                        <outlet property="pickerViewButton" destination="Gcu-ZI-xkT" id="MpU-vK-FCR"/>
+                        <outlet property="descTextView" destination="ifZ-ul-P7Z" id="9dt-4R-LcQ"/>
+                        <outlet property="editItem" destination="6PY-di-3Ox" id="pve-Of-Fj5"/>
+                        <outlet property="editNameButton" destination="pSb-ea-VPR" id="aVM-aR-Gua"/>
+                        <outlet property="fifthImage" destination="adm-f9-ARc" id="2vt-Bw-87h"/>
+                        <outlet property="firstImage" destination="uUz-Dd-lpU" id="ZhS-sf-oAE"/>
+                        <outlet property="forthImage" destination="HUM-Iv-gP6" id="0DV-qk-ZnF"/>
+                        <outlet property="nameTextField" destination="q5v-Sr-ahN" id="UYx-iJ-5IU"/>
+                        <outlet property="secondImage" destination="6io-pK-uQe" id="jIB-T3-oXT"/>
+                        <outlet property="sexPickerViewButton" destination="80b-KX-3uJ" id="ZK7-X6-iTa"/>
+                        <outlet property="subjectPickerViewButton" destination="Gcu-ZI-xkT" id="9w2-RA-wRF"/>
+                        <outlet property="thirdImage" destination="CFj-cO-Ufs" id="uYQ-jN-daT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KfD-1F-HfX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3265" y="501"/>
+            <point key="canvasLocation" x="3228" y="501"/>
+        </scene>
+        <!--Candidacy View Controller-->
+        <scene sceneID="PRm-Bf-mTN">
+            <objects>
+                <viewController id="Z2z-HJ-8Wg" customClass="B_CandidacyViewController" customModule="NeoConnect" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RLt-ps-SAp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ShopBackground" translatesAutoresizingMaskIntoConstraints="NO" id="8VV-Kx-Rln">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQv-G8-KYs">
+                                <rect key="frame" x="10" y="49" width="355" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="IO4-vf-Ky7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Raleway-SemiBold" family="Raleway" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oXb-io-eEN" customClass="PhotoFieldImage" customModule="NeoConnect" customModuleProvider="target">
+                                <rect key="frame" x="127.5" y="99" width="120" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="PcT-Qv-Xie"/>
+                                    <constraint firstAttribute="width" secondItem="oXb-io-eEN" secondAttribute="height" multiplier="4:3" id="dYX-Nc-hap"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iyV-kP-ZIG">
+                                <rect key="frame" x="150" y="209" width="75" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="ahy-GZ-B9b"/>
+                                    <constraint firstAttribute="width" constant="75" id="dcH-GO-Muz"/>
+                                </constraints>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="140" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8L4-qo-yMq">
+                                <rect key="frame" x="0.0" y="226" width="375" height="441"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="separatorInset" minX="150" minY="0.0" maxX="150" maxY="0.0"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="InfTableViewCell" rowHeight="140" id="Mam-DS-2gZ" customClass="B_DetailedCandidacyTableViewCell" customModule="NeoConnect" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="140"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mam-DS-2gZ" id="g77-P7-HHk">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pTb-4E-AlH" customClass="PhotoFieldImage" customModule="NeoConnect" customModuleProvider="target">
+                                                    <rect key="frame" x="15" y="45" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="pTb-4E-AlH" secondAttribute="height" multiplier="1:1" id="3XV-1c-VSw"/>
+                                                        <constraint firstAttribute="width" constant="50" id="3l5-nj-ViF"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9H-Zv-bfd">
+                                                    <rect key="frame" x="112.5" y="10" width="150" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="150" id="COD-CB-xWJ"/>
+                                                        <constraint firstAttribute="height" constant="30" id="FeS-Iq-Atp"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="RalewayItalic-Bold" family="Raleway" pointSize="14"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BBJ-Tc-U52" customClass="CosmosView" customModule="Cosmos">
+                                                    <rect key="frame" x="142.5" y="45" width="90" height="14"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="filledImage" value="Etoile"/>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="Etoile grise"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                                            <real key="value" value="14"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yk8-ii-LUq" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
+                                                    <rect key="frame" x="100" y="84" width="75" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="80g-WX-bN4"/>
+                                                        <constraint firstAttribute="width" constant="75" id="auc-VS-ila"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="RalewayItalic-Bold" family="Raleway" pointSize="10"/>
+                                                    <state key="normal" title="Accepter">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="buttonTapped:" destination="Mam-DS-2gZ" eventType="touchUpInside" id="knC-yg-lp4"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOq-dA-4vx" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
+                                                    <rect key="frame" x="200" y="84" width="75" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="75" id="Bij-uo-z2j"/>
+                                                        <constraint firstAttribute="height" constant="30" id="SWi-Cc-yBg"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="RalewayItalic-Bold" family="Raleway" pointSize="10"/>
+                                                    <state key="normal" title="Refuser">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="buttonTapped:" destination="Mam-DS-2gZ" eventType="touchUpInside" id="Zfw-pc-l4D"/>
+                                                    </connections>
+                                                </button>
+                                                <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t5b-P8-LQt" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
+                                                    <rect key="frame" x="150" y="84" width="75" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="Aym-OO-MMT"/>
+                                                        <constraint firstAttribute="width" constant="75" id="suW-Ly-2cX"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="RalewayItalic-Bold" family="Raleway" pointSize="10"/>
+                                                    <state key="normal" title="Accepté !">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="buttonTapped:" destination="Mam-DS-2gZ" eventType="touchUpInside" id="oVd-yc-N0b"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="BBJ-Tc-U52" firstAttribute="top" secondItem="f9H-Zv-bfd" secondAttribute="bottom" constant="5" id="Sg1-qb-hgf"/>
+                                                <constraint firstItem="Yk8-ii-LUq" firstAttribute="top" secondItem="BBJ-Tc-U52" secondAttribute="bottom" constant="25" id="gwQ-Yn-Osg"/>
+                                                <constraint firstItem="WOq-dA-4vx" firstAttribute="top" secondItem="BBJ-Tc-U52" secondAttribute="bottom" constant="25" id="lKy-dH-3v8"/>
+                                                <constraint firstItem="t5b-P8-LQt" firstAttribute="top" secondItem="BBJ-Tc-U52" secondAttribute="bottom" constant="25" id="uJL-Zx-ZAT"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="Yk8-ii-LUq" firstAttribute="centerX" secondItem="Mam-DS-2gZ" secondAttribute="centerX" constant="-50" id="3CI-Pe-hm7"/>
+                                            <constraint firstItem="pTb-4E-AlH" firstAttribute="leading" secondItem="Mam-DS-2gZ" secondAttribute="leading" constant="15" id="897-7Z-nxV"/>
+                                            <constraint firstItem="WOq-dA-4vx" firstAttribute="centerX" secondItem="Mam-DS-2gZ" secondAttribute="centerX" constant="50" id="Kpe-8V-mUg"/>
+                                            <constraint firstItem="t5b-P8-LQt" firstAttribute="centerX" secondItem="Mam-DS-2gZ" secondAttribute="centerX" id="MHl-og-9Yo"/>
+                                            <constraint firstItem="pTb-4E-AlH" firstAttribute="centerY" secondItem="Mam-DS-2gZ" secondAttribute="centerY" id="Yxg-In-1gr"/>
+                                            <constraint firstItem="f9H-Zv-bfd" firstAttribute="centerX" secondItem="Mam-DS-2gZ" secondAttribute="centerX" id="cQq-BF-SKc"/>
+                                            <constraint firstItem="f9H-Zv-bfd" firstAttribute="top" secondItem="Mam-DS-2gZ" secondAttribute="top" constant="10" id="j1p-Z5-Is5"/>
+                                            <constraint firstItem="BBJ-Tc-U52" firstAttribute="centerX" secondItem="Mam-DS-2gZ" secondAttribute="centerX" id="vTK-ke-9Ek"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="acceptButton" destination="Yk8-ii-LUq" id="dPd-aN-AxG"/>
+                                            <outlet property="acceptedButton" destination="t5b-P8-LQt" id="lqz-Wf-RK3"/>
+                                            <outlet property="declineButton" destination="WOq-dA-4vx" id="BmE-LZ-eMO"/>
+                                            <outlet property="infImageView" destination="pTb-4E-AlH" id="Uce-nn-MdC"/>
+                                            <outlet property="infPseudoLabel" destination="f9H-Zv-bfd" id="lOS-WN-9xO"/>
+                                            <outlet property="ratingStars" destination="BBJ-Tc-U52" id="MZm-XM-4NR"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="9gN-GP-03m"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="9gN-GP-03m" firstAttribute="leading" secondItem="8VV-Kx-Rln" secondAttribute="leading" id="1U8-o6-FeV"/>
+                            <constraint firstItem="9gN-GP-03m" firstAttribute="trailing" secondItem="8VV-Kx-Rln" secondAttribute="trailing" id="BWy-uv-SXe"/>
+                            <constraint firstItem="8L4-qo-yMq" firstAttribute="top" secondItem="iyV-kP-ZIG" secondAttribute="bottom" constant="16" id="C67-cB-pH5"/>
+                            <constraint firstItem="IQv-G8-KYs" firstAttribute="top" secondItem="9gN-GP-03m" secondAttribute="top" constant="5" id="Fp8-nK-Q8z"/>
+                            <constraint firstItem="9gN-GP-03m" firstAttribute="trailing" secondItem="IQv-G8-KYs" secondAttribute="trailing" constant="10" id="JgJ-UY-MCw"/>
+                            <constraint firstItem="iyV-kP-ZIG" firstAttribute="top" secondItem="oXb-io-eEN" secondAttribute="bottom" constant="20" id="MYQ-Eh-Rlw"/>
+                            <constraint firstItem="IQv-G8-KYs" firstAttribute="centerX" secondItem="9gN-GP-03m" secondAttribute="centerX" id="Nvl-Hg-KVJ"/>
+                            <constraint firstItem="IQv-G8-KYs" firstAttribute="leading" secondItem="9gN-GP-03m" secondAttribute="leading" constant="10" id="PPS-SK-jum"/>
+                            <constraint firstItem="oXb-io-eEN" firstAttribute="top" secondItem="IQv-G8-KYs" secondAttribute="bottom" constant="10" id="QBO-RI-Hcb"/>
+                            <constraint firstAttribute="bottom" secondItem="8VV-Kx-Rln" secondAttribute="bottom" id="U88-A3-LgZ"/>
+                            <constraint firstItem="oXb-io-eEN" firstAttribute="centerX" secondItem="9gN-GP-03m" secondAttribute="centerX" id="YBS-kT-nCn"/>
+                            <constraint firstItem="8L4-qo-yMq" firstAttribute="centerX" secondItem="9gN-GP-03m" secondAttribute="centerX" id="b79-bp-tbB"/>
+                            <constraint firstItem="9gN-GP-03m" firstAttribute="bottom" secondItem="8L4-qo-yMq" secondAttribute="bottom" id="crC-1K-CSG"/>
+                            <constraint firstAttribute="top" secondItem="8VV-Kx-Rln" secondAttribute="top" id="dt6-Gh-0eo"/>
+                            <constraint firstItem="9gN-GP-03m" firstAttribute="trailing" secondItem="8L4-qo-yMq" secondAttribute="trailing" id="gp2-uE-VBx"/>
+                            <constraint firstItem="8L4-qo-yMq" firstAttribute="leading" secondItem="9gN-GP-03m" secondAttribute="leading" id="odd-gG-Ukd"/>
+                            <constraint firstItem="iyV-kP-ZIG" firstAttribute="centerX" secondItem="9gN-GP-03m" secondAttribute="centerX" id="t5Z-5r-W2a"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="AZx-ti-8xC"/>
+                    <connections>
+                        <outlet property="imageView" destination="oXb-io-eEN" id="JZQ-nQ-dAE"/>
+                        <outlet property="tableView" destination="8L4-qo-yMq" id="5cf-tC-hoQ"/>
+                        <outlet property="titleLabelField" destination="IQv-G8-KYs" id="nHJ-Uz-Tkr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qiY-Ce-fyh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3926" y="501"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="BBJ-Tc-U52">
+            <size key="intrinsicContentSize" width="90" height="14"/>
+        </designable>
+    </designables>
     <resources>
+        <image name="Edit button" width="20" height="20"/>
+        <image name="Etoile" width="26" height="26"/>
+        <image name="Etoile grise" width="26" height="26"/>
         <image name="ShopBackground" width="375" height="667"/>
-        <systemColor name="scrollViewTexturedBackgroundColor">
-            <color red="0.43529411764705878" green="0.44313725490196082" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <image name="list.bullet" catalog="system" width="128" height="88"/>
+        <image name="pencil" catalog="system" width="128" height="113"/>
+        <image name="placeholder-image" width="800" height="600"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
