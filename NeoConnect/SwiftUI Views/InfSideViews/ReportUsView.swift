@@ -9,6 +9,7 @@
 import SwiftUI
 import Alamofire
 
+// Page Retour utilisateur
 struct ReportUsView: View {
     
     @Environment(\.presentationMode) var presentationMode
@@ -33,14 +34,12 @@ struct ReportUsView: View {
                         Text("Bug").tag(1).foregroundColor(Color.white).font(.custom("Raleway", size: 12))
                         Text("Amélioration").tag(2).foregroundColor(Color.white).font(.custom("Raleway", size: 12))
                         Text("Commentaire").tag(3).foregroundColor(Color.white).font(.custom("Raleway", size: 12))
-                        //Text("Contact").tag(4).foregroundColor(Color.white).font(.custom("Raleway", size: 12))
                     }.padding(.leading, 150.0).frame(width: 100.0, height: 50.0)
                     
                 }
                 .padding(.top)
                 if (selection == 1 || selection == 2)
                 {
-                    //                        TextField("Fonctionnalité*", text: $subject).padding(.top, 50.0).foregroundColor(Color.white).font(.custom("Raleway", size: 12))
                     CustomTextField(placeholder: Text("Fonctionnalité*").foregroundColor(.black),text: $subject
                     ).foregroundColor(Color.white).font(.custom("Raleway", size: 12)).padding(.top, 50.0)
                     Divider()
@@ -49,8 +48,8 @@ struct ReportUsView: View {
                 }
                 if (selection == 3)
                 {
-//                    TextField("Commentaire*", text: $subject).padding(.top, 50.0).foregroundColor(Color.white).font(.custom("Raleway", size: 12))
-                                    CustomTextField(placeholder: Text("Commentaire*").foregroundColor(.black),text: $subject
+
+                CustomTextField(placeholder: Text("Commentaire*").foregroundColor(.black),text: $subject
                                                                                         ).foregroundColor(Color.white).font(.custom("Raleway", size: 12)).padding(.top, 50.0)
                     Divider()
                         .frame(width: 200.0, height: 1.0)
@@ -58,8 +57,6 @@ struct ReportUsView: View {
                 }
                 
                 TextField("Message*", text: $message).foregroundColor(Color.white).frame(height: 200.0).multilineTextAlignment(.center).font(.custom("Raleway", size: 12))
-                //                CustomTextField(placeholder: Text("Message*").foregroundColor(.black),text: $message
-                //                                                                            ).foregroundColor(Color.white).font(.custom("Raleway", size: 12)).frame(height: 200.0).multilineTextAlignment(.center)
                 
                 Divider()
                     .frame(width: 300.0, height: 1.0)
@@ -126,9 +123,7 @@ struct ReportUsView: View {
                 }
                 Spacer()
             }
-                // .padding(.top, 20.0)
                 .padding(.top, 50.0)
-                
                 .frame(width: 300.0)
         }
         .frame(maxWidth:.infinity,maxHeight: .infinity)
@@ -150,7 +145,6 @@ struct ReportUsView: View {
 
 struct ReportUsView_Previews: PreviewProvider {
     static var previews: some View {
-        // ReportUserView(idUser: 1, pseudo: "Test")
         ReportUsView()
     }
 }

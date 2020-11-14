@@ -9,6 +9,7 @@
 import SwiftUI
 import Alamofire
 
+// Texte personnalisé
 struct CustomTextField: View {
     var placeholder: Text
     @Binding var text: String
@@ -23,6 +24,7 @@ struct CustomTextField: View {
     }
 }
 
+// Page Partage des publications
 struct ShareOfferView: View {
     @Environment(\.presentationMode) var presentationMode
     var selectedOffer : Offer2
@@ -46,7 +48,6 @@ struct ShareOfferView: View {
                             placeholder: Text("Facebook").foregroundColor(.black),
                             text: $facebook
                         ).foregroundColor(Color.white).font(.custom("Raleway", size: 12))
-                        //                        TextField("Facebook", text: $facebook).foregroundColor(Color.white).font(.custom("Raleway", size: 12))
                         Divider()
                     }
                     Group {

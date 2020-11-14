@@ -1,29 +1,28 @@
 //
-//  NotationUserShopSideView.swift
+//  NotationUserView.swift
 //  NeoConnect
 //
-//  Created by Ilan Cohen on 09/09/2020.
+//  Created by Ilan Cohen on 01/06/2020.
 //  Copyright © 2020 EIP. All rights reserved.
 //
 
 import SwiftUI
 import UIKit
+import CoreLocation
 import Alamofire
 
-
-struct NotationUserShopSideView: View {
+// Page notation d'un utilisateur
+struct NotationUserView: View {
+    
     @Environment(\.presentationMode) var presentationMode
     @State private var showingAlert = false
     var userId : Int
     @State var rating: Int
-    
     @State private var message = ""
     
     var label = ""
-    
     var offImage: Image?
     var onImage = Image(systemName: "star.fill")
-    
     var offColor = Color.gray
     var onColor = Color.yellow
     
@@ -54,8 +53,6 @@ struct NotationUserShopSideView: View {
                     }
                 }.padding(.top, 50.0)
                 TextField("Commentaire*", text: $message).foregroundColor(Color.white).frame(height: 200.0).multilineTextAlignment(.center).font(.custom("Raleway", size: 12))
-                //            CustomTextField(placeholder: Text("Commentaire*").foregroundColor(.black),text: $message
-                //                                                                                  ).foregroundColor(Color.white).font(.custom("Raleway", size: 12)).frame(height: 200.0).multilineTextAlignment(.center)
                 
                 Divider()
                     .frame(width: 300.0, height: 1.0)
@@ -69,10 +66,9 @@ struct NotationUserShopSideView: View {
                     .alert(isPresented: $showingAlert) {
                         Alert(title: Text("Noter l'utilisateur"), message: Text("Votre note a bien été prise en compte."), dismissButton: .default(Text("Ok")))
                 }
-            }
-            .padding(.top,50)
-        }  .frame(maxWidth:.infinity,maxHeight: .infinity)
-            .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "16133C").opacity(0.95), Color(hex: "048136").opacity(0.1)]), startPoint: .top, endPoint: .bottom))
+            }.padding(.top,50)
+        } .frame(maxWidth:.infinity,maxHeight: .infinity)
+            .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "15113D").opacity(0.85), Color(hex: "3CA6CC").opacity(0.5)]), startPoint: .top, endPoint: .bottom))
             .edgesIgnoringSafeArea(.top)
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(leading:
@@ -86,8 +82,24 @@ struct NotationUserShopSideView: View {
     }
 }
 
-struct NotationUserShopSideView_Previews: PreviewProvider {
-    static var previews: some View {
-        NotationUserShopSideView(userId: 1, rating: 1)
+// Noter et commenter
+func rateAndCommentUser(rating: Int, userId: Int, message: String)
+{
+    let userToken = UserDefaults.standard.string(forKey: "Token")!
+    let _headers: HTTPHeaders = [
+        "Authorization": "Bearer " + userToken            ]
+    AF.request(url+"user/comment/" + String(userId), method: .post, parameters: ["comment" : message], encoding: URLEncoding.default, headers: _headers) .responseString { response in
+        debugPrint(response)
+    }
+    AF.request(url+"user/mark/" + String(userId), method: .post, parameters: ["mark" : rating], encoding: URLEncoding.default, headers: _headers) .responseString { response in
+        debugPrint(response)
     }
 }
+
+
+struct NotationUserView_Previews: PreviewProvider {
+    static var previews: some View {
+        NotationUserView(userId: 10, rating: 4)
+    }
+}
+

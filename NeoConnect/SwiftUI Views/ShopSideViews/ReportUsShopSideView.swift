@@ -10,6 +10,7 @@ import SwiftUI
 import UIKit
 import Alamofire
 
+// Page Retour Utilisateur
 struct ReportUsShopSideView: View {
     
     @Environment(\.presentationMode) var presentationMode
@@ -36,14 +37,12 @@ struct ReportUsShopSideView: View {
                         Text("Bug").tag(1).foregroundColor(Color.white).font(.custom("Raleway", size: 12))
                         Text("Amélioration").tag(2).foregroundColor(Color.white).font(.custom("Raleway", size: 12))
                         Text("Commentaire").tag(3).foregroundColor(Color.white).font(.custom("Raleway", size: 12))
-                      //  Text("Contact").tag(4).foregroundColor(Color.white).font(.custom("Raleway", size: 12))
                     }.padding(.leading, 150.0).frame(width: 100.0, height: 50.0)
                     
                 }
                 .padding(.top)
                 if (selection == 1 || selection == 2)
                 {
-                    //                        TextField("Fonctionnalité*", text: $subject).padding(.top, 50.0).foregroundColor(Color.white).font(.custom("Raleway", size: 12))
                     CustomTextField(placeholder: Text("Fonctionnalité*").foregroundColor(.black),text: $subject
                     ).foregroundColor(Color.white).font(.custom("Raleway", size: 12)).padding(.top, 50.0)
                     Divider()
@@ -52,8 +51,7 @@ struct ReportUsShopSideView: View {
                 }
                 if (selection == 3)
                 {
-//                    TextField("Commentaire*", text: $subject).padding(.top, 50.0).foregroundColor(Color.white).font(.custom("Raleway", size: 12))
-                                    CustomTextField(placeholder: Text("Commentaire*").foregroundColor(.black),text: $subject
+                    CustomTextField(placeholder: Text("Commentaire*").foregroundColor(.black),text: $subject
                                                                                                       ).foregroundColor(Color.white).font(.custom("Raleway", size: 12)).padding(.top, 50.0)
                     Divider()
                         .frame(width: 200.0, height: 1.0)
@@ -61,8 +59,6 @@ struct ReportUsShopSideView: View {
                 }
                 
                                 TextField("Message*", text: $message).foregroundColor(Color.white).frame(height: 200.0).multilineTextAlignment(.center).font(.custom("Raleway", size: 12))
-//                CustomTextField(placeholder: Text("Message*").foregroundColor(.black),text: $message
-//                ).foregroundColor(Color.white).font(.custom("Raleway", size: 12)).frame(height: 200.0).multilineTextAlignment(.center)
                 
                 Divider()
                     .frame(width: 300.0, height: 1.0)
@@ -130,7 +126,6 @@ struct ReportUsShopSideView: View {
                 }
                 Spacer()
             }
-                // .padding(.top, 20.0)
                 .padding(.top, 50.0)
                 .frame(width: 300.0)
         }

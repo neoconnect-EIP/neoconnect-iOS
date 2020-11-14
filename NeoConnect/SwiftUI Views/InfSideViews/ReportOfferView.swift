@@ -9,6 +9,7 @@
 import SwiftUI
 import Alamofire
 
+// Signaler une offre
 struct ReportOfferView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var showingAlert = false
@@ -21,15 +22,12 @@ struct ReportOfferView: View {
         ZStack() {
             VStack(alignment: .leading) {
                 Text("Signaler une offre").foregroundColor(Color.white).font(.custom("Raleway", size: 20)).padding(.top, 100.0)
-                //                TextField("Nom de l'offre*", text: $offerName).frame(width: 150.0, height: 50.0).foregroundColor(Color.white).font(.custom("Raleway", size: 12))
                 CustomTextField(placeholder: Text("Nom de l'offre*").foregroundColor(.black),
                                 text: $offerName
                 ).foregroundColor(Color.white).font(.custom("Raleway", size: 12)).frame(width: 150.0, height: 50.0)
                 Divider()
                     .frame(width: 200.0, height: 1.0)
                     .background(Color(hex:"445173"))
-                //                CustomTextField(placeholder: Text("Message*").foregroundColor(.black),text: $message
-                //                               ).foregroundColor(Color.white).font(.custom("Raleway", size: 12)).frame(height: 200.0).multilineTextAlignment(.center)
                 TextField("Message*", text: $message).foregroundColor(Color.white).frame(height: 200.0).multilineTextAlignment(.center).font(.custom("Raleway", size: 12))
                 
                 Divider()
@@ -70,7 +68,6 @@ struct ReportOfferView: View {
                 }
                 Spacer()
             }
-                // .padding(.top, 20.0)
                 .padding(.top, 50.0)
                 .frame(width: 300.0)
         }

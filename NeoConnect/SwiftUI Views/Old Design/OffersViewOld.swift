@@ -11,7 +11,6 @@ import UIKit
 import CoreLocation
 import Alamofire
 import Combine
-import KingfisherSwiftUI
 
 //
 //func getOffers(completion: @escaping ([Offer2]) -> Void)

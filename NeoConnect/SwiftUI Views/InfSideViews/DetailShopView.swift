@@ -1,8 +1,8 @@
 //
-//  DetailInfView.swift
+//  DetailShopView.swift
 //  NeoConnect
 //
-//  Created by Ilan Cohen on 07/09/2020.
+//  Created by Ilan Cohen on 06/09/2020.
 //  Copyright © 2020 EIP. All rights reserved.
 //
 
@@ -13,76 +13,21 @@ import Alamofire
 import Combine
 import KingfisherSwiftUI
 
-struct infImage: Codable {
-    var imageName: String?
-    var imageData: String?
-}
+// Boutiques Tendances
 
-struct Inf2: Codable,Identifiable{
-    var id : Int
-    var pseudo: String?
-    var userPicture: [infImage]?
-    var full_name: String?
-    var email: String?
-    var theme: String?
-    var average: Double?
-    init() {
-        id = 0
-        pseudo = ""
-        full_name = ""
-        email = ""
-        userPicture = [infImage(imageName: "", imageData: "")]
-        theme = ""
-        average = 0.0
-    }
-}
-
-struct ActualityShopSide: Codable {
-    var listInfNotes : [Inf2]
-    var listInfPopulaire : [Inf2]
-    var listInfTendance : [Inf2]
+struct ShopTendanceView : View {
+    @State var actualites : ActualityInfSide = ActualityInfSide()
     
-    init()
-    {
-        listInfNotes = [Inf2]()
-        listInfPopulaire = [Inf2]()
-        listInfTendance = [Inf2]()
-    }
-    
-}
-
-func getActualityShopSide(completion: @escaping (ActualityShopSide) -> Void)
-{
-    let _headers: HTTPHeaders = [
-        "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!           ]
-    var actuality: ActualityShopSide = ActualityShopSide()
-    AF.request(url+"actuality", method: .get, encoding: URLEncoding.default, headers: _headers) .responseString { response in
-        let jsonString = String(data: response.data!, encoding: String.Encoding.utf8)!
-        let jsonData = Data(jsonString.utf8)
-        let decoder = JSONDecoder()
-        do {
-            actuality = try decoder.decode(ActualityShopSide.self, from: jsonData)
-            completion(actuality)
-        }
-        catch
-        {
-            debugPrint(error)
-        }
-    }
-}
-
-struct InfTendanceView : View {
-    @State var actualites : ActualityShopSide
     var body: some View {
         Group{
             HStack{
                 Image("heart")
-                Text("Influenceurs du moment").foregroundColor(Color.white).font(.custom("Raleway", size: 17)).padding(.vertical)
+                Text("Boutiques du moment").foregroundColor(Color.white).font(.custom("Raleway", size: 17)).padding(.vertical)
             }
             ScrollView(.horizontal,showsIndicators: false) {
                 HStack{
-                    ForEach(actualites.listInfTendance) { infTendance in
-                        NavigationLink(destination: DetailInfView(selectedInf: infTendance, emailUser: infTendance.email!, userId: infTendance.id))
+                    ForEach(actualites.listShopTendance) { shopTendance in
+                        NavigationLink(destination: DetailShopView(selectedShop: shopTendance, emailUser: shopTendance.email!, userId: shopTendance.id))
                         {
                             ZStack{
                                 RoundedRectangle(cornerRadius: 10)
@@ -91,24 +36,23 @@ struct InfTendanceView : View {
                                 VStack(alignment: .leading){
                                     
                                     
-                                    if (infTendance.userPicture!.isEmpty) {
+                                    if (shopTendance.userPicture!.isEmpty) {
                                         Image("noImage").resizable().frame(width: 161.0, height: 77.0)
                                         
                                     }
                                     else {
-                                        KFImage(URL(string:infTendance.userPicture![0].imageData!)).renderingMode(.original).resizable().frame(width: 161.0, height: 77.0)                                }
-                                    Text(String(infTendance.pseudo!)).foregroundColor(Color.black)
+                                        KFImage(URL(string:shopTendance.userPicture![0].imageData!)).renderingMode(.original).resizable().frame(width: 161.0, height: 77.0)                                }
+                                    Text(String(shopTendance.pseudo!)).foregroundColor(Color.black)
                                         .font(.custom("Raleway", size: 12))
                                         .padding(.bottom, 5.0)
                                     HStack{
-                                        Text(String(infTendance.theme ?? "Pas de thème renseigné")).foregroundColor(Color.black)
+                                        Text(String(shopTendance.theme ?? "Pas de thème renseigné")).foregroundColor(Color.black)
                                             .font(.custom("Raleway", size: 12))
                                             .padding(.trailing, 50.0)
                                         HStack{
-                                            isNil3(inf: infTendance)
+                                            isNil2(shop: shopTendance)
                                             Image(systemName: "star.fill").foregroundColor(.yellow)
                                         }
-                                        
                                         
                                     }
                                     
@@ -127,31 +71,28 @@ struct InfTendanceView : View {
             }
             
         }
-            
         .onAppear {
-            
-            getActualityShopSide() {response in
+            getActualityInfSide() {response in
                 self.actualites = response
             }
         }
-        
     }
     
 }
-
-struct InfPopulaireView : View {
-    @State var actualites : ActualityShopSide = ActualityShopSide()
+// Boutiques Populaires
+struct ShopPopulaireView : View {
+    @State var actualites : ActualityInfSide = ActualityInfSide()
     
     var body: some View {
         Group{
             HStack{
                 Image("fire")
-                Text("Influenceurs populaires").foregroundColor(Color.white).font(.custom("Raleway", size: 17)).padding(.vertical)
+                Text("Boutiques populaires").foregroundColor(Color.white).font(.custom("Raleway", size: 17)).padding(.vertical)
             }
             ScrollView(.horizontal,showsIndicators: false) {
                 HStack{
-                    ForEach(actualites.listInfPopulaire) { infPopulaire in
-                        NavigationLink(destination: DetailInfView(selectedInf: infPopulaire, emailUser: infPopulaire.email!, userId: infPopulaire.id))
+                    ForEach(actualites.listShopPopulaire) { shopPopulaire in
+                        NavigationLink(destination: DetailShopView(selectedShop: shopPopulaire, emailUser: shopPopulaire.email!, userId: shopPopulaire.id))
                         {
                             ZStack{
                                 RoundedRectangle(cornerRadius: 10)
@@ -160,21 +101,21 @@ struct InfPopulaireView : View {
                                 VStack(alignment: .leading){
                                     
                                     
-                                    if (infPopulaire.userPicture!.isEmpty) {
+                                    if (shopPopulaire.userPicture!.isEmpty) {
                                         Image("noImage").resizable().frame(width: 161.0, height: 77.0)
                                         
                                     }
                                     else {
-                                        KFImage(URL(string:infPopulaire.userPicture![0].imageData!)).renderingMode(.original).resizable().frame(width: 161.0, height: 77.0)                                }
-                                    Text(String(infPopulaire.pseudo!)).foregroundColor(Color.black)
+                                        KFImage(URL(string:shopPopulaire.userPicture![0].imageData!)).renderingMode(.original).resizable().frame(width: 161.0, height: 77.0)                                }
+                                    Text(String(shopPopulaire.pseudo!)).foregroundColor(Color.black)
                                         .font(.custom("Raleway", size: 12))
                                         .padding(.bottom, 5.0)
                                     HStack{
-                                        Text(String(infPopulaire.theme ?? "Pas de thème renseigné")).foregroundColor(Color.black)
+                                        Text(String(shopPopulaire.theme ?? "Pas de thème renseigné")).foregroundColor(Color.black)
                                             .font(.custom("Raleway", size: 12))
                                             .padding(.trailing, 50.0)
                                         HStack{
-                                            isNil3(inf: infPopulaire)
+                                            isNil2(shop: shopPopulaire)
                                             Image(systemName: "star.fill").foregroundColor(.yellow)
                                         }
                                         
@@ -196,27 +137,27 @@ struct InfPopulaireView : View {
             
         }
         .onAppear {
-            getActualityShopSide() {response in
+            getActualityInfSide() {response in
                 self.actualites = response
             }
         }
     }
     
 }
-
-struct InfNotesView : View {
-    @State var actualites : ActualityShopSide = ActualityShopSide()
+// Boutiques les mieux notées
+struct ShopNotesView : View {
+    @State var actualites : ActualityInfSide = ActualityInfSide()
     
     var body: some View {
         Group{
             HStack{
                 Image("etoile")
-                Text("Influenceurs les mieux notés").foregroundColor(Color.white).font(.custom("Raleway", size: 17)).padding(.vertical)
+                Text("Boutiques les mieux notées").foregroundColor(Color.white).font(.custom("Raleway", size: 17)).padding(.vertical)
             }
             ScrollView(.horizontal,showsIndicators: false) {
                 HStack{
-                    ForEach(actualites.listInfNotes) { infNote in
-                        NavigationLink(destination: DetailInfView(selectedInf: infNote, emailUser: infNote.email!, userId: infNote.id))
+                    ForEach(actualites.listShopNotes) { shopNote in
+                        NavigationLink(destination: DetailShopView(selectedShop: shopNote, emailUser: shopNote.email!, userId: shopNote.id))
                         {
                             ZStack{
                                 RoundedRectangle(cornerRadius: 10)
@@ -225,23 +166,24 @@ struct InfNotesView : View {
                                 VStack(alignment: .leading){
                                     
                                     
-                                    if (infNote.userPicture!.isEmpty) {
+                                    if (shopNote.userPicture!.isEmpty) {
                                         Image("noImage").resizable().frame(width: 161.0, height: 77.0)
                                         
                                     }
                                     else {
-                                        KFImage(URL(string:infNote.userPicture![0].imageData!)).renderingMode(.original).resizable().frame(width: 161.0, height: 77.0)                                }
-                                    Text(String(infNote.pseudo!)).foregroundColor(Color.black)
+                                        KFImage(URL(string:shopNote.userPicture![0].imageData!)).renderingMode(.original).resizable().frame(width: 161.0, height: 77.0)                                }
+                                    Text(String(shopNote.pseudo!)).foregroundColor(Color.black)
                                         .font(.custom("Raleway", size: 12))
                                         .padding(.bottom, 5.0)
                                     HStack{
-                                        Text(String(infNote.theme ?? "Pas de thème renseigné")).foregroundColor(Color.black)
+                                        Text(String(shopNote.theme ?? "Pas de thème renseigné")).foregroundColor(Color.black)
                                             .font(.custom("Raleway", size: 12))
                                             .padding(.trailing, 50.0)
                                         HStack{
-                                            isNil3(inf: infNote)
+                                            isNil2(shop: shopNote)
                                             Image(systemName: "star.fill").foregroundColor(.yellow)
                                         }
+                                        
                                     }
                                     
                                     
@@ -260,7 +202,7 @@ struct InfNotesView : View {
             
         }
         .onAppear {
-            getActualityShopSide() {response in
+            getActualityInfSide() {response in
                 self.actualites = response
             }
         }
@@ -268,11 +210,12 @@ struct InfNotesView : View {
     
 }
 
-struct DetailInfView: View {
+// Boutique détaillée
+struct DetailShopView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var showingAlert = false
     @State private var rating = 0
-    var selectedInf : Inf2
+    var selectedShop : Shop2
     var emailUser : String
     var userId : Int
     
@@ -280,16 +223,16 @@ struct DetailInfView: View {
         ZStack{
             VStack(alignment: .center, spacing: 20.0) {
                 
-                if (selectedInf.userPicture!.isEmpty) {
+                if (selectedShop.userPicture!.isEmpty) {
                     Image("noImage").resizable().frame(width: 100, height: 100)
                         .clipShape(Circle()).clipped().shadow(radius: 3)
                     
                 }
                 else {
-                    KFImage(URL(string:selectedInf.userPicture![0].imageData!)).resizable().frame(width: 100, height: 100)
+                    KFImage(URL(string:selectedShop.userPicture![0].imageData!)).resizable().frame(width: 100, height: 100)
                         .clipShape(Circle()).clipped().shadow(radius: 3)
                 }
-                Text(String(selectedInf.pseudo!)).foregroundColor(Color.white).font(.custom("Raleway", size: 24))
+                Text(String(selectedShop.pseudo!)).foregroundColor(Color.white).font(.custom("Raleway", size: 24))
                 
                 Divider()
                     .frame(width: 75.0, height: 1.0)
@@ -305,8 +248,8 @@ struct DetailInfView: View {
                         .italic()
                 }
                 HStack{
-                    Text(String(selectedInf.theme ?? "Pas de thème renseigné")).fontWeight(.medium).foregroundColor(Color.white).font(.custom("Raleway", size: 18)).padding(.trailing, 100.0)
-                    Text(String(selectedInf.average ?? 0)).foregroundColor(Color.white).font(.custom("Raleway", size: 18)).padding(.vertical)
+                    Text(String(selectedShop.theme ?? "Pas de thème renseigné")).fontWeight(.medium).foregroundColor(Color.white).font(.custom("Raleway", size: 18)).padding(.trailing, 100.0)
+                    Text(String(selectedShop.average?.rounded() ?? 0)).foregroundColor(Color.white).font(.custom("Raleway", size: 18)).padding(.vertical)
                     Image("etoile")
                     
                     
@@ -314,7 +257,7 @@ struct DetailInfView: View {
                     
                 }
                 HStack{
-                    NavigationLink(destination: NotationUserShopSideView(userId: userId, rating: rating)) {
+                    NavigationLink(destination: NotationUserView(userId: userId, rating: rating)) {
                         ZStack
                             {
                                 Image("login")
@@ -322,7 +265,7 @@ struct DetailInfView: View {
                                 Text("Noter").foregroundColor(Color.white).font(.custom("Raleway", size: 12))
                         }
                     }
-                    NavigationLink(destination: ContactUserShopSideView(emailUser: emailUser)) {
+                    NavigationLink(destination: ContactUserView(emailUser: emailUser)) {
                         ZStack
                             {
                                 Image("login").foregroundColor(Color(hex: "445173"))
@@ -334,9 +277,8 @@ struct DetailInfView: View {
                 
             }
             .padding(.top,50)
-            
-        } .frame(maxWidth:.infinity,maxHeight: .infinity)
-            .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "16133C").opacity(0.95), Color(hex: "048136").opacity(0.1)]), startPoint: .top, endPoint: .bottom))
+        }.frame(maxWidth:.infinity,maxHeight: .infinity)
+            .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "15113D").opacity(0.85), Color(hex: "3CA6CC").opacity(0.5)]), startPoint: .top, endPoint: .bottom))
             .edgesIgnoringSafeArea(.top)
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(leading:
@@ -349,9 +291,11 @@ struct DetailInfView: View {
             })
     }
 }
-struct DetailInfView_Previews: PreviewProvider {
+struct DetailShopView_Previews: PreviewProvider {
     static var previews: some View {
-        let inf : Inf2 = Inf2()
-        return DetailInfView(selectedInf: inf, emailUser: "test", userId: 2)
+        let shop : Shop2 = Shop2()
+        return DetailShopView(selectedShop: shop, emailUser: "test", userId: 2)
     }
 }
+
+

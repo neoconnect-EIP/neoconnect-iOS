@@ -1,27 +1,29 @@
 //
-//  NotationView.swift
-//  Neoconnect iOS
+//  NotationUserShopSideView.swift
+//  NeoConnect
 //
-//  Created by Ilan Cohen on 04/12/2019.
-//  Copyright © 2019 Ilan Cohen. All rights reserved.
+//  Created by Ilan Cohen on 09/09/2020.
+//  Copyright © 2020 EIP. All rights reserved.
 //
 
 import SwiftUI
 import UIKit
-import CoreLocation
 import Alamofire
 
-struct NotationView: View {
-    
+// Page Notation d'un utilisateur
+struct NotationUserShopSideView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var showingAlert = false
-    @State private var message = ""
-    @Binding var rating: Int
+    var userId : Int
+    @State var rating: Int
     
-    var selectedOffer : Offer2
+    @State private var message = ""
+    
     var label = ""
+    
     var offImage: Image?
     var onImage = Image(systemName: "star.fill")
+    
     var offColor = Color.gray
     var onColor = Color.yellow
     
@@ -35,7 +37,6 @@ struct NotationView: View {
     
     var body: some View {
         ZStack {
-            
             VStack() {
                 Text("Noter").foregroundColor(Color.white).font(.custom("Raleway", size: 20))
                 HStack {
@@ -53,27 +54,23 @@ struct NotationView: View {
                     }
                 }.padding(.top, 50.0)
                 TextField("Commentaire*", text: $message).foregroundColor(Color.white).frame(height: 200.0).multilineTextAlignment(.center).font(.custom("Raleway", size: 12))
-                //            CustomTextField(placeholder: Text("Commentaire*").foregroundColor(.black),text: $message
-                //                                                                        ).foregroundColor(Color.white).font(.custom("Raleway", size: 12)).frame(height: 200.0).multilineTextAlignment(.center)
                 
                 Divider()
                     .frame(width: 300.0, height: 1.0)
                     .background(Color(hex:"445173"))
-                
-                Button(action:{ rateAndComment(rating: self.rating, selectedOffer: self.selectedOffer, message: self.message)
-                    self.showingAlert = true
-                } ) {
-                    Image("icons8-envoi-de-courriel-24")
-                        .frame(width: 50.0, height: 50.0)
-                        .foregroundColor(/*@START_MENU_TOKEN@*/.white/*@END_MENU_TOKEN@*/)
+                Button(action:{ rateAndCommentUser(rating: self.rating, userId: self.userId, message: self.message)
+                    self.showingAlert = true} ) {
+                        Image("icons8-envoi-de-courriel-24")
+                            .frame(width: 50.0, height: 50.0)
+                            .foregroundColor(/*@START_MENU_TOKEN@*/.white/*@END_MENU_TOKEN@*/)
                 }.padding(30)
                     .alert(isPresented: $showingAlert) {
-                        Alert(title: Text("Noter l'offre"), message: Text("Votre note a bien été prise en compte."), dismissButton: .default(Text("Ok")))
+                        Alert(title: Text("Noter l'utilisateur"), message: Text("Votre note a bien été prise en compte."), dismissButton: .default(Text("Ok")))
                 }
             }
             .padding(.top,50)
-        } .frame(maxWidth:.infinity,maxHeight: .infinity)
-            .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "15113D").opacity(0.85), Color(hex: "3CA6CC").opacity(0.5)]), startPoint: .top, endPoint: .bottom))
+        }  .frame(maxWidth:.infinity,maxHeight: .infinity)
+            .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "16133C").opacity(0.95), Color(hex: "048136").opacity(0.1)]), startPoint: .top, endPoint: .bottom))
             .edgesIgnoringSafeArea(.top)
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(leading:
@@ -87,21 +84,8 @@ struct NotationView: View {
     }
 }
 
-func rateAndComment(rating: Int, selectedOffer: Offer2, message: String)
-{
-    let _headers: HTTPHeaders = [
-        "Authorization": "Bearer " + accessToken            ]
-    AF.request(url+"offer/comment/" + String(selectedOffer.id), method: .post, parameters: ["comment" : message], encoding: URLEncoding.default, headers: _headers) .responseString { response in
-        debugPrint(response)
-    }
-    AF.request(url+"offer/mark/" + String(selectedOffer.id), method: .post, parameters: ["mark" : rating], encoding: URLEncoding.default, headers: _headers) .responseString { response in
-        debugPrint(response)
-    }
-}
-
-
-struct NotationView_Previews: PreviewProvider {
+struct NotationUserShopSideView_Previews: PreviewProvider {
     static var previews: some View {
-        NotationView(rating: .constant(4), selectedOffer: Offer2())
+        NotationUserShopSideView(userId: 1, rating: 1)
     }
 }
