@@ -13,6 +13,7 @@ import Alamofire
 import Combine
 import KingfisherSwiftUI
 
+// Annuler la candidature à une offre
 func removeApply(offer : Offer2) {
     let _headers: HTTPHeaders = [
         "Authorization": "Bearer " + accessToken            ]
@@ -21,6 +22,7 @@ func removeApply(offer : Offer2) {
     }
 }
 
+// Offre détaillée (Mes offres)
 struct DetailMyOfferInfSideView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var showingAlert = false
@@ -32,12 +34,7 @@ struct DetailMyOfferInfSideView: View {
         ZStack{
             
             VStack(alignment: .center, spacing: 20.0) {
-                
-                //        Button(action: {print("Partager une offre & Signaler")}) {
-                //            Image("Plus")
-                //                .padding(.leading, 300.0)
-                //                .foregroundColor(/*@START_MENU_TOKEN@*/.white/*@END_MENU_TOKEN@*/)
-                //            }
+  
                 Text(String(selectedOffer.productName!)).foregroundColor(Color.white).font(.custom("Raleway", size: 20))
                 if (selectedOffer.productImg!.isEmpty) {
                     Image("noImage").resizable().frame(width: 100, height: 100)
@@ -120,9 +117,6 @@ struct DetailMyOfferInfSideView: View {
                         Alert(title: Text("Annuler ma candidature"), message: Text("Vous avez annulé votre candidature."), dismissButton: .default(Text("Ok")))
                     }
                 }
-                
-                //        Text("Crée le " + date).foregroundColor(Color.gray)
-                //        .font(Font.system(size: 14)).italic()
             }.padding(.top,50)
         } .frame(maxWidth:.infinity,maxHeight: .infinity)
             .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "15113D").opacity(0.85), Color(hex: "3CA6CC").opacity(0.5)]), startPoint: .top, endPoint: .bottom))
@@ -139,6 +133,7 @@ struct DetailMyOfferInfSideView: View {
     }
 }
 
+// Pages Mes offres
 struct MyOffersInfSideView: View {
     
     @State var offers : [Offer2] = [Offer2()]

@@ -1,5 +1,5 @@
 //
-//  ContactUsShopSideView.swift
+//  ContactUserShopSideView.swift
 //  NeoConnect
 //
 //  Created by Ilan Cohen on 09/09/2020.
@@ -10,31 +10,33 @@ import SwiftUI
 import UIKit
 import Alamofire
 
-struct ContactUsShopSideView: View {
+// Page Contacter un utilisateur
+struct ContactUserShopSideView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @State private var showingAlert = false
-    @State private var email : String = ""
+    @State var emailUser : String
     @State private var subject : String = ""
     @State private var message : String = ""
     @State private var emailString  : String = ""
     @State private var isEmailValid : Bool   = true
     
+    let pseudo = UserDefaults.standard.string(forKey: "pseudo")!
     private var validated: Bool {
-        !email.isEmpty && !subject.isEmpty && !message.isEmpty
+        !emailUser.isEmpty && !subject.isEmpty && !message.isEmpty
     }
     
     var body: some View {
         ZStack() {
             VStack(alignment: .leading) {
-                Text("Nous contacter").foregroundColor(Color.white).font(.custom("Raleway", size: 20)).padding(.top, 50.0)
-                TextField("Email", text: $email, onEditingChanged: { (isChanged) in
+                Text("Contacter").foregroundColor(Color.white).font(.custom("Raleway", size: 20)).padding(.top, 50.0).padding(.leading, 100.0)
+                TextField("Email", text: $emailUser, onEditingChanged: { (isChanged) in
                     if !isChanged {
-                        if self.textFieldValidatorEmail(self.email) {
+                        if self.textFieldValidatorEmail(self.emailUser) {
                             self.isEmailValid = true
                         } else {
                             self.isEmailValid = false
-                            self.email = ""
+                            self.emailUser = ""
                         }
                     }}).frame(width: 150.0, height: 50.0).foregroundColor(Color.white).font(.custom("Raleway", size: 12))
                 if !self.isEmailValid {
@@ -45,29 +47,29 @@ struct ContactUsShopSideView: View {
                 Divider()
                     .frame(width: 200.0, height: 1.0)
                     .background(Color(hex:"445173"))
-                //                TextField("Sujet*", text: $subject).foregroundColor(Color.white).font(.custom("Raleway", size: 12))
+     
                 CustomTextField(placeholder: Text("Sujet*").foregroundColor(.black),text: $subject
                 ).foregroundColor(Color.white).font(.custom("Raleway", size: 12))
+                
                 Divider()
                     .frame(width: 200.0, height: 1.0)
                     .background(Color(hex:"445173"))
-                //                TextField("Message*", text: $message).foregroundColor(Color.white).frame(height: 200.0).multilineTextAlignment(.center).font(.custom("Raleway", size: 12))
+
                 CustomTextField(placeholder: Text("Message*").foregroundColor(.black),text: $message
                 ).foregroundColor(Color.white).font(.custom("Raleway", size: 12)).frame(height: 200.0).multilineTextAlignment(.center)
-                
                 Divider()
                     .frame(width: 300.0, height: 1.0)
                     .background(Color(hex:"445173"))
                 if (validated && self.isEmailValid) {
-                    Button(action:{
-                        let _headers: HTTPHeaders = [
-                            "Authorization": "Bearer " + accessToken  ]
-                        let map = ["email": self.email,
+                    Button(action: {
+                        let map = ["to": self.emailUser,
+                                   "pseudo": self.pseudo,
+                                   "email": self.emailUser,
                                    "subject": self.subject, "message": self.message]
-                        AF.request(url+"contact",
+                        AF.request(url+"user/contact",
                                    method: .post,
                                    parameters: map,
-                                   encoding: URLEncoding.default,headers: _headers).response { response in
+                                   encoding: URLEncoding.default).response { response in
                                     debugPrint(response)
                         }
                         self.showingAlert = true
@@ -75,14 +77,12 @@ struct ContactUsShopSideView: View {
                     }) {
                         Image("icons8-envoi-de-courriel-24")
                             .frame(width: 50.0, height: 50.0)
-                            .foregroundColor(/*@START_MENU_TOKEN@*/.white/*@END_MENU_TOKEN@*/)
-                        
+                            .foregroundColor(/*@START_MENU_TOKEN@*/.white/*@END_MENU_TOKEN@*/)                             }
+                        .alert(isPresented: $showingAlert) {
+                            Alert(title: Text("Contacter l'utilisateur"), message: Text("Message envoyé."), dismissButton: .default(Text("Ok")))
                     }
                     .frame(width: 300.0)
                     .foregroundColor(/*@START_MENU_TOKEN@*/.white/*@END_MENU_TOKEN@*/)
-                    .alert(isPresented: $showingAlert) {
-                        Alert(title: Text("Nous contacter"), message: Text("Message envoyé."), dismissButton: .default(Text("Ok")))
-                    }
                 }
                 else {
                     Text("Veuillez remplir tous les champs")
@@ -93,7 +93,6 @@ struct ContactUsShopSideView: View {
                 }
                 Spacer()
             }
-                //.padding(.top, 20.0)
                 .padding(.top, 50.0)
                 .frame(width: 300.0)
         }
@@ -111,20 +110,19 @@ struct ContactUsShopSideView: View {
         })
         
     }
+    // Vérification d'email
     func textFieldValidatorEmail(_ string: String) -> Bool {
         if string.count > 100 {
             return false
         }
         let emailFormat = "(?:[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}" + "~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\" + "x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[\\p{L}0-9](?:[a-" + "z0-9-]*[\\p{L}0-9])?\\.)+[\\p{L}0-9](?:[\\p{L}0-9-]*[\\p{L}0-9])?|\\[(?:(?:25[0-5" + "]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-" + "9][0-9]?|[\\p{L}0-9-]*[\\p{L}0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21" + "-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
-        //let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
         return emailPredicate.evaluate(with: string)
     }
     
 }
-
-struct ContactUsShopSideView_Previews: PreviewProvider {
+struct ContactUserShopSideView_Previews: PreviewProvider {
     static var previews: some View {
-        ContactUsShopSideView()
+        ContactUserShopSideView(emailUser: "Email")
     }
 }

@@ -1,15 +1,17 @@
 //
-//  ContactView2.swift
+//  ContactUsShopSideView.swift
 //  NeoConnect
 //
-//  Created by Ilan Cohen on 01/08/2020.
+//  Created by Ilan Cohen on 09/09/2020.
 //  Copyright © 2020 EIP. All rights reserved.
 //
 
 import SwiftUI
+import UIKit
 import Alamofire
 
-struct ContactUsView: View {
+// Page Nous Contacter
+struct ContactUsShopSideView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @State private var showingAlert = false
@@ -18,6 +20,7 @@ struct ContactUsView: View {
     @State private var message : String = ""
     @State private var emailString  : String = ""
     @State private var isEmailValid : Bool   = true
+    
     private var validated: Bool {
         !email.isEmpty && !subject.isEmpty && !message.isEmpty
     }
@@ -43,15 +46,15 @@ struct ContactUsView: View {
                 Divider()
                     .frame(width: 200.0, height: 1.0)
                     .background(Color(hex:"445173"))
-                //                TextField("Sujet*", text: $subject).foregroundColor(Color.white).font(.custom("Raleway", size: 12))
+       
                 CustomTextField(placeholder: Text("Sujet*").foregroundColor(.black),text: $subject
                 ).foregroundColor(Color.white).font(.custom("Raleway", size: 12))
                 Divider()
                     .frame(width: 200.0, height: 1.0)
                     .background(Color(hex:"445173"))
-                TextField("Message*", text: $message).foregroundColor(Color.white).frame(height: 200.0).multilineTextAlignment(.center).font(.custom("Raleway", size: 12))
-                //                CustomTextField(placeholder: Text("Message*").foregroundColor(.black),text: $message
-                //                                              ).foregroundColor(Color.white).font(.custom("Raleway", size: 12)).frame(height: 200.0).multilineTextAlignment(.center)
+
+                CustomTextField(placeholder: Text("Message*").foregroundColor(.black),text: $message
+                ).foregroundColor(Color.white).font(.custom("Raleway", size: 12)).frame(height: 200.0).multilineTextAlignment(.center)
                 
                 Divider()
                     .frame(width: 300.0, height: 1.0)
@@ -91,13 +94,11 @@ struct ContactUsView: View {
                 }
                 Spacer()
             }
-                //  .padding(.top, 20.0)
                 .padding(.top, 50.0)
-                
                 .frame(width: 300.0)
         }
         .frame(maxWidth:.infinity,maxHeight: .infinity)
-        .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "15113D").opacity(0.85), Color(hex: "3CA6CC").opacity(0.5)]), startPoint: .top, endPoint: .bottom))
+        .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "16133C").opacity(0.95), Color(hex: "048136").opacity(0.1)]), startPoint: .top, endPoint: .bottom))
         .edgesIgnoringSafeArea(.top)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading:
@@ -110,22 +111,20 @@ struct ContactUsView: View {
         })
         
     }
+    // Vérification d'email
     func textFieldValidatorEmail(_ string: String) -> Bool {
         if string.count > 100 {
             return false
         }
         let emailFormat = "(?:[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}" + "~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\" + "x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[\\p{L}0-9](?:[a-" + "z0-9-]*[\\p{L}0-9])?\\.)+[\\p{L}0-9](?:[\\p{L}0-9-]*[\\p{L}0-9])?|\\[(?:(?:25[0-5" + "]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-" + "9][0-9]?|[\\p{L}0-9-]*[\\p{L}0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21" + "-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
-        //let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
         return emailPredicate.evaluate(with: string)
     }
     
 }
 
-struct ContactUsView_Previews: PreviewProvider {
+struct ContactUsShopSideView_Previews: PreviewProvider {
     static var previews: some View {
-        // ReportUserView(idUser: 1, pseudo: "Test")
-        ContactUsView()
+        ContactUsShopSideView()
     }
 }
-
