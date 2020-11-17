@@ -25,7 +25,6 @@ class RestrictionTextField {
     }
     
     func isValidPseudo(_ pseudo: String) -> Bool {
-        print(pseudo)
         let pseudoRegEx = "[a-zA-Z0-9]{4,12}"
 
         let pseudoPred = NSPredicate(format:"SELF MATCHES %@", pseudoRegEx)

@@ -44,6 +44,7 @@ class B_ParametersTableViewController: UITableViewController {
     func getImageFromApi() {
         DispatchQueue.main.async {
             APIManager.sharedInstance.getUserImage(onSuccess: { image in
+                print("SUCCESS")
                 self.userImageView.image = image
             })
         }

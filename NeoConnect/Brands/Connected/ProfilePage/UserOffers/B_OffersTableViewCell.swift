@@ -14,7 +14,7 @@ class B_OffersTableViewCell: UITableViewCell {
     @IBOutlet weak var offerTitleLabel: UILabel!
     @IBOutlet weak var offerApplyLabel: UILabel!
     
-    func setOffers(offer: Offer) {
+    func setOffers(offer: B_Offer) {
         offerTitleLabel.text = offer.title
         offerImageView.image = offer.images[0]
         offer.apply.count > 0 ?

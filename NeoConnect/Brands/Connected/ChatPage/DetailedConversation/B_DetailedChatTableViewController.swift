@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 import MessageKit
 import InputBarAccessoryView
 
@@ -35,7 +36,7 @@ class B_DetailedChatViewController: MessagesViewController, MessagesDataSource, 
     let currentUser = sender(senderId: "self", displayName: "")
     let otherUser = sender(senderId: "other", displayName: "")
     var messages = [MessageType]()
-    var inf: Inf!
+    var inf: Conversation!
     var isIncoming = true
     
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
@@ -65,8 +66,14 @@ class B_DetailedChatViewController: MessagesViewController, MessagesDataSource, 
         return messages.count
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        IQKeyboardManager.shared.enable = true
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        IQKeyboardManager.shared.enable = false
         let backBarBtnItem = UIBarButtonItem()
         backBarBtnItem.title = "Retour - \(inf.pseudo)"
         self.tabBarController?.tabBar.isHidden = true
@@ -87,8 +94,6 @@ class B_DetailedChatViewController: MessagesViewController, MessagesDataSource, 
     }
     
     func getDataFromAPI() {
-        var data: Array<NSDictionary> = []
-
         APIManager.sharedInstance.getMessages(id: inf.id, onSuccess: { response in
             let data = response["data"] as! Array<NSDictionary>
             self.messages = self.createArray(data: data)
@@ -105,11 +110,8 @@ class B_DetailedChatViewController: MessagesViewController, MessagesDataSource, 
         var tempTextMessages = [MessageType]()
                 
         for each in data {
-            print("EACH")
             let userId = each["userId"] as! Int
-            let pseudo = each["pseudo"] as! String
             let message = each["message"] as! String
-            let date = each["date"] as! String
             let myId = UserDefaults.standard.integer(forKey: "id")
             tempTextMessages.append(Message(sender: myId != userId ? self.otherUser : self.currentUser,
                                                 messageId: String(userId),

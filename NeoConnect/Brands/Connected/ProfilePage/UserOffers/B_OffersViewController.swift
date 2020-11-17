@@ -15,7 +15,7 @@ class B_OffersViewController: UIViewController {
     @IBOutlet weak var noOfferView: UIView!
     @IBOutlet weak var noOfferLabelText: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    var offers: [Offer] = []
+    var offers: [B_Offer] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -48,8 +48,8 @@ class B_OffersViewController: UIViewController {
         })
     }
     
-    func createArray(results: Array<NSDictionary>) -> [Offer] {
-        var tempOffer: [Offer] = []
+    func createArray(results: Array<NSDictionary>) -> [B_Offer] {
+        var tempOffer: [B_Offer] = []
         
         for dictionary in results {
             guard let id = (dictionary["id"] as? NSNumber)?.intValue else { return tempOffer }
@@ -68,7 +68,7 @@ class B_OffersViewController: UIViewController {
                     }
                 }
             }
-            tempOffer.append(Offer(id: id, images: imageArray, title: name, sex: sex, description: desc, subject: subject, apply: applyDict))
+            tempOffer.append(B_Offer(id: id, images: imageArray, title: name, sex: sex, description: desc, subject: subject, apply: applyDict))
         }
         return tempOffer
     }

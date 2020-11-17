@@ -11,44 +11,37 @@ import Alamofire
 import UIKit
 import Cosmos
 
-class I_ShopFoundViewController: UIViewController {
+class I_DetailedShopViewController: UIViewController {
 
-    @IBOutlet weak var infImageView: PhotoFieldImage!
-    @IBOutlet weak var infPseudoLabelField: UILabel!
-    @IBOutlet weak var noteButton: UIButton!
-    @IBOutlet weak var contactButton: UIButton!
-    @IBOutlet weak var subjectLabelField: UILabel!
-    @IBOutlet weak var ratingStars: CosmosView!
+    @IBOutlet weak var brandPseudo: UILabel!
+    @IBOutlet weak var brandImageView: PhotoFieldImage!
+    @IBOutlet weak var brandNbOffers: UILabel!
+    @IBOutlet weak var brandNbFollowers: UILabel!
+    @IBOutlet weak var brandSubject: UILabel!
+    @IBOutlet weak var brandRating: CosmosView!
+    @IBOutlet weak var brandDescription: UILabel!
     @IBOutlet weak var followButton: DefaultButton!
+    @IBOutlet weak var noteButton: UIButton!
     
     @State private var rating = 0
-    var userId: Int!
-    var userEmail: String!
-    var imageView: UIImage!
-    var pseudo: String!
-    var subject: String!
-    var stars: CosmosView!
-    var shop: Shop!
-    var followed: Bool!
+    var brand: I_Brand!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.tabBarController?.tabBar.isHidden = false
-        self.noteButton.addTarget(self, action: #selector(I_ShopFoundViewController.noteButtonTapped(sender:)), for: .touchUpInside)
-//        self.contactButton.addTarget(self, action: #selector(I_ShopFoundViewController.contactButtonTapped(sender:)), for: .touchUpInside)
+        self.noteButton.addTarget(self, action: #selector(I_DetailedShopViewController.noteButtonTapped(sender:)), for: .touchUpInside)
     }
     
     override func viewDidLoad() {
-        self.infImageView.image = imageView
-        self.infPseudoLabelField.text = pseudo
-        self.subjectLabelField.text = subject
-        if self.followed == false {
-            followButton.setTitle("S'abonner", for: .normal)
-        } else {
-            followButton.setTitle("Abonné", for: .normal)
-        }
-        shop = Shop(id: 0, user_id: userId, pseudo: pseudo, image: imageView)
+        self.brandPseudo.text = brand.pseudo
+        self.brandImageView.image = brand.image
+        self.brandNbOffers.text = brand.nbOffers
+        self.brandNbFollowers.text = brand.nbFollowers
+        self.brandSubject.text = brand.subject
+        self.brandRating.rating = brand.rate
+        self.brandDescription.text = brand.description
+        brand.followed == false ? followButton.setTitle("S'abonner", for: .normal) : followButton.setTitle("Abonné", for: .normal)
         super.viewDidLoad()
     }
     
@@ -56,21 +49,25 @@ class I_ShopFoundViewController: UIViewController {
         if (segue.identifier == "MessageViewInf") {
             let VC = segue.destination as! I_DetailedChatViewController
             
-            VC.shop = shop
+            VC.shop = Shop(id: UserDefaults.standard.integer(forKey: "id"), user_id: brand.id, pseudo: brand.pseudo, image: brand.image)
         }
+    }
+    
+    @IBAction func ratingButtonTapped(_ sender: Any) {
+        
     }
     
     @IBAction func contactButtonTapped(_ sender: Any) {
         self.performSegue(withIdentifier: "MessageViewInf", sender: nil)
     }
-    
+        
     @IBAction func followButtonTapped(_ sender: DefaultButton) {
         let headers: HTTPHeaders = [
             "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
             "Content-Type": "application/x-www-form-urlencoded"
         ]
         if sender.titleLabel?.text == "S'abonner" {
-            AF.request("http://168.63.65.106:8080/shop/follow/\(String(self.userId))", method: .put, headers: headers, interceptor: nil).responseJSON { response in
+            AF.request("http://168.63.65.106:8080/shop/follow/\(String(brand.id))", method: .put, headers: headers, interceptor: nil).responseJSON { response in
                 switch response.result {
                     case .success(_):
                         print(response)
@@ -80,7 +77,7 @@ class I_ShopFoundViewController: UIViewController {
             }
             sender.setTitle("Abonné", for: .normal)
         } else {
-            AF.request("http://168.63.65.106:8080/shop/unfollow/\(String(self.userId))", method: .put, headers: headers, interceptor: nil).responseJSON { response in
+            AF.request("http://168.63.65.106:8080/shop/unfollow/\(String(brand.id))", method: .put, headers: headers, interceptor: nil).responseJSON { response in
                 switch response.result {
                     case .success(_):
                         print(response)
@@ -92,17 +89,10 @@ class I_ShopFoundViewController: UIViewController {
         }
     }
     
-    @objc func noteButtonTapped (sender:UIButton) {
-        let rateView = NotationUserView(userId: userId, rating: rating)
+    @objc func noteButtonTapped(sender:UIButton) {
+        let rateView = NotationUserView(userId: brand.id, rating: rating)
         
         let host = UIHostingController(rootView: rateView)
         navigationController?.pushViewController(host, animated: true)
     }
-    
-//    @objc func contactButtonTapped (sender:UIButton) {
-//        let contactView = ContactUserView(emailUser: userEmail)
-//
-//        let host = UIHostingController(rootView: contactView)
-//        navigationController?.pushViewController(host, animated: true)
-//    }
 }

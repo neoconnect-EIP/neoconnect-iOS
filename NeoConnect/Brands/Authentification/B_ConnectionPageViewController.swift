@@ -54,8 +54,7 @@ class B_ConnectionPageViewController: UIViewController {
                 statusAlert.image = UIImage(named: "Success icon.png")
                 statusAlert.title = "Connexion réussie!"
                 statusAlert.message = "Vous vous êtes connecté avec succès"
-                
-                // Presenting created instance
+                statusAlert.alertShowingDuration = 1
                 statusAlert.showInKeyWindow()
                 let storyBoard: UIStoryboard = UIStoryboard(name: "B_TabBarController", bundle: nil)
                 let home  = storyBoard.instantiateViewController(withIdentifier: "B_CustomTabBarController")

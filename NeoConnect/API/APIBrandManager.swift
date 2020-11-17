@@ -11,7 +11,6 @@ import Alamofire
 
 class APIBrandManager {
     
-    let imageConverter = ImageConverter()
     let baseURL = "http://168.63.65.106:8080"
     static let headers: HTTPHeaders = [
         "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
@@ -22,6 +21,7 @@ class APIBrandManager {
     static let postOfferEndpoint = "/offer/insert"
     static let offerEndPoint = "/offer"
     static let postSearchInfEndpoint = "/inf/search"
+    static let getListInf = "/shop/listInf"
     
     static let sharedInstance = APIBrandManager()
     
@@ -129,6 +129,20 @@ class APIBrandManager {
                     onSuccess(response)
                 case .failure(let error):
                     onFailure(error)
+            }
+        }
+    }
+    
+    func getInfList(onSuccess: @escaping(Array<NSDictionary>) -> Void) {
+        let url : String = baseURL + APIBrandManager.getListInf
+        
+        AF.request(url, headers: APIBrandManager.headers).responseJSON { response in
+            switch response.result {
+                case .success(let JSON):
+                    guard let response = JSON as? Array<NSDictionary> else { return }
+                    onSuccess(response)
+                case .failure(let error):
+                    print("Request failed with error: \(error)")
             }
         }
     }

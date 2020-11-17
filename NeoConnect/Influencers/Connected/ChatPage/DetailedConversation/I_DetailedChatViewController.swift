@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 import MessageKit
 import InputBarAccessoryView
 
@@ -52,8 +53,14 @@ class I_DetailedChatViewController: MessagesViewController, MessagesDataSource, 
         return messages.count
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        IQKeyboardManager.shared.enable = true
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        IQKeyboardManager.shared.enable = false
         let backBarBtnItem = UIBarButtonItem()
         backBarBtnItem.title = "Retour - \(shop.pseudo)"
         self.tabBarController?.tabBar.isHidden = true

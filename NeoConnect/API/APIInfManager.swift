@@ -19,6 +19,8 @@ class APIInfManager {
     static let getRegisterInfEndpoint = "/inf/register"
     static let postSearchBrandEndpoint = "/shop/search"
     static let infoCurrentAccountEndpoint = "/inf/me"
+    static let getBrandList = "/inf/listShop"
+    static let getOfferList = "/offer/list"
     
     static let sharedInstance = APIInfManager()
     
@@ -93,15 +95,42 @@ class APIInfManager {
         }
     }
 
+    func getOfferList(onSuccess: @escaping(Array<NSDictionary>) -> Void) {
+        let url : String = baseURL + APIInfManager.getOfferList
+        
+        AF.request(url, headers: APIInfManager.headers).responseJSON { response in
+            switch response.result {
+                case .success(let JSON):
+                    guard let response = JSON as? Array<NSDictionary> else { return }
+                    onSuccess(response)
+                case .failure(let error):
+                    print("Request failed with error: \(error)")
+            }
+        }
+    }
+    
+    func getBrandList(onSuccess: @escaping(Array<NSDictionary>) -> Void) {
+        let url : String = baseURL + APIInfManager.getBrandList
+        
+        AF.request(url, headers: APIInfManager.headers).responseJSON { response in
+            switch response.result {
+                case .success(let JSON):
+                    guard let response = JSON as? Array<NSDictionary> else { return }
+                    onSuccess(response)
+                case .failure(let error):
+                    print("Request failed with error: \(error)")
+            }
+        }
+    }
+    
     func getInfo(onSuccess: @escaping([String:Any]) -> Void, onFailure: @escaping(Error) -> Void) {
         let url : String = baseURL + APIInfManager.infoCurrentAccountEndpoint
         
         AF.request(url, headers: APIInfManager.headers).responseJSON { response in
             switch response.result {
                 case .success(let JSON):
-                    guard let response = JSON as? [String:Any] else { return }
-                    print(response)
-                    onSuccess(response)
+                    let response = JSON as? [String:Any]
+                    onSuccess(response!)
                 case .failure(let error):
                     onFailure(error)
             }
@@ -117,8 +146,7 @@ class APIInfManager {
         AF.request(url,
                    method: .post,
                    parameters: user,
-                   encoding: URLEncoding.default, headers: APIManager.headers, interceptor: nil).validate(statusCode: 200..<300).responseJSON { response in
-                    
+                   encoding: URLEncoding.default, headers: APIManager.headers, interceptor: nil).responseJSON { response in
                     switch response.result {
                         case .success(let JSON):
                             guard let response = JSON as? [String:Any] else { return }

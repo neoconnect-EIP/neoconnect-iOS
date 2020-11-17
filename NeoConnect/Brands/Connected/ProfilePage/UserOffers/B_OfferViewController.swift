@@ -25,14 +25,13 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     var flag = 0
     var imageArrayToSend: Array<UIImage> = []
-    var subjectData = ["Mode", "Cosmétique", "Jeux Vidéo", "Food", "High Tech", "Sport/Fitness"]
+    var subjectData = ["Mode", "Cosmétique", "Jeux Vidéo", "Nourriture", "High tech", "Sport/Fitness"]
     var sexData = ["Unisexe", "Homme", "Femme"]
     var pickerView = UIPickerView()
     var subjectSelected = "Sujet"
     var sexSelected = "Unisexe"
     var imagePicker:UIImagePickerController!
-    var imageConverter = ImageConverter()
-    var offer: Offer!
+    var offer: B_Offer!
 
     override func viewWillAppear(_ animated: Bool) {
         nameTextField.text = offer.title
@@ -40,9 +39,9 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
         subjectSelected = offer.subject
         subjectPickerViewButton.setTitle(offer.subject, for: .normal)
         switch offer.sex {
-            case "Male":
+            case "Homme":
                 sexPickerViewButton.setTitle("Homme", for: .normal)
-            case "Female":
+            case "Femme":
                 sexPickerViewButton.setTitle("Femme", for: .normal)
             default:
                 sexPickerViewButton.setTitle("Unisexe", for: .normal)
@@ -192,9 +191,9 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
                 case 2:
                     subjectSelected = "Jeux Vidéo"
                 case 3:
-                    subjectSelected = "Food"
+                    subjectSelected = "Nourriture"
                 case 4:
-                    subjectSelected = "High Tech"
+                    subjectSelected = "High tech"
                 case 5:
                     subjectSelected = "Sport/Fitness"
                 default:
@@ -314,7 +313,7 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
                 var imageArray: Array<String> = []
                 
                 for image in imageArrayToSend {
-                    imageArray.append(imageConverter.imageToBase64(image) ?? "")
+                    imageArray.append(image.toBase64() ?? "")
                 }
                 APIBrandManager.sharedInstance.editOffer(id: offer.id, name: name, description: desc, subject: subject, sex: sex, imageArray: imageArray, onSuccess: {
                     let statusAlert = StatusAlert()

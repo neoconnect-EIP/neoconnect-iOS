@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FzD-cd-JMa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FzD-cd-JMa">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -54,18 +54,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nsJ-Qs-9JR">
-                                <rect key="frame" x="0.0" y="83" width="375" height="535"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="574"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="535" id="ZDh-1j-JaV"/>
-                                    <constraint firstAttribute="width" constant="375" id="j9R-G0-1Zs"/>
-                                </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="I_ChatTableViewCell" rowHeight="90" id="fbn-St-gIn" customClass="I_ChatTableViewCell" customModule="NeoConnect" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="I_ChatTableViewCell" rowHeight="90" id="fbn-St-gIn" customClass="I_ChatTableViewCell" customModule="NeoConnect" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fbn-St-gIn" id="QLg-ap-Hwg">
-                                            <rect key="frame" x="0.0" y="0.0" width="348" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uLY-6X-mDQ" customClass="PhotoFieldImage" customModule="NeoConnect" customModuleProvider="target">
@@ -108,13 +104,15 @@
                         <constraints>
                             <constraint firstItem="OsY-YH-THz" firstAttribute="leading" secondItem="Qkg-ED-vHT" secondAttribute="leading" id="8QP-Ct-bvL"/>
                             <constraint firstItem="BZg-58-yc0" firstAttribute="trailing" secondItem="Kqf-Vt-fAw" secondAttribute="trailing" constant="20" id="Aa9-iy-tzz"/>
+                            <constraint firstItem="nsJ-Qs-9JR" firstAttribute="leading" secondItem="BZg-58-yc0" secondAttribute="leading" id="E9W-3Y-j2U"/>
+                            <constraint firstItem="BZg-58-yc0" firstAttribute="trailing" secondItem="nsJ-Qs-9JR" secondAttribute="trailing" id="JAK-oK-m66"/>
                             <constraint firstItem="Kqf-Vt-fAw" firstAttribute="centerY" secondItem="BZg-58-yc0" secondAttribute="centerY" id="NxF-1s-1zv"/>
-                            <constraint firstItem="nsJ-Qs-9JR" firstAttribute="centerX" secondItem="BZg-58-yc0" secondAttribute="centerX" id="VHS-mL-cfb"/>
+                            <constraint firstItem="nsJ-Qs-9JR" firstAttribute="top" secondItem="BZg-58-yc0" secondAttribute="top" id="UTA-W0-0sC"/>
                             <constraint firstAttribute="bottom" secondItem="OsY-YH-THz" secondAttribute="bottom" id="VdJ-Sb-kEc"/>
                             <constraint firstItem="Kqf-Vt-fAw" firstAttribute="leading" secondItem="BZg-58-yc0" secondAttribute="leading" constant="20" id="aNK-si-jdA"/>
                             <constraint firstItem="OsY-YH-THz" firstAttribute="trailing" secondItem="Qkg-ED-vHT" secondAttribute="trailing" id="cWc-pN-O6k"/>
+                            <constraint firstItem="BZg-58-yc0" firstAttribute="bottom" secondItem="nsJ-Qs-9JR" secondAttribute="bottom" id="ilu-ik-vPT"/>
                             <constraint firstItem="OsY-YH-THz" firstAttribute="top" secondItem="Qkg-ED-vHT" secondAttribute="top" id="pRy-cG-WR1"/>
-                            <constraint firstItem="BZg-58-yc0" firstAttribute="bottom" secondItem="nsJ-Qs-9JR" secondAttribute="bottom" id="t8T-8e-g0T"/>
                         </constraints>
                     </view>
                     <toolbarItems/>

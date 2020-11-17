@@ -16,7 +16,7 @@ class B_CandidacyViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var candidacies: [Candidacy] = []
-    var offer: Offer!
+    var offer: B_Offer!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -65,7 +65,6 @@ extension B_CandidacyViewController : UITableViewDataSource, UITableViewDelegate
         let cell = tableView.dequeueReusableCell(withIdentifier: "InfTableViewCell") as! B_DetailedCandidacyTableViewCell
         
         cell.setCandidacy(candidacy: candidacy)
-        
         return cell
     }
     

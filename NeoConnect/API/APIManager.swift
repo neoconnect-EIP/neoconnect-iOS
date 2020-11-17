@@ -48,10 +48,15 @@ class APIManager {
                             let response = JSON as! [String:Any]
                             guard let token = response["token"] else { return }
                             guard let id = response["userId"] else { return }
-                            UserDefaults.standard.set(token, forKey: "Token") // Bool
-                            UserDefaults.standard.set(id, forKey: "id") // Id
-                            UserDefaults.standard.set("Logged", forKey: "isLogged") // Logged
+                            guard let userType = response["userType"] else { return }
+                            guard let theme = response["theme"] else { return }
+                            UserDefaults.standard.set(token, forKey: "Token")
+                            UserDefaults.standard.set(id, forKey: "id")
+                            UserDefaults.standard.set(theme, forKey: "theme")
                             UserDefaults.standard.set(userPseudo, forKey: "pseudo")
+                            UserDefaults.standard.set(userType, forKey: "userType")
+                            UserDefaults.standard.set(Date(), forKey:"LogInTime")
+                            UserDefaults.standard.synchronize()
                             onSuccess()
                         case .failure(_):
                             onFailure()
@@ -140,7 +145,7 @@ class APIManager {
         AF.request(url, method: .get, encoding: URLEncoding.default, headers: APIManager.headers, interceptor: nil).responseJSON { response in
             switch response.result {
                 case .success(let JSON):
-                    let response = JSON as! [String:Any]
+                    guard let response = JSON as? [String:Any] else { return }
                     onSuccess(response)
                 
                 case .failure(let error):

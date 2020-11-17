@@ -21,13 +21,12 @@ class I_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDel
     @IBOutlet weak var userTiktokTextField: RegisterFields!
     @IBOutlet weak var pickerViewButton: UIButton!
     
-    var pickerData = ["Mode", "Cosmétique", "Jeux Vidéo", "Food", "High Tech", "Sport/Fitness"]
+    var pickerData = ["Mode", "Cosmétique", "Jeux Vidéo", "Nourriture", "High tech", "Sport/Fitness"]
     var pickerView = UIPickerView()
-    var typeValue = "Mode"
+    var typeValue = "Choisissez un thème..."
     var restriction = RestrictionTextField()
-    var imageConverter = ImageConverter()
     
-    var userImage = UIImage()
+    var userImage = String()
     var userDescription = String()
     var userPseudo = String()
     var userEmail = String()
@@ -69,9 +68,9 @@ class I_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDel
             case 2:
                 typeValue = "Jeux Vidéo"
             case 3:
-                typeValue = "Food"
+                typeValue = "Nourriture"
             case 4:
-                typeValue = "High Tech"
+                typeValue = "High tech"
             case 5:
                 typeValue = "Sport/Fitness"
             default:
@@ -132,7 +131,6 @@ class I_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDel
         let userPinterest = userPinterestTextField.text!
         let userTiktok = userTiktokTextField.text!
         let userSubject = typeValue
-        guard let userImage = imageConverter.imageToBase64(self.userImage) else { return }
 
         // Erreur : un champ fait entre 1 et 3 caractères
         if (!restriction.isMinThreeChar(userFacebook) || !restriction.isMinThreeChar(userTwitter) || !restriction.isMinThreeChar(userInstagram) || !restriction.isMinThreeChar(userSnapchat) ||

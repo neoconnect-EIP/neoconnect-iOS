@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EPD-bG-0bU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EPD-bG-0bU">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -102,7 +102,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="lxa-wx-JSK" kind="show" id="5oQ-f6-0Hv"/>
+                                    <segue destination="8eS-jp-Wqr" kind="show" id="5qK-L3-hDI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFe-KM-IY9" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
@@ -220,10 +220,10 @@
             </objects>
             <point key="canvasLocation" x="-1602.4000000000001" y="590.55472263868069"/>
         </scene>
-        <!--Register Page Step One View Controller-->
+        <!--Register Page Step Two View Controller-->
         <scene sceneID="gVK-a4-zSe">
             <objects>
-                <viewController storyboardIdentifier="B_Step_One" id="lxa-wx-JSK" customClass="B_RegisterPage_Step_One_ViewController" customModule="NeoConnect" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="B_Step_Two" id="lxa-wx-JSK" customClass="B_RegisterPage_Step_Two_ViewController" customModule="NeoConnect" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IQQ-uY-y7R">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -336,17 +336,17 @@
                     <connections>
                         <outlet property="userDescriptionTextView" destination="Bkl-WX-wT3" id="S4R-Cj-6y3"/>
                         <outlet property="userPhotoView" destination="uxh-Fb-XTL" id="RGs-jh-z8g"/>
-                        <segue destination="8eS-jp-Wqr" kind="show" identifier="B_Step_Two" id="QDB-5P-RiM"/>
+                        <segue destination="MTr-Qh-xfi" kind="show" identifier="B_Step_Three" id="FpA-Ke-hTZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ko-oC-mFu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-882.39999999999998" y="590.55472263868069"/>
+            <point key="canvasLocation" x="-182" y="591"/>
         </scene>
-        <!--Register Page Step Two View Controller-->
+        <!--Register Page Step One View Controller-->
         <scene sceneID="iFX-7q-J7E">
             <objects>
-                <viewController storyboardIdentifier="B_Step_Two" id="8eS-jp-Wqr" customClass="B_RegisterPage_Step_Two_ViewController" customModule="NeoConnect" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="B_Step_One" id="8eS-jp-Wqr" customClass="B_RegisterPage_Step_One_ViewController" customModule="NeoConnect" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7U6-je-96Q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -485,12 +485,12 @@
                         <outlet property="userEmailTextField" destination="r80-gh-SvY" id="I8j-cB-aN1"/>
                         <outlet property="userPasswordTextField" destination="KvS-14-bmO" id="3co-9f-Z6K"/>
                         <outlet property="userPseudoTextField" destination="dHP-OP-teX" id="t2e-ag-lEA"/>
-                        <segue destination="MTr-Qh-xfi" kind="show" identifier="B_Step_Three" id="0Cb-iM-icQ"/>
+                        <segue destination="lxa-wx-JSK" kind="show" identifier="B_Step_Two" id="udV-rh-V0m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Seh-WQ-MTk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-172" y="590.55472263868069"/>
+            <point key="canvasLocation" x="-892" y="591"/>
         </scene>
         <!--Register Page Step Three View Controller-->
         <scene sceneID="rn3-GL-q4N">

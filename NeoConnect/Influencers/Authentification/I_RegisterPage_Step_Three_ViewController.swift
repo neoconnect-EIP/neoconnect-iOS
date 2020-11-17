@@ -17,7 +17,7 @@ class I_RegisterPage_Step_Three_ViewController: UIViewController {
     @IBOutlet weak var userPhoneNumberTextField: RegisterFields!
     var restriction = RestrictionTextField()
     
-    var userImage = UIImage()
+    var userImage = String()
     var userDescription = String()
     var userPseudo = String()
     var userEmail = String()
@@ -35,9 +35,9 @@ class I_RegisterPage_Step_Three_ViewController: UIViewController {
     
     // Fonction bouton sexe influenceur
     @IBAction func radioBtnTapped(_ sender: DLRadioButton) {
-        userSex = "Male"
+        userSex = "Homme"
         if (sender.tag == 2) {
-            userSex = "Female"
+            userSex = "Femme"
         }
     }
     

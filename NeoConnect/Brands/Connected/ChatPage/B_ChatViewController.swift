@@ -13,7 +13,7 @@ class B_ChatViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var noFriendLabelText: UILabel!
-    var infs: [Inf] = []
+    var infs: [Conversation] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -42,8 +42,8 @@ class B_ChatViewController: UIViewController {
         })
     }
     
-    func createArray(results: Array<NSDictionary>) -> [Inf] {
-        var tempInf: [Inf] = []
+    func createArray(results: Array<NSDictionary>) -> [Conversation] {
+        var tempInf: [Conversation] = []
         
         for dictionary in results {
             guard let id = dictionary["id"] as? Int else { return tempInf }
@@ -57,7 +57,7 @@ class B_ChatViewController: UIViewController {
             guard let imageData = imageDict["imageData"] as? String else { return  tempInf }
             guard let imageUrl = URL(string: imageData) else { return tempInf }
             guard let image = try! UIImage(data: Data(contentsOf: imageUrl)) else { return tempInf }
-            tempInf.append(Inf(id: id, user_id: Int(user_id)!, pseudo: pseudo, image: image))
+            tempInf.append(Conversation(id: id, user_id: Int(user_id)!, pseudo: pseudo, image: image))
         }
         return tempInf
     }

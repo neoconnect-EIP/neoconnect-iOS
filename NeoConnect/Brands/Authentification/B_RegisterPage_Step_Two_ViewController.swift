@@ -1,5 +1,5 @@
 //
-//  B_RegisterPage_Step_Two_ViewController.swift
+//  B_RegisterPage_Step_One_ViewController.swift
 //  NeoConnect
 //
 //  Created by EIP on 07/07/2019.
@@ -8,18 +8,23 @@
 
 import UIKit
 
-class B_RegisterPage_Step_Two_ViewController: UIViewController {
+class B_RegisterPage_Step_Two_ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    @IBOutlet weak var userPhotoView: PhotoFieldButton!
+    @IBOutlet weak var userDescriptionTextView: RegisterTextView!
     
-    @IBOutlet weak var userPseudoTextField: RegisterFields!
-    @IBOutlet weak var userEmailTextField: RegisterFields!
-    @IBOutlet weak var userPasswordTextField: RegisterFields!
-    @IBOutlet weak var repeatPasswordTextField: RegisterFields!
-    var restriction = RestrictionTextField()
-    
-    var userDescription = String()
-    var userImage = UIImage()
-    
+    var userPseudo = String()
+    var userEmail = String()
+    var userPassword = String()
+
+    var imagePicker: UIImagePickerController!
+
     override func viewDidLoad() {
+        imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+
         super.viewDidLoad()
     }
     
@@ -28,19 +33,22 @@ class B_RegisterPage_Step_Two_ViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    @IBAction func isValidField(_ sender: RegisterFields) {
-        switch sender.placeholder {
-            case "Pseudo*":
-                sender.handleError(sender: sender, field: "Pseudo")
-            case "Email*":
-                sender.handleError(sender: sender, field: "Email")
-            case "Mot de passe*":
-                sender.handleError(sender: sender, field: "Mot de passe")
-            case "Répétez le mot de passe*":
-                sender.handleError(sender: sender, field: "Mot de passe")
-            default:
-                sender.handleError(sender: sender, field: "default")
+    @IBAction func loadImageButtonTapped(_ sender: UIButton) {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            userPhotoView.setImage(pickedImage, for: .normal)
         }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
     
     func showError(_ message: String) {
@@ -52,46 +60,25 @@ class B_RegisterPage_Step_Two_ViewController: UIViewController {
     }
     
     @IBAction func nextButtonTapped(_ sender: Any) {
-        let userPseudo = userPseudoTextField.text!
-        let userEmail = userEmailTextField.text!
-        let userPassword = userPasswordTextField.text!
-        let repeatPassword = repeatPasswordTextField.text!
+        guard let userDescription = userDescriptionTextView.text else { return }
         
-        // /!\ Check for empty fields
-        if (userPseudo.isEmpty || userEmail.isEmpty || userPassword.isEmpty || repeatPassword.isEmpty) {
-            showError("Veuillez remplir tout les champs")
-        }
-        // /!\ Check for email Field
-        else if (restriction.isValidEmail(userEmail) == false) {
-            showError("Votre adresse email est invalide")
-        }
-        // /!\ Check for password Field
-        else if (restriction.isValidPassword(userPassword) == false) {
-            showError("Le mot de passe nécessite au moins 8 caractères dont : 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère")
-        }
-        // /!\ Check for pseudo Field
-        else if (restriction.isValidPseudo(userPseudo) == false) {
-            showError("Le pseudo doit contenir au minimum 3 caractères dont 1 majuscule")
-        }
-        // /!\ Check if password match together
-        else if (userPassword != repeatPassword) {
-            showError("Les mots de passe ne correspondent pas")
+        if 1 ... 4 ~= userDescription.count {
+            showError("La description semble trop courte")
         } else {
             performSegue(withIdentifier: "B_Step_Three", sender: self)
         }
-        // Change view and send prepared data
         return
     }
     // Prepare Data before performSegue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "B_Step_Three" {
             let Dest : B_RegisterPage_Step_Three_ViewController = segue.destination as! B_RegisterPage_Step_Three_ViewController
-            
-            Dest.userImage = userImage
-            Dest.userDescription = userDescription
-            Dest.userPseudo = userPseudoTextField.text ?? ""
-            Dest.userEmail = userEmailTextField.text ?? ""
-            Dest.userPassword = userPasswordTextField.text ?? ""
+
+            Dest.userImage = userPhotoView.image(for: .normal)?.toBase64() ?? ""
+            Dest.userDescription = userDescriptionTextView.text ?? ""
+            Dest.userPseudo = userPseudo
+            Dest.userEmail = userEmail
+            Dest.userPassword = userPassword
         }
     }
 }

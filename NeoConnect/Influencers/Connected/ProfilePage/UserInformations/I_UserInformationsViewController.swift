@@ -31,11 +31,10 @@ class I_UserInformationsViewController: UIViewController, UIImagePickerControlle
     @IBOutlet weak var tiktokTextField: DefaultTextFields!
     @IBOutlet weak var pickerViewButton: UIButton!
     var restriction = RestrictionTextField()
-    var pickerData = ["Mode", "Cosmétique", "Jeux Vidéo", "Food", "High Tech", "Sport/Fitness"]
+    var pickerData = ["Mode", "Cosmétique", "Jeux Vidéo", "Nourriture", "High tech", "Sport/Fitness"]
     var themePickerView = UIPickerView()
     var typeValue = "Mode"
     var imagePicker:UIImagePickerController!
-    var imageConverter = ImageConverter()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -128,9 +127,9 @@ class I_UserInformationsViewController: UIViewController, UIImagePickerControlle
             case 2:
                 typeValue = "Jeux Vidéo"
             case 3:
-                typeValue = "Food"
+                typeValue = "Nourriture"
             case 4:
-                typeValue = "High Tech"
+                typeValue = "High tech"
             case 5:
                 typeValue = "Sport/Fitness"
             default:
@@ -237,7 +236,7 @@ class I_UserInformationsViewController: UIViewController, UIImagePickerControlle
                 return
             }
             else {
-                guard let userPicture = imageConverter.imageToBase64(userImage) else { return }
+                let userPicture = userImage.toBase64() ?? ""
                 
                 APIInfManager.sharedInstance.editInfo(pseudo: userPseudo, fullname: userFullname, email: userEmail, phoneNumber: userPhone, zipCode: userPostal, city: userCity, userPicture: userPicture, userDescription: userDescription, subject: typeValue, facebook: userFacebook, snapchat: userSnapchat, twitter: userTwitter, instagram: userInstagram, youtube: userYoutube, twitch: userTwitch, pinterest: userPinterest, tiktok: userTiktok, onSuccess: {
                     let statusAlert = StatusAlert()

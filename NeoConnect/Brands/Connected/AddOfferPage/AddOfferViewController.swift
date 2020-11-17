@@ -23,13 +23,12 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
     
     var flag = 0
     var imageArrayToSend: Array<UIImage> = []
-    var subjectData = ["Mode", "Cosmétique", "Jeux Vidéo", "Food", "High Tech", "Sport/Fitness"]
+    var subjectData = ["Mode", "Cosmétique", "Jeux Vidéo", "Nourriture", "High tech", "Sport/Fitness"]
     var sexData = ["Unisexe", "Homme", "Femme"]
     var pickerView = UIPickerView()
     var subjectSelected = "Sujet"
     var sexSelected = "Unisexe"
     var imagePicker:UIImagePickerController!
-    var imageConverter = ImageConverter()
     
     override func viewDidLoad() {
         imagePicker = UIImagePickerController()
@@ -162,9 +161,9 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
                 case 2:
                     subjectSelected = "Jeux Vidéo"
                 case 3:
-                    subjectSelected = "Food"
+                    subjectSelected = "Nourriture"
                 case 4:
-                    subjectSelected = "High Tech"
+                    subjectSelected = "High tech"
                 case 5:
                     subjectSelected = "Sport/Fitness"
                 default:
@@ -276,7 +275,7 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
             var imageArray: Array<String> = []
             
             for image in imageArrayToSend {
-                imageArray.append(imageConverter.imageToBase64(image) ?? "")
+                imageArray.append(image.toBase64() ?? "")
             }
             APIBrandManager.sharedInstance.addOffer(name: name, description: desc, subject: subject, sex: sex, imageArray: imageArray, onSuccess: {
                 let statusAlert = StatusAlert()
