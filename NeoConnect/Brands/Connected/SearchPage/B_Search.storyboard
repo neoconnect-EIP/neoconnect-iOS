@@ -178,7 +178,7 @@
                                     <constraint firstAttribute="height" constant="1" id="itf-LN-0Dh"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BwH-6S-zl0" customClass="CosmosView" customModule="Cosmos">
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BwH-6S-zl0" customClass="CosmosView" customModule="Cosmos">
                                 <rect key="frame" x="242.5" y="200.5" width="100" height="18"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>

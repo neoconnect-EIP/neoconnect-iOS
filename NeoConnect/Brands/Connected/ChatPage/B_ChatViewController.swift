@@ -46,17 +46,22 @@ class B_ChatViewController: UIViewController {
         var tempInf: [Conversation] = []
         
         for dictionary in results {
+            var image: UIImage = #imageLiteral(resourceName: "avatar-placeholder")
+            if let userPicture = dictionary["userPicture"] as? [[String:String]] {
+                if userPicture.count > 0 {
+                    if let imageData = URL(string: (userPicture[0]["imageData"])!) {
+                        if let tempImage = try! UIImage(data: Data(contentsOf: imageData)) {
+                            image = tempImage
+                        }
+                    }
+                }
+            }
             guard let id = dictionary["id"] as? Int else { return tempInf }
             guard var user_id = dictionary["user_1"] as? String else { return tempInf }
             if Int(user_id) == UserDefaults.standard.integer(forKey: "id") {
                 user_id = dictionary["user_2"] as! String
             }
             guard let pseudo = dictionary["pseudo"] as? String else { return tempInf }
-            guard let productImg = dictionary["userPicture"] as? NSArray else { return tempInf }
-            guard let imageDict = productImg[0] as? NSDictionary else { return tempInf }
-            guard let imageData = imageDict["imageData"] as? String else { return  tempInf }
-            guard let imageUrl = URL(string: imageData) else { return tempInf }
-            guard let image = try! UIImage(data: Data(contentsOf: imageUrl)) else { return tempInf }
             tempInf.append(Conversation(id: id, user_id: Int(user_id)!, pseudo: pseudo, image: image))
         }
         return tempInf
