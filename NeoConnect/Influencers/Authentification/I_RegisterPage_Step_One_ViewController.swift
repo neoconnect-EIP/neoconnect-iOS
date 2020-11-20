@@ -14,6 +14,7 @@ class I_RegisterPage_Step_One_ViewController: UIViewController {
     @IBOutlet weak var userEmailTextField: RegisterFields!
     @IBOutlet weak var userPasswordTextField: RegisterFields!
     @IBOutlet weak var repeatPasswordTextField: RegisterFields!
+    
     var restriction = RestrictionTextField()
     
     override func viewDidLoad() {
