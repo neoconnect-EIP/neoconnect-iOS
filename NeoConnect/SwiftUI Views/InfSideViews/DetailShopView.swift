@@ -13,6 +13,8 @@ import Alamofire
 import Combine
 import KingfisherSwiftUI
 
+// Boutiques Tendances
+
 struct ShopTendanceView : View {
     @State var actualites : ActualityInfSide = ActualityInfSide()
     
@@ -77,7 +79,7 @@ struct ShopTendanceView : View {
     }
     
 }
-
+// Boutiques Populaires
 struct ShopPopulaireView : View {
     @State var actualites : ActualityInfSide = ActualityInfSide()
     
@@ -142,7 +144,7 @@ struct ShopPopulaireView : View {
     }
     
 }
-
+// Boutiques les mieux notées
 struct ShopNotesView : View {
     @State var actualites : ActualityInfSide = ActualityInfSide()
     
@@ -208,6 +210,7 @@ struct ShopNotesView : View {
     
 }
 
+// Boutique détaillée
 struct DetailShopView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var showingAlert = false
@@ -256,18 +259,18 @@ struct DetailShopView: View {
                 HStack{
                     NavigationLink(destination: NotationUserView(userId: userId, rating: rating)) {
                         ZStack
-                        {
-                            Image("login")
-                                .foregroundColor(Color(hex: "445173"))
-                            Text("Noter").foregroundColor(Color.white).font(.custom("Raleway", size: 12))
+                            {
+                                Image("login")
+                                    .foregroundColor(Color(hex: "445173"))
+                                Text("Noter").foregroundColor(Color.white).font(.custom("Raleway", size: 12))
                         }
                     }
                     NavigationLink(destination: ContactUserView(emailUser: emailUser)) {
                         ZStack
-                        {
-                            Image("login").foregroundColor(Color(hex: "445173"))
-                            
-                            Text("Contacter").foregroundColor(Color.white).font(.custom("Raleway", size: 12))
+                            {
+                                Image("login").foregroundColor(Color(hex: "445173"))
+                                
+                                Text("Contacter").foregroundColor(Color.white).font(.custom("Raleway", size: 12))
                         }                      }
                     
                 }
@@ -275,17 +278,17 @@ struct DetailShopView: View {
             }
             .padding(.top,50)
         }.frame(maxWidth:.infinity,maxHeight: .infinity)
-        .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "15113D").opacity(0.85), Color(hex: "3CA6CC").opacity(0.5)]), startPoint: .top, endPoint: .bottom))
-        .edgesIgnoringSafeArea(.top)
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading:
-                                Button(action: {
-                                    self.presentationMode.wrappedValue.dismiss()
-                                }) {
-                                    HStack {
-                                        Text("Retour")
-                                    }
-                                })
+            .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "15113D").opacity(0.85), Color(hex: "3CA6CC").opacity(0.5)]), startPoint: .top, endPoint: .bottom))
+            .edgesIgnoringSafeArea(.top)
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading:
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }) {
+                    HStack {
+                        Text("Retour")
+                    }
+            })
     }
 }
 struct DetailShopView_Previews: PreviewProvider {

@@ -120,7 +120,7 @@ var body: some View {
                      .padding(.trailing,50)
                      .padding(.leading,50)
         Text(String(selectedOffer.productDesc!)).font(.body).fontWeight(.light).multilineTextAlignment(.center)
-        NavigationLink(destination: NotationView(selectedOffer: selectedOffer, rating: $rating)) {
+        NavigationLink(destination: NotationView(rating: $rating, selectedOffer: selectedOffer)) {
            Text("Noter")
            }
         NavigationLink(destination: ShareOfferView(selectedOffer: selectedOffer, facebook: "", twitter: "", instagram: "", pinterest: "", twitch: "", youtube: "", tiktok: "")) {

@@ -18,6 +18,8 @@ struct shopImage: Codable {
     var imageData: String?
 }
 
+// Boutiques
+
 struct Shop2: Codable,Identifiable{
     var id : Int
     var pseudo: String?
@@ -41,6 +43,8 @@ struct offerImage: Codable {
     var imageName: String?
     var imageData: String?
 }
+
+// Offres
 
 struct Offer2: Codable,Identifiable{
     var id : Int
@@ -68,6 +72,7 @@ struct Offer2: Codable,Identifiable{
         updatedAt = ""
     }
 }
+// Fil d'actualité coté Influenceurs
 
 struct ActualityInfSide: Codable {
     var listShopNotes : [Shop2]
@@ -90,6 +95,8 @@ struct ActualityInfSide: Codable {
 
 let url = "http://168.63.65.106:8080/"
 
+// Obtenir le Fil d'actualité coté Influenceurs
+
 func getActualityInfSide(completion: @escaping (ActualityInfSide) -> Void)
 {
     let _headers: HTTPHeaders = [
@@ -109,7 +116,7 @@ func getActualityInfSide(completion: @escaping (ActualityInfSide) -> Void)
         }
     }
 }
-
+// Savoir si une offre possède une moyenne de notes ou non, si oui l'arrondir
 func isNil(offer : Offer2) -> Text
 {
     if let average = offer.average {
@@ -121,6 +128,7 @@ func isNil(offer : Offer2) -> Text
         .font(.custom("Raleway", size: 12))
 }
 
+// Savoir si une boutique possède une moyenne de notes ou non, si oui l'arrondir
 func isNil2(shop : Shop2) -> Text
 {
     if let average = shop.average {
@@ -131,6 +139,9 @@ func isNil2(shop : Shop2) -> Text
     return Text("0").foregroundColor(Color.black)
         .font(.custom("Raleway", size: 12))
 }
+
+// Page d'accueil coté Inf
+
 struct HomePageInfSideView: View {
     
     @State var actualites : ActualityInfSide
@@ -166,7 +177,7 @@ struct HomePageInfSideView: View {
                     .frame(width: 100.0, height: 1.0)
                     .background(/*@START_MENU_TOKEN@*/Color.white/*@END_MENU_TOKEN@*/)
                 Text("NeoConnect Beta").foregroundColor(Color.white).font(.custom("Raleway", size: 12
-                )).padding(.top, 200.0)
+                    )).padding(.top, 200.0)
                 
                 Spacer()
             }
@@ -174,7 +185,7 @@ struct HomePageInfSideView: View {
             .padding(.top,50)
             
         }
-        
+            
         .frame(maxWidth:.infinity,maxHeight: .infinity)
         .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "15113D").opacity(0.85), Color(hex: "3CA6CC").opacity(0.5)]), startPoint: .top, endPoint: .bottom))
         .edgesIgnoringSafeArea(.top)
@@ -186,6 +197,7 @@ struct HomePageInfSideView: View {
         }
     }
 }
+// Fil d'actualité
 
 struct ActuInfSideView : View {
     @State var actualites : ActualityInfSide
@@ -204,10 +216,10 @@ struct ActuInfSideView : View {
                     Spacer()
                 }
             }           .padding([.top, .leading])
-            .padding(.top,30)
+                .padding(.top,30)
             
         }
-        
+            
         .frame(maxWidth:.infinity,maxHeight: .infinity)
         .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "15113D").opacity(0.85), Color(hex: "3CA6CC").opacity(0.5)]), startPoint: .top, endPoint: .bottom))
         .edgesIgnoringSafeArea(.top)
@@ -219,20 +231,7 @@ struct ActuInfSideView : View {
     }
 }
 
-//struct HomePageInfSideView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let actuality : ActualityInfSide = ActualityInfSide()
-//        return HomePageInfSideView(actualites: actuality)
-//    }
-//}
-
-//struct HomePageInfSideView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        var actualites : ActualityInfSide = ActualityInfSide()
-//        return HomePageInfSideView(actualites: actualites)
-//    }
-//}
-
+// Hosting Controller
 class HomeViewHostingController: UIHostingController<HomePageInfSideView> {
     required init?(coder aDecoder: NSCoder) {
         let actuality : ActualityInfSide = ActualityInfSide()
@@ -241,7 +240,7 @@ class HomeViewHostingController: UIHostingController<HomePageInfSideView> {
 }
 
 
-
+// Offres Tendances
 struct OffersTendanceView : View {
     @State var actualites : ActualityInfSide = ActualityInfSide()
     
@@ -272,7 +271,7 @@ struct OffersTendanceView : View {
                                         .font(.custom("Raleway", size: 12))
                                         .padding(.bottom, 5.0)
                                     HStack{
-                                        Text(String(offerTendance.productSubject!)).foregroundColor(Color.black)
+                                        Text(String(offerTendance.productSubject ?? "Sans thème")).foregroundColor(Color.black)
                                             .font(.custom("Raleway", size: 12))
                                             .padding(.trailing, 50.0)
                                         HStack{   isNil(offer: offerTendance)
@@ -303,6 +302,8 @@ struct OffersTendanceView : View {
         }
     }
 }
+// Offres Populaires
+
 struct OffersPopulairesView : View {
     @State var actualites : ActualityInfSide = ActualityInfSide()
     
@@ -366,6 +367,7 @@ struct OffersPopulairesView : View {
     }
     
 }
+// Offres les mieux notées
 
 struct OffersNotesView : View {
     @State var actualites : ActualityInfSide = ActualityInfSide()
@@ -434,6 +436,8 @@ struct OffersNotesView : View {
 
 let accessToken = UserDefaults.standard.string(forKey: "Token")!
 
+// Postuler à une offre
+
 func postulate(offer : Offer2) {
     let _headers: HTTPHeaders = [
         "Authorization": "Bearer " + accessToken            ]
@@ -442,58 +446,7 @@ func postulate(offer : Offer2) {
     }
 }
 
-//struct DetailOfferOld: View {
-//    @State private var showingAlert = false
-//    var selectedOffer : Offer2
-//    var date : String
-//var body: some View {
-//    ZStack() {
-//    VStack(alignment: .center, spacing: 20.0) {
-//          if (selectedOffer.productImg!.isEmpty) {
-//                           Image("noImage").resizable().frame(width: 100, height: 100)
-//                           .clipShape(Circle()).clipped().shadow(radius: 3)
-//
-//                                           }
-//                                           else {
-//      KFImage(URL(string:selectedOffer.productImg![0].imageData!)).resizable().frame(width: 100, height: 100)
-//        .clipShape(Circle()).clipped().shadow(radius: 3)
-//        }
-//        Text(String(selectedOffer.productName!)).multilineTextAlignment(.center).font(.headline)
-//        HStack {
-//        Text(String(selectedOffer.productSubject ?? "Pas de thème renseigné")).font(.subheadline).fontWeight(.light).multilineTextAlignment(.leading)
-//        .padding(.trailing,30)
-//    Text(String(selectedOffer.productSex!)).font(.subheadline).fontWeight(.light).multilineTextAlignment(.leading)
-//        .padding(.trailing,30)
-//        }
-//    Divider()
-//        .padding(.trailing,50)
-//                   .padding(.leading,50)
-//        Text(String(selectedOffer.productDesc!)).font(.body).fontWeight(.light).multilineTextAlignment(.center)
-//        NavigationLink(destination: ReportOfferView(offerName: selectedOffer.productName!, idOffer: String(selectedOffer.id))) {
-//        Text("Signaler")
-//        }
-//        Button(action: {postulate(offer: self.selectedOffer)
-//            self.showingAlert = true
-//        }) {
-//            Text("Postuler")
-//        }
-//        .alert(isPresented: $showingAlert) {
-//                       Alert(title: Text("Postuler à une offre"), message: Text("Vous avez postulé à cette offre."), dismissButton: .default(Text("Ok")))
-//                   }
-////        Button(action: { self.dialog()})
-////         {
-////        Text("Partager")
-////         }
-//        Text("Crée le " + date).foregroundColor(Color.gray)
-//        .font(Font.system(size: 14)).italic()
-//    }
-//        }
-//    .frame(maxWidth:.infinity,maxHeight: .infinity)
-//    .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "15113D").opacity(0.85), Color(hex: "3CA6CC").opacity(0.5)]), startPoint: .top, endPoint: .bottom))
-//    .edgesIgnoringSafeArea(.all)
-//}
-//}
-
+// Offre détaillée
 
 struct DetailOffer: View {
     @Environment(\.presentationMode) var presentationMode
@@ -513,11 +466,6 @@ struct DetailOffer: View {
                         .padding(.leading, 300.0)
                         .foregroundColor(/*@START_MENU_TOKEN@*/.white/*@END_MENU_TOKEN@*/)
                 }
-                //        Button(action: {print("Partager une offre & Signaler")}) {
-                //            Image("Plus")
-                //                .padding(.leading, 300.0)
-                //                .foregroundColor(/*@START_MENU_TOKEN@*/.white/*@END_MENU_TOKEN@*/)
-                //            }
                 Text(String(selectedOffer.productName!)).foregroundColor(Color.white).font(.custom("Raleway", size: 20))
                 if (selectedOffer.productImg!.isEmpty) {
                     Image("noImage").resizable().frame(width: 100, height: 100)
@@ -573,44 +521,40 @@ struct DetailOffer: View {
                         self.showingAlert = true
                     }) {
                         ZStack
-                        {
-                            Image("login")
-                                .foregroundColor(Color(hex: "445173"))
-                            Text("Postuler").foregroundColor(Color.white).font(.custom("Raleway", size: 12))
+                            {
+                                Image("login")
+                                    .foregroundColor(Color(hex: "445173"))
+                                Text("Postuler").foregroundColor(Color.white).font(.custom("Raleway", size: 12))
                         }                  }
-                    .alert(isPresented: $showingAlert) {
-                        Alert(title: Text("Postuler à une offre"), message: Text("Vous avez postulé à cette offre."), dismissButton: .default(Text("Ok")))
+                        .alert(isPresented: $showingAlert) {
+                            Alert(title: Text("Postuler à une offre"), message: Text("Vous avez postulé à cette offre."), dismissButton: .default(Text("Ok")))
                     }
                     
                 }
                 
-                //        Text("Crée le " + date).foregroundColor(Color.gray)
-                //        .font(Font.system(size: 14)).italic()
             }.padding(.top,50)
             
         } .frame(maxWidth:.infinity,maxHeight: .infinity)
-        .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "15113D").opacity(0.85), Color(hex: "3CA6CC").opacity(0.5)]), startPoint: .top, endPoint: .bottom))
-        .edgesIgnoringSafeArea(.top)
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading:
-                                Button(action: {
-                                    self.presentationMode.wrappedValue.dismiss()
-                                }) {
-                                    HStack {
-                                        Text("Retour")
-                                    }
-                                })
+            .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "15113D").opacity(0.85), Color(hex: "3CA6CC").opacity(0.5)]), startPoint: .top, endPoint: .bottom))
+            .edgesIgnoringSafeArea(.top)
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading:
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }) {
+                    HStack {
+                        Text("Retour")
+                    }
+            })
     }
-    func dialog(){
+    func dialog(){ // Partage d'une offre
         
         let alertController = UIAlertController(title: "Partager une offre", message: "Veuillez indiquer l'adresse mail de l'utilisateur", preferredStyle: .alert)
         
         alertController.addTextField { (textField : UITextField!) -> Void in
             textField.placeholder = "Email"
         }
-        
         let saveAction = UIAlertAction(title: "Envoyer", style: .default, handler: { alert -> Void in
-            
             let _headers: HTTPHeaders = [
                 "Authorization": "Bearer " + accessToken
             ]
@@ -621,13 +565,12 @@ struct DetailOffer: View {
                        parameters: map as Parameters,
                        encoding: URLEncoding.default,headers: _headers).response { response in
                         debugPrint(response)
-                       }
+            }
             
             
         })
         
         let cancelAction = UIAlertAction(title: "Annuler", style: .default, handler: nil )
-        
         
         alertController.addAction(saveAction)
         alertController.addAction(cancelAction)
@@ -635,5 +578,11 @@ struct DetailOffer: View {
         UIApplication.shared.windows.first?.rootViewController?.present(alertController, animated: true, completion: nil)
         
         
+    }
+}
+
+struct HomePageView_Previews: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
     }
 }
