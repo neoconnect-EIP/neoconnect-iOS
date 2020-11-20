@@ -8,13 +8,14 @@
 
 import UIKit
 import Alamofire
+import StatusAlert
 
 class B_OffersViewController: UIViewController {
 
     @IBOutlet weak var noOfferView: UIView!
     @IBOutlet weak var noOfferLabelText: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    var offers: [Offer] = []
+    var offers: [B_Offer] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -30,52 +31,44 @@ class B_OffersViewController: UIViewController {
     }
         
     func getDataFromAPI() {
-                
         let id = UserDefaults.standard.string(forKey: "id")!
 
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
-            "Content-Type": "application/x-www-form-urlencoded"
-        ]
-        AF.request("http://168.63.65.106:8080/offer/shop/\(id)",
-                   headers: headers).responseJSON { response in
-                    switch response.result {
-                        
-                    case .success(let JSON):
-                        
-                            print(JSON)
-                            if JSON as? String != "No offer" {
-                                let results = JSON as! Array<NSDictionary>
-                                self.noOfferView.isHidden = true
-                                self.noOfferLabelText.isHidden = true
-                                self.offers = self.createArray(results: results)
-                            } else {
-                                self.tableView.isHidden = true
-                                self.noOfferView.isHidden = false
-                                self.noOfferLabelText.isHidden = false
-                            }
-                            self.tableView.reloadData()
-                            
-                        case .failure(let error):
-                                print("Request failed with error: \(error)")
-                    }
-        }
+        APIManager.sharedInstance.getOffersByShopId(id: id, onSuccess: { JSON in
+            if JSON as? String != "No offer" {
+                let results = JSON as! Array<NSDictionary>
+                self.noOfferView.isHidden = true
+                self.noOfferLabelText.isHidden = true
+                self.offers = self.createArray(results: results)
+            } else {
+                self.tableView.isHidden = true
+                self.noOfferView.isHidden = false
+                self.noOfferLabelText.isHidden = false
+            }
+            self.tableView.reloadData()
+        })
     }
     
-    func createArray(results: Array<NSDictionary>) -> [Offer] {
-        var tempOffer: [Offer] = []
+    func createArray(results: Array<NSDictionary>) -> [B_Offer] {
+        var tempOffer: [B_Offer] = []
         
         for dictionary in results {
-            let id = (dictionary["id"] as! NSNumber).intValue
-            let desc = dictionary["productDesc"] as! String
-            let name = dictionary["productName"] as! String
-            let sex = dictionary["productSex"] as! String
-            let subject = dictionary["productSubject"] as! String
-            let imageArray = dictionary["productImg"] as? [[String:Any]]
-            let imageUrl = URL(string: imageArray![0]["imageData"] as! String)!
-            let imageData = try! UIImage(data: Data(contentsOf: imageUrl))!
-            
-            tempOffer.append(Offer(id: id, image: imageData, title: name, sex: sex, description: desc, subject: subject))
+            guard let id = (dictionary["id"] as? NSNumber)?.intValue else { return tempOffer }
+            guard let desc = dictionary["productDesc"] as? String else { return tempOffer }
+            guard let name = dictionary["productName"] as? String else { return tempOffer }
+            guard let subject = dictionary["productSubject"] as? String else { return tempOffer }
+            guard let sex = dictionary["productSex"] as? String else { return tempOffer }
+            guard let applyDict = dictionary["apply"] as? Array<NSDictionary> else { return tempOffer }
+            var imageArray: [UIImage] = []
+            if let productImgs = dictionary["productImg"] as? [[String:Any]] {
+                for productImage in productImgs {
+                    if let imageUrl = URL(string: (productImage["imageData"] as? String)!) {
+                        if let image = try! UIImage(data: Data(contentsOf: imageUrl)) {
+                            imageArray.append(image)
+                        }
+                    }
+                }
+            }
+            tempOffer.append(B_Offer(id: id, images: imageArray, title: name, sex: sex, description: desc, subject: subject, apply: applyDict))
         }
         return tempOffer
     }
@@ -117,38 +110,20 @@ extension B_OffersViewController : UITableViewDataSource, UITableViewDelegate {
             let offer = offers[indexPath.row]
             
             let title = "Delete \(offer.title)?"
-            let message = "Are you sure you want to delete this book?"
+            let message = "Are you sure you want to delete this offer?"
             let ac = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             ac.addAction(cancelAction)
             let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: { (action) -> Void in
-                
-                let headers: HTTPHeaders = [
-                    "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
-                    "Content-Type": "application/x-www-form-urlencoded"
-                ]
-                
-                let URL = "http://168.63.65.106/offer/" + String(offer.id)
-                
-                AF.request(URL, method: .delete, encoding: URLEncoding.default, headers: headers, interceptor: nil).responseJSON { response in
-                    switch response.result {
-                        case .success(_):
-                            // Offre modifiée
-                            
-                            print("\(String(describing: response.result))")
-                            DispatchQueue.main.async {
-                                let alertView = UIAlertController(title: "Great !", message: "Your offer has been deleted successfully!", preferredStyle: .alert)
-                                alertView.addAction(UIAlertAction(title: "Ok", style: .default) { _ in })
-                                self.present(alertView, animated: true, completion: nil)
-                        }
-                        
-                        case .failure(let error):
-                            // Erreur de la modification de l'offre
-                            print("Request failed with error: \(error)")
+                APIBrandManager.sharedInstance.deleteOffer(id: String(offer.id), onSuccess: {
+                    DispatchQueue.main.async {
+                        let alertView = UIAlertController(title: "Great !", message: "Your offer has been deleted successfully!", preferredStyle: .alert)
+                        alertView.addAction(UIAlertAction(title: "Ok", style: .default) { _ in })
+                        self.present(alertView, animated: true, completion: nil)
                     }
-                }
-                self.offers.remove(at: indexPath.row)
-                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                    self.offers.remove(at: indexPath.row)
+                    self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                })
             })
             ac.addAction(deleteAction)
             present(ac, animated: true, completion: nil)

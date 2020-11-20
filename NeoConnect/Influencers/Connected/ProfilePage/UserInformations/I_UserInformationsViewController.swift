@@ -8,11 +8,13 @@
 
 import UIKit
 import Alamofire
+import StatusAlert
 
 class I_UserInformationsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
-
+    
     @IBOutlet weak var editItem: UIBarButtonItem!
     @IBOutlet weak var userPhotoView: PhotoFieldButton!
+    @IBOutlet weak var userDescriptionTextView: DefaultTextViews!
     @IBOutlet weak var pseudoTextField: DefaultTextFields!
     @IBOutlet weak var emailTextField: DefaultTextFields!
     @IBOutlet weak var fullnameTextField: DefaultTextFields!
@@ -29,27 +31,25 @@ class I_UserInformationsViewController: UIViewController, UIImagePickerControlle
     @IBOutlet weak var tiktokTextField: DefaultTextFields!
     @IBOutlet weak var pickerViewButton: UIButton!
     var restriction = RestrictionTextField()
-    var pickerData = ["Mode", "Cosmétique", "Jeux Vidéo", "Food", "High Tech", "Sport/Fitness"]
+    var pickerData = ["Mode", "Cosmétique", "Jeux Vidéo", "Nourriture", "High tech", "Sport/Fitness"]
     var themePickerView = UIPickerView()
     var typeValue = "Mode"
     var imagePicker:UIImagePickerController!
-    var imageConverter = ImageConverter()
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     override func viewDidLoad() {
+        APIManager.sharedInstance.getUserImage(onSuccess: { image in
+            self.userPhotoView.setImage(image, for: .normal)
+        })
         APIInfManager.sharedInstance.getInfo(onSuccess: { response in
-            let imageArray = response["userPicture"] as? [[String:Any]]
-            let imageUrl = URL(string: imageArray![0]["imageData"] as! String)!
-            let imageData = try! UIImage(data: Data(contentsOf: imageUrl))!
-            self.userPhotoView.setImage(imageData, for: .normal)
             self.pseudoTextField.text = response["pseudo"] as? String
             self.emailTextField.text = response["email"] as? String
             self.fullnameTextField.text = response["full_name"] as? String
-            self.cityTextField.text = response["pseudo"] as? String
+            self.cityTextField.text = response["city"] as? String
             self.postalTextField.text = response["postal"] as? String
             self.phoneTextField.text = response["phone"] as? String
             self.facebookTextField.text = response["facebook"] as? String
@@ -57,13 +57,13 @@ class I_UserInformationsViewController: UIViewController, UIImagePickerControlle
             self.instagramTextField.text = response["instagram"] as? String
             self.snapchatTextField.text = response["snapchat"] as? String
             self.youtubeTextField.text = response["youtube"] as? String
-            self.twitchTextField.text = response["youtube"] as? String
-            self.pinterestTextField.text = response["youtube"] as? String
-            self.tiktokTextField.text = response["youtube"] as? String
+            self.twitchTextField.text = response["twitch"] as? String
+            self.pinterestTextField.text = response["pinterest"] as? String
+            self.tiktokTextField.text = response["tiktok"] as? String
             self.typeValue = response["theme"] as? String ?? "Mode"
+            self.pickerViewButton.setTitle(self.typeValue, for: .normal)
         }, onFailure: { error in
             print("Request failed with error: \(error)")
-
         })
         imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = true
@@ -71,25 +71,20 @@ class I_UserInformationsViewController: UIViewController, UIImagePickerControlle
         imagePicker.delegate = self
         super.viewDidLoad()
     }
-        
-    @IBAction func userPseudoDidEnd(_ sender: DefaultTextFields) {
-        sender.handleError(sender: sender, field: "pseudo")
-    }
     
-    @IBAction func userEmailDidEnd(_ sender: DefaultTextFields) {
-        sender.handleError(sender: sender, field: "email")
-    }
-    
-    @IBAction func userZipCodeDidEnd(_ sender: DefaultTextFields) {
-        sender.handleError(sender: sender, field: "zipCode")
-    }
-    
-    @IBAction func userPhoneNumberDidEnd(_ sender: DefaultTextFields) {
-        sender.handleError(sender: sender, field: "phoneNumbber")
-    }
-    
-    @IBAction func defaultCompanyDidEnd(_ sender: DefaultTextFields) {
-        sender.handleError(sender: sender, field: "default")
+    @IBAction func isValidField(_ sender: DefaultTextFields) {
+        switch sender.placeholder {
+            case "Pseudo":
+                sender.handleError(sender: sender, field: "Pseudo")
+            case "Email":
+                sender.handleError(sender: sender, field: "Email")
+            case "Téléphone":
+                sender.handleError(sender: sender, field: "Téléphone")
+            case "Code postal":
+                sender.handleError(sender: sender, field: "Code postal")
+            default:
+                sender.handleError(sender: sender, field: "default")
+        }
     }
     
     @IBAction func changeImageButtonTapped(_ sender: Any) {
@@ -132,9 +127,9 @@ class I_UserInformationsViewController: UIViewController, UIImagePickerControlle
             case 2:
                 typeValue = "Jeux Vidéo"
             case 3:
-                typeValue = "Food"
+                typeValue = "Nourriture"
             case 4:
-                typeValue = "High Tech"
+                typeValue = "High tech"
             case 5:
                 typeValue = "Sport/Fitness"
             default:
@@ -166,7 +161,7 @@ class I_UserInformationsViewController: UIViewController, UIImagePickerControlle
         pickerFrame.dataSource = self
         pickerFrame.delegate = self
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Fermer", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Valider", style: .default, handler: { (UIAlertAction) in
             
             self.pickerViewButton.setTitle(self.typeValue, for: .normal)
@@ -177,87 +172,106 @@ class I_UserInformationsViewController: UIViewController, UIImagePickerControlle
     }
     
     @IBAction func editButtonTapped(_ sender: Any) {
-            if (self.editItem.title == "Modifier") {
-                editItem.title = "Enregistrer"
-                userPhotoView.isUserInteractionEnabled = true
-                pseudoTextField.isUserInteractionEnabled = true
-                emailTextField.isUserInteractionEnabled = true
-                fullnameTextField.isUserInteractionEnabled = true
-                cityTextField.isUserInteractionEnabled = true
-                postalTextField.isUserInteractionEnabled = true
-                phoneTextField.isUserInteractionEnabled = true
-                facebookTextField.isUserInteractionEnabled = true
-                twitterTextField.isUserInteractionEnabled = true
-                instagramTextField.isUserInteractionEnabled = true
-                snapchatTextField.isUserInteractionEnabled = true
-                youtubeTextField.isUserInteractionEnabled = true
-                twitchTextField.isUserInteractionEnabled = true
-                pinterestTextField.isUserInteractionEnabled = true
-                tiktokTextField.isUserInteractionEnabled = true
-                themePickerView.isUserInteractionEnabled = true
+        guard let userImage = userPhotoView.currentImage else { return }
+        guard let userPseudo = pseudoTextField.text else { return }
+        guard let userDescription = userDescriptionTextView.text else { return }
+        guard let userEmail = emailTextField.text else { return }
+        guard let userFullname = fullnameTextField.text else { return }
+        guard let userPostal = postalTextField.text else { return }
+        guard let userCity = cityTextField.text else { return }
+        guard let userPhone = phoneTextField.text else { return }
+        guard let userFacebook = facebookTextField.text else { return }
+        guard let userTwitter = twitterTextField.text else { return }
+        guard let userSnapchat = snapchatTextField.text else { return }
+        guard let userInstagram = instagramTextField.text else { return }
+        guard let userYoutube = youtubeTextField.text else { return }
+        guard let userTwitch = twitchTextField.text else { return }
+        guard let userPinterest = pinterestTextField.text else { return }
+        guard let userTiktok = tiktokTextField.text else { return }
+        
+        if (self.editItem.title == "Modifier") {
+            editItem.title = "Enregistrer"
+            userPhotoView.isUserInteractionEnabled = true
+            userDescriptionTextView.isUserInteractionEnabled = true
+            pseudoTextField.isUserInteractionEnabled = true
+            emailTextField.isUserInteractionEnabled = true
+            fullnameTextField.isUserInteractionEnabled = true
+            cityTextField.isUserInteractionEnabled = true
+            postalTextField.isUserInteractionEnabled = true
+            phoneTextField.isUserInteractionEnabled = true
+            facebookTextField.isUserInteractionEnabled = true
+            twitterTextField.isUserInteractionEnabled = true
+            instagramTextField.isUserInteractionEnabled = true
+            snapchatTextField.isUserInteractionEnabled = true
+            youtubeTextField.isUserInteractionEnabled = true
+            twitchTextField.isUserInteractionEnabled = true
+            pinterestTextField.isUserInteractionEnabled = true
+            tiktokTextField.isUserInteractionEnabled = true
+            themePickerView.isUserInteractionEnabled = true
+        }
+        else {
+            if (pseudoTextField.text!.isEmpty || emailTextField.text!.isEmpty) {
+                // /!\ One or several fields is/are empty
+                DispatchQueue.main.async {
+                    let alertView = UIAlertController(title: "Erreur", message: "Un ou plusieurs de vos champs est ou sont vide(s)", preferredStyle: .alert)
+                    alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
+                    self.present(alertView, animated: true, completion: nil)
+                }
+                return
+            }
+            if restriction.isProfileCorrect(emailTextField.text!, pseudoTextField.text!, postalTextField.text!, phoneTextField.text!) == false {
+                DispatchQueue.main.async {
+                    let alertView = UIAlertController(title: "Erreur", message: "Un ou plusieurs de vos champs est ou sont inconforme(s)", preferredStyle: .alert)
+                    alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
+                    self.present(alertView, animated: true, completion: nil)
+                }
+                return
+            }
+            if (restriction.isMinThreeChar(facebookTextField.text!) == false || restriction.isMinThreeChar(twitterTextField.text!) == false || restriction.isMinThreeChar(instagramTextField.text!) == false || restriction.isMinThreeChar(snapchatTextField.text!) == false || restriction.isMinThreeChar(youtubeTextField.text!) == false || restriction.isMinThreeChar(twitchTextField.text!) == false || restriction.isMinThreeChar(pinterestTextField.text!) == false || restriction.isMinThreeChar(tiktokTextField.text!) == false) {
+                DispatchQueue.main.async {
+                    let alertView = UIAlertController(title: "Erreur", message: "Un ou plusieurs de vos champs possède(nt) moins de trois caractères donc semble inconforme", preferredStyle: .alert)
+                    alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
+                    self.present(alertView, animated: true, completion: nil)
+                }
+                return
             }
             else {
-                if (pseudoTextField.text!.isEmpty || emailTextField.text!.isEmpty) {
-                    // /!\ One or several fields is/are empty
-                        DispatchQueue.main.async {
-                            let alertView = UIAlertController(title: "Erreur", message: "Un ou plusieurs de vos champs est ou sont vide(s)", preferredStyle: .alert)
-                            alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
-                            self.present(alertView, animated: true, completion: nil)
-                        }
-                    return
-                }
-                if restriction.isProfileCorrect(emailTextField.text!, pseudoTextField.text!, postalTextField.text!, phoneTextField.text!) == false {
-                        DispatchQueue.main.async {
-                            let alertView = UIAlertController(title: "Erreur", message: "Un ou plusieurs de vos champs est ou sont inconforme(s)", preferredStyle: .alert)
-                            alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
-                            self.present(alertView, animated: true, completion: nil)
-                        }
-                    return
-                }
-                if (restriction.isMinThreeChar(facebookTextField.text!) == false || restriction.isMinThreeChar(twitterTextField.text!) == false || restriction.isMinThreeChar(instagramTextField.text!) == false || restriction.isMinThreeChar(snapchatTextField.text!) == false || restriction.isMinThreeChar(youtubeTextField.text!) == false || restriction.isMinThreeChar(twitchTextField.text!) == false || restriction.isMinThreeChar(pinterestTextField.text!) == false || restriction.isMinThreeChar(tiktokTextField.text!) == false) {
+                let userPicture = userImage.toBase64() ?? ""
+                
+                APIInfManager.sharedInstance.editInfo(pseudo: userPseudo, fullname: userFullname, email: userEmail, phoneNumber: userPhone, zipCode: userPostal, city: userCity, userPicture: userPicture, userDescription: userDescription, subject: typeValue, facebook: userFacebook, snapchat: userSnapchat, twitter: userTwitter, instagram: userInstagram, youtube: userYoutube, twitch: userTwitch, pinterest: userPinterest, tiktok: userTiktok, onSuccess: {
+                    let statusAlert = StatusAlert()
+                    statusAlert.alertShowingDuration = 1
+                    statusAlert.image = UIImage(named: "Success icon.png")
+                    statusAlert.title = "Modification réussie !"
+                    statusAlert.message = "Vous avez modifié votre profil avec succès !"
+                    statusAlert.showInKeyWindow()
+                    self.editItem.title = "Modifier"
+                    self.userPhotoView.isUserInteractionEnabled = false
+                    self.userDescriptionTextView.isUserInteractionEnabled = false
+                    self.pseudoTextField.isUserInteractionEnabled = false
+                    self.emailTextField.isUserInteractionEnabled = false
+                    self.fullnameTextField.isUserInteractionEnabled = false
+                    self.cityTextField.isUserInteractionEnabled = false
+                    self.postalTextField.isUserInteractionEnabled = false
+                    self.phoneTextField.isUserInteractionEnabled = false
+                    self.facebookTextField.isUserInteractionEnabled = false
+                    self.twitterTextField.isUserInteractionEnabled = false
+                    self.snapchatTextField.isUserInteractionEnabled = false
+                    self.instagramTextField.isUserInteractionEnabled = false
+                    self.youtubeTextField.isUserInteractionEnabled = false
+                    self.twitchTextField.isUserInteractionEnabled = false
+                    self.pinterestTextField.isUserInteractionEnabled = false
+                    self.tiktokTextField.isUserInteractionEnabled = false
+                    self.themePickerView.isUserInteractionEnabled = false
+                }, onFailure: { error in
                     DispatchQueue.main.async {
-                        let alertView = UIAlertController(title: "Erreur", message: "Un ou plusieurs de vos champs possède(nt) moins de trois caractères donc semble inconforme", preferredStyle: .alert)
-                        alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
+                        let alertView = UIAlertController(title: "Erreur", message: "Un problème est survenu, veuillez réessayer", preferredStyle: .alert)
+                        alertView.addAction(UIAlertAction(title: "Ok", style: .cancel))
                         self.present(alertView, animated: true, completion: nil)
                     }
-                    return
-                }
-                else {
-                    let userPicture = imageConverter.imageToBase64(userPhotoView.image(for: .normal)!)
-                    
-                    APIInfManager.sharedInstance.editInfo(pseudo: pseudoTextField.text!, fullname: fullnameTextField.text!, email: emailTextField.text!, phoneNumber: phoneTextField.text!, zipCode: postalTextField.text!, city: cityTextField.text!, userPicture: userPicture!, subject: typeValue, facebook: facebookTextField.text!, snapchat: snapchatTextField.text!, twitter: twitterTextField.text!, instagram: instagramTextField.text!, youtube: youtubeTextField.text!, twitch: twitchTextField.text!, pinterest: pinterestTextField.text!, tiktok: tiktokTextField.text!, onSuccess: {
-                        self.editItem.title = "Modifier"
-                        DispatchQueue.main.async {
-                            let alertView = UIAlertController(title: "Parfait !", message: "Vos informations ont été modifié avec succès!", preferredStyle: .alert)
-                            alertView.addAction(UIAlertAction(title: "Continuer", style: .cancel))
-                            self.present(alertView, animated: true, completion: nil)
-                        }
-                        
-                        self.userPhotoView.isUserInteractionEnabled = false
-                        self.pseudoTextField.isUserInteractionEnabled = false
-                        self.emailTextField.isUserInteractionEnabled = false
-                        self.fullnameTextField.isUserInteractionEnabled = false
-                        self.cityTextField.isUserInteractionEnabled = false
-                        self.postalTextField.isUserInteractionEnabled = false
-                        self.phoneTextField.isUserInteractionEnabled = false
-                        self.facebookTextField.isUserInteractionEnabled = false
-                        self.twitterTextField.isUserInteractionEnabled = false
-                        self.snapchatTextField.isUserInteractionEnabled = false
-                        self.instagramTextField.isUserInteractionEnabled = false
-                        self.youtubeTextField.isUserInteractionEnabled = false
-                        self.twitchTextField.isUserInteractionEnabled = false
-                        self.pinterestTextField.isUserInteractionEnabled = false
-                        self.tiktokTextField.isUserInteractionEnabled = false
-                        self.themePickerView.isUserInteractionEnabled = false
-                    }, onFailure: { error in
-                        DispatchQueue.main.async {
-                            let alertView = UIAlertController(title: "Erreur", message: "Un problème est survenu, veuillez réessayer", preferredStyle: .alert)
-                            alertView.addAction(UIAlertAction(title: "Continuer", style: .cancel))
-                            self.present(alertView, animated: true, completion: nil)
-                        }
-                        print("Request failed with error: \(error)")
-                    })
-                }
+                    print("Request failed with error: \(error)")
+                })
             }
         }
     }
+}

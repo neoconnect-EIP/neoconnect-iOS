@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import StatusAlert
 
 class B_ConnectionPageViewController: UIViewController {
     
@@ -49,6 +50,12 @@ class B_ConnectionPageViewController: UIViewController {
         
         APIManager.sharedInstance.login(userPseudo: userPseudo, userPassword: userPassword, onSuccess: {
             DispatchQueue.main.async {
+                let statusAlert = StatusAlert()
+                statusAlert.image = UIImage(named: "Success icon.png")
+                statusAlert.title = "Connexion réussie!"
+                statusAlert.message = "Vous vous êtes connecté avec succès"
+                statusAlert.alertShowingDuration = 1
+                statusAlert.showInKeyWindow()
                 let storyBoard: UIStoryboard = UIStoryboard(name: "B_TabBarController", bundle: nil)
                 let home  = storyBoard.instantiateViewController(withIdentifier: "B_CustomTabBarController")
                 home.navigationItem.setHidesBackButton(true, animated: true)

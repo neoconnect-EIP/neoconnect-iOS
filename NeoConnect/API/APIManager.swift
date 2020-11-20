@@ -21,7 +21,6 @@ class APIManager {
     }
     
     let baseURL = "http://168.63.65.106:8080"
-    
     static let headers: HTTPHeaders = [
         "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
         "Content-Type": "application/x-www-form-urlencoded"
@@ -31,6 +30,8 @@ class APIManager {
     static let forgotPasswordEndpoint = "/forgotPassword"
     static let updatePasswordEndpoint = "/updatePassword"
     static let messagesEndpoint = "/message"
+    static let getImageEndpoint = "/image/User_"
+    static let getOffersByShopId = "/offer/shop"
     
     static let sharedInstance = APIManager()
     
@@ -47,14 +48,33 @@ class APIManager {
                             let response = JSON as! [String:Any]
                             guard let token = response["token"] else { return }
                             guard let id = response["userId"] else { return }
-                            UserDefaults.standard.set(token, forKey: "Token") // Bool
-                            UserDefaults.standard.set(id, forKey: "id") // Id
-                            UserDefaults.standard.set("Logged", forKey: "isLogged") // Logged
+                            guard let userType = response["userType"] else { return }
+                            guard let theme = response["theme"] else { return }
+                            UserDefaults.standard.set(token, forKey: "Token")
+                            UserDefaults.standard.set(id, forKey: "id")
+                            UserDefaults.standard.set(theme, forKey: "theme")
                             UserDefaults.standard.set(userPseudo, forKey: "pseudo")
+                            UserDefaults.standard.set(userType, forKey: "userType")
+                            UserDefaults.standard.set(Date(), forKey:"LogInTime")
+                            UserDefaults.standard.synchronize()
                             onSuccess()
                         case .failure(_):
                             onFailure()
                     }
+        }
+    }
+    
+    func getUserImage(onSuccess: @escaping(UIImage) -> Void) {
+        guard let id = UserDefaults.standard.string(forKey: "id") else { return }
+        guard let pseudo = UserDefaults.standard.string(forKey: "pseudo") else { return }
+        let url : String = baseURL + APIManager.getImageEndpoint + "\(id)_\(id)_\(pseudo).png"
+
+        AF.request(url).responseImage { response in
+            if case .success(let image) = response.result {
+                onSuccess(image)
+            } else if case .failure(let error) = response.result {
+                print("Image Request Error : \(error)")
+            }
         }
     }
     
@@ -125,7 +145,7 @@ class APIManager {
         AF.request(url, method: .get, encoding: URLEncoding.default, headers: APIManager.headers, interceptor: nil).responseJSON { response in
             switch response.result {
                 case .success(let JSON):
-                    let response = JSON as! [String:Any]
+                    guard let response = JSON as? [String:Any] else { return }
                     onSuccess(response)
                 
                 case .failure(let error):
@@ -153,4 +173,20 @@ class APIManager {
             }
         }
     }
+    
+    func getOffersByShopId(id: String,onSuccess: @escaping(Any) -> Void) {
+        let url : String = baseURL + APIManager.getOffersByShopId + "/\(id)"
+        
+        AF.request(url,
+                   headers: APIManager.headers).responseJSON { response in
+                    switch response.result {
+                        case .success(let JSON):
+                            onSuccess(JSON)
+                        case .failure(let error):
+                            print("Request failed with error: \(error)")
+                    }
+                   }
+
+    }
+
 }

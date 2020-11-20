@@ -14,21 +14,55 @@ import Cosmos
 
 class B_SearchViewController: UIViewController {
 
-    @IBOutlet weak var messageTextField: UILabel!
-    
-    @State private var rating = 0
-    var userId: Int!
-    var userEmail: String!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var loader: UIActivityIndicatorView!
+
     private let searchController = UISearchController(searchResultsController: nil)
     
-    var infImageView: UIImage!
-    var infPseudoLabelField: String!
-    var infSubjectLabelField: String!
-    var infRatingStars: CosmosView!
+    var infs: [Inf] = []
+    var inf: Inf!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
         configureSearchBar()
+        loader.startAnimating()
+        getDataFromApi()
+    }
+    
+    func getDataFromApi() {
+        APIBrandManager.sharedInstance.getInfList(onSuccess: { infs in
+            self.infs = self.createArray(results: infs)
+            self.tableView.reloadData()
+            self.loader.stopAnimating()
+            self.loader.isHidden = true
+        })
+    }
+    
+    func createArray(results: Array<NSDictionary>) -> [Inf] {
+        var tempInf: [Inf] = []
+        
+        for dictionary in results {
+            var infImage: UIImage = #imageLiteral(resourceName: "avatar-placeholder")
+            if let userPicture = dictionary["userPicture"] as? [[String:String]] {
+                if userPicture.count > 0 {
+                    if let imageData = URL(string: (userPicture[0]["imageData"])!) {
+                        if let image = try! UIImage(data: Data(contentsOf: imageData)) {
+                            infImage = image
+                        }
+                    }
+                }
+            }
+            guard let infId = dictionary["id"] as? Int else { return tempInf }
+            guard let infPseudo = dictionary["pseudo"] as? String else { return tempInf }
+            let infOffersApplied = dictionary["nbOfferApplied"] as? Int ?? 0
+            let infSubject = dictionary["theme"] as? String ?? ""
+            let infAverage = dictionary["average"] as? Double ?? 0
+            let infDescription = dictionary["userDescription"] as? String ?? ""
+            tempInf.append(Inf(id: infId, pseudo: infPseudo, offersApplied: String(infOffersApplied), subject: infSubject, average: infAverage, image: infImage, description: infDescription))
+        }
+        return tempInf
     }
     
     func configureSearchBar() {
@@ -40,18 +74,38 @@ class B_SearchViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let infVC: B_DetailedInfViewController = segue.destination as! B_DetailedInfViewController
         if segue.identifier == "B_searchResult" {
-            let searchResult: B_InfFoundViewController = segue.destination as! B_InfFoundViewController
+            infVC.inf = inf
+        } else {
+            let row = tableView.indexPathForSelectedRow?.row
+            let inf = self.infs[row!]
             
-            searchResult.userId = self.userId
-            searchResult.userEmail = self.userEmail
-            searchResult.imageView = self.infImageView
-            searchResult.pseudo = self.infPseudoLabelField
-            searchResult.subject = self.infSubjectLabelField
-            searchResult.stars = self.infRatingStars
+            infVC.inf = inf
         }
     }
 }
+
+extension B_SearchViewController : UITableViewDataSource, UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return infs.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let inf = infs[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "B_InfTableViewCell") as! B_InfTableViewCell
+        
+        cell.initCell(inf: inf)
+        
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
 
 extension B_SearchViewController : UISearchBarDelegate {
     
@@ -59,28 +113,30 @@ extension B_SearchViewController : UISearchBarDelegate {
         let userPseudo = searchBar.text!
         self.searchController.searchBar.endEditing(true)
         APIBrandManager.sharedInstance.search_inf(userPseudo: userPseudo, onSuccess: { response in
-            let imageArray = response["userPicture"] as? [[String:Any]]
-            let imageUrl = URL(string: imageArray![0]["imageData"] as! String)!
-            var imageData = try! UIImage(data: Data(contentsOf: imageUrl))!
-            DispatchQueue.main.async {
-                AF.request(imageUrl).responseImage { response in
-                    if case .success(let image) = response.result {
-                        print("Image downloaded: \(image)")
-                        imageData = image
-                    } else if case .failure(let error) = response.result {
-                        print("Image Request Error : \(error)")
+            var infImage: UIImage = #imageLiteral(resourceName: "avatar-placeholder")
+            if let userPicture = response["userPicture"] as? [[String:String]] {
+                if userPicture.count > 0 {
+                    if let imageData = URL(string: (userPicture[0]["imageData"])!) {
+                        if let image = try! UIImage(data: Data(contentsOf: imageData)) {
+                            infImage = image
+                        }
                     }
                 }
             }
-            self.userId = response["id"] as? Int
-            self.userEmail = response["email"] as? String
-            self.infPseudoLabelField = response["pseudo"] as? String
-            self.infImageView = imageData
-            self.infSubjectLabelField = response["theme"] as? String
-//            self.infRatingStars.rating = (response["note"] as? Double)!
+            guard let infId = response["id"] as? Int else { return }
+            guard let infPseudo = response["pseudo"] as? String else { return }
+            let infOffersApplied = response["nbOfferApplied"] as? Int ?? 0
+            let infSubject = response["theme"] as? String ?? ""
+            let infAverage = response["average"] as? Double ?? 0
+            let infDescription = response["userDescription"] as? String ?? ""
+            self.inf = Inf(id: infId, pseudo: infPseudo, offersApplied: String(infOffersApplied), subject: infSubject, average: infAverage, image: infImage, description: infDescription)
             self.performSegue(withIdentifier: "B_searchResult", sender: self)
         }, onFailure: {
-            self.messageTextField.text = "Aucun utilisateur trouvé, veuillez réessayer."
+            DispatchQueue.main.async {
+                let alertView = UIAlertController(title: "Erreur", message: "Aucun utilisateur trouvé, veuillez réessayer.", preferredStyle: .alert)
+                alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
+                self.present(alertView, animated: true, completion: nil)
+            }
         })
     }
 }

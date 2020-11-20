@@ -9,8 +9,15 @@
 import UIKit
 import SwiftUI
 import Alamofire
+import AlamofireImage
 
 class I_ParametersTableViewController: UITableViewController {
+    @IBOutlet weak var userImageView: PhotoFieldImage!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        getImageFromApi()
+    }
     
     @IBAction func contactUS(_ sender: Any) {
         let contactView = ReportUsView()
@@ -39,9 +46,15 @@ class I_ParametersTableViewController: UITableViewController {
             self.present(alertView, animated: true, completion: nil)
         }
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    
+    func getImageFromApi() {
+        DispatchQueue.main.async {
+            APIManager.sharedInstance.getUserImage(onSuccess: { image in
+                self.userImageView.image = image
+            })
+        }
     }
+
     
     // MARK: - Table view data source
     

@@ -12,8 +12,6 @@ import Alamofire
 class APIBrandManager {
     
     let baseURL = "http://168.63.65.106:8080"
-    let imageConverter = ImageConverter()
-    
     static let headers: HTTPHeaders = [
         "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
         "Content-Type": "application/x-www-form-urlencoded"
@@ -21,14 +19,15 @@ class APIBrandManager {
     static let getRegisterShopEndpoint = "/shop/register"
     static let infoCurrentAccountEndpoint = "/shop/me"
     static let postOfferEndpoint = "/offer/insert"
-    static let offerEndPoint = "/offer/"
-    static let postSearchInfEndpoint = "/shop/search"
-
+    static let offerEndPoint = "/offer"
+    static let postSearchInfEndpoint = "/inf/search"
+    static let getListInf = "/shop/listInf"
+    
     static let sharedInstance = APIBrandManager()
     
-    func register_Shop(pseudo: String, password: String, name: String, email: String, website: String, phoneNumber: String, zipCode: String, city: String, userPicture: String, subject: String, company: String, profession: String, facebook: String, snapchat: String, twitter: String, instagram: String,  onSuccess: @escaping() -> Void, onFailure: @escaping() -> Void) {
+    func register_Shop(pseudo: String, password: String, name: String, email: String, website: String, phoneNumber: String, zipCode: String, city: String, userPicture: String, description: String, subject: String, facebook: String, snapchat: String, twitter: String, instagram: String,  onSuccess: @escaping() -> Void, onFailure: @escaping() -> Void) {
         let url : String = baseURL + APIBrandManager.getRegisterShopEndpoint
-
+        
         let Register: Parameters = [
             "pseudo": pseudo,
             "password": password,
@@ -40,8 +39,6 @@ class APIBrandManager {
             "city": city,
             "userPicture": userPicture,
             "theme": subject,
-            "society": company,
-            "function": profession,
             "facebook": facebook,
             "snapchat": snapchat,
             "twitter": twitter,
@@ -49,21 +46,18 @@ class APIBrandManager {
         ]
         
         AF.request(url, method: .post, parameters: Register, encoding: URLEncoding.default, interceptor: nil).responseJSON { response in
-
-                    switch response.result {
-                    case .success(_):
-                        // Inscription réussie
-                        print("Successfull")
-                        onSuccess()
-                    case .failure(_):
-                        // /!\ Inscription ratée
-                        print("Error")
-                        onFailure()
-                    }
+            switch response.result {
+                case .success(_):
+                    print("Successfull")
+                    onSuccess()
+                case .failure(_):
+                    print("Error")
+                    onFailure()
+            }
         }
     }
     
-    func editInfo(pseudo: String, fullname: String, email: String, phoneNumber: String, zipCode: String, city: String, userPicture: String, subject: String, website: String, society: String, profession: String, facebook: String, snapchat: String, twitter: String, instagram: String, onSuccess: @escaping() -> Void, onFailure: @escaping(Error) -> Void) {
+    func editInfo(pseudo: String, fullname: String, email: String, phoneNumber: String, zipCode: String, city: String, userPicture: String, description: String, subject: String, website: String, facebook: String, snapchat: String, twitter: String, instagram: String, onSuccess: @escaping() -> Void, onFailure: @escaping(Error) -> Void) {
         let url : String = baseURL + APIBrandManager.infoCurrentAccountEndpoint
         let new_Info: Parameters = [
             "pseudo": pseudo,
@@ -74,9 +68,8 @@ class APIBrandManager {
             "postal": zipCode,
             "city": city,
             "userPicture": userPicture,
+            "userDescription" : description,
             "theme": subject,
-            "society": society,
-            "function": profession,
             "facebook": facebook,
             "snapchat": snapchat,
             "twitter": twitter,
@@ -93,18 +86,22 @@ class APIBrandManager {
         }
     }
     
-    func editOffer(id: Int, name: String, imageData: String, sex: String, description: String, subject: String, onSuccess: @escaping() -> Void, onFailure: @escaping(Error) -> Void) {
-        let url : String = baseURL + APIBrandManager.offerEndPoint + "\(id)"
-        let imageName = "Img_offer_\(String(id))"
-        let offer: [String: Any] = [
+    func editOffer(id: Int, name: String, description: String, subject: String, sex: String, imageArray: Array<String>, onSuccess: @escaping() -> Void, onFailure: @escaping(Error) -> Void) {
+        let url : String = baseURL + APIBrandManager.offerEndPoint + "/\(id)"
+        var imageDict: Array<Dictionary<String, String>> = []
+        for image in imageArray {
+            imageDict.append([
+                "imageName": "",
+                "imageData": image
+            ])
+        }
+        let offer: Parameters = [
             "productImg": [
-                [
-                    "imageName": imageName,
-                    "imageData": imageData
-                ]
+                "imageName": "",
+                "imageData": imageDict
             ],
-            "productName": name,
             "productSex": sex,
+            "productName": name,
             "productDesc": description,
             "productSubject": subject,
         ]
@@ -114,7 +111,7 @@ class APIBrandManager {
                 case .success(_):
                     // Offre modifiée
                     onSuccess()
-                
+                    
                 case .failure(let error):
                     // Erreur de la modification de l'offre
                     onFailure(error)
@@ -127,12 +124,25 @@ class APIBrandManager {
         
         AF.request(url, headers: APIBrandManager.headers).responseJSON { response in
             switch response.result {
-                
                 case .success(let JSON):
                     guard let response = JSON as? [String:Any] else { return }
                     onSuccess(response)
                 case .failure(let error):
                     onFailure(error)
+            }
+        }
+    }
+    
+    func getInfList(onSuccess: @escaping(Array<NSDictionary>) -> Void) {
+        let url : String = baseURL + APIBrandManager.getListInf
+        
+        AF.request(url, headers: APIBrandManager.headers).responseJSON { response in
+            switch response.result {
+                case .success(let JSON):
+                    guard let response = JSON as? Array<NSDictionary> else { return }
+                    onSuccess(response)
+                case .failure(let error):
+                    print("Request failed with error: \(error)")
             }
         }
     }
@@ -146,53 +156,67 @@ class APIBrandManager {
         AF.request(url,
                    method: .post,
                    parameters: user,
-                   encoding: URLEncoding.default, headers: APIManager.headers, interceptor: nil).validate(statusCode: 200..<300).responseJSON { response in
-                    
+                   encoding: URLEncoding.default, headers: APIBrandManager.headers, interceptor: nil).responseJSON { response in
                     switch response.result {
                         case .success(let JSON):
-                            let response = JSON as! [String:Any]
+                            guard let response = JSON as? [String:Any] else { return }
                             print(response)
                             onSuccess(response)
-                        
                         case .failure(let error):
                             print("Request failed with error: \(error)")
                             onFailure()
                     }
+                   }
+    }
+    
+    func deleteOffer(id: String, onSuccess: @escaping() -> Void) {
+        let url : String = baseURL + APIBrandManager.offerEndPoint + String(id)
+        
+        AF.request(url, method: .delete, encoding: URLEncoding.default, headers: APIBrandManager.headers, interceptor: nil).responseJSON { response in
+            switch response.result {
+                case .success(_):
+                    // Offre modifiée
+                onSuccess()
+                case .failure(let error):
+                    // Erreur de la modification de l'offre
+                print("Request failed with error: \(error)")
+            }
         }
     }
     
-    func addOffer(name: String, sex: String, description: String, theme: String, imageName: String, imageData: String, color: String, brand: String, onSuccess: @escaping() -> Void, onFailure: @escaping() -> Void) {
+    func addOffer(name: String, description: String, subject: String, sex: String, imageArray: Array<String>, onSuccess: @escaping() -> Void, onFailure: @escaping() -> Void) {
         let url : String = baseURL + APIBrandManager.postOfferEndpoint
-        let offer: [String: Any] = [
+        var imageDict: Array<Dictionary<String, String>> = []
+        guard let brand = UserDefaults.standard.string(forKey: "pseudo") else { return }
+        for image in imageArray {
+            imageDict.append([
+                "imageName": "",
+                "imageData": image
+            ])
+        }
+        let offer: Parameters = [
             "productImg": [
-                [
-                    "imageName": imageName,
-                    "imageData": imageData
-                ]
+                "imageName": "",
+                "imageData": imageDict
             ],
-            "productName": name,
             "productSex": sex,
+            "productName": name,
             "productDesc": description,
-            "productSubject": theme,
+            "productSubject": subject,
             "brand": brand,
-            "color": color
         ]
         
         AF.request(url,
                    method: .post,
                    parameters: offer,
-                   encoding: URLEncoding.default, headers: APIManager.headers, interceptor: nil).validate(statusCode: 200..<300).responseJSON { response in
-                    
+                   encoding: JSONEncoding.default, headers: APIBrandManager.headers, interceptor: nil).responseJSON { response in
                     switch response.result {
-                        case .success(let JSON):
-                            let response = JSON as! [String:Any]
-                            print(response)
+                        case .success(_):
                             onSuccess()
-                        
                         case .failure(let error):
                             print("Request failed with error: \(error)")
                             onFailure()
                     }
-        }
+                   }
     }
 }

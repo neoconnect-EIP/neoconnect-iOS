@@ -11,6 +11,13 @@ import SwiftUI
 import Alamofire
 
 class B_ParametersTableViewController: UITableViewController {
+    @IBOutlet weak var userImageView: PhotoFieldImage!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.tableView.tableFooterView = UIView()
+        getImageFromApi()
+    }
     
     @IBAction func contactUS(_ sender: Any) {
         let contactView = ReportUsShopSideView()
@@ -30,14 +37,17 @@ class B_ParametersTableViewController: UITableViewController {
                 loginVC.modalPresentationStyle = .fullScreen
                 
                 self.present(loginVC, animated: true, completion: nil)            })
-            
             self.present(alertView, animated: true, completion: nil)
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.tableView.tableFooterView = UIView()
+    func getImageFromApi() {
+        DispatchQueue.main.async {
+            APIManager.sharedInstance.getUserImage(onSuccess: { image in
+                print("SUCCESS")
+                self.userImageView.image = image
+            })
+        }
     }
     
     // MARK: - Table view data source
@@ -53,6 +63,6 @@ class B_ParametersTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 6
+        return 5
     }
 }
