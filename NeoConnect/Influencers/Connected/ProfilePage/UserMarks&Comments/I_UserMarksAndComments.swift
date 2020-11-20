@@ -1,15 +1,15 @@
 //
-//  B_MarksViewController.swift
+//  I_MarksViewController.swift
 //  NeoConnect
 //
-//  Created by EIP on 02/04/2020.
+//  Created by EIP on 03/06/2020.
 //  Copyright © 2020 EIP. All rights reserved.
 //
 
 import UIKit
 import Cosmos
 
-class B_UserMarksAndComments: UIViewController {
+class I_UserMarksAndComments: UIViewController {
     
     @IBOutlet weak var userRatingField: CosmosView!
     @IBOutlet weak var userEvaluationsField: UILabel!
@@ -31,7 +31,7 @@ class B_UserMarksAndComments: UIViewController {
     }
     
     func getDataFromAPI() {
-        APIBrandManager.sharedInstance.getInfo(onSuccess: { response in
+        APIInfManager.sharedInstance.getInfo(onSuccess: { response in
             self.commentsArray = self.createCommentArray(response: response)
             self.tableView.reloadData()
         })
@@ -52,7 +52,7 @@ class B_UserMarksAndComments: UIViewController {
     }
 }
 
-extension B_UserMarksAndComments: UITableViewDelegate, UITableViewDataSource {
+extension I_UserMarksAndComments: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if commentsArray.count > 0 {
@@ -70,4 +70,3 @@ extension B_UserMarksAndComments: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 }
-

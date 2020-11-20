@@ -50,11 +50,23 @@ class I_DetailedShopViewController: UIViewController {
             let VC = segue.destination as! I_DetailedChatViewController
             
             VC.shop = Shop(id: UserDefaults.standard.integer(forKey: "id"), user_id: brand.id, pseudo: brand.pseudo, image: brand.image)
+        } else if (segue.identifier == "I_StatsView") {
+            let VC = segue.destination as! I_ShopStatsViewController
+
+            VC.brand = brand
+        } else if (segue.identifier == "I_OffersView") {
+            let VC = segue.destination as! I_ShopOffersViewController
+
+            VC.brand = brand
         }
     }
     
+    @IBAction func showOffersButtonTapped(_ sender: Any) {
+        self.performSegue(withIdentifier: "I_OffersView", sender: nil)
+    }
+    
     @IBAction func ratingButtonTapped(_ sender: Any) {
-        
+        self.performSegue(withIdentifier: "I_StatsView", sender: nil)
     }
     
     @IBAction func contactButtonTapped(_ sender: Any) {
@@ -62,30 +74,15 @@ class I_DetailedShopViewController: UIViewController {
     }
         
     @IBAction func followButtonTapped(_ sender: DefaultButton) {
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
-            "Content-Type": "application/x-www-form-urlencoded"
-        ]
+
         if sender.titleLabel?.text == "S'abonner" {
-            AF.request("http://168.63.65.106:8080/shop/follow/\(String(brand.id))", method: .put, headers: headers, interceptor: nil).responseJSON { response in
-                switch response.result {
-                    case .success(_):
-                        print(response)
-                    case .failure(let error):
-                        print("Request failed withs error: \(error)")
-                }
-            }
-            sender.setTitle("Abonné", for: .normal)
+            APIInfManager.sharedInstance.putFollowBrand(brandId: String(brand.id), onSuccess: {
+                sender.setTitle("Abonné", for: .normal)
+            })
         } else {
-            AF.request("http://168.63.65.106:8080/shop/unfollow/\(String(brand.id))", method: .put, headers: headers, interceptor: nil).responseJSON { response in
-                switch response.result {
-                    case .success(_):
-                        print(response)
-                    case .failure(let error):
-                        print("Request failed with error: \(error)")
-                }
-            }
-            sender.setTitle("S'abonner", for: .normal)
+            APIInfManager.sharedInstance.putUnFollowBrand(brandId: String(brand.id), onSuccess: {
+                sender.setTitle("S'abonner", for: .normal)
+            })
         }
     }
     

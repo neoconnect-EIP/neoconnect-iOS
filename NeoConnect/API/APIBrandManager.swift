@@ -37,6 +37,7 @@ class APIBrandManager {
             "phone": phoneNumber,
             "postal": zipCode,
             "city": city,
+            "UserDescription": description,
             "userPicture": userPicture,
             "theme": subject,
             "facebook": facebook,
@@ -57,7 +58,7 @@ class APIBrandManager {
         }
     }
     
-    func editInfo(pseudo: String, fullname: String, email: String, phoneNumber: String, zipCode: String, city: String, userPicture: String, description: String, subject: String, website: String, facebook: String, snapchat: String, twitter: String, instagram: String, onSuccess: @escaping() -> Void, onFailure: @escaping(Error) -> Void) {
+    func editInfo(pseudo: String, fullname: String, email: String, phoneNumber: String, zipCode: String, city: String, userPicture: String, description: String, subject: String, website: String, facebook: String, snapchat: String, twitter: String, instagram: String, onSuccess: @escaping() -> Void, onFailure: @escaping() -> Void) {
         let url : String = baseURL + APIBrandManager.infoCurrentAccountEndpoint
         let new_Info: Parameters = [
             "pseudo": pseudo,
@@ -81,7 +82,7 @@ class APIBrandManager {
                 case .success(_):
                     onSuccess()
                 case .failure(let error):
-                    onFailure(error)
+                    onFailure()
             }
         }
     }
@@ -119,7 +120,7 @@ class APIBrandManager {
         }
     }
     
-    func getInfo(onSuccess: @escaping([String:Any]) -> Void, onFailure: @escaping(Error) -> Void) {
+    func getInfo(onSuccess: @escaping([String:Any]) -> Void) {
         let url : String = baseURL + APIBrandManager.infoCurrentAccountEndpoint
         
         AF.request(url, headers: APIBrandManager.headers).responseJSON { response in
@@ -128,7 +129,7 @@ class APIBrandManager {
                     guard let response = JSON as? [String:Any] else { return }
                     onSuccess(response)
                 case .failure(let error):
-                    onFailure(error)
+                    print("Request failed with error: \(error)")
             }
         }
     }

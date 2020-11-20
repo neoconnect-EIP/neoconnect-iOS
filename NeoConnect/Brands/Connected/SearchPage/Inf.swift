@@ -18,8 +18,9 @@ class Inf {
     var average: Double
     var image: UIImage
     var description: String
+    var comments: Array<NSDictionary>
     
-    init(id: Int, pseudo: String, offersApplied: String, subject: String, average: Double, image: UIImage, description: String) {
+    init(id: Int, pseudo: String, offersApplied: String, subject: String, average: Double, image: UIImage, description: String, comments:  Array<NSDictionary>) {
         self.id = id
         self.pseudo = pseudo
         self.offersApplied = offersApplied
@@ -27,5 +28,6 @@ class Inf {
         self.average = average
         self.image = image
         self.description = description
+        self.comments = comments
     }
 }

@@ -62,8 +62,6 @@ class I_UserInformationsViewController: UIViewController, UIImagePickerControlle
             self.tiktokTextField.text = response["tiktok"] as? String
             self.typeValue = response["theme"] as? String ?? "Mode"
             self.pickerViewButton.setTitle(self.typeValue, for: .normal)
-        }, onFailure: { error in
-            print("Request failed with error: \(error)")
         })
         imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = true
@@ -263,13 +261,12 @@ class I_UserInformationsViewController: UIViewController, UIImagePickerControlle
                     self.pinterestTextField.isUserInteractionEnabled = false
                     self.tiktokTextField.isUserInteractionEnabled = false
                     self.themePickerView.isUserInteractionEnabled = false
-                }, onFailure: { error in
+                }, onFailure: {
                     DispatchQueue.main.async {
                         let alertView = UIAlertController(title: "Erreur", message: "Un problème est survenu, veuillez réessayer", preferredStyle: .alert)
                         alertView.addAction(UIAlertAction(title: "Ok", style: .cancel))
                         self.present(alertView, animated: true, completion: nil)
                     }
-                    print("Request failed with error: \(error)")
                 })
             }
         }

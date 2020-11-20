@@ -60,7 +60,11 @@ class B_SearchViewController: UIViewController {
             let infSubject = dictionary["theme"] as? String ?? ""
             let infAverage = dictionary["average"] as? Double ?? 0
             let infDescription = dictionary["userDescription"] as? String ?? ""
-            tempInf.append(Inf(id: infId, pseudo: infPseudo, offersApplied: String(infOffersApplied), subject: infSubject, average: infAverage, image: infImage, description: infDescription))
+            var infComments: Array<NSDictionary> = []
+            if let commentArray = dictionary["comment"] as? Array<NSDictionary> {
+                infComments = commentArray
+            }
+            tempInf.append(Inf(id: infId, pseudo: infPseudo, offersApplied: String(infOffersApplied), subject: infSubject, average: infAverage, image: infImage, description: infDescription, comments: infComments))
         }
         return tempInf
     }
@@ -129,7 +133,11 @@ extension B_SearchViewController : UISearchBarDelegate {
             let infSubject = response["theme"] as? String ?? ""
             let infAverage = response["average"] as? Double ?? 0
             let infDescription = response["userDescription"] as? String ?? ""
-            self.inf = Inf(id: infId, pseudo: infPseudo, offersApplied: String(infOffersApplied), subject: infSubject, average: infAverage, image: infImage, description: infDescription)
+            var infComments: Array<NSDictionary> = []
+            if let commentArray = response["comment"] as? Array<NSDictionary> {
+                infComments = commentArray
+            }
+            self.inf = Inf(id: infId, pseudo: infPseudo, offersApplied: String(infOffersApplied), subject: infSubject, average: infAverage, image: infImage, description: infDescription, comments: infComments)
             self.performSegue(withIdentifier: "B_searchResult", sender: self)
         }, onFailure: {
             DispatchQueue.main.async {

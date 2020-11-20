@@ -21,6 +21,9 @@ class APIInfManager {
     static let infoCurrentAccountEndpoint = "/inf/me"
     static let getBrandList = "/inf/listShop"
     static let getOfferList = "/offer/list"
+    static let getOffersByBrandId = "/offer/shop"
+    static let putFollowBrand = "/shop/follow"
+    static let putUnFollowBrand = "/shop/unfollow"
     
     static let sharedInstance = APIInfManager()
     
@@ -36,6 +39,7 @@ class APIInfManager {
             "phone": phoneNumber,
             "postal": zipCode,
             "city": city,
+            "UserDescription": description,
             "userPicture": userPicture,
             "theme": subject,
             "facebook": facebook,
@@ -63,7 +67,7 @@ class APIInfManager {
         }
     }
     
-    func editInfo(pseudo: String, fullname: String, email: String, phoneNumber: String, zipCode: String, city: String, userPicture: String, userDescription: String, subject: String, facebook: String, snapchat: String, twitter: String, instagram: String, youtube: String, twitch: String, pinterest: String, tiktok: String, onSuccess: @escaping() -> Void, onFailure: @escaping(Error) -> Void) {
+    func editInfo(pseudo: String, fullname: String, email: String, phoneNumber: String, zipCode: String, city: String, userPicture: String, userDescription: String, subject: String, facebook: String, snapchat: String, twitter: String, instagram: String, youtube: String, twitch: String, pinterest: String, tiktok: String, onSuccess: @escaping() -> Void, onFailure: @escaping() -> Void) {
         let url : String = baseURL + APIInfManager.infoCurrentAccountEndpoint
         let new_Info: Parameters = [
             "pseudo": pseudo,
@@ -90,7 +94,8 @@ class APIInfManager {
                 case .success(_):
                     onSuccess()
                 case .failure(let error):
-                    onFailure(error)
+                    print("Request failed with error: \(error)")
+                    onFailure()
             }
         }
     }
@@ -109,6 +114,49 @@ class APIInfManager {
         }
     }
     
+    func getOffersByBrandId(brandId: Int, onSuccess: @escaping(Array<NSDictionary>) -> Void) {
+        let url : String = baseURL + APIInfManager.getOffersByBrandId + "/\(brandId)"
+        
+        AF.request(url, headers: APIInfManager.headers).responseJSON { response in
+            switch response.result {
+                case .success(let JSON):
+                    guard let response = JSON as? Array<NSDictionary> else { return }
+                    onSuccess(response)
+                case .failure(let error):
+                    print("Request failed with error: \(error)")
+            }
+        }
+
+    }
+    
+    func putFollowBrand(brandId: String, onSuccess: @escaping() -> Void) {
+        let url : String = baseURL + APIInfManager.putFollowBrand + "/\(brandId)"
+
+        AF.request(url, method: .put, headers: APIInfManager.headers, interceptor: nil).responseJSON { response in
+            switch response.result {
+                case .success(_):
+                    print(response)
+                    onSuccess()
+                case .failure(let error):
+                    print("Request failed withs error: \(error)")
+            }
+        }
+    }
+    
+    func putUnFollowBrand(brandId: String, onSuccess: @escaping() -> Void) {
+        let url : String = baseURL + APIInfManager.putUnFollowBrand + "/\(brandId)"
+
+        AF.request(url, method: .put, headers: APIInfManager.headers, interceptor: nil).responseJSON { response in
+            switch response.result {
+                case .success(_):
+                    print(response)
+                    onSuccess()
+                case .failure(let error):
+                    print("Request failed withs error: \(error)")
+            }
+        }
+    }
+    
     func getBrandList(onSuccess: @escaping(Array<NSDictionary>) -> Void) {
         let url : String = baseURL + APIInfManager.getBrandList
         
@@ -123,7 +171,7 @@ class APIInfManager {
         }
     }
     
-    func getInfo(onSuccess: @escaping([String:Any]) -> Void, onFailure: @escaping(Error) -> Void) {
+    func getInfo(onSuccess: @escaping([String:Any]) -> Void) {
         let url : String = baseURL + APIInfManager.infoCurrentAccountEndpoint
         
         AF.request(url, headers: APIInfManager.headers).responseJSON { response in
@@ -132,7 +180,7 @@ class APIInfManager {
                     let response = JSON as? [String:Any]
                     onSuccess(response!)
                 case .failure(let error):
-                    onFailure(error)
+                    print("Request failed with error: \(error)")
             }
         }
     }

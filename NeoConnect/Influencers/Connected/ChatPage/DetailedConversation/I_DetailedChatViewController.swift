@@ -24,6 +24,8 @@ class I_DetailedChatViewController: MessagesViewController, MessagesDataSource, 
     let otherUser = sender(senderId: "other", displayName: "")
     var messages = [MessageType]()
     var shop: Shop!
+    var shopImage: UIImage!
+    var currentUserImage: UIImage!
     var isIncoming = true
     
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
@@ -51,6 +53,17 @@ class I_DetailedChatViewController: MessagesViewController, MessagesDataSource, 
     
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
         return messages.count
+    }
+    
+    func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
+        //If it's current user show current user photo.
+        if message.sender.senderId == currentUser.senderId {
+            APIManager.sharedInstance.getUserImage(onSuccess: { image in
+                avatarView.image = image
+            })
+        } else {
+            avatarView.image = shopImage
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -81,8 +94,6 @@ class I_DetailedChatViewController: MessagesViewController, MessagesDataSource, 
     }
     
     func getDataFromAPI() {
-        var data: Array<NSDictionary> = []
-        
         APIManager.sharedInstance.getMessages(id: shop.id, onSuccess: { response in
             let data = response["data"] as! Array<NSDictionary>
             self.messages = self.createArray(data: data)
@@ -99,11 +110,8 @@ class I_DetailedChatViewController: MessagesViewController, MessagesDataSource, 
         var tempTextMessages = [MessageType]()
         
         for each in data {
-            print("EACH")
             let userId = each["userId"] as! Int
-            let pseudo = each["pseudo"] as! String
             let message = each["message"] as! String
-            let date = each["date"] as! String
             let myId = UserDefaults.standard.integer(forKey: "id")
             tempTextMessages.append(Message(sender: myId != userId ? self.otherUser : self.currentUser,
                                             messageId: String(userId),

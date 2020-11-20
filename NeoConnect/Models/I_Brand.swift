@@ -20,8 +20,9 @@ class I_Brand {
     var description: String
     var followed: Bool
     var image: UIImage
+    var comments: Array<NSDictionary>
     
-    init(id: Int, pseudo: String, nbOffers: String, nbFollowers: String, image: UIImage, subject: String, rate: Double, description: String, followed: Bool) {
+    init(id: Int, pseudo: String, nbOffers: String, nbFollowers: String, image: UIImage, subject: String, rate: Double, description: String, followed: Bool, comments: Array<NSDictionary>) {
         self.id = id
         self.pseudo = pseudo
         self.nbOffers = nbOffers
@@ -31,5 +32,6 @@ class I_Brand {
         self.description = description
         self.followed = followed
         self.image = image
+        self.comments = comments
     }
 }

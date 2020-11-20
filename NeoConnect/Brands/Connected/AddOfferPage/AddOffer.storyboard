@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KYC-ne-pui">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KYC-ne-pui">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -135,7 +135,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SeQ-K4-Nel" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
-                                <rect key="frame" x="132.5" y="552" width="110" height="40"/>
+                                <rect key="frame" x="132.5" y="584.5" width="110" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Vn9-4D-xbE"/>
                                     <constraint firstAttribute="width" constant="110" id="wUv-fW-82j"/>
@@ -178,7 +178,7 @@
                                 </items>
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veuillez décrire votre offre ci-dessous :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbV-hK-r4c">
-                                <rect key="frame" x="67.5" y="298" width="249" height="16.5"/>
+                                <rect key="frame" x="67.5" y="298" width="241.5" height="16.5"/>
                                 <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -202,6 +202,7 @@
                         <viewLayoutGuide key="safeArea" id="IW3-HP-sDn"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="SeQ-K4-Nel" firstAttribute="top" secondItem="CpQ-c5-Dsl" secondAttribute="bottom" constant="30" id="0ii-Zo-3Lu"/>
                             <constraint firstItem="wJs-Bq-uBA" firstAttribute="centerY" secondItem="CpQ-c5-Dsl" secondAttribute="centerY" id="3NF-JU-nsi"/>
                             <constraint firstItem="Ux0-Hh-uN4" firstAttribute="centerX" secondItem="IW3-HP-sDn" secondAttribute="centerX" id="3y5-vC-ycv"/>
                             <constraint firstItem="5Sh-UX-vKR" firstAttribute="top" secondItem="4Fm-H7-pbp" secondAttribute="top" id="9Db-xO-YQr"/>
@@ -210,7 +211,6 @@
                             <constraint firstItem="cbV-hK-r4c" firstAttribute="leading" secondItem="257-Al-ZeW" secondAttribute="leading" id="Df4-hn-V2m"/>
                             <constraint firstItem="5Sh-UX-vKR" firstAttribute="leading" secondItem="4Fm-H7-pbp" secondAttribute="leading" id="GQM-mj-vtn"/>
                             <constraint firstItem="fDQ-tr-buv" firstAttribute="top" secondItem="IW3-HP-sDn" secondAttribute="top" id="GxZ-gW-agc"/>
-                            <constraint firstAttribute="bottom" secondItem="SeQ-K4-Nel" secondAttribute="bottom" constant="75" id="IEx-fc-WzW"/>
                             <constraint firstItem="257-Al-ZeW" firstAttribute="centerX" secondItem="IW3-HP-sDn" secondAttribute="centerX" id="PYd-eX-5NX"/>
                             <constraint firstItem="Ux0-Hh-uN4" firstAttribute="leading" secondItem="IW3-HP-sDn" secondAttribute="leading" constant="10" id="VVP-y7-MaO"/>
                             <constraint firstItem="W2d-cf-fgg" firstAttribute="centerX" secondItem="IW3-HP-sDn" secondAttribute="centerX" id="XGc-y5-z53"/>
@@ -250,6 +250,6 @@
     <resources>
         <image name="ShopBackground" width="375" height="667"/>
         <image name="delete 1" width="30" height="30"/>
-        <image name="placeholder-image" width="800" height="600"/>
+        <image name="placeholder-image" width="1280" height="848"/>
     </resources>
 </document>

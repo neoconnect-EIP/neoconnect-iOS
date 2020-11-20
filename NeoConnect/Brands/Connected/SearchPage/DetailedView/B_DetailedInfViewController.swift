@@ -41,6 +41,11 @@ class B_DetailedInfViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    @IBAction func ratingButtonTapped(_ sender: Any) {
+        self.performSegue(withIdentifier: "B_StatsView", sender: nil)
+    }
+    
+    
     @IBAction func contactButtonTapped(_ sender: Any) {
         self.performSegue(withIdentifier: "MessageViewShop", sender: nil)
     }
@@ -50,6 +55,10 @@ class B_DetailedInfViewController: UIViewController {
             let VC = segue.destination as! B_DetailedChatViewController
             
             VC.inf = Conversation(id: UserDefaults.standard.integer(forKey: "id"), user_id: inf.id, pseudo: inf.pseudo, image: inf.image)
+        } else if (segue.identifier == "B_StatsView") {
+            let VC = segue.destination as! B_ShopStatsViewController
+
+            VC.inf = inf
         }
     }
     

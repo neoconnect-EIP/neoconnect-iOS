@@ -75,6 +75,7 @@ class I_ChatViewController: UIViewController {
         let VC = segue.destination as! I_DetailedChatViewController
         
         VC.shop = shop
+        VC.shopImage = shop.image
     }
     
     @IBAction func ContactUser(_ sender: Any) {

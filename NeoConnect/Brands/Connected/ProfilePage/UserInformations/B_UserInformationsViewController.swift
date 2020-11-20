@@ -57,10 +57,7 @@ class B_UserInformationsViewController: UIViewController, UIImagePickerControlle
             self.instagramTextField.text = response["instagram"] as? String
             self.typeValue = response["theme"] as? String ?? "Mode"
             self.pickerViewButton.setTitle(self.typeValue, for: .normal)
-        }, onFailure: { error in
-            print("Request failed with error: \(error)")
         })
-        
         imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = true
         imagePicker.sourceType = .photoLibrary
@@ -250,14 +247,12 @@ class B_UserInformationsViewController: UIViewController, UIImagePickerControlle
                     self.snapchatTextField.isUserInteractionEnabled = false
                     self.instagramTextField.isUserInteractionEnabled = false
                     self.themePickerView.isUserInteractionEnabled = false
-                }, onFailure: { error in
+                }, onFailure: {
                     DispatchQueue.main.async {
                         let alertView = UIAlertController(title: "Erreur", message: "Un problème est survenu, veuillez réessayer", preferredStyle: .alert)
                         alertView.addAction(UIAlertAction(title: "Ok", style: .cancel))
                         self.present(alertView, animated: true, completion: nil)
-                    }
-                    print("Request failed with error: \(error)")
-                    
+                    }                    
                 })
                 
             }

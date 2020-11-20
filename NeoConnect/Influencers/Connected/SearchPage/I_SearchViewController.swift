@@ -133,8 +133,12 @@ class I_SearchViewController: UIViewController {
             let brandSubject = dictionary["theme"] as? String ?? "Non assigné"
             let brandDescription = dictionary["userDescription"] as? String ?? ""
             let brandRate = dictionary["average"] as? Double ?? 0
+            var brandComments: Array<NSDictionary> = []
+            if let commentArray = dictionary["comment"] as? Array<NSDictionary> {
+                brandComments = commentArray
+            }
             let brandFollowed = dictionary["follow"] as? Bool ?? false
-            tempBrands.append(I_Brand(id: brandId, pseudo: brandPseudo, nbOffers: String(brandNbOffers), nbFollowers: String(brandNbFollowers), image: brandImage, subject: brandSubject, rate: brandRate, description: brandDescription, followed: brandFollowed))
+            tempBrands.append(I_Brand(id: brandId, pseudo: brandPseudo, nbOffers: String(brandNbOffers), nbFollowers: String(brandNbFollowers), image: brandImage, subject: brandSubject, rate: brandRate, description: brandDescription, followed: brandFollowed, comments: brandComments))
         }
         return tempBrands
     }
@@ -182,7 +186,7 @@ extension I_SearchViewController: UITableViewDataSource, UITableViewDelegate {
             } else {
                 let offerCell = tableView.dequeueReusableCell(withIdentifier: "I_OfferTableViewCell") as! I_OfferTableViewCell
                 
-                offerCell.setOffers(offer: row as! I_Offer)
+                offerCell.setOffer(offer: row as! I_Offer)
                 cell = offerCell
             }
 //            if sc.selectedSegmentIndex == 0 {
@@ -208,7 +212,7 @@ extension I_SearchViewController: UITableViewDataSource, UITableViewDelegate {
             } else {
                 let offerCell = tableView.dequeueReusableCell(withIdentifier: "I_OfferTableViewCell") as! I_OfferTableViewCell
                 
-                offerCell.setOffers(offer: row as! I_Offer)
+                offerCell.setOffer(offer: row as! I_Offer)
                 
                 cell = offerCell
             }
@@ -247,7 +251,11 @@ extension I_SearchViewController: UISearchBarDelegate {
             let brandDescription = response["userDescription"] as? String ?? ""
             let brandRate = response["average"] as? Double ?? 0
             let brandFollowed = response["follow"] as? Bool ?? false
-            self.brand = I_Brand(id: brandId, pseudo: brandPseudo, nbOffers: String(brandNbOffers), nbFollowers: String(brandNbFollowers), image: brandImage, subject: brandSubject, rate: brandRate, description: brandDescription, followed: brandFollowed)
+            var brandComments: Array<NSDictionary> = []
+            if let commentArray = response["comment"] as? Array<NSDictionary> {
+                brandComments = commentArray
+            }
+            self.brand = I_Brand(id: brandId, pseudo: brandPseudo, nbOffers: String(brandNbOffers), nbFollowers: String(brandNbFollowers), image: brandImage, subject: brandSubject, rate: brandRate, description: brandDescription, followed: brandFollowed, comments: brandComments)
             self.performSegue(withIdentifier: "I_searchBrandResult", sender: self)
         }, onFailure: {
             DispatchQueue.main.async {
