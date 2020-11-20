@@ -255,10 +255,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aEf-rk-bsG">
-                                <rect key="frame" x="55.5" y="203.5" width="264.5" height="340"/>
+                                <rect key="frame" x="55.5" y="203.5" width="264" height="340"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="twI-jH-OGF">
-                                        <rect key="frame" x="0.0" y="0.0" width="264.5" height="340"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="264" height="340"/>
                                         <subviews>
                                             <button opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2l1-1i-BPn" customClass="PhotoFieldButton" customModule="NeoConnect" customModuleProvider="target">
                                                 <rect key="frame" x="72" y="0.0" width="120" height="120"/>
@@ -272,7 +272,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Et présentez vous en quelque mots" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htd-Qx-BGc">
-                                                <rect key="frame" x="0.0" y="135" width="264.5" height="20"/>
+                                                <rect key="frame" x="0.0" y="135" width="264" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="1S6-qU-ezT"/>
                                                 </constraints>
@@ -346,7 +346,7 @@
         <!--Register Page Step One View Controller-->
         <scene sceneID="gAr-vu-cU8">
             <objects>
-                <viewController storyboardIdentifier="I_Step_One" id="E1w-FF-9qg" customClass="I_RegisterPage_Step_One_ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="I_Step_One" id="E1w-FF-9qg" customClass="I_RegisterPage_Step_One_ViewController" customModule="NeoConnect" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sjL-EY-m6e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -396,7 +396,7 @@
                                                 <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
                                                 <connections>
-                                                    <action selector="isValidField:" destination="E1w-FF-9qg" eventType="editingDidEnd" id="YBY-YI-KnR"/>
+                                                    <action selector="isValidField:" destination="E1w-FF-9qg" eventType="editingDidEnd" id="pgG-Ye-kuL"/>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1XI-7N-ZAy" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
@@ -409,7 +409,7 @@
                                                 <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                 <connections>
-                                                    <action selector="isValidField:" destination="E1w-FF-9qg" eventType="editingDidEnd" id="qxm-bl-Wzs"/>
+                                                    <action selector="isValidField:" destination="E1w-FF-9qg" eventType="editingDidEnd" id="B23-s8-T8J"/>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mot de passe*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ku8-zS-51f" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
@@ -422,7 +422,7 @@
                                                 <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
                                                 <connections>
-                                                    <action selector="isValidField:" destination="E1w-FF-9qg" eventType="editingDidEnd" id="bVQ-ok-QKQ"/>
+                                                    <action selector="isValidField:" destination="E1w-FF-9qg" eventType="editingDidEnd" id="6ih-6u-4sX"/>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Répétez le mot de passe*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4ps-SG-C9t" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
@@ -435,7 +435,7 @@
                                                 <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
                                                 <connections>
-                                                    <action selector="isValidField:" destination="E1w-FF-9qg" eventType="editingDidEnd" id="34T-j5-0Z0"/>
+                                                    <action selector="isValidField:" destination="E1w-FF-9qg" eventType="editingDidEnd" id="1Lj-pd-PyR"/>
                                                 </connections>
                                             </textField>
                                         </subviews>
@@ -478,7 +478,7 @@
                         <barButtonItem key="backBarButtonItem" title="Retour" id="yQN-Kb-ccR"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="repeatPasswordTextField" destination="4ps-SG-C9t" id="ska-it-xxM"/>
+                        <outlet property="repeatPasswordTextField" destination="4ps-SG-C9t" id="ney-dj-NuQ"/>
                         <outlet property="userEmailTextField" destination="1XI-7N-ZAy" id="YFk-iT-6RV"/>
                         <outlet property="userPasswordTextField" destination="Ku8-zS-51f" id="Ybo-Oe-Mdo"/>
                         <outlet property="userPseudoTextField" destination="fkx-Kc-rNk" id="Gxl-Y9-JjY"/>
