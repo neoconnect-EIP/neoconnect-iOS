@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FZo-97-4Hz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FZo-97-4Hz">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,6 +12,9 @@
         <array key="Raleway-Italic-VariableFont_wght.ttf">
             <string>RalewayItalic-Bold</string>
             <string>RalewayItalic-ExtraBold</string>
+        </array>
+        <array key="Raleway-Regular.ttf">
+            <string>Raleway</string>
         </array>
         <array key="Raleway-SemiBold.ttf">
             <string>Raleway-SemiBold</string>
@@ -51,10 +54,10 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tNK-5u-6y2">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="970"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1070"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cnn-sJ-fPe">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="970"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="1070"/>
                                                 <subviews>
                                                     <button opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1oO-cm-oDL" customClass="PhotoFieldButton" customModule="NeoConnect" customModuleProvider="target">
                                                         <rect key="frame" x="145" y="20" width="85" height="85"/>
@@ -280,10 +283,21 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ajt-Z4-EH0">
+                                                        <rect key="frame" x="10" y="948.5" width="355" height="25"/>
+                                                        <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="11"/>
+                                                        <state key="normal" title="Supprimer mon compte">
+                                                            <color key="titleColor" systemColor="systemRedColor"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="deleteAcc:" destination="hBu-sX-lBm" eventType="touchUpInside" id="9HK-0d-15Z"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="yFA-PW-ceC" firstAttribute="centerX" secondItem="Cnn-sJ-fPe" secondAttribute="centerX" id="0uq-4K-qg9"/>
+                                                    <constraint firstItem="Ajt-Z4-EH0" firstAttribute="centerX" secondItem="Cnn-sJ-fPe" secondAttribute="centerX" id="1bN-wK-nfn"/>
                                                     <constraint firstAttribute="trailing" secondItem="T8z-wK-O9M" secondAttribute="trailing" constant="20" id="23R-Ou-rdl"/>
                                                     <constraint firstItem="T8z-wK-O9M" firstAttribute="top" secondItem="aPV-6M-FdI" secondAttribute="bottom" constant="20" id="2d3-L7-2KE"/>
                                                     <constraint firstItem="yFA-PW-ceC" firstAttribute="leading" secondItem="Cnn-sJ-fPe" secondAttribute="leading" constant="20" id="4bM-Qw-gN7"/>
@@ -306,6 +320,7 @@
                                                     <constraint firstItem="BCE-Uo-sob" firstAttribute="top" secondItem="yt3-ci-zQE" secondAttribute="bottom" constant="20" id="VO3-lc-Vab"/>
                                                     <constraint firstItem="aPV-6M-FdI" firstAttribute="centerX" secondItem="Cnn-sJ-fPe" secondAttribute="centerX" id="WW0-6s-2X9"/>
                                                     <constraint firstItem="nKJ-qm-ZAD" firstAttribute="centerX" secondItem="Cnn-sJ-fPe" secondAttribute="centerX" id="Zqx-gg-dQ9"/>
+                                                    <constraint firstItem="Ajt-Z4-EH0" firstAttribute="top" secondItem="516-Tp-gMA" secondAttribute="bottom" constant="40" id="ahl-Ph-QlT"/>
                                                     <constraint firstItem="Uv0-sp-a1i" firstAttribute="leading" secondItem="Rb8-uj-xcD" secondAttribute="leading" id="amu-hO-snU"/>
                                                     <constraint firstItem="1oO-cm-oDL" firstAttribute="centerX" secondItem="Cnn-sJ-fPe" secondAttribute="centerX" id="bUd-SE-PtC"/>
                                                     <constraint firstItem="0K3-kc-4cY" firstAttribute="leading" secondItem="Wbd-6Z-j0P" secondAttribute="leading" id="ccJ-21-r9n"/>
@@ -318,10 +333,12 @@
                                                     <constraint firstItem="LrK-42-lXV" firstAttribute="centerX" secondItem="Cnn-sJ-fPe" secondAttribute="centerX" id="lJq-YG-9qR"/>
                                                     <constraint firstItem="BCE-Uo-sob" firstAttribute="leading" secondItem="yt3-ci-zQE" secondAttribute="leading" id="mnZ-VB-byE"/>
                                                     <constraint firstItem="DgE-yk-r7A" firstAttribute="top" secondItem="LrK-42-lXV" secondAttribute="bottom" constant="30" id="nTT-V3-nPk"/>
-                                                    <constraint firstAttribute="height" constant="970" id="nc2-gK-GIA"/>
+                                                    <constraint firstAttribute="height" constant="1070" id="nc2-gK-GIA"/>
+                                                    <constraint firstItem="Ajt-Z4-EH0" firstAttribute="leading" secondItem="Cnn-sJ-fPe" secondAttribute="leading" constant="10" id="q9p-fj-J2d"/>
                                                     <constraint firstItem="W5j-uh-8tz" firstAttribute="top" secondItem="nKJ-qm-ZAD" secondAttribute="bottom" constant="15" id="qSM-EU-m1b"/>
                                                     <constraint firstItem="Uv0-sp-a1i" firstAttribute="top" secondItem="Rb8-uj-xcD" secondAttribute="bottom" constant="20" id="r4I-Z6-fou"/>
                                                     <constraint firstItem="aPV-6M-FdI" firstAttribute="top" secondItem="0K3-kc-4cY" secondAttribute="bottom" constant="25" id="rH6-YA-R4y"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Ajt-Z4-EH0" secondAttribute="trailing" constant="10" id="rOa-Jl-y53"/>
                                                     <constraint firstItem="W5j-uh-8tz" firstAttribute="leading" secondItem="ofG-Sg-EnZ" secondAttribute="leading" id="s3h-P9-IWM"/>
                                                     <constraint firstItem="Rb8-uj-xcD" firstAttribute="leading" secondItem="S6J-TE-Pli" secondAttribute="leading" id="uUy-Ph-EpN"/>
                                                     <constraint firstItem="Wbd-6Z-j0P" firstAttribute="top" secondItem="yFA-PW-ceC" secondAttribute="bottom" constant="30" id="vNA-eQ-GpN"/>
@@ -397,6 +414,9 @@
         <image name="avatar-placeholder" width="500" height="500"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

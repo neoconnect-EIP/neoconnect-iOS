@@ -44,7 +44,7 @@
                         <color key="separatorColor" red="0.73853902279999994" green="0.73853902279999994" blue="0.73853902279999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <inset key="separatorInset" minX="150" minY="0.0" maxX="150" maxY="0.0"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="fdL-OL-Gc7">
-                            <rect key="frame" x="0.0" y="506" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="576" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
@@ -231,6 +231,35 @@
                                             <segue destination="3MK-y2-L9R" kind="show" id="d0a-7L-5dj"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="70" id="7r0-4K-MEv">
+                                        <rect key="frame" x="0.0" y="478" width="375" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7r0-4K-MEv" id="RSY-eN-abo">
+                                            <rect key="frame" x="0.0" y="0.0" width="348" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parrainage" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fc1-0G-Iyb">
+                                                    <rect key="frame" x="30" y="25" width="120" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="gwj-ke-MzM"/>
+                                                        <constraint firstAttribute="width" constant="120" id="ijf-ao-bYd"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <size key="shadowOffset" width="0.0" height="0.0"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="fc1-0G-Iyb" firstAttribute="leading" secondItem="7r0-4K-MEv" secondAttribute="leading" constant="30" id="BTU-8Q-mlM"/>
+                                            <constraint firstItem="fc1-0G-Iyb" firstAttribute="centerY" secondItem="7r0-4K-MEv" secondAttribute="centerY" id="Hgh-ML-2h6"/>
+                                        </constraints>
+                                        <connections>
+                                            <segue destination="mdx-n0-h8A" kind="show" id="I44-pe-1Ku"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -277,6 +306,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Wq-2m-sLv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2038" y="182"/>
+        </scene>
+        <!--I_UserSponsorship-->
+        <scene sceneID="OQy-b4-NNT">
+            <objects>
+                <viewControllerPlaceholder storyboardName="I_UserSponsorship" referencedIdentifier="I_UserSponsorship" id="mdx-n0-h8A" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="1EQ-a6-ZY7"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JTt-nW-8ux" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2124" y="246"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="pKE-lS-oc4">

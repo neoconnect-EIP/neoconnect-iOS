@@ -48,6 +48,7 @@ class I_UserInformationsViewController: UIViewController, UIImagePickerControlle
         APIInfManager.sharedInstance.getInfo(onSuccess: { response in
             self.pseudoTextField.text = response["pseudo"] as? String
             self.emailTextField.text = response["email"] as? String
+            self.userDescriptionTextView.text = response["userDescription"] as? String
             self.fullnameTextField.text = response["full_name"] as? String
             self.cityTextField.text = response["city"] as? String
             self.postalTextField.text = response["postal"] as? String
@@ -69,6 +70,32 @@ class I_UserInformationsViewController: UIViewController, UIImagePickerControlle
         imagePicker.delegate = self
         super.viewDidLoad()
     }
+    
+    
+    @IBAction func deleteAcc(_ sender: Any) {
+        DispatchQueue.main.async {
+            let alertView = UIAlertController(title: "Supprimer mon compte ?", message: "Vous êtes sur le point de supprimer votre compte, en êtes vous sûr(e) ?", preferredStyle: .alert)
+            alertView.addAction(UIAlertAction(title: "Annuler", style: .cancel) { action in
+            })
+            alertView.addAction(UIAlertAction(title: "Confirmer", style: .default) { action in
+                                    APIManager.sharedInstance.delete(onSuccess: {
+                                        UserDefaults.standard.removeObject(forKey: "Token")
+                                        UserDefaults.standard.removeObject(forKey: "id")
+                                        UserDefaults.standard.removeObject(forKey: "theme")
+                                        UserDefaults.standard.removeObject(forKey: "pseudo")
+                                        UserDefaults.standard.removeObject(forKey: "userType")
+                                        UserDefaults.standard.synchronize()
+                                        
+                                        let storyBoard: UIStoryboard = UIStoryboard(name: "I_Register_and_Connection", bundle: nil)
+                                        let loginVC = storyBoard.instantiateViewController(withIdentifier: "I_NavController")
+                                        loginVC.modalPresentationStyle = .fullScreen
+                                        self.present(loginVC, animated: true, completion: nil)
+                                    })
+                            })
+            self.present(alertView, animated: true, completion: nil)
+        }
+    }
+    
     
     @IBAction func isValidField(_ sender: DefaultTextFields) {
         switch sender.placeholder {

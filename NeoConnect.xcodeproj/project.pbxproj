@@ -127,6 +127,11 @@
 		99B7DDEE2468CB6300A6E418 /* I_HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B7DDED2468CB6300A6E418 /* I_HomeTableViewController.swift */; };
 		9BF5223E2BAFAEA8425D925E /* Pods_NeoConnectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0794610DD915A366F21A0A3 /* Pods_NeoConnectUITests.framework */; };
 		C72A929B5553CEBC1BB8D002 /* Pods_NeoConnectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E041301AC1CC60A5EB9F35 /* Pods_NeoConnectTests.framework */; };
+		D2734D55256AC02E0025C1CA /* I_BrandSuggestionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2734D54256AC02E0025C1CA /* I_BrandSuggestionCollectionViewCell.swift */; };
+		D28D25A7256ADF01008018CB /* I_OfferSuggestionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28D25A6256ADF01008018CB /* I_OfferSuggestionCollectionViewCell.swift */; };
+		D28D25B6256AFE92008018CB /* I_UserSponsorship.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D28D25B5256AFE92008018CB /* I_UserSponsorship.storyboard */; };
+		D28D25BB256AFECC008018CB /* I_UserSponsorshipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28D25BA256AFECC008018CB /* I_UserSponsorshipViewController.swift */; };
+		D28D25C6256B03D0008018CB /* I_UserSponsorshipSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28D25C5256B03D0008018CB /* I_UserSponsorshipSecondViewController.swift */; };
 		D29C7C8D2568771A004397A8 /* B_ShopStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29C7C8C2568771A004397A8 /* B_ShopStatsViewController.swift */; };
 		D29C7C9925687F81004397A8 /* I_ShopOffersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29C7C9825687F81004397A8 /* I_ShopOffersViewController.swift */; };
 		D2AB262525683282000A425D /* ReportUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB260D25683282000A425D /* ReportUserView.swift */; };
@@ -306,6 +311,11 @@
 		93667906B4E5F4B44C071F98 /* Pods-NeoConnectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeoConnectTests.debug.xcconfig"; path = "Target Support Files/Pods-NeoConnectTests/Pods-NeoConnectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		99B7DDED2468CB6300A6E418 /* I_HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_HomeTableViewController.swift; sourceTree = "<group>"; };
 		CD90C310D40FD250563717B3 /* Pods-NeoConnectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeoConnectUITests.debug.xcconfig"; path = "Target Support Files/Pods-NeoConnectUITests/Pods-NeoConnectUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D2734D54256AC02E0025C1CA /* I_BrandSuggestionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_BrandSuggestionCollectionViewCell.swift; sourceTree = "<group>"; };
+		D28D25A6256ADF01008018CB /* I_OfferSuggestionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_OfferSuggestionCollectionViewCell.swift; sourceTree = "<group>"; };
+		D28D25B5256AFE92008018CB /* I_UserSponsorship.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = I_UserSponsorship.storyboard; sourceTree = "<group>"; };
+		D28D25BA256AFECC008018CB /* I_UserSponsorshipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_UserSponsorshipViewController.swift; sourceTree = "<group>"; };
+		D28D25C5256B03D0008018CB /* I_UserSponsorshipSecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_UserSponsorshipSecondViewController.swift; sourceTree = "<group>"; };
 		D29C7C8C2568771A004397A8 /* B_ShopStatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B_ShopStatsViewController.swift; sourceTree = "<group>"; };
 		D29C7C9825687F81004397A8 /* I_ShopOffersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_ShopOffersViewController.swift; sourceTree = "<group>"; };
 		D2AB260D25683282000A425D /* ReportUserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportUserView.swift; sourceTree = "<group>"; };
@@ -423,6 +433,7 @@
 		3338622C2326AC81005C188E /* ProfilePage */ = {
 			isa = PBXGroup;
 			children = (
+				D28D25B1256AFE31008018CB /* UserSponsorship */,
 				33D653222486F92700929D64 /* UserMarks&Comments */,
 				3369C165244CC0230005307F /* UserInformations */,
 				33F1362423E21E7E00A740DE /* I_ParametersTableViewController.swift */,
@@ -447,11 +458,11 @@
 		3338622E2326AC8F005C188E /* SearchPage */ = {
 			isa = PBXGroup;
 			children = (
+				D2734D50256ABEDA0025C1CA /* BrandsSuggestion */,
+				D2734D47256AB5F80025C1CA /* OffersSuggestion */,
 				D2AB266E256838E5000A425D /* DetailedView */,
 				33CBA46C2560765C00B41821 /* I_OfferTableViewCell.swift */,
-				33CBA4832560815C00B41821 /* I_OfferSuggestionTableViewCell.swift */,
 				33CBA4712560769F00B41821 /* I_BrandTableViewCell.swift */,
-				33CBA47E2560814C00B41821 /* I_BrandSuggestionTableViewCell.swift */,
 				33131D8C2368A377006C0A4B /* I_SearchViewController.swift */,
 				333862372326C6EF005C188E /* I_Search.storyboard */,
 			);
@@ -849,6 +860,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D2734D47256AB5F80025C1CA /* OffersSuggestion */ = {
+			isa = PBXGroup;
+			children = (
+				D28D25A6256ADF01008018CB /* I_OfferSuggestionCollectionViewCell.swift */,
+				33CBA4832560815C00B41821 /* I_OfferSuggestionTableViewCell.swift */,
+			);
+			path = OffersSuggestion;
+			sourceTree = "<group>";
+		};
+		D2734D50256ABEDA0025C1CA /* BrandsSuggestion */ = {
+			isa = PBXGroup;
+			children = (
+				D2734D54256AC02E0025C1CA /* I_BrandSuggestionCollectionViewCell.swift */,
+				33CBA47E2560814C00B41821 /* I_BrandSuggestionTableViewCell.swift */,
+			);
+			path = BrandsSuggestion;
+			sourceTree = "<group>";
+		};
 		D279C49A2568518E00CC1489 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -865,6 +894,16 @@
 				D2AB267225683A23000A425D /* I_ShopStatsTableViewCell.swift */,
 			);
 			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		D28D25B1256AFE31008018CB /* UserSponsorship */ = {
+			isa = PBXGroup;
+			children = (
+				D28D25BA256AFECC008018CB /* I_UserSponsorshipViewController.swift */,
+				D28D25C5256B03D0008018CB /* I_UserSponsorshipSecondViewController.swift */,
+				D28D25B5256AFE92008018CB /* I_UserSponsorship.storyboard */,
+			);
+			path = UserSponsorship;
 			sourceTree = "<group>";
 		};
 		D29C7C8A256876BF004397A8 /* DetailedView */ = {
@@ -1097,6 +1136,7 @@
 				33E49E0F22E715F9006D1D5D /* I_Register_and_Connection.storyboard in Resources */,
 				33BC6523229ECA4100C52262 /* Assets.xcassets in Resources */,
 				3369C167244CC0950005307F /* I_UserInformations.storyboard in Resources */,
+				D28D25B6256AFE92008018CB /* I_UserSponsorship.storyboard in Resources */,
 				33E49E1122E7163E006D1D5D /* B_Register_and_Connection.storyboard in Resources */,
 				3359B52A22E78D8200CB86E2 /* AddOffer.storyboard in Resources */,
 				3392B6A92463A0400040388A /* DescriptionShopSlide.xib in Resources */,
@@ -1237,6 +1277,7 @@
 				D2AB263225683282000A425D /* ContactViewOld.swift in Sources */,
 				D2AB263525683282000A425D /* NotationUserShopSideView.swift in Sources */,
 				D2AB263625683282000A425D /* ReportUserShopSideView.swift in Sources */,
+				D28D25C6256B03D0008018CB /* I_UserSponsorshipSecondViewController.swift in Sources */,
 				D2AB263325683282000A425D /* MyOffersViewOld.swift in Sources */,
 				3338623E2326C942005C188E /* I_UserInformationsViewController.swift in Sources */,
 				33BCCA7A24EC5509008386DA /* DefaultTextFields.swift in Sources */,
@@ -1253,12 +1294,14 @@
 				33B0EBE425006F5E00228619 /* B_DetailedChatTableViewController.swift in Sources */,
 				334672A323278A7200D5E0DD /* B_HomeViewController.swift in Sources */,
 				33F2943D23CB6B9A005B4C02 /* UpdatePasswordViewController.swift in Sources */,
+				D28D25BB256AFECC008018CB /* I_UserSponsorshipViewController.swift in Sources */,
 				33C0C97D2501000A00E642E5 /* Shop.swift in Sources */,
 				3328B61C236DEC510070B7B4 /* B_RegisterPage_Step_Three_ViewController.swift in Sources */,
 				3392B6A724639F630040388A /* DescriptionShopSlide.swift in Sources */,
 				3353DCAE2469FB500070AAAC /* B_ProfileViewController.swift in Sources */,
 				D2AB263A25683282000A425D /* HomePageShopView.swift in Sources */,
 				3365724925615741000DA938 /* I_Brand.swift in Sources */,
+				D28D25A7256ADF01008018CB /* I_OfferSuggestionCollectionViewCell.swift in Sources */,
 				D2AB2642256832E1000A425D /* I_ShopStatsViewController.swift in Sources */,
 				D2AB262525683282000A425D /* ReportUserView.swift in Sources */,
 				33131D8D2368A377006C0A4B /* I_SearchViewController.swift in Sources */,
@@ -1306,6 +1349,7 @@
 				3338277922A6D53F00504540 /* I_ConnectionPageViewController.swift in Sources */,
 				33A39F4724AD537A00AB33B9 /* APIManager.swift in Sources */,
 				D2AB262D25683282000A425D /* NotationOfferView.swift in Sources */,
+				D2734D55256AC02E0025C1CA /* I_BrandSuggestionCollectionViewCell.swift in Sources */,
 				333862312326B10A005C188E /* B_UserInformationsViewController.swift in Sources */,
 				33B120B124B58ED30093D9AA /* PhotoFieldButton.swift in Sources */,
 				33D653262486F99200929D64 /* I_UserMarksAndComments.swift in Sources */,

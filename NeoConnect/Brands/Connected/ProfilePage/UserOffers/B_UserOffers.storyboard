@@ -36,24 +36,12 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ShopBackground" translatesAutoresizingMaskIntoConstraints="NO" id="98k-kb-aiY">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eRj-dw-gM6">
-                                <rect key="frame" x="20" y="94" width="335" height="520"/>
-                                <subviews>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vous n'avez aucune offre" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ouh-ms-O7q">
-                                        <rect key="frame" x="60" y="250.5" width="215" height="19"/>
-                                        <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="16"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="ouh-ms-O7q" firstAttribute="width" secondItem="eRj-dw-gM6" secondAttribute="width" multiplier="0.641667" id="UCg-3z-vlp"/>
-                                    <constraint firstItem="ouh-ms-O7q" firstAttribute="centerX" secondItem="eRj-dw-gM6" secondAttribute="centerX" id="iLN-1G-Qxo"/>
-                                    <constraint firstItem="ouh-ms-O7q" firstAttribute="centerY" secondItem="eRj-dw-gM6" secondAttribute="centerY" id="o3p-78-3oL"/>
-                                    <constraint firstItem="ouh-ms-O7q" firstAttribute="height" secondItem="eRj-dw-gM6" secondAttribute="height" multiplier="0.0372727" id="qOo-Eo-z6N"/>
-                                </constraints>
-                            </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vous n'avez posté aucune offre" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ouh-ms-O7q">
+                                <rect key="frame" x="10" y="346" width="355" height="19"/>
+                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="180" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DXZ-5I-p1C">
                                 <rect key="frame" x="20" y="94" width="335" height="520"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -61,11 +49,11 @@
                                 <inset key="separatorInset" minX="130" minY="0.0" maxX="130" maxY="0.0"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="OffersTableViewCell" rowHeight="180" id="80U-hA-nmi" customClass="B_OffersTableViewCell" customModule="NeoConnect" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="OffersTableViewCell" rowHeight="180" id="80U-hA-nmi" customClass="B_OffersTableViewCell" customModule="NeoConnect" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="335" height="180"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="80U-hA-nmi" id="cBc-Oh-ldw">
-                                            <rect key="frame" x="0.0" y="0.0" width="308" height="180"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="335" height="180"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Qj-pH-7Ol" customClass="PhotoFieldImage" customModule="NeoConnect" customModuleProvider="target">
@@ -76,7 +64,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZD-r0-Mdv">
-                                                    <rect key="frame" x="181" y="35" width="125" height="50"/>
+                                                    <rect key="frame" x="208" y="35" width="125" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="H0Q-C4-RNs"/>
                                                         <constraint firstAttribute="width" constant="125" id="dRy-M9-Qfy"/>
@@ -86,7 +74,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apply" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3D-TN-x0z">
-                                                    <rect key="frame" x="181" y="105" width="125" height="35"/>
+                                                    <rect key="frame" x="208" y="105" width="125" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="125" id="8f9-s4-CqV"/>
                                                         <constraint firstAttribute="height" constant="35" id="igd-n6-n4f"/>
@@ -116,20 +104,24 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="2eD-Jw-WB2">
+                                <rect key="frame" x="177.5" y="345.5" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hal-IT-MUb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="eRj-dw-gM6" firstAttribute="centerX" secondItem="DXZ-5I-p1C" secondAttribute="centerX" id="GHu-le-tDs"/>
+                            <constraint firstItem="hal-IT-MUb" firstAttribute="trailing" secondItem="ouh-ms-O7q" secondAttribute="trailing" constant="10" id="GJ6-H2-bMa"/>
                             <constraint firstItem="DXZ-5I-p1C" firstAttribute="top" secondItem="hal-IT-MUb" secondAttribute="top" constant="50" id="HhK-6J-Qbg"/>
                             <constraint firstItem="98k-kb-aiY" firstAttribute="leading" secondItem="hal-IT-MUb" secondAttribute="leading" id="HtK-JY-ayd"/>
                             <constraint firstItem="DXZ-5I-p1C" firstAttribute="height" secondItem="yrq-RR-nn8" secondAttribute="height" multiplier="0.77961" id="OsF-Fe-qX9"/>
                             <constraint firstItem="hal-IT-MUb" firstAttribute="trailing" secondItem="98k-kb-aiY" secondAttribute="trailing" id="RZS-Q1-eJJ"/>
+                            <constraint firstItem="ouh-ms-O7q" firstAttribute="centerY" secondItem="hal-IT-MUb" secondAttribute="centerY" id="Rbc-Sb-w8L"/>
                             <constraint firstItem="DXZ-5I-p1C" firstAttribute="leading" secondItem="hal-IT-MUb" secondAttribute="leading" constant="20" id="Tyn-Hv-aLo"/>
-                            <constraint firstItem="eRj-dw-gM6" firstAttribute="width" secondItem="DXZ-5I-p1C" secondAttribute="width" id="aTs-C5-NuT"/>
                             <constraint firstItem="98k-kb-aiY" firstAttribute="bottom" secondItem="yrq-RR-nn8" secondAttribute="bottom" id="dEN-N8-owQ"/>
-                            <constraint firstItem="eRj-dw-gM6" firstAttribute="height" secondItem="DXZ-5I-p1C" secondAttribute="height" id="fNa-eO-bpB"/>
-                            <constraint firstItem="eRj-dw-gM6" firstAttribute="centerY" secondItem="DXZ-5I-p1C" secondAttribute="centerY" id="k7l-7z-Z0f"/>
+                            <constraint firstItem="2eD-Jw-WB2" firstAttribute="centerX" secondItem="hal-IT-MUb" secondAttribute="centerX" id="eQ0-Af-N2X"/>
+                            <constraint firstItem="ouh-ms-O7q" firstAttribute="leading" secondItem="hal-IT-MUb" secondAttribute="leading" constant="10" id="h63-Rg-KQ4"/>
+                            <constraint firstItem="2eD-Jw-WB2" firstAttribute="centerY" secondItem="hal-IT-MUb" secondAttribute="centerY" id="mfH-R0-hER"/>
                             <constraint firstItem="DXZ-5I-p1C" firstAttribute="centerX" secondItem="hal-IT-MUb" secondAttribute="centerX" id="tNJ-dW-2zX"/>
                             <constraint firstItem="hal-IT-MUb" firstAttribute="trailing" secondItem="DXZ-5I-p1C" secondAttribute="trailing" constant="20" id="voy-VX-gF7"/>
                             <constraint firstItem="98k-kb-aiY" firstAttribute="top" secondItem="yrq-RR-nn8" secondAttribute="top" id="xy2-i8-u90"/>
@@ -146,8 +138,8 @@
                         </button>
                     </navigationItem>
                     <connections>
+                        <outlet property="loader" destination="2eD-Jw-WB2" id="0Yo-ta-htM"/>
                         <outlet property="noOfferLabelText" destination="ouh-ms-O7q" id="zm3-cf-Jcq"/>
-                        <outlet property="noOfferView" destination="eRj-dw-gM6" id="y3A-9k-7ww"/>
                         <outlet property="tableView" destination="DXZ-5I-p1C" id="y8U-oi-wUs"/>
                     </connections>
                 </viewController>

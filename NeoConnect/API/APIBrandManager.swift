@@ -28,7 +28,7 @@ class APIBrandManager {
     func register_Shop(pseudo: String, password: String, name: String, email: String, website: String, phoneNumber: String, zipCode: String, city: String, userPicture: String, description: String, subject: String, facebook: String, snapchat: String, twitter: String, instagram: String,  onSuccess: @escaping() -> Void, onFailure: @escaping() -> Void) {
         let url : String = baseURL + APIBrandManager.getRegisterShopEndpoint
         
-        let Register: Parameters = [
+        let user: Parameters = [
             "pseudo": pseudo,
             "password": password,
             "full_name": name,
@@ -46,7 +46,7 @@ class APIBrandManager {
             "instagram": instagram,
         ]
         
-        AF.request(url, method: .post, parameters: Register, encoding: URLEncoding.default, interceptor: nil).responseJSON { response in
+        AF.request(url, method: .post, parameters: user, encoding: URLEncoding.default, interceptor: nil).responseJSON { response in
             switch response.result {
                 case .success(_):
                     print("Successfull")
@@ -82,40 +82,8 @@ class APIBrandManager {
                 case .success(_):
                     onSuccess()
                 case .failure(let error):
+                    print("Request failed with error: \(error)")
                     onFailure()
-            }
-        }
-    }
-    
-    func editOffer(id: Int, name: String, description: String, subject: String, sex: String, imageArray: Array<String>, onSuccess: @escaping() -> Void, onFailure: @escaping(Error) -> Void) {
-        let url : String = baseURL + APIBrandManager.offerEndPoint + "/\(id)"
-        var imageDict: Array<Dictionary<String, String>> = []
-        for image in imageArray {
-            imageDict.append([
-                "imageName": "",
-                "imageData": image
-            ])
-        }
-        let offer: Parameters = [
-            "productImg": [
-                "imageName": "",
-                "imageData": imageDict
-            ],
-            "productSex": sex,
-            "productName": name,
-            "productDesc": description,
-            "productSubject": subject,
-        ]
-        
-        AF.request(url, method: .put, parameters: offer, encoding: URLEncoding.default, headers: APIBrandManager.headers, interceptor: nil).responseJSON { response in
-            switch response.result {
-                case .success(_):
-                    // Offre modifiée
-                    onSuccess()
-                    
-                case .failure(let error):
-                    // Erreur de la modification de l'offre
-                    onFailure(error)
             }
         }
     }
@@ -187,8 +155,39 @@ class APIBrandManager {
     
     func addOffer(name: String, description: String, subject: String, sex: String, imageArray: Array<String>, onSuccess: @escaping() -> Void, onFailure: @escaping() -> Void) {
         let url : String = baseURL + APIBrandManager.postOfferEndpoint
-        var imageDict: Array<Dictionary<String, String>> = []
         guard let brand = UserDefaults.standard.string(forKey: "pseudo") else { return }
+        let offer: [String:Any] = [
+            "productImg":
+            [
+                [
+                    "imageData": imageArray[0],
+                    "imageName": "imageName1"
+                ]
+            ],
+            "productSex": sex == "Sexe" ? "" : sex,
+            "productName": name,
+            "productDesc": description,
+            "productSubject": subject,
+            "brand": brand,
+        ]
+        AF.request(url,
+                   method: .post,
+                   parameters: offer,
+                   encoding: URLEncoding.default, headers: APIBrandManager.headers, interceptor: nil).responseJSON { response in
+                    switch response.result {
+                        case .success(let JSON):
+                            print(JSON)
+                            onSuccess()
+                        case .failure(let error):
+                            print("Request failed with error: \(error)")
+                            onFailure()
+                    }
+                   }
+    }
+    
+    func editOffer(id: Int, name: String, description: String, subject: String, sex: String, imageArray: Array<String>, onSuccess: @escaping() -> Void, onFailure: @escaping(Error) -> Void) {
+        let url : String = baseURL + APIBrandManager.offerEndPoint + "/\(id)"
+        var imageDict: Array<Dictionary<String, String>> = []
         for image in imageArray {
             imageDict.append([
                 "imageName": "",
@@ -200,24 +199,19 @@ class APIBrandManager {
                 "imageName": "",
                 "imageData": imageDict
             ],
-            "productSex": sex,
+            "productSex": sex == "Sexe" ? "" : sex,
             "productName": name,
             "productDesc": description,
             "productSubject": subject,
-            "brand": brand,
         ]
         
-        AF.request(url,
-                   method: .post,
-                   parameters: offer,
-                   encoding: JSONEncoding.default, headers: APIBrandManager.headers, interceptor: nil).responseJSON { response in
-                    switch response.result {
-                        case .success(_):
-                            onSuccess()
-                        case .failure(let error):
-                            print("Request failed with error: \(error)")
-                            onFailure()
-                    }
-                   }
+        AF.request(url, method: .put, parameters: offer, encoding: URLEncoding.default, headers: APIBrandManager.headers, interceptor: nil).responseJSON { response in
+            switch response.result {
+                case .success(_):
+                    onSuccess()
+                case .failure(let error):
+                    onFailure(error)
+            }
+        }
     }
 }

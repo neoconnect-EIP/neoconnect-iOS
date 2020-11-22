@@ -74,7 +74,6 @@ class I_DetailedShopViewController: UIViewController {
     }
         
     @IBAction func followButtonTapped(_ sender: DefaultButton) {
-
         if sender.titleLabel?.text == "S'abonner" {
             APIInfManager.sharedInstance.putFollowBrand(brandId: String(brand.id), onSuccess: {
                 sender.setTitle("Abonné", for: .normal)

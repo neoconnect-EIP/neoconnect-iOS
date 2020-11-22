@@ -12,15 +12,14 @@ import StatusAlert
 
 class B_OffersViewController: UIViewController {
 
-    @IBOutlet weak var noOfferView: UIView!
     @IBOutlet weak var noOfferLabelText: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var loader: UIActivityIndicatorView!
     var offers: [B_Offer] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        getDataFromAPI()
     }
     
     override func viewDidLoad() {
@@ -28,6 +27,8 @@ class B_OffersViewController: UIViewController {
 
         tableView.delegate = self
         tableView.dataSource = self
+        loader.startAnimating()
+        getDataFromAPI()
     }
         
     func getDataFromAPI() {
@@ -36,15 +37,12 @@ class B_OffersViewController: UIViewController {
         APIManager.sharedInstance.getOffersByShopId(id: id, onSuccess: { JSON in
             if JSON as? String != "No offer" {
                 let results = JSON as! Array<NSDictionary>
-                self.noOfferView.isHidden = true
-                self.noOfferLabelText.isHidden = true
                 self.offers = self.createArray(results: results)
             } else {
-                self.tableView.isHidden = true
-                self.noOfferView.isHidden = false
                 self.noOfferLabelText.isHidden = false
             }
             self.tableView.reloadData()
+            self.loader.stopAnimating()
         })
     }
     
@@ -85,10 +83,6 @@ class B_OffersViewController: UIViewController {
 extension B_OffersViewController : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if offers.count == 0 {
-            self.noOfferView.isHidden = false
-            self.noOfferLabelText.isHidden = false
-        }
         return offers.count
     }
     

@@ -123,8 +123,6 @@ class B_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDel
         let userSnapchat = userSnapchatTextField.text!
         let userSubject = typeValue
         
-        print(userImage)
-        return
         // Erreur : un champ fait entre 1 et 3 caractères
         if (!restriction.isMinThreeChar(userWebsite) ||
                 !restriction.isMinThreeChar(userFacebook) || !restriction.isMinThreeChar(userTwitter) || !restriction.isMinThreeChar(userInstagram) || !restriction.isMinThreeChar(userSnapchat) || userSubject == "Choisissez un thème...") {

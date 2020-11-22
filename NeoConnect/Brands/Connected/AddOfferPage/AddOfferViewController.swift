@@ -27,7 +27,7 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
     var sexData = ["Unisexe", "Homme", "Femme"]
     var pickerView = UIPickerView()
     var subjectSelected = "Sujet"
-    var sexSelected = "Unisexe"
+    var sexSelected = "Sexe"
     var imagePicker:UIImagePickerController!
     
     override func viewDidLoad() {
@@ -226,6 +226,7 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
                 self.sexPickerViewButton.setTitleColor(UIColor.white, for: .normal)
             } else {
                 self.sexPickerViewButton.setTitle("Sexe", for: .normal)
+                self.sexSelected = "Sexe"
                 self.sexPickerViewButton.isUserInteractionEnabled = false
                 self.sexPickerViewButton.setTitleColor(UIColor.lightGray, for: .normal)
             }
@@ -239,9 +240,10 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
     func resetView() {
         self.nameTextField.text?.removeAll()
         self.descTextView.text?.removeAll()
+        self.imageArrayToSend = []
         self.subjectSelected = "Sujet"
         self.sexSelected = "Sexe"
-        let image = UIImage(named: "Photo_Icon.png")
+        let image = UIImage(named: "placeholder-image.png")
         self.firstImage.setImage(image, for: .normal)
         self.secondImage.setImage(image, for: .normal)
         self.thirdImage.setImage(image, for: .normal)
@@ -263,14 +265,12 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
         let subject = subjectSelected
         let sex = sexSelected
         
-        if (1 ... 4 ~= desc.count) {
+        if (0 ... 4 ~= desc.count) {
             showError("La description semble trop courte")
         } else if (name.isEmpty || subject == "Sujet" || imageArrayToSend.count == 0) {
             showError("Tous les champs doivent être complétés")
-        } else if (subject == "Mode" || subject == "Cosmétique") {
-            if (sex == "Sexe") {
-                showError("Veuillez préciser le sexe de l'annonce")
-            }
+        } else if (subject == "Mode" || subject == "Cosmétique") && (sex == "Sexe") {
+            showError("Veuillez préciser le sexe de l'annonce")
         } else {
             var imageArray: Array<String> = []
             

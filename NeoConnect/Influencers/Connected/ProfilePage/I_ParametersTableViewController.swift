@@ -29,24 +29,7 @@ class I_ParametersTableViewController: UITableViewController {
         let host = UIHostingController(rootView: myoffersView)
         navigationController?.pushViewController(host, animated: true)
     }
-    
-    @IBAction func deleteAcc(_ sender: Any) {        
-        DispatchQueue.main.async {
-            let alertView = UIAlertController(title: "Supprimer mon compte ?", message: "Vous êtes sur le point de supprimer votre compte, êtes vous sûr ?", preferredStyle: .alert)
-            alertView.addAction(UIAlertAction(title: "Annuler", style: .cancel) { action in
-            })
-            alertView.addAction(UIAlertAction(title: "Confirmer", style: .default) { action in
-                APIManager.sharedInstance.delete()
-                let storyBoard: UIStoryboard = UIStoryboard(name: "B_Register_and_Connection", bundle: nil)
-                let loginVC = storyBoard.instantiateViewController(withIdentifier: "B_NavController")
-                loginVC.modalPresentationStyle = .fullScreen
-                
-                self.present(loginVC, animated: true, completion: nil)            })
-            
-            self.present(alertView, animated: true, completion: nil)
-        }
-    }
-    
+ 
     func getImageFromApi() {
         DispatchQueue.main.async {
             APIManager.sharedInstance.getUserImage(onSuccess: { image in
@@ -55,7 +38,6 @@ class I_ParametersTableViewController: UITableViewController {
         }
     }
 
-    
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -69,7 +51,7 @@ class I_ParametersTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 5
+        return 6
     }
     
 }

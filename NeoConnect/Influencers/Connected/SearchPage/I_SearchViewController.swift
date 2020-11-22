@@ -8,12 +8,9 @@
 
 import UIKit
 import Alamofire
-import AlamofireImage
-import SwiftUI
-import Cosmos
 
-class I_SearchViewController: UIViewController {
-        
+class I_SearchViewController: UIViewController, I_BrandSuggestionTableViewCellDelegate, I_OfferSuggestionTableViewCellDelegate {
+  
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var sc: UISegmentedControl!
     @IBOutlet weak var offerUnderline: UIImageView!
@@ -24,11 +21,8 @@ class I_SearchViewController: UIViewController {
     
     var brands: [I_Brand] = []
     var brandsSuggestion: [I_Brand] = []
-    var brand: I_Brand!
     var offers: [I_Offer] = []
-    var offerssSuggestion: [I_Offer] = []
-    var offer: I_Offer!
-    
+    var offersSuggestion: [I_Offer] = []
     var rowToDisplay: [Any] = []
     var suggestionToDisplay: [Any] = []
     
@@ -39,6 +33,7 @@ class I_SearchViewController: UIViewController {
         tableView.delegate = self
         configureSearchBar()
         loader.startAnimating()
+        getBrandSuggestionsFromAPI()
         getBrandsFromAPI()
     }
     
@@ -49,6 +44,7 @@ class I_SearchViewController: UIViewController {
                 self.brandUnderline.isHidden = false
                 self.offerUnderline.isHidden = true
                 self.rowToDisplay = self.brands
+                self.suggestionToDisplay = self.brandsSuggestion
             default:
                 self.searchController.searchBar.placeholder = "Rechercher une offre"
                 self.brandUnderline.isHidden = true
@@ -56,11 +52,25 @@ class I_SearchViewController: UIViewController {
                 if self.offers.count == 0 {
                     self.loader.isHidden = false
                     self.loader.startAnimating()
+                    self.getOfferSuggestionsFromAPI()
                     self.getOffersFromAPI()
                 }
+                self.suggestionToDisplay = self.offersSuggestion
                 self.rowToDisplay = self.offers
         }
         tableView.reloadData()
+    }
+    
+    func getOfferSuggestionsFromAPI() {
+        APIInfManager.sharedInstance.getOfferSuggestionList(onSuccess: { JSON in
+            if JSON as? String != "No Data" {
+                let offers = JSON as! Array<NSDictionary>
+                self.offersSuggestion = self.getOfferArray(results: offers)
+                self.suggestionToDisplay = self.offersSuggestion
+            }
+            self.tableView.reloadData()
+            self.loader.isHidden = true
+        })
     }
     
     func getOffersFromAPI() {
@@ -69,6 +79,18 @@ class I_SearchViewController: UIViewController {
             self.rowToDisplay = self.offers
             self.tableView.reloadData()
             self.loader.stopAnimating()
+            self.loader.isHidden = true
+        })
+    }
+    
+    func getBrandSuggestionsFromAPI() {
+        APIInfManager.sharedInstance.getBrandSuggestionList(onSuccess: { JSON in
+            if JSON as? String != "No Data" {
+                let offers = JSON as! Array<NSDictionary>
+                self.brandsSuggestion = self.getBrandArray(results: offers)
+                self.suggestionToDisplay = self.brandsSuggestion
+            }
+            self.tableView.reloadData()
             self.loader.isHidden = true
         })
     }
@@ -151,10 +173,18 @@ class I_SearchViewController: UIViewController {
         searchController.searchBar.sizeToFit()
     }
     
+    func brandSuggestionTapped(brand: I_Brand) {
+        performSegue(withIdentifier: "I_searchBrand", sender: brand)
+    }
+    
+    func offerSuggestionTapped(offer: I_Offer) {
+        performSegue(withIdentifier: "I_searchOffer", sender: offer)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let shopVC: I_DetailedShopViewController = segue.destination as! I_DetailedShopViewController
-        if segue.identifier == "I_searchBrandResult" {
-            shopVC.brand = brand
+        if segue.identifier == "I_searchBrand" {
+            shopVC.brand = sender as? I_Brand
         } else if segue.identifier == "I_brandResult" {
             let row = tableView.indexPathForSelectedRow?.row
             let brand = self.brands[row!]
@@ -177,31 +207,22 @@ extension I_SearchViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
         let row = rowToDisplay[indexPath.row]
-        if indexPath.row == 0 {
+        if indexPath.row == 0 && suggestionToDisplay.count > 0 {
             if sc.selectedSegmentIndex == 0 {
-                let brandCell = tableView.dequeueReusableCell(withIdentifier: "I_BrandTableViewCell") as! I_BrandTableViewCell
-                
-                brandCell.setBrands(brand: row as! I_Brand)
-                cell = brandCell
+                let brandSuggestionCell = tableView.dequeueReusableCell(withIdentifier: "I_BrandSuggestionTableViewCell") as! I_BrandSuggestionTableViewCell
+
+                brandSuggestionCell.setBrandSuggestions(brands: suggestionToDisplay as! Array<I_Brand>)
+
+                brandSuggestionCell.delegate = self
+                cell = brandSuggestionCell
             } else {
-                let offerCell = tableView.dequeueReusableCell(withIdentifier: "I_OfferTableViewCell") as! I_OfferTableViewCell
+                let offerSuggestionCell = tableView.dequeueReusableCell(withIdentifier: "I_OfferSuggestionTableViewCell") as! I_OfferSuggestionTableViewCell
+
+                offerSuggestionCell.setOfferSuggestions(offers: suggestionToDisplay as! Array<I_Offer>)
                 
-                offerCell.setOffer(offer: row as! I_Offer)
-                cell = offerCell
+                offerSuggestionCell.delegate = self
+                cell = offerSuggestionCell
             }
-//            if sc.selectedSegmentIndex == 0 {
-//                let brandSuggestionCell = tableView.dequeueReusableCell(withIdentifier: "I_BrandSuggestionTableViewCell") as! I_BrandSuggestionTableViewCell
-//
-//                brandSuggestionCell.setBrandSuggestion(brands: suggestionToDisplay as! Array<I_Brand>)
-//
-//                cell = brandSuggestionCell
-//            } else {
-//                let offerSuggestionCell = tableView.dequeueReusableCell(withIdentifier: "I_OfferSuggestionTableViewCell") as! I_OfferSuggestionTableViewCell
-//
-//                offerSuggestionCell.setOfferSuggestion(offers: suggestionToDisplay as! Array<I_Offer>)
-//
-//                cell = offerSuggestionCell
-//            }
         } else {
             if sc.selectedSegmentIndex == 0 {
                 let brandCell = tableView.dequeueReusableCell(withIdentifier: "I_BrandTableViewCell") as! I_BrandTableViewCell
@@ -255,8 +276,8 @@ extension I_SearchViewController: UISearchBarDelegate {
             if let commentArray = response["comment"] as? Array<NSDictionary> {
                 brandComments = commentArray
             }
-            self.brand = I_Brand(id: brandId, pseudo: brandPseudo, nbOffers: String(brandNbOffers), nbFollowers: String(brandNbFollowers), image: brandImage, subject: brandSubject, rate: brandRate, description: brandDescription, followed: brandFollowed, comments: brandComments)
-            self.performSegue(withIdentifier: "I_searchBrandResult", sender: self)
+            let brand = I_Brand(id: brandId, pseudo: brandPseudo, nbOffers: String(brandNbOffers), nbFollowers: String(brandNbFollowers), image: brandImage, subject: brandSubject, rate: brandRate, description: brandDescription, followed: brandFollowed, comments: brandComments)
+            self.performSegue(withIdentifier: "I_searchBrand", sender: brand)
         }, onFailure: {
             DispatchQueue.main.async {
                 let alertView = UIAlertController(title: "Erreur", message: "Aucun utilisateur trouvé, veuillez réessayer.", preferredStyle: .alert)

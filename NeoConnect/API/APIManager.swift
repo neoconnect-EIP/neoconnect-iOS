@@ -78,14 +78,19 @@ class APIManager {
         }
     }
     
-    func delete() {
+    func delete(onSuccess: @escaping() -> Void) {
         let url : String = baseURL + APIManager.deleteUserEndpoint
         
         AF.request(url,
                    method: .delete,
                    encoding: URLEncoding.default, headers: APIManager.headers).response { response in
-                    debugPrint(response)
-        }
+                    switch response.result {
+                        case .success(_):
+                            onSuccess()
+                        case .failure(let error):
+                            print("Request failed with error: \(error)")
+                    }
+                   }
     }
     
     func forgotPassword(userEmail: String, onSuccess: @escaping() -> Void, onFailure: @escaping() -> Void) {
