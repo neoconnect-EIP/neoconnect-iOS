@@ -13,7 +13,7 @@ import Alamofire
 import Combine
 import KingfisherSwiftUI
 
-// Boutiques Tendances
+// Marques Tendances
 
 struct ShopTendanceView : View {
     @State var actualites : ActualityInfSide = ActualityInfSide()
@@ -22,8 +22,9 @@ struct ShopTendanceView : View {
         Group{
             HStack{
                 Image("heart")
-                Text("Boutiques du moment").foregroundColor(Color.white).font(.custom("Raleway", size: 17)).padding(.vertical)
+                Text("Marques du moment").foregroundColor(Color.white).font(.custom("Raleway", size: 17)).padding(.vertical)
             }
+            if (!actualites.listShopTendance.isEmpty) {
             ScrollView(.horizontal,showsIndicators: false) {
                 HStack{
                     ForEach(actualites.listShopTendance) { shopTendance in
@@ -37,7 +38,7 @@ struct ShopTendanceView : View {
                                     
                                     
                                     if (shopTendance.userPicture!.isEmpty) {
-                                        Image("noImage").resizable().frame(width: 161.0, height: 77.0)
+                                        Image("avatar-placeholder").resizable().frame(width: 161.0, height: 77.0)
                                         
                                     }
                                     else {
@@ -71,6 +72,12 @@ struct ShopTendanceView : View {
             }
             
         }
+            else
+            {
+                Text("Aucune marque actuellement").foregroundColor(Color.black)
+                    .font(.custom("Raleway", size: 12)).italic()
+            }
+        }
         .onAppear {
             getActualityInfSide() {response in
                 self.actualites = response
@@ -79,7 +86,7 @@ struct ShopTendanceView : View {
     }
     
 }
-// Boutiques Populaires
+// Marques Populaires
 struct ShopPopulaireView : View {
     @State var actualites : ActualityInfSide = ActualityInfSide()
     
@@ -87,8 +94,9 @@ struct ShopPopulaireView : View {
         Group{
             HStack{
                 Image("fire")
-                Text("Boutiques populaires").foregroundColor(Color.white).font(.custom("Raleway", size: 17)).padding(.vertical)
+                Text("Marques populaires").foregroundColor(Color.white).font(.custom("Raleway", size: 17)).padding(.vertical)
             }
+            if (!actualites.listShopPopulaire.isEmpty) {
             ScrollView(.horizontal,showsIndicators: false) {
                 HStack{
                     ForEach(actualites.listShopPopulaire) { shopPopulaire in
@@ -102,7 +110,7 @@ struct ShopPopulaireView : View {
                                     
                                     
                                     if (shopPopulaire.userPicture!.isEmpty) {
-                                        Image("noImage").resizable().frame(width: 161.0, height: 77.0)
+                                        Image("avatar-placeholder").resizable().frame(width: 161.0, height: 77.0)
                                         
                                     }
                                     else {
@@ -136,6 +144,12 @@ struct ShopPopulaireView : View {
             }
             
         }
+            else
+            {
+                Text("Aucune marque actuellement").foregroundColor(Color.black)
+                    .font(.custom("Raleway", size: 12)).italic()
+            }
+        }
         .onAppear {
             getActualityInfSide() {response in
                 self.actualites = response
@@ -144,16 +158,17 @@ struct ShopPopulaireView : View {
     }
     
 }
-// Boutiques les mieux notées
+// Marques les mieux notées
 struct ShopNotesView : View {
     @State var actualites : ActualityInfSide = ActualityInfSide()
     
     var body: some View {
         Group{
             HStack{
-                Image("etoile")
-                Text("Boutiques les mieux notées").foregroundColor(Color.white).font(.custom("Raleway", size: 17)).padding(.vertical)
+                Image("Etoile")
+                Text("Marques les mieux notées").foregroundColor(Color.white).font(.custom("Raleway", size: 17)).padding(.vertical)
             }
+            if (!actualites.listShopNotes.isEmpty) {
             ScrollView(.horizontal,showsIndicators: false) {
                 HStack{
                     ForEach(actualites.listShopNotes) { shopNote in
@@ -167,7 +182,7 @@ struct ShopNotesView : View {
                                     
                                     
                                     if (shopNote.userPicture!.isEmpty) {
-                                        Image("noImage").resizable().frame(width: 161.0, height: 77.0)
+                                        Image("avatar-placeholder").resizable().frame(width: 161.0, height: 77.0)
                                         
                                     }
                                     else {
@@ -201,6 +216,12 @@ struct ShopNotesView : View {
             }
             
         }
+            else
+            {
+                Text("Aucune marque actuellement").foregroundColor(Color.black)
+                    .font(.custom("Raleway", size: 12)).italic()
+            }
+        }
         .onAppear {
             getActualityInfSide() {response in
                 self.actualites = response
@@ -210,7 +231,7 @@ struct ShopNotesView : View {
     
 }
 
-// Boutique détaillée
+// Marque détaillée
 struct DetailShopView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var showingAlert = false
@@ -224,7 +245,7 @@ struct DetailShopView: View {
             VStack(alignment: .center, spacing: 20.0) {
                 
                 if (selectedShop.userPicture!.isEmpty) {
-                    Image("noImage").resizable().frame(width: 100, height: 100)
+                    Image("avatar-placeholder").resizable().frame(width: 100, height: 100)
                         .clipShape(Circle()).clipped().shadow(radius: 3)
                     
                 }
@@ -250,7 +271,7 @@ struct DetailShopView: View {
                 HStack{
                     Text(String(selectedShop.theme ?? "Pas de thème renseigné")).fontWeight(.medium).foregroundColor(Color.white).font(.custom("Raleway", size: 18)).padding(.trailing, 100.0)
                     Text(String(selectedShop.average?.rounded() ?? 0)).foregroundColor(Color.white).font(.custom("Raleway", size: 18)).padding(.vertical)
-                    Image("etoile")
+                    Image("Etoile")
                     
                     
                     

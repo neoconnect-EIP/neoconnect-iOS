@@ -18,7 +18,7 @@ struct shopImage: Codable {
     var imageData: String?
 }
 
-// Boutiques
+// Marques
 
 struct Shop2: Codable,Identifiable{
     var id : Int
@@ -39,7 +39,7 @@ struct Shop2: Codable,Identifiable{
     }
 }
 
-struct offerImage: Codable {
+struct offerImage: Codable, Hashable {
     var imageName: String?
     var imageData: String?
 }
@@ -56,6 +56,7 @@ struct Offer2: Codable,Identifiable{
     var productSubject: String?
     var brand: String?
     var average: Double?
+    var status: String?
     var createdAt: String?
     var updatedAt: String?
     init() {
@@ -68,6 +69,7 @@ struct Offer2: Codable,Identifiable{
         productSubject = ""
         brand = ""
         average = 0.0
+        status = ""
         createdAt = ""
         updatedAt = ""
     }
@@ -128,7 +130,7 @@ func isNil(offer : Offer2) -> Text
         .font(.custom("Raleway", size: 12))
 }
 
-// Savoir si une boutique possède une moyenne de notes ou non, si oui l'arrondir
+// Savoir si une marque possède une moyenne de notes ou non, si oui l'arrondir
 func isNil2(shop : Shop2) -> Text
 {
     if let average = shop.average {
@@ -177,7 +179,7 @@ struct HomePageInfSideView: View {
                     .frame(width: 100.0, height: 1.0)
                     .background(/*@START_MENU_TOKEN@*/Color.white/*@END_MENU_TOKEN@*/)
                 Text("NeoConnect Beta").foregroundColor(Color.white).font(.custom("Raleway", size: 12
-                    )).padding(.top, 200.0)
+                )).padding(.top, 200.0)
                 
                 Spacer()
             }
@@ -185,7 +187,7 @@ struct HomePageInfSideView: View {
             .padding(.top,50)
             
         }
-            
+        
         .frame(maxWidth:.infinity,maxHeight: .infinity)
         .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "15113D").opacity(0.85), Color(hex: "3CA6CC").opacity(0.5)]), startPoint: .top, endPoint: .bottom))
         .edgesIgnoringSafeArea(.top)
@@ -216,10 +218,10 @@ struct ActuInfSideView : View {
                     Spacer()
                 }
             }           .padding([.top, .leading])
-                .padding(.top,30)
+            .padding(.top,30)
             
         }
-            
+        
         .frame(maxWidth:.infinity,maxHeight: .infinity)
         .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "15113D").opacity(0.85), Color(hex: "3CA6CC").opacity(0.5)]), startPoint: .top, endPoint: .bottom))
         .edgesIgnoringSafeArea(.top)
@@ -250,49 +252,57 @@ struct OffersTendanceView : View {
                 Image("heart")
                 Text("Offres du moment").foregroundColor(Color.white).font(.custom("Raleway", size: 17)).padding(.vertical)
             }
-            ScrollView(.horizontal,showsIndicators: false) {
-                HStack{
-                    ForEach(actualites.listOfferTendance) { offerTendance in
-                        NavigationLink(destination:DetailOffer(selectedOffer: offerTendance,date: String(offerTendance.createdAt!).components(separatedBy: "T")[0]))
-                        {
-                            ZStack{
-                                RoundedRectangle(cornerRadius: 10)
-                                    .frame(width: 180.0, height: 137.0)
-                                    .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-                                VStack(alignment: .leading){
-                                    
-                                    if (offerTendance.productImg!.isEmpty) {
-                                        Image("noImage").resizable().frame(width: 161.0, height: 77.0)
+            if (!actualites.listOfferTendance.isEmpty) {
+                ScrollView(.horizontal,showsIndicators: false) {
+                    HStack{
+                        ForEach(actualites.listOfferTendance) { offerTendance in
+                            NavigationLink(destination:DetailOffer(selectedOffer: offerTendance,date: String(offerTendance.createdAt!).components(separatedBy: "T")[0]))
+                            {
+                                ZStack{
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .frame(width: 180.0, height: 137.0)
+                                        .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                                    VStack(alignment: .leading){
                                         
-                                    }
-                                    else {
-                                        KFImage(URL(string:offerTendance.productImg![0].imageData!)).renderingMode(.original).resizable().frame(width: 161.0, height: 77.0)                                }
-                                    Text(String(offerTendance.productName!)).foregroundColor(Color.black)
-                                        .font(.custom("Raleway", size: 12))
-                                        .padding(.bottom, 5.0)
-                                    HStack{
-                                        Text(String(offerTendance.productSubject ?? "Sans thème")).foregroundColor(Color.black)
+                                        if (offerTendance.productImg!.isEmpty) {
+                                            Image("placeholder-image")
+                                                .resizable().frame(width: 161.0, height: 77.0)
+                                            
+                                        }
+                                        else {
+                                            KFImage(URL(string:offerTendance.productImg![0].imageData!))
+                                                .renderingMode(.original).resizable().frame(width: 161.0, height: 77.0)                       }
+                                        Text(String(offerTendance.productName ?? "Sans nom")).foregroundColor(Color.black)
                                             .font(.custom("Raleway", size: 12))
-                                            .padding(.trailing, 50.0)
-                                        HStack{   isNil(offer: offerTendance)
-                                            Image(systemName: "star.fill").foregroundColor(.yellow)
+                                            .padding(.bottom, 5.0)
+                                        HStack{
+                                            Text(String(offerTendance.productSubject ?? "Sans thème")).foregroundColor(Color.black)
+                                                .font(.custom("Raleway", size: 12))
+                                                .padding(.trailing, 50.0)
+                                            Text(String(offerTendance.brand ?? "Marque")).foregroundColor(Color.black)
+                                                .font(.custom("Raleway", size: 12)).bold()
+                                            
                                         }
                                         
-                                    }
+                                        
+                                        
+                                    } .frame(width: 180.0, height: 137.0)
                                     
                                     
                                     
-                                } .frame(width: 180.0, height: 137.0)
-                                
-                                
-                                
-                            }.frame(width: 180.0, height: 137.0).foregroundColor(.white)
+                                }.frame(width: 180.0, height: 137.0).foregroundColor(.white)
+                            }
+                            
                         }
                         
                     }
                     
                 }
-                
+            }
+            else
+            {
+                Text("Aucune offre actuellement").foregroundColor(Color.black)
+                    .font(.custom("Raleway", size: 12)).italic()
             }
         }
         .onAppear {
@@ -313,51 +323,57 @@ struct OffersPopulairesView : View {
                 Image("fire")
                 Text("Offres populaires").foregroundColor(Color.white).font(.custom("Raleway", size: 17)).padding(.vertical)
             }
-            ScrollView(.horizontal,showsIndicators: false) {
-                HStack{
-                    ForEach(actualites.listOfferPopulaire) { offerPopulaire in
-                        NavigationLink(destination:DetailOffer(selectedOffer: offerPopulaire,date: String(offerPopulaire.createdAt!).components(separatedBy: "T")[0]))
-                        {
-                            ZStack{
-                                RoundedRectangle(cornerRadius: 10)
-                                    .frame(width: 180.0, height: 137.0)
-                                    .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-                                VStack(alignment: .leading){
-                                    
-                                    
-                                    if (offerPopulaire.productImg!.isEmpty) {
-                                        Image("noImage").resizable().frame(width: 161.0, height: 77.0)
+            if (!actualites.listOfferPopulaire.isEmpty) {
+                ScrollView(.horizontal,showsIndicators: false) {
+                    HStack{
+                        ForEach(actualites.listOfferPopulaire) { offerPopulaire in
+                            NavigationLink(destination:DetailOffer(selectedOffer: offerPopulaire,date: String(offerPopulaire.createdAt!).components(separatedBy: "T")[0]))
+                            {
+                                ZStack{
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .frame(width: 180.0, height: 137.0)
+                                        .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                                    VStack(alignment: .leading){
                                         
-                                    }
-                                    else {
-                                        KFImage(URL(string:offerPopulaire.productImg![0].imageData!)).renderingMode(.original).resizable().frame(width: 161.0, height: 77.0)                                }
-                                    Text(String(offerPopulaire.productName!)).foregroundColor(Color.black)
-                                        .font(.custom("Raleway", size: 12))
-                                        .padding(.bottom, 5.0)
-                                    HStack{
-                                        Text(String(offerPopulaire.productSubject!)).foregroundColor(Color.black)
+                                        
+                                        if (offerPopulaire.productImg!.isEmpty) {
+                                            Image("placeholder-image").resizable().frame(width: 161.0, height: 77.0)
+                                            
+                                        }
+                                        else {
+                                            KFImage(URL(string:offerPopulaire.productImg![0].imageData!)).renderingMode(.original).resizable().frame(width: 161.0, height: 77.0)                                }
+                                        Text(String(offerPopulaire.productName ?? "Sans nom")).foregroundColor(Color.black)
                                             .font(.custom("Raleway", size: 12))
-                                            .padding(.trailing, 50.0)
-                                        HStack{   isNil(offer: offerPopulaire)
-                                            Image(systemName: "star.fill").foregroundColor(.yellow)
+                                            .padding(.bottom, 5.0)
+                                        HStack{
+                                            Text(String(offerPopulaire.productSubject ?? "Sans thème")).foregroundColor(Color.black)
+                                                .font(.custom("Raleway", size: 12))
+                                                .padding(.trailing, 50.0)
+                                            Text(String(offerPopulaire.brand ?? "Marque")).foregroundColor(Color.black)
+                                                .font(.custom("Raleway", size: 12)).bold()
+                                            
                                         }
                                         
-                                    }
+                                        
+                                        
+                                    } .frame(width: 180.0, height: 137.0)
                                     
                                     
-                                    
-                                } .frame(width: 180.0, height: 137.0)
-                                
-                                
-                            }.frame(width: 180.0, height: 137.0).foregroundColor(.white)
+                                }.frame(width: 180.0, height: 137.0).foregroundColor(.white)
+                            }
+                            
                         }
                         
+                        
                     }
-                    
-                    
                 }
+                
             }
-            
+            else
+            {
+                Text("Aucune offre actuellement").foregroundColor(Color.black)
+                    .font(.custom("Raleway", size: 12)).italic()
+            }
         }
         .onAppear {
             getActualityInfSide() {response in
@@ -375,55 +391,61 @@ struct OffersNotesView : View {
     var body: some View {
         Group{
             HStack{
-                Image("etoile")
+                Image("Etoile")
                 Text("Offres les mieux notées").foregroundColor(Color.white).font(.custom("Raleway", size: 17)).padding(.vertical)
             }
-            ScrollView(.horizontal,showsIndicators: false) {
-                HStack{
-                    ForEach(actualites.listOfferNotes) { offerNote in
-                        NavigationLink(destination:DetailOffer(selectedOffer: offerNote,date: String(offerNote.createdAt!).components(separatedBy: "T")[0]))
-                        {
-                            ZStack{
-                                RoundedRectangle(cornerRadius: 10)
-                                    .frame(width: 180.0, height: 137.0)
-                                    .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-                                VStack(alignment: .leading){
-                                    
-                                    
-                                    if (offerNote.productImg!.isEmpty) {
-                                        Image("noImage").resizable().frame(width: 161.0, height: 77.0)
+            if (!actualites.listOfferNotes.isEmpty) {
+                ScrollView(.horizontal,showsIndicators: false) {
+                    HStack{
+                        ForEach(actualites.listOfferNotes) { offerNote in
+                            NavigationLink(destination:DetailOffer(selectedOffer: offerNote,date: String(offerNote.createdAt!).components(separatedBy: "T")[0]))
+                            {
+                                ZStack{
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .frame(width: 180.0, height: 137.0)
+                                        .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                                    VStack(alignment: .leading){
                                         
-                                    }
-                                    else {
-                                        KFImage(URL(string:offerNote.productImg![0].imageData!)).renderingMode(.original).resizable().frame(width: 161.0, height: 77.0)                                }
-                                    Text(String(offerNote.productName!)).foregroundColor(Color.black)
-                                        .font(.custom("Raleway", size: 12))
-                                        .padding(.bottom, 5.0)
-                                    HStack{
-                                        Text(String(offerNote.productSubject!)).foregroundColor(Color.black)
+                                        
+                                        if (offerNote.productImg!.isEmpty) {
+                                            Image("placeholder-image").resizable().frame(width: 161.0, height: 77.0)
+                                            
+                                        }
+                                        else {
+                                            KFImage(URL(string:offerNote.productImg![0].imageData!)).renderingMode(.original).resizable().frame(width: 161.0, height: 77.0)                                }
+                                        Text(String(offerNote.productName ?? "Sans nom")).foregroundColor(Color.black)
                                             .font(.custom("Raleway", size: 12))
-                                            .padding(.trailing, 50.0)
-                                        HStack{   isNil(offer: offerNote)
-                                            Image(systemName: "star.fill").foregroundColor(.yellow)
+                                            .padding(.bottom, 5.0)
+                                        HStack{
+                                            Text(String(offerNote.productSubject ?? "Sans thème")).foregroundColor(Color.black)
+                                                .font(.custom("Raleway", size: 12))
+                                                .padding(.trailing, 50.0)
+                                            Text(String(offerNote.brand ?? "Marque")).foregroundColor(Color.black)
+                                                .font(.custom("Raleway", size: 12)).bold()
+                                            
+                                            
                                         }
                                         
                                         
-                                    }
+                                        
+                                    } .frame(width: 180.0, height: 137.0)
                                     
                                     
-                                    
-                                } .frame(width: 180.0, height: 137.0)
-                                
-                                
-                            }.frame(width: 180.0, height: 137.0).foregroundColor(.white)
+                                }.frame(width: 180.0, height: 137.0).foregroundColor(.white)
+                            }
+                            
                         }
                         
+                        
                     }
-                    
-                    
                 }
+                
             }
-            
+            else
+            {
+                Text("Aucune offre actuellement").foregroundColor(Color.black)
+                    .font(.custom("Raleway", size: 12)).italic()
+            }
         }
         .onAppear {
             getActualityInfSide() {response in
@@ -459,16 +481,23 @@ struct DetailOffer: View {
         ZStack{
             
             VStack(alignment: .center, spacing: 20.0) {
-                Button(action: { self.dialog()})
+                HStack{
+                Button(action: { self.shareOffer()})
                 {
                     Image(systemName: "square.and.arrow.up")
                         
-                        .padding(.leading, 300.0)
+                        .padding(.leading, 270.0)
                         .foregroundColor(/*@START_MENU_TOKEN@*/.white/*@END_MENU_TOKEN@*/)
-                }
-                Text(String(selectedOffer.productName!)).foregroundColor(Color.white).font(.custom("Raleway", size: 20))
+                }.padding(.horizontal)
+                Button(action: { self.reportOffer()})
+                {
+                    Image(systemName: "flag")
+
+                        .foregroundColor(.red)                    }
+                }.padding(.horizontal)
+                Text(String(selectedOffer.productName ?? "Sans nom")).foregroundColor(Color.white).font(.custom("Raleway", size: 20))
                 if (selectedOffer.productImg!.isEmpty) {
-                    Image("noImage").resizable().frame(width: 100, height: 100)
+                    Image("placeholder-image").resizable().frame(width: 100, height: 100)
                         .clipShape(Circle()).clipped().shadow(radius: 3)
                     
                 }
@@ -482,31 +511,44 @@ struct DetailOffer: View {
                     .frame(width: 75.0, height: 1.0)
                     .background(Color(hex: "445173"))
                 Group{
-                    HStack {
-                        Text("Sexe:").foregroundColor(Color.white).font(.custom("Raleway", size: 16))
-                        if selectedOffer.productSex == "Male" || selectedOffer.productSex == "Homme"
+                    HStack{
+                    if (selectedOffer.productSubject == "Cosmétique" || selectedOffer.productSubject == "Mode")
+                    {
+                       Text("Sexe:").foregroundColor(Color.white).font(.custom("Raleway", size: 14))
+                        if (selectedOffer.productSex!.isEmpty)
                         {
-                            Image("circlefill")
+                            Text("Unisexe").foregroundColor(Color.white).font(.custom("Raleway", size: 14))
                         }
-                        else
-                        {
-                            Image("circle")
-                            
+                        else{
+                        Text(selectedOffer.productSex ?? "Unisexe").foregroundColor(Color.white).font(.custom("Raleway", size: 14))
                         }
-                        Text("Homme").foregroundColor(Color.white).font(.custom("Raleway", size: 14))
-                        if selectedOffer.productSex == "Female" || selectedOffer.productSex == "Femme"
-                        {
-                            Image("circlefill")
-                        }
-                        else
-                        {
-                            Image("circle")
-                            
-                        }
-                        Text("Femme").foregroundColor(Color.white).font(.custom("Raleway", size: 14))
                     }
+                    }
+//                    HStack {
+//                        Text("Sexe:").foregroundColor(Color.white).font(.custom("Raleway", size: 16))
+//                        if selectedOffer.productSex == "Male" || selectedOffer.productSex == "Homme"
+//                        {
+//                            Image("circlefill")
+//                        }
+//                        else
+//                        {
+//                            Image("circle")
+//
+//                        }
+//                        Text("Homme").foregroundColor(Color.white).font(.custom("Raleway", size: 14))
+//                        if selectedOffer.productSex == "Female" || selectedOffer.productSex == "Femme"
+//                        {
+//                            Image("circlefill")
+//                        }
+//                        else
+//                        {
+//                            Image("circle")
+//
+//                        }
+//                        Text("Femme").foregroundColor(Color.white).font(.custom("Raleway", size: 14))
+//                    }
                     
-                    Text(String(selectedOffer.productDesc!)).foregroundColor(Color.white).font(.custom("Raleway", size: 12)).padding(.vertical)
+                    Text(String(selectedOffer.productDesc ?? "Pas de description")).foregroundColor(Color.white).font(.custom("Raleway", size: 12)).padding(.vertical)
                     
                     Divider()
                         .frame(width: 245.0, height: 1.0)
@@ -517,37 +559,66 @@ struct DetailOffer: View {
                         .background(Color(hex: "445173"))
                 }
                 HStack{
-                    Button(action: {postulate(offer: self.selectedOffer)
-                        self.showingAlert = true
-                    }) {
-                        ZStack
+                    if (selectedOffer.status == "accepted") {
+                        NavigationLink(destination: ShareOfferView(selectedOffer: selectedOffer, facebook: "", twitter: "", instagram: "", pinterest: "", twitch: "", youtube: "", tiktok: "")) {
+                            ZStack
+                            {
+                                Image("login").foregroundColor(Color(hex: "445173"))
+                                
+                                Text("Conclure").foregroundColor(Color.white).font(.custom("Raleway", size: 12))
+                            }
+                        }
+                    }
+                    else if (selectedOffer.status == "pending") {
+                        Button(action: {removeApply(offer: self.selectedOffer)
+                            self.showingAlert = true
+                        }) {
+                            ZStack
+                            {
+                                Image("login").foregroundColor(Color(hex: "445173"))
+                                    
+                                    .foregroundColor(/*@START_MENU_TOKEN@*/.gray/*@END_MENU_TOKEN@*/)
+                                Text("Annuler").foregroundColor(Color.white).font(.custom("Raleway", size: 12))
+                            }
+                            
+                        }
+                        .alert(isPresented: $showingAlert) {
+                            Alert(title: Text("Annuler ma candidature"), message: Text("Vous avez annulé votre candidature."), dismissButton: .default(Text("Ok")))
+                        }
+                    }
+                    else
+                    {
+                        Button(action: {postulate(offer: self.selectedOffer)
+                            self.showingAlert = true
+                        }) {
+                            ZStack
                             {
                                 Image("login")
                                     .foregroundColor(Color(hex: "445173"))
                                 Text("Postuler").foregroundColor(Color.white).font(.custom("Raleway", size: 12))
-                        }                  }
+                            }                  }
                         .alert(isPresented: $showingAlert) {
                             Alert(title: Text("Postuler à une offre"), message: Text("Vous avez postulé à cette offre."), dismissButton: .default(Text("Ok")))
+                        }
                     }
-                    
                 }
                 
             }.padding(.top,50)
             
         } .frame(maxWidth:.infinity,maxHeight: .infinity)
-            .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "15113D").opacity(0.85), Color(hex: "3CA6CC").opacity(0.5)]), startPoint: .top, endPoint: .bottom))
-            .edgesIgnoringSafeArea(.top)
-            .navigationBarBackButtonHidden(true)
-            .navigationBarItems(leading:
-                Button(action: {
-                    self.presentationMode.wrappedValue.dismiss()
-                }) {
-                    HStack {
-                        Text("Retour")
-                    }
-            })
+        .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "15113D").opacity(0.85), Color(hex: "3CA6CC").opacity(0.5)]), startPoint: .top, endPoint: .bottom))
+        .edgesIgnoringSafeArea(.top)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading:
+                                Button(action: {
+                                    self.presentationMode.wrappedValue.dismiss()
+                                }) {
+                                    HStack {
+                                        Text("Retour")
+                                    }
+                                })
     }
-    func dialog(){ // Partage d'une offre
+    func shareOffer(){ // Partage d'une offre
         
         let alertController = UIAlertController(title: "Partager une offre", message: "Veuillez indiquer l'adresse mail de l'utilisateur", preferredStyle: .alert)
         
@@ -565,7 +636,42 @@ struct DetailOffer: View {
                        parameters: map as Parameters,
                        encoding: URLEncoding.default,headers: _headers).response { response in
                         debugPrint(response)
+                       }
+            
+            
+        })
+        
+        let cancelAction = UIAlertAction(title: "Annuler", style: .default, handler: nil )
+        
+        alertController.addAction(saveAction)
+        alertController.addAction(cancelAction)
+        
+        UIApplication.shared.windows.first?.rootViewController?.present(alertController, animated: true, completion: nil)
+        
+        
+    }
+   func reportOffer() { // Signalement d'une offre
+        
+        let alertController = UIAlertController(title: "Signaler une offre", message: "Veuillez indiquer le motif de votre signalement", preferredStyle: .alert)
+        
+        alertController.addTextField { (textField : UITextField!) -> Void in
+            textField.placeholder = "Motif"
+        }
+        let saveAction = UIAlertAction(title: "Envoyer", style: .default, handler: { alert -> Void in
+            let _headers: HTTPHeaders = [
+                "Authorization": "Bearer " + accessToken
+            ]
+            let motif = alertController.textFields![0].text
+         
+            let map = [ "offerName" : selectedOffer.productName,
+                        "message": motif!]
+            AF.request(url+"offer/report/" + String(selectedOffer.id),
+                       method: .post,
+                       parameters: map as Parameters,
+                       encoding: URLEncoding.default,headers: _headers).response { response in
+                        debugPrint(response)
             }
+
             
             
         })

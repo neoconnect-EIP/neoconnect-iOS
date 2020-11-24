@@ -119,7 +119,7 @@ struct InfSuggestionView : View {
                                     
                                     
                                     if (inf.userPicture!.isEmpty) {
-                                        Image("noImage").resizable().frame(width: 161.0, height: 77.0)
+                                        Image("avatar-placeholder").resizable().frame(width: 161.0, height: 77.0)
                                         
                                     }
                                     else {
@@ -175,6 +175,7 @@ struct InfTendanceView : View {
                 Image("heart")
                 Text("Influenceurs du moment").foregroundColor(Color.white).font(.custom("Raleway", size: 17)).padding(.vertical)
             }
+            if (!actualites.listInfTendance.isEmpty) {
             ScrollView(.horizontal,showsIndicators: false) {
                 HStack{
                     ForEach(actualites.listInfTendance) { infTendance in
@@ -188,12 +189,12 @@ struct InfTendanceView : View {
                                     
                                     
                                     if (infTendance.userPicture!.isEmpty) {
-                                        Image("noImage").resizable().frame(width: 161.0, height: 77.0)
+                                        Image("avatar-placeholder").resizable().frame(width: 161.0, height: 77.0)
                                         
                                     }
                                     else {
                                         KFImage(URL(string:infTendance.userPicture![0].imageData!)).renderingMode(.original).resizable().frame(width: 161.0, height: 77.0)                                }
-                                    Text(String(infTendance.pseudo!)).foregroundColor(Color.black)
+                                    Text(String(infTendance.pseudo ?? "Pas de pseudo")).foregroundColor(Color.black)
                                         .font(.custom("Raleway", size: 12))
                                         .padding(.bottom, 5.0)
                                     HStack{
@@ -223,7 +224,12 @@ struct InfTendanceView : View {
             }
             
         }
-            
+            else
+            {
+                Text("Aucun influenceur actuellement").foregroundColor(Color.black)
+                    .font(.custom("Raleway", size: 12)).italic()
+            }
+        }
         .onAppear {
             
             getActualityShopSide() {response in
@@ -244,6 +250,7 @@ struct InfPopulaireView : View {
                 Image("fire")
                 Text("Influenceurs populaires").foregroundColor(Color.white).font(.custom("Raleway", size: 17)).padding(.vertical)
             }
+            if (!actualites.listInfPopulaire.isEmpty) {
             ScrollView(.horizontal,showsIndicators: false) {
                 HStack{
                     ForEach(actualites.listInfPopulaire) { infPopulaire in
@@ -257,12 +264,12 @@ struct InfPopulaireView : View {
                                     
                                     
                                     if (infPopulaire.userPicture!.isEmpty) {
-                                        Image("noImage").resizable().frame(width: 161.0, height: 77.0)
+                                        Image("avatar-placeholder").resizable().frame(width: 161.0, height: 77.0)
                                         
                                     }
                                     else {
                                         KFImage(URL(string:infPopulaire.userPicture![0].imageData!)).renderingMode(.original).resizable().frame(width: 161.0, height: 77.0)                                }
-                                    Text(String(infPopulaire.pseudo!)).foregroundColor(Color.black)
+                                    Text(String(infPopulaire.pseudo ?? "Pas de pseudo")).foregroundColor(Color.black)
                                         .font(.custom("Raleway", size: 12))
                                         .padding(.bottom, 5.0)
                                     HStack{
@@ -291,6 +298,12 @@ struct InfPopulaireView : View {
             }
             
         }
+            else
+            {
+                Text("Aucun influenceur actuellement").foregroundColor(Color.black)
+                    .font(.custom("Raleway", size: 12)).italic()
+            }
+        }
         .onAppear {
             getActualityShopSide() {response in
                 self.actualites = response
@@ -306,9 +319,10 @@ struct InfNotesView : View {
     var body: some View {
         Group{
             HStack{
-                Image("etoile")
+                Image("Etoile")
                 Text("Influenceurs les mieux notés").foregroundColor(Color.white).font(.custom("Raleway", size: 17)).padding(.vertical)
             }
+            if (!actualites.listInfNotes.isEmpty) {
             ScrollView(.horizontal,showsIndicators: false) {
                 HStack{
                     ForEach(actualites.listInfNotes) { infNote in
@@ -322,12 +336,12 @@ struct InfNotesView : View {
                                     
                                     
                                     if (infNote.userPicture!.isEmpty) {
-                                        Image("noImage").resizable().frame(width: 161.0, height: 77.0)
+                                        Image("avatar-placeholder").resizable().frame(width: 161.0, height: 77.0)
                                         
                                     }
                                     else {
                                         KFImage(URL(string:infNote.userPicture![0].imageData!)).renderingMode(.original).resizable().frame(width: 161.0, height: 77.0)                                }
-                                    Text(String(infNote.pseudo!)).foregroundColor(Color.black)
+                                    Text(String(infNote.pseudo ?? "Pas de pseudo")).foregroundColor(Color.black)
                                         .font(.custom("Raleway", size: 12))
                                         .padding(.bottom, 5.0)
                                     HStack{
@@ -355,6 +369,12 @@ struct InfNotesView : View {
             }
             
         }
+            else
+            {
+                Text("Aucun influenceur actuellement").foregroundColor(Color.black)
+                    .font(.custom("Raleway", size: 12)).italic()
+            }
+        }
         .onAppear {
             getActualityShopSide() {response in
                 self.actualites = response
@@ -377,7 +397,7 @@ struct DetailInfView: View {
             VStack(alignment: .center, spacing: 20.0) {
                 
                 if (selectedInf.userPicture!.isEmpty) {
-                    Image("noImage").resizable().frame(width: 100, height: 100)
+                    Image("avatar-placeholder").resizable().frame(width: 100, height: 100)
                         .clipShape(Circle()).clipped().shadow(radius: 3)
                     
                 }
@@ -403,7 +423,7 @@ struct DetailInfView: View {
                 HStack{
                     Text(String(selectedInf.theme ?? "Pas de thème renseigné")).fontWeight(.medium).foregroundColor(Color.white).font(.custom("Raleway", size: 18)).padding(.trailing, 100.0)
                     Text(String(selectedInf.average ?? 0)).foregroundColor(Color.white).font(.custom("Raleway", size: 18)).padding(.vertical)
-                    Image("etoile")
+                    Image("Etoile")
                     
                     
                     

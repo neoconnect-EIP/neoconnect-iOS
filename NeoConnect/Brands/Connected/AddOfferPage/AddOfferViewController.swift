@@ -101,16 +101,16 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             switch flag {
-                case 1:
-                    firstImage.setImage(pickedImage, for: UIControl.State.normal)
-                case 2:
-                    secondImage.setImage(pickedImage, for: UIControl.State.normal)
-                case 3:
-                    thirdImage.setImage(pickedImage, for: UIControl.State.normal)
-                case 4:
-                    forthImage.setImage(pickedImage, for: UIControl.State.normal)
-                default:
-                    fifthImage.setImage(pickedImage, for: UIControl.State.normal)
+            case 1:
+                firstImage.setImage(pickedImage, for: UIControl.State.normal)
+            case 2:
+                secondImage.setImage(pickedImage, for: UIControl.State.normal)
+            case 3:
+                thirdImage.setImage(pickedImage, for: UIControl.State.normal)
+            case 4:
+                forthImage.setImage(pickedImage, for: UIControl.State.normal)
+            default:
+                fifthImage.setImage(pickedImage, for: UIControl.State.normal)
             }
             self.imageArrayToSend.append(pickedImage)
         }
@@ -147,27 +147,28 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
         print(pickerView.tag)
         if pickerView.tag == 1 {
             switch row {
-                case 1:
-                    sexSelected = "Homme"
-                case 2:
-                    sexSelected = "Femme"
-                default:
-                    sexSelected = "Unisexe"
+            case 1:
+                sexSelected = "Homme"
+            case 2:
+                sexSelected = "Femme"
+            default:
+                sexSelected = "Unisexe"
             }
         } else {
             switch row {
-                case 1:
-                    subjectSelected = "Cosmétique"
-                case 2:
-                    subjectSelected = "Jeux Vidéo"
-                case 3:
-                    subjectSelected = "Nourriture"
-                case 4:
-                    subjectSelected = "High tech"
-                case 5:
-                    subjectSelected = "Sport/Fitness"
-                default:
-                    subjectSelected = "Mode"
+            case 1:
+                subjectSelected = "Cosmétique"
+            case 2:
+                subjectSelected = "Jeux Vidéo"
+            case 3:
+                subjectSelected = "Nourriture"
+            case 4:
+                subjectSelected = "High tech"
+            case 5:
+                subjectSelected = "Sport/Fitness"
+            default:
+                subjectSelected = "Mode"
+
             }
         }
     }
@@ -186,7 +187,8 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
         }
         subjectPickerLabel?.textColor = UIColor(red: 135/255, green: 185/255, blue: 124/255, alpha: 1.0)
         
-         return subjectPickerLabel!
+        return subjectPickerLabel!
+
     }
     
     private func initPickerFrame(tag: Int) -> UIAlertController {
@@ -206,6 +208,20 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
         
         self.sexSelected = "Unisexe"
         alert.addAction(UIAlertAction(title: "Fermer", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Valider", style: .default, handler: { (UIAlertAction) in
+            self.sexPickerViewButton.setTitle(self.sexSelected, for: .normal)
+            print("You selected " + self.sexSelected)
+            
+        }))
+        self.present(alert,animated: true, completion: nil )
+    }
+    
+    @IBAction func subjectViewButtonTapped(_ sender: Any) {
+        let alert = initPickerFrame(tag: 0)
+        
+        self.subjectSelected = "Mode"
+        alert.addAction(UIAlertAction(title: "Femer", style: .cancel, handler: nil))
+
         alert.addAction(UIAlertAction(title: "Valider", style: .default, handler: { (UIAlertAction) in
             self.sexPickerViewButton.setTitle(self.sexSelected, for: .normal)
             print("You selected " + self.sexSelected)
@@ -240,17 +256,17 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
     func resetView() {
         self.nameTextField.text?.removeAll()
         self.descTextView.text?.removeAll()
-        self.imageArrayToSend = []
         self.subjectSelected = "Sujet"
         self.sexSelected = "Sexe"
-        let image = UIImage(named: "placeholder-image.png")
+        let image = UIImage(named: "Photo_Icon.png")
+
         self.firstImage.setImage(image, for: .normal)
         self.secondImage.setImage(image, for: .normal)
         self.thirdImage.setImage(image, for: .normal)
         self.forthImage.setImage(image, for: .normal)
         self.fifthImage.setImage(image, for: .normal)
     }
-        
+    
     func showError(_ message: String) {
         DispatchQueue.main.async {
             let alertView = UIAlertController(title: "Erreur", message: message, preferredStyle: .alert)
@@ -265,29 +281,34 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
         let subject = subjectSelected
         let sex = sexSelected
         
-        if (0 ... 4 ~= desc.count) {
+        if (1 ... 4 ~= desc.count) {
             showError("La description semble trop courte")
+            return
         } else if (name.isEmpty || subject == "Sujet" || imageArrayToSend.count == 0) {
             showError("Tous les champs doivent être complétés")
-        } else if (subject == "Mode" || subject == "Cosmétique") && (sex == "Sexe") {
-            showError("Veuillez préciser le sexe de l'annonce")
-        } else {
-            var imageArray: Array<String> = []
-            
-            for image in imageArrayToSend {
-                imageArray.append(image.toBase64() ?? "")
+            return
+        } else if (subject == "Mode" || subject == "Cosmétique") {
+            if (sex == "Sexe") {
+                showError("Veuillez préciser le sexe de l'annonce")
+                return
             }
-            APIBrandManager.sharedInstance.addOffer(name: name, description: desc, subject: subject, sex: sex, imageArray: imageArray, onSuccess: {
-                let statusAlert = StatusAlert()
-                statusAlert.alertShowingDuration = 1
-                statusAlert.image = UIImage(named: "Success icon.png")
-                statusAlert.title = "Offre ajoutée !"
-                statusAlert.message = "Votre offre à été ajouté avec succès"
-                statusAlert.showInKeyWindow()
-                self.resetView()
-            }, onFailure: {
-                self.showError("Une erreur est survenue")
-            })
         }
+        var imageArray: Array<String> = []
+        
+        for image in imageArrayToSend {
+            imageArray.append(image.toBase64() ?? "")
+
+        }
+        APIBrandManager.sharedInstance.addOffer(name: name, description: desc, subject: subject, sex: sex, imageArray: imageArray, onSuccess: {
+            let statusAlert = StatusAlert()
+            statusAlert.alertShowingDuration = 1
+            statusAlert.image = UIImage(named: "Success icon.png")
+            statusAlert.title = "Offre ajoutée !"
+            statusAlert.message = "Votre offre à été ajouté avec succès"
+            statusAlert.showInKeyWindow()
+            self.resetView()
+        }, onFailure: {
+            self.showError("Une erreur est survenue")
+        })
     }
 }
