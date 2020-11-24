@@ -7,51 +7,37 @@
 //
 
 import UIKit
-import ActionSheetPicker_3_0
+import StatusAlert
 
 class B_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-
+    
+    @IBOutlet weak var userWebsiteTextField: RegisterFields!
     @IBOutlet weak var userFacebookTextField: RegisterFields!
     @IBOutlet weak var userTwitterTextField: RegisterFields!
     @IBOutlet weak var userInstagramTextField: RegisterFields!
     @IBOutlet weak var userSnapchatTextField: RegisterFields!
     @IBOutlet weak var pickerViewButton: UIButton!
-
-    var pickerData = ["Mode", "Cosmétique", "Jeux Vidéo", "Food", "High Tech", "Sport/Fitness"]
+    
+    var pickerData = ["Mode", "Cosmétique", "Jeux Vidéo", "Nourriture", "High tech", "Sport/Fitness"]
     var pickerView = UIPickerView()
-    var typeValue = "Mode"
+    var typeValue = "Choisissez un thème..."
     var restriction = RestrictionTextField()
     
-    var image = UIImage()
-    var pseudo = String()
-    var email = String()
-    var password = String()
-    var name = String()
-    var zipCode = String()
-    var phoneNumber = String()
-    var city = String()
-    var company = String()
-    var profession = String()
-    var website = String()
-    var imageConverter = ImageConverter()
+    var userImage = String()
+    var userDescription = String()
+    var userPseudo = String()
+    var userEmail = String()
+    var userPassword = String()
+    var userName = String()
+    var userZipCode = String()
+    var userPhoneNumber = String()
+    var userCity = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    @IBAction func facebookTextField(_ sender: RegisterFields) {
-        sender.handleError(sender: sender, field: "default")
-    }
-    
-    @IBAction func twitterTextField(_ sender: RegisterFields) {
-        sender.handleError(sender: sender, field: "default")
-    }
-    
-    @IBAction func instagramTextField(_ sender: RegisterFields) {
-        sender.handleError(sender: sender, field: "default")
-    }
-    
-    @IBAction func snapchatTextField(_ sender: RegisterFields) {
+
+    @IBAction func isValidField(_ sender: RegisterFields) {
         sender.handleError(sender: sender, field: "default")
     }
     
@@ -73,14 +59,13 @@ class B_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDel
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch row {
             case 1:
-                
                 typeValue = "Cosmétique"
             case 2:
                 typeValue = "Jeux Vidéo"
             case 3:
-                typeValue = "Food"
+                typeValue = "Nourriture"
             case 4:
-                typeValue = "High Tech"
+                typeValue = "High tech"
             case 5:
                 typeValue = "Sport/Fitness"
             default:
@@ -104,15 +89,15 @@ class B_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDel
     
     @IBAction func pickerViewButtonTapped(_ sender: Any) {
         let alert = UIAlertController(title: "Choisissez votre thème", message: "\n\n\n\n\n\n", preferredStyle: .alert)
-
         
         let pickerFrame = UIPickerView(frame: CGRect(x: 5, y: 20, width: 250, height: 140))
         alert.view.tintColor = UIColor(red: 135/255, green: 185/255, blue: 124/255, alpha: 1.0)
         alert.view.addSubview(pickerFrame)
         pickerFrame.dataSource = self
         pickerFrame.delegate = self
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        typeValue = "Mode"
+
+        alert.addAction(UIAlertAction(title: "Fermer", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Valider", style: .default, handler: { (UIAlertAction) in
             
             self.pickerViewButton.setTitle(self.typeValue, for: .normal)
@@ -122,13 +107,21 @@ class B_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDel
         self.present(alert,animated: true, completion: nil )
     }
     
+    func showError(_ message: String) {
+        DispatchQueue.main.async {
+            let alertView = UIAlertController(title: "Erreur", message: message, preferredStyle: .alert)
+            alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
+            self.present(alertView, animated: true, completion: nil)
+        }
+    }
+    
     @IBAction func register_ButtonTapped(_ sender: Any) {
+        let userWebsite = userWebsiteTextField.text!
         let userFacebook = userFacebookTextField.text!
         let userTwitter = userTwitterTextField.text!
         let userInstagram = userInstagramTextField.text!
         let userSnapchat = userSnapchatTextField.text!
         let userSubject = typeValue
-        let userPicture = imageConverter.imageToBase64(image)
         
         // Erreur : un champ fait entre 1 et 3 caractères
         if (!restriction.isMinThreeChar(userWebsite) ||

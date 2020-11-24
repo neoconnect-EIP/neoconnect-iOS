@@ -59,47 +59,47 @@ final class DefaultTextFields: UITextField {
     
     func handleError(sender: UITextField, field: String) {
         switch field {
-            case "pseudo":
+            case "Pseudo":
                 if restriction.isValidPseudo(sender.text!) {
                     setNormalShape(sender: sender)
-                } else {
-                    setErrorShape(sender: sender)
+                    return
                 }
+                setErrorShape(sender: sender)
                 return
-            case "email":
+            case "Email":
                 if restriction.isValidEmail(sender.text!) {
                     setNormalShape(sender: sender)
-                } else {
-                    setErrorShape(sender: sender)
+                    return
                 }
+                setErrorShape(sender: sender)
                 return
-            case "password":
+            case "Mot de passe":
                 if restriction.isValidPassword(sender.text!) {
                     setNormalShape(sender: sender)
-                } else {
-                    setErrorShape(sender: sender)
+                    return
                 }
+                setErrorShape(sender: sender)
                 return
-            case "zipCode":
+            case "Code postal":
                 if restriction.isValidZipCode(sender.text!) {
                     setNormalShape(sender: sender)
-                } else {
-                    setErrorShape(sender: sender)
+                    return
                 }
+                setErrorShape(sender: sender)
                 return
-            case "phoneNumber":
+            case "Téléphone":
                 if restriction.isValidPhoneNumber(sender.text!) {
                     setNormalShape(sender: sender)
-                } else {
-                    setErrorShape(sender: sender)
+                    return
                 }
+                setErrorShape(sender: sender)
                 return
             default:
                 if restriction.isMinThreeChar(sender.text!) {
                     setNormalShape(sender: sender)
-                } else {
-                    setErrorShape(sender: sender)
+                    return
                 }
+                setErrorShape(sender: sender)
                 return
         }
     }

@@ -48,16 +48,22 @@ class I_ChatViewController: UIViewController {
         var tempShop: [Shop] = []
         
         for dictionary in results {
+            var image: UIImage = #imageLiteral(resourceName: "avatar-placeholder")
+            if let userPicture = dictionary["userPicture"] as? [[String:String]] {
+                if userPicture.count > 0 {
+                    if let imageData = URL(string: (userPicture[0]["imageData"])!) {
+                        if let tempImage = try! UIImage(data: Data(contentsOf: imageData)) {
+                            image = tempImage
+                        }
+                    }
+                }
+            }
             let id = dictionary["id"] as! Int
             var user_id = dictionary["user_1"] as! String
             if Int(user_id) == UserDefaults.standard.integer(forKey: "id") {
                 user_id = dictionary["user_2"] as! String
             }
             let pseudo = dictionary["pseudo"] as! String
-            let productImg = dictionary["userPicture"] as? NSArray
-            let imageDict = productImg![0] as! NSDictionary
-            let imageUrl = URL(string: imageDict["imageData"] as! String)!
-            let image = try! UIImage(data: Data(contentsOf: imageUrl))!
             tempShop.append(Shop(id: id, user_id: Int(user_id)!, pseudo: pseudo, image: image))
         }
         return tempShop
@@ -69,6 +75,7 @@ class I_ChatViewController: UIViewController {
         let VC = segue.destination as! I_DetailedChatViewController
         
         VC.shop = shop
+        VC.shopImage = shop.image
     }
     
     @IBAction func ContactUser(_ sender: Any) {

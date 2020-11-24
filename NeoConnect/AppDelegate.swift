@@ -25,6 +25,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 15, vertical: 5), for: UIBarMetrics.default)
         IQKeyboardManager.shared.enable = true
+        if let date = UserDefaults.standard.object(forKey: "LogInTime") as? Date {
+            if let diff = Calendar.current.dateComponents([.hour], from: date, to: Date()).hour, diff < 24 {
+                if var userType = UserDefaults.standard.string(forKey: "userType") {
+                    let rootViewController = self.window!.rootViewController as! UINavigationController
+                    if userType == "influencer" {
+                        userType = "I"
+                    } else {
+                        userType = "B"
+                    }
+                    let storyBoard: UIStoryboard = UIStoryboard(name: "\(userType)_TabBarController", bundle: nil)
+                    let home = storyBoard.instantiateViewController(withIdentifier: "\(userType)_CustomTabBarController")
+                    rootViewController.pushViewController(home, animated: true)
+                }
+            }
+        }
         // Override point for customization after application launch.
         return true
     }

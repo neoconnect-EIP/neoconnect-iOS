@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EPD-bG-0bU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EPD-bG-0bU">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -47,8 +48,8 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ShopBackground" translatesAutoresizingMaskIntoConstraints="NO" id="OoC-Yd-4qR">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vjS-ix-3P9">
-                                <rect key="frame" x="131.5" y="375.5" width="112.5" height="26.5"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vjS-ix-3P9">
+                                <rect key="frame" x="131.5" y="355.5" width="112.5" height="26.5"/>
                                 <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="11"/>
                                 <state key="normal" title="Mot de passe oublié ?">
                                     <color key="titleColor" red="0.089033149180000007" green="0.077406220139999996" blue="0.2274742723" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -66,7 +67,7 @@
                                     <constraint firstAttribute="width" secondItem="xqX-2O-FtU" secondAttribute="height" multiplier="1:1" id="QrA-IR-GpL"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cs3-kr-bIu" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cs3-kr-bIu" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
                                 <rect key="frame" x="118" y="553.5" width="139" height="33.5"/>
                                 <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="10"/>
                                 <state key="normal" title="Je suis un influenceur">
@@ -86,7 +87,7 @@
                                 <rect key="frame" x="178" y="519" width="19" height="19"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vous n'avez pas encore de compte ?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMI-ZF-wIO">
-                                <rect key="frame" x="20" y="478.5" width="335" height="12"/>
+                                <rect key="frame" x="20" y="449" width="335" height="12"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="12" id="kde-3W-DUt"/>
                                 </constraints>
@@ -94,18 +95,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2PN-3B-ILv">
-                                <rect key="frame" x="131.5" y="490.5" width="112.5" height="26.5"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2PN-3B-ILv">
+                                <rect key="frame" x="131.5" y="461" width="112.5" height="26.5"/>
                                 <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="11"/>
                                 <state key="normal" title="Créer un compte">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="lxa-wx-JSK" kind="show" id="5oQ-f6-0Hv"/>
+                                    <segue destination="8eS-jp-Wqr" kind="show" id="5qK-L3-hDI"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFe-KM-IY9" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
-                                <rect key="frame" x="131.5" y="425.5" width="112.5" height="40"/>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFe-KM-IY9" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
+                                <rect key="frame" x="131.5" y="399" width="112.5" height="40"/>
                                 <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="14"/>
                                 <state key="normal" title="Se connecter">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -115,7 +116,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mot de passe" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oT7-vP-kra" customClass="LoginFields" customModule="NeoConnect" customModuleProvider="target">
-                                <rect key="frame" x="72.5" y="335.5" width="230" height="40"/>
+                                <rect key="frame" x="72.5" y="315.5" width="230" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="9N1-iz-qui"/>
                                     <constraint firstAttribute="width" constant="230" id="Ru9-Pv-b1u"/>
@@ -125,7 +126,7 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pseudo" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NTu-oX-v8Y" customClass="LoginFields" customModule="NeoConnect" customModuleProvider="target">
-                                <rect key="frame" x="72.5" y="265.5" width="230" height="40"/>
+                                <rect key="frame" x="72.5" y="245.5" width="230" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="230" id="EdP-um-GU2"/>
                                     <constraint firstAttribute="height" constant="40" id="Zec-0y-Do0"/>
@@ -143,12 +144,23 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VO7-t9-WJS">
+                                <rect key="frame" x="109" y="487.5" width="157" height="26.5"/>
+                                <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="11"/>
+                                <state key="normal" title="Des questions ? Voir notre FAQ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="FAQbuttonTapped:" destination="dpD-1w-TEG" eventType="touchUpInside" id="fG4-Sv-QsY"/>
+                                </connections>
+                            </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="kBF-gN-pUN"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="VSd-NZ-98c" firstAttribute="top" secondItem="xqX-2O-FtU" secondAttribute="bottom" constant="30" id="0Ag-jl-MjO"/>
-                            <constraint firstItem="oT7-vP-kra" firstAttribute="centerY" secondItem="kBF-gN-pUN" secondAttribute="centerY" id="0M6-yd-aXx"/>
-                            <constraint firstItem="uMI-ZF-wIO" firstAttribute="top" secondItem="YFe-KM-IY9" secondAttribute="bottom" constant="13" id="0eb-wj-xqB"/>
+                            <constraint firstItem="oT7-vP-kra" firstAttribute="centerY" secondItem="kBF-gN-pUN" secondAttribute="centerY" constant="-20" id="0M6-yd-aXx"/>
+                            <constraint firstItem="uMI-ZF-wIO" firstAttribute="top" secondItem="YFe-KM-IY9" secondAttribute="bottom" constant="10" id="0eb-wj-xqB"/>
                             <constraint firstItem="uMI-ZF-wIO" firstAttribute="centerX" secondItem="kBF-gN-pUN" secondAttribute="centerX" id="1DH-bZ-prV"/>
                             <constraint firstItem="cs3-kr-bIu" firstAttribute="centerX" secondItem="kBF-gN-pUN" secondAttribute="centerX" id="1pZ-a0-EzU"/>
                             <constraint firstItem="oT7-vP-kra" firstAttribute="centerX" secondItem="kBF-gN-pUN" secondAttribute="centerX" id="4ip-Nv-Z7L"/>
@@ -156,12 +168,15 @@
                             <constraint firstItem="vjS-ix-3P9" firstAttribute="height" secondItem="ewc-TQ-CO5" secondAttribute="height" multiplier="0.04" id="559-pn-2Eh"/>
                             <constraint firstItem="NTu-oX-v8Y" firstAttribute="centerX" secondItem="kBF-gN-pUN" secondAttribute="centerX" id="5L9-Oj-ReD"/>
                             <constraint firstItem="XhL-BK-eDw" firstAttribute="centerY" secondItem="xqX-2O-FtU" secondAttribute="centerY" id="EWc-ko-USx"/>
-                            <constraint firstItem="kBF-gN-pUN" firstAttribute="bottom" secondItem="OoC-Yd-4qR" secondAttribute="bottom" id="Iyu-er-I8m"/>
+                            <constraint firstAttribute="bottom" secondItem="OoC-Yd-4qR" secondAttribute="bottom" id="Iyu-er-I8m"/>
                             <constraint firstItem="vjS-ix-3P9" firstAttribute="centerX" secondItem="kBF-gN-pUN" secondAttribute="centerX" id="Kc3-Qq-RU7"/>
                             <constraint firstItem="XhL-BK-eDw" firstAttribute="width" secondItem="xqX-2O-FtU" secondAttribute="width" multiplier="1.875" id="Lns-q9-zCY"/>
                             <constraint firstItem="xqX-2O-FtU" firstAttribute="centerX" secondItem="kBF-gN-pUN" secondAttribute="centerX" id="Pee-3o-uC8"/>
                             <constraint firstItem="VSd-NZ-98c" firstAttribute="leading" secondItem="kBF-gN-pUN" secondAttribute="leading" constant="20" id="QTV-9c-fET"/>
                             <constraint firstItem="OoC-Yd-4qR" firstAttribute="top" secondItem="ewc-TQ-CO5" secondAttribute="top" id="SFh-Eu-RE6"/>
+                            <constraint firstItem="VO7-t9-WJS" firstAttribute="centerX" secondItem="kBF-gN-pUN" secondAttribute="centerX" id="Tq9-lk-ONZ"/>
+                            <constraint firstItem="VO7-t9-WJS" firstAttribute="height" secondItem="ewc-TQ-CO5" secondAttribute="height" multiplier="0.0397301" id="VNy-gM-b6V"/>
+                            <constraint firstItem="VO7-t9-WJS" firstAttribute="width" secondItem="ewc-TQ-CO5" secondAttribute="width" multiplier="0.418667" id="Wqh-cE-UGS"/>
                             <constraint firstItem="0c3-bF-z4B" firstAttribute="width" secondItem="ewc-TQ-CO5" secondAttribute="width" id="Wqw-sh-7mf"/>
                             <constraint firstItem="VSd-NZ-98c" firstAttribute="centerY" secondItem="kBF-gN-pUN" secondAttribute="centerY" constant="-150" id="Z0j-on-vBg"/>
                             <constraint firstItem="zgE-cX-RTD" firstAttribute="centerY" secondItem="0c3-bF-z4B" secondAttribute="centerY" id="Z2Q-sm-aVM"/>
@@ -180,6 +195,7 @@
                             <constraint firstItem="XhL-BK-eDw" firstAttribute="height" secondItem="xqX-2O-FtU" secondAttribute="height" multiplier="1.875" id="lgT-CM-Z6P"/>
                             <constraint firstItem="cs3-kr-bIu" firstAttribute="width" secondItem="ewc-TQ-CO5" secondAttribute="width" multiplier="0.37" id="lqu-0o-NqW"/>
                             <constraint firstItem="YFe-KM-IY9" firstAttribute="centerX" secondItem="kBF-gN-pUN" secondAttribute="centerX" id="mDC-C0-Skl"/>
+                            <constraint firstItem="VO7-t9-WJS" firstAttribute="top" secondItem="2PN-3B-ILv" secondAttribute="bottom" id="mOz-oG-d9V"/>
                             <constraint firstItem="YFe-KM-IY9" firstAttribute="height" secondItem="ewc-TQ-CO5" secondAttribute="height" multiplier="0.06" id="pCQ-Cz-aly"/>
                             <constraint firstItem="uMI-ZF-wIO" firstAttribute="leading" secondItem="kBF-gN-pUN" secondAttribute="leading" constant="20" id="pT5-2M-9Hx"/>
                             <constraint firstItem="2PN-3B-ILv" firstAttribute="width" secondItem="ewc-TQ-CO5" secondAttribute="width" multiplier="0.3" id="pb4-Wx-LLP"/>
@@ -187,11 +203,10 @@
                             <constraint firstItem="vjS-ix-3P9" firstAttribute="top" secondItem="oT7-vP-kra" secondAttribute="bottom" id="rmU-cy-C8i"/>
                             <constraint firstItem="XhL-BK-eDw" firstAttribute="centerX" secondItem="xqX-2O-FtU" secondAttribute="centerX" id="tTj-Yn-4XU"/>
                             <constraint firstItem="kBF-gN-pUN" firstAttribute="trailing" secondItem="VSd-NZ-98c" secondAttribute="trailing" constant="20" id="u5w-ls-icf"/>
-                            <constraint firstItem="YFe-KM-IY9" firstAttribute="centerY" secondItem="kBF-gN-pUN" secondAttribute="centerY" constant="90" id="xNr-3X-poD"/>
+                            <constraint firstItem="YFe-KM-IY9" firstAttribute="centerY" secondItem="vjS-ix-3P9" secondAttribute="centerY" constant="50" id="xNr-3X-poD"/>
                             <constraint firstItem="kBF-gN-pUN" firstAttribute="bottom" secondItem="cs3-kr-bIu" secondAttribute="bottom" constant="80" id="xmg-1y-uBU"/>
                             <constraint firstItem="oT7-vP-kra" firstAttribute="top" secondItem="NTu-oX-v8Y" secondAttribute="bottom" constant="30" id="yo6-41-tlC"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="kBF-gN-pUN"/>
                     </view>
                     <navigationItem key="navigationItem" id="Wpj-xo-kKU">
                         <barButtonItem key="backBarButtonItem" title="Retour" id="ghd-bM-LEc"/>
@@ -205,10 +220,10 @@
             </objects>
             <point key="canvasLocation" x="-1602.4000000000001" y="590.55472263868069"/>
         </scene>
-        <!--Register Page Step One View Controller-->
+        <!--Register Page Step Two View Controller-->
         <scene sceneID="gVK-a4-zSe">
             <objects>
-                <viewController storyboardIdentifier="B_Step_One" id="lxa-wx-JSK" customClass="B_RegisterPage_Step_One_ViewController" customModule="NeoConnect" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="B_Step_Two" id="lxa-wx-JSK" customClass="B_RegisterPage_Step_Two_ViewController" customModule="NeoConnect" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IQQ-uY-y7R">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -232,7 +247,7 @@
                                     <constraint firstAttribute="height" constant="400" id="IPP-FD-Njx"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veillez à remplir tout les champs" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmi-et-Iw2">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choisissez une photo de profil" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmi-et-Iw2">
                                 <rect key="frame" x="57.5" y="175.5" width="260" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Zoh-4q-nJa"/>
@@ -242,79 +257,44 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZVR-YX-wIg">
-                                <rect key="frame" x="65" y="203.5" width="245" height="337"/>
+                                <rect key="frame" x="55.5" y="203.5" width="264.5" height="339"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bnu-vC-p5U">
-                                        <rect key="frame" x="0.0" y="0.0" width="245" height="337"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="bnu-vC-p5U">
+                                        <rect key="frame" x="0.0" y="0.0" width="264.5" height="339"/>
                                         <subviews>
                                             <button opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uxh-Fb-XTL" customClass="PhotoFieldButton" customModule="NeoConnect" customModuleProvider="target">
-                                                <rect key="frame" x="54" y="0.0" width="137" height="137"/>
+                                                <rect key="frame" x="72" y="0.0" width="120" height="120"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="137" id="BrG-pk-qX4"/>
+                                                    <constraint firstAttribute="width" constant="120" id="BrG-pk-qX4"/>
                                                     <constraint firstAttribute="width" secondItem="uxh-Fb-XTL" secondAttribute="height" multiplier="1:1" id="xNK-Ch-7Pr"/>
                                                 </constraints>
-                                                <state key="normal" image="Photo Icon"/>
+                                                <state key="normal" image="avatar-placeholder"/>
                                                 <connections>
                                                     <action selector="loadImageButtonTapped:" destination="lxa-wx-JSK" eventType="touchUpInside" id="vEe-A1-Eds"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pseudo*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4wd-Rh-GUR" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="147" width="245" height="40"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Et présentez vous en quelque mots" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gnO-ID-z2x">
+                                                <rect key="frame" x="0.0" y="135" width="264.5" height="19"/>
+                                                <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Bkl-WX-wT3" customClass="RegisterTextView" customModule="NeoConnect" customModuleProvider="target">
+                                                <rect key="frame" x="12" y="169" width="240" height="170"/>
+                                                <color key="backgroundColor" red="0.73853902279999994" green="0.73853902279999994" blue="0.73853902279999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="IoC-Zd-Q2g"/>
-                                                    <constraint firstAttribute="width" constant="245" id="UOd-fC-nel"/>
+                                                    <constraint firstAttribute="height" constant="170" id="ixZ-Bz-rel"/>
+                                                    <constraint firstAttribute="width" constant="240" id="ko1-qX-vhg"/>
                                                 </constraints>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
-                                                <connections>
-                                                    <action selector="userPseudoDidEnd:" destination="lxa-wx-JSK" eventType="editingDidEnd" id="Vmj-7G-3at"/>
-                                                </connections>
-                                            </textField>
-                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kK6-ka-Pig" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="197" width="245" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="245" id="h42-sI-iY8"/>
-                                                    <constraint firstAttribute="height" constant="40" id="oDC-td-eHj"/>
-                                                </constraints>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
-                                                <connections>
-                                                    <action selector="userEmailDidEnd:" destination="lxa-wx-JSK" eventType="editingDidEnd" id="UJA-EE-K4r"/>
-                                                </connections>
-                                            </textField>
-                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mot de passe*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eeV-8z-eB2" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="247" width="245" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="3Al-4b-YL6"/>
-                                                    <constraint firstAttribute="width" constant="245" id="Cvm-fD-gD1"/>
-                                                </constraints>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
-                                                <connections>
-                                                    <action selector="userPasswordDidEnd:" destination="lxa-wx-JSK" eventType="editingDidEnd" id="Krp-U3-FsE"/>
-                                                </connections>
-                                            </textField>
-                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Répétez le mot de passe*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JNL-jw-VZm" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="297" width="245" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="0oN-4v-ptT"/>
-                                                    <constraint firstAttribute="width" constant="245" id="B7b-hS-5Xj"/>
-                                                </constraints>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
-                                                <connections>
-                                                    <action selector="userPasswordDidEnd:" destination="lxa-wx-JSK" eventType="editingDidEnd" id="3qr-sQ-KBI"/>
-                                                </connections>
-                                            </textField>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
+                                            </textView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mal-hP-mDa" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mal-hP-mDa" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
                                 <rect key="frame" x="115" y="585" width="145" height="40"/>
                                 <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="13"/>
                                 <state key="normal" title="Page suivante">
@@ -326,6 +306,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="jFc-W9-Jle"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Bmi-et-Iw2" firstAttribute="centerX" secondItem="eAF-P6-jz1" secondAttribute="centerX" id="31P-0m-rCZ"/>
@@ -348,28 +329,24 @@
                             <constraint firstItem="9G3-Rv-NR9" firstAttribute="leading" secondItem="IQQ-uY-y7R" secondAttribute="leading" id="uDS-d2-Veo"/>
                             <constraint firstItem="jFc-W9-Jle" firstAttribute="bottom" secondItem="mal-hP-mDa" secondAttribute="bottom" constant="42" id="z7A-Wg-Lgu"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="jFc-W9-Jle"/>
                     </view>
                     <navigationItem key="navigationItem" id="JTU-Al-QmV">
                         <barButtonItem key="backBarButtonItem" title="Retour" id="VF7-nE-GF6"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="repeatPasswordTextField" destination="JNL-jw-VZm" id="RNj-4Q-qFo"/>
-                        <outlet property="userEmailTextField" destination="kK6-ka-Pig" id="rI5-v0-Cgb"/>
-                        <outlet property="userPasswordTextField" destination="eeV-8z-eB2" id="99E-uM-z2V"/>
+                        <outlet property="userDescriptionTextView" destination="Bkl-WX-wT3" id="S4R-Cj-6y3"/>
                         <outlet property="userPhotoView" destination="uxh-Fb-XTL" id="RGs-jh-z8g"/>
-                        <outlet property="userPseudoTextField" destination="4wd-Rh-GUR" id="HxP-Fy-RQs"/>
-                        <segue destination="8eS-jp-Wqr" kind="show" identifier="B_Step_Two" id="QDB-5P-RiM"/>
+                        <segue destination="MTr-Qh-xfi" kind="show" identifier="B_Step_Three" id="FpA-Ke-hTZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ko-oC-mFu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-881" y="591"/>
+            <point key="canvasLocation" x="-182" y="591"/>
         </scene>
-        <!--Register Page Step Two View Controller-->
+        <!--Register Page Step One View Controller-->
         <scene sceneID="iFX-7q-J7E">
             <objects>
-                <viewController storyboardIdentifier="B_Step_Two" id="8eS-jp-Wqr" customClass="B_RegisterPage_Step_Two_ViewController" customModule="NeoConnect" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="B_Step_One" id="8eS-jp-Wqr" customClass="B_RegisterPage_Step_One_ViewController" customModule="NeoConnect" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7U6-je-96Q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -377,7 +354,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ShopBackground" translatesAutoresizingMaskIntoConstraints="NO" id="GD5-ss-5ZM">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Informations personnelles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3HR-2h-EHF">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Informations de compte" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3HR-2h-EHF">
                                 <rect key="frame" x="20" y="84" width="335" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Pd7-qI-42Y"/>
@@ -403,7 +380,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bt-WN-3M6" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bt-WN-3M6" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
                                 <rect key="frame" x="115" y="585" width="145" height="40"/>
                                 <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="14"/>
                                 <state key="normal" title="Page suivante">
@@ -420,7 +397,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fDb-Ad-OP3">
                                         <rect key="frame" x="0.0" y="0.0" width="245" height="220"/>
                                         <subviews>
-                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nom complet" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dHP-OP-teX" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
+                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pseudo*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dHP-OP-teX" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="245" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="HQH-er-71X"/>
@@ -430,10 +407,10 @@
                                                 <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
                                                 <connections>
-                                                    <action selector="userNameDidEnd:" destination="8eS-jp-Wqr" eventType="editingDidEnd" id="3zU-eW-2gc"/>
+                                                    <action selector="isValidField:" destination="8eS-jp-Wqr" eventType="editingDidEnd" id="LZS-ud-taK"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ville" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r80-gh-SvY" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
+                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r80-gh-SvY" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="60" width="245" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="245" id="PIS-6t-GBP"/>
@@ -441,12 +418,12 @@
                                                 </constraints>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                 <connections>
-                                                    <action selector="userCityDidEnd:" destination="8eS-jp-Wqr" eventType="editingDidEnd" id="EYh-Ki-uvM"/>
+                                                    <action selector="isValidField:" destination="8eS-jp-Wqr" eventType="editingDidEnd" id="E4e-Xw-EFl"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Code postal" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KvS-14-bmO" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
+                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mot de passe*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KvS-14-bmO" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="120" width="245" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="LNh-8G-oJc"/>
@@ -454,12 +431,12 @@
                                                 </constraints>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
                                                 <connections>
-                                                    <action selector="userZipCodeDidEnd:" destination="8eS-jp-Wqr" eventType="editingDidEnd" id="U1z-di-2B7"/>
+                                                    <action selector="isValidField:" destination="8eS-jp-Wqr" eventType="editingDidEnd" id="9sj-Ok-ZHB"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Téléphone" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KxH-IS-wlT" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
+                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Répétez le mot de passe*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KxH-IS-wlT" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="180" width="245" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="245" id="BXo-2C-Zn2"/>
@@ -467,9 +444,9 @@
                                                 </constraints>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
                                                 <connections>
-                                                    <action selector="userPhoneNumberDidEnd:" destination="8eS-jp-Wqr" eventType="editingDidEnd" id="pma-MO-64r"/>
+                                                    <action selector="isValidField:" destination="8eS-jp-Wqr" eventType="editingDidEnd" id="9ji-cy-EIS"/>
                                                 </connections>
                                             </textField>
                                         </subviews>
@@ -477,6 +454,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="fsW-81-Hae"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="3HR-2h-EHF" firstAttribute="top" secondItem="fsW-81-Hae" secondAttribute="top" constant="40" id="4cL-p3-gnj"/>
@@ -498,22 +476,21 @@
                             <constraint firstItem="B2q-wY-Rmd" firstAttribute="centerX" secondItem="fsW-81-Hae" secondAttribute="centerX" id="oxw-ya-PZ7"/>
                             <constraint firstItem="GD5-ss-5ZM" firstAttribute="leading" secondItem="7U6-je-96Q" secondAttribute="leading" id="sq5-PJ-Hwk"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="fsW-81-Hae"/>
                     </view>
                     <navigationItem key="navigationItem" id="oHd-49-amX">
                         <barButtonItem key="backBarButtonItem" title="Retour" id="1ME-eg-xRE"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="userCityTextField" destination="r80-gh-SvY" id="2Cw-ij-dke"/>
-                        <outlet property="userNameTextField" destination="dHP-OP-teX" id="fYy-4h-o1B"/>
-                        <outlet property="userPhoneNumberTextField" destination="KxH-IS-wlT" id="IaC-wz-RgE"/>
-                        <outlet property="userZipCodeTextField" destination="KvS-14-bmO" id="Bnn-CH-DPY"/>
-                        <segue destination="MTr-Qh-xfi" kind="show" identifier="B_Step_Three" id="0Cb-iM-icQ"/>
+                        <outlet property="repeatPasswordTextField" destination="KxH-IS-wlT" id="KyW-e4-xfo"/>
+                        <outlet property="userEmailTextField" destination="r80-gh-SvY" id="I8j-cB-aN1"/>
+                        <outlet property="userPasswordTextField" destination="KvS-14-bmO" id="3co-9f-Z6K"/>
+                        <outlet property="userPseudoTextField" destination="dHP-OP-teX" id="t2e-ag-lEA"/>
+                        <segue destination="lxa-wx-JSK" kind="show" identifier="B_Step_Two" id="udV-rh-V0m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Seh-WQ-MTk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-172" y="590.55472263868069"/>
+            <point key="canvasLocation" x="-892" y="591"/>
         </scene>
         <!--Register Page Step Three View Controller-->
         <scene sceneID="rn3-GL-q4N">
@@ -526,7 +503,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ShopBackground" translatesAutoresizingMaskIntoConstraints="NO" id="aZ7-xO-5Pc">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Informations légales" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0sd-Lu-i7A">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Informations personnelles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0sd-Lu-i7A">
                                 <rect key="frame" x="20" y="84" width="335" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="f7f-Ay-SzE"/>
@@ -535,24 +512,24 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tvm-GX-nsB" customClass="BlankForm" customModule="NeoConnect" customModuleProvider="target">
-                                <rect key="frame" x="37.5" y="220.5" width="300" height="270"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NXU-iD-Za9" customClass="BlankForm" customModule="NeoConnect" customModuleProvider="target">
+                                <rect key="frame" x="37.5" y="200.5" width="300" height="310"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="270" id="GuL-LV-2tR"/>
-                                    <constraint firstAttribute="width" constant="300" id="NWF-S9-Zi5"/>
+                                    <constraint firstAttribute="width" constant="300" id="8NA-y2-RzM"/>
+                                    <constraint firstAttribute="height" constant="310" id="CLl-J9-yBw"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veillez à remplir tout les champs" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SnE-IC-kbE">
-                                <rect key="frame" x="77.5" y="235.5" width="220" height="40"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veillez à remplir tout les champs" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZP-Zg-NDR">
+                                <rect key="frame" x="77.5" y="215.5" width="220" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="220" id="hgl-IA-s63"/>
-                                    <constraint firstAttribute="height" constant="40" id="rbm-Am-ipO"/>
+                                    <constraint firstAttribute="width" constant="220" id="03f-iL-roQ"/>
+                                    <constraint firstAttribute="height" constant="40" id="cYo-I2-vDc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tF1-92-eDC" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tF1-92-eDC" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
                                 <rect key="frame" x="115" y="585" width="145" height="40"/>
                                 <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="14"/>
                                 <state key="normal" title="Page suivante">
@@ -563,49 +540,62 @@
                                     <action selector="nextButtonTapped:" destination="MTr-Qh-xfi" eventType="touchUpInside" id="3DK-fS-eqe"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oEx-sq-pB7">
-                                <rect key="frame" x="65" y="290.5" width="245" height="170"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nst-bQ-IKG">
+                                <rect key="frame" x="65" y="270.5" width="245" height="220"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="TH2-ZH-EEZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="245" height="170"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="QCE-pe-0nX">
+                                        <rect key="frame" x="0.0" y="0.0" width="245" height="220"/>
                                         <subviews>
-                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Société" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rcP-MX-5QL" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
+                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nom complet" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HPL-B5-xU8" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="245" height="40"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="ad6-Vb-UVc"/>
-                                                    <constraint firstAttribute="width" constant="245" id="ppz-ai-PkM"/>
+                                                    <constraint firstAttribute="height" constant="40" id="Yv1-5r-pJC"/>
+                                                    <constraint firstAttribute="width" constant="245" id="dAw-eh-Bdq"/>
                                                 </constraints>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
                                                 <connections>
-                                                    <action selector="userCompanyDidEnd:" destination="MTr-Qh-xfi" eventType="editingDidEnd" id="del-ef-VAe"/>
+                                                    <action selector="isValidField:" destination="MTr-Qh-xfi" eventType="editingDidEnd" id="UBa-NF-YxK"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Fonction" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xRl-0r-ben" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="65" width="245" height="40"/>
+                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ville" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="70W-hv-p01" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="60" width="245" height="40"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="245" id="ljU-Di-gbd"/>
-                                                    <constraint firstAttribute="height" constant="40" id="yed-hs-Ir5"/>
+                                                    <constraint firstAttribute="width" constant="245" id="Gks-88-OE2"/>
+                                                    <constraint firstAttribute="height" constant="40" id="qiq-7t-mex"/>
+                                                </constraints>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
+                                                <connections>
+                                                    <action selector="isValidField:" destination="MTr-Qh-xfi" eventType="editingDidEnd" id="Xtb-6o-VVk"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Code postal" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tTU-A4-hdf" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="120" width="245" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="7bd-iB-jg1"/>
+                                                    <constraint firstAttribute="width" constant="245" id="zVa-59-yu4"/>
                                                 </constraints>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad"/>
                                                 <connections>
-                                                    <action selector="userFunctionDidEnd:" destination="MTr-Qh-xfi" eventType="editingDidEnd" id="8wB-lR-tHj"/>
+                                                    <action selector="isValidField:" destination="MTr-Qh-xfi" eventType="editingDidEnd" id="oBa-sx-zDn"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Site web" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IIj-ef-72b" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="130" width="245" height="40"/>
+                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Téléphone" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j3c-3u-RRV" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="180" width="245" height="40"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="XIt-HW-QtH"/>
-                                                    <constraint firstAttribute="width" constant="245" id="f1h-OF-L5n"/>
+                                                    <constraint firstAttribute="width" constant="245" id="YcP-I5-6oa"/>
+                                                    <constraint firstAttribute="height" constant="40" id="iAH-qE-SU3"/>
                                                 </constraints>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad"/>
                                                 <connections>
-                                                    <action selector="userWebsiteDidEnd:" destination="MTr-Qh-xfi" eventType="editingDidEnd" id="Bu2-Ls-SY8"/>
+                                                    <action selector="isValidField:" destination="MTr-Qh-xfi" eventType="editingDidEnd" id="a0A-q2-YMT"/>
                                                 </connections>
                                             </textField>
                                         </subviews>
@@ -613,42 +603,43 @@
                                 </subviews>
                             </stackView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="9cp-fs-Wda"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="oEx-sq-pB7" firstAttribute="top" secondItem="SnE-IC-kbE" secondAttribute="bottom" constant="15" id="0H0-tr-N8F"/>
-                            <constraint firstItem="tvm-GX-nsB" firstAttribute="top" secondItem="SnE-IC-kbE" secondAttribute="top" constant="-15" id="0dy-2b-Y1g"/>
                             <constraint firstItem="0sd-Lu-i7A" firstAttribute="leading" secondItem="9cp-fs-Wda" secondAttribute="leading" constant="20" id="1kI-Qz-7NA"/>
+                            <constraint firstItem="NXU-iD-Za9" firstAttribute="centerY" secondItem="9cp-fs-Wda" secondAttribute="centerY" id="4Ay-7D-lXS"/>
+                            <constraint firstItem="NXU-iD-Za9" firstAttribute="top" secondItem="zZP-Zg-NDR" secondAttribute="top" constant="-15" id="4Z0-bv-4OF"/>
                             <constraint firstItem="tF1-92-eDC" firstAttribute="height" secondItem="2Nn-fl-KS3" secondAttribute="height" multiplier="0.05997" id="4oa-0n-AQj"/>
                             <constraint firstItem="aZ7-xO-5Pc" firstAttribute="leading" secondItem="2Nn-fl-KS3" secondAttribute="leading" id="5Ja-Ol-Vha"/>
                             <constraint firstItem="tF1-92-eDC" firstAttribute="centerX" secondItem="9cp-fs-Wda" secondAttribute="centerX" id="9SV-Yv-xWR"/>
                             <constraint firstItem="9cp-fs-Wda" firstAttribute="trailing" secondItem="0sd-Lu-i7A" secondAttribute="trailing" constant="20" id="B1h-my-rWK"/>
                             <constraint firstItem="9cp-fs-Wda" firstAttribute="bottom" secondItem="tF1-92-eDC" secondAttribute="bottom" constant="42" id="Cnk-e4-b5f"/>
-                            <constraint firstItem="tvm-GX-nsB" firstAttribute="centerX" secondItem="9cp-fs-Wda" secondAttribute="centerX" id="FPC-GU-vhV"/>
                             <constraint firstItem="0sd-Lu-i7A" firstAttribute="centerX" secondItem="9cp-fs-Wda" secondAttribute="centerX" id="HlO-BI-bPp"/>
+                            <constraint firstItem="Nst-bQ-IKG" firstAttribute="centerX" secondItem="NXU-iD-Za9" secondAttribute="centerX" id="J4H-EO-voh"/>
                             <constraint firstItem="0sd-Lu-i7A" firstAttribute="top" secondItem="9cp-fs-Wda" secondAttribute="top" constant="40" id="KSg-Ht-RoP"/>
+                            <constraint firstItem="zZP-Zg-NDR" firstAttribute="centerX" secondItem="NXU-iD-Za9" secondAttribute="centerX" id="KqY-FY-Ufy"/>
+                            <constraint firstItem="NXU-iD-Za9" firstAttribute="centerX" secondItem="9cp-fs-Wda" secondAttribute="centerX" id="KyO-Eu-v8j"/>
                             <constraint firstItem="aZ7-xO-5Pc" firstAttribute="trailing" secondItem="2Nn-fl-KS3" secondAttribute="trailing" id="P1M-CW-WIH"/>
-                            <constraint firstItem="oEx-sq-pB7" firstAttribute="centerX" secondItem="tvm-GX-nsB" secondAttribute="centerX" id="TPM-6X-0rU"/>
                             <constraint firstItem="aZ7-xO-5Pc" firstAttribute="bottom" secondItem="2Nn-fl-KS3" secondAttribute="bottom" id="XzN-nD-K6i"/>
-                            <constraint firstItem="SnE-IC-kbE" firstAttribute="centerX" secondItem="tvm-GX-nsB" secondAttribute="centerX" id="f23-Aj-4nT"/>
                             <constraint firstItem="tF1-92-eDC" firstAttribute="width" secondItem="2Nn-fl-KS3" secondAttribute="width" multiplier="0.386667" id="h7l-xw-D6h"/>
-                            <constraint firstItem="tvm-GX-nsB" firstAttribute="centerY" secondItem="9cp-fs-Wda" secondAttribute="centerY" id="pgv-O3-aCv"/>
                             <constraint firstItem="aZ7-xO-5Pc" firstAttribute="top" secondItem="2Nn-fl-KS3" secondAttribute="top" id="qCw-Or-swC"/>
+                            <constraint firstItem="Nst-bQ-IKG" firstAttribute="top" secondItem="zZP-Zg-NDR" secondAttribute="bottom" constant="15" id="skG-pe-s3k"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="9cp-fs-Wda"/>
                     </view>
                     <navigationItem key="navigationItem" id="AhQ-ff-fhZ">
                         <barButtonItem key="backBarButtonItem" title="Retour" id="WHb-Db-saF"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="userCompanyTextField" destination="rcP-MX-5QL" id="1jb-ZX-qX4"/>
-                        <outlet property="userProfessionTextField" destination="xRl-0r-ben" id="jCY-sb-luX"/>
-                        <outlet property="userWebsiteTextField" destination="IIj-ef-72b" id="4ZQ-dg-Su1"/>
+                        <outlet property="userCityTextField" destination="70W-hv-p01" id="XVx-Iu-TbD"/>
+                        <outlet property="userNameTextField" destination="HPL-B5-xU8" id="QML-zZ-WkP"/>
+                        <outlet property="userPhoneNumberTextField" destination="j3c-3u-RRV" id="14o-2l-yoM"/>
+                        <outlet property="userZipCodeTextField" destination="tTU-A4-hdf" id="6IV-pE-3Lq"/>
                         <segue destination="Xqb-cy-vdU" kind="show" identifier="B_Step_Four" id="N2S-nE-zsk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9sy-NR-Uk8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="548" y="591"/>
+            <point key="canvasLocation" x="548" y="590.55472263868069"/>
         </scene>
         <!--Register Page Step Four View Controller-->
         <scene sceneID="As8-nD-yKG">
@@ -678,7 +669,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d3t-NK-5IO" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d3t-NK-5IO" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
                                 <rect key="frame" x="97.5" y="585" width="180" height="40"/>
                                 <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="14"/>
                                 <state key="normal" title="Valider l'inscription">
@@ -689,82 +680,6 @@
                                     <action selector="register_ButtonTapped:" destination="Xqb-cy-vdU" eventType="touchUpInside" id="NI8-Yk-7Tm"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fjg-TS-nbE">
-                                <rect key="frame" x="65" y="240.5" width="245" height="280"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hrz-0p-5LQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="245" height="280"/>
-                                        <subviews>
-                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Facebook" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ifY-mj-yZC" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="245" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="Cw9-OK-run"/>
-                                                    <constraint firstAttribute="width" constant="245" id="W8L-Z3-HuB"/>
-                                                </constraints>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
-                                                <connections>
-                                                    <action selector="facebookTextField:" destination="Xqb-cy-vdU" eventType="editingDidEnd" id="PvQ-qW-lVw"/>
-                                                </connections>
-                                            </textField>
-                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Twitter" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nIB-0r-Db4" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="60" width="245" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="245" id="dro-MP-egh"/>
-                                                    <constraint firstAttribute="height" constant="40" id="oTN-eS-m1g"/>
-                                                </constraints>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
-                                                <connections>
-                                                    <action selector="twitterTextField:" destination="Xqb-cy-vdU" eventType="editingDidEnd" id="fZ1-xE-tb2"/>
-                                                </connections>
-                                            </textField>
-                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Instagram" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="onB-vH-tmH" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="120" width="245" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="Xxa-lX-qr4"/>
-                                                    <constraint firstAttribute="width" constant="245" id="hTs-GD-Azw"/>
-                                                </constraints>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
-                                                <connections>
-                                                    <action selector="instagramTextField:" destination="Xqb-cy-vdU" eventType="editingDidEnd" id="GZd-dG-rYd"/>
-                                                </connections>
-                                            </textField>
-                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Snapchat" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PIH-Pg-jIP" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="180" width="245" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="DBB-a8-FY4"/>
-                                                    <constraint firstAttribute="width" constant="245" id="RDB-id-ykx"/>
-                                                </constraints>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad"/>
-                                                <connections>
-                                                    <action selector="snapchatTextField:" destination="Xqb-cy-vdU" eventType="editingDidEnd" id="pFu-Ct-OUV"/>
-                                                </connections>
-                                            </textField>
-                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A6s-Lb-Njo" customClass="PickerViewButton" customModule="NeoConnect" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="240" width="245" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="4jW-XV-WNg"/>
-                                                    <constraint firstAttribute="width" constant="245" id="rOT-Yl-Q7o"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="14"/>
-                                                <state key="normal" title="Choisissez un thème...">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="pickerViewButtonTapped:" destination="Xqb-cy-vdU" eventType="touchUpInside" id="mAu-Pg-iKl"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Informations complémentaires" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f85-Yn-5wN">
                                 <rect key="frame" x="97" y="69" width="181.5" height="55"/>
                                 <constraints>
@@ -774,29 +689,133 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDX-SO-cyf">
+                                <rect key="frame" x="62.5" y="235.5" width="250" height="275"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fjg-TS-nbE">
+                                        <rect key="frame" x="0.0" y="0.0" width="245" height="345"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="hrz-0p-5LQ">
+                                                <rect key="frame" x="0.0" y="0.0" width="245" height="345"/>
+                                                <subviews>
+                                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Site web" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QYB-dG-Oi9" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="245" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="245" id="e2K-TM-Qis"/>
+                                                            <constraint firstAttribute="height" constant="40" id="zyS-Hz-gJd"/>
+                                                        </constraints>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
+                                                        <connections>
+                                                            <action selector="isValidField:" destination="Xqb-cy-vdU" eventType="editingDidEnd" id="Dkx-f4-TmZ"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Facebook" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ifY-mj-yZC" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="61" width="245" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="Cw9-OK-run"/>
+                                                            <constraint firstAttribute="width" constant="245" id="W8L-Z3-HuB"/>
+                                                        </constraints>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
+                                                        <connections>
+                                                            <action selector="isValidField:" destination="Xqb-cy-vdU" eventType="editingDidEnd" id="sve-1O-RhG"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Twitter" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nIB-0r-Db4" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="122" width="245" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="245" id="dro-MP-egh"/>
+                                                            <constraint firstAttribute="height" constant="40" id="oTN-eS-m1g"/>
+                                                        </constraints>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
+                                                        <connections>
+                                                            <action selector="isValidField:" destination="Xqb-cy-vdU" eventType="editingDidEnd" id="dak-1n-ODG"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Instagram" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="onB-vH-tmH" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="183" width="245" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="Xxa-lX-qr4"/>
+                                                            <constraint firstAttribute="width" constant="245" id="hTs-GD-Azw"/>
+                                                        </constraints>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
+                                                        <connections>
+                                                            <action selector="isValidField:" destination="Xqb-cy-vdU" eventType="editingDidEnd" id="Zqy-wP-i5t"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Snapchat" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PIH-Pg-jIP" userLabel="Round Style Text FieldRound Style Text Field" customClass="RegisterFields" customModule="NeoConnect" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="244" width="245" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="DBB-a8-FY4"/>
+                                                            <constraint firstAttribute="width" constant="245" id="RDB-id-ykx"/>
+                                                        </constraints>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad"/>
+                                                        <connections>
+                                                            <action selector="isValidField:" destination="Xqb-cy-vdU" eventType="editingDidEnd" id="kk6-sc-3zv"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A6s-Lb-Njo" customClass="PickerViewButton" customModule="NeoConnect" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="305" width="245" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="4jW-XV-WNg"/>
+                                                            <constraint firstAttribute="width" constant="245" id="rOT-Yl-Q7o"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="14"/>
+                                                        <state key="normal" title="Choisissez un thème...">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="pickerViewButtonTapped:" destination="Xqb-cy-vdU" eventType="touchUpInside" id="mAu-Pg-iKl"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Fjg-TS-nbE" firstAttribute="width" secondItem="fDX-SO-cyf" secondAttribute="width" multiplier="0.98" id="1wr-Nh-dGi"/>
+                                    <constraint firstAttribute="bottom" secondItem="Fjg-TS-nbE" secondAttribute="bottom" constant="10" id="CWp-Ev-3gG"/>
+                                    <constraint firstAttribute="height" constant="275" id="G4N-Fu-lI5"/>
+                                    <constraint firstAttribute="trailing" secondItem="Fjg-TS-nbE" secondAttribute="trailing" id="LVq-hg-auk"/>
+                                    <constraint firstItem="Fjg-TS-nbE" firstAttribute="leading" secondItem="fDX-SO-cyf" secondAttribute="leading" id="dPd-O9-d5W"/>
+                                    <constraint firstItem="Fjg-TS-nbE" firstAttribute="top" secondItem="fDX-SO-cyf" secondAttribute="top" id="lc6-Xv-ld8"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="7ob-IK-abq"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="rv8-SR-MlE"/>
+                            </scrollView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="bvQ-yS-eAG"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="d3t-NK-5IO" firstAttribute="centerX" secondItem="bvQ-yS-eAG" secondAttribute="centerX" id="1As-jf-XGL"/>
+                            <constraint firstItem="fDX-SO-cyf" firstAttribute="top" secondItem="Lii-rM-HrO" secondAttribute="bottom" constant="10" id="3fo-bg-ZeY"/>
                             <constraint firstItem="WND-dW-hkB" firstAttribute="centerY" secondItem="bvQ-yS-eAG" secondAttribute="centerY" id="6dG-BP-seu"/>
                             <constraint firstItem="bvQ-yS-eAG" firstAttribute="bottom" secondItem="d3t-NK-5IO" secondAttribute="bottom" constant="42" id="96b-jp-HCq"/>
                             <constraint firstItem="d3t-NK-5IO" firstAttribute="width" secondItem="jKz-m0-EUP" secondAttribute="width" multiplier="0.48" id="9Qa-4b-7C6"/>
                             <constraint firstItem="P5L-QJ-C1d" firstAttribute="top" secondItem="jKz-m0-EUP" secondAttribute="top" id="9fK-uE-2X0"/>
                             <constraint firstItem="bvQ-yS-eAG" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="f85-Yn-5wN" secondAttribute="trailing" constant="50" id="FI6-WD-W4n"/>
                             <constraint firstItem="P5L-QJ-C1d" firstAttribute="bottom" secondItem="jKz-m0-EUP" secondAttribute="bottom" id="Qmv-ZF-vws"/>
-                            <constraint firstItem="Fjg-TS-nbE" firstAttribute="top" secondItem="Lii-rM-HrO" secondAttribute="bottom" constant="15" id="SkE-rr-uD8"/>
                             <constraint firstItem="WND-dW-hkB" firstAttribute="centerX" secondItem="bvQ-yS-eAG" secondAttribute="centerX" id="TzZ-ZQ-Luj"/>
                             <constraint firstItem="f85-Yn-5wN" firstAttribute="centerX" secondItem="bvQ-yS-eAG" secondAttribute="centerX" id="Y88-q7-tQs"/>
                             <constraint firstItem="d3t-NK-5IO" firstAttribute="height" secondItem="jKz-m0-EUP" secondAttribute="height" multiplier="0.05997" id="buT-1Q-esw"/>
                             <constraint firstItem="P5L-QJ-C1d" firstAttribute="trailing" secondItem="jKz-m0-EUP" secondAttribute="trailing" id="dxb-Oq-0mn"/>
                             <constraint firstItem="f85-Yn-5wN" firstAttribute="top" secondItem="bvQ-yS-eAG" secondAttribute="top" constant="25" id="oaw-Wg-YGO"/>
-                            <constraint firstItem="Fjg-TS-nbE" firstAttribute="centerX" secondItem="WND-dW-hkB" secondAttribute="centerX" id="qcc-a2-kYJ"/>
                             <constraint firstItem="WND-dW-hkB" firstAttribute="top" secondItem="Lii-rM-HrO" secondAttribute="top" constant="-15" id="wBl-FN-Ca6"/>
+                            <constraint firstItem="fDX-SO-cyf" firstAttribute="centerX" secondItem="WND-dW-hkB" secondAttribute="centerX" id="wC9-Wy-Abf"/>
                             <constraint firstItem="Lii-rM-HrO" firstAttribute="centerX" secondItem="WND-dW-hkB" secondAttribute="centerX" id="we9-oK-PLt"/>
                             <constraint firstItem="P5L-QJ-C1d" firstAttribute="leading" secondItem="jKz-m0-EUP" secondAttribute="leading" id="yFp-3T-XRt"/>
                             <constraint firstItem="f85-Yn-5wN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bvQ-yS-eAG" secondAttribute="leading" constant="50" id="zV7-Fx-OvI"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="bvQ-yS-eAG"/>
                     </view>
                     <navigationItem key="navigationItem" id="emv-QH-vDO">
                         <barButtonItem key="backBarButtonItem" title="Retour" id="9Qy-go-0dm"/>
@@ -807,6 +826,7 @@
                         <outlet property="userInstagramTextField" destination="onB-vH-tmH" id="mrE-DI-fJm"/>
                         <outlet property="userSnapchatTextField" destination="PIH-Pg-jIP" id="ldT-FV-HuZ"/>
                         <outlet property="userTwitterTextField" destination="nIB-0r-Db4" id="b3Z-Gl-MUb"/>
+                        <outlet property="userWebsiteTextField" destination="QYB-dG-Oi9" id="SiQ-9j-4gY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9vV-1v-IkK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -819,7 +839,7 @@
         <image name="DefaultSeparation - Line" width="375" height="1"/>
         <image name="Light - Shop" width="180" height="180"/>
         <image name="Logo" width="104" height="106"/>
-        <image name="Photo Icon" width="42.5" height="33.5"/>
         <image name="ShopBackground" width="375" height="667"/>
+        <image name="avatar-placeholder" width="500" height="500"/>
     </resources>
 </document>

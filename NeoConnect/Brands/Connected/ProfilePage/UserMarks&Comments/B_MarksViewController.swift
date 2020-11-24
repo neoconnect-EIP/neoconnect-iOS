@@ -9,10 +9,14 @@
 import UIKit
 import Cosmos
 
-class B_MarksViewController: UIViewController {
+class B_UserMarksAndComments: UIViewController {
     
-    @IBOutlet weak var ratingStartView: CosmosView!
-    @IBOutlet weak var numberOfMarksLabelField: UILabel!
+    @IBOutlet weak var userRatingField: CosmosView!
+    @IBOutlet weak var userEvaluationsField: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noCommentField: UILabel!
+    
+    var commentsArray: [Comment] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -20,17 +24,50 @@ class B_MarksViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        getDataFromAPI()
         super.viewDidLoad()
-        
+    }
+    
+    func getDataFromAPI() {
         APIBrandManager.sharedInstance.getInfo(onSuccess: { response in
-            if (response["average"] as? Double == nil) {
-                self.ratingStartView.rating = 0
-                self.numberOfMarksLabelField.text = "sur 0 évaluation"
-            } else {
-                self.ratingStartView.rating = response["average"]! as! Double
-            }
-        }, onFailure: { error in
-            print("Request failed with error: \(error)")
+            self.commentsArray = self.createCommentArray(response: response)
+            self.tableView.reloadData()
         })
     }
+    
+    func createCommentArray(response: [String:Any]) -> [Comment] {
+        var tempComments: [Comment] = []
+
+        self.userRatingField.rating = response["average"] as? Double ?? 0
+        guard let comments = response["comment"] as? Array<NSDictionary> else { return tempComments }
+        for comment in comments {
+            let pseudo = comment["pseudo"] as? String ?? ""
+            let comment = comment["comment"] as? String ?? "Aucun commentaire"
+            tempComments.append(Comment(pseudo: pseudo, comment: comment, image: #imageLiteral(resourceName: "avatar-placeholder"), note: 0))
+        }
+        comments.count > 0 ? (self.userEvaluationsField.text = "sur \(comments.count) évaluation(s)") : (self.userEvaluationsField.text = "Aucune evalutation pour le moment")
+        return tempComments
+    }
 }
+
+extension B_UserMarksAndComments: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if commentsArray.count > 0 {
+            noCommentField.isHidden = true
+        }
+        return commentsArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let comment = commentsArray[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "I_ShopStatsCell") as! I_ShopStatsTableViewCell
+        
+        cell.setComment(comment: comment)
+        
+        return cell
+    }
+}
+

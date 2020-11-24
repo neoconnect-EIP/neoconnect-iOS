@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import Alamofire
-import DLRadioButton
+import StatusAlert
 
 class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -19,38 +18,29 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var fifthImage: PhotoFieldButton!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descTextView: UITextView!
-    @IBOutlet weak var pickerViewButton: UIButton!
-    @IBOutlet weak var colorTextField: UITextField!
+    @IBOutlet weak var subjectPickerViewButton: UIButton!
+    @IBOutlet weak var sexPickerViewButton: UIButton!
     
     var flag = 0
-    var pickerData = ["Mode", "Cosmétique", "Jeux Vidéo", "Food", "High Tech", "Sport/Fitness"]
+    var imageArrayToSend: Array<UIImage> = []
+    var subjectData = ["Mode", "Cosmétique", "Jeux Vidéo", "Nourriture", "High tech", "Sport/Fitness"]
+    var sexData = ["Unisexe", "Homme", "Femme"]
     var pickerView = UIPickerView()
     var subjectSelected = "Sujet"
     var sexSelected = "Sexe"
     var imagePicker:UIImagePickerController!
-    var imageConverter = ImageConverter()
-    var sex = String()
     
     override func viewDidLoad() {
         imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = true
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
-
+        
         super.viewDidLoad()
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func radioSexButtonTapped(_ sender: DLRadioButton) {
-        if (sender.tag == 1) {
-            sex = "Male"
-        }
-        else if (sender.tag == 2) {
-            sex = "Female"
-        }
     }
     
     @IBAction func firstImageTapped(_ sender: UIButton) {
@@ -122,6 +112,7 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
             default:
                 fifthImage.setImage(pickedImage, for: UIControl.State.normal)
             }
+            self.imageArrayToSend.append(pickedImage)
         }
         dismiss(animated: true, completion: nil)
     }
@@ -138,11 +129,18 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
+        if pickerView.tag == 1 {
+            return sexData.count
+        }
+        return subjectData.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[row]
+        print(pickerView.tag)
+        if pickerView.tag == 1 {
+            return sexData[row]
+        }
+        return subjectData[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -170,29 +168,33 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
                 subjectSelected = "Sport/Fitness"
             default:
                 subjectSelected = "Mode"
+
             }
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        var pickerLabel: UILabel? = (view as? UILabel)
-        if pickerLabel == nil {
-            pickerLabel = UILabel()
-            pickerLabel?.font = UIFont(name: "Raleway-Medium", size: 17)
-            pickerLabel?.textAlignment = .center
+        var subjectPickerLabel: UILabel? = (view as? UILabel)
+        if subjectPickerLabel == nil {
+            subjectPickerLabel = UILabel()
+            subjectPickerLabel?.font = UIFont(name: "Raleway-Medium", size: 17)
+            subjectPickerLabel?.textAlignment = .center
         }
         
-        pickerLabel?.text = pickerData[row]
-        pickerLabel?.textColor = UIColor(red: 135/255, green: 185/255, blue: 124/255, alpha: 1.0)
+        subjectPickerLabel?.text = subjectData[row]
+        if pickerView.tag == 1 {
+            subjectPickerLabel?.text = sexData[row]
+        }
+        subjectPickerLabel?.textColor = UIColor(red: 135/255, green: 185/255, blue: 124/255, alpha: 1.0)
         
         return subjectPickerLabel!
+
     }
     
-    @IBAction func pickerViewButtonTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "Choisissez votre thème", message: "\n\n\n\n\n\n", preferredStyle: .alert)
-        
-        
+    private func initPickerFrame(tag: Int) -> UIAlertController {
+        let alert = UIAlertController(title: "Choisissez votre sexe", message: "\n\n\n\n\n\n", preferredStyle: .alert)
         let pickerFrame = UIPickerView(frame: CGRect(x: 5, y: 20, width: 250, height: 140))
+        pickerFrame.tag = tag
         alert.view.tintColor = UIColor(red: 135/255, green: 185/255, blue: 124/255, alpha: 1.0)
         alert.view.addSubview(pickerFrame)
         pickerFrame.dataSource = self
@@ -219,10 +221,33 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
         
         self.subjectSelected = "Mode"
         alert.addAction(UIAlertAction(title: "Femer", style: .cancel, handler: nil))
+
+        alert.addAction(UIAlertAction(title: "Valider", style: .default, handler: { (UIAlertAction) in
+            self.sexPickerViewButton.setTitle(self.sexSelected, for: .normal)
+            print("You selected " + self.sexSelected)
+            
+        }))
+        self.present(alert,animated: true, completion: nil )
+    }
+
+    @IBAction func subjectViewButtonTapped(_ sender: Any) {
+        let alert = initPickerFrame(tag: 0)
+        
+        self.subjectSelected = "Mode"
+        alert.addAction(UIAlertAction(title: "Femer", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Valider", style: .default, handler: { (UIAlertAction) in
             
-            self.pickerViewButton.setTitle(self.typeValue, for: .normal)
-            print("You selected " + self.typeValue )
+            if (self.subjectSelected == "Cosmétique" || self.subjectSelected == "Mode") {
+                self.sexPickerViewButton.isUserInteractionEnabled = true
+                self.sexPickerViewButton.setTitleColor(UIColor.white, for: .normal)
+            } else {
+                self.sexPickerViewButton.setTitle("Sexe", for: .normal)
+                self.sexSelected = "Sexe"
+                self.sexPickerViewButton.isUserInteractionEnabled = false
+                self.sexPickerViewButton.setTitleColor(UIColor.lightGray, for: .normal)
+            }
+            self.subjectPickerViewButton.setTitle(self.subjectSelected, for: .normal)
+            print("You selected " + self.subjectSelected)
             
         }))
         self.present(alert,animated: true, completion: nil )
@@ -234,6 +259,7 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
         self.subjectSelected = "Sujet"
         self.sexSelected = "Sexe"
         let image = UIImage(named: "Photo_Icon.png")
+
         self.firstImage.setImage(image, for: .normal)
         self.secondImage.setImage(image, for: .normal)
         self.thirdImage.setImage(image, for: .normal)
@@ -271,6 +297,7 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
         
         for image in imageArrayToSend {
             imageArray.append(image.toBase64() ?? "")
+
         }
         APIBrandManager.sharedInstance.addOffer(name: name, description: desc, subject: subject, sex: sex, imageArray: imageArray, onSuccess: {
             let statusAlert = StatusAlert()

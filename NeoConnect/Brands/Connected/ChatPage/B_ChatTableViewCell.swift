@@ -13,7 +13,7 @@ class B_ChatTableViewCell: UITableViewCell {
     @IBOutlet weak var infImageView: UIImageView!
     @IBOutlet weak var infPseudoLabel: UILabel!
     
-    func setConversations(inf: Inf) {
+    func setConversations(inf: Conversation) {
         infImageView.image = inf.image
         infPseudoLabel.text = inf.pseudo
     }

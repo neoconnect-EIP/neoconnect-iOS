@@ -13,17 +13,15 @@ class B_ChatViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var noFriendLabelText: UILabel!
-    var infs: [Inf] = []
+    var infs: [Conversation] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.tabBarController?.tabBar.isHidden = false
         getDataFromAPI()
     }
     
     override func viewDidLoad() {
-        
         tableView.delegate = self
         tableView.dataSource = self
         super.viewDidLoad()
@@ -44,21 +42,27 @@ class B_ChatViewController: UIViewController {
         })
     }
     
-    func createArray(results: Array<NSDictionary>) -> [Inf] {
-        var tempInf: [Inf] = []
+    func createArray(results: Array<NSDictionary>) -> [Conversation] {
+        var tempInf: [Conversation] = []
         
         for dictionary in results {
-            let id = dictionary["id"] as! Int
-            var user_id = dictionary["user_1"] as! String
+            var image: UIImage = #imageLiteral(resourceName: "avatar-placeholder")
+            if let userPicture = dictionary["userPicture"] as? [[String:String]] {
+                if userPicture.count > 0 {
+                    if let imageData = URL(string: (userPicture[0]["imageData"])!) {
+                        if let tempImage = try! UIImage(data: Data(contentsOf: imageData)) {
+                            image = tempImage
+                        }
+                    }
+                }
+            }
+            guard let id = dictionary["id"] as? Int else { return tempInf }
+            guard var user_id = dictionary["user_1"] as? String else { return tempInf }
             if Int(user_id) == UserDefaults.standard.integer(forKey: "id") {
                 user_id = dictionary["user_2"] as! String
             }
-            let pseudo = dictionary["pseudo"] as! String
-            let productImg = dictionary["userPicture"] as? NSArray
-            let imageDict = productImg![0] as! NSDictionary
-            let imageUrl = URL(string: imageDict["imageData"] as! String)!
-            let image = try! UIImage(data: Data(contentsOf: imageUrl))!
-            tempInf.append(Inf(id: id, user_id: Int(user_id)!, pseudo: pseudo, image: image))
+            guard let pseudo = dictionary["pseudo"] as? String else { return tempInf }
+            tempInf.append(Conversation(id: id, user_id: Int(user_id)!, pseudo: pseudo, image: image))
         }
         return tempInf
     }
@@ -72,9 +76,9 @@ class B_ChatViewController: UIViewController {
     }
     
     @IBAction func ContactUser(_ sender: Any) {
-           let contactUserView = ContactUserView(emailUser: "")
-                          let host = UIHostingController(rootView: contactUserView)
-                        navigationController?.pushViewController(host, animated: true)
+        let contactUserView = ContactUserView(emailUser: "")
+        let host = UIHostingController(rootView: contactUserView)
+        navigationController?.pushViewController(host, animated: true)
     }
 }
 

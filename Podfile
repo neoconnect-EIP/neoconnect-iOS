@@ -13,6 +13,7 @@ pod 'IQKeyboardManagerSwift'
 pod 'ActionSheetPicker-3.0'
 pod 'Cosmos', '~> 22.1'
 pod 'MessageKit'
+pod 'StatusAlert', '~> 1.1.1'
 
 # Pods for NeoConnect
 
