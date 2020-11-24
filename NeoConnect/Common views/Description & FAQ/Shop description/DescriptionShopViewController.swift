@@ -47,7 +47,7 @@ class DescriptionShopViewController: UIViewController, UIScrollViewDelegate {
    
         let slide3:DescriptionShopSlide = Bundle.main.loadNibNamed("DescriptionShopSlide", owner: self, options: nil)?.first as! DescriptionShopSlide
         slide3.imageView.image = UIImage(named: "Queue - Shop")
-        slide3.TitleLabelField.text = "Devenez une boutique incontournable"
+        slide3.TitleLabelField.text = "Devenez une marque incontournable"
         slide3.DescriptionLabelField.text = "Voyez votre nombre de clients augmenter grâce aux influenceurs!"
    
         return [slide1, slide2, slide3]

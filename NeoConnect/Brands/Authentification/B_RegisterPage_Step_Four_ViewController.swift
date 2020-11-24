@@ -130,33 +130,23 @@ class B_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDel
         let userSubject = typeValue
         let userPicture = imageConverter.imageToBase64(image)
         
-        // Erreur : un champ est vide
-        if (!userFacebook.isEmpty || !userTwitter.isEmpty || !userInstagram.isEmpty || !userSnapchat.isEmpty || userSubject == "Choisissez un thème") {
-            if (!restriction.isMinThreeChar(userFacebook) || !restriction.isMinThreeChar(userTwitter) || !restriction.isMinThreeChar(userInstagram) || !restriction.isMinThreeChar(userSnapchat)) {
-                DispatchQueue.main.async {
-                    let alertView = UIAlertController(title: "Erreur", message: "Un ou plusieurs de vos champs semblent être inconforme", preferredStyle: .alert)
-                    alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
-                    self.present(alertView, animated: true, completion: nil)
-                }
-                return
-            }
-        }
-        else {
-            APIBrandManager.sharedInstance.register_Shop(pseudo: pseudo, password: password, name: name, email: email, website: website, phoneNumber: phoneNumber, zipCode: zipCode, city: city, userPicture: userPicture!, subject: userSubject, company: company, profession: profession, facebook: userFacebook, snapchat: userSnapchat, twitter: userTwitter, instagram: userInstagram, onSuccess: {
-                DispatchQueue.main.async {
-                    let alertView = UIAlertController(title: "Parfait !", message: "Inscription réussie", preferredStyle: .alert)
-                    alertView.addAction(UIAlertAction(title: "Continuer", style: .cancel) { action in
-                        let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "B_Register")
-                        self.show(loginVC!, sender: nil)
-                    })
-                    self.present(alertView, animated: true, completion: nil)
-                }}, onFailure: {
-                    DispatchQueue.main.async {
-                        let alertView = UIAlertController(title: "Erreur", message: "Une erreur est survenue, veuillez réessayer", preferredStyle: .alert)
-                        alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
-                        self.present(alertView, animated: true, completion: nil)
-                    }}
-            )
+        // Erreur : un champ fait entre 1 et 3 caractères
+        if (!restriction.isMinThreeChar(userWebsite) ||
+                !restriction.isMinThreeChar(userFacebook) || !restriction.isMinThreeChar(userTwitter) || !restriction.isMinThreeChar(userInstagram) || !restriction.isMinThreeChar(userSnapchat) || userSubject == "Choisissez un thème...") {
+            showError("Un ou plusieurs de vos champs semblent être inconforme")
+        } else {
+            APIBrandManager.sharedInstance.register_Shop(pseudo: userPseudo, password: userPassword, name: userName, email: userEmail, website: userWebsite, phoneNumber: userPhoneNumber, zipCode: userZipCode, city: userCity, userPicture: userImage, description: userDescription, subject: userSubject, facebook: userFacebook, snapchat: userSnapchat, twitter: userTwitter, instagram: userInstagram, onSuccess: {
+                                                            DispatchQueue.main.async {
+                                                                let statusAlert = StatusAlert()
+                                                                statusAlert.image = UIImage(named: "Success icon.png")
+                                                                statusAlert.title = "Inscription réussie !"
+                                                                statusAlert.message = "Vous vous êtes inscrit(e) avec succès !"
+                                                                statusAlert.showInKeyWindow()
+                                                                let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "B_Register")
+                                                                self.show(loginVC!, sender: nil)
+                                                            }}, onFailure: {
+                                                                self.showError("Une erreur est survenue, veuillez réessayer")
+                                                            })
         }
     }
 }
