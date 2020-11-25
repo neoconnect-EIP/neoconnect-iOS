@@ -31,6 +31,12 @@ class I_ConnectionPageViewController: UIViewController {
         self.show(View, sender: nil)
     }
     
+    @IBAction func FAQbuttonTapped(_ sender: Any) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "FAQ", bundle: nil)
+        let infButton = storyBoard.instantiateViewController(withIdentifier: "FAQ")
+        self.show(infButton, sender: nil)
+    }
+    
     @IBAction func switchToBrandButton(_ sender: Any) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "B_Register_and_Connection", bundle: nil)
         let brandButton = storyBoard.instantiateViewController(withIdentifier: "B_Register")
@@ -38,18 +44,20 @@ class I_ConnectionPageViewController: UIViewController {
         self.show(brandButton, sender: true)
     }
     
-    @IBAction func FAQbuttonTapped(_ sender: Any) {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "FAQ", bundle: nil)
-        let infButton = storyBoard.instantiateViewController(withIdentifier: "FAQ")
-        self.show(infButton, sender: nil)
+    func showError(_ message: String) {
+        DispatchQueue.main.async {
+            let alertView = UIAlertController(title: "Erreur", message: message, preferredStyle: .alert)
+            alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
+            self.present(alertView, animated: true, completion: nil)
+        }
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
         let userPseudo = userPseudoTextField.text!;
         let userPassword = userPasswordTextField.text!;
         
-        APIManager.sharedInstance.login(userPseudo: userPseudo, userPassword: userPassword, onSuccess: {
-            DispatchQueue.main.async {
+        APIManager.sharedInstance.login(userPseudo: userPseudo, userPassword: userPassword, onSuccess: { userType in
+            if userType == "influencer" {
                 let statusAlert = StatusAlert()
                 statusAlert.image = UIImage(named: "Success icon.png")
                 statusAlert.title = "Connexion réussie !"
@@ -60,14 +68,12 @@ class I_ConnectionPageViewController: UIViewController {
                 let home = storyBoard.instantiateViewController(withIdentifier: "I_CustomTabBarController")
                 home.navigationItem.setHidesBackButton(true, animated: true)
                 self.show(home, sender: nil)
+            } else {
+                self.showError("Email/Mot de passe incorrects, veuillez réessayer")
             }
         }, onFailure: {
-            DispatchQueue.main.async {
-                // Message d'alerte
-                let alertView = UIAlertController(title: "Erreur", message: "Email/Mot de passe incorrects, veuillez réessayer", preferredStyle: .alert)
-                alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
-                self.present(alertView, animated: true, completion: nil)
-            }
+            self.showError("Email/Mot de passe incorrects, veuillez réessayer")
+
         })
     }
 }

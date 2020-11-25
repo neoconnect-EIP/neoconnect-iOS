@@ -24,7 +24,6 @@ class B_RegisterPage_Step_Two_ViewController: UIViewController, UIImagePickerCon
         imagePicker.allowsEditing = true
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
-
         super.viewDidLoad()
     }
     
@@ -62,8 +61,8 @@ class B_RegisterPage_Step_Two_ViewController: UIViewController, UIImagePickerCon
     @IBAction func nextButtonTapped(_ sender: Any) {
         guard let userDescription = userDescriptionTextView.text else { return }
         
-        if 1 ... 4 ~= userDescription.count {
-            showError("La description semble trop courte")
+        if 1 ... 4 ~= userDescription.count || userDescription.count > 254 {
+            showError("La description semble trop courte/trop longue (min. 3/max 255)")
         } else {
             performSegue(withIdentifier: "B_Step_Three", sender: self)
         }

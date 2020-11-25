@@ -59,27 +59,6 @@ final class DefaultTextFields: UITextField {
     
     func handleError(sender: UITextField, field: String) {
         switch field {
-            case "Pseudo":
-                if restriction.isValidPseudo(sender.text!) {
-                    setNormalShape(sender: sender)
-                    return
-                }
-                setErrorShape(sender: sender)
-                return
-            case "Email":
-                if restriction.isValidEmail(sender.text!) {
-                    setNormalShape(sender: sender)
-                    return
-                }
-                setErrorShape(sender: sender)
-                return
-            case "Mot de passe":
-                if restriction.isValidPassword(sender.text!) {
-                    setNormalShape(sender: sender)
-                    return
-                }
-                setErrorShape(sender: sender)
-                return
             case "Code postal":
                 if restriction.isValidZipCode(sender.text!) {
                     setNormalShape(sender: sender)

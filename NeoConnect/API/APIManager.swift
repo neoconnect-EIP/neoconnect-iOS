@@ -30,12 +30,32 @@ class APIManager {
     static let forgotPasswordEndpoint = "/forgotPassword"
     static let updatePasswordEndpoint = "/updatePassword"
     static let messagesEndpoint = "/message"
-    static let getImageEndpoint = "/image/User_"
-    static let getOffersByShopId = "/offer/shop"
+    static let getImageEndpoint = "/user/profilPicture"
+    static let getOffersByShopIdEndpoint = "/offer/shop"
+    static let checkUserFieldEndpoint = "/user/checkField"
     
     static let sharedInstance = APIManager()
     
-    func login(userPseudo: String, userPassword: String, onSuccess: @escaping() -> Void, onFailure: @escaping() -> Void) {
+    func checkUserField(fieldToCheck: String, userField: String, onSuccess: @escaping(Bool) -> Void) {
+        let url : String = baseURL + APIManager.checkUserFieldEndpoint
+        let checkField: Parameters = [
+            fieldToCheck : userField
+        ]
+        
+        AF.request(url,
+                   method: .post,
+                   parameters: checkField,
+                   encoding: URLEncoding.default).responseJSON { response in
+                    switch response.result {
+                        case .success(let isValid):
+                            onSuccess(isValid as! Bool)
+                        case .failure(let error):
+                            print("Request failed with error: \(error)")
+                    }
+                   }
+    }
+    
+    func login(userPseudo: String, userPassword: String, onSuccess: @escaping(String) -> Void, onFailure: @escaping() -> Void) {
         let url : String = baseURL + APIManager.getLoginEndpoint
         let login = Login_s(pseudo: userPseudo, password: userPassword)
         
@@ -48,7 +68,7 @@ class APIManager {
                             let response = JSON as! [String:Any]
                             guard let token = response["token"] else { return }
                             guard let id = response["userId"] else { return }
-                            guard let userType = response["userType"] else { return }
+                            guard let userType = response["userType"] as? String else { return }
                             guard let theme = response["theme"] else { return }
                             UserDefaults.standard.set(token, forKey: "Token")
                             UserDefaults.standard.set(id, forKey: "id")
@@ -57,7 +77,7 @@ class APIManager {
                             UserDefaults.standard.set(userType, forKey: "userType")
                             UserDefaults.standard.set(Date(), forKey:"LogInTime")
                             UserDefaults.standard.synchronize()
-                            onSuccess()
+                            onSuccess(userType)
                         case .failure(_):
                             onFailure()
                     }
@@ -65,15 +85,21 @@ class APIManager {
     }
     
     func getUserImage(onSuccess: @escaping(UIImage) -> Void) {
-        guard let id = UserDefaults.standard.string(forKey: "id") else { return }
-        guard let pseudo = UserDefaults.standard.string(forKey: "pseudo") else { return }
-        let url : String = baseURL + APIManager.getImageEndpoint + "\(id)_\(id)_\(pseudo).png"
+        let url : String = baseURL + APIManager.getImageEndpoint
 
-        AF.request(url).responseImage { response in
-            if case .success(let image) = response.result {
-                onSuccess(image)
-            } else if case .failure(let error) = response.result {
-                print("Image Request Error : \(error)")
+        AF.request(url, method: .get, encoding: URLEncoding.default, headers: APIManager.headers, interceptor: nil).responseJSON { response in
+            switch response.result {
+                case .success(let JSON):
+                    let results = JSON as! [String:String]
+                    var image: UIImage = #imageLiteral(resourceName: "avatar-placeholder")
+                    if let userPicture = URL(string: results["imageData"]!) {
+                        if let imageTmp = try! UIImage(data: Data(contentsOf: userPicture)) {
+                            image = imageTmp
+                        }
+                    }
+                    onSuccess(image)
+                case .failure(let error):
+                    print("Request failed with error: \(error)")
             }
         }
     }
@@ -180,7 +206,7 @@ class APIManager {
     }
     
     func getOffersByShopId(id: String,onSuccess: @escaping(Any) -> Void) {
-        let url : String = baseURL + APIManager.getOffersByShopId + "/\(id)"
+        let url : String = baseURL + APIManager.getOffersByShopIdEndpoint + "/\(id)"
         
         AF.request(url,
                    headers: APIManager.headers).responseJSON { response in

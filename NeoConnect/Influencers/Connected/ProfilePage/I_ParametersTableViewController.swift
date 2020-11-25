@@ -9,7 +9,6 @@
 import UIKit
 import SwiftUI
 import Alamofire
-import AlamofireImage
 
 class I_ParametersTableViewController: UITableViewController {
     @IBOutlet weak var userImageView: PhotoFieldImage!
@@ -24,6 +23,7 @@ class I_ParametersTableViewController: UITableViewController {
         let host = UIHostingController(rootView: contactView)
         navigationController?.pushViewController(host, animated: true)
     }
+    
     @IBAction func myOffers(_ sender: Any) {
         let myoffersView = MyOffersInfSideView()
         let host = UIHostingController(rootView: myoffersView)
@@ -53,5 +53,4 @@ class I_ParametersTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return 6
     }
-    
 }

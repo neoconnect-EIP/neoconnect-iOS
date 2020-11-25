@@ -16,30 +16,27 @@ class I_ProfileViewController: UIViewController {
             alertView.addAction(UIAlertAction(title: "Non", style: .cancel) { action in
             })
             alertView.addAction(UIAlertAction(title: "Oui", style: .default) { action in
-                                    UserDefaults.standard.removeObject(forKey: "Token")
-                                    UserDefaults.standard.removeObject(forKey: "id")
-                                    UserDefaults.standard.removeObject(forKey: "theme")
-                                    UserDefaults.standard.removeObject(forKey: "pseudo")
-                                    UserDefaults.standard.removeObject(forKey: "userType")
-                                    UserDefaults.standard.synchronize()
-                                    let storyBoard: UIStoryboard = UIStoryboard(name: "I_Register_and_Connection", bundle: nil)
-                                    let loginVC = storyBoard.instantiateViewController(withIdentifier: "I_NavController")
-                                    loginVC.modalPresentationStyle = .fullScreen
-                                    
-                                    self.present(loginVC, animated: true, completion: nil)            })
-            
+                UserDefaults.standard.removeObject(forKey: "Token")
+                UserDefaults.standard.removeObject(forKey: "id")
+                UserDefaults.standard.removeObject(forKey: "theme")
+                UserDefaults.standard.removeObject(forKey: "pseudo")
+                UserDefaults.standard.removeObject(forKey: "userType")
+                UserDefaults.standard.synchronize()
+                let storyBoard: UIStoryboard = UIStoryboard(name: "I_Register_and_Connection", bundle: nil)
+                let loginVC = storyBoard.instantiateViewController(withIdentifier: "I_NavController")
+                loginVC.modalPresentationStyle = .fullScreen
+                
+                self.present(loginVC, animated: true, completion: nil)
+            })
             self.present(alertView, animated: true, completion: nil)
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
     }
 }

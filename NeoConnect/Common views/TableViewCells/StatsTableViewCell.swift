@@ -9,7 +9,7 @@
 import UIKit
 import Cosmos
 
-class I_ShopStatsTableViewCell: UITableViewCell {
+class StatsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var infImageView: PhotoFieldImage!
     @IBOutlet weak var infPseudoField: UILabel!
@@ -30,5 +30,5 @@ class I_ShopStatsTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-
+    
 }

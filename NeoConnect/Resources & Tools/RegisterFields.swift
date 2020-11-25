@@ -50,60 +50,73 @@ final class RegisterFields: UITextField {
     }
     
     private func setErrorShape(sender: UITextField) {
-        let errorColor : UIColor = UIColor.red
+        let errorColor : CGColor = UIColor.red.cgColor
         
-        sender.layer.borderColor = errorColor.cgColor
+        sender.layer.borderColor = errorColor
         sender.layer.cornerRadius = 10
         sender.layer.borderWidth = 1.0
     }
     
     private func setNormalShape(sender: UITextField) {
-        let noColor : UIColor = UIColor.white
+        let noColor : CGColor = UIColor.white.cgColor
         
-        sender.layer.borderColor = noColor.cgColor
+        sender.layer.borderColor = noColor
         sender.layer.cornerRadius = 10
     }
     
-    func handleError(sender: UITextField, field: String) {
+    private func setValidShape(sender: UITextField) {
+        let validColor : CGColor = UIColor.green.cgColor
+
+        sender.layer.borderColor = validColor
+        sender.layer.cornerRadius = 10
+        sender.layer.borderWidth = 1.0
+    }
+    
+    func isValidField(sender: UITextField, field: String) {
+        if sender.text?.count == 0 {
+            setNormalShape(sender: sender)
+            return
+        }
+        
         switch field {
             case "Pseudo":
                 if restriction.isValidPseudo(sender.text!) {
-                    setNormalShape(sender: sender)
+                    setValidShape(sender: sender)
                     return
                 }
                 setErrorShape(sender: sender)
                 return
             case "Email":
                 if restriction.isValidEmail(sender.text!) {
-                    setNormalShape(sender: sender)
+                    setValidShape(sender: sender)
                     return
                 }
                 setErrorShape(sender: sender)
                 return
             case "Mot de passe":
                 if restriction.isValidPassword(sender.text!) {
-                    setNormalShape(sender: sender)
+                    setValidShape(sender: sender)
                     return
                 }
                 setErrorShape(sender: sender)
                 return
             case "Code postal":
                 if restriction.isValidZipCode(sender.text!) {
-                    setNormalShape(sender: sender)
+                    setValidShape(sender: sender)
                     return
                 }
                 setErrorShape(sender: sender)
                 return
             case "Téléphone":
                 if restriction.isValidPhoneNumber(sender.text!) {
-                    setNormalShape(sender: sender)
+                    setValidShape(sender: sender)
                     return
                 }
                 setErrorShape(sender: sender)
                 return
             default:
                 if restriction.isMinThreeChar(sender.text!) {
-                    setNormalShape(sender: sender)
+                    setValidShape(sender: sender)
                     return
                 }
                 setErrorShape(sender: sender)

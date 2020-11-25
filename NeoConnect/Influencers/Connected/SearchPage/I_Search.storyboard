@@ -166,11 +166,11 @@
                                             <outlet property="collectionBrandSuggestionView" destination="5mS-MA-2DC" id="3Jm-M6-RPN"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="I_OfferSuggestionTableViewCell" rowHeight="130" id="n8d-ky-5ss" customClass="I_OfferSuggestionTableViewCell" customModule="NeoConnect" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="158" width="375" height="130"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="I_OfferSuggestionTableViewCell" rowHeight="150" id="n8d-ky-5ss" customClass="I_OfferSuggestionTableViewCell" customModule="NeoConnect" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="158" width="375" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="n8d-ky-5ss" id="dYy-Ab-fhL">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggestion d'offres" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0CP-BM-hOo">
@@ -183,40 +183,39 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5x4-UO-vZQ">
-                                                    <rect key="frame" x="10" y="30" width="355" height="90"/>
+                                                    <rect key="frame" x="10" y="30" width="355" height="120"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ii1-s1-SAI">
-                                                        <size key="itemSize" width="128" height="100"/>
+                                                        <size key="itemSize" width="128" height="120"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="I_OfferSuggestionCollectionViewCell" id="ikL-uC-oCr" customClass="I_OfferSuggestionCollectionViewCell" customModule="NeoConnect" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="-5" width="128" height="100"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="128" height="120"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ceb-F6-bJE">
-                                                                <rect key="frame" x="0.0" y="0.0" width="128" height="100"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="128" height="120"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ee6-wb-6wv">
-                                                                        <rect key="frame" x="5" y="55" width="118" height="45"/>
+                                                                        <rect key="frame" x="5" y="75" width="118" height="45"/>
                                                                         <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="12"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lDA-l3-GeV">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="100"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="120"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <connections>
-                                                                            <action selector="brandSuggestionTapped:" destination="ikL-uC-oCr" eventType="touchUpInside" id="ixd-B3-l81"/>
                                                                             <action selector="offerSuggestionTapped:" destination="ikL-uC-oCr" eventType="touchUpInside" id="xU4-YK-uuF"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="v8l-2E-9Mt" customClass="PhotoFieldImage" customModule="NeoConnect" customModuleProvider="target">
-                                                                        <rect key="frame" x="19" y="5" width="90" height="50"/>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="v8l-2E-9Mt" customClass="PhotoFieldImage" customModule="NeoConnect" customModuleProvider="target">
+                                                                        <rect key="frame" x="19" y="5" width="90" height="70"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="height" constant="50" id="5b7-hr-Vgc"/>
+                                                                            <constraint firstAttribute="height" constant="70" id="5b7-hr-Vgc"/>
                                                                             <constraint firstAttribute="width" constant="90" id="f12-7F-zRF"/>
                                                                         </constraints>
                                                                     </imageView>
@@ -237,7 +236,6 @@
                                                             </collectionViewCellContentView>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <connections>
-                                                                <outlet property="brandSuggestionName" destination="Ee6-wb-6wv" id="lh6-VS-f1q"/>
                                                                 <outlet property="offerSuggestionImage" destination="v8l-2E-9Mt" id="goC-Jn-dHf"/>
                                                                 <outlet property="offerSuggestionName" destination="Ee6-wb-6wv" id="s0w-YM-kQ4"/>
                                                             </connections>
@@ -249,7 +247,7 @@
                                                 <constraint firstItem="5x4-UO-vZQ" firstAttribute="leading" secondItem="dYy-Ab-fhL" secondAttribute="leading" constant="10" id="AyR-Ns-ayo"/>
                                                 <constraint firstItem="5x4-UO-vZQ" firstAttribute="top" secondItem="dYy-Ab-fhL" secondAttribute="top" constant="30" id="DHD-cJ-grU"/>
                                                 <constraint firstItem="0CP-BM-hOo" firstAttribute="top" secondItem="dYy-Ab-fhL" secondAttribute="top" constant="10" id="G2G-vj-1mv"/>
-                                                <constraint firstAttribute="bottom" secondItem="5x4-UO-vZQ" secondAttribute="bottom" constant="10" id="OIi-6Z-VPy"/>
+                                                <constraint firstAttribute="bottom" secondItem="5x4-UO-vZQ" secondAttribute="bottom" id="OIi-6Z-VPy"/>
                                                 <constraint firstAttribute="trailing" secondItem="5x4-UO-vZQ" secondAttribute="trailing" constant="10" id="RQe-42-drz"/>
                                                 <constraint firstItem="0CP-BM-hOo" firstAttribute="leading" secondItem="dYy-Ab-fhL" secondAttribute="leading" constant="10" id="cwo-kh-f89"/>
                                             </constraints>
@@ -260,7 +258,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="I_BrandTableViewCell" rowHeight="90" id="mNE-d5-h1S" customClass="I_BrandTableViewCell" customModule="NeoConnect" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="288" width="375" height="90"/>
+                                        <rect key="frame" x="0.0" y="308" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mNE-d5-h1S" id="p2t-hy-wkR">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
@@ -299,13 +297,13 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="I_OfferTableViewCell" rowHeight="110" id="nB0-Xa-oE6" customClass="I_OfferTableViewCell" customModule="NeoConnect" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="378" width="375" height="110"/>
+                                        <rect key="frame" x="0.0" y="398" width="375" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nB0-Xa-oE6" id="PTC-Ee-hBh">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zIm-yw-2Qm" customClass="PhotoFieldImage" customModule="NeoConnect" customModuleProvider="target">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zIm-yw-2Qm" customClass="PhotoFieldImage" customModule="NeoConnect" customModuleProvider="target">
                                                     <rect key="frame" x="30" y="10" width="120" height="90"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="120" id="7Oz-ot-PLe"/>
@@ -886,7 +884,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QHf-vl-01e" customClass="PhotoFieldImage" customModule="NeoConnect" customModuleProvider="target">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QHf-vl-01e" customClass="PhotoFieldImage" customModule="NeoConnect" customModuleProvider="target">
                                                     <rect key="frame" x="30" y="10" width="120" height="90"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="90" id="9Rl-9o-Cwz"/>
