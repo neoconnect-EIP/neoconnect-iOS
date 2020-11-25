@@ -54,7 +54,7 @@ class B_OffersViewController: UIViewController {
             guard let desc = dictionary["productDesc"] as? String else { return tempOffer }
             guard let name = dictionary["productName"] as? String else { return tempOffer }
             guard let subject = dictionary["productSubject"] as? String else { return tempOffer }
-            guard let sex = dictionary["productSex"] as? String else { return tempOffer }
+            let sex = dictionary["productSex"] as? String ?? "Sexe"
             guard let applyDict = dictionary["apply"] as? Array<NSDictionary> else { return tempOffer }
             var imageArray: [UIImage] = []
             if let productImgs = dictionary["productImg"] as? [[String:Any]] {

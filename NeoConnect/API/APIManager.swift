@@ -212,8 +212,10 @@ class APIManager {
                    headers: APIManager.headers).responseJSON { response in
                     switch response.result {
                         case .success(let JSON):
+                            print("SUCCESS")
                             onSuccess(JSON)
                         case .failure(let error):
+                            print("FAILURE")
                             print("Request failed with error: \(error)")
                     }
                    }

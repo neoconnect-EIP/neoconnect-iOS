@@ -22,7 +22,7 @@ class I_UserSponsorshipViewController: UIViewController {
         APIInfManager.sharedInstance.getInfo(onSuccess: { response in
             self.userSponsorshipCode.text = response["codeParrainage"] as? String
             let countParrainage = response["countParrainage"] as? Int
-            countParrainage == 0 ? (self.userSponsorshipCount.text = "Vous n'avez encore parrainé personne") : (self.userSponsorshipCount.text = "Vous avez parrainé \(String(describing: countParrainage)) personne(s)")
+            countParrainage == 0 ? (self.userSponsorshipCount.text = "Vous n'avez encore parrainé personne") : (self.userSponsorshipCount.text = "Vous avez parrainé \(String(describing: countParrainage!)) personne(s)")
         })
     }
 }

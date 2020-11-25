@@ -324,7 +324,7 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
                     statusAlert.showInKeyWindow()
                     self.editItem.tag = 0
                     self.toggleInteractions(UIImage(systemName: "pencil")!, true)
-                }, onFailure: { error in
+                }, onFailure: {
                     self.showError("Une erreur est survenue")
                 })
             }
