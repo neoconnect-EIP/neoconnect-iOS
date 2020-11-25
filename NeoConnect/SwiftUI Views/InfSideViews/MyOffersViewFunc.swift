@@ -80,6 +80,12 @@ func getMyOffers2(completion: @escaping ([Offer2]) -> Void)
         response in
         var offers: [Offer2] = [Offer2()]
         var i = 0
+        if (response.isEmpty)
+        {
+            completion([])
+        }
+        else
+        {
         while (i != response.count)
         {
             getMyOffers3(offerID: response[i].idOffer) {
@@ -90,6 +96,7 @@ func getMyOffers2(completion: @escaping ([Offer2]) -> Void)
             i += 1
         }
         }
+    }
 }
 
 struct DetailMyOffer2: View {

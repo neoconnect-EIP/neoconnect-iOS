@@ -482,24 +482,42 @@ struct DetailOffer: View {
             
             VStack(alignment: .center, spacing: 20.0) {
                 HStack{
-                Button(action: { self.shareOffer()})
-                {
-                    Image(systemName: "square.and.arrow.up")
-                        
-                        .padding(.leading, 270.0)
-                        .foregroundColor(/*@START_MENU_TOKEN@*/.white/*@END_MENU_TOKEN@*/)
-                }.padding(.horizontal)
-                Button(action: { self.reportOffer()})
-                {
-                    Image(systemName: "flag")
-
-                        .foregroundColor(.red)                    }
+                    Button(action: { self.shareOffer()})
+                    {
+                        Image(systemName: "square.and.arrow.up")
+                            
+                            .padding(.leading, 270.0)
+                            .foregroundColor(/*@START_MENU_TOKEN@*/.white/*@END_MENU_TOKEN@*/)
+                    }.padding(.horizontal)
+                    Button(action: { self.reportOffer()})
+                    {
+                        Image(systemName: "flag")
+                            
+                            .foregroundColor(.red)                    }
                 }.padding(.horizontal)
                 Text(String(selectedOffer.productName ?? "Sans nom")).foregroundColor(Color.white).font(.custom("Raleway", size: 20))
                 if (selectedOffer.productImg!.isEmpty) {
                     Image("placeholder-image").resizable().frame(width: 100, height: 100)
                         .clipShape(Circle()).clipped().shadow(radius: 3)
                     
+                }
+                if (selectedOffer.productImg!.count > 2) {
+                    ScrollView(.horizontal,showsIndicators: false){
+                        HStack{
+                            ForEach(selectedOffer.productImg!, id: \.self) { img in
+                                KFImage(URL(string:img.imageData!)).resizable().frame(width: 100, height: 100)
+                                    .clipShape(Circle()).clipped().shadow(radius: 3)
+                            }
+                        }
+                    }.padding()
+                }
+                if (selectedOffer.productImg!.count == 2) {
+                    HStack{
+                        KFImage(URL(string:selectedOffer.productImg![0].imageData ?? " ")).renderingMode(.original).resizable().frame(width: 100, height: 100)
+                            .clipShape(Circle()).clipped().shadow(radius: 3)
+                        KFImage(URL(string:selectedOffer.productImg![1].imageData ?? " ")).renderingMode(.original).resizable().frame(width: 100, height: 100)
+                            .clipShape(Circle()).clipped().shadow(radius: 3)
+                    }
                 }
                 else {
                     KFImage(URL(string:selectedOffer.productImg![0].imageData!)).resizable().frame(width: 100, height: 100)
@@ -512,41 +530,41 @@ struct DetailOffer: View {
                     .background(Color(hex: "445173"))
                 Group{
                     HStack{
-                    if (selectedOffer.productSubject == "Cosmétique" || selectedOffer.productSubject == "Mode")
-                    {
-                       Text("Sexe:").foregroundColor(Color.white).font(.custom("Raleway", size: 14))
-                        if (selectedOffer.productSex!.isEmpty)
+                        if (selectedOffer.productSubject == "Cosmétique" || selectedOffer.productSubject == "Mode")
                         {
-                            Text("Unisexe").foregroundColor(Color.white).font(.custom("Raleway", size: 14))
-                        }
-                        else{
-                        Text(selectedOffer.productSex ?? "Unisexe").foregroundColor(Color.white).font(.custom("Raleway", size: 14))
+                            Text("Sexe:").foregroundColor(Color.white).font(.custom("Raleway", size: 14))
+                            if (selectedOffer.productSex!.isEmpty)
+                            {
+                                Text("Unisexe").foregroundColor(Color.white).font(.custom("Raleway", size: 14))
+                            }
+                            else{
+                                Text(selectedOffer.productSex ?? "Unisexe").foregroundColor(Color.white).font(.custom("Raleway", size: 14))
+                            }
                         }
                     }
-                    }
-//                    HStack {
-//                        Text("Sexe:").foregroundColor(Color.white).font(.custom("Raleway", size: 16))
-//                        if selectedOffer.productSex == "Male" || selectedOffer.productSex == "Homme"
-//                        {
-//                            Image("circlefill")
-//                        }
-//                        else
-//                        {
-//                            Image("circle")
-//
-//                        }
-//                        Text("Homme").foregroundColor(Color.white).font(.custom("Raleway", size: 14))
-//                        if selectedOffer.productSex == "Female" || selectedOffer.productSex == "Femme"
-//                        {
-//                            Image("circlefill")
-//                        }
-//                        else
-//                        {
-//                            Image("circle")
-//
-//                        }
-//                        Text("Femme").foregroundColor(Color.white).font(.custom("Raleway", size: 14))
-//                    }
+                    //                    HStack {
+                    //                        Text("Sexe:").foregroundColor(Color.white).font(.custom("Raleway", size: 16))
+                    //                        if selectedOffer.productSex == "Male" || selectedOffer.productSex == "Homme"
+                    //                        {
+                    //                            Image("circlefill")
+                    //                        }
+                    //                        else
+                    //                        {
+                    //                            Image("circle")
+                    //
+                    //                        }
+                    //                        Text("Homme").foregroundColor(Color.white).font(.custom("Raleway", size: 14))
+                    //                        if selectedOffer.productSex == "Female" || selectedOffer.productSex == "Femme"
+                    //                        {
+                    //                            Image("circlefill")
+                    //                        }
+                    //                        else
+                    //                        {
+                    //                            Image("circle")
+                    //
+                    //                        }
+                    //                        Text("Femme").foregroundColor(Color.white).font(.custom("Raleway", size: 14))
+                    //                    }
                     
                     Text(String(selectedOffer.productDesc ?? "Pas de description")).foregroundColor(Color.white).font(.custom("Raleway", size: 12)).padding(.vertical)
                     
@@ -650,7 +668,7 @@ struct DetailOffer: View {
         
         
     }
-   func reportOffer() { // Signalement d'une offre
+    func reportOffer() { // Signalement d'une offre
         
         let alertController = UIAlertController(title: "Signaler une offre", message: "Veuillez indiquer le motif de votre signalement", preferredStyle: .alert)
         
@@ -662,7 +680,7 @@ struct DetailOffer: View {
                 "Authorization": "Bearer " + accessToken
             ]
             let motif = alertController.textFields![0].text
-         
+            
             let map = [ "offerName" : selectedOffer.productName,
                         "message": motif!]
             AF.request(url+"offer/report/" + String(selectedOffer.id),
@@ -670,8 +688,8 @@ struct DetailOffer: View {
                        parameters: map as Parameters,
                        encoding: URLEncoding.default,headers: _headers).response { response in
                         debugPrint(response)
-            }
-
+                       }
+            
             
             
         })
