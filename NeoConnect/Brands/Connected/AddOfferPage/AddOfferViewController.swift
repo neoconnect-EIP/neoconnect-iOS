@@ -215,20 +215,6 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
         }))
         self.present(alert,animated: true, completion: nil )
     }
-    
-    @IBAction func subjectViewButtonTapped(_ sender: Any) {
-        let alert = initPickerFrame(tag: 0)
-        
-        self.subjectSelected = "Mode"
-        alert.addAction(UIAlertAction(title: "Femer", style: .cancel, handler: nil))
-
-        alert.addAction(UIAlertAction(title: "Valider", style: .default, handler: { (UIAlertAction) in
-            self.sexPickerViewButton.setTitle(self.sexSelected, for: .normal)
-            print("You selected " + self.sexSelected)
-            
-        }))
-        self.present(alert,animated: true, completion: nil )
-    }
 
     @IBAction func subjectViewButtonTapped(_ sender: Any) {
         let alert = initPickerFrame(tag: 0)
