@@ -58,12 +58,10 @@ class APIBrandManager {
         }
     }
     
-    func editInfo(pseudo: String, fullname: String, email: String, phoneNumber: String, zipCode: String, city: String, userPicture: String, description: String, subject: String, website: String, facebook: String, snapchat: String, twitter: String, instagram: String, onSuccess: @escaping() -> Void, onFailure: @escaping() -> Void) {
+    func editInfo(fullname: String, phoneNumber: String, zipCode: String, city: String, userPicture: String, description: String, subject: String, website: String, facebook: String, snapchat: String, twitter: String, instagram: String, onSuccess: @escaping() -> Void, onFailure: @escaping() -> Void) {
         let url : String = baseURL + APIBrandManager.infoCurrentAccountEndpoint
         let new_Info: Parameters = [
-            "pseudo": pseudo,
             "full_name": fullname,
-            "email": email,
             "website": website,
             "phone": phoneNumber,
             "postal": zipCode,
@@ -79,7 +77,8 @@ class APIBrandManager {
         
         AF.request(url, method: .put, parameters: new_Info, encoding: URLEncoding.default, headers: APIBrandManager.headers, interceptor: nil).responseJSON { response in
             switch response.result {
-                case .success(_):
+                case .success(let JSON):
+                    print(JSON)
                     onSuccess()
                 case .failure(let error):
                     print("Request failed with error: \(error)")
@@ -161,7 +160,7 @@ class APIBrandManager {
             [
                 [
                     "imageData": imageArray[0],
-                    "imageName": "imageName1"
+                    "imageName": ""
                 ]
             ],
             "productSex": sex == "Sexe" ? "" : sex,

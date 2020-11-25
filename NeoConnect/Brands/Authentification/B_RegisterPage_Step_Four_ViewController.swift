@@ -17,6 +17,7 @@ class B_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDel
     @IBOutlet weak var userInstagramTextField: RegisterFields!
     @IBOutlet weak var userSnapchatTextField: RegisterFields!
     @IBOutlet weak var pickerViewButton: UIButton!
+    @IBOutlet weak var loader: UIActivityIndicatorView!
     
     var pickerData = ["Mode", "Cosmétique", "Jeux Vidéo", "Nourriture", "High tech", "Sport/Fitness"]
     var pickerView = UIPickerView()
@@ -34,11 +35,12 @@ class B_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDel
     var userCity = String()
     
     override func viewDidLoad() {
+        self.loader.isHidden = true
         super.viewDidLoad()
     }
 
     @IBAction func isValidField(_ sender: RegisterFields) {
-        sender.handleError(sender: sender, field: "default")
+        sender.isValidField(sender: sender, field: "default")
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -115,6 +117,49 @@ class B_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDel
         }
     }
     
+    func checkFieldsFromAPI(_ userFacebook: String, _ userTwitter: String, _ userInstagram: String, _ userSnapchat: String, _ userWebsite: String, _ userSubject: String) {
+        loader.isHidden = false
+        loader.startAnimating()
+        APIManager.sharedInstance.checkUserField(fieldToCheck: "facebook", userField: userFacebook, onSuccess: { response in
+            if response {
+                self.showError("Le facebook renseigné a déjà été utilisé")
+            } else {
+                APIManager.sharedInstance.checkUserField(fieldToCheck: "twitter", userField: userTwitter, onSuccess: { response in
+                    if response {
+                        self.showError("L'email renseigné a déjà été utilisé")
+                    } else {
+                        APIManager.sharedInstance.checkUserField(fieldToCheck: "instagram", userField: userInstagram, onSuccess: { response in
+                            if response {
+                                self.showError("L'email renseigné a déjà été utilisé")
+                            } else {
+                                APIManager.sharedInstance.checkUserField(fieldToCheck: "snapchat", userField: userSnapchat, onSuccess: { response in
+                                    if response {
+                                        self.showError("L'email renseigné a déjà été utilisé")
+                                    } else {
+                                        APIBrandManager.sharedInstance.register_Shop(pseudo: self.userPseudo, password: self.userPassword, name: self.userName, email: self.userEmail, website: userWebsite, phoneNumber: self.userPhoneNumber, zipCode: self.userZipCode, city: self.userCity, userPicture: self.userImage, description: self.userDescription, subject: userSubject, facebook: userFacebook, snapchat: userSnapchat, twitter: userTwitter, instagram: userInstagram, onSuccess: {
+                                                                                        DispatchQueue.main.async {
+                                                                                            let statusAlert = StatusAlert()
+                                                                                            statusAlert.image = UIImage(named: "Success icon.png")
+                                                                                            statusAlert.title = "Inscription réussie !"
+                                                                                            statusAlert.message = "Vous vous êtes inscrit(e) avec succès !"
+                                                                                            statusAlert.showInKeyWindow()
+                                                                                            let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "B_Register")
+                                                                                            self.show(loginVC!, sender: nil)
+                                                                                        }}, onFailure: {
+                                                                                            self.showError("Une erreur est survenue, veuillez réessayer")
+                                                                                        })
+                                    }
+                                })
+                            }
+                        })
+                    }
+                })
+            }
+            self.loader.isHidden = true
+            self.loader.stopAnimating()
+        })
+    }
+    
     @IBAction func register_ButtonTapped(_ sender: Any) {
         let userWebsite = userWebsiteTextField.text!
         let userFacebook = userFacebookTextField.text!
@@ -128,18 +173,7 @@ class B_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDel
                 !restriction.isMinThreeChar(userFacebook) || !restriction.isMinThreeChar(userTwitter) || !restriction.isMinThreeChar(userInstagram) || !restriction.isMinThreeChar(userSnapchat) || userSubject == "Choisissez un thème...") {
             showError("Un ou plusieurs de vos champs semblent être inconforme")
         } else {
-            APIBrandManager.sharedInstance.register_Shop(pseudo: userPseudo, password: userPassword, name: userName, email: userEmail, website: userWebsite, phoneNumber: userPhoneNumber, zipCode: userZipCode, city: userCity, userPicture: userImage, description: userDescription, subject: userSubject, facebook: userFacebook, snapchat: userSnapchat, twitter: userTwitter, instagram: userInstagram, onSuccess: {
-                                                            DispatchQueue.main.async {
-                                                                let statusAlert = StatusAlert()
-                                                                statusAlert.image = UIImage(named: "Success icon.png")
-                                                                statusAlert.title = "Inscription réussie !"
-                                                                statusAlert.message = "Vous vous êtes inscrit(e) avec succès !"
-                                                                statusAlert.showInKeyWindow()
-                                                                let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "B_Register")
-                                                                self.show(loginVC!, sender: nil)
-                                                            }}, onFailure: {
-                                                                self.showError("Une erreur est survenue, veuillez réessayer")
-                                                            })
+            checkFieldsFromAPI(userFacebook, userTwitter, userInstagram, userSnapchat, userWebsite, userSubject)
         }
     }
 }

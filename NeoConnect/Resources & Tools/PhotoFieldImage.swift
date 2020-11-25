@@ -25,12 +25,7 @@ final class PhotoFieldImage: UIImageView {
         setShadow()
         
         clipsToBounds = true
-        if self.tag == 3 {
-            layer.cornerRadius = 10
-            backgroundColor                 = UIColor(red: 135/255, green: 185/255, blue: 124/255, alpha: 1.0)
-        } else {
-            layer.cornerRadius              = frame.height/2
-        }
+        self.tag == 0 ? (layer.cornerRadius = frame.height/2) : (layer.cornerRadius = 10)
     }
     
     private func setShadow() {

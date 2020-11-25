@@ -28,11 +28,6 @@ class I_RegisterPage_Step_Three_ViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
-    
     // Fonction bouton sexe influenceur
     @IBAction func radioBtnTapped(_ sender: DLRadioButton) {
         userSex = "Homme"
@@ -42,13 +37,14 @@ class I_RegisterPage_Step_Three_ViewController: UIViewController {
     }
     
     @IBAction func isValidField(_ sender: RegisterFields) {
+        
         switch sender.placeholder {
             case "Téléphone":
-                sender.handleError(sender: sender, field: "Téléphone")
+                sender.isValidField(sender: sender, field: "Téléphone")
             case "Code postal":
-                sender.handleError(sender: sender, field: "Code postal")
+                sender.isValidField(sender: sender, field: "Code postal")
             default:
-                sender.handleError(sender: sender, field: "default")
+                sender.isValidField(sender: sender, field: "default")
         }
     }
     
@@ -66,18 +62,18 @@ class I_RegisterPage_Step_Three_ViewController: UIViewController {
         let userZipCode = userZipCodeTextField.text!
         let userPhoneNumber = userPhoneNumberTextField.text!
         
-        if (userSex.isEmpty) {
+        if userSex.isEmpty {
             showError("Veuillez choisir votre sexe")
         }
-        else if (restriction.isMinThreeChar(userName) == false || restriction.isMinThreeChar(userCity) == false ) {
+        else if !restriction.isMinThreeChar(userName) || !restriction.isMinThreeChar(userCity) {
             showError("Un ou plusieurs de vos champs semblent être inconforme")
         }
         // Check for zipcode field
-        else if (restriction.isValidZipCode(userZipCode) == false) {
+        else if !restriction.isValidZipCode(userZipCode) {
             showError("Le code postal semble être inconforme")
         }
         // Check for phone number field
-        else if (userPhoneNumber.count != 0 && restriction.isValidPhoneNumber(userPhoneNumber) == false) {
+        else if !restriction.isValidPhoneNumber(userPhoneNumber) {
             showError("Le numéro de téléphone semble être inconforme")
         }
         // Change view and send prepared data

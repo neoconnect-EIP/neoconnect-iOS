@@ -30,7 +30,7 @@ class ForgotPasswordViewController: UIViewController {
 //    }
     
     @IBAction func userEmailDidEnd(_ sender: RegisterFields) {
-        sender.handleError(sender: sender, field: "email")
+        sender.isValidField(sender: sender, field: "email")
     }
     
     @IBAction func sendButtonTapped(_ sender: Any) {

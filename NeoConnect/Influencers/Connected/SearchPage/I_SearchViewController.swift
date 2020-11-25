@@ -178,7 +178,7 @@ class I_SearchViewController: UIViewController, I_BrandSuggestionTableViewCellDe
     }
     
     func offerSuggestionTapped(offer: I_Offer) {
-        performSegue(withIdentifier: "I_searchOffer", sender: offer)
+//        performSegue(withIdentifier: "I_searchOffer", sender: offer)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -197,7 +197,7 @@ class I_SearchViewController: UIViewController, I_BrandSuggestionTableViewCellDe
 extension I_SearchViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.row == 0 ? 120 : 110
+        return indexPath.row == 0 ? 140 : 110
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -207,7 +207,7 @@ extension I_SearchViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
         let row = rowToDisplay[indexPath.row]
-        if indexPath.row == 0 && suggestionToDisplay.count > 0 {
+        if indexPath.row == 0 {
             if sc.selectedSegmentIndex == 0 {
                 let brandSuggestionCell = tableView.dequeueReusableCell(withIdentifier: "I_BrandSuggestionTableViewCell") as! I_BrandSuggestionTableViewCell
 

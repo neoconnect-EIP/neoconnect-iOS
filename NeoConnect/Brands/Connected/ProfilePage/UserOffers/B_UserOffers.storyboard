@@ -56,7 +56,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="335" height="180"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Qj-pH-7Ol" customClass="PhotoFieldImage" customModule="NeoConnect" customModuleProvider="target">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Qj-pH-7Ol" customClass="PhotoFieldImage" customModule="NeoConnect" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="25" width="175" height="130"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="130" id="HZp-ZR-dRl"/>
@@ -191,7 +191,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="NYA-qW-cAe">
                                         <rect key="frame" x="0.0" y="0.0" width="780" height="140"/>
                                         <subviews>
-                                            <button opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uUz-Dd-lpU" customClass="PhotoFieldButton" customModule="NeoConnect" customModuleProvider="target">
+                                            <button opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uUz-Dd-lpU" customClass="PhotoFieldButton" customModule="NeoConnect" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="140" id="qPA-b9-aj6"/>
@@ -201,7 +201,7 @@
                                                     <action selector="firstImageTapped:" destination="ByT-rw-ueA" eventType="touchUpInside" id="1Dr-tG-ueR"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6io-pK-uQe" customClass="PhotoFieldButton" customModule="NeoConnect" customModuleProvider="target">
+                                            <button opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6io-pK-uQe" customClass="PhotoFieldButton" customModule="NeoConnect" customModuleProvider="target">
                                                 <rect key="frame" x="160" y="0.0" width="140" height="140"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="140" id="juf-3J-PlQ"/>
@@ -211,7 +211,7 @@
                                                     <action selector="secondImageTapped:" destination="ByT-rw-ueA" eventType="touchUpInside" id="AWI-Mz-Ces"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CFj-cO-Ufs" customClass="PhotoFieldButton" customModule="NeoConnect" customModuleProvider="target">
+                                            <button opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CFj-cO-Ufs" customClass="PhotoFieldButton" customModule="NeoConnect" customModuleProvider="target">
                                                 <rect key="frame" x="320" y="0.0" width="140" height="140"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="140" id="LFV-Ik-0YI"/>
@@ -221,7 +221,7 @@
                                                     <action selector="thirdImageTapped:" destination="ByT-rw-ueA" eventType="touchUpInside" id="JJd-hk-aDv"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUM-Iv-gP6" customClass="PhotoFieldButton" customModule="NeoConnect" customModuleProvider="target">
+                                            <button opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUM-Iv-gP6" customClass="PhotoFieldButton" customModule="NeoConnect" customModuleProvider="target">
                                                 <rect key="frame" x="480" y="0.0" width="140" height="140"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="140" id="Bal-09-GQc"/>
@@ -231,7 +231,7 @@
                                                     <action selector="forthImageTapped:" destination="ByT-rw-ueA" eventType="touchUpInside" id="Wym-95-Xcc"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adm-f9-ARc" customClass="PhotoFieldButton" customModule="NeoConnect" customModuleProvider="target">
+                                            <button opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adm-f9-ARc" customClass="PhotoFieldButton" customModule="NeoConnect" customModuleProvider="target">
                                                 <rect key="frame" x="640" y="0.0" width="140" height="140"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="140" id="Vph-ar-Hte"/>
@@ -400,7 +400,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oXb-io-eEN" customClass="PhotoFieldImage" customModule="NeoConnect" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oXb-io-eEN" customClass="PhotoFieldImage" customModule="NeoConnect" customModuleProvider="target">
                                 <rect key="frame" x="127.5" y="99" width="120" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="PcT-Qv-Xie"/>
@@ -428,7 +428,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pTb-4E-AlH" customClass="PhotoFieldImage" customModule="NeoConnect" customModuleProvider="target">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pTb-4E-AlH" customClass="PhotoFieldImage" customModule="NeoConnect" customModuleProvider="target">
                                                     <rect key="frame" x="15" y="45" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="pTb-4E-AlH" secondAttribute="height" multiplier="1:1" id="3XV-1c-VSw"/>
@@ -445,7 +445,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BBJ-Tc-U52" customClass="CosmosView" customModule="Cosmos">
+                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BBJ-Tc-U52" customClass="CosmosView" customModule="Cosmos">
                                                     <rect key="frame" x="142.5" y="45" width="90" height="14"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <userDefinedRuntimeAttributes>

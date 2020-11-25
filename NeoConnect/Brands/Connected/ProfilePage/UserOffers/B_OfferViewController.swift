@@ -271,7 +271,7 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
     }
     
-    func isModifyingOffer(_ image: UIImage, _ bool: Bool) {
+    func toggleInteractions(_ image: UIImage, _ bool: Bool) {
         editItem.image = image
         editNameButton.isHidden = !bool
         firstImage.isUserInteractionEnabled = bool
@@ -298,7 +298,7 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         if (editItem.tag == 0) {
             editItem.tag = 1
-            isModifyingOffer(UIImage(systemName: "checkmark")!, true)
+            toggleInteractions(UIImage(systemName: "checkmark")!, true)
         }
         else {
             if (1 ... 4 ~= desc.count) {
@@ -323,7 +323,7 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
                     statusAlert.message = "Votre offre à été ajouté avec succès"
                     statusAlert.showInKeyWindow()
                     self.editItem.tag = 0
-                    self.isModifyingOffer(UIImage(systemName: "pencil")!, true)
+                    self.toggleInteractions(UIImage(systemName: "pencil")!, true)
                 }, onFailure: { error in
                     self.showError("Une erreur est survenue")
                 })

@@ -26,8 +26,8 @@ class RestrictionTextField {
     
     func isValidPseudo(_ pseudo: String) -> Bool {
         let pseudoRegEx = "[a-zA-Z0-9]{4,12}"
-
         let pseudoPred = NSPredicate(format:"SELF MATCHES %@", pseudoRegEx)
+        
         return pseudoPred.evaluate(with: pseudo)
     }
     
@@ -46,13 +46,6 @@ class RestrictionTextField {
 
         let phonePred = NSPredicate(format:"SELF MATCHES %@", phoneRegEx)
         return phonePred.evaluate(with: phonenumber)
-    }
-    
-    func isProfileCorrect(_ email: String, _ pseudo: String, _ zipcode: String, _ phoneNumber: String) -> Bool {
-        if (self.isValidPseudo(email) || self.isValidZipCode(zipcode) || self.isValidPhoneNumber(phoneNumber)) {
-            return true
-        }
-        return false
     }
     
     func isMinThreeChar(_ param: String) -> Bool {

@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -379,7 +380,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="oCf-WK-hYn">
-                        <barButtonItem key="rightBarButtonItem" title="Modifier" id="7g1-7p-WKe">
+                        <barButtonItem key="rightBarButtonItem" id="7g1-7p-WKe">
+                            <imageReference key="image" image="pencil" catalog="system" symbolScale="large"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="editButtonTapped:" destination="hBu-sX-lBm" id="RnS-bP-FEc"/>
@@ -394,10 +396,10 @@
                         <outlet property="fullnameTextField" destination="Rb8-uj-xcD" id="rWk-gj-YuX"/>
                         <outlet property="instagramTextField" destination="Bc0-r5-6jQ" id="dYW-GA-3iW"/>
                         <outlet property="phoneTextField" destination="0K3-kc-4cY" id="Kbx-GI-fPl"/>
-                        <outlet property="pickerViewButton" destination="516-Tp-gMA" id="yfJ-Fh-eg8"/>
                         <outlet property="postalTextField" destination="Uv0-sp-a1i" id="Bw2-XV-1IQ"/>
                         <outlet property="pseudoTextField" destination="S6J-TE-Pli" id="Yl2-5Q-dqk"/>
                         <outlet property="snapchatTextField" destination="ELa-a3-UAb" id="GjB-GP-O0F"/>
+                        <outlet property="subjectButton" destination="516-Tp-gMA" id="yfJ-Fh-eg8"/>
                         <outlet property="twitterTextField" destination="BCE-Uo-sob" id="9le-7c-IxN"/>
                         <outlet property="userDescriptionTextView" destination="ofG-Sg-EnZ" id="9HF-1K-AOO"/>
                         <outlet property="userPhotoView" destination="1oO-cm-oDL" id="SUN-0R-3DA"/>
@@ -412,6 +414,7 @@
     <resources>
         <image name="ShopBackground" width="375" height="667"/>
         <image name="avatar-placeholder" width="500" height="500"/>
+        <image name="pencil" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

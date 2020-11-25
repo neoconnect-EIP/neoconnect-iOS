@@ -44,30 +44,35 @@ class B_ConnectionPageViewController: UIViewController {
         self.show(infButton, sender: nil)
     }
     
+    func showError(_ message: String) {
+        DispatchQueue.main.async {
+            let alertView = UIAlertController(title: "Erreur", message: message, preferredStyle: .alert)
+            alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
+            self.present(alertView, animated: true, completion: nil)
+        }
+    }
+    
     @IBAction func loginButtonTapped(_ sender: Any) {
         let userPseudo = userPseudoTextField.text!;
         let userPassword = userPasswordTextField.text!;
         
-        APIManager.sharedInstance.login(userPseudo: userPseudo, userPassword: userPassword, onSuccess: {
-            DispatchQueue.main.async {
-                let statusAlert = StatusAlert()
-                statusAlert.image = UIImage(named: "Success icon.png")
-                statusAlert.title = "Connexion réussie!"
-                statusAlert.message = "Vous vous êtes connecté avec succès"
-                statusAlert.alertShowingDuration = 1
-                statusAlert.showInKeyWindow()
-                let storyBoard: UIStoryboard = UIStoryboard(name: "B_TabBarController", bundle: nil)
-                let home  = storyBoard.instantiateViewController(withIdentifier: "B_CustomTabBarController")
-                home.navigationItem.setHidesBackButton(true, animated: true)
-                self.show(home, sender: nil)
-            }
+        APIManager.sharedInstance.login(userPseudo: userPseudo, userPassword: userPassword, onSuccess: { userType in
+                if userType == "shop" {
+                    let statusAlert = StatusAlert()
+                    statusAlert.image = UIImage(named: "Success icon.png")
+                    statusAlert.title = "Connexion réussie!"
+                    statusAlert.message = "Vous vous êtes connecté avec succès"
+                    statusAlert.alertShowingDuration = 1
+                    statusAlert.showInKeyWindow()
+                    let storyBoard: UIStoryboard = UIStoryboard(name: "B_TabBarController", bundle: nil)
+                    let home  = storyBoard.instantiateViewController(withIdentifier: "B_CustomTabBarController")
+                    home.navigationItem.setHidesBackButton(true, animated: true)
+                    self.show(home, sender: nil)
+                } else {
+                    self.showError("Email/Mot de passe incorrects, veuillez réessayer")
+                }
         }, onFailure: {
-            DispatchQueue.main.async {
-                // Message d'alerte
-                let alertView = UIAlertController(title: "Erreur", message: "Email/Mot de passe incorrects, veuillez réessayer", preferredStyle: .alert)
-                alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
-                self.present(alertView, animated: true, completion: nil)
-            }
+            self.showError("Email/Mot de passe incorrects, veuillez réessayer")
         })
     }
 }

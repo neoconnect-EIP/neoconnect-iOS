@@ -70,12 +70,10 @@ class APIInfManager {
         }
     }
     
-    func editInfo(pseudo: String, fullname: String, email: String, phoneNumber: String, zipCode: String, city: String, userPicture: String, userDescription: String, subject: String, facebook: String, snapchat: String, twitter: String, instagram: String, youtube: String, twitch: String, pinterest: String, tiktok: String, onSuccess: @escaping() -> Void, onFailure: @escaping() -> Void) {
+    func editInfo(fullname: String, phoneNumber: String, zipCode: String, city: String, userPicture: String, userDescription: String, subject: String, facebook: String, snapchat: String, twitter: String, instagram: String, youtube: String, twitch: String, pinterest: String, tiktok: String, onSuccess: @escaping() -> Void, onFailure: @escaping() -> Void) {
         let url : String = baseURL + APIInfManager.infoCurrentAccountEndpoint
         let new_Info: Parameters = [
-            "pseudo": pseudo,
             "full_name": fullname,
-            "email": email,
             "phone": phoneNumber,
             "postal": zipCode,
             "city": city,
@@ -94,7 +92,8 @@ class APIInfManager {
 
         AF.request(url, method: .put, parameters: new_Info, encoding: URLEncoding.default, headers: APIInfManager.headers, interceptor: nil).responseJSON { response in
             switch response.result {
-                case .success(_):
+                case .success(let JSON):
+                    print(JSON)
                     onSuccess()
                 case .failure(let error):
                     print("Request failed with error: \(error)")

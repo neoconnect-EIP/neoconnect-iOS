@@ -22,7 +22,7 @@ class UpdatePasswordViewController: UIViewController {
     }
     
     @IBAction func userPasswordDidEnd(_ sender: RegisterFields) {
-        sender.handleError(sender: sender, field: "password")
+        sender.isValidField(sender: sender, field: "password")
     }
     
     @IBAction func validateButtonTapped(_ sender: Any) {

@@ -63,7 +63,7 @@ extension I_UserMarksAndComments: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let comment = commentsArray[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "I_ShopStatsCell") as! I_ShopStatsTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "StatsTableViewCell") as! StatsTableViewCell
         
         cell.setComment(comment: comment)
         

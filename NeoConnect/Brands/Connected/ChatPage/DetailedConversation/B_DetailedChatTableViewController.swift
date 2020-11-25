@@ -23,7 +23,6 @@ struct Message: MessageType {
     var kind: MessageKind
 }
 
-
 class B_DetailedChatViewController: MessagesViewController, MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDelegate, InputBarAccessoryViewDelegate {
 
     let imageView : UIImageView = {
@@ -37,6 +36,8 @@ class B_DetailedChatViewController: MessagesViewController, MessagesDataSource, 
     let otherUser = sender(senderId: "other", displayName: "")
     var messages = [MessageType]()
     var inf: Conversation!
+    var infImage: UIImage!
+    var currentUserImage: UIImage!
     var isIncoming = true
     
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
@@ -64,6 +65,17 @@ class B_DetailedChatViewController: MessagesViewController, MessagesDataSource, 
     
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
         return messages.count
+    }
+    
+    func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
+        //If it's current user show current user photo.
+        if message.sender.senderId == currentUser.senderId {
+            APIManager.sharedInstance.getUserImage(onSuccess: { image in
+                avatarView.image = image
+            })
+        } else {
+            avatarView.image = infImage
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {

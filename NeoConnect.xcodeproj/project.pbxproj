@@ -157,7 +157,7 @@
 		D2AB263925683282000A425D /* ReportUsShopSideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB262325683282000A425D /* ReportUsShopSideView.swift */; };
 		D2AB263A25683282000A425D /* HomePageShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB262425683282000A425D /* HomePageShopView.swift */; };
 		D2AB2642256832E1000A425D /* I_ShopStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB2641256832E1000A425D /* I_ShopStatsViewController.swift */; };
-		D2AB267325683A23000A425D /* I_ShopStatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB267225683A23000A425D /* I_ShopStatsTableViewCell.swift */; };
+		D2AB267325683A23000A425D /* StatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB267225683A23000A425D /* StatsTableViewCell.swift */; };
 		D2B53C772568437B004597D2 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B53C762568437B004597D2 /* Comment.swift */; };
 /* End PBXBuildFile section */
 
@@ -341,7 +341,7 @@
 		D2AB262325683282000A425D /* ReportUsShopSideView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportUsShopSideView.swift; sourceTree = "<group>"; };
 		D2AB262425683282000A425D /* HomePageShopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageShopView.swift; sourceTree = "<group>"; };
 		D2AB2641256832E1000A425D /* I_ShopStatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_ShopStatsViewController.swift; sourceTree = "<group>"; };
-		D2AB267225683A23000A425D /* I_ShopStatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_ShopStatsTableViewCell.swift; sourceTree = "<group>"; };
+		D2AB267225683A23000A425D /* StatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsTableViewCell.swift; sourceTree = "<group>"; };
 		D2B53C762568437B004597D2 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		F0794610DD915A366F21A0A3 /* Pods_NeoConnectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NeoConnectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -388,6 +388,7 @@
 		3307D54924E587860035CAB6 /* Common views */ = {
 			isa = PBXGroup;
 			children = (
+				D279C49E2568541400CC1489 /* TableViewCells */,
 				330672BD236C188D00C8C339 /* Password Forgotten */,
 				338DB1FC23CF5C9200A87F8B /* Description & FAQ */,
 			);
@@ -768,7 +769,6 @@
 		33E49E0422DA5631006D1D5D /* Connected */ = {
 			isa = PBXGroup;
 			children = (
-				D279C49E2568541400CC1489 /* TableViewCells */,
 				33F1362123E2109000A740DE /* TabBar */,
 				3338622F2326AC99005C188E /* HomePage */,
 				3338622E2326AC8F005C188E /* SearchPage */,
@@ -891,7 +891,7 @@
 		D279C49E2568541400CC1489 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
-				D2AB267225683A23000A425D /* I_ShopStatsTableViewCell.swift */,
+				D2AB267225683A23000A425D /* StatsTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -1329,7 +1329,7 @@
 				336BB7C024B00DC1000A9027 /* DefaultButton.swift in Sources */,
 				338E8C6C24FF1F6800F58B27 /* I_DetailedShopViewController.swift in Sources */,
 				D2AB262725683282000A425D /* ContactUsView.swift in Sources */,
-				D2AB267325683A23000A425D /* I_ShopStatsTableViewCell.swift in Sources */,
+				D2AB267325683A23000A425D /* StatsTableViewCell.swift in Sources */,
 				D2AB263825683282000A425D /* ContactUsShopSideView.swift in Sources */,
 				33EC80D024FF047C003FF652 /* B_DetailedInfViewController.swift in Sources */,
 				3388BE5A232016A000B9D1F8 /* AddOfferViewController.swift in Sources */,

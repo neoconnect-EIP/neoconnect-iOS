@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -178,7 +179,7 @@
                                                         </constraints>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="RalewayItalic-ExtraBold" family="Raleway" pointSize="12"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                         <connections>
                                                             <action selector="isValidField:" destination="VLe-V4-hpH" eventType="editingDidEnd" id="fVm-Er-GWe"/>
                                                         </connections>
@@ -191,7 +192,7 @@
                                                         </constraints>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="RalewayItalic-ExtraBold" family="Raleway" pointSize="12"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                         <connections>
                                                             <action selector="isValidField:" destination="VLe-V4-hpH" eventType="editingDidEnd" id="Gs9-qg-BZ6"/>
                                                         </connections>
@@ -442,7 +443,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6ma-9J-dxr">
-                        <barButtonItem key="rightBarButtonItem" title="Modifier" id="ir1-oh-Qdu">
+                        <barButtonItem key="rightBarButtonItem" id="ir1-oh-Qdu">
+                            <imageReference key="image" image="pencil" catalog="system" symbolScale="large"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="editButtonTapped:" destination="VLe-V4-hpH" id="sy2-2K-qUr"/>
@@ -457,11 +459,11 @@
                         <outlet property="fullnameTextField" destination="YJE-AV-Pxt" id="tZE-iB-dM5"/>
                         <outlet property="instagramTextField" destination="SYh-jz-hYv" id="Dqz-75-s6A"/>
                         <outlet property="phoneTextField" destination="CYA-o3-KO0" id="Q1s-tx-MZz"/>
-                        <outlet property="pickerViewButton" destination="nPz-t7-kb5" id="LRW-wU-6MD"/>
                         <outlet property="pinterestTextField" destination="agh-s3-fqc" id="GBR-vA-0mD"/>
                         <outlet property="postalTextField" destination="Mky-Yh-Sd0" id="C58-Fb-Y8N"/>
                         <outlet property="pseudoTextField" destination="pTG-gx-ao9" id="jm2-dh-ssq"/>
                         <outlet property="snapchatTextField" destination="iTv-YB-E1I" id="igP-Lz-vp0"/>
+                        <outlet property="subjectButton" destination="nPz-t7-kb5" id="LRW-wU-6MD"/>
                         <outlet property="tiktokTextField" destination="BCI-Lt-SII" id="7tX-cp-j4h"/>
                         <outlet property="twitchTextField" destination="AMH-Rv-QDV" id="l7l-sL-Nnu"/>
                         <outlet property="twitterTextField" destination="sgb-uJ-ht8" id="kel-m8-qRn"/>
@@ -478,6 +480,7 @@
     <resources>
         <image name="InfBackground" width="375" height="667"/>
         <image name="avatar-placeholder" width="500" height="500"/>
+        <image name="pencil" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -144,6 +144,7 @@ public class FAQView: UIView {
         tableview.backgroundColor = UIColor.clear
         tableview.allowsSelection = false
         tableview.separatorStyle = .none
+        tableview.showsVerticalScrollIndicator = false
         tableview.estimatedRowHeight = 50
         tableview.tableFooterView = UIView()
         return tableview

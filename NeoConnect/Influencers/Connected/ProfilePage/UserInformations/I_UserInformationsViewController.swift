@@ -29,7 +29,7 @@ class I_UserInformationsViewController: UIViewController, UIImagePickerControlle
     @IBOutlet weak var twitchTextField: DefaultTextFields!
     @IBOutlet weak var pinterestTextField: DefaultTextFields!
     @IBOutlet weak var tiktokTextField: DefaultTextFields!
-    @IBOutlet weak var pickerViewButton: UIButton!
+    @IBOutlet weak var subjectButton: UIButton!
     var restriction = RestrictionTextField()
     var pickerData = ["Mode", "Cosmétique", "Jeux Vidéo", "Nourriture", "High tech", "Sport/Fitness"]
     var themePickerView = UIPickerView()
@@ -42,10 +42,18 @@ class I_UserInformationsViewController: UIViewController, UIImagePickerControlle
     }
     
     override func viewDidLoad() {
-        APIManager.sharedInstance.getUserImage(onSuccess: { image in
-            self.userPhotoView.setImage(image, for: .normal)
-        })
         APIInfManager.sharedInstance.getInfo(onSuccess: { response in
+            if let userPicture = response["userPicture"] as? [[String:String]] {
+                if userPicture.count > 0 {
+                    if let imageData = URL(string: (userPicture[0]["imageData"])!) {
+                        if let image = try! UIImage(data: Data(contentsOf: imageData)) {
+                            self.userPhotoView.setImage(image, for: .normal)
+                        }
+                    }
+                }
+            } else {
+                self.userPhotoView.setImage(#imageLiteral(resourceName: "avatar-placeholder"), for: .normal)
+            }
             self.pseudoTextField.text = response["pseudo"] as? String
             self.emailTextField.text = response["email"] as? String
             self.userDescriptionTextView.text = response["userDescription"] as? String
@@ -62,7 +70,7 @@ class I_UserInformationsViewController: UIViewController, UIImagePickerControlle
             self.pinterestTextField.text = response["pinterest"] as? String
             self.tiktokTextField.text = response["tiktok"] as? String
             self.typeValue = response["theme"] as? String ?? "Mode"
-            self.pickerViewButton.setTitle(self.typeValue, for: .normal)
+            self.subjectButton.setTitle(self.typeValue, for: .normal)
         })
         imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = true
@@ -78,37 +86,32 @@ class I_UserInformationsViewController: UIViewController, UIImagePickerControlle
             alertView.addAction(UIAlertAction(title: "Annuler", style: .cancel) { action in
             })
             alertView.addAction(UIAlertAction(title: "Confirmer", style: .default) { action in
-                                    APIManager.sharedInstance.delete(onSuccess: {
-                                        UserDefaults.standard.removeObject(forKey: "Token")
-                                        UserDefaults.standard.removeObject(forKey: "id")
-                                        UserDefaults.standard.removeObject(forKey: "theme")
-                                        UserDefaults.standard.removeObject(forKey: "pseudo")
-                                        UserDefaults.standard.removeObject(forKey: "userType")
-                                        UserDefaults.standard.synchronize()
-                                        
-                                        let storyBoard: UIStoryboard = UIStoryboard(name: "I_Register_and_Connection", bundle: nil)
-                                        let loginVC = storyBoard.instantiateViewController(withIdentifier: "I_NavController")
-                                        loginVC.modalPresentationStyle = .fullScreen
-                                        self.present(loginVC, animated: true, completion: nil)
-                                    })
-                            })
+                APIManager.sharedInstance.delete(onSuccess: {
+                    UserDefaults.standard.removeObject(forKey: "Token")
+                    UserDefaults.standard.removeObject(forKey: "id")
+                    UserDefaults.standard.removeObject(forKey: "theme")
+                    UserDefaults.standard.removeObject(forKey: "pseudo")
+                    UserDefaults.standard.removeObject(forKey: "userType")
+                    UserDefaults.standard.synchronize()
+                    
+                    let storyBoard: UIStoryboard = UIStoryboard(name: "I_Register_and_Connection", bundle: nil)
+                    let loginVC = storyBoard.instantiateViewController(withIdentifier: "I_NavController")
+                    loginVC.modalPresentationStyle = .fullScreen
+                    self.present(loginVC, animated: true, completion: nil)
+                })
+            })
             self.present(alertView, animated: true, completion: nil)
         }
     }
     
-    
     @IBAction func isValidField(_ sender: DefaultTextFields) {
         switch sender.placeholder {
-            case "Pseudo":
-                sender.handleError(sender: sender, field: "Pseudo")
-            case "Email":
-                sender.handleError(sender: sender, field: "Email")
-            case "Téléphone":
-                sender.handleError(sender: sender, field: "Téléphone")
-            case "Code postal":
-                sender.handleError(sender: sender, field: "Code postal")
-            default:
-                sender.handleError(sender: sender, field: "default")
+        case "Téléphone":
+            sender.handleError(sender: sender, field: "Téléphone")
+        case "Code postal":
+            sender.handleError(sender: sender, field: "Code postal")
+        default:
+            sender.handleError(sender: sender, field: "default")
         }
     }
     
@@ -147,18 +150,18 @@ class I_UserInformationsViewController: UIViewController, UIImagePickerControlle
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch row {
-            case 1:
-                typeValue = "Cosmétique"
-            case 2:
-                typeValue = "Jeux Vidéo"
-            case 3:
-                typeValue = "Nourriture"
-            case 4:
-                typeValue = "High tech"
-            case 5:
-                typeValue = "Sport/Fitness"
-            default:
-                typeValue = "Mode"
+        case 1:
+            typeValue = "Cosmétique"
+        case 2:
+            typeValue = "Jeux Vidéo"
+        case 3:
+            typeValue = "Nourriture"
+        case 4:
+            typeValue = "High tech"
+        case 5:
+            typeValue = "Sport/Fitness"
+        default:
+            typeValue = "Mode"
         }
     }
     
@@ -188,19 +191,42 @@ class I_UserInformationsViewController: UIViewController, UIImagePickerControlle
         
         alert.addAction(UIAlertAction(title: "Fermer", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Valider", style: .default, handler: { (UIAlertAction) in
-            
-            self.pickerViewButton.setTitle(self.typeValue, for: .normal)
+            self.subjectButton.setTitle(self.typeValue, for: .normal)
             print("You selected " + self.typeValue )
-            
         }))
         self.present(alert,animated: true, completion: nil )
     }
     
+    func showError(_ message: String) {
+        DispatchQueue.main.async {
+            let alertView = UIAlertController(title: "Erreur", message: message, preferredStyle: .alert)
+            alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
+            self.present(alertView, animated: true, completion: nil)
+        }
+    }
+    
+    func toggleInteractions(_ image: UIImage, _ bool: Bool) {
+        editItem.image = image
+        userPhotoView.isUserInteractionEnabled = bool
+        userDescriptionTextView.isUserInteractionEnabled = bool
+        fullnameTextField.isUserInteractionEnabled = bool
+        postalTextField.isUserInteractionEnabled = bool
+        cityTextField.isUserInteractionEnabled = bool
+        phoneTextField.isUserInteractionEnabled = bool
+        facebookTextField.isUserInteractionEnabled = bool
+        twitterTextField.isUserInteractionEnabled = bool
+        snapchatTextField.isUserInteractionEnabled = bool
+        instagramTextField.isUserInteractionEnabled = bool
+        youtubeTextField.isUserInteractionEnabled = bool
+        twitchTextField.isUserInteractionEnabled = bool
+        pinterestTextField.isUserInteractionEnabled = bool
+        tiktokTextField.isUserInteractionEnabled = bool
+        subjectButton.isUserInteractionEnabled = bool
+    }
+    
     @IBAction func editButtonTapped(_ sender: Any) {
         guard let userImage = userPhotoView.currentImage else { return }
-        guard let userPseudo = pseudoTextField.text else { return }
         guard let userDescription = userDescriptionTextView.text else { return }
-        guard let userEmail = emailTextField.text else { return }
         guard let userFullname = fullnameTextField.text else { return }
         guard let userPostal = postalTextField.text else { return }
         guard let userCity = cityTextField.text else { return }
@@ -214,86 +240,32 @@ class I_UserInformationsViewController: UIViewController, UIImagePickerControlle
         guard let userPinterest = pinterestTextField.text else { return }
         guard let userTiktok = tiktokTextField.text else { return }
         
-        if (self.editItem.title == "Modifier") {
-            editItem.title = "Enregistrer"
-            userPhotoView.isUserInteractionEnabled = true
-            userDescriptionTextView.isUserInteractionEnabled = true
-            pseudoTextField.isUserInteractionEnabled = true
-            emailTextField.isUserInteractionEnabled = true
-            fullnameTextField.isUserInteractionEnabled = true
-            cityTextField.isUserInteractionEnabled = true
-            postalTextField.isUserInteractionEnabled = true
-            phoneTextField.isUserInteractionEnabled = true
-            facebookTextField.isUserInteractionEnabled = true
-            twitterTextField.isUserInteractionEnabled = true
-            instagramTextField.isUserInteractionEnabled = true
-            snapchatTextField.isUserInteractionEnabled = true
-            youtubeTextField.isUserInteractionEnabled = true
-            twitchTextField.isUserInteractionEnabled = true
-            pinterestTextField.isUserInteractionEnabled = true
-            tiktokTextField.isUserInteractionEnabled = true
-            themePickerView.isUserInteractionEnabled = true
-        }
-        else {
-            if (pseudoTextField.text!.isEmpty || emailTextField.text!.isEmpty) {
-                // /!\ One or several fields is/are empty
-                DispatchQueue.main.async {
-                    let alertView = UIAlertController(title: "Erreur", message: "Un ou plusieurs de vos champs est ou sont vide(s)", preferredStyle: .alert)
-                    alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
-                    self.present(alertView, animated: true, completion: nil)
-                }
-                return
-            }
-            if restriction.isProfileCorrect(emailTextField.text!, pseudoTextField.text!, postalTextField.text!, phoneTextField.text!) == false {
-                DispatchQueue.main.async {
-                    let alertView = UIAlertController(title: "Erreur", message: "Un ou plusieurs de vos champs est ou sont inconforme(s)", preferredStyle: .alert)
-                    alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
-                    self.present(alertView, animated: true, completion: nil)
-                }
-                return
-            }
-            if (restriction.isMinThreeChar(facebookTextField.text!) == false || restriction.isMinThreeChar(twitterTextField.text!) == false || restriction.isMinThreeChar(instagramTextField.text!) == false || restriction.isMinThreeChar(snapchatTextField.text!) == false || restriction.isMinThreeChar(youtubeTextField.text!) == false || restriction.isMinThreeChar(twitchTextField.text!) == false || restriction.isMinThreeChar(pinterestTextField.text!) == false || restriction.isMinThreeChar(tiktokTextField.text!) == false) {
-                DispatchQueue.main.async {
-                    let alertView = UIAlertController(title: "Erreur", message: "Un ou plusieurs de vos champs possède(nt) moins de trois caractères donc semble inconforme", preferredStyle: .alert)
-                    alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
-                    self.present(alertView, animated: true, completion: nil)
-                }
-                return
+        if (editItem.tag == 0) {
+            editItem.tag = 1
+            toggleInteractions(UIImage(systemName: "checkmark")!, true)
+        } else {
+            if !restriction.isValidZipCode(userPostal) {
+                showError("Le code postal semble être inconforme")
+            } else if !restriction.isValidPhoneNumber(userPhone) {
+                showError("Le numéro de téléphone semble être inconforme")
+            } else if (1 ... 4 ~= userDescription.count) {
+                showError("La description semble trop courte")
+            } else if !restriction.isMinThreeChar(userFullname) || !restriction.isMinThreeChar(userCity) || !restriction.isMinThreeChar(userFacebook) || !restriction.isMinThreeChar(userTwitter) || !restriction.isMinThreeChar(userInstagram) || !restriction.isMinThreeChar(userSnapchat) || !restriction.isMinThreeChar(userYoutube) || !restriction.isMinThreeChar(userTwitch) || !restriction.isMinThreeChar(userPinterest) || !restriction.isMinThreeChar(userTiktok) {
+                showError("Un ou plusieurs de vos champs possède(nt) moins de trois caractères donc semble inconforme")
             }
             else {
                 let userPicture = userImage.toBase64() ?? ""
                 
-                APIInfManager.sharedInstance.editInfo(pseudo: userPseudo, fullname: userFullname, email: userEmail, phoneNumber: userPhone, zipCode: userPostal, city: userCity, userPicture: userPicture, userDescription: userDescription, subject: typeValue, facebook: userFacebook, snapchat: userSnapchat, twitter: userTwitter, instagram: userInstagram, youtube: userYoutube, twitch: userTwitch, pinterest: userPinterest, tiktok: userTiktok, onSuccess: {
+                APIInfManager.sharedInstance.editInfo(fullname: userFullname, phoneNumber: userPhone, zipCode: userPostal, city: userCity, userPicture: userPicture, userDescription: userDescription, subject: typeValue, facebook: userFacebook, snapchat: userSnapchat, twitter: userTwitter, instagram: userInstagram, youtube: userYoutube, twitch: userTwitch, pinterest: userPinterest, tiktok: userTiktok, onSuccess: {
                     let statusAlert = StatusAlert()
                     statusAlert.alertShowingDuration = 1
                     statusAlert.image = UIImage(named: "Success icon.png")
                     statusAlert.title = "Modification réussie !"
                     statusAlert.message = "Vous avez modifié votre profil avec succès !"
                     statusAlert.showInKeyWindow()
-                    self.editItem.title = "Modifier"
-                    self.userPhotoView.isUserInteractionEnabled = false
-                    self.userDescriptionTextView.isUserInteractionEnabled = false
-                    self.pseudoTextField.isUserInteractionEnabled = false
-                    self.emailTextField.isUserInteractionEnabled = false
-                    self.fullnameTextField.isUserInteractionEnabled = false
-                    self.cityTextField.isUserInteractionEnabled = false
-                    self.postalTextField.isUserInteractionEnabled = false
-                    self.phoneTextField.isUserInteractionEnabled = false
-                    self.facebookTextField.isUserInteractionEnabled = false
-                    self.twitterTextField.isUserInteractionEnabled = false
-                    self.snapchatTextField.isUserInteractionEnabled = false
-                    self.instagramTextField.isUserInteractionEnabled = false
-                    self.youtubeTextField.isUserInteractionEnabled = false
-                    self.twitchTextField.isUserInteractionEnabled = false
-                    self.pinterestTextField.isUserInteractionEnabled = false
-                    self.tiktokTextField.isUserInteractionEnabled = false
-                    self.themePickerView.isUserInteractionEnabled = false
+                    self.toggleInteractions(UIImage(systemName: "pencil")!, true)
                 }, onFailure: {
-                    DispatchQueue.main.async {
-                        let alertView = UIAlertController(title: "Erreur", message: "Un problème est survenu, veuillez réessayer", preferredStyle: .alert)
-                        alertView.addAction(UIAlertAction(title: "Ok", style: .cancel))
-                        self.present(alertView, animated: true, completion: nil)
-                    }
+                    self.showError("Un problème est survenu, veuillez réessayer")
                 })
             }
         }
