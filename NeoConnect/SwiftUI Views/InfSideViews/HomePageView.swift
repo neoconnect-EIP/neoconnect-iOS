@@ -95,7 +95,8 @@ struct ActualityInfSide: Codable {
     
 }
 
-let url = "http://168.63.65.106:8080/"
+let url = "http://146.59.156.45:8080"
+//let url = "http://168.63.65.106:8080/"
 
 // Obtenir le Fil d'actualité coté Influenceurs
 

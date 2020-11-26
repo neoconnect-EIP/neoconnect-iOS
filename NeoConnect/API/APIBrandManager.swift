@@ -11,7 +11,8 @@ import Alamofire
 
 class APIBrandManager {
     
-    let baseURL = "http://168.63.65.106:8080"
+    let baseURL = "http://146.59.156.45:8080"
+//    let baseURL = "http://168.63.65.106:8080"
     static let headers: HTTPHeaders = [
         "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
         "Content-Type": "application/x-www-form-urlencoded"
@@ -154,63 +155,77 @@ class APIBrandManager {
     
     func addOffer(name: String, description: String, subject: String, sex: String, imageArray: Array<String>, onSuccess: @escaping() -> Void, onFailure: @escaping() -> Void) {
         let url : String = baseURL + APIBrandManager.postOfferEndpoint
+        var request = URLRequest(url: URL(string: url)!,timeoutInterval: Double.infinity)
         guard let brand = UserDefaults.standard.string(forKey: "pseudo") else { return }
-        let offer: [String:Any] = [
-            "productImg":
-            [
-                [
-                    "imageData": imageArray[0],
-                    "imageName": ""
-                ]
-            ],
-            "productSex": sex == "Sexe" ? "" : sex,
-            "productName": name,
-            "productDesc": description,
-            "productSubject": subject,
-            "brand": brand,
-        ]
-        AF.request(url,
-                   method: .post,
-                   parameters: offer,
-                   encoding: URLEncoding.default, headers: APIBrandManager.headers, interceptor: nil).responseJSON { response in
-                    switch response.result {
-                        case .success(let JSON):
-                            print(JSON)
-                            onSuccess()
-                        case .failure(let error):
-                            print("Request failed with error: \(error)")
-                            onFailure()
-                    }
-                   }
+        let semaphore = DispatchSemaphore (value: 0)
+        var productImgArray: [String] = []
+        let allowedCharacterSet = (CharacterSet(charactersIn: "!*'();:@&=+$,/?%#[] ").inverted)
+
+        for (index, image) in imageArray.enumerated() {
+            let image = image.addingPercentEncoding(withAllowedCharacters: allowedCharacterSet)
+            let productImg = "productImg%5B\(index)%5D%5BimageData%5D=\(image!)&productImg%5B\(index)%5D%5BimageName%5D=\(index)"
+            productImgArray.append(productImg)
+        }
+        let param = productImgArray.joined(separator: "&")
+        let parameters = "productName=\(name)&productDesc=\(description)&productSubject=\(subject)&brand=\(brand)&\(param)"
+        let postData =  parameters.data(using: .utf8)
+
+        request.addValue("Bearer \(UserDefaults.standard.string(forKey: "Token")!)", forHTTPHeaderField: "Authorization")
+        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+
+        request.httpMethod = "POST"
+        request.httpBody = postData
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+          guard let data = data else {
+            print(String(describing: error))
+            semaphore.signal()
+            onFailure()
+            return
+          }
+          print(String(data: data, encoding: .utf8)!)
+          semaphore.signal()
+            
+        }
+        task.resume()
+        semaphore.wait()
+        onSuccess()
     }
     
-    func editOffer(id: Int, name: String, description: String, subject: String, sex: String, imageArray: Array<String>, onSuccess: @escaping() -> Void, onFailure: @escaping(Error) -> Void) {
+    func editOffer(id: Int, name: String, description: String, subject: String, sex: String, imageArray: Array<String>, onSuccess: @escaping() -> Void, onFailure: @escaping() -> Void) {
         let url : String = baseURL + APIBrandManager.offerEndPoint + "/\(id)"
-        var imageDict: Array<Dictionary<String, String>> = []
-        for image in imageArray {
-            imageDict.append([
-                "imageName": "",
-                "imageData": image
-            ])
-        }
-        let offer: Parameters = [
-            "productImg": [
-                "imageName": "",
-                "imageData": imageDict
-            ],
-            "productSex": sex == "Sexe" ? "" : sex,
-            "productName": name,
-            "productDesc": description,
-            "productSubject": subject,
-        ]
+        var request = URLRequest(url: URL(string: url)!,timeoutInterval: Double.infinity)
+        let semaphore = DispatchSemaphore (value: 0)
+        var productImgArray: [String] = []
+        let allowedCharacterSet = (CharacterSet(charactersIn: "!*'();:@&=+$,/?%#[] ").inverted)
         
-        AF.request(url, method: .put, parameters: offer, encoding: URLEncoding.default, headers: APIBrandManager.headers, interceptor: nil).responseJSON { response in
-            switch response.result {
-                case .success(_):
-                    onSuccess()
-                case .failure(let error):
-                    onFailure(error)
-            }
+        for (index, image) in imageArray.enumerated() {
+            let image = image.addingPercentEncoding(withAllowedCharacters: allowedCharacterSet)
+            let productImg = "productImg%5B\(index)%5D%5BimageData%5D=\(image!)&productImg%5B\(index)%5D%5BimageName%5D=\(index)"
+            productImgArray.append(productImg)
         }
+        let param = productImgArray.joined(separator: "&")
+        let parameters = "productName=\(name)&productDesc=\(description)&productSubject=\(subject)&\(param)"
+        let postData =  parameters.data(using: .utf8)
+
+        request.addValue("Bearer \(UserDefaults.standard.string(forKey: "Token")!)", forHTTPHeaderField: "Authorization")
+        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+
+        request.httpMethod = "PUT"
+        request.httpBody = postData
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+          guard let data = data else {
+            print(String(describing: error))
+            semaphore.signal()
+            onFailure()
+            return
+          }
+          print(String(data: data, encoding: .utf8)!)
+          semaphore.signal()
+        }
+        task.resume()
+        semaphore.wait()
+        onSuccess()
     }
 }

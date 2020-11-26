@@ -13,11 +13,14 @@ PODS:
     - Kingfisher/Core (= 5.15.7)
   - Kingfisher/Core (5.15.7)
   - LayoutHelper (0.1.5)
+  - Macaw (0.9.7):
+    - SWXMLHash
   - MessageKit (3.1.0):
     - InputBarAccessoryView (~> 4.3.0)
   - PureLayout (3.1.6)
   - StatusAlert (1.1.1)
   - SwiftyJSON (5.0.0)
+  - SWXMLHash (5.0.1)
 
 DEPENDENCIES:
   - ActionSheetPicker-3.0
@@ -28,6 +31,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - Kingfisher
   - LayoutHelper
+  - Macaw (= 0.9.7)
   - MessageKit
   - PureLayout
   - StatusAlert (~> 1.1.1)
@@ -44,10 +48,12 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - Kingfisher
     - LayoutHelper
+    - Macaw
     - MessageKit
     - PureLayout
     - StatusAlert
     - SwiftyJSON
+    - SWXMLHash
 
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: 36da254b97a09ff89679ecb8b8510bd3e5bdc773
@@ -59,11 +65,13 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   Kingfisher: 6e1a13523fcb1c86924ce53affe4ac957e544d59
   LayoutHelper: 54b1e44cf7a5bb5d8256f0ad805fce633454175d
+  Macaw: 4a931baf9a9826b06d0d8ecf300014c962ab9d50
   MessageKit: 3beb578737a5aa2bba25cc27c7b6d6faa09af5a7
   PureLayout: bd3c4ec3a3819ad387c99ebb72c6b129c3ed4d2d
   StatusAlert: a18ec3c33d36a06d4479c1f2b15ffac67aaf7ab1
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  SWXMLHash: 9cc0c2e4807926c74377724aa8722ee5707a0485
 
-PODFILE CHECKSUM: 93f504c0ce9092e3f085c8c05fc97357b1f18079
+PODFILE CHECKSUM: 44f108f5bf6d920e7885973f8ac1b6f8a2f2601c
 
 COCOAPODS: 1.10.0

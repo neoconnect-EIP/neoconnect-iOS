@@ -14,6 +14,7 @@ pod 'ActionSheetPicker-3.0'
 pod 'Cosmos', '~> 22.1'
 pod 'MessageKit'
 pod 'StatusAlert', '~> 1.1.1'
+pod "Macaw", "0.9.7"
 
 # Pods for NeoConnect
 
