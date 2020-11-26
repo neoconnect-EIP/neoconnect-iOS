@@ -183,7 +183,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5x4-UO-vZQ">
-                                                    <rect key="frame" x="10" y="30" width="355" height="120"/>
+                                                    <rect key="frame" x="10" y="40" width="355" height="110"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ii1-s1-SAI">
                                                         <size key="itemSize" width="128" height="120"/>
@@ -193,7 +193,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="I_OfferSuggestionCollectionViewCell" id="ikL-uC-oCr" customClass="I_OfferSuggestionCollectionViewCell" customModule="NeoConnect" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="128" height="120"/>
+                                                            <rect key="frame" x="0.0" y="-5" width="128" height="120"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ceb-F6-bJE">
                                                                 <rect key="frame" x="0.0" y="0.0" width="128" height="120"/>
@@ -245,7 +245,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="5x4-UO-vZQ" firstAttribute="leading" secondItem="dYy-Ab-fhL" secondAttribute="leading" constant="10" id="AyR-Ns-ayo"/>
-                                                <constraint firstItem="5x4-UO-vZQ" firstAttribute="top" secondItem="dYy-Ab-fhL" secondAttribute="top" constant="30" id="DHD-cJ-grU"/>
+                                                <constraint firstItem="5x4-UO-vZQ" firstAttribute="top" secondItem="dYy-Ab-fhL" secondAttribute="top" constant="40" id="DHD-cJ-grU"/>
                                                 <constraint firstItem="0CP-BM-hOo" firstAttribute="top" secondItem="dYy-Ab-fhL" secondAttribute="top" constant="10" id="G2G-vj-1mv"/>
                                                 <constraint firstAttribute="bottom" secondItem="5x4-UO-vZQ" secondAttribute="bottom" id="OIi-6Z-VPy"/>
                                                 <constraint firstAttribute="trailing" secondItem="5x4-UO-vZQ" secondAttribute="trailing" constant="10" id="RQe-42-drz"/>
@@ -739,7 +739,7 @@
                                 <rect key="frame" x="0.0" y="196" width="375" height="422"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="I_ShopStatsCell" id="udE-jM-MeQ" customClass="I_ShopStatsTableViewCell" customModule="NeoConnect" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StatsTableViewCell" id="udE-jM-MeQ" customClass="StatsTableViewCell" customModule="NeoConnect" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="udE-jM-MeQ" id="VwC-wR-ltP">
@@ -803,10 +803,10 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
-                                            <outlet property="infCommentField" destination="OTg-07-XiP" id="OCG-dW-88h"/>
-                                            <outlet property="infImageView" destination="ezo-bA-lyj" id="PGD-0a-JFd"/>
-                                            <outlet property="infNoteField" destination="jyX-HT-WhW" id="ndH-n5-ZC6"/>
-                                            <outlet property="infPseudoField" destination="pYk-WP-ztm" id="kQf-cm-ANg"/>
+                                            <outlet property="infCommentField" destination="OTg-07-XiP" id="anf-HG-CXA"/>
+                                            <outlet property="infImageView" destination="ezo-bA-lyj" id="hQu-xQ-EaA"/>
+                                            <outlet property="infNoteField" destination="jyX-HT-WhW" id="Z0C-RQ-Mw7"/>
+                                            <outlet property="infPseudoField" destination="pYk-WP-ztm" id="dBD-CB-eAI"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

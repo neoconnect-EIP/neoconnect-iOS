@@ -22,9 +22,13 @@ class I_SearchViewController: UIViewController, I_BrandSuggestionTableViewCellDe
     var brands: [I_Brand] = []
     var brandsSuggestion: [I_Brand] = []
     var offers: [I_Offer] = []
+    var filteredOffers: [I_Offer] = []
     var offersSuggestion: [I_Offer] = []
     var rowToDisplay: [Any] = []
     var suggestionToDisplay: [Any] = []
+    var isSearchBarEmpty: Bool {
+      return searchController.searchBar.text?.isEmpty ?? true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +39,16 @@ class I_SearchViewController: UIViewController, I_BrandSuggestionTableViewCellDe
         loader.startAnimating()
         getBrandSuggestionsFromAPI()
         getBrandsFromAPI()
+    }
+    
+    func configureSearchBar() {
+        searchController.searchBar.placeholder = "Rechercher une marque"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        searchController.searchBar.sizeToFit()
     }
     
     @IBAction func scAction(_ sender: UISegmentedControl) {
@@ -164,21 +178,22 @@ class I_SearchViewController: UIViewController, I_BrandSuggestionTableViewCellDe
         }
         return tempBrands
     }
-    
-    func configureSearchBar() {
-        searchController.searchBar.placeholder = "Rechercher une marque"
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
-        searchController.searchBar.delegate = self
-        searchController.searchBar.sizeToFit()
-    }
-    
+
     func brandSuggestionTapped(brand: I_Brand) {
         performSegue(withIdentifier: "I_searchBrand", sender: brand)
     }
     
     func offerSuggestionTapped(offer: I_Offer) {
 //        performSegue(withIdentifier: "I_searchOffer", sender: offer)
+    }
+    
+    func filterContentForSearchText(_ searchText: String) {
+        let offersToDisplay: [I_Offer] = rowToDisplay as! Array<I_Offer>
+        
+        filteredOffers = offersToDisplay.filter { (offer: I_Offer) -> Bool in
+            return offer.title.lowercased().contains(searchText.lowercased())
+        }
+        tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -195,18 +210,27 @@ class I_SearchViewController: UIViewController, I_BrandSuggestionTableViewCellDe
 }
 
 extension I_SearchViewController: UITableViewDataSource, UITableViewDelegate {
-
+    var isFiltering: Bool {
+      return searchController.isActive && !isSearchBarEmpty
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return indexPath.row == 0 ? 140 : 110
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if isFiltering {
+          return filteredOffers.count + 1
+        }
+        if suggestionToDisplay.count > 0 {
+            return rowToDisplay.count + 1
+        }
         return rowToDisplay.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
-        let row = rowToDisplay[indexPath.row]
         if indexPath.row == 0 {
             if sc.selectedSegmentIndex == 0 {
                 let brandSuggestionCell = tableView.dequeueReusableCell(withIdentifier: "I_BrandSuggestionTableViewCell") as! I_BrandSuggestionTableViewCell
@@ -224,6 +248,7 @@ extension I_SearchViewController: UITableViewDataSource, UITableViewDelegate {
                 cell = offerSuggestionCell
             }
         } else {
+            var row = rowToDisplay[indexPath.row - 1]
             if sc.selectedSegmentIndex == 0 {
                 let brandCell = tableView.dequeueReusableCell(withIdentifier: "I_BrandTableViewCell") as! I_BrandTableViewCell
                 
@@ -231,6 +256,9 @@ extension I_SearchViewController: UITableViewDataSource, UITableViewDelegate {
                 
                 cell = brandCell
             } else {
+                if isFiltering {
+                    row = filteredOffers[indexPath.row - 1]
+                }
                 let offerCell = tableView.dequeueReusableCell(withIdentifier: "I_OfferTableViewCell") as! I_OfferTableViewCell
                 
                 offerCell.setOffer(offer: row as! I_Offer)
@@ -246,14 +274,33 @@ extension I_SearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-extension I_SearchViewController: UISearchBarDelegate {
+extension I_SearchViewController: UISearchBarDelegate, UISearchResultsUpdating {
     
-    func searchOffer(_ textSearched: String) {
-        
+    func updateSearchResults(for searchController: UISearchController) {
+        if sc.selectedSegmentIndex != 0 {
+            let searchBar = searchController.searchBar
+            print(searchBar.text!)
+            filterContentForSearchText(searchBar.text!)
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar,
+        selectedScopeButtonIndexDidChange selectedScope: Int) {
+        if sc.selectedSegmentIndex != 0 {
+            filterContentForSearchText(searchBar.text!)
+        }
     }
     
     func searchBrand(_ textSearched: String) {
         APIInfManager.sharedInstance.search_brand(userPseudo: textSearched, onSuccess: { response in
+            if let message = response["message"] as? String, message == "User can't be searched" {
+                DispatchQueue.main.async {
+                    let alertView = UIAlertController(title: "Erreur", message: "Aucun utilisateur trouvé, veuillez réessayer.", preferredStyle: .alert)
+                    alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
+                    self.present(alertView, animated: true, completion: nil)
+                }
+                return
+            }
             var brandImage: UIImage = #imageLiteral(resourceName: "avatar-placeholder")
             if let userPicture = response["userPicture"] as? [[String:String]] {
                 if userPicture.count > 0 {
@@ -293,8 +340,6 @@ extension I_SearchViewController: UISearchBarDelegate {
 
         if sc.selectedSegmentIndex == 0 {
             searchBrand(textSearched)
-        } else {
-            searchOffer(textSearched)
         }
     }
 }

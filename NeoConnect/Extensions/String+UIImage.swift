@@ -10,8 +10,10 @@ import Foundation
 import UIKit
 
 extension String {
+    
     func toImage() -> UIImage? {
         let imageData = Data(base64Encoded: self, options: Data.Base64DecodingOptions.ignoreUnknownCharacters)!
         return UIImage(data: imageData)!
     }
+    
 }
