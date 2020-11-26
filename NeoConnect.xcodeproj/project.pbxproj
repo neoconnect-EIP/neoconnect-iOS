@@ -158,6 +158,8 @@
 		D2AB2642256832E1000A425D /* I_ShopStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB2641256832E1000A425D /* I_ShopStatsViewController.swift */; };
 		D2AB267325683A23000A425D /* StatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB267225683A23000A425D /* StatsTableViewCell.swift */; };
 		D2B53C772568437B004597D2 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B53C762568437B004597D2 /* Comment.swift */; };
+		EF7A23CA257026CD009252A4 /* I_OfferViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7A23C9257026CD009252A4 /* I_OfferViews.swift */; };
+		EF7A23E425703A26009252A4 /* ClassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7A23E325703A25009252A4 /* ClassTests.swift */; };
 		EFE19811256F182D00331D05 /* MyOffersViewFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE19810256F182D00331D05 /* MyOffersViewFunc.swift */; };
 /* End PBXBuildFile section */
 
@@ -342,6 +344,8 @@
 		D2AB2641256832E1000A425D /* I_ShopStatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_ShopStatsViewController.swift; sourceTree = "<group>"; };
 		D2AB267225683A23000A425D /* StatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsTableViewCell.swift; sourceTree = "<group>"; };
 		D2B53C762568437B004597D2 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		EF7A23C9257026CD009252A4 /* I_OfferViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_OfferViews.swift; sourceTree = "<group>"; };
+		EF7A23E325703A25009252A4 /* ClassTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassTests.swift; sourceTree = "<group>"; };
 		EFE19810256F182D00331D05 /* MyOffersViewFunc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOffersViewFunc.swift; sourceTree = "<group>"; };
 		F0794610DD915A366F21A0A3 /* Pods_NeoConnectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NeoConnectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -707,6 +711,7 @@
 		33BC652F229ECA4100C52262 /* NeoConnectTests */ = {
 			isa = PBXGroup;
 			children = (
+				EF7A23E325703A25009252A4 /* ClassTests.swift */,
 				33F21722231EAB8400A7BFBF /* Brands */,
 				33BC6530229ECA4100C52262 /* NeoConnectTests.swift */,
 				33BC6532229ECA4100C52262 /* Info.plist */,
@@ -957,6 +962,7 @@
 				D2AB261525683282000A425D /* NotationOfferView.swift */,
 				D2AB261625683282000A425D /* NotationUserView.swift */,
 				D2AB261725683282000A425D /* HomePageView.swift */,
+				EF7A23C9257026CD009252A4 /* I_OfferViews.swift */,
 			);
 			path = InfSideViews;
 			sourceTree = "<group>";
@@ -1303,6 +1309,7 @@
 				D28D25A7256ADF01008018CB /* I_OfferSuggestionCollectionViewCell.swift in Sources */,
 				D2AB2642256832E1000A425D /* I_ShopStatsViewController.swift in Sources */,
 				D2AB262525683282000A425D /* ReportUserView.swift in Sources */,
+				EF7A23CA257026CD009252A4 /* I_OfferViews.swift in Sources */,
 				33131D8D2368A377006C0A4B /* I_SearchViewController.swift in Sources */,
 				3342BD5523240E5900552F2B /* B_ConnectionPageViewController.swift in Sources */,
 				33BBFC4F24AD3A4200F49C50 /* APIBrandManager.swift in Sources */,
@@ -1382,6 +1389,7 @@
 			files = (
 				33BC6531229ECA4100C52262 /* NeoConnectTests.swift in Sources */,
 				33F21725231EABE400A7BFBF /* BrRegisterPageTest.swift in Sources */,
+				EF7A23E425703A26009252A4 /* ClassTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

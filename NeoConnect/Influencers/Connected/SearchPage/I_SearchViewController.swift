@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SwiftUI
 
 class I_SearchViewController: UIViewController, I_BrandSuggestionTableViewCellDelegate, I_OfferSuggestionTableViewCellDelegate {
   
@@ -177,12 +178,26 @@ class I_SearchViewController: UIViewController, I_BrandSuggestionTableViewCellDe
         performSegue(withIdentifier: "I_searchBrand", sender: brand)
     }
     
+    class DetailOfferHostingController: UIHostingController<DetailOffer2> {
+        var offer : I_Offer?
+        required init?(coder aDecoder: NSCoder) {
+            super.init(coder: aDecoder, rootView: DetailOffer2(selectedOffer: self.offer!, date: ""))
+        }
+    }
+    
     func offerSuggestionTapped(offer: I_Offer) {
 //        performSegue(withIdentifier: "I_searchOffer", sender: offer)
+        
+        let rateView = DetailOffer2(selectedOffer: offer, date: "")
+            
+            let host = UIHostingController(rootView: rateView)
+            navigationController?.pushViewController(host, animated: true)
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let shopVC: I_DetailedShopViewController = segue.destination as! I_DetailedShopViewController
+        if let shopVC: I_DetailedShopViewController = segue.destination as? I_DetailedShopViewController
+       {
         if segue.identifier == "I_searchBrand" {
             shopVC.brand = sender as? I_Brand
         } else if segue.identifier == "I_brandResult" {
@@ -190,6 +205,16 @@ class I_SearchViewController: UIViewController, I_BrandSuggestionTableViewCellDe
             let brand = self.brands[row!]
             
             shopVC.brand = brand
+        }
+       }
+
+        else if segue.identifier == "DetailOfferHostingController"
+        {
+            let row = tableView.indexPathForSelectedRow?.row
+            let offer = self.offers[row!]
+            let offerVC: DetailOfferHostingController = segue.destination as! DetailOfferHostingController
+            offerVC.offer = offer
+            
         }
     }
 }
