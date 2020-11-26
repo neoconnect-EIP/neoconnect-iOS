@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SwiftUI
 
 class I_SearchViewController: UIViewController, I_BrandSuggestionTableViewCellDelegate, I_OfferSuggestionTableViewCellDelegate, FiltersViewControllerDelegate {
 
@@ -190,8 +191,21 @@ class I_SearchViewController: UIViewController, I_BrandSuggestionTableViewCellDe
         performSegue(withIdentifier: "I_searchBrand", sender: brand)
     }
     
+    class DetailOfferHostingController: UIHostingController<DetailOffer2> {
+        var offer : I_Offer?
+        required init?(coder aDecoder: NSCoder) {
+            super.init(coder: aDecoder, rootView: DetailOffer2(selectedOffer: self.offer!, date: ""))
+        }
+    }
+    
     func offerSuggestionTapped(offer: I_Offer) {
 //        performSegue(withIdentifier: "I_searchOffer", sender: offer)
+        
+        let rateView = DetailOffer2(selectedOffer: offer, date: "")
+            
+            let host = UIHostingController(rootView: rateView)
+            navigationController?.pushViewController(host, animated: true)
+        
     }
     
     func filterContentForSearchText(_ searchText: String) {
@@ -210,19 +224,24 @@ class I_SearchViewController: UIViewController, I_BrandSuggestionTableViewCellDe
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let shopVC = segue.destination as? I_DetailedShopViewController {
-            if segue.identifier == "I_searchBrand" {
-                shopVC.brand = sender as? I_Brand
-            } else if segue.identifier == "I_brandResult" {
-                let row = tableView.indexPathForSelectedRow?.row
-                let brand = self.brands[row!]
-                
-                shopVC.brand = brand
-            }
+        if let shopVC: I_DetailedShopViewController = segue.destination as? I_DetailedShopViewController {
+          if segue.identifier == "I_searchBrand" {
+            shopVC.brand = sender as? I_Brand
+        } else if segue.identifier == "I_brandResult" {
+            let row = tableView.indexPathForSelectedRow?.row
+            let brand = self.brands[row!]
+            
+            shopVC.brand = brand
         }
-        if segue.identifier == "getFilterSegue" {
+       } else if segue.identifier == "getFilterSegue" {
             let filterVC: FiltersViewController = segue.destination as! FiltersViewController
             filterVC.delegate = self
+        } else if segue.identifier == "DetailOfferHostingController" {
+            let offerVC: DetailOfferHostingController = segue.destination as! DetailOfferHostingController
+            let row = tableView.indexPathForSelectedRow?.row
+            let offer = self.offers[row!]
+          
+            offerVC.offer = offer
         }
     }
 }

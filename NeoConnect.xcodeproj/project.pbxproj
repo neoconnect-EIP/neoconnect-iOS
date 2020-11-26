@@ -154,7 +154,6 @@
 		D2AB263025683282000A425D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB261925683282000A425D /* ProfileView.swift */; };
 		D2AB263125683282000A425D /* OffersViewOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB261A25683282000A425D /* OffersViewOld.swift */; };
 		D2AB263225683282000A425D /* ContactViewOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB261B25683282000A425D /* ContactViewOld.swift */; };
-		D2AB263325683282000A425D /* MyOffersViewOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB261C25683282000A425D /* MyOffersViewOld.swift */; };
 		D2AB263425683282000A425D /* DetailInfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB261E25683282000A425D /* DetailInfView.swift */; };
 		D2AB263525683282000A425D /* NotationUserShopSideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB261F25683282000A425D /* NotationUserShopSideView.swift */; };
 		D2AB263625683282000A425D /* ReportUserShopSideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB262025683282000A425D /* ReportUserShopSideView.swift */; };
@@ -165,6 +164,9 @@
 		D2AB2642256832E1000A425D /* I_ShopStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB2641256832E1000A425D /* I_ShopStatsViewController.swift */; };
 		D2AB267325683A23000A425D /* StatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB267225683A23000A425D /* StatsTableViewCell.swift */; };
 		D2B53C772568437B004597D2 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B53C762568437B004597D2 /* Comment.swift */; };
+		EF7A23CA257026CD009252A4 /* I_OfferViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7A23C9257026CD009252A4 /* I_OfferViews.swift */; };
+		EF7A23E425703A26009252A4 /* ClassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7A23E325703A25009252A4 /* ClassTests.swift */; };
+		EFE19811256F182D00331D05 /* MyOffersViewFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE19810256F182D00331D05 /* MyOffersViewFunc.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -343,7 +345,6 @@
 		D2AB261925683282000A425D /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		D2AB261A25683282000A425D /* OffersViewOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersViewOld.swift; sourceTree = "<group>"; };
 		D2AB261B25683282000A425D /* ContactViewOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewOld.swift; sourceTree = "<group>"; };
-		D2AB261C25683282000A425D /* MyOffersViewOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOffersViewOld.swift; sourceTree = "<group>"; };
 		D2AB261E25683282000A425D /* DetailInfView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailInfView.swift; sourceTree = "<group>"; };
 		D2AB261F25683282000A425D /* NotationUserShopSideView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotationUserShopSideView.swift; sourceTree = "<group>"; };
 		D2AB262025683282000A425D /* ReportUserShopSideView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportUserShopSideView.swift; sourceTree = "<group>"; };
@@ -354,6 +355,9 @@
 		D2AB2641256832E1000A425D /* I_ShopStatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_ShopStatsViewController.swift; sourceTree = "<group>"; };
 		D2AB267225683A23000A425D /* StatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsTableViewCell.swift; sourceTree = "<group>"; };
 		D2B53C762568437B004597D2 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		EF7A23C9257026CD009252A4 /* I_OfferViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_OfferViews.swift; sourceTree = "<group>"; };
+		EF7A23E325703A25009252A4 /* ClassTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassTests.swift; sourceTree = "<group>"; };
+		EFE19810256F182D00331D05 /* MyOffersViewFunc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOffersViewFunc.swift; sourceTree = "<group>"; };
 		F0794610DD915A366F21A0A3 /* Pods_NeoConnectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NeoConnectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -720,6 +724,7 @@
 		33BC652F229ECA4100C52262 /* NeoConnectTests */ = {
 			isa = PBXGroup;
 			children = (
+				EF7A23E325703A25009252A4 /* ClassTests.swift */,
 				33F21722231EAB8400A7BFBF /* Brands */,
 				33BC6530229ECA4100C52262 /* NeoConnectTests.swift */,
 				33BC6532229ECA4100C52262 /* Info.plist */,
@@ -970,6 +975,7 @@
 		D2AB260C25683281000A425D /* InfSideViews */ = {
 			isa = PBXGroup;
 			children = (
+				EFE19810256F182D00331D05 /* MyOffersViewFunc.swift */,
 				D2AB260D25683282000A425D /* ReportUserView.swift */,
 				D2AB260E25683282000A425D /* ReportOfferView.swift */,
 				D2AB260F25683282000A425D /* ContactUsView.swift */,
@@ -981,6 +987,7 @@
 				D2AB261525683282000A425D /* NotationOfferView.swift */,
 				D2AB261625683282000A425D /* NotationUserView.swift */,
 				D2AB261725683282000A425D /* HomePageView.swift */,
+				EF7A23C9257026CD009252A4 /* I_OfferViews.swift */,
 			);
 			path = InfSideViews;
 			sourceTree = "<group>";
@@ -991,7 +998,6 @@
 				D2AB261925683282000A425D /* ProfileView.swift */,
 				D2AB261A25683282000A425D /* OffersViewOld.swift */,
 				D2AB261B25683282000A425D /* ContactViewOld.swift */,
-				D2AB261C25683282000A425D /* MyOffersViewOld.swift */,
 			);
 			path = "Old Design";
 			sourceTree = "<group>";
@@ -1305,7 +1311,6 @@
 				D2AB263525683282000A425D /* NotationUserShopSideView.swift in Sources */,
 				D2AB263625683282000A425D /* ReportUserShopSideView.swift in Sources */,
 				D28D25C6256B03D0008018CB /* I_UserSponsorshipSecondViewController.swift in Sources */,
-				D2AB263325683282000A425D /* MyOffersViewOld.swift in Sources */,
 				3338623E2326C942005C188E /* I_UserInformationsViewController.swift in Sources */,
 				33BCCA7A24EC5509008386DA /* DefaultTextFields.swift in Sources */,
 				336E62BC243608F600AF0949 /* B_MarksViewController.swift in Sources */,
@@ -1331,6 +1336,7 @@
 				D28D25A7256ADF01008018CB /* I_OfferSuggestionCollectionViewCell.swift in Sources */,
 				D2AB2642256832E1000A425D /* I_ShopStatsViewController.swift in Sources */,
 				D2AB262525683282000A425D /* ReportUserView.swift in Sources */,
+				EF7A23CA257026CD009252A4 /* I_OfferViews.swift in Sources */,
 				33131D8D2368A377006C0A4B /* I_SearchViewController.swift in Sources */,
 				3342BD5523240E5900552F2B /* B_ConnectionPageViewController.swift in Sources */,
 				33BBFC4F24AD3A4200F49C50 /* APIBrandManager.swift in Sources */,
@@ -1369,6 +1375,7 @@
 				3380D08325644D8A00F4185E /* String+UIImage.swift in Sources */,
 				33BC44AA247A29F600F2806C /* RestrictionTextField.swift in Sources */,
 				D29C7C9925687F81004397A8 /* I_ShopOffersViewController.swift in Sources */,
+				EFE19811256F182D00331D05 /* MyOffersViewFunc.swift in Sources */,
 				3387EE6B2406E3C40050852D /* B_Offer.swift in Sources */,
 				333C0FDD24B4C051008E117E /* RegisterFields.swift in Sources */,
 				33CBA4772560786500B41821 /* I_Offer.swift in Sources */,
@@ -1414,6 +1421,7 @@
 			files = (
 				33BC6531229ECA4100C52262 /* NeoConnectTests.swift in Sources */,
 				33F21725231EABE400A7BFBF /* BrRegisterPageTest.swift in Sources */,
+				EF7A23E425703A26009252A4 /* ClassTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

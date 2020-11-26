@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T8c-tj-Z6K">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T8c-tj-Z6K">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -51,7 +53,7 @@
                                     <constraint firstAttribute="height" constant="43" id="eWy-yM-dKw"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7F5-kU-KSq" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7F5-kU-KSq" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
                                 <rect key="frame" x="-6" y="455.5" width="152" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="oUt-9q-wuP"/>
@@ -65,14 +67,14 @@
                                     <action selector="InfSide_ButtonTapped:" destination="jjD-Zw-pjy" eventType="touchUpInside" id="AP1-fk-fEh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mVj-nm-xRt" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mVj-nm-xRt" customClass="DefaultButton" customModule="NeoConnect" customModuleProvider="target">
                                 <rect key="frame" x="174" y="454.5" width="152" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="152" id="Ke3-04-mcK"/>
                                     <constraint firstAttribute="height" constant="60" id="Tkf-8j-RtL"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="20"/>
-                                <state key="normal" title="Boutiques">
+                                <state key="normal" title="Marques">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -80,7 +82,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="vI0-Kh-5Qp"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vI0-Kh-5Qp" firstAttribute="trailing" secondItem="7Ur-OW-igP" secondAttribute="trailing" constant="20" id="5jy-Lh-Du5"/>
                             <constraint firstItem="vI0-Kh-5Qp" firstAttribute="trailing" secondItem="Apw-Oj-zB5" secondAttribute="trailing" id="9Am-nY-xul"/>
@@ -102,7 +105,6 @@
                             <constraint firstItem="wmA-Kw-SO2" firstAttribute="centerX" secondItem="SEj-qQ-SrA" secondAttribute="centerX" id="sYe-dD-SI6"/>
                             <constraint firstItem="aQD-x8-dNV" firstAttribute="top" secondItem="SEj-qQ-SrA" secondAttribute="top" id="vZN-If-UFQ"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="vI0-Kh-5Qp"/>
                     </view>
                     <navigationItem key="navigationItem" id="lnu-ln-mPi"/>
                     <connections>
@@ -137,5 +139,8 @@
         <image name="LittleBoy" width="40" height="53"/>
         <image name="Logo" width="104" height="106"/>
         <image name="Separator" width="375" height="1"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

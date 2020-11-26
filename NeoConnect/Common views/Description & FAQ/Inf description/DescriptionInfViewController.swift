@@ -37,8 +37,8 @@ class DescriptionInfViewController: UIViewController, UIScrollViewDelegate {
         
         let slide1:DescriptionInfSlide = Bundle.main.loadNibNamed("DescriptionInfSlide", owner: self, options: nil)?.first as! DescriptionInfSlide
         slide1.imageView.image = UIImage(named: "Chat - Inf")
-        slide1.TitleLabelField.text = "Mise en relation avec des boutiques"
-        slide1.DescriptionLabelField.text = "Créez des relations avec différentes boutiques pour de futurs partenariats"
+        slide1.TitleLabelField.text = "Mise en relation avec des marques"
+        slide1.DescriptionLabelField.text = "Créez des relations avec différentes marques pour de futurs partenariats"
     
         let slide2:DescriptionInfSlide = Bundle.main.loadNibNamed("DescriptionInfSlide", owner: self, options: nil)?.first as! DescriptionInfSlide
         slide2.imageView.image = UIImage(named: "Social share - Inf")

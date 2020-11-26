@@ -25,7 +25,7 @@ func isNil3(inf : Inf2) -> Text
         .font(.custom("Raleway", size: 12))
 }
 
-// Fil d'actualité coté Boutiques
+// Fil d'actualité coté Marques
 struct ActuShopSideView : View {
     
     @State var actualites : ActualityShopSide
@@ -41,7 +41,7 @@ struct ActuShopSideView : View {
                     InfTendanceView(actualites: actualites)
                     InfPopulaireView(actualites: actualites)
                     InfNotesView(actualites: actualites)
-                    InfSuggestionView(ListInf: ListInf)
+                   // InfSuggestionView(ListInf: ListInf)
                     Spacer()
                 }
             }           .padding([.top, .leading])
@@ -98,7 +98,7 @@ struct HomePageShopSideView: View {
                 Divider()
                     .frame(width: 100.0, height: 1.0)
                     .background(/*@START_MENU_TOKEN@*/Color.white/*@END_MENU_TOKEN@*/)
-                Text("NeoConnect Beta").foregroundColor(Color.white).font(.custom("Raleway", size: 12
+                Text("NeoConnect").foregroundColor(Color.white).font(.custom("Raleway", size: 12
                     )).padding(.top, 200.0)
                 
                 Spacer()

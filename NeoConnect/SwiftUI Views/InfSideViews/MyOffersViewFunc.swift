@@ -80,6 +80,12 @@ func getMyOffers2(completion: @escaping ([Offer2]) -> Void)
         response in
         var offers: [Offer2] = [Offer2()]
         var i = 0
+        if (response.isEmpty)
+        {
+            completion([])
+        }
+        else
+        {
         while (i != response.count)
         {
             getMyOffers3(offerID: response[i].idOffer) {
@@ -90,6 +96,7 @@ func getMyOffers2(completion: @escaping ([Offer2]) -> Void)
             i += 1
         }
         }
+    }
 }
 
 struct DetailMyOffer2: View {
@@ -100,7 +107,7 @@ struct DetailMyOffer2: View {
 var body: some View {
     VStack(alignment: .center, spacing: 20.0) {
           if (selectedOffer.productImg!.isEmpty) {
-                           Image("noImage").resizable().frame(width: 100, height: 100)
+                           Image("placeholder-image").resizable().frame(width: 100, height: 100)
                            .clipShape(Circle()).clipped().shadow(radius: 3)
 
                                            }
@@ -124,7 +131,7 @@ var body: some View {
            Text("Noter")
            }
         NavigationLink(destination: ShareOfferView(selectedOffer: selectedOffer, facebook: "", twitter: "", instagram: "", pinterest: "", twitch: "", youtube: "", tiktok: "")) {
-                  Text("Valider")
+                  Text("Conclure")
                   }
    
         Text("Crée le " + date).foregroundColor(Color.gray)
@@ -133,40 +140,40 @@ var body: some View {
 }
 }
 
-struct MyOffersView: View {
-     @State var offers : [Offer2] = [Offer2()]
-      
-      var body: some View {
-          NavigationView {
-              List(offers) { offer in
-            
-                NavigationLink(destination:DetailMyOffer2(selectedOffer: offer,date: String(offer.createdAt!).components(separatedBy: "T")[0])) {
-                  HStack {
-                   if (offer.productImg!.isEmpty) {
-                                       Image("noImage").resizable().frame(width: 50, height: 50).clipShape(Circle()).clipped()               
+//struct MyOffersView: View {
+//     @State var offers : [Offer2] = [Offer2()]
+//
+//      var body: some View {
+//          NavigationView {
+//              List(offers) { offer in
+//
+//                NavigationLink(destination:DetailMyOffer2(selectedOffer: offer,date: String(offer.createdAt!).components(separatedBy: "T")[0])) {
+//                  HStack {
+//                   if (offer.productImg!.isEmpty) {
+//                                       Image("noImage").resizable().frame(width: 50, height: 50).clipShape(Circle()).clipped()
+//
+//                                                       }
+//                                                       else {
+//                    KFImage(URL(string:offer.productImg![0].imageData!)).resizable().frame(width: 50, height: 50).clipShape(Circle()).clipped()                                    }
+//                      Text(String(offer.productName!))
+//                  }
+//                  }
+//              }
+//              .navigationBarTitle(Text("Mes offres"))
+//          }
+//          .onAppear {
+//                     getMyOffers2() {
+//                         response in
+//                            self.offers = response
+//                            self.offers.remove(at:0)
+//                        print(self.offers)
+//                         }
+//                     }
+//      }
+//}
 
-                                                       }
-                                                       else {
-                    KFImage(URL(string:offer.productImg![0].imageData!)).resizable().frame(width: 50, height: 50).clipShape(Circle()).clipped()                                    }
-                      Text(String(offer.productName!))
-                  }
-                  }
-              }
-              .navigationBarTitle(Text("Mes offres"))
-          }
-          .onAppear {
-                     getMyOffers2() {
-                         response in
-                            self.offers = response
-                            self.offers.remove(at:0)
-                        print(self.offers)
-                         }
-                     }
-      }
-}
-
-struct MyOffersView_Previews: PreviewProvider {
-    static var previews: some View {
-        MyOffersView()
-    }
-}
+//struct MyOffersView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MyOffersView()
+//    }
+//}
