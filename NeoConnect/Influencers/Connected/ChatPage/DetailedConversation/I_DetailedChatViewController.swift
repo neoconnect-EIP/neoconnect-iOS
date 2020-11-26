@@ -69,6 +69,8 @@ class I_DetailedChatViewController: MessagesViewController, MessagesDataSource, 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         IQKeyboardManager.shared.enable = true
+        self.tabBarController?.tabBar.isHidden = false
+
     }
     
     override func viewDidAppear(_ animated: Bool) {

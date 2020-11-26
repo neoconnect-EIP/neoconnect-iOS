@@ -448,8 +448,17 @@ struct DetailInfView: View {
                             {
                                 Image("login").foregroundColor(Color(hex: "445173"))
                                 
-                                Text("Contacter").foregroundColor(Color.white).font(.custom("Raleway", size: 12))
+                                Text("Contacter par mail").foregroundColor(Color.white).font(.custom("Raleway", size: 12))
                         }                      }
+                    Button(action: { self.sendMessage()})
+                    {
+                        ZStack
+                        {
+                            Image("login").foregroundColor(Color(hex: "445173"))
+                            
+                            Text("Contacter par message").foregroundColor(Color.white).font(.custom("Raleway", size: 12))
+                        }
+                    }
                     
                 }
                 
@@ -484,6 +493,41 @@ func reportUser() { // Signalement d'un influenceur
                         "subject": "Influenceur",
                         "message": motif]
             AF.request(url+"user/report/" + String(selectedInf.id),
+                       method: .post,
+                       parameters: map as Parameters,
+                       encoding: URLEncoding.default,headers: _headers).response { response in
+                        debugPrint(response)
+                       }
+            
+            
+            
+        })
+        
+        let cancelAction = UIAlertAction(title: "Annuler", style: .default, handler: nil )
+        
+        alertController.addAction(saveAction)
+        alertController.addAction(cancelAction)
+        
+        UIApplication.shared.windows.first?.rootViewController?.present(alertController, animated: true, completion: nil)
+        
+        
+    }
+    func sendMessage(){ // Envoi d'un message à un Influenceur
+        
+        let alertController = UIAlertController(title: "Envoyer un message", message: "Veuillez indiquer votre message à envoyer", preferredStyle: .alert)
+        
+        alertController.addTextField { (textField : UITextField!) -> Void in
+            textField.placeholder = "Message"
+        }
+        let saveAction = UIAlertAction(title: "Envoyer", style: .default, handler: { alert -> Void in
+            let _headers: HTTPHeaders = [
+                "Authorization": "Bearer " + accessToken
+            ]
+            let message = alertController.textFields![0].text!
+            
+            let map = [ "userId" : selectedInf.id,
+                        "message": message] as [String : Any]
+            AF.request(url+"message",
                        method: .post,
                        parameters: map as Parameters,
                        encoding: URLEncoding.default,headers: _headers).response { response in

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rd8-vY-fRE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rd8-vY-fRE">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -345,6 +345,7 @@
                                             <outlet property="offerImageView" destination="zIm-yw-2Qm" id="ofY-6l-1PL"/>
                                             <outlet property="offerSubjectLabel" destination="pNu-u7-rgW" id="y7d-4k-qqx"/>
                                             <outlet property="offerTitleLabel" destination="EHU-iz-BpR" id="to5-Gy-Gp1"/>
+                                            <segue destination="zfs-GB-ARc" kind="show" identifier="DetailOfferHostingController" id="RZq-S2-P44"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -682,6 +683,16 @@
             </objects>
             <point key="canvasLocation" x="1628" y="379"/>
         </scene>
+        <!--Detail Offer Hosting Controller-->
+        <scene sceneID="TjQ-P8-OTq">
+            <objects>
+                <hostingController id="zfs-GB-ARc" customClass="DetailOfferHostingController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="CZB-O5-kJR"/>
+                </hostingController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="By2-4s-gfF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="934" y="-699"/>
+        </scene>
         <!--Shop Stats View Controller-->
         <scene sceneID="p1f-PJ-p6D">
             <objects>
@@ -992,7 +1003,7 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="m22-Gx-wnK"/>
+        <segue reference="xNK-JU-ZJ8"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Brand icon" width="24" height="24"/>
