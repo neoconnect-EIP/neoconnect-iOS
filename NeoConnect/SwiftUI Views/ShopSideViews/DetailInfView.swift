@@ -395,7 +395,12 @@ struct DetailInfView: View {
     var body: some View {
         ZStack{
             VStack(alignment: .center, spacing: 20.0) {
-                
+                Button(action: { self.reportUser()})
+                {
+                    Image(systemName: "flag")
+                        .padding(.leading, 300.0)
+                        .foregroundColor(.red)
+                }
                 if (selectedInf.userPicture!.isEmpty) {
                     Image("avatar-placeholder").resizable().frame(width: 100, height: 100)
                         .clipShape(Circle()).clipped().shadow(radius: 3)
@@ -448,9 +453,7 @@ struct DetailInfView: View {
                     
                 }
                 
-            }
-            .padding(.top,50)
-            
+            }            
         } .frame(maxWidth:.infinity,maxHeight: .infinity)
             .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "16133C").opacity(0.95), Color(hex: "048136").opacity(0.1)]), startPoint: .top, endPoint: .bottom))
             .edgesIgnoringSafeArea(.top)
@@ -463,6 +466,42 @@ struct DetailInfView: View {
                         Text("Retour")
                     }
             })
+    }
+func reportUser() { // Signalement d'un influenceur
+        
+        let alertController = UIAlertController(title: "Signaler un influenceur", message: "Veuillez indiquer le motif de votre signalement", preferredStyle: .alert)
+        
+        alertController.addTextField { (textField : UITextField!) -> Void in
+            textField.placeholder = "Motif"
+        }
+        let saveAction = UIAlertAction(title: "Envoyer", style: .default, handler: { alert -> Void in
+            let _headers: HTTPHeaders = [
+                "Authorization": "Bearer " + accessToken
+            ]
+            let motif = alertController.textFields![0].text!
+            
+            let map = [ "pseudo" : selectedInf.pseudo!,
+                        "subject": "Influenceur",
+                        "message": motif]
+            AF.request(url+"user/report/" + String(selectedInf.id),
+                       method: .post,
+                       parameters: map as Parameters,
+                       encoding: URLEncoding.default,headers: _headers).response { response in
+                        debugPrint(response)
+                       }
+            
+            
+            
+        })
+        
+        let cancelAction = UIAlertAction(title: "Annuler", style: .default, handler: nil )
+        
+        alertController.addAction(saveAction)
+        alertController.addAction(cancelAction)
+        
+        UIApplication.shared.windows.first?.rootViewController?.present(alertController, animated: true, completion: nil)
+        
+        
     }
 }
 struct DetailInfView_Previews: PreviewProvider {

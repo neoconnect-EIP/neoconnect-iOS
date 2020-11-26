@@ -63,28 +63,36 @@ struct ReportUsView: View {
                     .background(Color(hex:"445173"))
                 if (validated) {
                     Button(action:{
-                        var type: String
-                        
+                        let pseudo = UserDefaults.standard.string(forKey: "pseudo")!
                         let _headers: HTTPHeaders = [
                             "Authorization": "Bearer " + accessToken  ]
                         switch self.selection {
                         case 1:
-                            type = "bug"
+                            let map = ["environnement" : "ios",
+                                       "type": "bug",
+                                       "pseudo": pseudo,
+                                       "email": " ",
+                                       "fonctionnalite": self.message] as [String : Any]
+                            AF.request(url+"user/feedback",
+                                       method: .post,
+                                       parameters: map,
+                                       encoding: URLEncoding.default,headers: _headers).response { response in
+                                        debugPrint(response)
+                            }
                         case 2:
-                            type = "amelioration"
+                            let map = ["environnement" : "ios",
+                                       "type": "amelioration",
+                                       "pseudo": pseudo,
+                                       "email": " ",
+                                       "fonctionnalite": self.message] as [String : Any]
+                            AF.request(url+"user/feedback",
+                                       method: .post,
+                                       parameters: map,
+                                       encoding: URLEncoding.default,headers: _headers).response { response in
+                                        debugPrint(response)
+                            }
                         
-                      
-                        let map = ["environnement" : "ios",
-                                   "type": type,
-                                   "fonctionnalite": self.message] as [String : Any]
-                        AF.request(url+"user/feedback",
-                                   method: .post,
-                                   parameters: map,
-                                   encoding: URLEncoding.default,headers: _headers).response { response in
-                                    debugPrint(response)
-                        }
                         case 3:
-                            let pseudo = UserDefaults.standard.string(forKey: "pseudo")!
                             let _headers: HTTPHeaders = [
                                 "Authorization": "Bearer " + accessToken  ]
                             let map = ["pseudo" : pseudo,
@@ -98,7 +106,7 @@ struct ReportUsView: View {
                                         debugPrint(response)
                             }
                         default:
-                            type = ""
+                            print("Report Us")
                         }
                         self.showingAlert = true
                         

@@ -243,7 +243,11 @@ struct DetailShopView: View {
     var body: some View {
         ZStack{
             VStack(alignment: .center, spacing: 20.0) {
-                
+                Button(action: { self.reportUser()})
+                {
+                    Image(systemName: "flag")
+                        .padding(.leading, 300.0)
+                        .foregroundColor(.red)                    }
                 if (selectedShop.userPicture!.isEmpty) {
                     Image("avatar-placeholder").resizable().frame(width: 100, height: 100)
                         .clipShape(Circle()).clipped().shadow(radius: 3)
@@ -297,7 +301,6 @@ struct DetailShopView: View {
                 }
                 
             }
-            .padding(.top,50)
         }.frame(maxWidth:.infinity,maxHeight: .infinity)
             .background(LinearGradient(gradient: Gradient(colors: [Color(hex: "15113D").opacity(0.85), Color(hex: "3CA6CC").opacity(0.5)]), startPoint: .top, endPoint: .bottom))
             .edgesIgnoringSafeArea(.top)
@@ -310,6 +313,42 @@ struct DetailShopView: View {
                         Text("Retour")
                     }
             })
+    }
+    func reportUser(){ // Signalement d'une marque
+        
+        let alertController = UIAlertController(title: "Signaler une marque", message: "Veuillez indiquer le motif de votre signalement", preferredStyle: .alert)
+        
+        alertController.addTextField { (textField : UITextField!) -> Void in
+            textField.placeholder = "Motif"
+        }
+        let saveAction = UIAlertAction(title: "Envoyer", style: .default, handler: { alert -> Void in
+            let _headers: HTTPHeaders = [
+                "Authorization": "Bearer " + accessToken
+            ]
+            let motif = alertController.textFields![0].text!
+            
+            let map = [ "pseudo" : selectedShop.pseudo!,
+                        "subject": "Marque",
+                        "message": motif]
+            AF.request(url+"user/report/" + String(selectedShop.id),
+                       method: .post,
+                       parameters: map as Parameters,
+                       encoding: URLEncoding.default,headers: _headers).response { response in
+                        debugPrint(response)
+                       }
+            
+            
+            
+        })
+        
+        let cancelAction = UIAlertAction(title: "Annuler", style: .default, handler: nil )
+        
+        alertController.addAction(saveAction)
+        alertController.addAction(cancelAction)
+        
+        UIApplication.shared.windows.first?.rootViewController?.present(alertController, animated: true, completion: nil)
+        
+        
     }
 }
 struct DetailShopView_Previews: PreviewProvider {

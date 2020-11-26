@@ -193,10 +193,11 @@ struct DetailMyOfferInfSideView: View {
             let _headers: HTTPHeaders = [
                 "Authorization": "Bearer " + accessToken
             ]
-            let motif = alertController.textFields![0].text
+            let motif = alertController.textFields![0].text!
             
-            let map = [ "offerName" : selectedOffer.productName,
-                        "message": motif!]
+            let map = [ "offerName" : selectedOffer.productName!,
+                        "message": motif,
+                        "subject": "Offre"]
             AF.request(url+"offer/report/" + String(selectedOffer.id),
                        method: .post,
                        parameters: map as Parameters,
