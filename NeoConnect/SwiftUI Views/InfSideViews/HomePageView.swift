@@ -178,7 +178,7 @@ struct HomePageInfSideView: View {
                 Divider()
                     .frame(width: 100.0, height: 1.0)
                     .background(/*@START_MENU_TOKEN@*/Color.white/*@END_MENU_TOKEN@*/)
-                Text("NeoConnect Beta").foregroundColor(Color.white).font(.custom("Raleway", size: 12
+                Text("NeoConnect").foregroundColor(Color.white).font(.custom("Raleway", size: 12
                 )).padding(.top, 200.0)
                 
                 Spacer()
@@ -679,10 +679,11 @@ struct DetailOffer: View {
             let _headers: HTTPHeaders = [
                 "Authorization": "Bearer " + accessToken
             ]
-            let motif = alertController.textFields![0].text
+            let motif = alertController.textFields![0].text!
             
-            let map = [ "offerName" : selectedOffer.productName,
-                        "message": motif!]
+            let map = [ "offerName" : selectedOffer.productName!,
+                        "message": motif,
+                        "subject": "Offre"]
             AF.request(url+"offer/report/" + String(selectedOffer.id),
                        method: .post,
                        parameters: map as Parameters,

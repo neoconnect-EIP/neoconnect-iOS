@@ -98,7 +98,7 @@ struct HomePageShopSideView: View {
                 Divider()
                     .frame(width: 100.0, height: 1.0)
                     .background(/*@START_MENU_TOKEN@*/Color.white/*@END_MENU_TOKEN@*/)
-                Text("NeoConnect Beta").foregroundColor(Color.white).font(.custom("Raleway", size: 12
+                Text("NeoConnect").foregroundColor(Color.white).font(.custom("Raleway", size: 12
                     )).padding(.top, 200.0)
                 
                 Spacer()
