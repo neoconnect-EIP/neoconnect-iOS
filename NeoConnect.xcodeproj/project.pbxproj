@@ -127,6 +127,12 @@
 		99B7DDEE2468CB6300A6E418 /* I_HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B7DDED2468CB6300A6E418 /* I_HomeTableViewController.swift */; };
 		9BF5223E2BAFAEA8425D925E /* Pods_NeoConnectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0794610DD915A366F21A0A3 /* Pods_NeoConnectUITests.framework */; };
 		C72A929B5553CEBC1BB8D002 /* Pods_NeoConnectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E041301AC1CC60A5EB9F35 /* Pods_NeoConnectTests.framework */; };
+		D2013B56256FEC7B005CF0B3 /* FiltersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2013B55256FEC7B005CF0B3 /* FiltersTableViewController.swift */; };
+		D2013B5B256FF9D4005CF0B3 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2013B5A256FF9D4005CF0B3 /* FiltersViewController.swift */; };
+		D2013B6025700E2C005CF0B3 /* ThemeFilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2013B5F25700E2C005CF0B3 /* ThemeFilterTableViewController.swift */; };
+		D2013B6825700F13005CF0B3 /* ThemeFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2013B6725700F13005CF0B3 /* ThemeFilterViewController.swift */; };
+		D21BC06C25704EE700E073C2 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = D21BC06B25704EE700E073C2 /* SwiftUICharts */; };
+		D21BC0712570501B00E073C2 /* I_UserLineChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21BC0702570501B00E073C2 /* I_UserLineChartsViewController.swift */; };
 		D2734D55256AC02E0025C1CA /* I_BrandSuggestionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2734D54256AC02E0025C1CA /* I_BrandSuggestionCollectionViewCell.swift */; };
 		D28D25A7256ADF01008018CB /* I_OfferSuggestionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28D25A6256ADF01008018CB /* I_OfferSuggestionCollectionViewCell.swift */; };
 		D28D25B6256AFE92008018CB /* I_UserSponsorship.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D28D25B5256AFE92008018CB /* I_UserSponsorship.storyboard */; };
@@ -311,6 +317,11 @@
 		93667906B4E5F4B44C071F98 /* Pods-NeoConnectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeoConnectTests.debug.xcconfig"; path = "Target Support Files/Pods-NeoConnectTests/Pods-NeoConnectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		99B7DDED2468CB6300A6E418 /* I_HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_HomeTableViewController.swift; sourceTree = "<group>"; };
 		CD90C310D40FD250563717B3 /* Pods-NeoConnectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeoConnectUITests.debug.xcconfig"; path = "Target Support Files/Pods-NeoConnectUITests/Pods-NeoConnectUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D2013B55256FEC7B005CF0B3 /* FiltersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersTableViewController.swift; sourceTree = "<group>"; };
+		D2013B5A256FF9D4005CF0B3 /* FiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
+		D2013B5F25700E2C005CF0B3 /* ThemeFilterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeFilterTableViewController.swift; sourceTree = "<group>"; };
+		D2013B6725700F13005CF0B3 /* ThemeFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeFilterViewController.swift; sourceTree = "<group>"; };
+		D21BC0702570501B00E073C2 /* I_UserLineChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_UserLineChartsViewController.swift; sourceTree = "<group>"; };
 		D2734D54256AC02E0025C1CA /* I_BrandSuggestionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_BrandSuggestionCollectionViewCell.swift; sourceTree = "<group>"; };
 		D28D25A6256ADF01008018CB /* I_OfferSuggestionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = I_OfferSuggestionCollectionViewCell.swift; sourceTree = "<group>"; };
 		D28D25B5256AFE92008018CB /* I_UserSponsorship.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = I_UserSponsorship.storyboard; sourceTree = "<group>"; };
@@ -351,6 +362,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D21BC06C25704EE700E073C2 /* SwiftUICharts in Frameworks */,
 				335FBE9D24AEA5BE0032E683 /* KingfisherSwiftUI in Frameworks */,
 				6AAFEC485225CC80BE3E93A4 /* Pods_NeoConnect.framework in Frameworks */,
 			);
@@ -459,6 +471,7 @@
 		3338622E2326AC8F005C188E /* SearchPage */ = {
 			isa = PBXGroup;
 			children = (
+				D2013B54256FEC55005CF0B3 /* FiltersView */,
 				D2734D50256ABEDA0025C1CA /* BrandsSuggestion */,
 				D2734D47256AB5F80025C1CA /* OffersSuggestion */,
 				D2AB266E256838E5000A425D /* DetailedView */,
@@ -860,6 +873,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D2013B54256FEC55005CF0B3 /* FiltersView */ = {
+			isa = PBXGroup;
+			children = (
+				D2013B5F25700E2C005CF0B3 /* ThemeFilterTableViewController.swift */,
+				D2013B6725700F13005CF0B3 /* ThemeFilterViewController.swift */,
+				D2013B55256FEC7B005CF0B3 /* FiltersTableViewController.swift */,
+				D2013B5A256FF9D4005CF0B3 /* FiltersViewController.swift */,
+			);
+			path = FiltersView;
+			sourceTree = "<group>";
+		};
 		D2734D47256AB5F80025C1CA /* OffersSuggestion */ = {
 			isa = PBXGroup;
 			children = (
@@ -899,6 +923,7 @@
 		D28D25B1256AFE31008018CB /* UserSponsorship */ = {
 			isa = PBXGroup;
 			children = (
+				D21BC0702570501B00E073C2 /* I_UserLineChartsViewController.swift */,
 				D28D25BA256AFECC008018CB /* I_UserSponsorshipViewController.swift */,
 				D28D25C5256B03D0008018CB /* I_UserSponsorshipSecondViewController.swift */,
 				D28D25B5256AFE92008018CB /* I_UserSponsorship.storyboard */,
@@ -1023,6 +1048,7 @@
 			name = NeoConnect;
 			packageProductDependencies = (
 				335FBE9C24AEA5BE0032E683 /* KingfisherSwiftUI */,
+				D21BC06B25704EE700E073C2 /* SwiftUICharts */,
 			);
 			productName = NeoConnect;
 			productReference = 33BC6518229ECA4000C52262 /* NeoConnect.app */;
@@ -1101,6 +1127,7 @@
 			mainGroup = 33BC650F229ECA4000C52262;
 			packageReferences = (
 				99B7DDEA2468AB8400A6E418 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				D21BC06A25704EE700E073C2 /* XCRemoteSwiftPackageReference "ChartView" */,
 			);
 			productRefGroup = 33BC6519229ECA4000C52262 /* Products */;
 			projectDirPath = "";
@@ -1307,9 +1334,11 @@
 				33131D8D2368A377006C0A4B /* I_SearchViewController.swift in Sources */,
 				3342BD5523240E5900552F2B /* B_ConnectionPageViewController.swift in Sources */,
 				33BBFC4F24AD3A4200F49C50 /* APIBrandManager.swift in Sources */,
+				D2013B5B256FF9D4005CF0B3 /* FiltersViewController.swift in Sources */,
 				3392B6AB2463B5850040388A /* DescriptionShopViewController.swift in Sources */,
 				33CBA46D2560765C00B41821 /* I_OfferTableViewCell.swift in Sources */,
 				33EE163724FC9649000847EB /* FAQView.swift in Sources */,
+				D2013B6025700E2C005CF0B3 /* ThemeFilterTableViewController.swift in Sources */,
 				3387EE6F2406EA2E0050852D /* B_OffersViewController.swift in Sources */,
 				3383BFC124F539F200A60023 /* B_TabBarController.swift in Sources */,
 				33CBA47F2560814C00B41821 /* I_BrandSuggestionTableViewCell.swift in Sources */,
@@ -1323,6 +1352,7 @@
 				3353DCB02469FF660070AAAC /* I_ProfileViewController.swift in Sources */,
 				33B0EBE225006CF700228619 /* B_ChatTableViewCell.swift in Sources */,
 				3373AB7A254F6520009927BE /* RegisterTextView.swift in Sources */,
+				D2013B6825700F13005CF0B3 /* ThemeFilterViewController.swift in Sources */,
 				D2AB263925683282000A425D /* ReportUsShopSideView.swift in Sources */,
 				3392B69D24632C8F0040388A /* B_RegisterPage_Step_Four_ViewController.swift in Sources */,
 				33131D8F2368A3A0006C0A4B /* I_ChatViewController.swift in Sources */,
@@ -1335,6 +1365,7 @@
 				3388BE5A232016A000B9D1F8 /* AddOfferViewController.swift in Sources */,
 				3380D07E25644D3100F4185E /* UIImage+Base64.swift in Sources */,
 				334753C024C10A7600B2855F /* PickerViewButton.swift in Sources */,
+				D21BC0712570501B00E073C2 /* I_UserLineChartsViewController.swift in Sources */,
 				3380D08325644D8A00F4185E /* String+UIImage.swift in Sources */,
 				33BC44AA247A29F600F2806C /* RestrictionTextField.swift in Sources */,
 				D29C7C9925687F81004397A8 /* I_ShopOffersViewController.swift in Sources */,
@@ -1346,6 +1377,7 @@
 				D2AB262F25683282000A425D /* HomePageView.swift in Sources */,
 				D2AB263725683282000A425D /* ContactUserShopSideView.swift in Sources */,
 				33BCCA7C24ED3ED2008386DA /* DefaultTextViews.swift in Sources */,
+				D2013B56256FEC7B005CF0B3 /* FiltersTableViewController.swift in Sources */,
 				3338277922A6D53F00504540 /* I_ConnectionPageViewController.swift in Sources */,
 				33A39F4724AD537A00AB33B9 /* APIManager.swift in Sources */,
 				D2AB262D25683282000A425D /* NotationOfferView.swift in Sources */,
@@ -1717,6 +1749,14 @@
 				minimumVersion = 5.8.0;
 			};
 		};
+		D21BC06A25704EE700E073C2 /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1724,6 +1764,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 99B7DDEA2468AB8400A6E418 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = KingfisherSwiftUI;
+		};
+		D21BC06B25704EE700E073C2 /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D21BC06A25704EE700E073C2 /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

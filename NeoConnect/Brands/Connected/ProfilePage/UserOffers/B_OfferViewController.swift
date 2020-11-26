@@ -38,15 +38,7 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
         descTextView.text = offer.description
         subjectSelected = offer.subject
         subjectPickerViewButton.setTitle(offer.subject, for: .normal)
-        switch offer.sex {
-            case "Homme":
-                sexPickerViewButton.setTitle("Homme", for: .normal)
-            case "Femme":
-                sexPickerViewButton.setTitle("Femme", for: .normal)
-            default:
-                sexPickerViewButton.setTitle("Unisexe", for: .normal)
-        }
-        firstImage.setTitle(offer.subject, for: .normal)
+        sexPickerViewButton.setTitle(offer.sex, for: .normal)
         for (index, image) in offer.images.enumerated() {
             switch index {
                 case 0:

@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -117,12 +118,25 @@
                     <navigationItem key="navigationItem" id="zTN-IL-2N5">
                         <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title="Retour" id="nSp-Lp-Lji"/>
-                        <button key="titleView" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="QMu-7b-ydN">
+                        <button key="titleView" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="QMu-7b-ydN">
                             <rect key="frame" x="138" y="4" width="99" height="36"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="20"/>
                             <state key="normal" title="Parrainage"/>
                         </button>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="EHF-Ec-K2n">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Smf-x5-8zF">
+                                <rect key="frame" x="326.5" y="11" width="32.5" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="function" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <segue destination="l6T-F2-S5z" kind="show" id="Fa4-CH-5gn"/>
+                                </connections>
+                            </button>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="userSponsorshipCode" destination="Th6-BX-Kss" id="6Fu-H2-mgS"/>
@@ -217,7 +231,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="rKd-A9-5oc">
                         <nil key="title"/>
+                        <barButtonItem key="backBarButtonItem" title="Retour" id="tjK-ax-Er6"/>
                         <button key="titleView" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="22I-kr-t3m">
+                            <rect key="frame" x="138" y="4" width="99" height="36"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="20"/>
                             <state key="normal" title="Parrainage"/>
@@ -229,11 +245,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LCV-tY-fKO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1416.8" y="102.99850074962519"/>
+            <point key="canvasLocation" x="1553" y="-233"/>
+        </scene>
+        <!--User Line Charts Hosting Controller-->
+        <scene sceneID="MmD-Hk-whW">
+            <objects>
+                <hostingController id="l6T-F2-S5z" customClass="I_UserLineChartsHostingController" customModule="NeoConnect" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="WdA-5F-Ut0"/>
+                </hostingController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bc8-Lx-M26" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1553" y="457"/>
         </scene>
     </scenes>
     <resources>
         <image name="InfBackground" width="375" height="667"/>
+        <image name="function" catalog="system" width="128" height="70"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

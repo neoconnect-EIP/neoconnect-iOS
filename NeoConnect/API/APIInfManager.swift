@@ -11,7 +11,8 @@ import Alamofire
 
 class APIInfManager {
     
-    let baseURL = "http://168.63.65.106:8080"
+    let baseURL = "http://146.59.156.45:8080"
+//    let baseURL = "http://168.63.65.106:8080"
     static let headers: HTTPHeaders = [
         "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
         "Content-Type": "application/x-www-form-urlencoded"
@@ -102,13 +103,19 @@ class APIInfManager {
         }
     }
 
-    func getOfferList(onSuccess: @escaping(Array<NSDictionary>) -> Void) {
-        let url : String = baseURL + APIInfManager.getOfferList
+    func getOfferList(param: String = "", filter: String = "", onSuccess: @escaping(Array<NSDictionary>) -> Void) {
+        var url : String = baseURL + APIInfManager.getOfferList
+        if filter.count > 0 {
+            url += "?\(param)=\(filter)"
+        }
         
         AF.request(url, headers: APIInfManager.headers).responseJSON { response in
             switch response.result {
                 case .success(let JSON):
                     guard let response = JSON as? Array<NSDictionary> else { return }
+                    if filter.count > 0 {
+                        print(response)
+                    }
                     onSuccess(response)
                 case .failure(let error):
                     print("Request failed with error: \(error)")

@@ -20,5 +20,69 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "82C8382B-5514-48EF-AB85-BB9515A676B1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NeoConnect/API/APIInfManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "getOfferList(param:filter:onSuccess:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7FC6C50D-240F-4CC1-B62D-034E3BFF4080"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NeoConnect/API/APIInfManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "getOfferList(param:filter:onSuccess:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7FC6C50D-240F-4CC1-B62D-034E3BFF4080 - 2867f55c9a8e5e0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NeoConnect.APIInfManager.getOfferList(param: Swift.String, filter: Swift.String, onSuccess: (Swift.Array&lt;__C.NSDictionary&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "NeoConnect"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yassinetoutouh/Desktop/Mes%20documents/EPITECH/EIP/neoconnect-iOS/NeoConnect/API/APIInfManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "111"
+                  endingLineNumber = "111"
+                  offsetFromSymbolStart = "977">
+               </Location>
+               <Location
+                  uuid = "7FC6C50D-240F-4CC1-B62D-034E3BFF4080 - 5cdd5cde04a4a1a9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any, Alamofire.AFError&gt;) -&gt; () in NeoConnect.APIInfManager.getOfferList(param: Swift.String, filter: Swift.String, onSuccess: (Swift.Array&lt;__C.NSDictionary&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "NeoConnect"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yassinetoutouh/Desktop/Mes%20documents/EPITECH/EIP/neoconnect-iOS/NeoConnect/API/APIInfManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "112"
+                  endingLineNumber = "112"
+                  offsetFromSymbolStart = "210">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

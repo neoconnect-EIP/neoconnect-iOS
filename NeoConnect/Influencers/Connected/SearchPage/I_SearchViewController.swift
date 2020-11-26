@@ -9,13 +9,15 @@
 import UIKit
 import Alamofire
 
-class I_SearchViewController: UIViewController, I_BrandSuggestionTableViewCellDelegate, I_OfferSuggestionTableViewCellDelegate {
-  
+class I_SearchViewController: UIViewController, I_BrandSuggestionTableViewCellDelegate, I_OfferSuggestionTableViewCellDelegate, FiltersViewControllerDelegate {
+
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var sc: UISegmentedControl!
     @IBOutlet weak var offerUnderline: UIImageView!
     @IBOutlet weak var brandUnderline: UIImageView!
     @IBOutlet weak var loader: UIActivityIndicatorView!
+    @IBOutlet weak var filterButton: UIButton!
+    @IBOutlet weak var filterImageView: UIImageView!
     
     private let searchController = UISearchController(searchResultsController: nil)
     
@@ -26,6 +28,7 @@ class I_SearchViewController: UIViewController, I_BrandSuggestionTableViewCellDe
     var offersSuggestion: [I_Offer] = []
     var rowToDisplay: [Any] = []
     var suggestionToDisplay: [Any] = []
+    var filterSelected: String?
     var isSearchBarEmpty: Bool {
       return searchController.searchBar.text?.isEmpty ?? true
     }
@@ -54,12 +57,16 @@ class I_SearchViewController: UIViewController, I_BrandSuggestionTableViewCellDe
     @IBAction func scAction(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
             case 0:
+                self.filterButton.isHidden = true
+                self.filterImageView.isHidden = true
                 self.searchController.searchBar.placeholder = "Rechercher une marque"
                 self.brandUnderline.isHidden = false
                 self.offerUnderline.isHidden = true
                 self.rowToDisplay = self.brands
                 self.suggestionToDisplay = self.brandsSuggestion
             default:
+                self.filterButton.isHidden = false
+                self.filterImageView.isHidden = false
                 self.searchController.searchBar.placeholder = "Rechercher une offre"
                 self.brandUnderline.isHidden = true
                 self.offerUnderline.isHidden = false
@@ -87,8 +94,8 @@ class I_SearchViewController: UIViewController, I_BrandSuggestionTableViewCellDe
         })
     }
     
-    func getOffersFromAPI() {
-        APIInfManager.sharedInstance.getOfferList(onSuccess: { offers in
+    func getOffersFromAPI(param: String = "", filter: String = "") {
+        APIInfManager.sharedInstance.getOfferList(param: param, filter: filter, onSuccess: { offers in
             self.offers = self.getOfferArray(results: offers)
             self.rowToDisplay = self.offers
             self.tableView.reloadData()
@@ -196,15 +203,26 @@ class I_SearchViewController: UIViewController, I_BrandSuggestionTableViewCellDe
         tableView.reloadData()
     }
     
+    func filterSelected(param: String, filter: String) {
+        loader.isHidden = false
+        loader.startAnimating()
+        getOffersFromAPI(param: param, filter: filter)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let shopVC: I_DetailedShopViewController = segue.destination as! I_DetailedShopViewController
-        if segue.identifier == "I_searchBrand" {
-            shopVC.brand = sender as? I_Brand
-        } else if segue.identifier == "I_brandResult" {
-            let row = tableView.indexPathForSelectedRow?.row
-            let brand = self.brands[row!]
-            
-            shopVC.brand = brand
+        if let shopVC = segue.destination as? I_DetailedShopViewController {
+            if segue.identifier == "I_searchBrand" {
+                shopVC.brand = sender as? I_Brand
+            } else if segue.identifier == "I_brandResult" {
+                let row = tableView.indexPathForSelectedRow?.row
+                let brand = self.brands[row!]
+                
+                shopVC.brand = brand
+            }
+        }
+        if segue.identifier == "getFilterSegue" {
+            let filterVC: FiltersViewController = segue.destination as! FiltersViewController
+            filterVC.delegate = self
         }
     }
 }
@@ -215,7 +233,10 @@ extension I_SearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.row == 0 ? 140 : 110
+        if sc.selectedSegmentIndex == 0 {
+            return indexPath.row == 0 ? 160 : 120
+        }
+        return indexPath.row == 0 ? 160 : 140
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
