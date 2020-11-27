@@ -23,6 +23,7 @@ class APIBrandManager {
     static let offerEndPoint = "/offer"
     static let postSearchInfEndpoint = "/inf/search"
     static let getListInf = "/shop/listInf"
+    static let choiceApply = "/offer/choiceApply"
     
     static let sharedInstance = APIBrandManager()
     
@@ -96,6 +97,25 @@ class APIBrandManager {
                 case .success(let JSON):
                     guard let response = JSON as? [String:Any] else { return }
                     onSuccess(response)
+                case .failure(let error):
+                    print("Request failed with error: \(error)")
+            }
+        }
+    }
+    
+    func postOfferChoiceApply(status: Bool, idUser: String, idOffer: String, onSuccess: @escaping() -> Void) {
+        let url : String = baseURL + APIBrandManager.choiceApply
+        let param: [String: Any] = [
+            "idUser": idUser,
+            "idOffer": idOffer,
+            "status": status
+        ]
+        
+        AF.request(url, method: .post, parameters: param, encoding: JSONEncoding.default, headers: APIBrandManager.headers, interceptor: nil).responseJSON { response in
+            
+            switch response.result {
+                case .success(_):
+                    onSuccess()
                 case .failure(let error):
                     print("Request failed with error: \(error)")
             }
