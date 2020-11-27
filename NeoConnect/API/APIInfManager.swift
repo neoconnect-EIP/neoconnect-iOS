@@ -106,7 +106,9 @@ class APIInfManager {
     func getOfferList(param: String = "", filter: String = "", onSuccess: @escaping(Array<NSDictionary>) -> Void) {
         var url : String = baseURL + APIInfManager.getOfferList
         if filter.count > 0 {
-            url += "?\(param)=\(filter)"
+            let allowedCharacterSet = (CharacterSet(charactersIn: "!*'();:@&=+$,/?%#[] ").inverted)
+            let encodedFilter = filter.addingPercentEncoding(withAllowedCharacters: allowedCharacterSet)
+            url += "?\(param)=\(encodedFilter!)"
         }
         
         AF.request(url, headers: APIInfManager.headers).responseJSON { response in

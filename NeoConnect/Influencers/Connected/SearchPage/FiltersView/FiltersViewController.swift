@@ -25,6 +25,6 @@ class FiltersViewController: UIViewController, FiltersTableViewControllerDelegat
     
     func filterSelected(param: String, filter: String) {
         delegate?.filterSelected(param: param, filter: filter)
-        navigationController?.popViewController(animated: true)
+        navigationController?.popToRootViewController(animated: true)
     }
 }

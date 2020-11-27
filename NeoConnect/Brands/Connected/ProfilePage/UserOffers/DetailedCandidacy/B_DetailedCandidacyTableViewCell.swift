@@ -54,29 +54,10 @@ class B_DetailedCandidacyTableViewCell: UITableViewCell {
         guard let idUser = self.idUser else { return }
         guard let idOffer = self.idOffer else { return }
 
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
-            "Content-Type": "application/json"
-        ]
-        let param: [String: Any] = [
-            "idUser": idUser,
-            "idOffer": idOffer,
-            "status": sender.tag == 1 ? true : false
-        ]
-        
-        AF.request("http://168.63.65.106:8080/offer/choiceApply", method: .post, parameters: param, encoding: JSONEncoding.default, headers: headers, interceptor: nil).responseJSON { response in
-            
-            switch response.result {
-                case .success(_):
-                    self.acceptButton.isHidden = true
-                    self.declineButton.isHidden = true
-                    self.acceptedButton.isHidden = false
-                    print(response)
-                    // Inscription réussie
-                case .failure(let error):
-                    print("Request failed with error: \(error)")
-                    // /!\ Inscription ratée
-            }
-        }
+        APIBrandManager.sharedInstance.postOfferChoiceApply(status: sender.tag == 1 ? true : false, idUser: idUser, idOffer: idOffer, onSuccess: {
+            self.acceptButton.isHidden = true
+            self.declineButton.isHidden = true
+            self.acceptedButton.isHidden = false
+        })
     }
 }

@@ -24,9 +24,7 @@ class ThemeFilterViewController: UIViewController, ThemeFilterTableViewControlle
     }
     
     func themeSelected(param: String, filter: String) {
-        if filter != "Mode" || filter != "Cosmétique" {
-            delegate?.themeSelected(param: param, filter: filter)
-            navigationController?.popViewController(animated: true)
-        }
+        delegate?.themeSelected(param: param, filter: filter)
+        navigationController?.popToRootViewController(animated: true)
     }
 }
