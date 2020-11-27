@@ -104,16 +104,20 @@ class APIBrandManager {
     
     func postOfferChoiceApply(status: Bool, idUser: String, idOffer: String, onSuccess: @escaping() -> Void) {
         let url : String = baseURL + APIBrandManager.choiceApply
+        let headers: HTTPHeaders = [
+             "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
+             "Content-Type": "application/json"
+         ]
         let param: [String: Any] = [
             "idUser": idUser,
             "idOffer": idOffer,
-            "status": status
+            "status": status == true ? true : false
         ]
-        
-        AF.request(url, method: .post, parameters: param, encoding: JSONEncoding.default, headers: APIBrandManager.headers, interceptor: nil).responseJSON { response in
+        AF.request(url, method: .post, parameters: param, encoding: JSONEncoding.default, headers: headers, interceptor: nil).responseJSON { response in
             
             switch response.result {
-                case .success(_):
+                case .success(let JSON):
+                    print(JSON as! String)
                     onSuccess()
                 case .failure(let error):
                     print("Request failed with error: \(error)")
