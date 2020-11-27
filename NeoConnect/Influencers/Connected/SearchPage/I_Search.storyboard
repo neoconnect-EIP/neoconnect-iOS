@@ -1128,14 +1128,24 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qyh-Np-4wv">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
+                                                    <connections>
+                                                        <action selector="offerTapped:" destination="sN8-yf-Sbm" eventType="touchUpInside" id="NiH-bI-xpQ"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="QHf-vl-01e" firstAttribute="leading" secondItem="5HG-Pg-KKr" secondAttribute="leading" constant="30" id="4yu-xD-Xd5"/>
                                                 <constraint firstItem="QHf-vl-01e" firstAttribute="centerY" secondItem="5HG-Pg-KKr" secondAttribute="centerY" id="A4z-v4-nEH"/>
+                                                <constraint firstItem="Qyh-Np-4wv" firstAttribute="top" secondItem="5HG-Pg-KKr" secondAttribute="top" id="EEY-wX-5tj"/>
                                                 <constraint firstItem="qmF-Sb-Yd7" firstAttribute="top" secondItem="QHf-vl-01e" secondAttribute="top" id="IFl-cw-KcJ"/>
                                                 <constraint firstItem="8Wn-DG-5Ro" firstAttribute="centerX" secondItem="qmF-Sb-Yd7" secondAttribute="centerX" id="Kdi-sp-T6A"/>
+                                                <constraint firstAttribute="bottom" secondItem="Qyh-Np-4wv" secondAttribute="bottom" id="QGJ-NQ-teZ"/>
+                                                <constraint firstItem="Qyh-Np-4wv" firstAttribute="leading" secondItem="5HG-Pg-KKr" secondAttribute="leading" id="R3s-zJ-Jn5"/>
                                                 <constraint firstItem="8Wn-DG-5Ro" firstAttribute="top" secondItem="qmF-Sb-Yd7" secondAttribute="bottom" constant="15" id="eh3-Ti-NML"/>
                                                 <constraint firstItem="qmF-Sb-Yd7" firstAttribute="leading" secondItem="QHf-vl-01e" secondAttribute="trailing" constant="20" id="oey-ar-BHZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="Qyh-Np-4wv" secondAttribute="trailing" id="sEQ-OD-q4s"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1436,17 +1446,6 @@
             <point key="canvasLocation" x="1732" y="1795.9520239880062"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="Xdk-cD-DMf">
-            <size key="intrinsicContentSize" width="150" height="26"/>
-        </designable>
-        <designable name="ZGb-Kb-sVm">
-            <size key="intrinsicContentSize" width="100" height="16"/>
-        </designable>
-        <designable name="jyX-HT-WhW">
-            <size key="intrinsicContentSize" width="100" height="16"/>
-        </designable>
-    </designables>
     <inferredMetricsTieBreakers>
         <segue reference="xNK-JU-ZJ8"/>
     </inferredMetricsTieBreakers>

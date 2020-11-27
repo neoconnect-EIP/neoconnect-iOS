@@ -238,7 +238,7 @@ class I_SearchViewController: UIViewController, I_BrandSuggestionTableViewCellDe
             shopVC.brand = sender as? I_Brand
         } else if segue.identifier == "I_brandResult" {
             let row = tableView.indexPathForSelectedRow?.row
-            let brand = self.brands[row!]
+            let brand = self.brands[row! - 1]
             
             shopVC.brand = brand
         }

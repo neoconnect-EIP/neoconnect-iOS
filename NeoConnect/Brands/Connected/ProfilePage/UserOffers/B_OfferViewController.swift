@@ -29,7 +29,7 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
     var sexData = ["Unisexe", "Homme", "Femme"]
     var pickerView = UIPickerView()
     var subjectSelected = "Sujet"
-    var sexSelected = "Unisexe"
+    var sexSelected = "Sexe"
     var imagePicker:UIImagePickerController!
     var offer: B_Offer!
 

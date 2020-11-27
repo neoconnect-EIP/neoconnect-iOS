@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SwiftUI
 
-class I_ShopOffersViewController: UIViewController {
+class I_ShopOffersViewController: UIViewController, I_OfferTableViewCellDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var loader: UIActivityIndicatorView!
@@ -69,6 +70,13 @@ class I_ShopOffersViewController: UIViewController {
         }
         return tempOffers
     }
+    
+    func offerTapped(offer: I_Offer) {
+        let rateView = DetailOffer2(selectedOffer: offer, date: "")
+        let host = UIHostingController(rootView: rateView)
+        
+        navigationController?.pushViewController(host, animated: true)
+    }
 }
 
 extension I_ShopOffersViewController: UITableViewDelegate, UITableViewDataSource {
@@ -84,6 +92,7 @@ extension I_ShopOffersViewController: UITableViewDelegate, UITableViewDataSource
         let offer = offers[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "I_OfferTableViewCell") as! I_OfferTableViewCell
         
+        cell.delegate = self
         cell.setOffer(offer: offer)
         
         return cell
