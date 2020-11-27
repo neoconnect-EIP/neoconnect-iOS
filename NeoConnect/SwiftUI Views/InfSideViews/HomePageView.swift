@@ -542,29 +542,6 @@ struct DetailOffer: View {
                             }
                         }
                     }
-                    //                    HStack {
-                    //                        Text("Sexe:").foregroundColor(Color.white).font(.custom("Raleway", size: 16))
-                    //                        if selectedOffer.productSex == "Male" || selectedOffer.productSex == "Homme"
-                    //                        {
-                    //                            Image("circlefill")
-                    //                        }
-                    //                        else
-                    //                        {
-                    //                            Image("circle")
-                    //
-                    //                        }
-                    //                        Text("Homme").foregroundColor(Color.white).font(.custom("Raleway", size: 14))
-                    //                        if selectedOffer.productSex == "Female" || selectedOffer.productSex == "Femme"
-                    //                        {
-                    //                            Image("circlefill")
-                    //                        }
-                    //                        else
-                    //                        {
-                    //                            Image("circle")
-                    //
-                    //                        }
-                    //                        Text("Femme").foregroundColor(Color.white).font(.custom("Raleway", size: 14))
-                    //                    }
                     
                     Text(String(selectedOffer.productDesc ?? "Pas de description")).foregroundColor(Color.white).font(.custom("Raleway", size: 12)).padding(.vertical)
                     
@@ -637,7 +614,7 @@ struct DetailOffer: View {
                                 })
     }
     func shareOffer(){ // Partage d'une offre
-        
+        DispatchQueue.main.async {
         let alertController = UIAlertController(title: "Partager une offre", message: "Veuillez indiquer l'adresse mail de l'utilisateur", preferredStyle: .alert)
         
         alertController.addTextField { (textField : UITextField!) -> Void in
@@ -665,11 +642,12 @@ struct DetailOffer: View {
         alertController.addAction(cancelAction)
         
         UIApplication.shared.windows.first?.rootViewController?.present(alertController, animated: true, completion: nil)
-        
+        }
         
     }
     func reportOffer() { // Signalement d'une offre
-        
+        DispatchQueue.main.async {
+
         let alertController = UIAlertController(title: "Signaler une offre", message: "Veuillez indiquer le motif de votre signalement", preferredStyle: .alert)
         
         alertController.addTextField { (textField : UITextField!) -> Void in
@@ -702,6 +680,6 @@ struct DetailOffer: View {
         
         UIApplication.shared.windows.first?.rootViewController?.present(alertController, animated: true, completion: nil)
         
-        
+    }
     }
 }

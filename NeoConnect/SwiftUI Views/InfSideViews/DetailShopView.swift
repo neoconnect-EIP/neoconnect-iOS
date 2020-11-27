@@ -290,12 +290,12 @@ struct DetailShopView: View {
                             Text("Noter").foregroundColor(Color.white).font(.custom("Raleway", size: 12))
                         }
                     }
-                    NavigationLink(destination: ContactUserShopSideView(emailUser: emailUser)) {
+                    NavigationLink(destination: ContactUserView(emailUser: emailUser)) {
                         ZStack
                             {
                                 Image("login").foregroundColor(Color(hex: "445173"))
                                 
-                                Text("Contacter par mail").foregroundColor(Color.white).font(.custom("Raleway", size: 12))
+                                Text("Mail").foregroundColor(Color.white).font(.custom("Raleway", size: 12))
                         }                      }
                     Button(action: { self.sendMessage()})
                     {
@@ -303,7 +303,7 @@ struct DetailShopView: View {
                         {
                             Image("login").foregroundColor(Color(hex: "445173"))
                             
-                            Text("Contacter").foregroundColor(Color.white).font(.custom("Raleway", size: 12))
+                            Text("Message").foregroundColor(Color.white).font(.custom("Raleway", size: 12))
                         }
                     }
                     
@@ -324,7 +324,8 @@ struct DetailShopView: View {
                                 })
     }
     func reportUser(){ // Signalement d'une marque
-        
+        DispatchQueue.main.async {
+
         let alertController = UIAlertController(title: "Signaler une marque", message: "Veuillez indiquer le motif de votre signalement", preferredStyle: .alert)
         
         alertController.addTextField { (textField : UITextField!) -> Void in
@@ -357,11 +358,12 @@ struct DetailShopView: View {
         
         UIApplication.shared.windows.first?.rootViewController?.present(alertController, animated: true, completion: nil)
         
-        
+        }
     }
     
     func sendMessage(){ // Envoi d'un message à une marque
-        
+        DispatchQueue.main.async {
+
         let alertController = UIAlertController(title: "Envoyer un message", message: "Veuillez indiquer votre message à envoyer", preferredStyle: .alert)
         
         alertController.addTextField { (textField : UITextField!) -> Void in
@@ -393,7 +395,7 @@ struct DetailShopView: View {
         
         UIApplication.shared.windows.first?.rootViewController?.present(alertController, animated: true, completion: nil)
         
-        
+        }
     }
 }
 struct DetailShopView_Previews: PreviewProvider {

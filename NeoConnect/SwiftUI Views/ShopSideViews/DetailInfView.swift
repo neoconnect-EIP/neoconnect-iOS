@@ -427,7 +427,7 @@ struct DetailInfView: View {
                 }
                 HStack{
                     Text(String(selectedInf.theme ?? "Pas de thème renseigné")).fontWeight(.medium).foregroundColor(Color.white).font(.custom("Raleway", size: 18)).padding(.trailing, 100.0)
-                    Text(String(selectedInf.average ?? 0)).foregroundColor(Color.white).font(.custom("Raleway", size: 18)).padding(.vertical)
+                    Text(String(selectedInf.average?.rounded() ?? 0)).foregroundColor(Color.white).font(.custom("Raleway", size: 18)).padding(.vertical)
                     Image("Etoile")
                     
                     
@@ -448,7 +448,7 @@ struct DetailInfView: View {
                             {
                                 Image("login").foregroundColor(Color(hex: "445173"))
                                 
-                                Text("Contacter par mail").foregroundColor(Color.white).font(.custom("Raleway", size: 12))
+                                Text("Mail").foregroundColor(Color.white).font(.custom("Raleway", size: 12))
                         }                      }
                     Button(action: { self.sendMessage()})
                     {
@@ -456,7 +456,7 @@ struct DetailInfView: View {
                         {
                             Image("login").foregroundColor(Color(hex: "445173"))
                             
-                            Text("Contacter par message").foregroundColor(Color.white).font(.custom("Raleway", size: 12))
+                            Text("Message").foregroundColor(Color.white).font(.custom("Raleway", size: 12))
                         }
                     }
                     
@@ -477,7 +477,8 @@ struct DetailInfView: View {
             })
     }
 func reportUser() { // Signalement d'un influenceur
-        
+    DispatchQueue.main.async {
+
         let alertController = UIAlertController(title: "Signaler un influenceur", message: "Veuillez indiquer le motif de votre signalement", preferredStyle: .alert)
         
         alertController.addTextField { (textField : UITextField!) -> Void in
@@ -509,11 +510,12 @@ func reportUser() { // Signalement d'un influenceur
         alertController.addAction(cancelAction)
         
         UIApplication.shared.windows.first?.rootViewController?.present(alertController, animated: true, completion: nil)
-        
+    }
         
     }
     func sendMessage(){ // Envoi d'un message à un Influenceur
-        
+        DispatchQueue.main.async {
+
         let alertController = UIAlertController(title: "Envoyer un message", message: "Veuillez indiquer votre message à envoyer", preferredStyle: .alert)
         
         alertController.addTextField { (textField : UITextField!) -> Void in
@@ -545,7 +547,7 @@ func reportUser() { // Signalement d'un influenceur
         
         UIApplication.shared.windows.first?.rootViewController?.present(alertController, animated: true, completion: nil)
         
-        
+        }
     }
 }
 struct DetailInfView_Previews: PreviewProvider {
