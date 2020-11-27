@@ -20,8 +20,8 @@ class APIManager {
         let password: String
     }
     
-    let baseURL = "http://146.59.156.45:8080"
-//    let baseURL = "http://168.63.65.106:8080"
+//    let baseURL = "http://146.59.156.45:8080"
+    let baseURL = "http://168.63.65.106:8080"
     static let headers: HTTPHeaders = [
         "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
         "Content-Type": "application/x-www-form-urlencoded"

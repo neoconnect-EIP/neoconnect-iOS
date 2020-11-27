@@ -150,7 +150,8 @@ struct DetailMyOfferInfSideView: View {
                                 })
     }
     func shareOffer(){ // Partage d'une offre
-        
+        DispatchQueue.main.async {
+
         let alertController = UIAlertController(title: "Partager une offre", message: "Veuillez indiquer l'adresse mail de l'utilisateur", preferredStyle: .alert)
         
         alertController.addTextField { (textField : UITextField!) -> Void in
@@ -178,12 +179,13 @@ struct DetailMyOfferInfSideView: View {
         alertController.addAction(cancelAction)
         
         UIApplication.shared.windows.first?.rootViewController?.present(alertController, animated: true, completion: nil)
-        
+        }
         
     }
     
     func reportOffer(){ // Signalement d'une offre
-        
+        DispatchQueue.main.async {
+
         let alertController = UIAlertController(title: "Signaler une offre", message: "Veuillez indiquer le motif de votre signalement", preferredStyle: .alert)
         
         alertController.addTextField { (textField : UITextField!) -> Void in
@@ -218,7 +220,7 @@ struct DetailMyOfferInfSideView: View {
         
         
     }
-    
+    }
 }
 
 extension View {
