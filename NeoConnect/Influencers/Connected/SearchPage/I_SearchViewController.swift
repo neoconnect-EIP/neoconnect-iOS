@@ -55,6 +55,18 @@ class I_SearchViewController: UIViewController, I_BrandSuggestionTableViewCellDe
         searchController.searchBar.sizeToFit()
     }
     
+    @IBAction func refreshButton(_ sender: Any) {
+        loader.isHidden = false
+        loader.startAnimating()
+        if sc.selectedSegmentIndex == 0 {
+            getBrandsFromAPI()
+            getBrandSuggestionsFromAPI()
+        } else {
+            getOffersFromAPI()
+            getOfferSuggestionsFromAPI()
+        }
+    }
+    
     @IBAction func scAction(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
             case 0:
@@ -190,7 +202,6 @@ class I_SearchViewController: UIViewController, I_BrandSuggestionTableViewCellDe
     func brandSuggestionTapped(brand: I_Brand) {
         performSegue(withIdentifier: "I_searchBrand", sender: brand)
     }
-    
 
     func offerSuggestionTapped(offer: I_Offer) {
         let rateView = DetailOffer2(selectedOffer: offer, date: "")
