@@ -13,6 +13,13 @@ import Alamofire
 import Combine
 import KingfisherSwiftUI
 
+class DetailOfferHostingController: UIHostingController<DetailOffer2> {
+    var selectedOffer : I_Offer!
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder, rootView: DetailOffer2(selectedOffer: selectedOffer, date: ""))
+    }
+}
+
 struct DetailOffer2: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var showingAlert = false
