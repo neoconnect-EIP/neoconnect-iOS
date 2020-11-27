@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import StatusAlert
 
 class UpdatePasswordViewController: UIViewController {
 
@@ -25,53 +26,41 @@ class UpdatePasswordViewController: UIViewController {
         sender.isValidField(sender: sender, field: "password")
     }
     
+    func showError(_ message: String) {
+        DispatchQueue.main.async {
+            let alertView = UIAlertController(title: "Erreur", message: message, preferredStyle: .alert)
+            alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
+            self.present(alertView, animated: true, completion: nil)
+        }
+    }
+    
     @IBAction func validateButtonTapped(_ sender: Any) {
         let tempCode = tempCodeTextField.text!
         let userPassword = userPasswordTextField.text!
         let repeatPassword = repeatPasswordTextField.text!
         
         if (tempCode.isEmpty || userPassword.isEmpty || repeatPassword.isEmpty) {
-            DispatchQueue.main.async {
-                let alertView = UIAlertController(title: "Erreur", message: "Veuillez remplir tout les champs", preferredStyle: .alert)
-                alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
-                self.present(alertView, animated: true, completion: nil)
-            }
-            return
-        }
-        // /!\ Check for password Field
-        if (restriction.isValidPassword(userPassword) == false) {
-            DispatchQueue.main.async {
-                let alertView = UIAlertController(title: "Erreur", message: "Le mot de passe nécessite au moins 8 caractères dont : 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère", preferredStyle: .alert)
-                alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
-                self.present(alertView, animated: true, completion: nil)
-            }
-            return
-        }
-        // /!\ Check if password match together
-        if (userPassword != repeatPassword) {
-            DispatchQueue.main.async {
-                let alertView = UIAlertController(title: "Erreur", message: "Les mots de passe ne correspondent pas", preferredStyle: .alert)
-                alertView.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
-                self.present(alertView, animated: true, completion: nil)
-            }
-            return
-        }
-        else {
-            APIManager.sharedInstance.updatePassword(email: email, tempCode: tempCode, userPassword: userPassword, onSuccess: {
-                DispatchQueue.main.async {
-                    let alertView = UIAlertController(title: "Parfait !", message: "Votre mot de passe a été modifié avec succès!", preferredStyle: .alert)
-                    alertView.addAction(UIAlertAction(title: "Continuer", style: .cancel) { action in self.dismiss(animated: true, completion: nil)
-                        let controller = self.navigationController?.viewControllers[0] // it is at index 1. index start from 0, 1 .. N
-                        self.navigationController?.popToViewController(controller!, animated: true)
-                    })
-                    self.present(alertView, animated: true, completion: nil)
+            showError("Veuillez remplir tout les champs")
+        } else if (restriction.isValidPassword(userPassword) == false) {
+            showError("Le mot de passe nécessite au moins 8 caractères dont : 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère")
+        } else if (userPassword != repeatPassword) {
+            showError("Les mots de passe ne correspondent pas")
+        } else {
+            APIManager.sharedInstance.updatePassword(email: email, tempCode: tempCode, userPassword: userPassword, onSuccess: { message in
+                print(message)
+                if message == "Your password has been updated" {
+                    let statusAlert = StatusAlert()
+                    statusAlert.image = UIImage(named: "Success icon.png")
+                    statusAlert.title = "Connexion réussie!"
+                    statusAlert.message = "Vous vous êtes connecté avec succès"
+                    statusAlert.alertShowingDuration = 1
+                    statusAlert.showInKeyWindow()
+                    self.navigationController?.popToRootViewController(animated: true)
+                } else if message == "Bad request, your reset token doesn't exist" {
+                    self.showError("Une erreur est survenue")
                 }
             }, onFailure: {
-                DispatchQueue.main.async {
-                    let alertView = UIAlertController(title: "Erreur!", message: "Le code temporaire renseigné semble être invalide. Veuillez réessayer", preferredStyle: .alert)
-                    alertView.addAction(UIAlertAction(title: "Ok", style: .cancel))
-                    self.present(alertView, animated: true, completion: nil)
-                }
+                self.showError("Le code temporaire renseigné semble être invalide. Veuillez réessayer")
             })
         }
     }
