@@ -121,20 +121,20 @@ class B_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDel
         loader.isHidden = false
         loader.startAnimating()
         APIManager.sharedInstance.checkUserField(fieldToCheck: "facebook", userField: userFacebook, onSuccess: { response in
-            if response {
+            if response && !self.restriction.isMinThreeChar(userFacebook) {
                 self.showError("Le facebook renseigné a déjà été utilisé")
             } else {
                 APIManager.sharedInstance.checkUserField(fieldToCheck: "twitter", userField: userTwitter, onSuccess: { response in
-                    if response {
-                        self.showError("L'email renseigné a déjà été utilisé")
+                    if response && !self.restriction.isMinThreeChar(userTwitter) {
+                        self.showError("Le twitter renseigné a déjà été utilisé")
                     } else {
                         APIManager.sharedInstance.checkUserField(fieldToCheck: "instagram", userField: userInstagram, onSuccess: { response in
-                            if response {
-                                self.showError("L'email renseigné a déjà été utilisé")
+                            if response && !self.restriction.isMinThreeChar(userInstagram) {
+                                self.showError("L'instagram renseigné a déjà été utilisé")
                             } else {
                                 APIManager.sharedInstance.checkUserField(fieldToCheck: "snapchat", userField: userSnapchat, onSuccess: { response in
-                                    if response {
-                                        self.showError("L'email renseigné a déjà été utilisé")
+                                    if response && !self.restriction.isMinThreeChar(userSnapchat) {
+                                        self.showError("Le snapchat renseigné a déjà été utilisé")
                                     } else {
                                         APIBrandManager.sharedInstance.register_Shop(pseudo: self.userPseudo, password: self.userPassword, name: self.userName, email: self.userEmail, website: userWebsite, phoneNumber: self.userPhoneNumber, zipCode: self.userZipCode, city: self.userCity, userPicture: self.userImage, description: self.userDescription, subject: userSubject, facebook: userFacebook, snapchat: userSnapchat, twitter: userTwitter, instagram: userInstagram, onSuccess: {
                                                                                         DispatchQueue.main.async {

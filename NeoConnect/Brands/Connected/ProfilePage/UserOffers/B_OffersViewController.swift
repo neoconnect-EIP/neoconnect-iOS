@@ -43,6 +43,7 @@ class B_OffersViewController: UIViewController {
             }
             self.tableView.reloadData()
             self.loader.stopAnimating()
+            self.loader.isHidden = true
         })
     }
     

@@ -20,7 +20,6 @@ class APIManager {
         let password: String
     }
     
-//    let baseURL = "http://146.59.156.45:8080"
     let baseURL = "http://168.63.65.106:8080"
     static let headers: HTTPHeaders = [
         "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
@@ -213,14 +212,10 @@ class APIManager {
                    headers: APIManager.headers).responseJSON { response in
                     switch response.result {
                         case .success(let JSON):
-                            print("SUCCESS")
                             onSuccess(JSON)
                         case .failure(let error):
-                            print("FAILURE")
                             print("Request failed with error: \(error)")
                     }
                    }
-
     }
-
 }

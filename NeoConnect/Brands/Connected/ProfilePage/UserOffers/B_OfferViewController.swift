@@ -39,6 +39,9 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
         subjectSelected = offer.subject
         subjectPickerViewButton.setTitle(offer.subject, for: .normal)
         sexPickerViewButton.setTitle(offer.sex, for: .normal)
+        if offer.sex == "Sexe" {
+            self.sexPickerViewButton.setTitleColor(UIColor.lightGray, for: .normal)
+        }
         for (index, image) in offer.images.enumerated() {
             switch index {
                 case 0:

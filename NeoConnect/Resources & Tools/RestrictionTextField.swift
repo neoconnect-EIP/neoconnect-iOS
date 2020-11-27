@@ -42,6 +42,9 @@ class RestrictionTextField {
     }
     
     func isValidPhoneNumber(_ phonenumber: String) -> Bool {
+        if (phonenumber.count == 0) {
+            return true
+        }
         let phoneRegEx = "^((\\+)33|0)[1-9](\\d{2}){4}$"
 
         let phonePred = NSPredicate(format:"SELF MATCHES %@", phoneRegEx)

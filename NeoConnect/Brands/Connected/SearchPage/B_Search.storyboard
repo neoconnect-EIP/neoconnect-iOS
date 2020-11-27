@@ -530,17 +530,6 @@
             <point key="canvasLocation" x="2270" y="96"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="2Ro-73-bhZ">
-            <size key="intrinsicContentSize" width="150" height="26"/>
-        </designable>
-        <designable name="BwH-6S-zl0">
-            <size key="intrinsicContentSize" width="100" height="16"/>
-        </designable>
-        <designable name="KR6-4V-v9b">
-            <size key="intrinsicContentSize" width="100" height="16"/>
-        </designable>
-    </designables>
     <inferredMetricsTieBreakers>
         <segue reference="PIb-yS-v8D"/>
     </inferredMetricsTieBreakers>

@@ -7,9 +7,9 @@
 //
 
 import UIKit
+import Combine
 import SwiftUI
 import SwiftUICharts
-import Macaw
 
 class I_UserLineChartsHostingController: UIHostingController<I_UserLineCharts> {
     required init?(coder aDecoder: NSCoder) {
@@ -17,9 +17,101 @@ class I_UserLineChartsHostingController: UIHostingController<I_UserLineCharts> {
     }
 }
 
-struct I_UserLineCharts: View {
-    @State var data: [Double] = [100,23,54,32,12,37,7,23,43]
+struct Social: Decodable {
+    var id: Int
+    var social: String
+    var value: [Double]
+    var date: [String]
     
+    init(id: Int, social: String, value: [Double], date: [String]) {
+        self.id = id
+        self.social = social
+        self.value = value
+        self.date = date
+    }
+}
+
+struct SocialList: Decodable {
+  var results: [Social]
+}
+
+class NetworkManager: ObservableObject {
+    var objectWillChange = PassthroughSubject<NetworkManager, Never>()
+    var socials = SocialList(results: []){
+        didSet {
+            objectWillChange.send(self)
+        }
+      }
+    
+    init() {
+        getDataFromAPI()
+        print(socials)
+    }
+    
+    private func getDataFromAPI() {
+        APIInfManager.sharedInstance.getInfo(onSuccess: { response in
+            DispatchQueue.main.async {
+                self.socials = self.createArray(social: response)
+            }
+        })
+    }
+    
+    private func createArray(social: [String:Any]) -> SocialList {
+        var socials = SocialList(results: [])
+        
+        if let twitchNb = social["twitchNb"] as? [Double] {
+            let twitch = social["twitch"] as? String ?? ""
+            var twitchValues: [Double] = []
+            var twitchDate: [String] = []
+            if let twitchUpdateDate = social["twitchUpdateDate"] as? [String] {
+                for date in twitchUpdateDate {
+                    twitchDate.append(date)
+                }
+            }
+            for value in twitchNb {
+                twitchValues.append(value)
+            }
+            socials.results.append(Social(id: 0, social: twitch, value: twitchValues, date: twitchDate))
+            print(socials)
+        }
+        if let twitterNb = social["twitterNb"] as? [Double] {
+            let twitter = social["twitter"] as? String ?? ""
+            var twitterValues: [Double] = []
+            var twitterDate: [String] = []
+            if let twitterUpdateDate = social["twitterUpdateDate"] as? [String] {
+                for date in twitterUpdateDate {
+                    twitterDate.append(date)
+                }
+            }
+            for value in twitterNb {
+                twitterValues.append(value)
+            }
+            socials.results.append(Social(id: 1, social: twitter, value: twitterValues, date: twitterDate))
+        }
+        if let tiktokNb = social["tiktokNb"] as? [Double] {
+            let tiktok = social["tiktok"] as? String ?? ""
+            var tiktokValues: [Double] = []
+            var tiktokDate: [String] = []
+            if let tiktokUpdateDate = social["tiktokUpdateDate"] as? [String] {
+                for date in tiktokUpdateDate {
+                    tiktokDate.append(date)
+                }
+            }
+            for value in tiktokNb {
+                tiktokValues.append(value)
+            }
+            socials.results.append(Social(id: 2, social: tiktok, value: tiktokValues, date: tiktokDate))
+        }
+        
+        return socials
+    }
+}
+
+struct I_UserLineCharts: View {
+    @State var values: [Double]!
+    @State var date: [String]!
+    @ObservedObject var networkManager = NetworkManager()
+
     var body: some View {
         ZStack {
             Image("InfBackground")
@@ -27,75 +119,28 @@ struct I_UserLineCharts: View {
                 .edgesIgnoringSafeArea(.all)
             VStack {
                 HStack {
-                    Button(action: {
-                        data = [100,23,54,32,12,37,7,23,43]
-                    }) {
-                        ZStack() {
-                            Image("login")
-                                .foregroundColor(Color(hex: "445173"))
-                            Text("Pinterest")
-                                .foregroundColor(Color.white)
-                                .font(.custom("Raleway", size: 12))
-                        }
-                    }
-                    Button(action: {
-                        data = [12,113,454,192,12,37,7,23,43]
-                    }) {
-                        ZStack() {
-                            Image("login")
-                                .foregroundColor(Color(hex: "445173"))
-                            Text("Instagram")
-                                .foregroundColor(Color.white)
-                                .font(.custom("Raleway", size: 12))
-                        }
-                    }
-                    Button(action: {
-                        data = [2,13,4554,192,32,137,7,23,43]
-                    }) {
-                        ZStack() {
-                            Image("login")
-                                .foregroundColor(Color(hex: "445173"))
-                            Text("Youtube")
-                                .foregroundColor(Color.white)
-                                .font(.custom("Raleway", size: 12))
-                        }
-                    }
-                }
-                HStack {
-                    Button(action: {
-                    }) {
-                        ZStack() {
-                            Image("login")
-                                .foregroundColor(Color(hex: "445173"))
-                            Text("Twitter")
-                                .foregroundColor(Color.white)
-                                .font(.custom("Raleway", size: 12))
-                        }
-                    }
-                    Button(action: {
-                    }) {
-                        ZStack() {
-                            Image("login")
-                                .foregroundColor(Color(hex: "445173"))
-                            Text("Twitch")
-                                .foregroundColor(Color.white)
-                                .font(.custom("Raleway", size: 12))
-                        }
-                    }
-                    Button(action: {
-                    }) {
-                        ZStack() {
-                            Image("login")
-                                .foregroundColor(Color(hex: "445173"))
-                            Text("Tikto")
-                                .foregroundColor(Color.white)
-                                .font(.custom("Raleway", size: 12))
+                    ForEach(networkManager.socials.results, id: \.id) { social in
+                        if social.value.count > 0 {
+                            Button(action: {
+                                values = social.value
+                                date = social.date
+                            }) {
+                                ZStack() {
+                                    Image("login")
+                                        .foregroundColor(Color(hex: "445173"))
+                                    Text(social.social)
+                                        .foregroundColor(Color.white)
+                                        .font(.custom("Raleway", size: 12))
+                                }
+                            }
                         }
                     }
                 }
                 Spacer()
-                LineView(data: data, valueSpecifier: "Followers")
-                    .padding()
+                if values != nil {
+                    LineView(data: values)
+                        .padding()
+                }
             }
         }
     }
