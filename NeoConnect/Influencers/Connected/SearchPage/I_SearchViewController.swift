@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftUI
 
-class I_SearchViewController: UIViewController, I_BrandSuggestionTableViewCellDelegate, I_OfferSuggestionTableViewCellDelegate, FiltersViewControllerDelegate {
+class I_SearchViewController: UIViewController, I_BrandSuggestionTableViewCellDelegate, I_OfferSuggestionTableViewCellDelegate, FiltersViewControllerDelegate, I_OfferTableViewCellDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var sc: UISegmentedControl!
@@ -191,21 +191,12 @@ class I_SearchViewController: UIViewController, I_BrandSuggestionTableViewCellDe
         performSegue(withIdentifier: "I_searchBrand", sender: brand)
     }
     
-    class DetailOfferHostingController: UIHostingController<DetailOffer2> {
-        var offer : I_Offer?
-        required init?(coder aDecoder: NSCoder) {
-            super.init(coder: aDecoder, rootView: DetailOffer2(selectedOffer: self.offer!, date: ""))
-        }
-    }
-    
+
     func offerSuggestionTapped(offer: I_Offer) {
-//        performSegue(withIdentifier: "I_searchOffer", sender: offer)
-        
         let rateView = DetailOffer2(selectedOffer: offer, date: "")
-            
-            let host = UIHostingController(rootView: rateView)
-            navigationController?.pushViewController(host, animated: true)
+        let host = UIHostingController(rootView: rateView)
         
+        navigationController?.pushViewController(host, animated: true)
     }
     
     func filterContentForSearchText(_ searchText: String) {
@@ -222,6 +213,13 @@ class I_SearchViewController: UIViewController, I_BrandSuggestionTableViewCellDe
         loader.startAnimating()
         getOffersFromAPI(param: param, filter: filter)
     }
+
+    func offerTapped(offer: I_Offer) {
+        let rateView = DetailOffer2(selectedOffer: offer, date: "")
+        let host = UIHostingController(rootView: rateView)
+        
+        navigationController?.pushViewController(host, animated: true)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let shopVC: I_DetailedShopViewController = segue.destination as? I_DetailedShopViewController {
@@ -236,12 +234,6 @@ class I_SearchViewController: UIViewController, I_BrandSuggestionTableViewCellDe
        } else if segue.identifier == "getFilterSegue" {
             let filterVC: FiltersViewController = segue.destination as! FiltersViewController
             filterVC.delegate = self
-        } else if segue.identifier == "DetailOfferHostingController" {
-            let offerVC: DetailOfferHostingController = segue.destination as! DetailOfferHostingController
-            let row = tableView.indexPathForSelectedRow?.row
-            let offer = self.offers[row!]
-          
-            offerVC.offer = offer
         }
     }
 }
@@ -249,6 +241,10 @@ class I_SearchViewController: UIViewController, I_BrandSuggestionTableViewCellDe
 extension I_SearchViewController: UITableViewDataSource, UITableViewDelegate {
     var isFiltering: Bool {
       return searchController.isActive && !isSearchBarEmpty
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -301,16 +297,13 @@ extension I_SearchViewController: UITableViewDataSource, UITableViewDelegate {
                 }
                 let offerCell = tableView.dequeueReusableCell(withIdentifier: "I_OfferTableViewCell") as! I_OfferTableViewCell
                 
+                offerCell.delegate = self
                 offerCell.setOffer(offer: row as! I_Offer)
                 
                 cell = offerCell
             }
         }
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

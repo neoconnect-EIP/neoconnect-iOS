@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rd8-vY-fRE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rd8-vY-fRE">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -331,9 +331,20 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="48g-oa-dQh">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
+                                                    <connections>
+                                                        <action selector="offerTapped:" destination="5rn-M3-msx" eventType="touchUpInside" id="gPd-h7-9am"/>
+                                                        <action selector="offerTapped:" destination="nB0-Xa-oE6" eventType="touchUpInside" id="x6v-tB-PZ7"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="48g-oa-dQh" secondAttribute="bottom" id="31k-Az-hdo"/>
+                                                <constraint firstAttribute="trailing" secondItem="48g-oa-dQh" secondAttribute="trailing" id="3Rn-0R-SzG"/>
+                                                <constraint firstItem="48g-oa-dQh" firstAttribute="top" secondItem="PTC-Ee-hBh" secondAttribute="top" id="5GL-Hn-6qU"/>
                                                 <constraint firstItem="EHU-iz-BpR" firstAttribute="top" secondItem="zIm-yw-2Qm" secondAttribute="top" id="BaI-l3-6D8"/>
+                                                <constraint firstItem="48g-oa-dQh" firstAttribute="leading" secondItem="PTC-Ee-hBh" secondAttribute="leading" id="BwD-13-nqL"/>
                                                 <constraint firstItem="pNu-u7-rgW" firstAttribute="top" secondItem="EHU-iz-BpR" secondAttribute="bottom" constant="15" id="D4L-a4-Daw"/>
                                                 <constraint firstItem="zIm-yw-2Qm" firstAttribute="centerY" secondItem="PTC-Ee-hBh" secondAttribute="centerY" id="WyT-fD-Xnz"/>
                                                 <constraint firstItem="EHU-iz-BpR" firstAttribute="leading" secondItem="zIm-yw-2Qm" secondAttribute="trailing" constant="20" id="q2q-h8-94i"/>
@@ -420,6 +431,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wlq-9r-aCn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="5rn-M3-msx" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="933.60000000000002" y="-11.244377811094454"/>
         </scene>
@@ -865,12 +877,12 @@
         <!--Detail Offer Hosting Controller-->
         <scene sceneID="TjQ-P8-OTq">
             <objects>
-                <hostingController id="zfs-GB-ARc" customClass="DetailOfferHostingController" sceneMemberID="viewController">
+                <hostingController id="zfs-GB-ARc" customClass="DetailOfferHostingController" customModule="NeoConnect" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="CZB-O5-kJR"/>
                 </hostingController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="By2-4s-gfF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="934" y="-699"/>
+            <point key="canvasLocation" x="1694" y="-699"/>
         </scene>
         <!--Shop Stats View Controller-->
         <scene sceneID="p1f-PJ-p6D">
