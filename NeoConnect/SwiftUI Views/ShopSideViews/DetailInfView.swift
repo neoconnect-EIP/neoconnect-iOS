@@ -427,7 +427,7 @@ struct DetailInfView: View {
                 }
                 HStack{
                     Text(String(selectedInf.theme ?? "Pas de thème renseigné")).fontWeight(.medium).foregroundColor(Color.white).font(.custom("Raleway", size: 18)).padding(.trailing, 100.0)
-                    Text(String(selectedInf.average ?? 0)).foregroundColor(Color.white).font(.custom("Raleway", size: 18)).padding(.vertical)
+                    Text(String(selectedInf.average?.rounded() ?? 0)).foregroundColor(Color.white).font(.custom("Raleway", size: 18)).padding(.vertical)
                     Image("Etoile")
                     
                     
