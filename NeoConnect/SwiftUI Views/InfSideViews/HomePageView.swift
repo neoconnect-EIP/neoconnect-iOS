@@ -482,14 +482,14 @@ struct DetailOffer: View {
             
             VStack(alignment: .center, spacing: 20.0) {
                 HStack{
-                    Button(action: { self.shareOffer()})
+                    Button(action: { self.shareOffer(offer: selectedOffer)})
                     {
                         Image(systemName: "square.and.arrow.up")
                             
                             .padding(.leading, 270.0)
                             .foregroundColor(/*@START_MENU_TOKEN@*/.white/*@END_MENU_TOKEN@*/)
                     }.padding(.horizontal)
-                    Button(action: { self.reportOffer()})
+                    Button(action: { self.reportOffer(offer: selectedOffer)})
                     {
                         Image(systemName: "flag")
                             
@@ -501,7 +501,7 @@ struct DetailOffer: View {
                         .clipShape(Circle()).clipped().shadow(radius: 3)
                     
                 }
-                if (selectedOffer.productImg!.count > 2) {
+                else if (selectedOffer.productImg!.count > 2) {
                     ScrollView(.horizontal,showsIndicators: false){
                         HStack{
                             ForEach(selectedOffer.productImg!, id: \.self) { img in
@@ -511,7 +511,7 @@ struct DetailOffer: View {
                         }
                     }.padding()
                 }
-                if (selectedOffer.productImg!.count == 2) {
+                else if (selectedOffer.productImg!.count == 2) {
                     HStack{
                         KFImage(URL(string:selectedOffer.productImg![0].imageData ?? " ")).renderingMode(.original).resizable().frame(width: 100, height: 100)
                             .clipShape(Circle()).clipped().shadow(radius: 3)
@@ -533,13 +533,9 @@ struct DetailOffer: View {
                         if (selectedOffer.productSubject == "Cosmétique" || selectedOffer.productSubject == "Mode")
                         {
                             Text("Sexe:").foregroundColor(Color.white).font(.custom("Raleway", size: 14))
-                            if (selectedOffer.productSex!.isEmpty)
-                            {
-                                Text("Unisexe").foregroundColor(Color.white).font(.custom("Raleway", size: 14))
-                            }
-                            else{
+               
                                 Text(selectedOffer.productSex ?? "Unisexe").foregroundColor(Color.white).font(.custom("Raleway", size: 14))
-                            }
+
                         }
                     }
                     
@@ -613,73 +609,12 @@ struct DetailOffer: View {
                                     }
                                 })
     }
-    func shareOffer(){ // Partage d'une offre
-        DispatchQueue.main.async {
-        let alertController = UIAlertController(title: "Partager une offre", message: "Veuillez indiquer l'adresse mail de l'utilisateur", preferredStyle: .alert)
-        
-        alertController.addTextField { (textField : UITextField!) -> Void in
-            textField.placeholder = "Email"
-        }
-        let saveAction = UIAlertAction(title: "Envoyer", style: .default, handler: { alert -> Void in
-            let _headers: HTTPHeaders = [
-                "Authorization": "Bearer " + accessToken
-            ]
-            let email = alertController.textFields![0].text
-            let map = ["email": email!]
-            AF.request(url+"offer/share/" + String(self.selectedOffer.id),
-                       method: .post,
-                       parameters: map as Parameters,
-                       encoding: URLEncoding.default,headers: _headers).response { response in
-                        debugPrint(response)
-                       }
-            
-            
-        })
-        
-        let cancelAction = UIAlertAction(title: "Annuler", style: .default, handler: nil )
-        
-        alertController.addAction(saveAction)
-        alertController.addAction(cancelAction)
-        
-        UIApplication.shared.windows.first?.rootViewController?.present(alertController, animated: true, completion: nil)
-        }
+    func shareOffer(offer: Offer2){ // Partage d'une offre
+        alertViewShare(offer:offer)
         
     }
-    func reportOffer() { // Signalement d'une offre
-        DispatchQueue.main.async {
-
-        let alertController = UIAlertController(title: "Signaler une offre", message: "Veuillez indiquer le motif de votre signalement", preferredStyle: .alert)
-        
-        alertController.addTextField { (textField : UITextField!) -> Void in
-            textField.placeholder = "Motif"
-        }
-        let saveAction = UIAlertAction(title: "Envoyer", style: .default, handler: { alert -> Void in
-            let _headers: HTTPHeaders = [
-                "Authorization": "Bearer " + accessToken
-            ]
-            let motif = alertController.textFields![0].text!
-            
-            let map = [ "offerName" : selectedOffer.productName!,
-                        "message": motif,
-                        "subject": "Offre"]
-            AF.request(url+"offer/report/" + String(selectedOffer.id),
-                       method: .post,
-                       parameters: map as Parameters,
-                       encoding: URLEncoding.default,headers: _headers).response { response in
-                        debugPrint(response)
-                       }
-            
-            
-            
-        })
-        
-        let cancelAction = UIAlertAction(title: "Annuler", style: .default, handler: nil )
-        
-        alertController.addAction(saveAction)
-        alertController.addAction(cancelAction)
-        
-        UIApplication.shared.windows.first?.rootViewController?.present(alertController, animated: true, completion: nil)
-        
-    }
+    func reportOffer(offer: Offer2) { // Signalement d'une offre
+        alertViewReport(offer:offer)
     }
 }
+

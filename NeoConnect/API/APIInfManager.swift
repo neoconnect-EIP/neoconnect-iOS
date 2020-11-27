@@ -13,7 +13,8 @@ class APIInfManager {
     
     let baseURL = "http://168.63.65.106:8080"
     static let headers: HTTPHeaders = [
-        "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!,
+        "Authorization": "Bearer " + (UserDefaults.standard.string(forKey: "Token")
+            ?? ""),
         "Content-Type": "application/x-www-form-urlencoded"
     ]
     static let getRegisterInfEndpoint = "/inf/register"

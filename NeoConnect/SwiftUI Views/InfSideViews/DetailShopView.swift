@@ -324,112 +324,67 @@ struct DetailShopView: View {
                                 })
     }
     func reportUser(){ // Signalement d'une marque
-        DispatchQueue.main.async {
-
-        let alertController = UIAlertController(title: "Signaler une marque", message: "Veuillez indiquer le motif de votre signalement", preferredStyle: .alert)
-        
-        alertController.addTextField { (textField : UITextField!) -> Void in
-            textField.placeholder = "Motif"
-        }
-        let saveAction = UIAlertAction(title: "Envoyer", style: .default, handler: { alert -> Void in
-            let _headers: HTTPHeaders = [
-                "Authorization": "Bearer " + accessToken
-            ]
-            let motif = alertController.textFields![0].text!
-            
+           let alert = UIAlertController(title: "Signaler une marque", message: "Veuillez indiquer le motif de votre signalement", preferredStyle: .alert)
+           alert.addTextField { (textField) in
+               textField.placeholder = "Motif"
+           }
+           let saveAction = UIAlertAction(title: "Envoyer", style: .default, handler: { [weak alert] (_) in
+                        let _headers: HTTPHeaders = [
+                            "Authorization": "Bearer " + accessToken
+                        ]
+               let motif = alert?.textFields![0].text
+               
             let map = [ "pseudo" : selectedShop.pseudo!,
-                        "subject": "Marque",
-                        "message": motif]
-            AF.request(url+"user/report/" + String(selectedShop.id),
-                       method: .post,
-                       parameters: map as Parameters,
-                       encoding: URLEncoding.default,headers: _headers).response { response in
-                        debugPrint(response)
-                       }
-            
-            
-            
-        })
+                                   "subject": "Marque",
+                                   "message": motif!]
+               AF.request(url+"offer/report/" + String(selectedShop.id),
+                          method: .post,
+                          parameters: map as Parameters,
+                          encoding: URLEncoding.default,headers: _headers).response { response in
+                           debugPrint(response)
+                          }
         
-        let cancelAction = UIAlertAction(title: "Annuler", style: .default, handler: nil )
+                    })
         
-        alertController.addAction(saveAction)
-        alertController.addAction(cancelAction)
+                    let cancelAction = UIAlertAction(title: "Annuler", style: .default, handler: nil )
         
-        UIApplication.shared.windows.first?.rootViewController?.present(alertController, animated: true, completion: nil)
-        
-        }
+                    alert.addAction(saveAction)
+                    alert.addAction(cancelAction)
+           showAlert(alert: alert)
     }
     
     func sendMessage(){ // Envoi d'un message à une marque
-        DispatchQueue.main.async {
-
-        let alertController = UIAlertController(title: "Envoyer un message", message: "Veuillez indiquer votre message à envoyer", preferredStyle: .alert)
-        
-        alertController.addTextField { (textField : UITextField!) -> Void in
+        let alert = UIAlertController(title: "Envoyer un message", message: "Veuillez indiquer votre message à envoyer", preferredStyle: .alert)
+        alert.addTextField { (textField) in
             textField.placeholder = "Message"
         }
-        let saveAction = UIAlertAction(title: "Envoyer", style: .default, handler: { alert -> Void in
-            let _headers: HTTPHeaders = [
-                "Authorization": "Bearer " + accessToken
-            ]
-            let message = alertController.textFields![0].text!
+        let saveAction = UIAlertAction(title: "Envoyer", style: .default, handler: { [weak alert] (_) in
+                     let _headers: HTTPHeaders = [
+                         "Authorization": "Bearer " + accessToken
+                     ]
+            let message = alert?.textFields![0].text
             
             let map = [ "userId" : selectedShop.id,
-                        "message": message] as [String : Any]
-            AF.request(url+"message",
-                       method: .post,
-                       parameters: map as Parameters,
-                       encoding: URLEncoding.default,headers: _headers).response { response in
-                        debugPrint(response)
-                       }
-            
-            
-            
-        })
-        
-        let cancelAction = UIAlertAction(title: "Annuler", style: .default, handler: nil )
-        
-        alertController.addAction(saveAction)
-        alertController.addAction(cancelAction)
-        
-        UIApplication.shared.windows.first?.rootViewController?.present(alertController, animated: true, completion: nil)
-        
-        }
-    }
+                                   "message": message!] as [String : Any]
+                       AF.request(url+"message",
+                                  method: .post,
+                                  parameters: map as Parameters,
+                                  encoding: URLEncoding.default,headers: _headers).response { response in
+                                   debugPrint(response)
+                                  }
+                 })
+     
+                 let cancelAction = UIAlertAction(title: "Annuler", style: .default, handler: nil )
+     
+                 alert.addAction(saveAction)
+                 alert.addAction(cancelAction)
+        showAlert(alert: alert)
 }
+}
+
 struct DetailShopView_Previews: PreviewProvider {
     static var previews: some View {
         let shop : Shop2 = Shop2()
         return DetailShopView(selectedShop: shop, emailUser: "test", userId: 2)
     }
 }
-
-//
-//struct I_ChatViewControllerWrapper: UIViewControllerRepresentable {
-//    var user_id : Int
-//    var pseudo : String
-//    var image: UIImage
-//    typealias UIViewControllerType = I_DetailedChatViewController
-//
-//    func makeUIViewController(context: UIViewControllerRepresentableContext<I_ChatViewControllerWrapper>) -> I_ChatViewControllerWrapper.UIViewControllerType {
-//
-//        let mainStoryboard: UIStoryboard = UIStoryboard(name: "I_Chat", bundle: nil)
-//        let mainViewController: I_DetailedChatViewController = mainStoryboard.instantiateViewController(withIdentifier: "MessageViewInf") as! I_DetailedChatViewController
-//        mainViewController.shop = Shop(id: UserDefaults.standard.integer(forKey: "id"), user_id: user_id, pseudo: pseudo, image: image)
-//        return mainViewController
-//
-//    }
-//
-//    func updateUIViewController(_ uiViewController: I_ChatViewControllerWrapper.UIViewControllerType, context: UIViewControllerRepresentableContext<I_ChatViewControllerWrapper>) {
-//
-//    }
-//}
-//
-////                    NavigationLink(destination: I_ChatViewControllerWrapper(user_id: selectedShop.id, pseudo: selectedShop.pseudo ?? "Pseudo", image: #imageLiteral(resourceName: "avatar-placeholder"))) {
-////                        ZStack
-////                            {
-////                                Image("login").foregroundColor(Color(hex: "445173"))
-////
-////                                Text("Contacter").foregroundColor(Color.white).font(.custom("Raleway", size: 12))
-////                        }                      }
