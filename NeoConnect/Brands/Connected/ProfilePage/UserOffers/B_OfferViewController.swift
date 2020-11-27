@@ -214,8 +214,8 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
         return subjectPickerLabel!
     }
     
-    private func initPickerFrame(tag: Int) -> UIAlertController {
-        let alert = UIAlertController(title: "Choisissez votre sexe", message: "\n\n\n\n\n\n", preferredStyle: .alert)
+    private func initPickerFrame(tag: Int, _ message: String) -> UIAlertController {
+        let alert = UIAlertController(title: message, message: "\n\n\n\n\n\n", preferredStyle: .alert)
         let pickerFrame = UIPickerView(frame: CGRect(x: 5, y: 20, width: 250, height: 140))
         pickerFrame.tag = tag
         alert.view.tintColor = UIColor(red: 135/255, green: 185/255, blue: 124/255, alpha: 1.0)
@@ -227,11 +227,13 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @IBAction func sexViewButtonTapped(_ sender: Any) {
-        let alert = initPickerFrame(tag: 1)
-        
-        self.sexSelected = "Unisexe"
+        let alert = initPickerFrame(tag: 1, "Choisissez votre sexe")
+
         alert.addAction(UIAlertAction(title: "Fermer", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Valider", style: .default, handler: { (UIAlertAction) in
+            if self.sexSelected == "Sexe" {
+                self.sexSelected = "Unisexe"
+            }
             self.sexPickerViewButton.setTitle(self.sexSelected, for: .normal)
             print("You selected " + self.sexSelected)
         }))
@@ -239,11 +241,13 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @IBAction func subjectViewButtonTapped(_ sender: Any) {
-        let alert = initPickerFrame(tag: 0)
-        
-        self.subjectSelected = "Mode"
+        let alert = initPickerFrame(tag: 0, "Choisissez une sujet")
+
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Valider", style: .default, handler: { (UIAlertAction) in
+            if self.subjectSelected == "Sujet" {
+                self.subjectSelected = "Mode"
+            }
             if (self.subjectSelected == "Cosmétique" || self.subjectSelected == "Mode") {
                 self.sexPickerViewButton.isUserInteractionEnabled = true
                 self.sexPickerViewButton.setTitleColor(UIColor.white, for: .normal)
