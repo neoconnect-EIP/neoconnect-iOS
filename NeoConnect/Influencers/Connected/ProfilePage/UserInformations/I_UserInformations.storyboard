@@ -110,7 +110,7 @@
                                                         </constraints>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="RalewayItalic-ExtraBold" family="Raleway" pointSize="12"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                         <connections>
                                                             <action selector="isValidField:" destination="VLe-V4-hpH" eventType="editingDidEnd" id="EJa-SV-kjh"/>
                                                         </connections>
@@ -153,7 +153,7 @@
                                                         </constraints>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="RalewayItalic-ExtraBold" family="Raleway" pointSize="12"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                         <connections>
                                                             <action selector="isValidField:" destination="VLe-V4-hpH" eventType="editingDidEnd" id="leu-nw-NMd"/>
                                                         </connections>
@@ -166,7 +166,7 @@
                                                         </constraints>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="RalewayItalic-ExtraBold" family="Raleway" pointSize="12"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                         <connections>
                                                             <action selector="isValidField:" destination="VLe-V4-hpH" eventType="editingDidEnd" id="ene-k6-94U"/>
                                                         </connections>
@@ -222,7 +222,7 @@
                                                         </constraints>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="RalewayItalic-ExtraBold" family="Raleway" pointSize="12"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                         <connections>
                                                             <action selector="isValidField:" destination="VLe-V4-hpH" eventType="editingDidEnd" id="zv1-Q0-7KW"/>
                                                         </connections>
@@ -235,7 +235,7 @@
                                                         </constraints>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="RalewayItalic-ExtraBold" family="Raleway" pointSize="12"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                         <connections>
                                                             <action selector="isValidField:" destination="VLe-V4-hpH" eventType="editingDidEnd" id="xvw-p2-EhG"/>
                                                         </connections>
@@ -248,7 +248,7 @@
                                                         </constraints>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="RalewayItalic-ExtraBold" family="Raleway" pointSize="12"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                         <connections>
                                                             <action selector="isValidField:" destination="VLe-V4-hpH" eventType="editingDidEnd" id="68c-CV-Pbg"/>
                                                         </connections>
@@ -261,7 +261,7 @@
                                                         </constraints>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="RalewayItalic-ExtraBold" family="Raleway" pointSize="12"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                         <connections>
                                                             <action selector="isValidField:" destination="VLe-V4-hpH" eventType="editingDidEnd" id="zeB-JV-Vez"/>
                                                         </connections>
@@ -274,7 +274,7 @@
                                                         </constraints>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="RalewayItalic-ExtraBold" family="Raleway" pointSize="12"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                         <connections>
                                                             <action selector="isValidField:" destination="VLe-V4-hpH" eventType="editingDidEnd" id="YnJ-V0-a8M"/>
                                                         </connections>
@@ -287,7 +287,7 @@
                                                         </constraints>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="RalewayItalic-ExtraBold" family="Raleway" pointSize="12"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                         <connections>
                                                             <action selector="isValidField:" destination="VLe-V4-hpH" eventType="editingDidEnd" id="5Z5-Cv-TmM"/>
                                                         </connections>
@@ -300,7 +300,7 @@
                                                         </constraints>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="RalewayItalic-ExtraBold" family="Raleway" pointSize="12"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                         <connections>
                                                             <action selector="isValidField:" destination="VLe-V4-hpH" eventType="editingDidEnd" id="Gn1-f7-fOE"/>
                                                         </connections>
@@ -313,7 +313,7 @@
                                                         </constraints>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="RalewayItalic-ExtraBold" family="Raleway" pointSize="12"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                         <connections>
                                                             <action selector="isValidField:" destination="VLe-V4-hpH" eventType="editingDidEnd" id="h41-11-peN"/>
                                                         </connections>
