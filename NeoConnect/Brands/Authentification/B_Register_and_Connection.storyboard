@@ -257,13 +257,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZVR-YX-wIg">
-                                <rect key="frame" x="55.5" y="203.5" width="264" height="339"/>
+                                <rect key="frame" x="61.5" y="203.5" width="252.5" height="339"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="bnu-vC-p5U">
-                                        <rect key="frame" x="0.0" y="0.0" width="264" height="339"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="252.5" height="339"/>
                                         <subviews>
-                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uxh-Fb-XTL" customClass="PhotoFieldButton" customModule="NeoConnect" customModuleProvider="target">
-                                                <rect key="frame" x="72" y="0.0" width="120" height="120"/>
+                                            <button opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uxh-Fb-XTL" customClass="PhotoFieldButton" customModule="NeoConnect" customModuleProvider="target">
+                                                <rect key="frame" x="66" y="0.0" width="120" height="120"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="120" id="BrG-pk-qX4"/>
                                                     <constraint firstAttribute="width" secondItem="uxh-Fb-XTL" secondAttribute="height" multiplier="1:1" id="xNK-Ch-7Pr"/>
@@ -274,13 +274,13 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Et présentez vous en quelque mots" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gnO-ID-z2x">
-                                                <rect key="frame" x="0.0" y="135" width="264" height="19"/>
+                                                <rect key="frame" x="0.0" y="135" width="252.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Bkl-WX-wT3" customClass="RegisterTextView" customModule="NeoConnect" customModuleProvider="target">
-                                                <rect key="frame" x="12" y="169" width="240" height="170"/>
+                                                <rect key="frame" x="6" y="169" width="240" height="170"/>
                                                 <color key="backgroundColor" red="0.73853902279999994" green="0.73853902279999994" blue="0.73853902279999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="170" id="ixZ-Bz-rel"/>

@@ -37,6 +37,7 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
         nameTextField.text = offer.title
         descTextView.text = offer.description
         subjectSelected = offer.subject
+        sexSelected = offer.sex
         subjectPickerViewButton.setTitle(offer.subject, for: .normal)
         sexPickerViewButton.setTitle(offer.sex, for: .normal)
         if offer.sex == "Sexe" {
@@ -69,7 +70,7 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @IBAction func firstImageTapped(_ sender: UIButton) {
-        flag = 1
+        flag = 0
         let image = UIImagePickerController()
         image.delegate = self
         
@@ -80,7 +81,7 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @IBAction func secondImageTapped(_ sender: UIButton) {
-        flag = 2
+        flag = 1
         let image = UIImagePickerController()
         image.delegate = self
         
@@ -91,7 +92,7 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @IBAction func thirdImageTapped(_ sender: UIButton) {
-        flag = 3
+        flag = 2
         let image = UIImagePickerController()
         image.delegate = self
         
@@ -102,7 +103,7 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @IBAction func forthImageTapped(_ sender: UIButton) {
-        flag = 4
+        flag = 3
         let image = UIImagePickerController()
         image.delegate = self
         
@@ -113,7 +114,7 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @IBAction func fifthImageTapped(_ sender: UIButton) {
-        flag = 5
+        flag = 4
         let image = UIImagePickerController()
         image.delegate = self
         
@@ -126,18 +127,22 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             switch flag {
-                case 1:
+                case 0:
                     firstImage.setImage(pickedImage, for: UIControl.State.normal)
-                case 2:
+                case 1:
                     secondImage.setImage(pickedImage, for: UIControl.State.normal)
-                case 3:
+                case 2:
                     thirdImage.setImage(pickedImage, for: UIControl.State.normal)
-                case 4:
+                case 3:
                     forthImage.setImage(pickedImage, for: UIControl.State.normal)
                 default:
                     fifthImage.setImage(pickedImage, for: UIControl.State.normal)
             }
-            self.imageArrayToSend.append(pickedImage)
+            if imageArrayToSend.indices.contains(flag) {
+                self.imageArrayToSend[flag] = pickedImage
+            } else {
+                self.imageArrayToSend.append(pickedImage)
+            }
         }
         dismiss(animated: true, completion: nil)
     }
@@ -298,35 +303,35 @@ class B_OfferViewController: UIViewController, UIImagePickerControllerDelegate, 
         if (editItem.tag == 0) {
             editItem.tag = 1
             toggleInteractions(UIImage(systemName: "checkmark")!, true)
-        }
-        else {
-            if (1 ... 4 ~= desc.count) {
-                showError("La description semble trop courte")
-            } else if (name.isEmpty || subject == "Sujet" || imageArrayToSend.count == 0) {
-                showError("Tous les champs doivent être complétés")
-            } else if (subject == "Mode" || subject == "Cosmétique") {
-                if (sex == "Sexe") {
-                    showError("Veuillez préciser le sexe de l'annonce")
-                }
-            } else {
-                var imageArray: Array<String> = []
-                
-                for image in imageArrayToSend {
-                    imageArray.append(image.toBase64() ?? "")
-                }
-                APIBrandManager.sharedInstance.editOffer(id: offer.id, name: name, description: desc, subject: subject, sex: sex, imageArray: imageArray, onSuccess: {
-                    let statusAlert = StatusAlert()
-                    statusAlert.alertShowingDuration = 1
-                    statusAlert.image = UIImage(named: "Success icon.png")
-                    statusAlert.title = "Offre ajoutée !"
-                    statusAlert.message = "Votre offre à été ajouté avec succès"
-                    statusAlert.showInKeyWindow()
-                    self.editItem.tag = 0
-                    self.toggleInteractions(UIImage(systemName: "pencil")!, true)
-                }, onFailure: {
-                    self.showError("Une erreur est survenue")
-                })
+            return
+        } else if (1 ... 4 ~= desc.count) {
+            showError("La description semble trop courte")
+            return
+        } else if (name.isEmpty || subject == "Sujet" || imageArrayToSend.count == 0) {
+            showError("Tous les champs doivent être complétés")
+            return
+        } else if (subject == "Mode" || subject == "Cosmétique") {
+            if (sex == "Sexe") {
+                showError("Veuillez préciser le sexe de l'annonce")
+                return
             }
         }
+        var imageArray: Array<String> = []
+        
+        for image in imageArrayToSend {
+            imageArray.append(image.toBase64() ?? "")
+        }
+        APIBrandManager.sharedInstance.editOffer(id: offer.id, name: name, description: desc, subject: subject, sex: sex, imageArray: imageArray, onSuccess: {
+            let statusAlert = StatusAlert()
+            statusAlert.alertShowingDuration = 1
+            statusAlert.image = UIImage(named: "Success icon.png")
+            statusAlert.title = "Offre ajoutée !"
+            statusAlert.message = "Votre offre à été ajouté avec succès"
+            statusAlert.showInKeyWindow()
+            self.editItem.tag = 0
+            self.toggleInteractions(UIImage(systemName: "pencil")!, true)
+        }, onFailure: {
+            self.showError("Une erreur est survenue")
+        })
     }
 }
