@@ -97,11 +97,13 @@ class B_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDel
         alert.view.addSubview(pickerFrame)
         pickerFrame.dataSource = self
         pickerFrame.delegate = self
-        typeValue = "Mode"
 
         alert.addAction(UIAlertAction(title: "Fermer", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Valider", style: .default, handler: { (UIAlertAction) in
             
+            if self.typeValue == "Choisissez un thème..." {
+                self.typeValue = "Mode"
+            }
             self.pickerViewButton.setTitle(self.typeValue, for: .normal)
             print("You selected " + self.typeValue )
             

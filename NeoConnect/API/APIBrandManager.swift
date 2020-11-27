@@ -38,7 +38,7 @@ class APIBrandManager {
             "phone": phoneNumber,
             "postal": zipCode,
             "city": city,
-            "UserDescription": description,
+            "userDescription": description,
             "userPicture": userPicture,
             "theme": subject,
             "facebook": facebook,
@@ -158,8 +158,9 @@ class APIBrandManager {
     }
     
     func deleteOffer(id: String, onSuccess: @escaping() -> Void) {
-        let url : String = baseURL + APIBrandManager.offerEndPoint + String(id)
+        let url : String = baseURL + APIBrandManager.offerEndPoint + "/\(String(id))"
         
+        print(id)
         AF.request(url, method: .delete, encoding: URLEncoding.default, headers: APIBrandManager.headers, interceptor: nil).responseJSON { response in
             switch response.result {
                 case .success(_):

@@ -42,7 +42,7 @@ class APIInfManager {
             "phone": phoneNumber,
             "postal": zipCode,
             "city": city,
-            "UserDescription": description,
+            "userDescription": description,
             "userPicture": userPicture,
             "theme": subject,
             "facebook": facebook,
