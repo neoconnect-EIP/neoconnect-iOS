@@ -477,78 +477,62 @@ struct DetailInfView: View {
             })
     }
 func reportUser() { // Signalement d'un influenceur
-    DispatchQueue.main.async {
-
-        let alertController = UIAlertController(title: "Signaler un influenceur", message: "Veuillez indiquer le motif de votre signalement", preferredStyle: .alert)
-        
-        alertController.addTextField { (textField : UITextField!) -> Void in
-            textField.placeholder = "Motif"
-        }
-        let saveAction = UIAlertAction(title: "Envoyer", style: .default, handler: { alert -> Void in
-            let _headers: HTTPHeaders = [
-                "Authorization": "Bearer " + accessToken
-            ]
-            let motif = alertController.textFields![0].text!
-            
-            let map = [ "pseudo" : selectedInf.pseudo!,
-                        "subject": "Influenceur",
-                        "message": motif]
-            AF.request(url+"user/report/" + String(selectedInf.id),
-                       method: .post,
-                       parameters: map as Parameters,
-                       encoding: URLEncoding.default,headers: _headers).response { response in
-                        debugPrint(response)
-                       }
-            
-            
-            
-        })
-        
-        let cancelAction = UIAlertAction(title: "Annuler", style: .default, handler: nil )
-        
-        alertController.addAction(saveAction)
-        alertController.addAction(cancelAction)
-        
-        UIApplication.shared.windows.first?.rootViewController?.present(alertController, animated: true, completion: nil)
+    let alert = UIAlertController(title: "Signaler un influenceur", message: "Veuillez indiquer le motif de votre signalement", preferredStyle: .alert)
+    alert.addTextField { (textField) in
+        textField.placeholder = "Motif"
     }
+    let saveAction = UIAlertAction(title: "Envoyer", style: .default, handler: { [weak alert] (_) in
+                 let _headers: HTTPHeaders = [
+                     "Authorization": "Bearer " + accessToken
+                 ]
+        let motif = alert?.textFields![0].text
+        
+     let map = [ "pseudo" : selectedInf.pseudo!,
+                            "subject": "Influenceur",
+                            "message": motif!]
+        AF.request(url+"offer/report/" + String(selectedInf.id),
+                   method: .post,
+                   parameters: map as Parameters,
+                   encoding: URLEncoding.default,headers: _headers).response { response in
+                    debugPrint(response)
+                   }
+ 
+             })
+ 
+             let cancelAction = UIAlertAction(title: "Annuler", style: .default, handler: nil )
+ 
+             alert.addAction(saveAction)
+             alert.addAction(cancelAction)
+    showAlert(alert: alert)
         
     }
     func sendMessage(){ // Envoi d'un message à un Influenceur
-        DispatchQueue.main.async {
-
-        let alertController = UIAlertController(title: "Envoyer un message", message: "Veuillez indiquer votre message à envoyer", preferredStyle: .alert)
-        
-        alertController.addTextField { (textField : UITextField!) -> Void in
+        let alert = UIAlertController(title: "Envoyer un message", message: "Veuillez indiquer votre message à envoyer", preferredStyle: .alert)
+        alert.addTextField { (textField) in
             textField.placeholder = "Message"
         }
-        let saveAction = UIAlertAction(title: "Envoyer", style: .default, handler: { alert -> Void in
-            let _headers: HTTPHeaders = [
-                "Authorization": "Bearer " + accessToken
-            ]
-            let message = alertController.textFields![0].text!
+        let saveAction = UIAlertAction(title: "Envoyer", style: .default, handler: { [weak alert] (_) in
+                     let _headers: HTTPHeaders = [
+                         "Authorization": "Bearer " + accessToken
+                     ]
+            let message = alert?.textFields![0].text
             
             let map = [ "userId" : selectedInf.id,
-                        "message": message] as [String : Any]
-            AF.request(url+"message",
-                       method: .post,
-                       parameters: map as Parameters,
-                       encoding: URLEncoding.default,headers: _headers).response { response in
-                        debugPrint(response)
-                       }
-            
-            
-            
-        })
-        
-        let cancelAction = UIAlertAction(title: "Annuler", style: .default, handler: nil )
-        
-        alertController.addAction(saveAction)
-        alertController.addAction(cancelAction)
-        
-        UIApplication.shared.windows.first?.rootViewController?.present(alertController, animated: true, completion: nil)
-        
-        }
-    }
+                                   "message": message!] as [String : Any]
+                       AF.request(url+"message",
+                                  method: .post,
+                                  parameters: map as Parameters,
+                                  encoding: URLEncoding.default,headers: _headers).response { response in
+                                   debugPrint(response)
+                                  }
+                 })
+     
+                 let cancelAction = UIAlertAction(title: "Annuler", style: .default, handler: nil )
+     
+                 alert.addAction(saveAction)
+                 alert.addAction(cancelAction)
+        showAlert(alert: alert)
+}
 }
 struct DetailInfView_Previews: PreviewProvider {
     static var previews: some View {
