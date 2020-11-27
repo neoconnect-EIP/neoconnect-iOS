@@ -129,7 +129,7 @@
                                     <constraint firstAttribute="width" constant="110" id="pJl-yb-9Bq"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="RalewayItalic-ExtraBold" family="Raleway" pointSize="12"/>
-                                <state key="normal" title="Sujet*"/>
+                                <state key="normal" title="Sujet"/>
                                 <connections>
                                     <action selector="subjectViewButtonTapped:" destination="KYC-ne-pui" eventType="touchUpInside" id="cRc-GS-7ci"/>
                                 </connections>

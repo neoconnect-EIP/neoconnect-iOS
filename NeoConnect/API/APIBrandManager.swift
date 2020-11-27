@@ -186,7 +186,7 @@ class APIBrandManager {
             productImgArray.append(productImg)
         }
         let param = productImgArray.joined(separator: "&")
-        let parameters = "productName=\(name)&productDesc=\(description)&productSubject=\(subject)&brand=\(brand)&\(param)"
+        let parameters = "productName=\(name)&productDesc=\(description)&productSubject=\(subject)&brand=\(brand)&productSex=\(sex)&\(param)"
         let postData =  parameters.data(using: .utf8)
 
         request.addValue("Bearer \(UserDefaults.standard.string(forKey: "Token")!)", forHTTPHeaderField: "Authorization")
@@ -224,7 +224,7 @@ class APIBrandManager {
             productImgArray.append(productImg)
         }
         let param = productImgArray.joined(separator: "&")
-        let parameters = "productName=\(name)&productDesc=\(description)&productSubject=\(subject)&\(param)"
+        let parameters = "productName=\(name)&productDesc=\(description)&productSubject=\(subject)&productSex=\(sex)&\(param)"
         let postData =  parameters.data(using: .utf8)
 
         request.addValue("Bearer \(UserDefaults.standard.string(forKey: "Token")!)", forHTTPHeaderField: "Authorization")
