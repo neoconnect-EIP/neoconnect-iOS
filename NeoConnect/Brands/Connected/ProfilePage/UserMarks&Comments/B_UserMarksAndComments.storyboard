@@ -198,14 +198,6 @@
             <point key="canvasLocation" x="1946" y="132"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="4Tu-IL-rtz">
-            <size key="intrinsicContentSize" width="150" height="26"/>
-        </designable>
-        <designable name="8Cv-XC-YTE">
-            <size key="intrinsicContentSize" width="100" height="16"/>
-        </designable>
-    </designables>
     <resources>
         <image name="Etoile" width="26" height="26"/>
         <image name="Etoile grise" width="26" height="26"/>

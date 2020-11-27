@@ -127,36 +127,36 @@ class I_RegisterPage_Step_Four_ViewController: UIViewController, UIPickerViewDel
         loader.isHidden = false
         loader.startAnimating()
         APIManager.sharedInstance.checkUserField(fieldToCheck: "facebook", userField: userFacebook, onSuccess: { response in
-            if response {
-                self.showError("Le facebook renseigné a déjà été utilisé")
+            if response && !self.restriction.isMinThreeChar(userFacebook) {
+                self.showError("Le compte facebook renseigné a déjà été utilisé")
             } else {
                 APIManager.sharedInstance.checkUserField(fieldToCheck: "twitter", userField: userTwitter, onSuccess: { response in
-                    if response {
-                        self.showError("L'email renseigné a déjà été utilisé")
+                    if response && !self.restriction.isMinThreeChar(userTwitter) {
+                        self.showError("Le compte twitter renseigné a déjà été utilisé")
                     } else {
                         APIManager.sharedInstance.checkUserField(fieldToCheck: "instagram", userField: userInstagram, onSuccess: { response in
-                            if response {
-                                self.showError("L'email renseigné a déjà été utilisé")
+                            if response && !self.restriction.isMinThreeChar(userInstagram) {
+                                self.showError("Le compte instagram renseigné a déjà été utilisé")
                             } else {
                                 APIManager.sharedInstance.checkUserField(fieldToCheck: "snapchat", userField: userSnapchat, onSuccess: { response in
-                                    if response {
-                                        self.showError("L'email renseigné a déjà été utilisé")
+                                    if response && !self.restriction.isMinThreeChar(userSnapchat) {
+                                        self.showError("Le compte snapchat renseigné a déjà été utilisé")
                                     } else {
                                         APIManager.sharedInstance.checkUserField(fieldToCheck: "youtube", userField: userYoutube, onSuccess: { response in
-                                            if response {
-                                                self.showError("L'email renseigné a déjà été utilisé")
+                                            if response && !self.restriction.isMinThreeChar(userYoutube) {
+                                                self.showError("Le compte youtube renseigné a déjà été utilisé")
                                             } else {
                                                 APIManager.sharedInstance.checkUserField(fieldToCheck: "twitch", userField: userTwitch, onSuccess: { response in
-                                                    if response {
-                                                        self.showError("L'email renseigné a déjà été utilisé")
+                                                    if response && !self.restriction.isMinThreeChar(userTwitch) {
+                                                        self.showError("Le compte twitch renseigné a déjà été utilisé")
                                                     } else {
                                                         APIManager.sharedInstance.checkUserField(fieldToCheck: "pinterest", userField: userPinterest, onSuccess: { response in
-                                                            if response {
-                                                                self.showError("L'email renseigné a déjà été utilisé")
+                                                            if response && !self.restriction.isMinThreeChar(userPinterest) {
+                                                                self.showError("Le compte pinterest renseigné a déjà été utilisé")
                                                             } else {
                                                                 APIManager.sharedInstance.checkUserField(fieldToCheck: "tiktok", userField: userTiktok, onSuccess: { response in
-                                                                    if response {
-                                                                        self.showError("L'email renseigné a déjà été utilisé")
+                                                                    if response && !self.restriction.isMinThreeChar(userTiktok) {
+                                                                        self.showError("Le compte tiktok renseigné a déjà été utilisé")
                                                                     } else {
                                                                         APIInfManager.sharedInstance.register_Inf(pseudo: self.userPseudo, password: self.userPassword, sex: self.userSex, name: self.userName, email: self.userEmail, phoneNumber: self.userPhoneNumber, zipCode: self.userZipCode, city: self.userCity, userPicture: self.userImage, description: self.userDescription, subject: userSubject, facebook: userFacebook, twitter: userTwitter, instagram: userInstagram, snapchat: userSnapchat, youtube: userYoutube, twitch: userTwitch,  pinterest: userPinterest, tiktok: userTiktok, onSuccess: {
                                                                             DispatchQueue.main.async {
