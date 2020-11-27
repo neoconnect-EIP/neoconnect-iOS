@@ -168,7 +168,6 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
                 subjectSelected = "Sport/Fitness"
             default:
                 subjectSelected = "Mode"
-
             }
         }
     }
@@ -191,8 +190,8 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
 
     }
     
-    private func initPickerFrame(tag: Int) -> UIAlertController {
-        let alert = UIAlertController(title: "Choisissez votre sexe", message: "\n\n\n\n\n\n", preferredStyle: .alert)
+    private func initPickerFrame(tag: Int, _ message: String) -> UIAlertController {
+        let alert = UIAlertController(title: message, message: "\n\n\n\n\n\n", preferredStyle: .alert)
         let pickerFrame = UIPickerView(frame: CGRect(x: 5, y: 20, width: 250, height: 140))
         pickerFrame.tag = tag
         alert.view.tintColor = UIColor(red: 135/255, green: 185/255, blue: 124/255, alpha: 1.0)
@@ -204,11 +203,13 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     @IBAction func sexViewButtonTapped(_ sender: Any) {
-        let alert = initPickerFrame(tag: 1)
+        let alert = initPickerFrame(tag: 1, "Choisissez votre sexe")
         
-        self.sexSelected = "Unisexe"
         alert.addAction(UIAlertAction(title: "Fermer", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Valider", style: .default, handler: { (UIAlertAction) in
+            if self.sexSelected == "Sexe" {
+                self.sexSelected = "Unisexe"
+            }
             self.sexPickerViewButton.setTitle(self.sexSelected, for: .normal)
             print("You selected " + self.sexSelected)
             
@@ -217,12 +218,13 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
     }
 
     @IBAction func subjectViewButtonTapped(_ sender: Any) {
-        let alert = initPickerFrame(tag: 0)
+        let alert = initPickerFrame(tag: 0, "Choisissez une sujet")
         
-        self.subjectSelected = "Mode"
         alert.addAction(UIAlertAction(title: "Femer", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Valider", style: .default, handler: { (UIAlertAction) in
-            
+            if self.subjectSelected == "Sujet" {
+                self.subjectSelected = "Mode"
+            }
             if (self.subjectSelected == "Cosmétique" || self.subjectSelected == "Mode") {
                 self.sexPickerViewButton.isUserInteractionEnabled = true
                 self.sexPickerViewButton.setTitleColor(UIColor.white, for: .normal)
@@ -244,7 +246,7 @@ class AddOfferViewController: UIViewController, UIImagePickerControllerDelegate,
         self.descTextView.text?.removeAll()
         self.subjectSelected = "Sujet"
         self.sexSelected = "Sexe"
-        let image = UIImage(named: "Photo_Icon.png")
+        let image = UIImage(named: "placeholder-image.png")
 
         self.firstImage.setImage(image, for: .normal)
         self.secondImage.setImage(image, for: .normal)

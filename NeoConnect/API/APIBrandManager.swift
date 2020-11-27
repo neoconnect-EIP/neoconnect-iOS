@@ -39,7 +39,7 @@ class APIBrandManager {
             "phone": phoneNumber,
             "postal": zipCode,
             "city": city,
-            "UserDescription": description,
+            "userDescription": description,
             "userPicture": userPicture,
             "theme": subject,
             "facebook": facebook,
@@ -159,8 +159,9 @@ class APIBrandManager {
     }
     
     func deleteOffer(id: String, onSuccess: @escaping() -> Void) {
-        let url : String = baseURL + APIBrandManager.offerEndPoint + String(id)
+        let url : String = baseURL + APIBrandManager.offerEndPoint + "/\(String(id))"
         
+        print(id)
         AF.request(url, method: .delete, encoding: URLEncoding.default, headers: APIBrandManager.headers, interceptor: nil).responseJSON { response in
             switch response.result {
                 case .success(_):
@@ -187,7 +188,7 @@ class APIBrandManager {
             productImgArray.append(productImg)
         }
         let param = productImgArray.joined(separator: "&")
-        let parameters = "productName=\(name)&productDesc=\(description)&productSubject=\(subject)&brand=\(brand)&\(param)"
+        let parameters = "productName=\(name)&productDesc=\(description)&productSubject=\(subject)&brand=\(brand)&productSex=\(sex)&\(param)"
         let postData =  parameters.data(using: .utf8)
 
         request.addValue("Bearer \(UserDefaults.standard.string(forKey: "Token")!)", forHTTPHeaderField: "Authorization")
@@ -225,7 +226,7 @@ class APIBrandManager {
             productImgArray.append(productImg)
         }
         let param = productImgArray.joined(separator: "&")
-        let parameters = "productName=\(name)&productDesc=\(description)&productSubject=\(subject)&\(param)"
+        let parameters = "productName=\(name)&productDesc=\(description)&productSubject=\(subject)&productSex=\(sex)&\(param)"
         let postData =  parameters.data(using: .utf8)
 
         request.addValue("Bearer \(UserDefaults.standard.string(forKey: "Token")!)", forHTTPHeaderField: "Authorization")

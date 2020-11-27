@@ -24,7 +24,6 @@ class APIManager {
     static let headers: HTTPHeaders = [
         "Authorization": "Bearer " + (UserDefaults.standard.string(forKey: "Token")
             ?? ""),
-        "Content-Type": "application/x-www-form-urlencoded"
     ]
     static let getLoginEndpoint = "/login"
     static let deleteUserEndpoint = "/user/delete"
@@ -137,18 +136,22 @@ class APIManager {
         }
     }
     
-    func updatePassword(email: String, tempCode: String, userPassword: String, onSuccess: @escaping() -> Void, onFailure: @escaping() -> Void) {
-        let url : String = baseURL + APIManager.forgotPasswordEndpoint
+    func updatePassword(email: String, tempCode: String, userPassword: String, onSuccess: @escaping(String) -> Void, onFailure: @escaping() -> Void) {
+        let url : String = baseURL + APIManager.updatePasswordEndpoint
         let new_Pwd: Parameters = [
             "email": email,
-            "resetPasswordtoken": tempCode,
+            "resetPasswordToken": tempCode,
             "password": userPassword
         ]
 
-        AF.request(url, method: .put, parameters: new_Pwd, encoding: URLEncoding.default, headers: APIManager.headers, interceptor: nil).responseString { response in
+        AF.request(url, method: .put, parameters: new_Pwd, encoding: URLEncoding.default, headers: APIManager.headers, interceptor: nil).responseJSON { response in
             switch response.result {
-                case .success(_):
-                    onSuccess()
+                case .success(let JSON):
+                    print(JSON)
+                    if let message = JSON as? String {
+                        print(message)
+                        onSuccess(message)
+                    }
                 case .failure(let error):
                     print("Request failed with error: \(error)")
                     onFailure()
